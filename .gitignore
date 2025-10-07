@@ -1,0 +1,22 @@
+*.pyc
+*.log
+node_modules
+coverage/
+quartz/logs
+quartz/export_deliverables
+quartz/cantaloupe/*
+quartz/staticfiles
+quartz/media/packages
+quartz/media/build/
+quartz/uploadedfiles/*
+quartz/settings_local.py
+webpack-stats.json
+.vscode/
+*.egg-info
+.DS_STORE
+CACHE
+frontend_configuration
+
+# Packaging
+build/
+dist/
