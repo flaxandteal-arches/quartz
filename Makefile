@@ -20,7 +20,7 @@ ARCHES_PROJECT_ROOT = $(shell pwd)/
 DOCKER_COMPOSE_COMMAND = ARCHES_PROJECT_ROOT=$(ARCHES_PROJECT_ROOT) ARCHES_BASE=$(ARCHES_BASE) ARCHES_PROJECT=$(ARCHES_PROJECT) ARCHES_ROOT=$(ARCHES_ROOT) docker compose -p $(ARCHES_PROJECT) $(DOCKER_COMPOSE_FILES)
 CMD ?=
 
-.PHONY: cypress test docker rebuild-images build create-github-action down run web npm-development docker-compose manage webpack clean help npm-install npm-update create-apps-dir update-urls-debug install-app
+.PHONY: cypress test docker rebuild-images build create-github-action down run web npm-development docker-compose manage webpack clean help npm-install npm-update create-apps-dir update-urls-debug install-app migrate
 
 create: docker
 	echo $(shell id -u)
@@ -57,10 +57,10 @@ install-app:
 
 update-urls-debug:
 	@if ! grep -q "from django.contrib.staticfiles import views" $(ARCHES_PROJECT_ROOT)/$(ARCHES_PROJECT)/urls.py; then \
-    	echo "Adding DEBUG static file serving to urls.py"; \
-    	echo "\nif settings.DEBUG:\n    from django.contrib.staticfiles import views\n    from django.urls import re_path\n    urlpatterns += [\n        re_path(r'^static/(?P<path>.*)$', views.serve),\n    ]" >> $(ARCHES_PROJECT_ROOT)/$(ARCHES_PROJECT)/urls.py; \
+		echo "Adding DEBUG static file serving to urls.py"; \
+		echo "\nif settings.DEBUG:\n    from django.contrib.staticfiles import views\n    from django.urls import re_path\n    urlpatterns += [\n        re_path(r'^static/(?P<path>.*)$$', views.serve),\n    ]\n" >> $(ARCHES_PROJECT_ROOT)/$(ARCHES_PROJECT)/urls.py; \
 	else \
-    	echo "DEBUG static file serving already exists in urls.py"; \
+		echo "DEBUG static file serving already exists in urls.py"; \
 	fi
 
 dl-docker:
@@ -104,6 +104,10 @@ npm-install: docker
 npm-update: docker
 	$(DOCKER_COMPOSE_COMMAND) run --entrypoint /web_root/entrypoint.sh arches_worker update_npm_components
 
+install-local-apps:
+	@echo "Installing apps from mounted arches_apps directory in editable mode..."
+	$(DOCKER_COMPOSE_COMMAND) run --entrypoint /web_root/entrypoint.sh arches_worker install_arches_apps
+
 build: docker
 	# We need to have certain node modules, so if the additional ones are missing, clean the folder to ensure boostrap does so.
 	if [ -z node_modules/jquery-validation ]; then rm -rf node_modules; fi
@@ -116,6 +120,10 @@ build: docker
 	$(DOCKER_COMPOSE_COMMAND) stop
 	$(MAKE) create-apps-dir
 	$(MAKE) update-urls-debug
+
+migrate: docker
+	$(MAKE) install-local-apps
+	$(DOCKER_COMPOSE_COMMAND) run --entrypoint /bin/bash arches_worker -c '. ../ENV/bin/activate; python manage.py migrate'
 
 create-github-action: cypress docker
 	mkdir -p  $(ARCHES_PROJECT_ROOT).github/workflows
