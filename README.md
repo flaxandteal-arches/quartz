@@ -60,4 +60,10 @@ make run
 ```
 To start a local version of arches. Navigate to `localhost:8000` to see the site
 
+8. Load the package with the resource models using the command
+```
+make manage CMD="packages -o load_package -s quartz/pkg"
+```
+This will load in the onotologies and resource models.
+
 
