@@ -25,6 +25,8 @@ requires-python = ">=3.11"
 dependencies = [
     "arches>=8.0.0,<8.2.0",
     "grafana-django-saml2-auth>=3.12.0",
+    "arches_controlled_lists",
+    "arches_her @ git+https://github.com/archesproject/arches-her.git@dev/2.0.x"
 ]
 version = "0.0.1"
 

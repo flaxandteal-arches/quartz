@@ -18,6 +18,7 @@ endif
 ARCHES_BASE = ghcr.io/flaxandteal/arches-base:docker-8.1
 ARCHES_PROJECT_ROOT = $(shell pwd)/
 DOCKER_COMPOSE_COMMAND = ARCHES_PROJECT_ROOT=$(ARCHES_PROJECT_ROOT) ARCHES_BASE=$(ARCHES_BASE) ARCHES_PROJECT=$(ARCHES_PROJECT) ARCHES_ROOT=$(ARCHES_ROOT) docker compose -p $(ARCHES_PROJECT) $(DOCKER_COMPOSE_FILES)
+USE_LOCAL_APPS ?= false
 CMD ?=
 
 .PHONY: cypress test docker rebuild-images build create-github-action down run web npm-development docker-compose manage webpack clean help npm-install npm-update create-apps-dir update-urls-debug install-app
@@ -74,10 +75,10 @@ create-apps-dir:
 
 install-app:
 	@if [ -z "$(URL)" ]; then \
-		echo "Error: No GitHub URL provided. Usage: make install-app URL=<repo_url>"; \
+		echo "Error: No GitHub URL provided. Usage: make install-app URL=<repo_url> [BRANCH=<branch>]"; \
 		exit 1; \
 	fi
-	python3 $(TOOLKIT_FOLDER)/install_app.py "$(URL)" --project-root "$(ARCHES_PROJECT_ROOT)"
+	python3 $(TOOLKIT_FOLDER)/install_app.py "$(URL)" $(if $(BRANCH),--branch "$(BRANCH)") --project-root "$(ARCHES_PROJECT_ROOT)"
 	@echo ""
 	@echo "You may need to run python manage.py migrate to install any models in the app"
 	@echo "Make sure to rebuild the project frontend"
@@ -123,7 +124,7 @@ endif
 	@if [ "$$(diff Makefile $(TOOLKIT_FOLDER)/Makefile)" != "" ]; then echo "Your Makefile in this directory does not match the one in directory [$(TOOLKIT_FOLDER)], do you need to update it by copying it over this one or vice versa?"; echo; fi
 
 rebuild-images: docker
-	$(DOCKER_COMPOSE_COMMAND) build
+	$(DOCKER_COMPOSE_COMMAND) build --build-arg USE_LOCAL_APPS=$(USE_LOCAL_APPS)
 
 npm-install: docker
 	$(DOCKER_COMPOSE_COMMAND) run --entrypoint /web_root/entrypoint.sh arches_worker install_npm_components

@@ -125,6 +125,7 @@ DATABASES = {
 SEARCH_THUMBNAILS = False
 
 INSTALLED_APPS = (
+    "quartz",
     "webpack_loader",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -133,6 +134,9 @@ INSTALLED_APPS = (
     "django.contrib.staticfiles",
     "django.contrib.gis",
     "django_hosts",
+    "arches_component_lab",
+    "arches_controlled_lists",
+    "arches_querysets",
     "arches",
     "arches.app.models",
     "arches.management",
@@ -146,7 +150,6 @@ INSTALLED_APPS = (
     "pgtrigger",
     "django_saml2_auth",  # SAML2 SSO Authentication
     # "silk",
-    "quartz",  # Ensure the project is listed before any other arches applications
 )
 
 # Placing this last ensures any templates provided by Arches Applications
@@ -154,6 +157,8 @@ INSTALLED_APPS = (
 INSTALLED_APPS += (
     "arches.app",
     "django.contrib.admin",
+    "django.contrib.postgres",
+    "arches_her",
 )
 
 MIDDLEWARE = [
@@ -182,6 +187,39 @@ MIDDLEWARE.append(  # this must resolve last MIDDLEWARE entry
 )
 
 STATICFILES_DIRS = build_staticfiles_dirs(app_root=APP_ROOT)
+
+REFERENCES_INDEX_NAME = "references"
+ELASTICSEARCH_CUSTOM_INDEXES = [
+    {
+        "module": "arches_controlled_lists.search_indexes.reference_index.ReferenceIndex",
+        "name": REFERENCES_INDEX_NAME,
+        "should_update_asynchronously": True,
+    }
+]
+TERM_SEARCH_TYPES = [
+    {
+        "type": "term",
+        "label": _("Term Matches"),
+        "key": "terms",
+        "module": "arches.app.search.search_term.TermSearch",
+    },
+    {
+        "type": "concept",
+        "label": _("Concepts"),
+        "key": "concepts",
+        "module": "arches.app.search.concept_search.ConceptSearch",
+    },
+    {
+        "type": "reference",
+        "label": _("References"),
+        "key": REFERENCES_INDEX_NAME,
+        "module": "arches_controlled_lists.search_indexes.reference_index.ReferenceIndex",
+    },
+]
+
+ES_MAPPING_MODIFIER_CLASSES = [
+    "arches_controlled_lists.search.references_es_mapping_modifier.ReferencesEsMappingModifier"
+]
 
 TEMPLATES = build_templates_config(
     debug=DEBUG,
