@@ -13,10 +13,12 @@ handler404 = "arches.app.views.main.custom_404"
 handler500 = "arches.app.views.main.custom_500"
 
 # Ensure Arches core urls are superseded by project-level urls
-urlpatterns.append(path("", include("arches.urls")))
-
-# Adds URL pattern to serve media files during development
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = [
+   path("", include("arches.urls")),
+   path("", include("arches_controlled_lists.urls")),
+   path("", include("arches_component_lab.urls")),
+   path("", include("arches_her.urls")),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # Only handle i18n routing in active project. This will still handle the routes provided by Arches core and Arches applications,
 # but handling i18n routes in multiple places causes application errors.
