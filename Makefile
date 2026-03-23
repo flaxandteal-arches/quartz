@@ -15,7 +15,7 @@ ifneq ($(ARCHES_ROOT),)
 else
   DOCKER_COMPOSE_FILES = -f docker/docker-compose.yml
 endif
-ARCHES_BASE = ghcr.io/flaxandteal/arches-base:docker-8.1
+ARCHES_BASE = ghcr.io/flaxandteal/arches-base:docker-8.1.0-release
 ARCHES_PROJECT_ROOT = $(shell pwd)/
 DOCKER_COMPOSE_COMMAND = ARCHES_PROJECT_ROOT=$(ARCHES_PROJECT_ROOT) ARCHES_BASE=$(ARCHES_BASE) ARCHES_PROJECT=$(ARCHES_PROJECT) ARCHES_ROOT=$(ARCHES_ROOT) docker compose -p $(ARCHES_PROJECT) $(DOCKER_COMPOSE_FILES)
 USE_LOCAL_APPS ?= false
