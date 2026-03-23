@@ -15,17 +15,6 @@ class Migration(migrations.Migration):
         Widget = apps.get_model("models", "Widget")
 
         Widget.objects.update_or_create(
-            widgetid="bcae8e90-09f7-4ae3-906b-7c7bb71a6ddf",
-            name="bngpoint",
-            component="views/components/widgets/bngpoint",
-            defaultconfig={
-                "placeholder": "Enter the centre point map reference of the resource."
-            },
-            helptext=None,
-            datatype="bngcentrepoint"
-        )
-
-        Widget.objects.update_or_create(
             widgetid="31bc729d-6126-4301-8ec1-d6c4d98c68f8",
             name="photo-widget",
             datatype="file-list",
@@ -48,25 +37,6 @@ class Migration(migrations.Migration):
             widget.delete()
 
 
-    def add_datatypes(apps, schema_editor):
-        Datatype = apps.get_model("models", "DDataType")
-        Widget = apps.get_model("models", "Widget")
-
-        bngpoint=Widget.objects.get(pk="bcae8e90-09f7-4ae3-906b-7c7bb71a6ddf")
-
-        Datatype.objects.update_or_create(
-            datatype="bngcentrepoint",
-            iconclass="fa fa-location-arrow",
-            modulename="bngcentrepoint.py",
-            classname="BNGCentreDataType",
-            defaultwidget=bngpoint,
-            defaultconfig=None,
-            configcomponent="views/components/datatypes/bngcentrepoint",
-            configname="bngcentrepoint-datatype-config",
-            isgeometric=False,
-            issearchable=True,
-        )
-
     def remove_datatypes(apps, schema_editor):
         Datatype = apps.get_model("models", "DDataType")
 
@@ -77,5 +47,4 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunPython(add_widgets, remove_widgets),
-        migrations.RunPython(add_datatypes, remove_datatypes),
     ]
