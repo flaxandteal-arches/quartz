@@ -144,6 +144,7 @@ INSTALLED_APPS = (
     "django_celery_results",
     "django_migrate_sql",
     "pgtrigger",
+    "django_saml2_auth",  # SAML2 SSO Authentication
     # "silk",
     "quartz",  # Ensure the project is listed before any other arches applications
 )
@@ -437,6 +438,56 @@ SHOW_LANGUAGE_SWITCH = len(LANGUAGES) > 1
 # Implement this class to associate custom documents to the ES resource index
 # See tests.views.search_tests.TestEsMappingModifier class for example
 # ES_MAPPING_MODIFIER_CLASSES = ["quartz.search.es_mapping_modifier.EsMappingModifier"]
+
+SAML2_AUTH = {
+    'METADATA_AUTO_CONF_URL': os.environ.get(
+        'SAML2_METADATA_URL',
+        'https://login.microsoftonline.com/<tenant-id>/federationmetadata/2007-06/federationmetadata.xml',
+    ),
+
+    'DEFAULT_NEXT_URL': os.environ.get('SAML2_DEFAULT_NEXT_URL', '/'),
+
+    'CREATE_USER': True,
+
+    'NEW_USER_PROFILE': {
+        'USER_GROUPS': [],
+        'ACTIVE_STATUS': True,
+        'STAFF_STATUS': False,
+        'SUPERUSER_STATUS': False,
+    },
+
+    'ATTRIBUTES_MAP': {
+        'email': 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress',
+        'username': 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name',
+        'first_name': 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname',
+        'last_name': 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname',
+    },
+
+    'TOKEN_REQUIRED': False,
+
+    'ASSERTION_URL': os.environ.get('SAML2_ASSERTION_URL', 'http://localhost:8000'),
+
+    'ENTITY_ID': os.environ.get('SAML2_ENTITY_ID', ''),
+
+    'AUTHN_REQUESTS_SIGNED': False,
+    'LOGOUT_REQUESTS_SIGNED': False,
+    'WANT_ASSERTIONS_SIGNED': True,
+    'WANT_RESPONSE_SIGNED': True,
+}
+
+# Login/Logout redirect URLs
+LOGIN_URL = '/auth/'
+LOGIN_REDIRECT_URL = os.environ.get('LOGIN_REDIRECT_URL', '/')
+LOGOUT_REDIRECT_URL = os.environ.get('LOGOUT_REDIRECT_URL', '/')
+
+# Session cookie settings for SSO
+SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = False
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 try:
     from .package_settings import *

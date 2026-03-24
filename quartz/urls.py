@@ -1,11 +1,14 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
-from django.urls import include, path
+from django.urls import include, path, re_path
+
+import django_saml2_auth.views
 
 urlpatterns = [
-    # project-level urls
+    re_path(r'^sso/', include('django_saml2_auth.urls')),
 ]
+
 
 handler400 = "arches.app.views.main.custom_400"
 handler403 = "arches.app.views.main.custom_403"
@@ -32,4 +35,3 @@ if settings.DEBUG:
     urlpatterns += [
         re_path(r'^static/(?P<path>.*)$', views.serve),
     ]
-
