@@ -14,10 +14,10 @@ handler500 = "arches.app.views.main.custom_500"
 
 # Ensure Arches core urls are superseded by project-level urls
 urlpatterns = [
-   path("", include("arches.urls")),
-   path("", include("arches_controlled_lists.urls")),
-   path("", include("arches_component_lab.urls")),
-   path("", include("arches_her.urls")),
+    path("", include("arches.urls")),
+    path("", include("arches_controlled_lists.urls")),
+    path("", include("arches_component_lab.urls")),
+    path("", include("arches_her.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # Only handle i18n routing in active project. This will still handle the routes provided by Arches core and Arches applications,
@@ -31,7 +31,7 @@ if settings.ROOT_URLCONF == __name__:
 if settings.DEBUG:
     from django.contrib.staticfiles import views
     from django.urls import re_path
-    urlpatterns += [
-        re_path(r'^static/(?P<path>.*)$', views.serve),
-    ]
 
+    urlpatterns += [
+        re_path(r"^static/(?P<path>.*)$", views.serve),
+    ]
