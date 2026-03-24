@@ -27,6 +27,7 @@ dependencies = [
     "grafana-django-saml2-auth>=3.12.0",
     "arches_controlled_lists",
     "arches_her @ git+https://github.com/archesproject/arches-her.git@dev/2.0.x"
+    "grafana-django-saml2-auth>=3.12.0",
 ]
 version = "0.0.1"
 
