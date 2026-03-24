@@ -22,7 +22,7 @@ from quartz.settings import *
 
 PACKAGE_NAME = "quartz"
 
-PROJECT_TEST_ROOT = os.path.dirname(__file__)
+PROJECT_TEST_ROOT = os.path.join(os.path.dirname(__file__), "..", "tests")
 MEDIA_ROOT = os.path.join(PROJECT_TEST_ROOT, "fixtures", "data")
 
 BUSINESS_DATA_FILES = (
