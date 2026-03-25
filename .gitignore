@@ -10,6 +10,7 @@ quartz/media/packages
 quartz/media/build/
 quartz/uploadedfiles/*
 quartz/settings_local.py
+quartz/pkg/business_data/*
 webpack-stats.json
 .vscode/
 *.egg-info
