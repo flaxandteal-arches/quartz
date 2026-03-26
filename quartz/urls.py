@@ -5,11 +5,6 @@ from django.urls import include, path, re_path
 
 import django_saml2_auth.views
 
-urlpatterns = [
-    re_path(r'^sso/', include('django_saml2_auth.urls')),
-]
-
-
 handler400 = "arches.app.views.main.custom_400"
 handler403 = "arches.app.views.main.custom_403"
 handler404 = "arches.app.views.main.custom_404"
@@ -17,6 +12,8 @@ handler500 = "arches.app.views.main.custom_500"
 
 # Ensure Arches core urls are superseded by project-level urls
 urlpatterns = [
+    re_path(r'^sso/', include('django_saml2_auth.urls')),
+    re_path(r'^sso/signin/$', django_saml2_auth.views.signin, name='saml2_signin'),
     path("", include("arches.urls")),
     path("", include("arches_controlled_lists.urls")),
     path("", include("arches_component_lab.urls")),
