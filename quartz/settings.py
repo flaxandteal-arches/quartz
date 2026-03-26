@@ -495,10 +495,10 @@ SAML2_AUTH = {
     },
 
     'ATTRIBUTES_MAP': {
-        'email': 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress',
-        'username': 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name',
-        'first_name': 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname',
-        'last_name': 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname',
+        'email': 'emailAddress',
+        'username': 'name',
+        'first_name': 'displayname',
+        'last_name': 'displayname',
     },
 
     'TOKEN_REQUIRED': False,
