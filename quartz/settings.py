@@ -478,53 +478,45 @@ SHOW_LANGUAGE_SWITCH = len(LANGUAGES) > 1
 # ES_MAPPING_MODIFIER_CLASSES = ["quartz.search.es_mapping_modifier.EsMappingModifier"]
 
 SAML2_AUTH = {
-    'METADATA_AUTO_CONF_URL': os.environ.get(
-        'SAML2_METADATA_URL',
-        'https://login.microsoftonline.com/<tenant-id>/federationmetadata/2007-06/federationmetadata.xml',
+    "METADATA_AUTO_CONF_URL": os.environ.get(
+        "SAML2_METADATA_URL",
+        "https://login.microsoftonline.com/<tenant-id>/federationmetadata/2007-06/federationmetadata.xml",
     ),
-
-    'DEFAULT_NEXT_URL': os.environ.get('SAML2_DEFAULT_NEXT_URL', '/'),
-
-    'CREATE_USER': True,
-
-    'NEW_USER_PROFILE': {
-        'USER_GROUPS': [],
-        'ACTIVE_STATUS': True,
-        'STAFF_STATUS': False,
-        'SUPERUSER_STATUS': False,
+    "DEFAULT_NEXT_URL": os.environ.get("SAML2_DEFAULT_NEXT_URL", "/"),
+    "CREATE_USER": True,
+    "NEW_USER_PROFILE": {
+        "USER_GROUPS": [],
+        "ACTIVE_STATUS": True,
+        "STAFF_STATUS": False,
+        "SUPERUSER_STATUS": False,
     },
-
-    'ATTRIBUTES_MAP': {
-        'email': 'emailAddress',
-        'username': 'name',
-        'first_name': 'displayname',
-        'last_name': 'displayname',
+    "ATTRIBUTES_MAP": {
+        "email": "emailAddress",
+        "username": "name",
+        "first_name": "displayname",
+        "last_name": "displayname",
     },
-
-    'TOKEN_REQUIRED': False,
-
-    'ASSERTION_URL': os.environ.get('SAML2_ASSERTION_URL', 'http://localhost:8000'),
-
-    'ENTITY_ID': os.environ.get('SAML2_ENTITY_ID', ''),
-
-    'AUTHN_REQUESTS_SIGNED': False,
-    'LOGOUT_REQUESTS_SIGNED': False,
-    'WANT_ASSERTIONS_SIGNED': True,
-    'WANT_RESPONSE_SIGNED': True,
+    "TOKEN_REQUIRED": False,
+    "ASSERTION_URL": os.environ.get("SAML2_ASSERTION_URL", "http://localhost:8000"),
+    "ENTITY_ID": os.environ.get("SAML2_ENTITY_ID", ""),
+    "AUTHN_REQUESTS_SIGNED": False,
+    "LOGOUT_REQUESTS_SIGNED": False,
+    "WANT_ASSERTIONS_SIGNED": True,
+    "WANT_RESPONSE_SIGNED": True,
 }
 
 # Login/Logout redirect URLs
-LOGIN_URL = '/auth/'
-LOGIN_REDIRECT_URL = os.environ.get('LOGIN_REDIRECT_URL', '/')
-LOGOUT_REDIRECT_URL = os.environ.get('LOGOUT_REDIRECT_URL', '/')
+LOGIN_URL = "/auth/"
+LOGIN_REDIRECT_URL = os.environ.get("LOGIN_REDIRECT_URL", "/")
+LOGOUT_REDIRECT_URL = os.environ.get("LOGOUT_REDIRECT_URL", "/")
 
 # Session cookie settings for SSO
-SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SAMESITE = "Lax"
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SECURE = False
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
+    "django.contrib.auth.backends.ModelBackend",
 ]
 
 try:
