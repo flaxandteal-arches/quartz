@@ -49,7 +49,6 @@ git submodule update --init --recursive
 
 6. Build arches
 ```
-cd quartz && 
 make build
 ```
 This will navigate to the folder that contains the make file and run the build command
