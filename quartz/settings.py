@@ -48,7 +48,7 @@ FILE_TYPES = [
     "zip",
 ]
 FILENAME_GENERATOR = "arches.app.utils.storage_filename_generator.generate_filename"
-UPLOADED_FILES_DIR = "uploadedfiles"
+UPLOADED_FILES_DIR = ""
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-1#dmpd#$*y+ebl73yp89-rgrlp7)$dsc3yh2d35@b4y@j5n^ge"
@@ -250,6 +250,23 @@ STATIC_URL = "/static/"
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = os.path.join(APP_ROOT, "staticfiles")
 
+AZURE_ACCOUNT_NAME = os.environ.get("AZURE_ACCOUNT_NAME", None)
+AZURE_ACCOUNT_KEY = os.environ.get("AZURE_ACCOUNT_KEY", None)
+AZURE_CONTAINER = os.environ.get("AZURE_CONTAINER", None)
+AZURE_LOCATION = os.environ.get("AZURE_LOCATION", "")
+
+if AZURE_ACCOUNT_NAME and AZURE_ACCOUNT_KEY and AZURE_CONTAINER:
+    INSTALLED_APPS = (*INSTALLED_APPS, "storages",)
+    STORAGES = {
+        "default": {
+            "BACKEND": "storages.backends.azure_storage.AzureStorage",
+            "OPTIONS": {},
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
+    }
+
 # when hosting Arches under a sub path set this value to the sub path eg : "/{sub_path}/"
 FORCE_SCRIPT_NAME = None
 
@@ -391,7 +408,7 @@ CELERY_BEAT_SCHEDULE = {
 CELERY_CHECK_ONLY_INSPECT_BROKER = False
 
 CANTALOUPE_DIR = os.path.join(ROOT_DIR, UPLOADED_FILES_DIR)
-CANTALOUPE_HTTP_ENDPOINT = "http://localhost:8182/"
+CANTALOUPE_HTTP_ENDPOINT = "http://cantaloupe:8182/"
 
 ACCESSIBILITY_MODE = False
 
