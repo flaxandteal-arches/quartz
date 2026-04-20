@@ -32,6 +32,13 @@ LOCALE_PATHS.insert(0, os.path.join(APP_ROOT, "locale"))
 
 FILE_TYPE_CHECKING = "lenient"
 FILE_TYPES = [
+    "mkv",
+    "webm",
+    "avi",
+    "mp4",
+    "mpg",
+    "avi",
+    "mov",
     "bmp",
     "gif",
     "jpg",
