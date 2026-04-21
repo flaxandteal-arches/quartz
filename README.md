@@ -49,7 +49,6 @@ git submodule update --init --recursive
 
 6. Build arches
 ```
-cd quartz && 
 make build
 ```
 This will navigate to the folder that contains the make file and run the build command
@@ -60,9 +59,16 @@ make run
 ```
 To start a local version of arches. Navigate to `localhost:8000` to see the site
 
-8. Load the package with the resource models using the command
+7. Load the package with the resource models using the command
 ```
-make manage CMD="packages -o load_package -s quartz/pkg"
+make manage CMD="packages -o load_package -a arches_her -db -y"
+```
+
+8. Login on localhost:8000/auth and go to http://localhost:8000/graph/. Scroll down to find the Monument resource and delete it using the dropdown
+
+9. Run 
+```
+make manage CMD="packages -o import_graphs -s quartz/pkg/graphs/resource_models/Heritage\ Item.json"
 ```
 This will load in the onotologies and resource models.
 
