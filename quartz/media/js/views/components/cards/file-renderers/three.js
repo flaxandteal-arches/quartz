@@ -1,25 +1,28 @@
 import ko from 'knockout';
+import createVueApplication from 'arches/arches/app/media/js/utils/create-vue-application';
+import ThreeViewer from '@/quartz/file-renderers/ThreeViewer.vue';
 import threeTemplate from 'templates/views/components/cards/file-renderers/three.htm';
 
 ko.bindingHandlers.online3dViewer = {
     init: function (element, valueAccessor) {
         const model = ko.unwrap(valueAccessor());
         if (!model || !model.url || !model.name) return;
-        let viewer = null;
-        import('online-3d-viewer').then((OV) => {
-            viewer = new OV.EmbeddedViewer(element, {
-                backgroundColor: new OV.RGBAColor(255, 255, 255, 255),
-                defaultColor: new OV.RGBColor(200, 200, 200),
-            });
-            fetch(model.url)
-                .then((r) => r.blob())
-                .then((blob) => {
-                    const file = new File([blob], model.name, { type: blob.type || 'application/octet-stream' });
-                    viewer.LoadModelFromFileList([file]);
-                });
-        });
+
+        // url/name come from the card's in-memory file state (not an API),
+        // so initialProps is the documented escape hatch here.
+        let vueApp = null;
+        createVueApplication(ThreeViewer, undefined, {
+            url: model.url,
+            name: model.name,
+        })
+            .then((app) => {
+                vueApp = app;
+                vueApp.mount(element);
+            })
+            .catch(console.error);
+
         ko.utils.domNodeDisposal.addDisposeCallback(element, () => {
-            if (viewer && typeof viewer.Destroy === 'function') viewer.Destroy();
+            if (vueApp) vueApp.unmount();
         });
     },
 };
