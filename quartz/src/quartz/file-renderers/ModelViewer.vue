@@ -89,7 +89,7 @@ document.addEventListener("fullscreenchange", onFullscreenChange);
         <div ref="container" class="model-viewer"></div>
         <div class="model-viewer-controls">
             <button type="button" title="Reset view" @click="resetView">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+                <i class="fa fa-undo" aria-hidden="true"></i>
             </button>
             <button
                 type="button"
@@ -97,15 +97,17 @@ document.addEventListener("fullscreenchange", onFullscreenChange);
                 :class="{ active: edgesOn }"
                 @click="toggleEdges"
             >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 8l10 6 10-6-10-6Z"/><path d="m2 16 10 6 10-6"/><path d="m2 12 10 6 10-6"/></svg>
+                <i class="fa fa-cube" aria-hidden="true"></i>
             </button>
             <button
                 type="button"
                 :title="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'"
                 @click="toggleFullscreen"
             >
-                <svg v-if="!isFullscreen" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V3h5"/><path d="M21 8V3h-5"/><path d="M3 16v5h5"/><path d="M21 16v5h-5"/></svg>
-                <svg v-else width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v5H3"/><path d="M16 3v5h5"/><path d="M8 21v-5H3"/><path d="M16 21v-5h5"/></svg>
+                <i
+                    :class="isFullscreen ? 'fa fa-compress' : 'fa fa-expand'"
+                    aria-hidden="true"
+                ></i>
             </button>
         </div>
     </div>
@@ -127,15 +129,16 @@ document.addEventListener("fullscreenchange", onFullscreenChange);
 }
 
 .model-viewer-controls {
+    --btn-size: 36px;
     position: absolute;
     top: 10px;
     right: 10px;
     display: flex;
-    gap: 4px;
-    padding: 4px;
+    gap: calc(var(--btn-size) * 0.15);
+    padding: calc(var(--btn-size) * 0.15);
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(8px);
-    border-radius: 6px;
+    border-radius: calc(var(--btn-size) * 0.22);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     z-index: 10;
 }
@@ -144,11 +147,12 @@ document.addEventListener("fullscreenchange", onFullscreenChange);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 28px;
+    width: var(--btn-size);
+    height: var(--btn-size);
+    font-size: calc(var(--btn-size) * 0.5);
     padding: 0;
     border: none;
-    border-radius: 4px;
+    border-radius: calc(var(--btn-size) * 0.15);
     background: transparent;
     color: #333;
     cursor: pointer;
