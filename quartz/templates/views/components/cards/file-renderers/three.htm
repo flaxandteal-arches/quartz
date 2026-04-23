@@ -1,0 +1,16 @@
+{% load i18n %}
+
+<!--ko if: params.context === 'render' -->
+<div style="height: 100%">
+    <!--ko if: params.selected() -->
+    <div class="three-viewer-mount"
+         style="width: 100%; height: calc(100vh - 100px);"
+         data-bind="online3dViewer: model">
+    </div>
+    <!--/ko-->
+</div>
+<!--/ko-->
+<!--ko if: params.context === 'tab' -->
+<!--/ko-->
+<!--ko if: params.context === 'tab-contents' -->
+<!--/ko-->

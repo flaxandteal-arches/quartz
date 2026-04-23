@@ -32,6 +32,7 @@ LOCALE_PATHS.insert(0, os.path.join(APP_ROOT, "locale"))
 
 FILE_TYPE_CHECKING = "lenient"
 FILE_TYPES = [
+    "stl",
     "bmp",
     "gif",
     "jpg",
@@ -434,6 +435,17 @@ RENDERERS = [
         "ext": "pdf",
         "type": "application/pdf",
         "exclude": "tif,tiff,psd",
+    },
+    {
+        "name": "three",
+        "title": "3D Model Viewer",
+        "description": "Displays 3D models (glTF, glb, obj, stl, ply, 3ds, fbx, dae, 3mf, and more) via Online 3D Viewer",
+        "id": "7c8b3e1a-2d9f-4a6b-8e5c-1f3d7a9b2e0c",
+        "iconclass": "fa fa-cube",
+        "component": "views/components/cards/file-renderers/three",
+        "ext": "stl",
+        "type": "model/*",
+        "exclude": "",
     },
 ]
 
