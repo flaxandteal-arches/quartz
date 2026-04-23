@@ -1,9 +1,9 @@
 import ko from 'knockout';
 import createVueApplication from 'arches/arches/app/media/js/utils/create-vue-application';
-import ThreeViewer from '@/quartz/file-renderers/ThreeViewer.vue';
-import threeTemplate from 'templates/views/components/cards/file-renderers/three.htm';
+import ModelViewer from '@/quartz/file-renderers/ModelViewer.vue';
+import modelViewerTemplate from 'templates/views/components/cards/file-renderers/modelviewer.htm';
 
-ko.bindingHandlers.online3dViewer = {
+ko.bindingHandlers.modelViewer = {
     init: function (element, valueAccessor) {
         const model = ko.unwrap(valueAccessor());
         if (!model || !model.url || !model.name) return;
@@ -11,7 +11,7 @@ ko.bindingHandlers.online3dViewer = {
         // url/name come from the card's in-memory file state (not an API),
         // so initialProps is the documented escape hatch here.
         let vueApp = null;
-        createVueApplication(ThreeViewer, undefined, {
+        createVueApplication(ModelViewer, undefined, {
             url: model.url,
             name: model.name,
         })
@@ -27,7 +27,7 @@ ko.bindingHandlers.online3dViewer = {
     },
 };
 
-export default ko.components.register('three', {
+export default ko.components.register('modelviewer', {
     viewModel: function (params) {
         this.params = params;
         const displayContent = ko.unwrap(params.displayContent);
@@ -35,5 +35,5 @@ export default ko.components.register('three', {
             ? { url: displayContent.url, name: displayContent.name }
             : null;
     },
-    template: threeTemplate,
+    template: modelViewerTemplate,
 });

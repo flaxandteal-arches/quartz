@@ -85,9 +85,9 @@ document.addEventListener("fullscreenchange", onFullscreenChange);
 </script>
 
 <template>
-    <div ref="wrapper" class="three-viewer-wrapper">
-        <div ref="container" class="three-viewer"></div>
-        <div class="three-viewer-controls">
+    <div ref="wrapper" class="model-viewer-wrapper">
+        <div ref="container" class="model-viewer"></div>
+        <div class="model-viewer-controls">
             <button type="button" title="Reset view" @click="resetView">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
             </button>
@@ -112,7 +112,7 @@ document.addEventListener("fullscreenchange", onFullscreenChange);
 </template>
 
 <style scoped>
-.three-viewer-wrapper {
+.model-viewer-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
@@ -121,12 +121,12 @@ document.addEventListener("fullscreenchange", onFullscreenChange);
     overflow: hidden;
 }
 
-.three-viewer {
+.model-viewer {
     width: 100%;
     height: 100%;
 }
 
-.three-viewer-controls {
+.model-viewer-controls {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -140,7 +140,7 @@ document.addEventListener("fullscreenchange", onFullscreenChange);
     z-index: 10;
 }
 
-.three-viewer-controls button {
+.model-viewer-controls button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -155,29 +155,29 @@ document.addEventListener("fullscreenchange", onFullscreenChange);
     transition: background 0.15s ease;
 }
 
-.three-viewer-controls button:hover {
+.model-viewer-controls button:hover {
     background: rgba(0, 0, 0, 0.08);
 }
 
-.three-viewer-controls button.active {
+.model-viewer-controls button.active {
     background: rgba(59, 130, 246, 0.15);
     color: #1d4ed8;
 }
 
-.three-viewer-wrapper:fullscreen {
+.model-viewer-wrapper:fullscreen {
     background: radial-gradient(ellipse at center, #2a2f3a 0%, #1a1d24 100%);
     border-radius: 0;
 }
 
-.three-viewer-wrapper:fullscreen .three-viewer-controls {
+.model-viewer-wrapper:fullscreen .model-viewer-controls {
     background: rgba(30, 30, 35, 0.75);
 }
 
-.three-viewer-wrapper:fullscreen .three-viewer-controls button {
+.model-viewer-wrapper:fullscreen .model-viewer-controls button {
     color: #e5e7eb;
 }
 
-.three-viewer-wrapper:fullscreen .three-viewer-controls button:hover {
+.model-viewer-wrapper:fullscreen .model-viewer-controls button:hover {
     background: rgba(255, 255, 255, 0.12);
 }
 </style>
