@@ -10,6 +10,22 @@ const container = ref<HTMLDivElement | null>(null);
 const wrapper = ref<HTMLDivElement | null>(null);
 const edgesOn = ref(false);
 const isFullscreen = ref(false);
+const isLoading = ref(true);
+const loadStatus = ref("Initialising");
+const sizeLabel = ref("");
+const loadError = ref<string | null>(null);
+
+function formatBytes(bytes: number): string {
+    if (!bytes) return "";
+    const units = ["B", "KB", "MB", "GB"];
+    let v = bytes;
+    let i = 0;
+    while (v >= 1024 && i < units.length - 1) {
+        v /= 1024;
+        i += 1;
+    }
+    return `${v.toFixed(v < 10 && i > 0 ? 1 : 0)} ${units[i]}`;
+}
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let viewer: any = null;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -17,22 +33,40 @@ let OV: any = null;
 
 onMounted(async () => {
     if (!container.value) return;
-    OV = await import("online-3d-viewer");
-    viewer = new OV.EmbeddedViewer(container.value, {
-        backgroundColor: new OV.RGBAColor(0, 0, 0, 0),
-        defaultColor: new OV.RGBColor(180, 184, 192),
-        edgeSettings: new OV.EdgeSettings(
-            false,
-            new OV.RGBColor(40, 40, 40),
-            1,
-        ),
-    });
-    const response = await fetch(props.url);
-    const blob = await response.blob();
-    const file = new File([blob], props.name, {
-        type: blob.type || "application/octet-stream",
-    });
-    viewer.LoadModelFromFileList([file]);
+    try {
+        loadStatus.value = "Loading viewer";
+        OV = await import("online-3d-viewer");
+        viewer = new OV.EmbeddedViewer(container.value, {
+            backgroundColor: new OV.RGBAColor(0, 0, 0, 0),
+            defaultColor: new OV.RGBColor(180, 184, 192),
+            edgeSettings: new OV.EdgeSettings(
+                false,
+                new OV.RGBColor(40, 40, 40),
+                1,
+            ),
+            onModelLoaded: () => {
+                isLoading.value = false;
+            },
+        });
+
+        loadStatus.value = "Downloading model";
+        const response = await fetch(props.url);
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        const total = Number(response.headers.get("content-length")) || 0;
+        if (total) sizeLabel.value = formatBytes(total);
+
+        const blob = await response.blob();
+        loadStatus.value = "Parsing model";
+        const file = new File([blob], props.name, {
+            type: blob.type || "application/octet-stream",
+        });
+        viewer.LoadModelFromFileList([file]);
+    } catch (err) {
+        loadError.value = err instanceof Error ? err.message : String(err);
+        isLoading.value = false;
+    }
 });
 
 onBeforeUnmount(() => {
@@ -87,6 +121,19 @@ document.addEventListener("fullscreenchange", onFullscreenChange);
 <template>
     <div ref="wrapper" class="model-viewer-wrapper">
         <div ref="container" class="model-viewer"></div>
+        <div v-if="isLoading || loadError" class="model-viewer-overlay">
+            <div v-if="loadError" class="model-viewer-error">
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                <div>Failed to load model</div>
+                <div class="model-viewer-error-detail">{{ loadError }}</div>
+            </div>
+            <div v-else class="model-viewer-loader">
+                <div class="model-viewer-spinner" aria-hidden="true"></div>
+                <div class="model-viewer-status">
+                    {{ loadStatus }}<span v-if="sizeLabel"> · {{ sizeLabel }}</span>
+                </div>
+            </div>
+        </div>
         <div class="model-viewer-controls">
             <button type="button" title="Reset view" @click="resetView">
                 <i class="fa fa-undo" aria-hidden="true"></i>
@@ -194,5 +241,70 @@ document.addEventListener("fullscreenchange", onFullscreenChange);
 
 .model-viewer-wrapper:fullscreen .model-viewer-controls button:hover {
     background: rgba(255, 255, 255, 0.12);
+}
+
+.model-viewer-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(2px);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.model-viewer-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: #333;
+    font-size: 14px;
+}
+
+.model-viewer-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 0, 0, 0.12);
+    border-top-color: #1d4ed8;
+    border-radius: 50%;
+    animation: model-viewer-spin 0.8s linear infinite;
+}
+
+@keyframes model-viewer-spin {
+    to { transform: rotate(360deg); }
+}
+
+.model-viewer-status {
+    font-weight: 500;
+}
+
+.model-viewer-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #b91c1c;
+    text-align: center;
+    padding: 16px;
+}
+
+.model-viewer-error .fa {
+    font-size: 32px;
+}
+
+.model-viewer-error-detail {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.model-viewer-wrapper:fullscreen .model-viewer-overlay {
+    background: rgba(20, 22, 28, 0.6);
+}
+
+.model-viewer-wrapper:fullscreen .model-viewer-loader {
+    color: #e5e7eb;
 }
 </style>
