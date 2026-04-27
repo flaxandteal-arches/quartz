@@ -3,11 +3,20 @@
 // wrapped viewmodel that composes the upstream one and adds modelFiles.
 import "arches_her/arches_her/media/js/views/components/reports/digital-object";
 import "views/components/cards/file-renderers/modelviewer";
+import fileRenderers from "file-renderers";
 import ko from "knockout";
 
-const MODEL_EXTENSIONS = [
-    "stl", "glb", "gltf", "obj", "ply", "3ds", "fbx", "dae", "3mf", "off", "3dm", "wrl",
-];
+const MODEL_VIEWER_COMPONENT = "views/components/cards/file-renderers/modelviewer";
+
+function getModelExtensions() {
+    const renderer = Object.values(fileRenderers).find(
+        (r) => r.component === MODEL_VIEWER_COMPONENT,
+    );
+    return (renderer?.ext || "")
+        .split(",")
+        .map((e) => e.trim().toLowerCase())
+        .filter(Boolean);
+}
 
 let upstreamConfig;
 ko.components.defaultLoader.getConfig(
@@ -20,10 +29,11 @@ ko.components.unregister("digital-object-report");
 ko.components.register("digital-object-report", {
     viewModel: function (params) {
         UpstreamViewModel.call(this, params);
+        const modelExtensions = getModelExtensions();
         this.modelFiles = ko.pureComputed(() =>
             this.files().filter((f) => {
                 const ext = (f.name || "").split(".").pop().toLowerCase();
-                return MODEL_EXTENSIONS.includes(ext);
+                return modelExtensions.includes(ext);
             }),
         );
     },

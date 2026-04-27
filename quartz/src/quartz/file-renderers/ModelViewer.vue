@@ -113,6 +113,17 @@ document.addEventListener("fullscreenchange", onFullscreenChange);
     </div>
 </template>
 
+<style>
+.model-viewer-mount {
+    width: 100%;
+    height: 400px;
+}
+
+.model-viewer-mount--full {
+    height: calc(100vh - 200px);
+}
+</style>
+
 <style scoped>
 .model-viewer-wrapper {
     position: relative;

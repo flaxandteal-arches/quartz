@@ -1,10 +1,9 @@
 {% load i18n %}
 
 <!--ko if: params.context === 'render' -->
-<div style="height: 100%">
+<div>
     <!--ko if: params.selected() -->
-    <div class="model-viewer-mount"
-         style="width: 100%; height: calc(100vh - 100px);"
+    <div class="model-viewer-mount model-viewer-mount--full"
          data-bind="modelViewer: model">
     </div>
     <!--/ko-->

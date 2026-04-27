@@ -32,7 +32,27 @@ LOCALE_PATHS.insert(0, os.path.join(APP_ROOT, "locale"))
 
 FILE_TYPE_CHECKING = "lenient"
 FILE_TYPES = [
+    # 3D model file types #
     "stl",
+    "3dm",
+    "3ds",
+    "3mf",
+    "amf",
+    "bim",
+    "brep",
+    "dae",
+    "fbx",
+    "fcstd",
+    "gltf",
+    "glb",
+    "ifc",
+    "iges",
+    "step",
+    "obj",
+    "off",
+    "ply",
+    "wrl",
+    # 3D model file types end #
     "bmp",
     "gif",
     "jpg",
@@ -439,14 +459,15 @@ RENDERERS = [
     {
         "name": "modelviewer",
         "title": "3D Model Viewer",
-        "description": "Displays 3D models (glTF, glb, obj, stl, ply, 3ds, fbx, dae, 3mf, and more) via Online 3D Viewer",
+        "description": "Displays 3D models via Online 3D Viewer",
         "id": "7c8b3e1a-2d9f-4a6b-8e5c-1f3d7a9b2e0c",
         "iconclass": "fa fa-cube",
         "component": "views/components/cards/file-renderers/modelviewer",
-        "ext": "stl",
-        "type": "model/*",
+        "type": "",
+        "ext": "stl,3dm,3ds,3mf,amf,bim,brep,dae,fbx,fcstd,gltf,glb,ifc,iges,step,obj,off,ply,wrl",
         "exclude": "",
-    },
+    }
+
 ]
 
 # By setting RESTRICT_MEDIA_ACCESS to True, media file requests outside of Arches will checked against nodegroup permissions.
