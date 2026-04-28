@@ -70,6 +70,7 @@ FILE_TYPES = [
 ]
 FILENAME_GENERATOR = "arches.app.utils.storage_filename_generator.generate_filename"
 UPLOADED_FILES_DIR = ""
+UPLOADED_FILES_DIR = "uploadedfiles"
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-1#dmpd#$*y+ebl73yp89-rgrlp7)$dsc3yh2d35@b4y@j5n^ge"
@@ -180,6 +181,7 @@ INSTALLED_APPS += (
     "django.contrib.admin",
     "django.contrib.postgres",
     "arches_her",
+    "arches_model_viewer"
 )
 
 MIDDLEWARE = [
