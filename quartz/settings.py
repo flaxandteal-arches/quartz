@@ -33,6 +33,8 @@ LOCALE_PATHS.insert(0, os.path.join(APP_ROOT, "locale"))
 FILE_TYPE_CHECKING = "lenient"
 FILE_TYPES = [
     # 3D model file types #
+    "laz",
+    "las",
     "stl",
     "3dm",
     "3ds",
@@ -69,7 +71,6 @@ FILE_TYPES = [
     "zip",
 ]
 FILENAME_GENERATOR = "arches.app.utils.storage_filename_generator.generate_filename"
-UPLOADED_FILES_DIR = ""
 UPLOADED_FILES_DIR = "uploadedfiles"
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -467,6 +468,17 @@ RENDERERS = [
         "component": "views/components/cards/file-renderers/modelviewer",
         "type": "",
         "ext": "stl,3dm,3ds,3mf,amf,bim,brep,dae,fbx,fcstd,gltf,glb,ifc,iges,step,obj,off,ply,wrl",
+        "exclude": "",
+    },
+    {
+        "name": "pointcloudviewer",
+        "title": "Point Cloud Viewer",
+        "description": "Streams Potree-format point clouds via potree-core.",
+        "id": "9d1f2c3a-4b5e-6789-abcd-1234567890ab",
+        "iconclass": "fa fa-braille",
+        "component": "views/components/cards/file-renderers/pointcloudviewer",
+        "type": "application/*",
+        "ext": "las, laz",
         "exclude": "",
     }
 
