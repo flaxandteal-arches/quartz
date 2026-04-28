@@ -32,6 +32,7 @@ dependencies = [
     "django-storages[azure]",
     "azure-identity",
     "arches_id_generator @ git+https://github.com/flaxandteal-arches/arches-id-generator.git@v0.1.1"
+    "arches-certificate-generator @ git+https://github.com/flaxandteal-arches/certificate-generator.git",
 ]
 version = "0.0.1"
 
