@@ -1,0 +1,22 @@
+from django.db import models
+
+from arches.app.models.models import ResourceInstance
+
+
+class HeritageItemState(models.Model):
+    id = models.AutoField(primary_key=True)
+    heritageitem_id = models.UUIDField(blank=True, null=True)
+    heritage_id_number = models.CharField(max_length=255)
+    resourceinstanceid = models.ForeignKey(
+        ResourceInstance,
+        on_delete=models.CASCADE,
+    )
+    version = models.CharField(max_length=255, blank=True, null=True)
+    payload = models.JSONField(blank=True, null=True)
+    archived_resourceinstance = models.JSONField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    editable = models.BooleanField(default=False)
+
+    class Meta:
+        managed = True
+        db_table = "heritage_item_state"
