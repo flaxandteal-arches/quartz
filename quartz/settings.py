@@ -33,6 +33,10 @@ LOCALE_PATHS.insert(0, os.path.join(APP_ROOT, "locale"))
 FILE_TYPE_CHECKING = "lenient"
 FILE_TYPES = [
     # 3D model file types #
+    "hrc",
+    "js",
+    "bin",
+    "json",
     "laz",
     "las",
     "stl",
@@ -181,8 +185,8 @@ INSTALLED_APPS += (
     "arches.app",
     "django.contrib.admin",
     "django.contrib.postgres",
+    "arches_model_viewer",
     "arches_her",
-    "arches_model_viewer"
 )
 
 MIDDLEWARE = [
@@ -471,14 +475,20 @@ RENDERERS = [
         "exclude": "",
     },
     {
+        # Users upload a .zip containing a converted Potree octree
+        # (metadata.json / cloud.js + sibling files). A post_save signal
+        # in arches_model_viewer.signals extracts the archive to a
+        # sibling storage directory; the front-end viewer reads from
+        # there. Works on local FileSystemStorage and Azure Blob
+        # (django-storages) without backend-specific code.
         "name": "pointcloudviewer",
         "title": "Point Cloud Viewer",
-        "description": "Streams Potree-format point clouds via potree-core.",
+        "description": "Streams Potree-format point clouds (uploaded as zipped octrees).",
         "id": "9d1f2c3a-4b5e-6789-abcd-1234567890ab",
         "iconclass": "fa fa-braille",
         "component": "views/components/cards/file-renderers/pointcloudviewer",
-        "type": "application/*",
-        "ext": "las, laz",
+        "type": "application/zip",
+        "ext": "zip",
         "exclude": "",
     }
 
