@@ -39,6 +39,33 @@ FILE_TYPES = [
     "mpg",
     "avi",
     "mov",
+    # 3D model file types #
+    "hrc",
+    "js",
+    "bin",
+    "json",
+    "laz",
+    "las",
+    "stl",
+    "3dm",
+    "3ds",
+    "3mf",
+    "amf",
+    "bim",
+    "brep",
+    "dae",
+    "fbx",
+    "fcstd",
+    "gltf",
+    "glb",
+    "ifc",
+    "iges",
+    "step",
+    "obj",
+    "off",
+    "ply",
+    "wrl",
+    # 3D model file types end #
     "bmp",
     "gif",
     "jpg",
@@ -55,7 +82,7 @@ FILE_TYPES = [
     "zip",
 ]
 FILENAME_GENERATOR = "arches.app.utils.storage_filename_generator.generate_filename"
-UPLOADED_FILES_DIR = ""
+UPLOADED_FILES_DIR = "uploadedfiles"
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-1#dmpd#$*y+ebl73yp89-rgrlp7)$dsc3yh2d35@b4y@j5n^ge"
@@ -165,6 +192,7 @@ INSTALLED_APPS += (
     "arches.app",
     "django.contrib.admin",
     "django.contrib.postgres",
+    "arches_model_viewer",
     "arches_her",
 )
 
@@ -442,6 +470,35 @@ RENDERERS = [
         "type": "application/pdf",
         "exclude": "tif,tiff,psd",
     },
+    {
+        "name": "modelviewer",
+        "title": "3D Model Viewer",
+        "description": "Displays 3D models via Online 3D Viewer",
+        "id": "7c8b3e1a-2d9f-4a6b-8e5c-1f3d7a9b2e0c",
+        "iconclass": "fa fa-cube",
+        "component": "views/components/cards/file-renderers/modelviewer",
+        "type": "",
+        "ext": "stl,3dm,3ds,3mf,amf,bim,brep,dae,fbx,fcstd,gltf,glb,ifc,iges,step,obj,off,ply,wrl",
+        "exclude": "",
+    },
+    {
+        # Users upload a .zip containing a converted Potree octree
+        # (metadata.json / cloud.js + sibling files). A post_save signal
+        # in arches_model_viewer.signals extracts the archive to a
+        # sibling storage directory; the front-end viewer reads from
+        # there. Works on local FileSystemStorage and Azure Blob
+        # (django-storages) without backend-specific code.
+        "name": "pointcloudviewer",
+        "title": "Point Cloud Viewer",
+        "description": "Streams Potree-format point clouds (uploaded as zipped octrees).",
+        "id": "9d1f2c3a-4b5e-6789-abcd-1234567890ab",
+        "iconclass": "fa fa-braille",
+        "component": "views/components/cards/file-renderers/pointcloudviewer",
+        "type": "application/zip",
+        "ext": "zip",
+        "exclude": "",
+    }
+
 ]
 
 # By setting RESTRICT_MEDIA_ACCESS to True, media file requests outside of Arches will checked against nodegroup permissions.
