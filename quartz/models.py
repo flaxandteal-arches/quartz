@@ -2,14 +2,16 @@ from django.db import models
 
 from arches.app.models.models import ResourceInstance
 
-STATUS_CHOICES = [
-    ("DRAFT", "Draft"),
-    ("FINAL", "Final"),
-    ("ARCHIVED", "Archived"),
-]
-
 
 class HeritageItemState(models.Model):
+    DRAFT = "Draft"
+    FINAL = "Final"
+    ARCHIVED = "Archived"
+    STATE_CHOICES = {
+        DRAFT: "Draft",
+        FINAL: "Final",
+        ARCHIVED: "Archived",
+    }
     id = models.AutoField(primary_key=True)
     heritageitem_id = models.UUIDField(blank=True, null=True)
     heritage_id_number = models.CharField(max_length=255)
@@ -17,7 +19,7 @@ class HeritageItemState(models.Model):
         ResourceInstance,
         on_delete=models.CASCADE,
     )
-    state = models.CharField(choices=STATUS_CHOICES, default="DRAFT", max_length=50)
+    state = models.CharField(choices=STATE_CHOICES, default=DRAFT, max_length=50)
     version = models.CharField(max_length=255, blank=True, null=True)
     payload = models.JSONField(blank=True, null=True)
     archived_resourceinstance = models.JSONField(blank=True, null=True)
