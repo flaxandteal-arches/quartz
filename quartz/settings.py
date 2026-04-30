@@ -526,7 +526,7 @@ SAML2_AUTH = {
     "AUTHN_REQUESTS_SIGNED": False,
     "LOGOUT_REQUESTS_SIGNED": False,
     "WANT_ASSERTIONS_SIGNED": True,
-    "WANT_RESPONSE_SIGNED": True,
+    "WANT_RESPONSE_SIGNED": False,
 }
 
 # Login/Logout redirect URLs
