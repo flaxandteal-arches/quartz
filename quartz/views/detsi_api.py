@@ -2,12 +2,14 @@ import json
 import logging
 import uuid
 
+from oauth2_provider.views.generic import ProtectedResourceView
+
 from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import View
 
 from arches.app.utils.decorators import group_required
 from arches.app.utils.response import JSONResponse
-
 
 logger = logging.getLogger(__name__)
 
@@ -50,9 +52,8 @@ NODE_EXTERNAL_XREF = "f17f6584-efc7-11eb-81f1-a87eeabdefba"  # string
 NODE_EXTERNAL_XREF_SOURCE = "f17f658a-efc7-11eb-a216-a87eeabdefba"  # reference
 
 
-# @method_decorator(csrf_exempt, name="dispatch")
-# @method_decorator(group_required("DETSI_API"), name="dispatch")
-class DynamicsHeritageSyncView(View):
+@method_decorator(csrf_exempt, name="dispatch")
+class DynamicsHeritageSyncView(ProtectedResourceView):
     """
     POST /api/dynamics/heritage-item/
 
