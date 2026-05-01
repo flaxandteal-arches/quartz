@@ -5,6 +5,9 @@ from django.urls import include, path, re_path
 
 import django_saml2_auth.views
 
+from quartz.views.detsi_api import DynamicsHeritageSyncView
+
+
 handler400 = "arches.app.views.main.custom_400"
 handler403 = "arches.app.views.main.custom_403"
 handler404 = "arches.app.views.main.custom_404"
@@ -18,6 +21,11 @@ urlpatterns = [
     path("", include("arches_controlled_lists.urls")),
     path("", include("arches_component_lab.urls")),
     path("", include("arches_her.urls")),
+    path(
+        "api/dynamics/heritage-item/",
+        DynamicsHeritageSyncView.as_view(),
+        name="dynamics_heritage_sync",
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # Only handle i18n routing in active project. This will still handle the routes provided by Arches core and Arches applications,
