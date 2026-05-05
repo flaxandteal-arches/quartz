@@ -7,6 +7,7 @@ import inspect
 import semantic_version
 from datetime import datetime, timedelta
 from django.utils.translation import gettext_lazy as _
+from arches_rbac_permissions.settings import *
 
 try:
     from arches.settings import *
@@ -170,7 +171,6 @@ INSTALLED_APPS = (
     "django_hosts",
     "arches_component_lab",
     "arches_controlled_lists",
-    "arches_querysets",
     "arches",
     "arches.app.models",
     "arches.management",
@@ -194,6 +194,7 @@ INSTALLED_APPS += (
     "django.contrib.postgres",
     "arches_model_viewer",
     "arches_her",
+    *ARCHES_RBAC_PERMISSIONS_APPS,
 )
 
 MIDDLEWARE = [
@@ -404,7 +405,7 @@ ENABLE_CAPTCHA = False
 NOCAPTCHA = True
 # RECAPTCHA_PROXY = 'http://127.0.0.1:8000'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  #<-- Only need to uncomment this for testing without an actual email server
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  #<-- Only need to uncomment this for testing without an actual email server
 # EMAIL_USE_TLS = True
 # EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = "xxxx@xxx.com"
