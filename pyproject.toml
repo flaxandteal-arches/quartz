@@ -28,7 +28,12 @@ dependencies = [
     "arches_controlled_lists",
     "arches_her @ git+https://github.com/archesproject/arches-her.git@dev/2.0.x",
     "arches_model_viewer @ git+https://github.com/flaxandteal-arches/arches-model-viewer.git",
-    "django-storages[azure]"
+    "django-storages[azure]",
+    "arches_inclusion_rule  @ git+https://github.com/flaxandteal/arches-rbac-permissions.git#subdirectory=arches_inclusion_rule",
+    "arches_saved_search    @ git+https://github.com/flaxandteal/arches-rbac-permissions.git#subdirectory=arches_saved_search",
+    "arches_user_datatype   @ git+https://github.com/flaxandteal/arches-rbac-permissions.git#subdirectory=arches_user_datatype",
+    "arches_semantic_roles  @ git+https://github.com/flaxandteal/arches-rbac-permissions.git#subdirectory=arches_semantic_roles",
+    "arches_rbac_permissions @ git+https://github.com/flaxandteal/arches-rbac-permissions.git#subdirectory=arches_rbac_permissions",
 ]
 version = "0.0.1"
 
