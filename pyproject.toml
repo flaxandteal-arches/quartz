@@ -30,7 +30,8 @@ dependencies = [
     "arches_model_viewer @ git+https://github.com/flaxandteal-arches/arches-model-viewer.git",
     "arches_notifications @ git+https://github.com/flaxandteal/arches-notify-function.git@v0.1.0a0",
     "django-storages[azure]",
-    "azure-identity"
+    "azure-identity",
+    "arches_id_generator @ git+https://github.com/flaxandteal-arches/arches-id-generator.git"
 ]
 version = "0.0.1"
 
