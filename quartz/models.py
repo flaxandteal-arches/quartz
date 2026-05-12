@@ -4,13 +4,13 @@ from arches.app.models.models import ResourceInstance
 
 
 class HeritageItemState(models.Model):
-    DRAFT = "Draft"
-    FINAL = "Final"
-    ARCHIVED = "Archived"
+    DRAFT = "draft"
+    FINAL = "final"
+    ARCHIVED = "archived"
     STATE_CHOICES = {
-        DRAFT: "Draft",
-        FINAL: "Final",
-        ARCHIVED: "Archived",
+        DRAFT: "draft",
+        FINAL: "final",
+        ARCHIVED: "archived",
     }
     id = models.AutoField(primary_key=True)
     heritageitem_id = models.UUIDField(blank=True, null=True)
