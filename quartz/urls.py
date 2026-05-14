@@ -26,6 +26,7 @@ urlpatterns = [
         DynamicsHeritageSyncView.as_view(),
         name="dynamics_heritage_sync",
     ),
+    path("", include("arches_notifications.urls"),)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # Only handle i18n routing in active project. This will still handle the routes provided by Arches core and Arches applications,
