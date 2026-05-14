@@ -5,10 +5,7 @@ from django.db import transaction
 from arches.app.models import models
 from arches.app.models.resource import Resource
 
-from arches_resource_version_manager.lifecycle import (
-    archive_and_copy_draft,
-    archive_final_version,
-)
+from arches_resource_version_manager.lifecycle import archive_and_copy_draft
 from arches_resource_version_manager.models import VersionedResource
 from arches_resource_version_manager.utils import i18n_string, make_tile, parse_date
 from arches_resource_version_manager.views import ResourceVersionSyncView
@@ -124,15 +121,9 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
         """
         heritage_id_number = payload.get("dpp_heritageidnumber")
         version = payload.get("dpp_version")
-        item_state = payload.get("status").lower() if payload.get("status") else None
 
         if not heritage_id_number:
             raise ValueError("Missing required field: dpp_heritageidnumber")
-
-        if item_state not in VersionedResource.STATE_CHOICES:
-            raise ValueError(
-                f"Invalid status value: {item_state!r} (must be one of {list(VersionedResource.STATE_CHOICES.keys())})"
-            )
 
         is_final = self._is_final_payload(payload)
 
@@ -151,12 +142,11 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
             resource.save(user=user)
 
             VersionedResource.objects.create(
+                resourceinstance_id=resource.resourceinstanceid,
                 resource_group_id=heritage_id_number,
-                resourceinstanceid=resource,
                 version=version,
                 payload=payload,
                 editable=True,
-                state=VersionedResource.DRAFT,
             )
 
             return resource, True
@@ -197,7 +187,6 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
                     models.ResourceInstanceLifecycleState.objects.get(name="Retired")
                 )
                 current_final.save(user=user)
-                archive_final_version(heritage_id_number)
 
             # Clone the updated Draft as the new Final.
             final_resource = current_draft_resource.copy()
@@ -207,9 +196,8 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
             final_resource.save(user=user)
 
             VersionedResource.objects.create(
+                resourceinstance_id=final_resource.resourceinstanceid,
                 resource_group_id=heritage_id_number,
-                resourceinstanceid=final_resource,
-                state=VersionedResource.FINAL,
                 payload=payload,
                 editable=False,
             )
