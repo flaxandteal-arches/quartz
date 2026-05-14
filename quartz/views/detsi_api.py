@@ -1,22 +1,17 @@
-import json
 import logging
-import uuid
-from datetime import datetime
-
-from oauth2_provider.views.generic import ProtectedResourceView
-from oauth2_provider.models import AccessToken
 
 from django.db import transaction
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
 
 from arches.app.models import models
 from arches.app.models.resource import Resource
-from arches.app.models.tile import Tile
-from arches.app.utils.decorators import group_required
-from arches.app.utils.response import JSONResponse
 
-from quartz.models import HeritageItemState
+from arches_resource_version_manager.lifecycle import (
+    archive_and_copy_draft,
+    archive_final_version,
+)
+from arches_resource_version_manager.models import VersionedResource
+from arches_resource_version_manager.utils import i18n_string, make_tile, parse_date
+from arches_resource_version_manager.views import ResourceVersionSyncView
 
 logger = logging.getLogger(__name__)
 
@@ -71,123 +66,7 @@ NODE_EXTERNAL_XREF_SOURCE = "f17f658a-efc7-11eb-a216-a87eeabdefba"  # reference
 FINAL_STATUSES: frozenset = frozenset(["final"])
 
 
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
-
-
-def _i18n_string(value: str) -> dict:
-    """Wrap a plain string in Arches 8 i18n format."""
-    return {"en": {"value": value, "direction": "ltr"}}
-
-
-def _parse_date(value: str):
-    """
-    Convert a date string to YYYY-MM-DD (the format Arches date nodes expect).
-    Accepts DD/MM/YYYY, YYYY-MM-DD, and ISO 8601 timestamps.
-    Returns None if the value is blank or unparseable.
-    """
-    if not value:
-        return None
-    for fmt in ("%d/%m/%Y", "%Y-%m-%d", "%Y-%m-%dT%H:%M:%SZ"):
-        try:
-            return datetime.strptime(value, fmt).strftime("%Y-%m-%d")
-        except ValueError:
-            continue
-    logger.warning("Could not parse date value: %r", value)
-    return None
-
-
-def _make_tile(
-    nodegroup_id: str, data: dict, parent_tile_id: str = None, sortorder: int = 0
-) -> Tile:
-    return Tile(
-        {
-            "tileid": uuid.uuid4(),
-            "nodegroup_id": nodegroup_id,
-            "parenttile_id": parent_tile_id,
-            "data": data,
-            "sortorder": sortorder,
-        }
-    )
-
-
-# ---------------------------------------------------------------------------
-# Resource lifecycle stubs  (cloning not yet available)
-# ---------------------------------------------------------------------------
-
-
-def _clone_resource(resource: Resource):
-    """
-    Clone a Resource and return the new copy.
-    NOT YET IMPLEMENTED — cloning support is pending.
-    """
-    return resource.copy()
-    logger.warning(
-        "Resource cloning is not yet implemented (resource %s will not be cloned).",
-        resource.resourceinstanceid,
-    )
-    raise NotImplementedError("Resource cloning is not yet implemented.")
-
-
-def _archive_and_copy_current_draft(heritage_id_number, user) -> None:
-    """
-    Mark a Draft Resource as archived (no longer editable or promotable to Final).
-    """
-
-    try:
-        current_heritage_item_state = HeritageItemState.objects.get(
-            heritage_id_number=heritage_id_number,
-            state=HeritageItemState.DRAFT,
-            editable=True,
-        )
-    except HeritageItemState.DoesNotExist:
-        raise ValueError(
-            f"No editable Draft HeritageItemState found for {heritage_id_number!r}."
-        )
-
-    # Archive a clone of the Draft before updating it (stub).
-    draft_resource = models.Resource.objects.get(
-        resourceinstanceid=current_heritage_item_state.resourceinstanceid_id
-    )
-    draft_clone = draft_resource.copy()
-    draft_clone.resource_instance_lifecycle_state = (
-        models.ResourceInstanceLifecycleState.objects.get(name="Retired")
-    )
-    draft_clone.save(user=user)
-
-    HeritageItemState.objects.create(
-        heritage_id_number=heritage_id_number,
-        resourceinstanceid=draft_clone,
-        version=current_heritage_item_state.version,
-        payload=current_heritage_item_state.payload,
-        editable=False,
-        state=HeritageItemState.ARCHIVED,
-    )
-
-    return draft_resource
-
-
-def _archive_final_resource(heritage_id_number, user) -> None:
-    """
-    Mark a Final Resource as archived (no longer editable or promotable to Final).
-    """
-    try:
-        heritage_item = HeritageItemState.objects.get(
-            heritage_id_number=heritage_id_number,
-            state=HeritageItemState.FINAL,
-        )
-    except HeritageItemState.DoesNotExist:
-        raise ValueError(
-            f"No Final HeritageItemState found for {heritage_id_number!r}."
-        )
-    heritage_item.state = HeritageItemState.ARCHIVED
-    heritage_item.editable = False
-    heritage_item.save()
-
-
-@method_decorator(csrf_exempt, name="dispatch")
-class DynamicsHeritageSyncView(ProtectedResourceView):
+class DynamicsHeritageSyncView(ResourceVersionSyncView):
     """
     POST /api/dynamics/heritage-item/
 
@@ -203,36 +82,10 @@ class DynamicsHeritageSyncView(ProtectedResourceView):
         500  { "error": "..." }
     """
 
-    def post(self, request, *args, **kwargs):
-        try:
-            payload = json.loads(request.body)
-        except (json.JSONDecodeError, ValueError) as exc:
-            return JSONResponse({"error": f"Invalid JSON: {exc}"}, status=400)
+    graph_id = HERITAGE_ITEM_GRAPH_ID
 
-        try:
-            auth_header = request.headers.get("Authorization", "")
-            token_str = auth_header.replace("Bearer ", "")
-            try:
-                token = AccessToken.objects.get(token=token_str)
-            except AccessToken.DoesNotExist:
-                return JSONResponse({"error": "Invalid token"}, status=401)
-            application = token.application
-            resource, created = self._upsert_heritage_item(payload, application.user)
-        except Exception:
-            logger.exception("Error processing Dynamics heritage payload")
-            return JSONResponse(
-                {"error": "Internal server error — see server logs for details"},
-                status=500,
-            )
-
-        return JSONResponse(
-            {
-                "resourceinstanceid": str(resource.resourceinstanceid),
-                "created": created,
-                "graph_id": HERITAGE_ITEM_GRAPH_ID,
-            },
-            status=201 if created else 200,
-        )
+    def process_resource(self, payload: dict, user) -> tuple:
+        return self._upsert_heritage_item(payload, user)
 
     # ------------------------------------------------------------------
     # Upsert logic
@@ -254,18 +107,18 @@ class DynamicsHeritageSyncView(ProtectedResourceView):
         """
         Implements the Payload API logical data flow:
 
-        New item (6000 number not in HeritageItemState):
+        New item (6000 number not in VersionedResource):
           - Create a Draft Resource from the payload.
-          - Add a Draft entry to HeritageItemState.
+          - Add a Draft entry to VersionedResource.
 
-        Existing item (6000 number found in HeritageItemState):
+        Existing item (6000 number found in VersionedResource):
           - Look up the latest Draft resource.
-          - Clone the Draft for archival before mutating it (stub).
+          - Clone the Draft for archival before mutating it.
           - Update the Draft resource with the incoming payload data.
           - If the payload is Final:
-            - Archive the current Final resource, if any (stub).
-            - Clone the updated Draft as the new Final resource (stub).
-            - Add a Final entry to HeritageItemState.
+            - Archive the current Final resource, if any.
+            - Clone the updated Draft as the new Final resource.
+            - Add a Final entry to VersionedResource.
 
         Returns (resource, created_bool).
         """
@@ -276,57 +129,42 @@ class DynamicsHeritageSyncView(ProtectedResourceView):
         if not heritage_id_number:
             raise ValueError("Missing required field: dpp_heritageidnumber")
 
-        if item_state not in HeritageItemState.STATE_CHOICES:
+        if item_state not in VersionedResource.STATE_CHOICES:
             raise ValueError(
-                f"Invalid status value: {item_state!r} (must be one of {list(HeritageItemState.STATE_CHOICES.keys())})"
+                f"Invalid status value: {item_state!r} (must be one of {list(VersionedResource.STATE_CHOICES.keys())})"
             )
 
         is_final = self._is_final_payload(payload)
 
         # ------------------------------------------------------------------
-        # Is the 6000 number in the Heritage Item State table?
+        # Is the 6000 number in the Resource Version table?
         # ------------------------------------------------------------------
-        existing_heritage_item = HeritageItemState.objects.filter(
-            heritage_id_number=heritage_id_number
+        existing_version = VersionedResource.objects.filter(
+            resource_group_id=heritage_id_number
         ).exists()
 
-        if not existing_heritage_item:
-            # New item: create a Draft Resource and record it in the state table.
+        if not existing_version:
+            # New item: create a Draft Resource and record it in the version table.
             resource = Resource()
             resource.graph_id = HERITAGE_ITEM_GRAPH_ID
-            tiles = self._build_tiles(payload)
-            resource.tiles = tiles
+            resource.tiles = self._build_tiles(payload)
             resource.save(user=user)
 
-            HeritageItemState.objects.create(
-                heritage_id_number=heritage_id_number,
+            VersionedResource.objects.create(
+                resource_group_id=heritage_id_number,
                 resourceinstanceid=resource,
                 version=version,
                 payload=payload,
                 editable=True,
-                state=HeritageItemState.DRAFT,
+                state=VersionedResource.DRAFT,
             )
 
             return resource, True
 
         # ------------------------------------------------------------------
-        # Existing item: find the latest Draft resource.
+        # Existing item: archive the current Draft and get back the resource.
         # ------------------------------------------------------------------
-        # try:
-        #     draft_heritage_item = HeritageItemState.objects.get(
-        #         heritage_id_number=heritage_id_number,
-        #         state=HeritageItemState.DRAFT,
-        #         editable=True,
-        #     )
-        # except HeritageItemState.DoesNotExist:
-        #     raise ValueError(
-        #         f"HeritageItemState entry exists for {heritage_id_number!r} "
-        #         "but no Draft version was found."
-        #     )
-
-        current_draft_resource = _archive_and_copy_current_draft(
-            heritage_id_number, user
-        )
+        current_draft_resource = archive_and_copy_draft(heritage_id_number, user)
 
         # Update the Draft resource with data from the incoming payload.
         models.TileModel.objects.filter(
@@ -334,8 +172,7 @@ class DynamicsHeritageSyncView(ProtectedResourceView):
             nodegroup_id__in=self._STATUTORY_NODEGROUPS,
         ).delete()
 
-        tiles = self._build_tiles(payload)
-        for tile in tiles:
+        for tile in self._build_tiles(payload):
             tile.resourceinstance_id = current_draft_resource.pk
             tile.save(
                 resource=current_draft_resource, request=None, index=False, user=user
@@ -349,36 +186,30 @@ class DynamicsHeritageSyncView(ProtectedResourceView):
         # ------------------------------------------------------------------
         if is_final:
             # Archive the current Final resource if one exists.
-            final_state = (
-                HeritageItemState.objects.filter(
-                    heritage_id_number=heritage_id_number,
-                    state=HeritageItemState.FINAL,
+            try:
+                current_final = VersionedResource.objects.get_current_final(
+                    heritage_id_number
                 )
-                .order_by("-created_at")
-                .first()
-            )
-            if final_state:
-                current_final = Resource.objects.get(
-                    resourceinstanceid=final_state.resourceinstanceid_id
-                )
+            except VersionedResource.DoesNotExist:
+                current_final = None
+            if current_final:
                 current_final.resource_instance_lifecycle_state = (
                     models.ResourceInstanceLifecycleState.objects.get(name="Retired")
                 )
                 current_final.save(user=user)
-                _archive_final_resource(heritage_id_number)
+                archive_final_version(heritage_id_number)
 
-            # Clone the updated Draft as the new Final (stub).
+            # Clone the updated Draft as the new Final.
             final_resource = current_draft_resource.copy()
-            active_state = models.ResourceInstanceLifecycleState.objects.get(
-                name="Active"
+            final_resource.resource_instance_lifecycle_state = (
+                models.ResourceInstanceLifecycleState.objects.get(name="Active")
             )
-            final_resource.resource_instance_lifecycle_state = active_state
             final_resource.save(user=user)
 
-            HeritageItemState.objects.create(
-                heritage_id_number=heritage_id_number,
+            VersionedResource.objects.create(
+                resource_group_id=heritage_id_number,
                 resourceinstanceid=final_resource,
-                state=HeritageItemState.FINAL,
+                state=VersionedResource.FINAL,
                 payload=payload,
                 editable=False,
             )
@@ -386,7 +217,6 @@ class DynamicsHeritageSyncView(ProtectedResourceView):
         return current_draft_resource, False
 
     def _is_final_payload(self, payload: dict) -> bool:
-        """Return True if the Dynamics payload represents a Final (published) record."""
         return payload.get("status").lower() in FINAL_STATUSES
 
     # ------------------------------------------------------------------
@@ -401,9 +231,9 @@ class DynamicsHeritageSyncView(ProtectedResourceView):
         heritage_id = payload.get("dpp_heritageidnumber")
         if heritage_id:
             tiles.append(
-                _make_tile(
+                make_tile(
                     SYSTEM_REF_NODEGROUP,
-                    {NODE_LEGACY_ID: _i18n_string(heritage_id)},
+                    {NODE_LEGACY_ID: i18n_string(heritage_id)},
                 )
             )
 
@@ -412,9 +242,9 @@ class DynamicsHeritageSyncView(ProtectedResourceView):
         primary_name = payload.get("dpp_name")
         if primary_name:
             tiles.append(
-                _make_tile(
+                make_tile(
                     NAMES_NODEGROUP,
-                    {NODE_NAME: _i18n_string(primary_name)},
+                    {NODE_NAME: i18n_string(primary_name)},
                     sortorder=0,
                 )
             )
@@ -429,15 +259,15 @@ class DynamicsHeritageSyncView(ProtectedResourceView):
                     part = part.strip()
                     if part:
                         tiles.append(
-                            _make_tile(
+                            make_tile(
                                 NAMES_NODEGROUP,
-                                {NODE_NAME: _i18n_string(part)},
+                                {NODE_NAME: i18n_string(part)},
                                 sortorder=index + 1,
                             )
                         )
 
         # create LOCATION_DATA_NODEGROUP tile (container for all location-related child nodegroups)
-        location_data_parent_tile = _make_tile(LOCATION_DATA_NODEGROUP, {})
+        location_data_parent_tile = make_tile(LOCATION_DATA_NODEGROUP, {})
         tiles.append(location_data_parent_tile)
 
         # --- Addresses  (Location Data → Addresses in UI) ---
@@ -447,9 +277,9 @@ class DynamicsHeritageSyncView(ProtectedResourceView):
                 address = loc.get("cdm_name")
                 if address:
                     tiles.append(
-                        _make_tile(
+                        make_tile(
                             ADDRESSES_NODEGROUP,
-                            {NODE_FULL_ADDRESS: _i18n_string(address)},
+                            {NODE_FULL_ADDRESS: i18n_string(address)},
                             parent_tile_id=location_data_parent_tile.tileid,
                         )
                     )
@@ -461,7 +291,7 @@ class DynamicsHeritageSyncView(ProtectedResourceView):
         #         lot_plan = loc.get("cdm_name")
         #         if lot_plan:
         #             tiles.append(
-        #                 _make_tile(
+        #                 make_tile(
         #                     EXTERNAL_XREF_NODEGROUP,
         #                     {NODE_EXTERNAL_XREF: lot_plan},
         #                     parent_tile_id=location_data_parent_tile.tileid,
@@ -507,7 +337,7 @@ class DynamicsHeritageSyncView(ProtectedResourceView):
 
         if gps_features:
             tiles.append(
-                _make_tile(
+                make_tile(
                     GEOMETRY_NODEGROUP,
                     {
                         NODE_GEOSPATIAL_COORDS: {
@@ -527,9 +357,9 @@ class DynamicsHeritageSyncView(ProtectedResourceView):
         status = payload.get("status")
         if status:
             tiles.append(
-                _make_tile(
+                make_tile(
                     DESCRIPTIONS_NODEGROUP,
-                    {NODE_DESCRIPTION: _i18n_string(f"Heritage Item Status: {status}")},
+                    {NODE_DESCRIPTION: i18n_string(f"Heritage Item Status: {status}")},
                 )
             )
 
@@ -539,13 +369,13 @@ class DynamicsHeritageSyncView(ProtectedResourceView):
         # resolution of the correct node assignments.
         #
         # Mapping: dpp_dateenteredregister → Monument.EnteredCalculated
-        date_entered = _parse_date(payload.get("dpp_dateenteredregister"))
+        date_entered = parse_date(payload.get("dpp_dateenteredregister"))
         if date_entered:
             tiles.append(
-                _make_tile(
+                make_tile(
                     DESCRIPTIONS_NODEGROUP,
                     {
-                        NODE_DESCRIPTION: _i18n_string(
+                        NODE_DESCRIPTION: i18n_string(
                             f"Date Entered Register: {date_entered}"
                         )
                     },
@@ -553,13 +383,13 @@ class DynamicsHeritageSyncView(ProtectedResourceView):
             )
 
         # Mapping: dpp_dateremovedfromregister → Monument.RemovedCalculated
-        date_removed = _parse_date(payload.get("dpp_dateremovedfromregister"))
+        date_removed = parse_date(payload.get("dpp_dateremovedfromregister"))
         if date_removed:
             tiles.append(
-                _make_tile(
+                make_tile(
                     DESCRIPTIONS_NODEGROUP,
                     {
-                        NODE_DESCRIPTION: _i18n_string(
+                        NODE_DESCRIPTION: i18n_string(
                             f"Date Removed from Register: {date_removed}"
                         )
                     },
@@ -567,12 +397,12 @@ class DynamicsHeritageSyncView(ProtectedResourceView):
             )
 
         # Mapping: dpp_qhcdecisiondate → UNKNOWN (marked '?' in spreadsheet)
-        qhc_date = _parse_date(payload.get("dpp_qhcdecisiondate"))
+        qhc_date = parse_date(payload.get("dpp_qhcdecisiondate"))
         if qhc_date:
             tiles.append(
-                _make_tile(
+                make_tile(
                     DESCRIPTIONS_NODEGROUP,
-                    {NODE_DESCRIPTION: _i18n_string(f"QHC Decision Date: {qhc_date}")},
+                    {NODE_DESCRIPTION: i18n_string(f"QHC Decision Date: {qhc_date}")},
                 )
             )
 
