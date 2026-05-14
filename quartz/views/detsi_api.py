@@ -120,7 +120,7 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
         Returns (resource, created_bool).
         """
         heritage_id_number = payload.get("dpp_heritageidnumber")
-        version = payload.get("dpp_version")
+        version_from_payload = payload.get("version")
 
         if not heritage_id_number:
             raise ValueError("Missing required field: dpp_heritageidnumber")
@@ -144,7 +144,8 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
             VersionedResource.objects.create(
                 resourceinstance_id=resource.resourceinstanceid,
                 resource_group_id=heritage_id_number,
-                version=version,
+                major_version=1,
+                minor_version=0,
                 payload=payload,
                 editable=True,
             )
@@ -182,6 +183,7 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
                 )
             except VersionedResource.DoesNotExist:
                 current_final = None
+
             if current_final:
                 current_final.resource_instance_lifecycle_state = (
                     models.ResourceInstanceLifecycleState.objects.get(name="Retired")
@@ -198,6 +200,8 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
             VersionedResource.objects.create(
                 resourceinstance_id=final_resource.resourceinstanceid,
                 resource_group_id=heritage_id_number,
+                major_version=version_from_payload,
+                minor_version=0,
                 payload=payload,
                 editable=False,
             )
