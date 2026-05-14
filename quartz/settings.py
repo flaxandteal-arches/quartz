@@ -180,6 +180,7 @@ INSTALLED_APPS = (
     "arches_controlled_lists",
     "arches_notifications",
     "arches_querysets",
+    "arches_resource_version_manager",
     "arches",
     "arches.app.models",
     "arches.management",
