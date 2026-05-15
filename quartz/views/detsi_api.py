@@ -5,7 +5,11 @@ from django.db import transaction
 from arches.app.models import models
 from arches.app.models.resource import Resource
 
-from arches_resource_version_manager.lifecycle import archive_and_copy_draft
+from arches_resource_version_manager.lifecycle import (
+    archive_and_copy_draft,
+    finalize_draft,
+    register_new_draft,
+)
 from arches_resource_version_manager.models import VersionedResource
 from arches_resource_version_manager.utils import i18n_string, make_tile, parse_date
 from arches_resource_version_manager.views import ResourceVersionSyncView
@@ -141,14 +145,7 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
             resource.tiles = self._build_tiles(payload)
             resource.save(user=user)
 
-            VersionedResource.objects.create(
-                resourceinstance_id=resource.resourceinstanceid,
-                resource_group_id=heritage_id_number,
-                major_version=1,
-                minor_version=0,
-                payload=payload,
-                editable=True,
-            )
+            register_new_draft(resource, heritage_id_number, payload)
 
             return resource, True
 
@@ -172,39 +169,8 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
         current_draft_resource.save_descriptors()
         current_draft_resource.index()
 
-        # ------------------------------------------------------------------
-        # If the payload is Final, promote to a Final resource.
-        # ------------------------------------------------------------------
         if is_final:
-            # Archive the current Final resource if one exists.
-            try:
-                current_final = VersionedResource.objects.get_current_final(
-                    heritage_id_number
-                )
-            except VersionedResource.DoesNotExist:
-                current_final = None
-
-            if current_final:
-                current_final.resource_instance_lifecycle_state = (
-                    models.ResourceInstanceLifecycleState.objects.get(name="Retired")
-                )
-                current_final.save(user=user)
-
-            # Clone the updated Draft as the new Final.
-            final_resource = current_draft_resource.copy()
-            final_resource.resource_instance_lifecycle_state = (
-                models.ResourceInstanceLifecycleState.objects.get(name="Active")
-            )
-            final_resource.save(user=user)
-
-            VersionedResource.objects.create(
-                resourceinstance_id=final_resource.resourceinstanceid,
-                resource_group_id=heritage_id_number,
-                major_version=version_from_payload,
-                minor_version=0,
-                payload=payload,
-                editable=False,
-            )
+            finalize_draft(heritage_id_number, user, version_from_payload, payload)
 
         return current_draft_resource, False
 
