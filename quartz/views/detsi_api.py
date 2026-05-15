@@ -9,7 +9,6 @@ from arches_resource_version_manager.lifecycle import (
     archive_copy_of_current_draft,
     finalize_draft,
     register_new_draft,
-    get_current_draft,
 )
 from arches_resource_version_manager.models import VersionedResource
 from arches_resource_version_manager.utils import i18n_string, make_tile, parse_date
@@ -154,10 +153,8 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
         # Existing item: archive the current Draft and get back the resource.
         # ------------------------------------------------------------------
         archive_copy_of_current_draft(heritage_id_number, user)
-        current_draft = get_current_draft(heritage_id_number)
-        current_draft_resource = models.Resource.objects.get(
-            pk=current_draft.pk
-        )
+        current_draft = VersionedResource.objects.get_current_draft(heritage_id_number)
+        current_draft_resource = models.Resource.objects.get(pk=current_draft.pk)
 
         # Update the Draft resource with data from the incoming payload.
         models.TileModel.objects.filter(
