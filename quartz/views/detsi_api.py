@@ -86,7 +86,13 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
     graph_id = HERITAGE_ITEM_GRAPH_ID
 
     def process_resource(self, payload: dict, user) -> tuple:
-        return self._upsert_heritage_item(payload, user)
+        resource_type = payload.get("resource_type")
+        if resource_type == "heritage_item":
+            return self._upsert_heritage_item(payload, user)
+        elif resource_type == "archological_site":
+            return self._upsert_archaeological_site(payload, user)
+        else:
+            raise ValueError(f"Unsupported resource_type: {resource_type}")
 
     # ------------------------------------------------------------------
     # Upsert logic
@@ -124,7 +130,7 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
         Returns (resource, created_bool).
         """
         heritage_id_number = payload.get("dpp_heritageidnumber")
-        version_from_payload = payload.get("version")
+        version_from_payload = payload.get("dpp_version")
 
         if not heritage_id_number:
             raise ValueError("Missing required field: dpp_heritageidnumber")
@@ -142,10 +148,15 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
             # New item: create a Draft Resource and record it in the version table.
             resource = Resource()
             resource.graph_id = HERITAGE_ITEM_GRAPH_ID
-            resource.tiles = self._build_tiles(payload)
+            resource.tiles = self._build_heritage_item_tiles(payload)
             resource.save(user=user)
 
-            register_new_draft(resource, heritage_id_number, payload)
+            register_new_draft(
+                resource, heritage_id_number, version_from_payload, payload
+            )
+
+            if is_final:
+                finalize_draft(heritage_id_number, user, version_from_payload, payload)
 
             return resource, True
 
@@ -153,8 +164,17 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
         # Existing item: archive the current Draft and get back the resource.
         # ------------------------------------------------------------------
         archive_copy_of_current_draft(heritage_id_number, user)
-        current_draft = VersionedResource.objects.get_current_draft(heritage_id_number)
-        current_draft_resource = models.Resource.objects.get(pk=current_draft.pk)
+
+        current_draft_version = VersionedResource.objects.get_current_draft(
+            heritage_id_number
+        )
+        current_draft_version.payload = payload
+        current_draft_version.minor_version += 1
+        current_draft_version.save()
+
+        current_draft_resource = models.Resource.objects.get(
+            pk=current_draft_version.pk
+        )
 
         # Update the Draft resource with data from the incoming payload.
         models.TileModel.objects.filter(
@@ -162,7 +182,7 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
             nodegroup_id__in=self._STATUTORY_NODEGROUPS,
         ).delete()
 
-        for tile in self._build_tiles(payload):
+        for tile in self._build_heritage_item_tiles(payload):
             tile.resourceinstance_id = current_draft_resource.pk
             tile.save(
                 resource=current_draft_resource, request=None, index=False, user=user
@@ -183,7 +203,7 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
     # Tile construction
     # ------------------------------------------------------------------
 
-    def _build_tiles(self, payload: dict) -> list:
+    def _build_heritage_item_tiles(self, payload: dict) -> list:
         tiles = []
 
         # --- System Reference Numbers: heritage ID number ---
