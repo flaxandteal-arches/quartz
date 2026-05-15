@@ -90,7 +90,7 @@ FILENAME_GENERATOR = "arches.app.utils.storage_filename_generator.generate_filen
 #     docker/docker-compose.yml).
 #   - Azure: set the Cantaloupe AzureStorageSource path_prefix to
 #     "<UPLOADED_FILES_DIR>/" so it reads the same blob keys Django writes.
-UPLOADED_FILES_DIR = os.environ.get("UPLOADED_FILES_DIR", "uploadedfiles")
+UPLOADED_FILES_DIR = os.environ.get("UPLOADED_FILES_DIR", "")
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-1#dmpd#$*y+ebl73yp89-rgrlp7)$dsc3yh2d35@b4y@j5n^ge"
