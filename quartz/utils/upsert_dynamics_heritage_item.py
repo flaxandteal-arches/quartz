@@ -27,10 +27,14 @@ NODE_NAME = "676d47ff-9c1c-11ea-b07f-f875a44e0e11"  # string
 NODE_NAME_TYPE = "676d47fe-9c1c-11ea-aa28-f875a44e0e11"  # reference
 NODE_NAME_USE_TYPE = "676d47fc-9c1c-11ea-b5b0-f875a44e0e11"  # reference
 
+# Designation and Protection Assignment nodegroup  (repeatable — one tile per designation/protection entry)
+DESIGNATION_NODEGROUP = "6af2a0cb-efc5-11eb-8436-a87eeabdefba"
+DESIGNATION_OR_PROTECTION_TYPE = "6af2a0ce-efc5-11eb-88d1-a87eeabdefba"  # TODO
+DESIGNATION_START_DATE = "6af2b69b-efc5-11eb-8d5a-a87eeabdefba"
+DESIGNATION_END_DATE = "6af2b6a0-efc5-11eb-985a-a87eeabdefba"
+
 # System Reference Numbers nodegroup  (repeatable)
 SYSTEM_REF_NODEGROUP = "325a2f2f-efe4-11eb-9b0c-a87eeabdefba"
-NODE_LEGACY_ID = "325a441c-efe4-11eb-9283-a87eeabdefba"  # string
-NODE_LEGACY_ID_TYPE = "325a441b-efe4-11eb-872d-a87eeabdefba"  # reference
 NODE_PRIMARY_REF_NUM = "325a2f33-efe4-11eb-b0bb-a87eeabdefba"  # number
 
 # Location Data nodegroup  (container — cleared on upsert along with child nodegroups)
@@ -47,9 +51,9 @@ NODE_GEOSPATIAL_COORDS = (
 )
 
 # Descriptions nodegroup  (repeatable — one tile per description entry)
-DESCRIPTIONS_NODEGROUP = "ba342e69-b554-11ea-a027-f875a44e0e11"
-NODE_DESCRIPTION = "ba345577-b554-11ea-a9ee-f875a44e0e11"  # string
-NODE_DESCRIPTION_TYPE = "ba34557b-b554-11ea-ab95-f875a44e0e11"  # reference
+# DESCRIPTIONS_NODEGROUP = "ba342e69-b554-11ea-a027-f875a44e0e11"
+# NODE_DESCRIPTION = "ba345577-b554-11ea-a9ee-f875a44e0e11"  # string
+# NODE_DESCRIPTION_TYPE = "ba34557b-b554-11ea-ab95-f875a44e0e11"  # reference
 
 # External Cross References nodegroup  (repeatable — one tile per lot/plan)
 EXTERNAL_XREF_NODEGROUP = "f17f6581-efc7-11eb-b09f-a87eeabdefba"
@@ -61,10 +65,11 @@ NODE_EXTERNAL_XREF_SOURCE = "f17f658a-efc7-11eb-a216-a87eeabdefba"  # reference
 _STATUTORY_NODEGROUPS = {
     NAMES_NODEGROUP,
     SYSTEM_REF_NODEGROUP,
+    DESIGNATION_NODEGROUP,
     LOCATION_DATA_NODEGROUP,
     ADDRESSES_NODEGROUP,
     GEOMETRY_NODEGROUP,
-    DESCRIPTIONS_NODEGROUP,
+    # DESCRIPTIONS_NODEGROUP,
     EXTERNAL_XREF_NODEGROUP,
 }
 
@@ -131,7 +136,7 @@ def process_heritage_item(payload: dict, user) -> tuple:
     current_draft_version = VersionedResource.objects.get_current_draft(
         heritage_id_number
     )
-    current_draft_version.payload = payload
+    current_draft_version.metadata = payload
     current_draft_version.minor_version += 1
     current_draft_version.save()
 
@@ -174,7 +179,25 @@ def _build_heritage_item_tiles(payload: dict) -> list:
         tiles.append(
             make_tile(
                 SYSTEM_REF_NODEGROUP,
-                {NODE_LEGACY_ID: i18n_string(heritage_id)},
+                {NODE_PRIMARY_REF_NUM: int(heritage_id)},
+            )
+        )
+
+    # --- Designation and Protection Assignment ---
+    # Mapping: dpp_designationprotection → Designation and Protection Assignment.Designation or Protection Type
+    designation = payload.get("dpp_designationprotection")
+    designation_start_date = payload.get("dpp_dateenteredregister")
+    designation_end_date = payload.get("dpp_dateremovedfromregister")
+    if designation or designation_start_date or designation_end_date:
+        tiles.append(
+            make_tile(
+                DESIGNATION_NODEGROUP,
+                {
+                    # TODO - map designation value to a reference node
+                    # DESIGNATION_OR_PROTECTION_TYPE: i18n_string(designation),
+                    DESIGNATION_START_DATE: parse_date(designation_start_date),
+                    DESIGNATION_END_DATE: parse_date(designation_end_date),
+                },
             )
         )
 
@@ -285,63 +308,6 @@ def _build_heritage_item_tiles(payload: dict) -> list:
                     }
                 },
                 parent_tile_id=location_data_parent_tile.tileid,
-            )
-        )
-
-    # --- Status ---
-    # Mapping: status → Monument status
-    # NOTE: A formal concept-value mapping between Dynamics status values and
-    # Arches reference nodes has not yet been defined (see field mapping notes).
-    # Stored as a free-text description until the mapping is resolved.
-    status = payload.get("status")
-    if status:
-        tiles.append(
-            make_tile(
-                DESCRIPTIONS_NODEGROUP,
-                {NODE_DESCRIPTION: i18n_string(f"Heritage Item Status: {status}")},
-            )
-        )
-
-    # --- Dates ---
-    # NOTE: Target Arches nodes for these dates are marked unknown in the
-    # field mapping spreadsheet.  Stored as free-text descriptions pending
-    # resolution of the correct node assignments.
-    #
-    # Mapping: dpp_dateenteredregister → Monument.EnteredCalculated
-    date_entered = parse_date(payload.get("dpp_dateenteredregister"))
-    if date_entered:
-        tiles.append(
-            make_tile(
-                DESCRIPTIONS_NODEGROUP,
-                {
-                    NODE_DESCRIPTION: i18n_string(
-                        f"Date Entered Register: {date_entered}"
-                    )
-                },
-            )
-        )
-
-    # Mapping: dpp_dateremovedfromregister → Monument.RemovedCalculated
-    date_removed = parse_date(payload.get("dpp_dateremovedfromregister"))
-    if date_removed:
-        tiles.append(
-            make_tile(
-                DESCRIPTIONS_NODEGROUP,
-                {
-                    NODE_DESCRIPTION: i18n_string(
-                        f"Date Removed from Register: {date_removed}"
-                    )
-                },
-            )
-        )
-
-    # Mapping: dpp_qhcdecisiondate → UNKNOWN (marked '?' in spreadsheet)
-    qhc_date = parse_date(payload.get("dpp_qhcdecisiondate"))
-    if qhc_date:
-        tiles.append(
-            make_tile(
-                DESCRIPTIONS_NODEGROUP,
-                {NODE_DESCRIPTION: i18n_string(f"QHC Decision Date: {qhc_date}")},
             )
         )
 
