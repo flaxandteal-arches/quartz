@@ -1,7 +1,5 @@
 import logging
 
-from django.db import transaction
-
 from arches.app.models import models
 from arches.app.models.resource import Resource
 
@@ -11,7 +9,8 @@ from arches_resource_version_manager.lifecycle import (
     register_new_draft,
 )
 from arches_resource_version_manager.models import VersionedResource
-from arches_resource_version_manager.utils import i18n_string, make_tile, parse_date
+
+from .payload_utils import i18n_string, make_tile, parse_date
 
 logger = logging.getLogger(__name__)
 
