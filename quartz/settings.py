@@ -178,6 +178,7 @@ INSTALLED_APPS = (
     "django_hosts",
     "arches_component_lab",
     "arches_controlled_lists",
+    "arches_notifications",
     "arches_querysets",
     "arches",
     "arches.app.models",
