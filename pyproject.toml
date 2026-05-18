@@ -28,7 +28,7 @@ dependencies = [
     "arches_controlled_lists",
     "arches_her @ git+https://github.com/archesproject/arches-her.git@dev/2.0.x",
     "arches_model_viewer @ git+https://github.com/flaxandteal-arches/arches-model-viewer.git",
-    "arches_notifications @ git+https://github.com/flaxandteal/arches-notify-function.git@main",
+    "arches_notifications @ git+https://github.com/flaxandteal/arches-notify-function.git@v0.1.0a0",
     "django-storages[azure]",
     "azure-identity"
 ]
