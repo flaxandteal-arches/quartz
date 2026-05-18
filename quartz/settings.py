@@ -82,7 +82,15 @@ FILE_TYPES = [
     "zip",
 ]
 FILENAME_GENERATOR = "arches.app.utils.storage_filename_generator.generate_filename"
-UPLOADED_FILES_DIR = "uploadedfiles"
+# Subdirectory / object-key prefix under MEDIA_ROOT (or the Azure blob
+# container) where uploaded files are stored. Cantaloupe must resolve the bare
+# IIIF identifier to this same prefix:
+#   - local docker: the cantaloupe-data volume is mounted at this dir on the
+#     Arches side and at /imageroot on the Cantaloupe side (see
+#     docker/docker-compose.yml).
+#   - Azure: set the Cantaloupe AzureStorageSource path_prefix to
+#     "<UPLOADED_FILES_DIR>/" so it reads the same blob keys Django writes.
+UPLOADED_FILES_DIR = ""
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-1#dmpd#$*y+ebl73yp89-rgrlp7)$dsc3yh2d35@b4y@j5n^ge"
@@ -289,6 +297,7 @@ AZURE_ACCOUNT_NAME = os.environ.get("AZURE_ACCOUNT_NAME", None)
 AZURE_ACCOUNT_KEY = os.environ.get("AZURE_ACCOUNT_KEY", None)
 AZURE_CONTAINER = os.environ.get("AZURE_CONTAINER", None)
 AZURE_LOCATION = os.environ.get("AZURE_LOCATION", "")
+AZURE_URL_EXPIRATION_SECS = int(os.environ.get("AZURE_URL_EXPIRATION_SECS", 3600))
 
 if AZURE_ACCOUNT_NAME and AZURE_ACCOUNT_KEY and AZURE_CONTAINER:
     INSTALLED_APPS = (*INSTALLED_APPS, "storages",)
