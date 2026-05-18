@@ -203,6 +203,7 @@ INSTALLED_APPS += (
     "django.contrib.postgres",
     "arches_model_viewer",
     "arches_her",
+    "arches_id_generator",
 )
 
 MIDDLEWARE = [
