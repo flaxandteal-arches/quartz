@@ -9,27 +9,44 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('models', '12586_tile_cardinality_check'),
+        ("models", "12586_tile_cardinality_check"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='HeritageItemState',
+            name="HeritageItemState",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('heritageitem_id', models.UUIDField(blank=True, null=True)),
-                ('heritage_id_number', models.CharField(max_length=255)),
-                ('state', models.CharField(choices=[('Draft', 'Draft'), ('Final', 'Final'), ('Archived', 'Archived')], default='Draft', max_length=50)),
-                ('version', models.CharField(blank=True, max_length=255, null=True)),
-                ('payload', models.JSONField(blank=True, null=True)),
-                ('archived_resourceinstance', models.JSONField(blank=True, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('editable', models.BooleanField(default=False)),
-                ('resourceinstanceid', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='models.resourceinstance')),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("heritageitem_id", models.UUIDField(blank=True, null=True)),
+                ("heritage_id_number", models.CharField(max_length=255)),
+                (
+                    "state",
+                    models.CharField(
+                        choices=[
+                            ("Draft", "Draft"),
+                            ("Final", "Final"),
+                            ("Archived", "Archived"),
+                        ],
+                        default="Draft",
+                        max_length=50,
+                    ),
+                ),
+                ("version", models.CharField(blank=True, max_length=255, null=True)),
+                ("payload", models.JSONField(blank=True, null=True)),
+                ("archived_resourceinstance", models.JSONField(blank=True, null=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("editable", models.BooleanField(default=False)),
+                (
+                    "resourceinstanceid",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="models.resourceinstance",
+                    ),
+                ),
             ],
             options={
-                'db_table': 'heritage_item_state',
-                'managed': True,
+                "db_table": "heritage_item_state",
+                "managed": True,
             },
         ),
     ]
