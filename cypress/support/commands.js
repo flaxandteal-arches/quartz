@@ -20,7 +20,10 @@
 Cypress.Commands.add("login", () => {
     cy.visit('/auth/?next=/index.htm');
 
-    cy.get('.input-group > .floating-label-group > input[name="username"].form-control').type(`admin{enter}`);
-    cy.get('.input-group > .floating-label-group > input[name="password"].form-control').type(`admin{enter}`);
-  
+    cy.get('input[name="username"]').type(`admin`);
+    cy.get('input[name="password"]').type(`admin{enter}`);
+
+    // Wait for the post-login redirect so the session cookie is set
+    // before any subsequent cy.request() calls.
+    cy.url().should('include', '/index.htm');
 });
