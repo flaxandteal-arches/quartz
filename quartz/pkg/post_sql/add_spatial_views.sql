@@ -255,6 +255,10 @@ VALUES (
             "description":"capture_scale"
         },
         {
+            "nodeid":"a4ec73a4-2996-11eb-9d68-f875a44e0e11",
+            "description":"date_of_loss"
+        },
+        {
             "nodeid":"97666339-f450-11eb-918f-a87eeabdefba",
             "description":"feature_shape"
         },
