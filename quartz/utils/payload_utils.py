@@ -39,6 +39,60 @@ def parse_resource_instance_id(value: str) -> object:
     ]
 
 
+def extract_gps_features(locations: list) -> list:
+    """Convert a list of location dicts to GeoJSON Point features."""
+    features = []
+    for loc in locations:
+        if loc.get("location_type") != "GPS":
+            continue
+        lat = loc.get("dpp_latitude")
+        lon = loc.get("dpp_longitude")
+
+        if lat is None or lon is None:
+            # Fallback: parse "lat,lon" string from cdm_name
+            cdm_name = loc.get("cdm_name", "")
+            try:
+                lat_str, lon_str = cdm_name.split(",", 1)
+                lat, lon = float(lat_str.strip()), float(lon_str.strip())
+            except (ValueError, AttributeError):
+                logger.warning("Could not parse GPS coords from cdm_name: %r", cdm_name)
+                continue
+
+        try:
+            features.append(
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [float(lon), float(lat)],  # GeoJSON: [lon, lat]
+                    },
+                    "properties": {},
+                }
+            )
+        except (TypeError, ValueError) as exc:
+            logger.warning("Invalid GPS values lat=%r lon=%r: %s", lat, lon, exc)
+
+    return features
+
+
+def parse_reference_node(value: str) -> dict:
+    # TODO: Implement this function to convert a reference node value to the format Arches expects.
+    """Convert a reference node value to the format Arches expects."""
+    return {
+        # "uri": "6ed6a5c3-0136-5016-a9b3-56551bf3fbf6",
+        # "labels": [
+        #     {
+        #         "id": "5b2d6cdc-846a-45a6-bb0c-e0e7fa44adac",
+        #         "value": "Entered",
+        #         "language_id": "en",
+        #         "list_item_id": "6ed6a5c3-0136-5016-a9b3-56551bf3fbf6",
+        #         "valuetype_id": "prefLabel",
+        #     }
+        # ],
+        # "list_id": "10b6d2e9-808d-504f-8ae3-235f526ada84",
+    }
+
+
 def make_tile(
     nodegroup_id: str, data: dict, parent_tile_id: str = None, sortorder: int = 0
 ) -> Tile:

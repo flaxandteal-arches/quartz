@@ -12,6 +12,7 @@ from arches_resource_version_manager.lifecycle import (
 from arches_resource_version_manager.models import VersionedResource
 
 from .payload_utils import (
+    extract_gps_features,
     i18n_string,
     make_tile,
     parse_date,
@@ -84,14 +85,12 @@ _STATUTORY_NODEGROUPS = {
     EXTERNAL_XREF_NODEGROUP,
 }
 
+_MANAGED_NODEGROUPS = _STATUTORY_NODEGROUPS | {VERSIONING_NODEGROUP}
+
 FINAL_STATUSES = {"final"}
 
 
 def process_heritage_item(payload: dict, user) -> tuple:
-    # ------------------------------------------------------------------
-    # Upsert logic
-    # ------------------------------------------------------------------
-
     """
     Implements the Payload API logical data flow:
 
@@ -127,11 +126,12 @@ def process_heritage_item(payload: dict, user) -> tuple:
 
     if not existing_version:
         # New item: create a Draft Resource and record it in the version table.
+        # TODO - should we be checking if a resource instance already exists with the incoming 6000 number?
         resource = Resource()
         resource.graph_id = HERITAGE_ITEM_GRAPH_ID
-        resource.tiles = _build_heritage_item_tiles(payload) + [
-            _build_version_tile(version_from_payload, 0, resource.pk)
-        ]
+        resource.tiles = _build_managed_tiles(
+            payload, version_from_payload, 0, resource.pk
+        )
         resource.save(user=user)
 
         register_new_draft(resource, heritage_id_number, version_from_payload, payload)
@@ -159,16 +159,15 @@ def process_heritage_item(payload: dict, user) -> tuple:
     # Update the Draft resource with data from the incoming payload.
     models.TileModel.objects.filter(
         resourceinstance_id=current_draft_resource.pk,
-        nodegroup_id__in=_STATUTORY_NODEGROUPS | {VERSIONING_NODEGROUP},
+        nodegroup_id__in=_MANAGED_NODEGROUPS,
     ).delete()
 
-    for tile in _build_heritage_item_tiles(payload) + [
-        _build_version_tile(
-            current_draft_version.major_version,
-            current_draft_version.minor_version,
-            current_draft_resource.pk,
-        )
-    ]:
+    for tile in _build_managed_tiles(
+        payload,
+        current_draft_version.major_version,
+        current_draft_version.minor_version,
+        current_draft_resource.pk,
+    ):
         tile.resourceinstance_id = current_draft_resource.pk
         tile.save(resource=current_draft_resource, request=None, index=False, user=user)
 
@@ -182,71 +181,75 @@ def process_heritage_item(payload: dict, user) -> tuple:
 
 
 def _is_final_payload(payload: dict) -> bool:
-    return payload.get("status").lower() in FINAL_STATUSES
+    return (payload.get("status") or "").lower() in FINAL_STATUSES
+
+
+def _build_managed_tiles(
+    payload: dict,
+    major_version: str | int,
+    minor_version: str | int,
+    resource_instance_ref: str,
+) -> list:
+    return (
+        _build_system_ref_tiles(payload)
+        + _build_designation_tiles(payload)
+        + _build_name_tiles(payload)
+        + _build_location_tiles(payload)
+        + _build_version_tile(major_version, minor_version, resource_instance_ref)
+    )
 
 
 def _build_version_tile(
     major_version: str | int, minor_version: str | int, resource_instance_ref: str
-) -> Tile:
-    return make_tile(
-        VERSIONING_NODEGROUP,
-        {
-            VERSION_NUMBER: i18n_string(f"{major_version}.{minor_version}"),
-            WORKING_COPY: parse_resource_instance_id(resource_instance_ref),
-        },
-    )
-
-
-def _build_heritage_item_tiles(payload: dict) -> list:
-    # ------------------------------------------------------------------
-    # Tile construction
-    # ------------------------------------------------------------------
-
-    tiles = []
-
-    # --- System Reference Numbers: heritage ID number ---
-    # Mapping: dpp_heritageidnumber → Monument.PlaceReference / legacy_id
-    heritage_id = payload.get("dpp_heritageidnumber")
-    if heritage_id:
-        tiles.append(
-            make_tile(
-                SYSTEM_REF_NODEGROUP,
-                {NODE_PRIMARY_REF_NUM: int(heritage_id)},
-            )
+) -> list:
+    return [
+        make_tile(
+            VERSIONING_NODEGROUP,
+            {
+                VERSION_NUMBER: i18n_string(f"{major_version}.{minor_version}"),
+                WORKING_COPY: parse_resource_instance_id(resource_instance_ref),
+            },
         )
+    ]
 
-    # --- Designation and Protection Assignment ---
-    # Mapping: dpp_designationprotection → Designation and Protection Assignment.Designation or Protection Type
+
+def _build_system_ref_tiles(payload: dict) -> list:
+    heritage_id = payload.get("dpp_heritageidnumber")
+    if not heritage_id:
+        return []
+    return [make_tile(SYSTEM_REF_NODEGROUP, {NODE_PRIMARY_REF_NUM: int(heritage_id)})]
+
+
+def _build_designation_tiles(payload: dict) -> list:
     designation = payload.get("dpp_designationprotection")
     designation_start_date = payload.get("dpp_dateenteredregister")
     designation_end_date = payload.get("dpp_dateremovedfromregister")
-    if designation or designation_start_date or designation_end_date:
-        tiles.append(
-            make_tile(
-                DESIGNATION_NODEGROUP,
-                {
-                    # TODO - map designation value to a reference node
-                    # DESIGNATION_OR_PROTECTION_TYPE: i18n_string(designation),
-                    DESIGNATION_START_DATE: parse_date(designation_start_date),
-                    DESIGNATION_END_DATE: parse_date(designation_end_date),
-                },
-            )
+    if not (designation or designation_start_date or designation_end_date):
+        return []
+    return [
+        make_tile(
+            DESIGNATION_NODEGROUP,
+            {
+                # TODO - map DESIGNATION_OR_PROTECTION_TYPE to a reference node
+                # DESIGNATION_OR_PROTECTION_TYPE: i18n_string(designation),
+                DESIGNATION_START_DATE: parse_date(designation_start_date),
+                DESIGNATION_END_DATE: parse_date(designation_end_date),
+            },
         )
+    ]
 
-    # --- Primary name ---
-    # Mapping: dpp_name → HeritageItem.Name
+
+def _build_name_tiles(payload: dict) -> list:
+    tiles = []
+
     primary_name = payload.get("dpp_name")
     if primary_name:
         tiles.append(
             make_tile(
-                NAMES_NODEGROUP,
-                {NODE_NAME: i18n_string(primary_name)},
-                sortorder=0,
+                NAMES_NODEGROUP, {NODE_NAME: i18n_string(primary_name)}, sortorder=0
             )
         )
 
-    # --- Alternative names ---
-    # Mapping: alternative_names[].dpp_name → HeritageItem.AlternateName
     # The alternative names field sometimes concatenates multiple names with " | ".
     for alt in payload.get("alternative_names", []):
         alt_name = alt.get("dpp_name")
@@ -262,12 +265,14 @@ def _build_heritage_item_tiles(payload: dict) -> list:
                         )
                     )
 
-    # create LOCATION_DATA_NODEGROUP tile (container for all location-related child nodegroups)
-    location_data_parent_tile = make_tile(LOCATION_DATA_NODEGROUP, {})
-    tiles.append(location_data_parent_tile)
+    return tiles
 
-    # --- Addresses  (Location Data → Addresses in UI) ---
-    # Mapping: Locations[location_type=Address].cdm_name → Address.full_address
+
+def _build_location_tiles(payload: dict) -> list:
+    tiles = []
+    parent_tile = make_tile(LOCATION_DATA_NODEGROUP, {})
+    tiles.append(parent_tile)
+
     for loc in payload.get("Locations", []):
         if loc.get("location_type") == "Address":
             address = loc.get("cdm_name")
@@ -276,59 +281,11 @@ def _build_heritage_item_tiles(payload: dict) -> list:
                     make_tile(
                         ADDRESSES_NODEGROUP,
                         {NODE_FULL_ADDRESS: i18n_string(address)},
-                        parent_tile_id=location_data_parent_tile.tileid,
+                        parent_tile_id=parent_tile.tileid,
                     )
                 )
 
-    # --- Lot / Plan as External Cross References ---
-    # Mapping: Locations[location_type=dpp_lot dpp_plan].cdm_name → Parcel.Lot+Plan
-    # for loc in payload.get("Locations", []):
-    #     if loc.get("location_type") == "dpp_lot dpp_plan":
-    #         lot_plan = loc.get("cdm_name")
-    #         if lot_plan:
-    #             tiles.append(
-    #                 make_tile(
-    #                     EXTERNAL_XREF_NODEGROUP,
-    #                     {NODE_EXTERNAL_XREF: lot_plan},
-    #                     parent_tile_id=location_data_parent_tile.tileid,
-    #                 )
-    #             )
-
-    # --- GPS coordinates → GeoJSON FeatureCollection  (Location Data → Geometry in UI) ---
-    # Mapping: Locations[location_type=GPS] → geospatial_coordinates
-    gps_features = []
-    for loc in payload.get("Locations", []):
-        if loc.get("location_type") == "GPS":
-            lat = loc.get("dpp_latitude")
-            lon = loc.get("dpp_longitude")
-
-            if lat is None or lon is None:
-                # Fallback: parse "lat,lon" string from cdm_name
-                cdm_name = loc.get("cdm_name", "")
-                try:
-                    lat_str, lon_str = cdm_name.split(",", 1)
-                    lat, lon = float(lat_str.strip()), float(lon_str.strip())
-                except (ValueError, AttributeError):
-                    logger.warning(
-                        "Could not parse GPS coords from cdm_name: %r", cdm_name
-                    )
-                    continue
-
-            try:
-                gps_features.append(
-                    {
-                        "type": "Feature",
-                        "geometry": {
-                            "type": "Point",
-                            # GeoJSON: [longitude, latitude]
-                            "coordinates": [float(lon), float(lat)],
-                        },
-                        "properties": {},
-                    }
-                )
-            except (TypeError, ValueError) as exc:
-                logger.warning("Invalid GPS values lat=%r lon=%r: %s", lat, lon, exc)
-
+    gps_features = extract_gps_features(payload.get("Locations", []))
     if gps_features:
         tiles.append(
             make_tile(
@@ -339,7 +296,7 @@ def _build_heritage_item_tiles(payload: dict) -> list:
                         "features": gps_features,
                     }
                 },
-                parent_tile_id=location_data_parent_tile.tileid,
+                parent_tile_id=parent_tile.tileid,
             )
         )
 
