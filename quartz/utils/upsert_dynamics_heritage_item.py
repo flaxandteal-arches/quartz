@@ -162,17 +162,13 @@ def process_heritage_item(payload: dict, user) -> tuple:
         nodegroup_id__in=_MANAGED_NODEGROUPS,
     ).delete()
 
-    for tile in _build_managed_tiles(
+    current_draft_resource.tiles = _build_managed_tiles(
         payload,
         current_draft_version.major_version,
         current_draft_version.minor_version,
         current_draft_resource.pk,
-    ):
-        tile.resourceinstance_id = current_draft_resource.pk
-        tile.save(resource=current_draft_resource, request=None, index=False, user=user)
-
-    current_draft_resource.save_descriptors()
-    current_draft_resource.index()
+    )
+    current_draft_resource.save()
 
     if is_final:
         finalize_draft(heritage_id_number, user, version_from_payload, payload)
