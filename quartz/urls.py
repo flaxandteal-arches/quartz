@@ -26,7 +26,7 @@ urlpatterns = [
         DynamicsHeritageSyncView.as_view(),
         name="dynamics_heritage_sync",
     ),
-    path("", include("arches_notifications.urls"),)
+    path("", include("arches_notifications.urls")),
     path("", include("certificate_generator.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
