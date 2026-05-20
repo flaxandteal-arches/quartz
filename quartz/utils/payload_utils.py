@@ -29,6 +29,16 @@ def parse_date(value: str):
     return None
 
 
+def parse_resource_instance_id(value: str) -> object:
+    return [
+        {
+            "resourceId": str(value),
+            "ontologyProperty": "",
+            "inverseOntologyProperty": "",
+        }
+    ]
+
+
 def make_tile(
     nodegroup_id: str, data: dict, parent_tile_id: str = None, sortorder: int = 0
 ) -> Tile:

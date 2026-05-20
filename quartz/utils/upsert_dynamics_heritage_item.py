@@ -2,6 +2,7 @@ import logging
 
 from arches.app.models import models
 from arches.app.models.resource import Resource
+from arches.app.models.tile import Tile
 
 from arches_resource_version_manager.lifecycle import (
     archive_copy_of_current_draft,
@@ -10,7 +11,12 @@ from arches_resource_version_manager.lifecycle import (
 )
 from arches_resource_version_manager.models import VersionedResource
 
-from .payload_utils import i18n_string, make_tile, parse_date
+from .payload_utils import (
+    i18n_string,
+    make_tile,
+    parse_date,
+    parse_resource_instance_id,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -36,6 +42,11 @@ DESIGNATION_END_DATE = "6af2b6a0-efc5-11eb-985a-a87eeabdefba"
 # System Reference Numbers nodegroup  (repeatable)
 SYSTEM_REF_NODEGROUP = "325a2f2f-efe4-11eb-9b0c-a87eeabdefba"
 NODE_PRIMARY_REF_NUM = "325a2f33-efe4-11eb-b0bb-a87eeabdefba"  # number
+
+# version information nodegroup (one tile — not repeatable)
+VERSIONING_NODEGROUP = "03d5eb66-d748-57cc-8390-5788078696d7"
+VERSION_NUMBER = "4b1880ea-33a8-50ea-aa1d-455c2ed95787"  # string
+WORKING_COPY = "0f5a7e18-c9a0-52ea-81f1-9a493b4f1f23"  # reference to working draft
 
 # Location Data nodegroup  (container — cleared on upsert along with child nodegroups)
 LOCATION_DATA_NODEGROUP = "87d39b2e-f44f-11eb-9a4a-a87eeabdefba"
@@ -118,7 +129,9 @@ def process_heritage_item(payload: dict, user) -> tuple:
         # New item: create a Draft Resource and record it in the version table.
         resource = Resource()
         resource.graph_id = HERITAGE_ITEM_GRAPH_ID
-        resource.tiles = _build_heritage_item_tiles(payload)
+        resource.tiles = _build_heritage_item_tiles(payload) + [
+            _build_version_tile(version_from_payload, 0, resource.pk)
+        ]
         resource.save(user=user)
 
         register_new_draft(resource, heritage_id_number, version_from_payload, payload)
@@ -136,8 +149,9 @@ def process_heritage_item(payload: dict, user) -> tuple:
     current_draft_version = VersionedResource.objects.get_current_draft(
         heritage_id_number
     )
+    minor_version = 0 if is_final else current_draft_version.minor_version + 1
     current_draft_version.metadata = payload
-    current_draft_version.minor_version += 1
+    current_draft_version.minor_version = minor_version
     current_draft_version.save()
 
     current_draft_resource = models.Resource.objects.get(pk=current_draft_version.pk)
@@ -145,10 +159,16 @@ def process_heritage_item(payload: dict, user) -> tuple:
     # Update the Draft resource with data from the incoming payload.
     models.TileModel.objects.filter(
         resourceinstance_id=current_draft_resource.pk,
-        nodegroup_id__in=_STATUTORY_NODEGROUPS,
+        nodegroup_id__in=_STATUTORY_NODEGROUPS | {VERSIONING_NODEGROUP},
     ).delete()
 
-    for tile in _build_heritage_item_tiles(payload):
+    for tile in _build_heritage_item_tiles(payload) + [
+        _build_version_tile(
+            current_draft_version.major_version,
+            current_draft_version.minor_version,
+            current_draft_resource.pk,
+        )
+    ]:
         tile.resourceinstance_id = current_draft_resource.pk
         tile.save(resource=current_draft_resource, request=None, index=False, user=user)
 
@@ -163,6 +183,18 @@ def process_heritage_item(payload: dict, user) -> tuple:
 
 def _is_final_payload(payload: dict) -> bool:
     return payload.get("status").lower() in FINAL_STATUSES
+
+
+def _build_version_tile(
+    major_version: str | int, minor_version: str | int, resource_instance_ref: str
+) -> Tile:
+    return make_tile(
+        VERSIONING_NODEGROUP,
+        {
+            VERSION_NUMBER: i18n_string(f"{major_version}.{minor_version}"),
+            WORKING_COPY: parse_resource_instance_id(resource_instance_ref),
+        },
+    )
 
 
 def _build_heritage_item_tiles(payload: dict) -> list:
