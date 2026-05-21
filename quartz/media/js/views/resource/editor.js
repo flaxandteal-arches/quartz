@@ -1,3 +1,8 @@
+/**
+ * Overrides: arches/app/media/js/views/resource/editor.js
+ * Changes:
+ *   - Exposes isVersioned and isWorkingDraft flags on the view model from editor data.
+ */
 import $ from 'jquery';
 import _ from 'underscore';
 import ko from 'knockout';

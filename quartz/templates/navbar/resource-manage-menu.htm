@@ -1,3 +1,10 @@
+<!--
+Overrides: arches/app/templates/navbar/resource-manage-menu.htm
+Changes:
+  - Copy/version button renders conditionally based on is_versioned and is_working_draft context flags:
+    non-versioned resources show "Copy Resource", versioned working drafts show "Make New Version",
+    versioned non-drafts hide the button entirely.
+-->
 {% load static %}
 {% load i18n %}
 
