@@ -8,7 +8,11 @@ from arches.app.views.resource import ResourceEditorView
 from arches_resource_version_manager.lifecycle import archive_copy_of_current_draft
 from arches_resource_version_manager.models import VersionedResource
 
-from quartz.utils.payload_utils import i18n_string, make_tile, parse_resource_instance_id
+from quartz.utils.payload_utils import (
+    i18n_string,
+    make_tile,
+    parse_resource_instance_id,
+)
 from quartz.utils.upsert_dynamics_heritage_item import (
     HERITAGE_ITEM_GRAPH_ID,
     VERSIONING_NODEGROUP,
@@ -38,10 +42,9 @@ class VersionedResourceEditorView(ResourceEditorView):
             if tile:
                 working_copy_refs = tile.data.get(WORKING_COPY, [])
                 if working_copy_refs:
-                    is_working_draft = (
-                        str(working_copy_refs[0].get("resourceId", ""))
-                        == str(resourceid)
-                    )
+                    is_working_draft = str(
+                        working_copy_refs[0].get("resourceId", "")
+                    ) == str(resourceid)
 
         context["is_versioned"] = is_versioned
         context["is_working_draft"] = is_working_draft
@@ -60,7 +63,9 @@ class VersionedResourceEditorView(ResourceEditorView):
             current_draft_version = VersionedResource.objects.get_current_draft(
                 versioned_resource.resource_group_id
             )
-            current_draft_version.minor_version = current_draft_version.minor_version + 1
+            current_draft_version.minor_version = (
+                current_draft_version.minor_version + 1
+            )
             current_draft_version.save()
 
             current_draft_resource = Resource.objects.get(pk=current_draft_version.pk)
@@ -75,7 +80,9 @@ class VersionedResourceEditorView(ResourceEditorView):
                         VERSION_NUMBER: i18n_string(
                             f"{current_draft_version.major_version}.{current_draft_version.minor_version}"
                         ),
-                        WORKING_COPY: parse_resource_instance_id(str(current_draft_resource.pk)),
+                        WORKING_COPY: parse_resource_instance_id(
+                            str(current_draft_resource.pk)
+                        ),
                     },
                 )
             ]
