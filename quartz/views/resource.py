@@ -10,6 +10,7 @@ from arches_resource_version_manager.models import VersionedResource
 
 from quartz.utils.payload_utils import i18n_string, make_tile, parse_resource_instance_id
 from quartz.utils.upsert_dynamics_heritage_item import (
+    HERITAGE_ITEM_GRAPH_ID,
     VERSIONING_NODEGROUP,
     VERSION_NUMBER,
     WORKING_COPY,
@@ -19,6 +20,32 @@ logger = logging.getLogger(__name__)
 
 
 class VersionedResourceEditorView(ResourceEditorView):
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        resourceid = context.get("resourceid", "")
+        graphid = str(context.get("graphid", ""))
+
+        is_versioned = False
+        is_working_draft = False
+
+        if resourceid and graphid == HERITAGE_ITEM_GRAPH_ID:
+            is_versioned = True
+            tile = models.TileModel.objects.filter(
+                resourceinstance_id=resourceid,
+                nodegroup_id=VERSIONING_NODEGROUP,
+            ).first()
+            if tile:
+                working_copy_refs = tile.data.get(WORKING_COPY, [])
+                if working_copy_refs:
+                    is_working_draft = (
+                        str(working_copy_refs[0].get("resourceId", ""))
+                        == str(resourceid)
+                    )
+
+        context["is_versioned"] = is_versioned
+        context["is_working_draft"] = is_working_draft
+        return context
 
     def copy(self, request, resourceid=None):
         try:
