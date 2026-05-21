@@ -247,10 +247,13 @@ var vm = {
                 type: "GET",
                 url: arches.urls.resource_copy.replace('//', '/' + resourceId() + '/'),
                 success: function (data) {
+                    var translations = vm.isVersioned
+                        ? arches.translations.resourceVersionSuccess
+                        : arches.translations.resourceCopySuccess;
                     vm.alert(new AlertViewModel(
                         'ep-alert-blue',
-                        arches.translations.resourceCopySuccess.title,
-                        "<a style='color: #fff; font-weight: 700;' target='_blank' href='" + arches.urls.resource_editor + data.resourceid + "'>" + arches.translations.resourceCopySuccess.text + "</a>",
+                        translations.title,
+                        "<a style='color: #fff; font-weight: 700;' target='_blank' href='" + arches.urls.resource_editor + data.resourceid + "'>" + translations.text + "</a>",
                         null,
                         function () { }
                     ));
