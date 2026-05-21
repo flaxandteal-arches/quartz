@@ -1,0 +1,22 @@
+{% extends "javascript.htm" %}
+{% comment %}
+Overrides: arches/app/templates/javascript.htm
+Changes:
+  - Adds resourceVersionSuccess translation for the "Make New Version" action.
+{% endcomment %}
+
+{% load static %}
+{% load l10n %}
+{% load i18n %}
+{% load template_tags %}
+
+{% block arches_translations %}
+{{ block.super }}
+<div
+    class='arches-translations'
+    resource-version-success='{
+        "title": "{% jsescaped_trans _("New Version Created.")%}",
+        "text": "{% jsescaped_trans _("Click here to view the archived version.") %}"
+    }'
+></div>
+{% endblock arches_translations %}
