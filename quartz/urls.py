@@ -31,6 +31,11 @@ _app_urlpatterns = [
         VersionedResourceEditorView.as_view(action="copy"),
         name="resource_copy",
     ),
+    re_path(
+        r"^resource/(?P<resourceid>[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$",
+        VersionedResourceEditorView.as_view(),
+        name="resource_editor",
+    ),
     path("", include("arches.urls")),
     path("", include("arches_controlled_lists.urls")),
     path("", include("arches_component_lab.urls")),
