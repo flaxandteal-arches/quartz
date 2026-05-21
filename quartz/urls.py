@@ -6,6 +6,7 @@ from django.urls import include, path, re_path
 import django_saml2_auth.views
 
 from quartz.views.detsi_api import DynamicsHeritageSyncView
+from quartz.views.resource import VersionedResourceEditorView
 
 handler400 = "arches.app.views.main.custom_400"
 handler403 = "arches.app.views.main.custom_403"
