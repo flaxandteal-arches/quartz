@@ -28,6 +28,16 @@ _app_urlpatterns = [
     re_path(r"^sso/signin/$", django_saml2_auth.views.signin, name="saml2_signin"),
     path("", include("arches_modular_reports.urls")),
     path("", include("arches_search.urls")),
+    re_path(
+        r"^resource/(?P<resourceid>[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/copy$",
+        VersionedResourceEditorView.as_view(action="copy"),
+        name="resource_copy",
+    ),
+    re_path(
+        r"^resource/(?P<resourceid>[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$",
+        VersionedResourceEditorView.as_view(),
+        name="resource_editor",
+    ),
     path("", include("arches.urls")),
     path("", include("arches_controlled_lists.urls")),
     path("", include("arches_her.urls")),
