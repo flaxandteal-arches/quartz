@@ -11,6 +11,7 @@ quartz/media/build/
 quartz/uploadedfiles/*
 quartz/settings_local.py
 quartz/pkg/business_data/*
+quartz/functions/multicard_resource_descriptor.py
 webpack-stats.json
 .vscode/
 *.egg-info
