@@ -120,38 +120,42 @@ def process_heritage_item(payload: dict, user) -> tuple:
     # ------------------------------------------------------------------
     # Is the 6000 number in the Resource Version table?
     # ------------------------------------------------------------------
-    existing_version = VersionedResource.objects.filter(
-        resource_group_id=heritage_id_number
-    ).exists()
+    current_draft_version = VersionedResource.objects.get_current_draft(
+        heritage_id_number
+    )
 
-    if not existing_version:
+    next_major, next_minor = _next_version(
+        is_final,
+        current_draft_version.major_version if current_draft_version else None,
+        current_draft_version.minor_version if current_draft_version else None,
+        version_from_payload,
+    )
+
+    if not current_draft_version:
         # New item: create a Draft Resource and record it in the version table.
         # TODO - should we be checking if a resource instance already exists with the incoming 6000 number?
         resource = Resource()
         resource.graph_id = HERITAGE_ITEM_GRAPH_ID
         resource.tiles = _build_managed_tiles(
-            payload, version_from_payload, 0, resource.pk
+            payload, next_major, next_minor, resource.pk
         )
         resource.save(user=user)
 
-        register_new_draft(resource, heritage_id_number, version_from_payload, payload)
+        register_new_draft(resource, heritage_id_number, next_major, next_minor, payload)
 
         if is_final:
-            finalize_draft(heritage_id_number, user, version_from_payload, payload)
+            finalize_draft(heritage_id_number, user, next_major, next_minor, payload)
 
-        return resource, True
+        return resource, True, f"{next_major}.{next_minor}"
 
     # ------------------------------------------------------------------
     # Existing item: archive the current Draft and get back the resource.
     # ------------------------------------------------------------------
     archive_copy_of_current_draft(heritage_id_number, user)
 
-    current_draft_version = VersionedResource.objects.get_current_draft(
-        heritage_id_number
-    )
-    minor_version = 0 if is_final else current_draft_version.minor_version + 1
     current_draft_version.metadata = payload
-    current_draft_version.minor_version = minor_version
+    current_draft_version.major_version = next_major
+    current_draft_version.minor_version = next_minor
     current_draft_version.save()
 
     current_draft_resource = models.Resource.objects.get(pk=current_draft_version.pk)
@@ -164,16 +168,27 @@ def process_heritage_item(payload: dict, user) -> tuple:
 
     current_draft_resource.tiles = _build_managed_tiles(
         payload,
-        current_draft_version.major_version,
-        current_draft_version.minor_version,
+        next_major,
+        next_minor,
         current_draft_resource.pk,
     )
     current_draft_resource.save()
 
     if is_final:
-        finalize_draft(heritage_id_number, user, version_from_payload, payload)
+        finalize_draft(heritage_id_number, user, next_major, next_minor, payload)
 
-    return current_draft_resource, False
+    return current_draft_resource, False, f"{next_major}.{next_minor}"
+
+
+def _next_version(
+    is_final: bool,
+    current_major: int,
+    current_minor: int,
+    version_from_payload,
+) -> tuple[int, int]:
+    if is_final or (current_major is None and current_minor is None):
+        return int(version_from_payload), 0
+    return current_major, current_minor + 1
 
 
 def _is_final_payload(payload: dict) -> bool:
