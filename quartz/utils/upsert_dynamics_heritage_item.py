@@ -16,6 +16,7 @@ from .payload_utils import (
     i18n_string,
     make_tile,
     parse_date,
+    parse_reference_node,
     parse_resource_instance_id,
 )
 
@@ -33,6 +34,32 @@ NAMES_NODEGROUP = "676d47f9-9c1c-11ea-9aa0-f875a44e0e11"
 NODE_NAME = "676d47ff-9c1c-11ea-b07f-f875a44e0e11"  # string
 NODE_NAME_TYPE = "676d47fe-9c1c-11ea-aa28-f875a44e0e11"  # reference
 NODE_NAME_USE_TYPE = "676d47fc-9c1c-11ea-b5b0-f875a44e0e11"  # reference
+PRIMARY_NAME_USE_TYPE = {
+    "labels": [
+        {
+            "id": "d49999ca-d28c-412b-8ece-35984980b836",
+            "language_id": "en",
+            "list_item_id": "d4e3d550-6e2d-4734-88d4-3e781118048d",
+            "value": "Primary",
+            "valuetype_id": "prefLabel",
+        }
+    ],
+    "list_id": "1e4df896-992b-475e-bb5a-78817d3066d7",
+    "uri": "d4e3d550-6e2d-4734-88d4-3e781118048d",
+}
+ALTERNATIVE_NAME_USE_TYPE = {
+    "labels": [
+        {
+            "id": "7d308b8d-a1b7-433c-a172-d044796fd585",
+            "language_id": "en",
+            "list_item_id": "f2a2710a-5a81-435a-9f2f-4eeddcdcd4af",
+            "value": "Alternative",
+            "valuetype_id": "prefLabel",
+        }
+    ],
+    "list_id": "1e4df896-992b-475e-bb5a-78817d3066d7",
+    "uri": "f2a2710a-5a81-435a-9f2f-4eeddcdcd4af",
+}
 
 # Designation and Protection Assignment nodegroup  (repeatable — one tile per designation/protection entry)
 DESIGNATION_NODEGROUP = "6af2a0cb-efc5-11eb-8436-a87eeabdefba"
@@ -62,15 +89,22 @@ NODE_GEOSPATIAL_COORDS = (
     "87d3d7dc-f44f-11eb-bee9-a87eeabdefba"  # geojson-feature-collection
 )
 
+
+AREA_ASSIGNEMENT_NODEGROUP = "87d39b22-f44f-11eb-887e-a87eeabdefba"
+NODE_AREA_REFERENCE_VALUE = "87d3c3fc-f44f-11eb-beff-a87eeabdefba"  # dpp_plan
+
+LOT_ON_PLAN_NODEGROUP = "6a19facf-8f47-54a2-84b8-d0173db7eaa3"
+NODE_LOT = "5717a450-e62b-5dfa-857a-c42e7791a6e4"  # dpp_lot
+
 # Descriptions nodegroup  (repeatable — one tile per description entry)
 # DESCRIPTIONS_NODEGROUP = "ba342e69-b554-11ea-a027-f875a44e0e11"
 # NODE_DESCRIPTION = "ba345577-b554-11ea-a9ee-f875a44e0e11"  # string
 # NODE_DESCRIPTION_TYPE = "ba34557b-b554-11ea-ab95-f875a44e0e11"  # reference
 
 # External Cross References nodegroup  (repeatable — one tile per lot/plan)
-EXTERNAL_XREF_NODEGROUP = "f17f6581-efc7-11eb-b09f-a87eeabdefba"
-NODE_EXTERNAL_XREF = "f17f6584-efc7-11eb-81f1-a87eeabdefba"  # string
-NODE_EXTERNAL_XREF_SOURCE = "f17f658a-efc7-11eb-a216-a87eeabdefba"  # reference
+# EXTERNAL_XREF_NODEGROUP = "f17f6581-efc7-11eb-b09f-a87eeabdefba"
+# NODE_EXTERNAL_XREF = "f17f6584-efc7-11eb-81f1-a87eeabdefba"  # string
+# NODE_EXTERNAL_XREF_SOURCE = "f17f658a-efc7-11eb-a216-a87eeabdefba"  # reference
 
 # Nodegroups whose tiles are fully replaced on each sync.
 # Includes Location Data and all its UI child nodegroups (Addresses, Geometry, etc.).
@@ -78,11 +112,13 @@ _STATUTORY_NODEGROUPS = {
     NAMES_NODEGROUP,
     SYSTEM_REF_NODEGROUP,
     DESIGNATION_NODEGROUP,
-    LOCATION_DATA_NODEGROUP,
+    # LOCATION_DATA_NODEGROUP,
     ADDRESSES_NODEGROUP,
     GEOMETRY_NODEGROUP,
+    AREA_ASSIGNEMENT_NODEGROUP,
+    LOT_ON_PLAN_NODEGROUP,
     # DESCRIPTIONS_NODEGROUP,
-    EXTERNAL_XREF_NODEGROUP,
+    # EXTERNAL_XREF_NODEGROUP,
 }
 
 _MANAGED_NODEGROUPS = _STATUTORY_NODEGROUPS | {VERSIONING_NODEGROUP}
@@ -141,7 +177,9 @@ def process_heritage_item(payload: dict, user) -> tuple:
         )
         resource.save(user=user)
 
-        register_new_draft(resource, heritage_id_number, next_major, next_minor, payload)
+        register_new_draft(
+            resource, heritage_id_number, next_major, next_minor, payload
+        )
 
         if is_final:
             finalize_draft(heritage_id_number, user, next_major, next_minor, payload)
@@ -205,7 +243,7 @@ def _build_managed_tiles(
         _build_system_ref_tiles(payload)
         + _build_designation_tiles(payload)
         + _build_name_tiles(payload)
-        + _build_location_tiles(payload)
+        + _build_location_tiles(payload, resource_instance_ref)
         + _build_version_tile(major_version, minor_version, resource_instance_ref)
     )
 
@@ -257,7 +295,12 @@ def _build_name_tiles(payload: dict) -> list:
     if primary_name:
         tiles.append(
             make_tile(
-                NAMES_NODEGROUP, {NODE_NAME: i18n_string(primary_name)}, sortorder=0
+                NAMES_NODEGROUP,
+                {
+                    NODE_NAME: i18n_string(primary_name),
+                    NODE_NAME_USE_TYPE: [PRIMARY_NAME_USE_TYPE],
+                },
+                sortorder=0,
             )
         )
 
@@ -271,7 +314,10 @@ def _build_name_tiles(payload: dict) -> list:
                     tiles.append(
                         make_tile(
                             NAMES_NODEGROUP,
-                            {NODE_NAME: i18n_string(part)},
+                            {
+                                NODE_NAME: i18n_string(part),
+                                NODE_NAME_USE_TYPE: [ALTERNATIVE_NAME_USE_TYPE],
+                            },
                             sortorder=index + 1,
                         )
                     )
@@ -279,10 +325,18 @@ def _build_name_tiles(payload: dict) -> list:
     return tiles
 
 
-def _build_location_tiles(payload: dict) -> list:
+def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
+
+    try:
+        location_data_tile = Tile.objects.get(
+            resourceinstance_id=resource_instance_ref,
+            nodegroup_id=LOCATION_DATA_NODEGROUP,
+        )
+    except Tile.DoesNotExist:
+        location_data_tile = make_tile(LOCATION_DATA_NODEGROUP, {})
+
     tiles = []
-    parent_tile = make_tile(LOCATION_DATA_NODEGROUP, {})
-    tiles.append(parent_tile)
+    tiles.append(location_data_tile)
 
     for loc in payload.get("Locations", []):
         if loc.get("location_type") == "Address":
@@ -292,7 +346,33 @@ def _build_location_tiles(payload: dict) -> list:
                     make_tile(
                         ADDRESSES_NODEGROUP,
                         {NODE_FULL_ADDRESS: i18n_string(address)},
-                        parent_tile_id=parent_tile.tileid,
+                        parent_tile_id=location_data_tile.tileid,
+                    )
+                )
+
+        if loc.get("location_type") == "dpp_lot dpp_plan":
+            lot = loc.get("dpp_lot")
+            plan = loc.get("dpp_plan")
+            if plan:
+                area_assignment_tile = make_tile(
+                    AREA_ASSIGNEMENT_NODEGROUP,
+                    {NODE_AREA_REFERENCE_VALUE: i18n_string(plan)},
+                    parent_tile_id=location_data_tile.tileid,
+                )
+            else:
+                area_assignment_tile = make_tile(
+                    AREA_ASSIGNEMENT_NODEGROUP,
+                    {},
+                    parent_tile_id=location_data_tile.tileid,
+                )
+            tiles.append(area_assignment_tile)
+
+            if lot:
+                tiles.append(
+                    make_tile(
+                        LOT_ON_PLAN_NODEGROUP,
+                        {NODE_LOT: i18n_string(lot)},
+                        parent_tile_id=area_assignment_tile.tileid,
                     )
                 )
 
@@ -307,7 +387,7 @@ def _build_location_tiles(payload: dict) -> list:
                         "features": gps_features,
                     }
                 },
-                parent_tile_id=parent_tile.tileid,
+                parent_tile_id=location_data_tile.tileid,
             )
         )
 
