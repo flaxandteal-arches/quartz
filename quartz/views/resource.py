@@ -86,7 +86,12 @@ class VersionedResourceEditorView(ResourceEditorView):
                     },
                 )
             ]
-            current_draft_resource.save()
+            current_draft_resource.save(
+                request=request,
+                user=request.user,
+                edit_type="copy",
+                note=f"Archived to {archived_version.pk}",
+            )
 
         except VersionedResource.DoesNotExist:
             return JSONErrorResponse(
