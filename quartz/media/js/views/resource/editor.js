@@ -2,6 +2,7 @@
  * Overrides: arches/app/media/js/views/resource/editor.js
  * Changes:
  *   - Exposes isVersioned and isWorkingDraft flags on the view model from editor data.
+ *   - copyResource shows dynamic success message based on whether the resource is versioned or not.
  */
 import $ from 'jquery';
 import _ from 'underscore';
@@ -247,22 +248,16 @@ var vm = {
                 type: "GET",
                 url: arches.urls.resource_copy.replace('//', '/' + resourceId() + '/'),
                 success: function (data) {
-                    var translations = vm.isVersioned
-                        ? arches.translations.resourceVersionSuccess
-                        : arches.translations.resourceCopySuccess;
-                    vm.alert(new AlertViewModel(
-                        'ep-alert-blue',
-                        translations.title,
-                        "<a style='color: #fff; font-weight: 700;' target='_blank' href='" + arches.urls.resource_editor + data.resourceid + "'>" + translations.text + "</a>",
-                        null,
-                        function () { }
-                    ));
+                    // use sessionStorage to pass copied resource data to reloaded editor page
+                    sessionStorage.setItem('copyAlert', JSON.stringify({
+                        resourceid: data.resourceid,
+                        isVersioned: vm.isVersioned,
+                    }));
+                    window.location.reload();
                 },
                 error: function () {
-                    vm.alert(new AlertViewModel('ep-alert-red', arches.translations.resourceCopyFailed.title, arches.translations.resourceCopyFailed.text, null, function () { }));
-                },
-                complete: function () {
                     loading(false);
+                    vm.alert(new AlertViewModel('ep-alert-red', arches.translations.resourceCopyFailed.title, arches.translations.resourceCopyFailed.text, null, function () { }));
                 },
             });
         }
@@ -408,6 +403,24 @@ vm.selectionBreadcrumbs = ko.computed(function () {
     return crumbs;
 });
 
-export default new BaseManagerView({
+let baseManagerView = new BaseManagerView({
     viewModel: vm
 });
+
+const pendingCopyAlert = sessionStorage.getItem('copyAlert');
+if (pendingCopyAlert) {
+    sessionStorage.removeItem('copyAlert');
+    const copyData = JSON.parse(pendingCopyAlert);
+    const translations = copyData.isVersioned
+        ? arches.translations.resourceVersionSuccess
+        : arches.translations.resourceCopySuccess;
+    vm.alert(new AlertViewModel(
+        'ep-alert-blue',
+        translations.title,
+        `<a style='color: #fff; font-weight: 700;' target='_blank' href='${arches.urls.resource_editor}${copyData.resourceid}'>${translations.text}</a>`,
+        null,
+        function () { }
+    ));
+}
+
+export default baseManagerView;
