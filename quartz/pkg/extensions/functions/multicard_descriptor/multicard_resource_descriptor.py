@@ -59,14 +59,16 @@ class MulticardResourceDescriptor(AbstractPrimaryDescriptorsFunction):
         for node in nodes:
             datatype_factory = DataTypeFactory()
             datatype = datatype_factory.get_instance(node.datatype)
-            tiles = models.TileModel.objects.filter(
-                resourceinstance_id=resource.resourceinstanceid,
-                nodegroup_id=node.nodegroup_id,
-            )
-            if len(tiles) > 0:
-                value = datatype.get_display_value(
-                    tiles[0], node, language=lookup_language
+            tile = (
+                models.TileModel.objects.filter(
+                    resourceinstance_id=resource.resourceinstanceid,
+                    nodegroup_id=node.nodegroup_id,
                 )
+                .order_by("sortorder")
+                .first()
+            )
+            if tile:
+                value = datatype.get_display_value(tile, node, language=lookup_language)
             else:
                 value = ""
             result = result.replace("<%s>" % node.alias, str(value))
