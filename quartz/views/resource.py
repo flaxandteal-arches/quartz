@@ -1,4 +1,5 @@
 import logging
+import uuid
 
 from django.db import transaction
 
@@ -55,58 +56,49 @@ class VersionedResourceEditorView(ResourceEditorView):
     def copy(self, request, resourceid=None):
         try:
             versioned_resource = VersionedResource.objects.get(pk=resourceid)
+            transaction_id = uuid.uuid4()
+            archived_version = archive_copy_of_current_draft(
+                versioned_resource.resource_group_id, request.user, transaction_id
+            )
+            archived_resource = Resource.objects.get(pk=archived_version.pk)
+            current_draft_version = VersionedResource.objects.get_current_draft(
+                versioned_resource.resource_group_id
+            )
+            current_draft_version.minor_version = (
+                current_draft_version.minor_version + 1
+            )
+            current_draft_version.save()
+
+            current_draft_resource = Resource.objects.get(pk=current_draft_version.pk)
+            models.TileModel.objects.filter(
+                resourceinstance_id=current_draft_resource.pk,
+                nodegroup_id=VERSIONING_NODEGROUP,
+            ).delete()
+            current_draft_resource.tiles = [
+                make_tile(
+                    VERSIONING_NODEGROUP,
+                    {
+                        VERSION_NUMBER: i18n_string(
+                            f"{current_draft_version.major_version}.{current_draft_version.minor_version}"
+                        ),
+                        WORKING_COPY: parse_resource_instance_id(
+                            str(current_draft_resource.pk)
+                        ),
+                    },
+                )
+            ]
+            current_draft_resource.save(
+                transaction_id=transaction_id,
+                request=request,
+                user=request.user,
+                edit_type="copy",
+                note="Archived to",
+                newvalue={
+                    "resourceinstanceid": str(archived_resource.pk),
+                    "descriptors": archived_resource.descriptors,
+                },
+            )
+            return JSONResponse({"resourceid": str(archived_version.pk)})
+
         except VersionedResource.DoesNotExist:
             return super().copy(request, resourceid)
-
-        try:
-            with transaction.atomic():
-                archived_version = archive_copy_of_current_draft(
-                    versioned_resource.resource_group_id, request.user
-                )
-                current_draft_version = VersionedResource.objects.get_current_draft(
-                    versioned_resource.resource_group_id
-                )
-                current_draft_version.minor_version = (
-                    current_draft_version.minor_version + 1
-                )
-                current_draft_version.save()
-
-                current_draft_resource = Resource.objects.get(
-                    pk=current_draft_version.pk
-                )
-                models.TileModel.objects.filter(
-                    resourceinstance_id=current_draft_resource.pk,
-                    nodegroup_id=VERSIONING_NODEGROUP,
-                ).delete()
-                current_draft_resource.tiles = [
-                    make_tile(
-                        VERSIONING_NODEGROUP,
-                        {
-                            VERSION_NUMBER: i18n_string(
-                                f"{current_draft_version.major_version}.{current_draft_version.minor_version}"
-                            ),
-                            WORKING_COPY: parse_resource_instance_id(
-                                str(current_draft_resource.pk)
-                            ),
-                        },
-                    )
-                ]
-                current_draft_resource.save(
-                    request=request,
-                    user=request.user,
-                )
-
-        except VersionedResource.DoesNotExist:
-            return JSONErrorResponse(
-                "Version Error",
-                "No Draft version found for this resource group.",
-                status=400,
-            )
-        except Exception as e:
-            return JSONErrorResponse(
-                "Version Error",
-                "Error copying and versioning resource",
-                status=400,
-            )
-
-        return JSONResponse({"resourceid": str(archived_version.pk)})

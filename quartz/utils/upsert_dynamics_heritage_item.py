@@ -1,4 +1,5 @@
 import logging
+import uuid
 
 from arches.app.models import models
 from arches.app.models.resource import Resource
@@ -189,7 +190,11 @@ def process_heritage_item(payload: dict, user) -> tuple:
     # ------------------------------------------------------------------
     # Existing item: archive the current Draft and get back the resource.
     # ------------------------------------------------------------------
-    archived_version = archive_copy_of_current_draft(heritage_id_number, user)
+    transaction_id = uuid.uuid4()
+    archived_version = archive_copy_of_current_draft(
+        heritage_id_number, user, transaction_id
+    )
+    archived_resource = models.Resource.objects.get(pk=archived_version.pk)
 
     current_draft_version.metadata = payload
     current_draft_version.major_version = next_major
@@ -198,7 +203,14 @@ def process_heritage_item(payload: dict, user) -> tuple:
 
     current_draft_resource = models.Resource.objects.get(pk=current_draft_version.pk)
     current_draft_resource.save_edit(
-        user=user, edit_type="copy", note=f"Archived to {archived_version.pk}"
+        transaction_id=transaction_id,
+        user=user,
+        edit_type="copy",
+        note="Archived to",
+        newvalue={
+            "resourceinstanceid": str(archived_resource.pk),
+            "descriptors": archived_resource.descriptors,
+        },
     )
 
     # Update the Draft resource with data from the incoming payload.
