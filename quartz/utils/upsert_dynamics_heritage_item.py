@@ -189,7 +189,7 @@ def process_heritage_item(payload: dict, user) -> tuple:
     # ------------------------------------------------------------------
     # Existing item: archive the current Draft and get back the resource.
     # ------------------------------------------------------------------
-    archive_copy_of_current_draft(heritage_id_number, user)
+    archived_version = archive_copy_of_current_draft(heritage_id_number, user)
 
     current_draft_version.metadata = payload
     current_draft_version.major_version = next_major
@@ -197,6 +197,9 @@ def process_heritage_item(payload: dict, user) -> tuple:
     current_draft_version.save()
 
     current_draft_resource = models.Resource.objects.get(pk=current_draft_version.pk)
+    current_draft_resource.save_edit(
+        user=user, edit_type="copy", note=f"Archived to {archived_version.pk}"
+    )
 
     # Update the Draft resource with data from the incoming payload.
     models.TileModel.objects.filter(
