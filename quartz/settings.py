@@ -219,7 +219,7 @@ INSTALLED_APPS = (
     "pgtrigger",
     "django_saml2_auth",  # SAML2 SSO Authentication
     # "silk",
-    "certificate_generator",
+    # "certificate_generator",
 )
 
 # Placing this last ensures any templates provided by Arches Applications
@@ -432,7 +432,9 @@ TILE_CACHE_TIMEOUT = 600  # seconds
 CLUSTER_DISTANCE_MAX = 5000  # meters
 GRAPH_MODEL_CACHE_TIMEOUT = None
 
-OAUTH_CLIENT_ID = os.getenv("OAUTH_CLIENT_ID", "")  #'9JCibwrWQ4hwuGn5fu2u1oRZSs9V6gK8Vu8hpRC4'
+OAUTH_CLIENT_ID = os.getenv(
+    "OAUTH_CLIENT_ID", ""
+)  #'9JCibwrWQ4hwuGn5fu2u1oRZSs9V6gK8Vu8hpRC4'
 
 APP_TITLE = "Arches | Heritage Data Management"
 COPYRIGHT_TEXT = "All Rights Reserved."
