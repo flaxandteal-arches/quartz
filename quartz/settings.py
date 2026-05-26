@@ -70,6 +70,8 @@ FILE_TYPES = [
     "gif",
     "jpg",
     "jpeg",
+    "jfif",
+    "arw",
     "json",
     "pdf",
     "png",
@@ -78,8 +80,28 @@ FILE_TYPES = [
     "tif",
     "tiff",
     "xlsx",
+    "xls",
     "csv",
     "zip",
+    # audio #
+    "wma",
+    "mp3",
+    # documents #
+    "doc",
+    "docx",
+    "docm",
+    "txt",
+    "htm",
+    "ppt",
+    "pptx",
+    "pptm",
+    # geo / CAD / misc #
+    "mxd",
+    "skp",
+    "kmz",
+    "dmc",
+    "lnk",
+    "msg",
 ]
 FILENAME_GENERATOR = "arches.app.utils.storage_filename_generator.generate_filename"
 # Subdirectory / object-key prefix under MEDIA_ROOT (or the Azure blob
