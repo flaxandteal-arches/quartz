@@ -198,6 +198,8 @@ INSTALLED_APPS = (
     "django.contrib.staticfiles",
     "django.contrib.gis",
     "django_hosts",
+    "arches_search",
+    "arches_modular_reports",
     "arches_component_lab",
     "arches_controlled_lists",
     "arches_notifications",
