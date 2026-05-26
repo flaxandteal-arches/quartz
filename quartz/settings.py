@@ -219,7 +219,7 @@ INSTALLED_APPS = (
     "pgtrigger",
     "django_saml2_auth",  # SAML2 SSO Authentication
     # "silk",
-    # "certificate_generator",
+    "certificate_generator",
 )
 
 # Placing this last ensures any templates provided by Arches Applications
