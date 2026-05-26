@@ -26,6 +26,7 @@ urlpatterns = [
         DynamicsHeritageSyncView.as_view(),
         name="dynamics_heritage_sync",
     ),
+    path("", include("arches_search.urls")),
     path("", include("arches_notifications.urls")),
     path("", include("certificate_generator.urls")),
     path("", include("arches_model_viewer.urls")),
