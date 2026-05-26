@@ -21,8 +21,11 @@
     },
     "dependencies": {
         "arches": "archesproject/arches#8.1.0",
+        "arches-component-lab": "archesproject/arches-component-lab#main",
         "arches_controlled_lists": "archesproject/arches-controlled-lists#dev/1.1.x",
         "arches_her": "archesproject/arches-her#dev/2.0.x",
+        "arches_modular_reports": "archesproject/arches-modular-reports#main",
+        "arches_search": "archesproject/arches-search#main",
         "online-3d-viewer": "^0.18.0",
         "potree-core": "^2.0.15",
         "three": "^0.184.0"
