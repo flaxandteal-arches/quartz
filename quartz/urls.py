@@ -43,6 +43,7 @@ _app_urlpatterns = [
     path("", include("arches_her.urls")),
     path("", include("certificate_generator.urls")),
     path("", include("arches_notifications.urls")),
+    path("", include("arches_modular_reports.urls")),
     path("", include("arches_resource_version_manager.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
