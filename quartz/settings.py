@@ -221,10 +221,10 @@ INSTALLED_APPS = (
 # Placing this last ensures any templates provided by Arches Applications
 # take precedence over core arches templates in arches/app/templates.
 INSTALLED_APPS += (
+    "arches_model_viewer",
     "arches.app",
     "django.contrib.admin",
     "django.contrib.postgres",
-    "arches_model_viewer",
     "arches_her",
     "arches_id_generator",
 )
