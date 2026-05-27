@@ -29,7 +29,7 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
         if resource_type == "heritage_item":
             with transaction.atomic():
                 return process_heritage_item(payload, user)
-        elif resource_type == "archological_site":
+        elif resource_type == "Archaeology Discovery":
             return self._upsert_archaeological_site(payload, user)
         else:
             raise ValueError(f"Unsupported resource_type: {resource_type}")
