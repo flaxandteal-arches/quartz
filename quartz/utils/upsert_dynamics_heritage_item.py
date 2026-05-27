@@ -90,7 +90,7 @@ NODE_GEOSPATIAL_COORDS = (
 )
 
 
-AREA_ASSIGNEMENT_NODEGROUP = "87d39b22-f44f-11eb-887e-a87eeabdefba"
+AREA_ASSIGNMENT_NODEGROUP = "87d39b22-f44f-11eb-887e-a87eeabdefba"
 NODE_AREA_REFERENCE_VALUE = "87d3c3fc-f44f-11eb-beff-a87eeabdefba"  # dpp_plan
 
 LOT_ON_PLAN_NODEGROUP = "6a19facf-8f47-54a2-84b8-d0173db7eaa3"
@@ -115,7 +115,7 @@ _STATUTORY_NODEGROUPS = {
     # LOCATION_DATA_NODEGROUP,
     ADDRESSES_NODEGROUP,
     GEOMETRY_NODEGROUP,
-    AREA_ASSIGNEMENT_NODEGROUP,
+    AREA_ASSIGNMENT_NODEGROUP,
     LOT_ON_PLAN_NODEGROUP,
     # DESCRIPTIONS_NODEGROUP,
     # EXTERNAL_XREF_NODEGROUP,
@@ -355,13 +355,13 @@ def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
             plan = loc.get("dpp_plan")
             if plan:
                 area_assignment_tile = make_tile(
-                    AREA_ASSIGNEMENT_NODEGROUP,
+                    AREA_ASSIGNMENT_NODEGROUP,
                     {NODE_AREA_REFERENCE_VALUE: i18n_string(plan)},
                     parent_tile_id=location_data_tile.tileid,
                 )
             else:
                 area_assignment_tile = make_tile(
-                    AREA_ASSIGNEMENT_NODEGROUP,
+                    AREA_ASSIGNMENT_NODEGROUP,
                     {},
                     parent_tile_id=location_data_tile.tileid,
                 )
