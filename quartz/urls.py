@@ -17,16 +17,16 @@ handler500 = "arches.app.views.main.custom_500"
 urlpatterns = [
     re_path(r"^sso/", include("django_saml2_auth.urls")),
     re_path(r"^sso/signin/$", django_saml2_auth.views.signin, name="saml2_signin"),
+    path("", include("arches_modular_reports.urls")),
+    path("", include("arches_search.urls")),
     path("", include("arches.urls")),
     path("", include("arches_controlled_lists.urls")),
-    path("", include("arches_component_lab.urls")),
     path("", include("arches_her.urls")),
     path(
         "api/dynamics/heritage-item/",
         DynamicsHeritageSyncView.as_view(),
         name="dynamics_heritage_sync",
     ),
-    path("", include("arches_search.urls")),
     path("", include("arches_notifications.urls")),
     path("", include("certificate_generator.urls")),
     path("", include("arches_model_viewer.urls")),

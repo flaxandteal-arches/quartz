@@ -198,6 +198,7 @@ INSTALLED_APPS = (
     "django.contrib.staticfiles",
     "django.contrib.gis",
     "django_hosts",
+    "rest_framework",
     "arches_modular_reports",
     "arches_search",
     "arches_component_lab",
