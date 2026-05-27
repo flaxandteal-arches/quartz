@@ -205,6 +205,7 @@ INSTALLED_APPS = (
     "arches_controlled_lists",
     "arches_notifications",
     "arches_querysets",
+    "arches_resource_version_manager",
     "arches",
     "arches.app.models",
     "arches.management",
@@ -241,8 +242,8 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "arches.app.utils.middleware.ModifyAuthorizationHeader",
-    "oauth2_provider.middleware.OAuth2TokenMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "oauth2_provider.middleware.OAuth2TokenMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "arches.app.utils.middleware.SetAnonymousUser",
@@ -328,7 +329,10 @@ AZURE_LOCATION = os.environ.get("AZURE_LOCATION", "")
 AZURE_URL_EXPIRATION_SECS = int(os.environ.get("AZURE_URL_EXPIRATION_SECS", 3600))
 
 if AZURE_ACCOUNT_NAME and AZURE_ACCOUNT_KEY and AZURE_CONTAINER:
-    INSTALLED_APPS = (*INSTALLED_APPS, "storages",)
+    INSTALLED_APPS = (
+        *INSTALLED_APPS,
+        "storages",
+    )
     STORAGES = {
         "default": {
             "BACKEND": "storages.backends.azure_storage.AzureStorage",
@@ -428,7 +432,9 @@ TILE_CACHE_TIMEOUT = 600  # seconds
 CLUSTER_DISTANCE_MAX = 5000  # meters
 GRAPH_MODEL_CACHE_TIMEOUT = None
 
-OAUTH_CLIENT_ID = os.getenv("OAUTH_CLIENT_ID", "")  #'9JCibwrWQ4hwuGn5fu2u1oRZSs9V6gK8Vu8hpRC4'
+OAUTH_CLIENT_ID = os.getenv(
+    "OAUTH_CLIENT_ID", ""
+)  #'9JCibwrWQ4hwuGn5fu2u1oRZSs9V6gK8Vu8hpRC4'
 
 APP_TITLE = "Arches | Heritage Data Management"
 COPYRIGHT_TEXT = "All Rights Reserved."
@@ -541,8 +547,7 @@ RENDERERS = [
         "type": "application/zip",
         "ext": "zip",
         "exclude": "",
-    }
-
+    },
 ]
 
 # By setting RESTRICT_MEDIA_ACCESS to True, media file requests outside of Arches will checked against nodegroup permissions.
@@ -640,6 +645,7 @@ ENABLE_USER_SIGNUP = bool(os.environ.get("ENABLE_USER_SIGNUP", False))
 SESSION_COOKIE_SAMESITE = "Lax"
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SECURE = False
+
 
 try:
     from .package_settings import *
