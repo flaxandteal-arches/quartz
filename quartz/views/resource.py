@@ -91,9 +91,9 @@ class VersionedResourceEditorView(ResourceEditorView):
                 transaction_id=transaction_id,
                 request=request,
                 user=request.user,
-                edit_type="copy",
-                note="Archived to",
-                newvalue={
+                edit_log_type="copy",
+                edit_log_note="Archived to",
+                edit_log_newvalue={
                     "resourceinstanceid": str(archived_resource.pk),
                     "descriptors": archived_resource.descriptors,
                 },
