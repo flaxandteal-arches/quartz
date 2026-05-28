@@ -131,7 +131,7 @@
                         "en": "Used to link this Condition Report to one or more related Monument, Heritage Area, Artefact, Maritime Vessel, or Historic Aircraft records."
                     },
                     "name": {
-                        "en": "Associated Monument / Heritage Item"
+                        "en": "Associated Heritage Item"
                     },
                     "nodegroup_id": "77cef118-454b-46e8-98a1-ab72095b3e3c",
                     "sortorder": 0,
@@ -430,12 +430,12 @@
                         "defaultResourceInstance": [],
                         "defaultValue": [],
                         "i18n_properties": [],
-                        "label": "Associated Monument / Heritage Item",
+                        "label": "Associated Heritage Item",
                         "placeholder": ""
                     },
                     "id": "c1a50c4e-0c87-45f6-bb04-5da9c5a0169e",
                     "label": {
-                        "en": "Associated Monument / Heritage Item"
+                        "en": "Associated Heritage Item"
                     },
                     "node_id": "77cef118-454b-46e8-98a1-ab72095b3e3c",
                     "sortorder": 0,
@@ -624,16 +624,16 @@
                     "config": {
                         "descriptor_types": {
                             "description": {
-                                "nodegroup_id": "62f611e9-8b06-452c-b958-75832bb8e0c4",
-                                "string_template": "<Summary>"
+                                "nodegroup_id": "77cef118-454b-46e8-98a1-ab72095b3e3c",
+                                "string_template": "Condition Report For <Associated Heritage Item>"
                             },
                             "map_popup": {
-                                "nodegroup_id": "62f611e9-8b06-452c-b958-75832bb8e0c4",
-                                "string_template": "<Summary>"
+                                "nodegroup_id": "77cef118-454b-46e8-98a1-ab72095b3e3c",
+                                "string_template": "Condition Report For <Associated Heritage Item>"
                             },
                             "name": {
-                                "nodegroup_id": "62f611e9-8b06-452c-b958-75832bb8e0c4",
-                                "string_template": "<Summary>"
+                                "nodegroup_id": "77cef118-454b-46e8-98a1-ab72095b3e3c",
+                                "string_template": "Condition Report For <Associated Heritage Item>"
                             }
                         }
                     },
@@ -823,7 +823,7 @@
                     "isrequired": false,
                     "issearchable": true,
                     "istopnode": false,
-                    "name": "Associated Monument / Heritage Item",
+                    "name": "Associated Heritage Item",
                     "nodegroup_id": "77cef118-454b-46e8-98a1-ab72095b3e3c",
                     "nodeid": "77cef118-454b-46e8-98a1-ab72095b3e3c",
                     "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E18_Physical_Thing",
