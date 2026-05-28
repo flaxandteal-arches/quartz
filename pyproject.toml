@@ -33,6 +33,9 @@ dependencies = [
     "azure-identity",
     "arches_id_generator @ git+https://github.com/flaxandteal-arches/arches-id-generator.git",
     "certificate_generator @ git+https://github.com/flaxandteal-arches/certificate-generator.git@v0.1.0",
+    "arches_resource_version_manager @ git+https://github.com/fargeo/arches-resource-version-manager.git@main",
+    "arches-search>=0.1.0a7",
+    "djangorestframework",
 ]
 version = "0.0.1"
 

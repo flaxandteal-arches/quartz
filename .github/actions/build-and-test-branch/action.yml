@@ -84,7 +84,7 @@ runs:
 
     - name: Run Python unit tests
       run: |
-        PYTHONPATH=. python -W default::DeprecationWarning -m coverage run manage.py test tests --settings="quartz.test.test_settings"
+        PYTHONPATH=. python -W default::DeprecationWarning -m coverage run manage.py test tests --settings="tests.test_settings"
       shell: bash
 
     - name: Generate Python report coverage
