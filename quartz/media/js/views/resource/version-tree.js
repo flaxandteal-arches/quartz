@@ -5,7 +5,7 @@ import '../../../css/version-tree.scss';
 
 
 const STATE_COLORS = {
-    'Draft': '#00838F',
+    'Draft': '#ee6625',
     'Active': '#2E7D32',
     'Retired': '#616161',
 };
@@ -18,6 +18,7 @@ const STATE_LABELS = {
 
 const NODE_SPACING_REM = 15;
 const NODE_RADIUS_REM = 1.25;
+const NODE_RADIUS_CURRENT_REM = 1.75;
 const NODE_RADIUS_SMALL_REM = 1.0;
 const PADDING_REM = 6;
 const SVG_HEIGHT_REM = 15;
@@ -32,6 +33,9 @@ function renderVersionTree(containerSelector, versions) {
     if (!container || !versions || versions.length === 0) {
         return;
     }
+
+    const scrollContainer = container.parentElement;
+    const availableWidth = scrollContainer.offsetWidth;
 
     const sorted = versions.slice().sort(function(a, b) {
         if (a.lifecycle_state === 'Draft' && b.lifecycle_state !== 'Draft') return -1;
@@ -50,9 +54,10 @@ function renderVersionTree(containerSelector, versions) {
         containerWidth = paddingX * 2 + nodeSpacing;
     }
 
+    
     container.style.width = containerWidth + 'px';
     container.style.height = svgHeight + 'px';
-    container.style.margin = '0 auto';
+    scrollContainer.style.width = availableWidth + 'px';
 
     const nodes = sorted.map(function(version, index) {
         return {
@@ -85,6 +90,7 @@ function renderVersionTree(containerSelector, versions) {
     }
 
     const nodeRadius = NODE_RADIUS_REM * remPx;
+    const nodeRadiusCurrent = NODE_RADIUS_CURRENT_REM * remPx;
     const nodeRadiusSmall = NODE_RADIUS_SMALL_REM * remPx;
 
     const cy = cytoscape({
@@ -120,7 +126,7 @@ function renderVersionTree(containerSelector, versions) {
                     'text-wrap': 'wrap',
                     'text-valign': 'bottom',
                     'text-margin-y': remPx * 0.75,
-                    'font-size': remPx * 0.875,
+                    'font-size': remPx * 1.1,
                     'text-halign': 'center',
                     'color': function(ele) {
                         return STATE_COLORS[ele.data('lifecycleState')] || '#616161';
@@ -131,8 +137,12 @@ function renderVersionTree(containerSelector, versions) {
             {
                 selector: 'node[?isCurrent]',
                 style: {
-                    'border-width': 3,
-                    'border-color': '#1565C0',
+                    'width': nodeRadiusCurrent * 2,
+                    'height': nodeRadiusCurrent * 2,
+                    'background-color': '#06aaf6',
+                    'border-width': 5,
+                    'border-color': '#1E88E5',
+                    "color": '#1E88E5',
                 },
             },
             {
@@ -158,11 +168,19 @@ function renderVersionTree(containerSelector, versions) {
                     'border-color': function(ele) {
                         return ele.data('isCurrent') ? '#1565C0' : (STATE_COLORS[ele.data('lifecycleState')] || '#616161');
                     },
-                    'border-width': 3,
+                    'border-width': function(ele) {
+                        return ele.data('isCurrent') ? 4 : 3;
+                    },
                 },
             },
         ],
     });
+
+    const currentNode = cy.nodes('[?isCurrent]').first();
+    if (currentNode.length) {
+        const nodeX = currentNode.position('x');
+        scrollContainer.scrollLeft = Math.max(0, nodeX - scrollContainer.clientWidth / 2);
+    }
 
     cy.on('tap', 'node', function(event) {
         const href = event.target.data('href');
