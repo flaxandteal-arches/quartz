@@ -1,3 +1,4 @@
+import json
 import logging
 import uuid
 
@@ -6,7 +7,7 @@ from django.db import transaction
 from arches.app.models import models
 from arches.app.models.resource import Resource
 from arches.app.utils.response import JSONErrorResponse, JSONResponse
-from arches.app.views.resource import ResourceEditorView
+from arches.app.views.resource import ResourceEditorView, ResourceEditLogView
 
 from arches_resource_version_manager.lifecycle import archive_copy_of_current_draft
 from arches_resource_version_manager.models import VersionedResource
@@ -102,3 +103,57 @@ class VersionedResourceEditorView(ResourceEditorView):
 
         except VersionedResource.DoesNotExist:
             return super().copy(request, resourceid)
+
+
+class VersionedResourceEditLogView(ResourceEditLogView):
+
+    def get(self, request, resourceid=None):
+        return super().get(
+            request,
+            resourceid=resourceid,
+            view_template="views/resource/versioned-edit-log.htm",
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        resourceid = kwargs.get("resourceid")
+
+        version_tree_data = None
+        if resourceid:
+            try:
+                current_version = VersionedResource.objects.select_related(
+                    "resourceinstance__resource_instance_lifecycle_state",
+                ).get(pk=resourceid)
+
+                siblings = (
+                    VersionedResource.objects.filter(
+                        resource_group_id=current_version.resource_group_id,
+                    )
+                    .select_related(
+                        "resourceinstance__resource_instance_lifecycle_state",
+                    )
+                    .order_by("created_at")
+                )
+
+                version_tree_data = json.dumps(
+                    [
+                        {
+                            "resourceinstanceid": str(version.pk),
+                            "major_version": version.major_version,
+                            "minor_version": version.minor_version,
+                            "version_label": f"{version.major_version}.{version.minor_version}",
+                            "lifecycle_state": str(
+                                version.resourceinstance.resource_instance_lifecycle_state.name
+                            ),
+                            "created_at": version.created_at.isoformat(),
+                            "is_current": str(version.pk) == str(resourceid),
+                            "display_name": str(version.resourceinstance.name),
+                        }
+                        for version in siblings
+                    ]
+                )
+            except VersionedResource.DoesNotExist:
+                pass
+
+        context["version_tree_data"] = version_tree_data
+        return context
