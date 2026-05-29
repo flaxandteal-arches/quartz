@@ -42,11 +42,5 @@ for resources that have VersionedResource records.
     }
 </script>
 {% endif %}
-{% endblock pre_require_js %}
-
-{% block arches_modules %}
-{{ block.super }}
-{% if version_tree_data %}
 {% render_bundle 'views/resource/version-tree' %}
-{% endif %}
-{% endblock arches_modules %}
+{% endblock pre_require_js %}

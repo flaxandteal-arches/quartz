@@ -237,10 +237,7 @@ function initToggle() {
 
     try {
         const treeData = JSON.parse(dataElement.textContent);
-        renderVersionTree(
-            '#version-tree-svg',
-            treeData.versions
-        );
+        renderVersionTree('#version-tree-svg', treeData.versions);
         initToggle();
     } catch (error) {
         console.error('Failed to initialize version tree:', error);
