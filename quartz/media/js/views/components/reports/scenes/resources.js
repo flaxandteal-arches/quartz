@@ -1,4 +1,3 @@
-console.log("[QUARTZ resources.js] MODULE LOADING — quartz override is active");
 import _ from "underscore";
 import ko from "knockout";
 import arches from "arches";
@@ -352,52 +351,48 @@ export default ko.components.register(
                 // Condition Reports link TO this Heritage Item via their
                 // "Associated Monument / Heritage Item" node, so we query the
                 // related-resources API and filter by Condition Report graph ID.
-                console.log("[CR] conditionReports flag:", self.dataConfig.conditionReports, "resourceinstanceid:", self.dataConfig.resourceinstanceid);
                 if (self.dataConfig.conditionReports && self.dataConfig.resourceinstanceid) {
                     const relatedUrl = arches.urls.related_resources + self.dataConfig.resourceinstanceid + "?paginate=false";
-                    console.log("[CR] fetching:", relatedUrl);
                     $.ajax({ url: relatedUrl })
                         .done(function (response) {
                             const related = Array.isArray(response.related_resources)
                                 ? response.related_resources
                                 : [];
-                            console.log("[CR] related_resources count:", related.length, "| looking for graph_id:", CONDITION_REPORT_GRAPH_ID);
-                            related.forEach(r => console.log("[CR] related item graph_id:", r.graph_id, r.resourceinstanceid));
 
                             const reports = related
                                 .filter(r => r.graph_id === CONDITION_REPORT_GRAPH_ID)
                                 .map(r => {
                                     const tiles = r.tiles || [];
 
-                                    // Date — already formatted as "YYYY-MM-DD" in tile data
+                                    // Date - already formatted as "YYYY-MM-DD" in tile data
                                     const date = getNodeFromTiles(tiles, CR_DATE_NODE) || "";
 
-                                    // Summary Type — controlled-list concept
+                                    // Summary Type - controlled-list concept
                                     const summaryType = conceptLabel(
                                         getNodeFromTiles(tiles, CR_SUMMARY_TYPE_NODE)
                                     );
 
-                                    // Summary — i18n text
+                                    // Summary - i18n text
                                     const summary = i18nString(
                                         getNodeFromTiles(tiles, CR_SUMMARY_NODE)
                                     );
 
-                                    // Officer / Report Author — i18n text
+                                    // Officer / Report Author - i18n text
                                     const officer = i18nString(
                                         getNodeFromTiles(tiles, CR_OFFICER_NODE)
                                     );
 
-                                    // Condition rating — controlled-list concept
+                                    // Condition rating - controlled-list concept
                                     const condition = conceptLabel(
                                         getNodeFromTiles(tiles, CR_CONDITION_NODE)
                                     );
 
-                                    // Occupancy — controlled-list concept
+                                    // Occupancy - controlled-list concept
                                     const occupancy = conceptLabel(
                                         getNodeFromTiles(tiles, CR_OCCUPANCY_NODE)
                                     );
 
-                                    // Maintenance — controlled-list concept
+                                    // Maintenance - controlled-list concept
                                     const maintenance = conceptLabel(
                                         getNodeFromTiles(tiles, CR_MAINTENANCE_NODE)
                                     );
@@ -415,7 +410,6 @@ export default ko.components.register(
                                     return { date, summaryType, summary, officer, condition, occupancy, maintenance, resourceUrl };
                                 });
 
-                            console.log("[CR] reports mapped:", reports.length, reports);
                             self.conditionReports(reports);
                         })
                         .fail(function (xhr, status, error) {
