@@ -23,6 +23,8 @@ WEBPACK_LOADER = {
     },
 }
 
+AUTHENTICATION_BACKENDS += ("axes.backends.AxesStandaloneBackend",)
+
 DATATYPE_LOCATIONS.append("quartz.datatypes")
 FUNCTION_LOCATIONS.append("quartz.functions")
 ETL_MODULE_LOCATIONS.append("quartz.etl_modules")
@@ -220,6 +222,7 @@ INSTALLED_APPS = (
     "django_saml2_auth",  # SAML2 SSO Authentication
     # "silk",
     "certificate_generator",
+    "axes",
 )
 
 # Placing this last ensures any templates provided by Arches Applications
@@ -248,6 +251,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "arches.app.utils.middleware.SetAnonymousUser",
     # "silk.middleware.SilkyMiddleware",
+    "axes.middleware.AxesMiddleware",
 ]
 
 MIDDLEWARE.insert(  # this must resolve to first MIDDLEWARE entry
