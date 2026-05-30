@@ -17,8 +17,8 @@ import ReportModel from 'models/report';
 import CardViewModel from 'viewmodels/card';
 import ProvisionalTileViewModel from 'viewmodels/provisional-tile';
 import data from 'views/resource/resource-editor-data';
-import 'views/resource/permissions-manager'
-import 'views/resource/related-resources-manager'
+import 'views/resource/permissions-manager';
+import 'views/resource/related-resources-manager';
 import 'bindings/resizable-sidepanel';
 import 'bindings/sortable';
 import 'moment';
@@ -171,6 +171,7 @@ var vm = {
     issystemsettings: data.issystemsettings,
     isVersioned: data.is_versioned,
     isWorkingDraft: data.is_working_draft,
+    canCreateFinalVersion: data.can_create_final_version,
     reviewer: data.userisreviewer,
     graphiconclass: data.graphiconclass,
     relationship_types: data.relationship_types,
@@ -257,7 +258,7 @@ var vm = {
                 },
                 error: function () {
                     loading(false);
-                    vm.alert(new AlertViewModel('ep-alert-red', arches.translations.resourceCopyFailed.title, arches.translations.resourceCopyFailed.text, null, function () { }));
+                    vm.alert(new AlertViewModel('ep-alert-red', arches.translations.resourceCopyFailed?.title, arches.translations.resourceCopyFailed?.text, null, function () { }));
                 },
             });
         }
@@ -266,6 +267,38 @@ var vm = {
                 'ep-alert-red',
                 arches.translations.resourceCopyFailed.title,
                 arches.translations.resourceCopyFailed.text,
+                null,
+                function () { }
+            ));
+        }
+    },
+    finalizeWorkingDraft: function () {
+        if (resourceId()) {
+            vm.menuActive(false);
+            loading(true);
+            $.ajax({
+                type: "GET",
+                // TODO: fix this url construction in the view so we don't have to do string replacement here to get the correct endpoint
+                url: arches.urls.resource_copy.replace('//', '/' + resourceId() + '/').replace('copy', 'finalize') ,
+                success: function (data) {
+                    // use sessionStorage to pass copied resource data to reloaded editor page
+                    sessionStorage.setItem('finalizeAlert', JSON.stringify({
+                        resourceid: data.resourceid,
+                        isVersioned: true,
+                    }));
+                    window.location.reload();
+                },
+                error: function () {
+                    loading(false);
+                    vm.alert(new AlertViewModel('ep-alert-red', 'Error', 'An error occurred while finalizing the resource version.', null, function () { }));
+                },
+            });
+        }
+        else {
+            vm.alert(new AlertViewModel(
+                'ep-alert-red',
+                "Error",
+                "An error occurred while finalizing the resource version.",
                 null,
                 function () { }
             ));
@@ -418,6 +451,19 @@ if (pendingCopyAlert) {
         'ep-alert-blue',
         translations.title,
         `<a style='color: #fff; font-weight: 700;' target='_blank' href='${arches.urls.resource_editor}${copyData.resourceid}'>${translations.text}</a>`,
+        null,
+        function () { }
+    ));
+}
+
+const pendingFinalizeAlert = sessionStorage.getItem('finalizeAlert');
+if (pendingFinalizeAlert) {
+    sessionStorage.removeItem('finalizeAlert');
+    const finalizeData = JSON.parse(pendingFinalizeAlert);
+    vm.alert(new AlertViewModel(
+        'ep-alert-blue',
+        'Success',
+        `<a style='color: #fff; font-weight: 700;' target='_blank' href='${arches.urls.resource_editor}${finalizeData.resourceid}'>Click here to view the finalized resource version.</a>`,
         null,
         function () { }
     ));
