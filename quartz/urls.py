@@ -40,6 +40,11 @@ _app_urlpatterns = [
         name="resource_copy",
     ),
     re_path(
+        r"^resource/(?P<resourceid>[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/finalize$",
+        VersionedResourceEditorView.as_view(action="finalize_working_draft"),
+        name="finalize_working_draft",
+    ),
+    re_path(
         r"^resource/(?P<resourceid>[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$",
         VersionedResourceEditorView.as_view(),
         name="resource_editor",
@@ -49,7 +54,7 @@ _app_urlpatterns = [
     path("", include("arches.urls")),
     path("", include("arches_controlled_lists.urls")),
     path("", include("arches_her.urls")),
-    path("", include("certificate_generator.urls")),
+    # path("", include("certificate_generator.urls")),
     path("", include("arches_model_viewer.urls")),
     path("", include("arches_notifications.urls")),
     path("", include("arches_modular_reports.urls")),

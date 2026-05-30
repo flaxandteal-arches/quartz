@@ -35,6 +35,17 @@ Changes:
                         </div>
                     </a>
                 </li>
+                    {% if can_create_final_version %}
+                    <li id="settings-manager" class="edit-menu-item" data-bind="css: {'disabled': !resourceId()}">
+                        <a href="" target="" class="" data-bind="click: finalizeWorkingDraft">
+                            <div class="media-body">
+                                <div class="menu-item-title"><i class="fa fa-copy"></i> {% trans "Finalize this Draft" %} </div>
+                                <span class="text-muted menu-item-subtitle">{% trans "Makes this draft the final version." %}</span>
+                            </div>
+                        </a>
+                    </li>
+                    {% endif %}
+
                 {% endif %}
 
                 <!-- Menu Item -->
