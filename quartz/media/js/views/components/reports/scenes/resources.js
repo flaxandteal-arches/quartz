@@ -182,7 +182,7 @@ export default ko.components.register(
                     userAvailableConsulationCards().then(function (cards_response) {
                         if (cards_response !== false) {
                             var card_names = [];
-                            for (card in cards_response.cards) {
+                            for (const card in cards_response.cards) {
                                 card_names.push(cards_response.cards[card].name);
                             }
                             if (card_names.includes("Associated Consultations")) {
