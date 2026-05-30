@@ -1,11 +1,13 @@
+import json
 import logging
+import uuid
 
 from django.db import transaction
 
 from arches.app.models import models
 from arches.app.models.resource import Resource
 from arches.app.utils.response import JSONErrorResponse, JSONResponse
-from arches.app.views.resource import ResourceEditorView
+from arches.app.views.resource import ResourceEditorView, ResourceEditLogView
 
 from arches_resource_version_manager.lifecycle import archive_copy_of_current_draft
 from arches_resource_version_manager.models import VersionedResource
@@ -55,14 +57,12 @@ class VersionedResourceEditorView(ResourceEditorView):
     def copy(self, request, resourceid=None):
         try:
             versioned_resource = VersionedResource.objects.get(pk=resourceid)
-        except VersionedResource.DoesNotExist:
-            return super().copy(request, resourceid)
-
-        try:
             with transaction.atomic():
+                transaction_id = uuid.uuid4()
                 archived_version = archive_copy_of_current_draft(
-                    versioned_resource.resource_group_id, request.user
+                    versioned_resource.resource_group_id, request.user, transaction_id
                 )
+                archived_resource = Resource.objects.get(pk=archived_version.pk)
                 current_draft_version = VersionedResource.objects.get_current_draft(
                     versioned_resource.resource_group_id
                 )
@@ -92,21 +92,70 @@ class VersionedResourceEditorView(ResourceEditorView):
                     )
                 ]
                 current_draft_resource.save(
+                    transaction_id=transaction_id,
                     request=request,
                     user=request.user,
+                    edit_log_type="copy",
+                    edit_log_note="Archived to",
+                    edit_log_newvalue={
+                        "resourceinstanceid": str(archived_resource.pk),
+                        "descriptors": archived_resource.descriptors,
+                    },
+                )
+                return JSONResponse({"resourceid": str(archived_version.pk)})
+        except VersionedResource.DoesNotExist:
+            return super().copy(request, resourceid)
+
+
+class VersionedResourceEditLogView(ResourceEditLogView):
+
+    def get(self, request, resourceid=None):
+        return super().get(
+            request,
+            resourceid=resourceid,
+            view_template="views/resource/versioned-edit-log.htm",
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        resourceid = kwargs.get("resourceid")
+
+        version_tree_data = None
+        if resourceid:
+            try:
+                current_version = VersionedResource.objects.select_related(
+                    "resourceinstance__resource_instance_lifecycle_state",
+                ).get(pk=resourceid)
+
+                siblings = (
+                    VersionedResource.objects.filter(
+                        resource_group_id=current_version.resource_group_id,
+                    )
+                    .select_related(
+                        "resourceinstance__resource_instance_lifecycle_state",
+                    )
+                    .order_by("created_at")
                 )
 
-        except VersionedResource.DoesNotExist:
-            return JSONErrorResponse(
-                "Version Error",
-                "No Draft version found for this resource group.",
-                status=400,
-            )
-        except Exception as e:
-            return JSONErrorResponse(
-                "Version Error",
-                "Error copying and versioning resource",
-                status=400,
-            )
+                version_tree_data = json.dumps(
+                    [
+                        {
+                            "resourceinstanceid": str(version.pk),
+                            "major_version": version.major_version,
+                            "minor_version": version.minor_version,
+                            "version_label": f"{version.major_version}.{version.minor_version}",
+                            "lifecycle_state": str(
+                                version.resourceinstance.resource_instance_lifecycle_state.name
+                            ),
+                            "created_at": version.created_at.isoformat(),
+                            "is_current": str(version.pk) == str(resourceid),
+                            "display_name": str(version.resourceinstance.name),
+                        }
+                        for version in siblings
+                    ]
+                )
+            except VersionedResource.DoesNotExist:
+                pass
 
-        return JSONResponse({"resourceid": str(archived_version.pk)})
+        context["version_tree_data"] = version_tree_data
+        return context
