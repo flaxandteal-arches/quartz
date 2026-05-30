@@ -6,7 +6,10 @@ from django.urls import include, path, re_path
 import django_saml2_auth.views
 
 from quartz.views.detsi_api import DynamicsHeritageSyncView
-from quartz.views.resource import VersionedResourceEditorView
+from quartz.views.resource import (
+    VersionedResourceEditorView,
+    VersionedResourceEditLogView,
+)
 
 handler400 = "arches.app.views.main.custom_400"
 handler403 = "arches.app.views.main.custom_403"
@@ -26,6 +29,11 @@ _api_urlpatterns = [
 _app_urlpatterns = [
     re_path(r"^sso/", include("django_saml2_auth.urls")),
     re_path(r"^sso/signin/$", django_saml2_auth.views.signin, name="saml2_signin"),
+    re_path(
+        r"^resource/(?P<resourceid>[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/history$",
+        VersionedResourceEditLogView.as_view(),
+        name="resource_edit_log",
+    ),
     re_path(
         r"^resource/(?P<resourceid>[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/copy$",
         VersionedResourceEditorView.as_view(action="copy"),

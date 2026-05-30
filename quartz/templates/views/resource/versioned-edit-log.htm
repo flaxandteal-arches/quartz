@@ -1,0 +1,46 @@
+<!--
+Extends (does not override): arches/app/templates/views/resource/edit-log.htm
+Adds a collapsible version tree visualization panel above the edit log timeline
+for resources that have VersionedResource records.
+-->
+{% extends "views/resource/edit-log.htm" %}
+{% load i18n %}
+{% load webpack_loader %}
+
+{% block main_content %}
+{% if version_tree_data %}
+<div class="version-tree-panel" id="version-tree-panel">
+    <div
+        class="version-tree-header"
+        id="version-tree-toggle"
+        role="button"
+        tabindex="0"
+        aria-expanded="true"
+        aria-controls="version-tree-container"
+    >
+        <h4 class="version-tree-title">
+            <i class="fa fa-chevron-down" id="version-tree-chevron"></i>
+            {% trans 'Version History' %}
+        </h4>
+    </div>
+    <div id="version-tree-container" class="version-tree-container">
+        <div id="version-tree-svg"></div>
+    </div>
+</div>
+{% endif %}
+
+{{ block.super }}
+{% endblock main_content %}
+
+{% block pre_require_js %}
+{{ block.super }}
+{% if version_tree_data %}
+<script id="versionTreeData" type="application/json">
+    {
+        "versions": {{ version_tree_data|safe }},
+        "currentResourceId": "{{ resourceid|escapejs }}"
+    }
+</script>
+{% endif %}
+{% render_bundle 'views/resource/version-tree' %}
+{% endblock pre_require_js %}
