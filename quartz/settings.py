@@ -650,6 +650,9 @@ SESSION_COOKIE_SAMESITE = "Lax"
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SECURE = False
 
+# Arches Search
+INDEX_BATCH_SIZE = int(os.environ.get("INDEX_BATCH_SIZE", 500))
+
 
 try:
     from .package_settings import *
