@@ -168,7 +168,7 @@ export default ko.components.register(
                     );
                 }
 
-                const userAvailableConsulationCards = () => {
+                const userAvailableConsultationCards = () => {
                     return $.ajax({
                         url: generateArchesURL("arches:api_card", { resourceid: self.dataConfig.resourceinstanceid }),
                         context: this,
@@ -178,7 +178,7 @@ export default ko.components.register(
                 };
 
                 if (self.dataConfig.resourceinstanceid) {
-                    userAvailableConsulationCards().then(function (cards_response) {
+                    userAvailableConsultationCards().then(function (cards_response) {
                         if (cards_response !== false) {
                             var card_names = [];
                             for (const card in cards_response.cards) {
