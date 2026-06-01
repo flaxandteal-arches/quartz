@@ -114,7 +114,7 @@ FILENAME_GENERATOR = "arches.app.utils.storage_filename_generator.generate_filen
 #     docker/docker-compose.yml).
 #   - Azure: set the Cantaloupe AzureStorageSource path_prefix to
 #     "<UPLOADED_FILES_DIR>/" so it reads the same blob keys Django writes.
-UPLOADED_FILES_DIR = ""
+UPLOADED_FILES_DIR = os.environ.get("UPLOADED_FILES_DIR", "")
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-1#dmpd#$*y+ebl73yp89-rgrlp7)$dsc3yh2d35@b4y@j5n^ge"
@@ -251,7 +251,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "arches.app.utils.middleware.SetAnonymousUser",
     # "silk.middleware.SilkyMiddleware",
-    "axes.middleware.AxesMiddleware",
+    # "axes.middleware.AxesMiddleware", NOTE: this requires request as a param in authenticate(...) calls
 ]
 
 MIDDLEWARE.insert(  # this must resolve to first MIDDLEWARE entry
@@ -496,7 +496,7 @@ CELERY_BEAT_SCHEDULE = {
 # way of monitoring celery so you can detect the background task not being available.
 CELERY_CHECK_ONLY_INSPECT_BROKER = False
 
-CANTALOUPE_DIR = os.path.join(ROOT_DIR, UPLOADED_FILES_DIR)
+CANTALOUPE_DIR = os.path.join(APP_ROOT, UPLOADED_FILES_DIR)
 CANTALOUPE_HTTP_ENDPOINT = "http://cantaloupe:8182/"
 
 ACCESSIBILITY_MODE = False
