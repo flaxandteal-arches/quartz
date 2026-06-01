@@ -1,6 +1,5 @@
 import _ from "underscore";
 import ko from "knockout";
-import arches from "arches";
 import reportUtils from "utils/report";
 import ResourcesTemplate from "templates/views/components/reports/scenes/resources.htm";
 import "bindings/datatable";
@@ -351,7 +350,7 @@ export default ko.components.register(
                 // "Associated Monument / Heritage Item" node, so we query the
                 // related-resources API and filter by Condition Report graph ID.
                 if (self.dataConfig.conditionReports && self.dataConfig.resourceinstanceid) {
-                    const relatedUrl = arches.urls.related_resources + self.dataConfig.resourceinstanceid + "?paginate=false";
+                    const relatedUrl = generateArchesURL("arches:related_resources", { resourceid: self.dataConfig.resourceinstanceid }) + "?paginate=false";
                     $.ajax({ url: relatedUrl })
                         .done(function (response) {
                             const related = Array.isArray(response.related_resources)
