@@ -125,8 +125,7 @@ export default ko.components.register(
             };
             Object.assign(self.dataConfig, params.dataConfig || {});
 
-            if (params?.compiled) {
-            } else {
+            if (!(params?.compiled)) {
                 const associatedActivitiesNode = self.getRawNodeValue(
                     params.data(),
                     self.dataConfig.activities,
