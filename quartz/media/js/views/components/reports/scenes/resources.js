@@ -247,7 +247,7 @@ export default ko.components.register(
                         self.assets(
                             associatedArtifactsNode.map((x) => {
                                 var resource = [];
-                                for (const element of x[key]["instance_details"]) {
+                                for (const element of (x[key]?.["instance_details"] || [])) {                                                                                                                                     
                                     if (element) {
                                         resource.push({
                                             resourceName: self.getNodeValue(element),
