@@ -54,7 +54,7 @@ _app_urlpatterns = [
     path("", include("arches.urls")),
     path("", include("arches_controlled_lists.urls")),
     path("", include("arches_her.urls")),
-    # path("", include("certificate_generator.urls")),
+    path("", include("certificate_generator.urls")),
     path("", include("arches_model_viewer.urls")),
     path("", include("arches_notifications.urls")),
     path("", include("arches_modular_reports.urls")),
