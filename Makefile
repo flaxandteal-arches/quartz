@@ -15,7 +15,7 @@ ifneq ($(ARCHES_ROOT),)
 else
   DOCKER_COMPOSE_FILES = -f docker/docker-compose.yml
 endif
-ARCHES_BASE = ghcr.io/flaxandteal/arches-base:v8.2.0a3-v3
+ARCHES_BASE = ghcr.io/flaxandteal/arches-base:v8.2.0a4-v1
 ARCHES_PROJECT_ROOT = $(shell pwd)/
 DOCKER_COMPOSE_COMMAND = ARCHES_PROJECT_ROOT=$(ARCHES_PROJECT_ROOT) ARCHES_BASE=$(ARCHES_BASE) ARCHES_PROJECT=$(ARCHES_PROJECT) ARCHES_ROOT=$(ARCHES_ROOT) docker compose -p $(ARCHES_PROJECT) $(DOCKER_COMPOSE_FILES)
 USE_LOCAL_APPS ?= false
@@ -38,7 +38,7 @@ post-create-setup:
 	fi
 	@# Update GitHub Actions workflow - Arches base image
 	@if [ -f "$(ARCHES_PROJECT_ROOT).github/workflows/main.yml" ]; then \
-		sed -i.bak 's|ghcr.io/flaxandteal/arches-base:v8.2.0a3-v3|$(ARCHES_BASE)|g' $(ARCHES_PROJECT_ROOT).github/workflows/main.yml && \
+		sed -i.bak 's|ghcr.io/flaxandteal/arches-base:v8.2.0a4-v1|$(ARCHES_BASE)|g' $(ARCHES_PROJECT_ROOT).github/workflows/main.yml && \
 		rm -f $(ARCHES_PROJECT_ROOT).github/workflows/main.yml.bak && \
 		echo "✓ Updated .github/workflows/main.yml Arches base image: $(ARCHES_BASE)"; \
 	else \
