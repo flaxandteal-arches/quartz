@@ -114,13 +114,14 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
             </div>
         </div>
 
-        <div class="main-panel card-component-panel" style="height: calc(100vh - 50px);">
+        <div class="main-panel card-component-panel" style="height: calc(100vh - 50px); display: flex; flex-direction: column;">
             <!-- ko if: ko.unwrap(resourceInstanceLifecycleState) -->
             <div 
                 style="
                     background-color: #fff;
-                    border-bottom: 1px solid #ddd; 
+                    border-bottom: 1px solid #ddd;
                     height: 50px;
+                    flex-shrink: 0;
                     padding: 0px 10px;
                     display: flex;
                 "
@@ -183,7 +184,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
             </div>
             <!-- /ko -->
              
-            <div style="height: inherit;">
+            <div style="flex: 1; min-height: 0;">
                 <!--ko if: selection() === 'related-resources' -->
                 <div>
                      <div data-bind="component: {
@@ -394,7 +395,8 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
         "resource_instance_lifecycle_state": {{resource_instance_lifecycle_state}},
         "issystemsettings": {{is_system_settings|yesno:"true,false"}},
         "is_versioned": {{is_versioned|yesno:"true,false"}},
-        "is_working_draft": {{is_working_draft|yesno:"true,false"}}
+        "is_working_draft": {{is_working_draft|yesno:"true,false"}},
+        "can_create_final_version": {{can_create_final_version|yesno:"true,false"}}
     }'
 ></div>
 {% endblock pre_require_js %}

@@ -13,6 +13,8 @@ try:
 except ImportError:
     pass
 
+TIME_ZONE = "Australia/Brisbane"
+
 APP_NAME = "quartz"
 APP_VERSION = semantic_version.Version(major=0, minor=0, patch=0)
 APP_ROOT = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
@@ -22,6 +24,9 @@ WEBPACK_LOADER = {
         "STATS_FILE": os.path.join(APP_ROOT, "..", "webpack/webpack-stats.json"),
     },
 }
+
+# NOTE: this requires request as a param in authenticate(...) calls
+# AUTHENTICATION_BACKENDS += ("axes.backends.AxesStandaloneBackend",)
 
 DATATYPE_LOCATIONS.append("quartz.datatypes")
 FUNCTION_LOCATIONS.append("quartz.functions")
@@ -112,7 +117,7 @@ FILENAME_GENERATOR = "arches.app.utils.storage_filename_generator.generate_filen
 #     docker/docker-compose.yml).
 #   - Azure: set the Cantaloupe AzureStorageSource path_prefix to
 #     "<UPLOADED_FILES_DIR>/" so it reads the same blob keys Django writes.
-UPLOADED_FILES_DIR = ""
+UPLOADED_FILES_DIR = os.environ.get("UPLOADED_FILES_DIR", "")
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-1#dmpd#$*y+ebl73yp89-rgrlp7)$dsc3yh2d35@b4y@j5n^ge"
@@ -220,6 +225,7 @@ INSTALLED_APPS = (
     "django_saml2_auth",  # SAML2 SSO Authentication
     # "silk",
     "certificate_generator",
+    "axes",
 )
 
 # Placing this last ensures any templates provided by Arches Applications
@@ -248,6 +254,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "arches.app.utils.middleware.SetAnonymousUser",
     # "silk.middleware.SilkyMiddleware",
+    # "axes.middleware.AxesMiddleware",
 ]
 
 MIDDLEWARE.insert(  # this must resolve to first MIDDLEWARE entry
@@ -492,7 +499,7 @@ CELERY_BEAT_SCHEDULE = {
 # way of monitoring celery so you can detect the background task not being available.
 CELERY_CHECK_ONLY_INSPECT_BROKER = False
 
-CANTALOUPE_DIR = os.path.join(ROOT_DIR, UPLOADED_FILES_DIR)
+CANTALOUPE_DIR = os.path.join(APP_ROOT, UPLOADED_FILES_DIR)
 CANTALOUPE_HTTP_ENDPOINT = "http://cantaloupe:8182/"
 
 ACCESSIBILITY_MODE = False
@@ -645,6 +652,9 @@ ENABLE_USER_SIGNUP = bool(os.environ.get("ENABLE_USER_SIGNUP", False))
 SESSION_COOKIE_SAMESITE = "Lax"
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SECURE = False
+
+# Arches Search
+INDEX_BATCH_SIZE = int(os.environ.get("INDEX_BATCH_SIZE", 500))
 
 
 try:

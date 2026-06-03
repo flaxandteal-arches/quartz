@@ -1,4 +1,5 @@
 import logging
+import uuid
 
 from arches.app.models import models
 from arches.app.models.resource import Resource
@@ -19,6 +20,7 @@ from .payload_utils import (
     parse_reference_node,
     parse_resource_instance_id,
 )
+from .versioned_resource_utils import calculate_next_version
 
 logger = logging.getLogger(__name__)
 
@@ -96,29 +98,16 @@ NODE_AREA_REFERENCE_VALUE = "87d3c3fc-f44f-11eb-beff-a87eeabdefba"  # dpp_plan
 LOT_ON_PLAN_NODEGROUP = "6a19facf-8f47-54a2-84b8-d0173db7eaa3"
 NODE_LOT = "5717a450-e62b-5dfa-857a-c42e7791a6e4"  # dpp_lot
 
-# Descriptions nodegroup  (repeatable — one tile per description entry)
-# DESCRIPTIONS_NODEGROUP = "ba342e69-b554-11ea-a027-f875a44e0e11"
-# NODE_DESCRIPTION = "ba345577-b554-11ea-a9ee-f875a44e0e11"  # string
-# NODE_DESCRIPTION_TYPE = "ba34557b-b554-11ea-ab95-f875a44e0e11"  # reference
-
-# External Cross References nodegroup  (repeatable — one tile per lot/plan)
-# EXTERNAL_XREF_NODEGROUP = "f17f6581-efc7-11eb-b09f-a87eeabdefba"
-# NODE_EXTERNAL_XREF = "f17f6584-efc7-11eb-81f1-a87eeabdefba"  # string
-# NODE_EXTERNAL_XREF_SOURCE = "f17f658a-efc7-11eb-a216-a87eeabdefba"  # reference
-
 # Nodegroups whose tiles are fully replaced on each sync.
 # Includes Location Data and all its UI child nodegroups (Addresses, Geometry, etc.).
 _STATUTORY_NODEGROUPS = {
     NAMES_NODEGROUP,
     SYSTEM_REF_NODEGROUP,
     DESIGNATION_NODEGROUP,
-    # LOCATION_DATA_NODEGROUP,
     ADDRESSES_NODEGROUP,
     GEOMETRY_NODEGROUP,
     AREA_ASSIGNMENT_NODEGROUP,
     LOT_ON_PLAN_NODEGROUP,
-    # DESCRIPTIONS_NODEGROUP,
-    # EXTERNAL_XREF_NODEGROUP,
 }
 
 _MANAGED_NODEGROUPS = _STATUTORY_NODEGROUPS | {VERSIONING_NODEGROUP}
@@ -160,10 +149,9 @@ def process_heritage_item(payload: dict, user) -> tuple:
         heritage_id_number
     )
 
-    next_major, next_minor = _next_version(
+    next_major, next_minor = calculate_next_version(
+        current_draft_version,
         is_final,
-        current_draft_version.major_version if current_draft_version else None,
-        current_draft_version.minor_version if current_draft_version else None,
         version_from_payload,
     )
 
@@ -189,7 +177,11 @@ def process_heritage_item(payload: dict, user) -> tuple:
     # ------------------------------------------------------------------
     # Existing item: archive the current Draft and get back the resource.
     # ------------------------------------------------------------------
-    archive_copy_of_current_draft(heritage_id_number, user)
+    transaction_id = uuid.uuid4()
+    archived_version = archive_copy_of_current_draft(
+        heritage_id_number, user, transaction_id
+    )
+    archived_resource = models.Resource.objects.get(pk=archived_version.pk)
 
     current_draft_version.metadata = payload
     current_draft_version.major_version = next_major
@@ -197,6 +189,16 @@ def process_heritage_item(payload: dict, user) -> tuple:
     current_draft_version.save()
 
     current_draft_resource = models.Resource.objects.get(pk=current_draft_version.pk)
+    current_draft_resource.save_edit(
+        transaction_id=transaction_id,
+        user=user,
+        edit_type="copy",
+        note="Archived to",
+        newvalue={
+            "resourceinstanceid": str(archived_resource.pk),
+            "descriptors": archived_resource.descriptors,
+        },
+    )
 
     # Update the Draft resource with data from the incoming payload.
     models.TileModel.objects.filter(
@@ -218,15 +220,19 @@ def process_heritage_item(payload: dict, user) -> tuple:
     return current_draft_resource, False, f"{next_major}.{next_minor}"
 
 
-def _next_version(
-    is_final: bool,
-    current_major: int,
-    current_minor: int,
-    version_from_payload,
-) -> tuple[int, int]:
-    if is_final or (current_major is None and current_minor is None):
-        return int(version_from_payload), 0
-    return current_major, current_minor + 1
+def increment_current_working_draft_version(
+    resourceid: str, major_version: int, minor_version: int
+):
+    """Update or create the version information tile for the given resource instance."""
+    current_draft_resource = Resource.objects.get(pk=resourceid)
+    models.TileModel.objects.filter(
+        resourceinstance_id=current_draft_resource.pk,
+        nodegroup_id=VERSIONING_NODEGROUP,
+    ).delete()
+    current_draft_resource.tiles = _build_version_tile(
+        major_version, minor_version, resourceid
+    )
+    return current_draft_resource
 
 
 def _is_final_payload(payload: dict) -> bool:
