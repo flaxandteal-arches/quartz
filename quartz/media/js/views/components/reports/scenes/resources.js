@@ -1,6 +1,5 @@
 import _ from "underscore";
 import ko from "knockout";
-import arches from "arches";
 import reportUtils from "utils/report";
 import ResourcesTemplate from "templates/views/components/reports/scenes/resources.htm";
 import "bindings/datatable";
@@ -125,8 +124,7 @@ export default ko.components.register(
             };
             Object.assign(self.dataConfig, params.dataConfig || {});
 
-            if (params?.compiled) {
-            } else {
+            if (!(params?.compiled)) {
                 const associatedActivitiesNode = self.getRawNodeValue(
                     params.data(),
                     self.dataConfig.activities,
@@ -169,7 +167,7 @@ export default ko.components.register(
                     );
                 }
 
-                const userAvailableConsulationCards = () => {
+                const userAvailableConsultationCards = () => {
                     return $.ajax({
                         url: generateArchesURL("arches:api_card", { resourceid: self.dataConfig.resourceinstanceid }),
                         context: this,
@@ -179,7 +177,7 @@ export default ko.components.register(
                 };
 
                 if (self.dataConfig.resourceinstanceid) {
-                    userAvailableConsulationCards().then(function (cards_response) {
+                    userAvailableConsultationCards().then(function (cards_response) {
                         if (cards_response !== false) {
                             var card_names = [];
                             for (const card in cards_response.cards) {
@@ -248,7 +246,7 @@ export default ko.components.register(
                         self.assets(
                             associatedArtifactsNode.map((x) => {
                                 var resource = [];
-                                for (const element of x[key]["instance_details"]) {
+                                for (const element of (x[key]?.["instance_details"] || [])) {                                                                                                                                     
                                     if (element) {
                                         resource.push({
                                             resourceName: self.getNodeValue(element),
@@ -352,7 +350,7 @@ export default ko.components.register(
                 // "Associated Monument / Heritage Item" node, so we query the
                 // related-resources API and filter by Condition Report graph ID.
                 if (self.dataConfig.conditionReports && self.dataConfig.resourceinstanceid) {
-                    const relatedUrl = arches.urls.related_resources + self.dataConfig.resourceinstanceid + "?paginate=false";
+                    const relatedUrl = generateArchesURL("arches:related_resources", { resourceid: self.dataConfig.resourceinstanceid }) + "?paginate=false";
                     $.ajax({ url: relatedUrl })
                         .done(function (response) {
                             const related = Array.isArray(response.related_resources)
