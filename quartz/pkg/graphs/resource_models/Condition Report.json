@@ -625,19 +625,19 @@
                         "descriptor_types": {
                             "description": {
                                 "nodegroup_id": "77cef118-454b-46e8-98a1-ab72095b3e3c",
-                                "string_template": "Condition Report For <Associated Heritage Item>"
+                                "string_template": "<associated_monument_heritage_item|id>, <condition>, <report_date> "
                             },
                             "map_popup": {
                                 "nodegroup_id": "77cef118-454b-46e8-98a1-ab72095b3e3c",
-                                "string_template": "Condition Report For <Associated Heritage Item>"
+                                "string_template": "<associated_monument_heritage_item|id>, <condition>, <report_date> "
                             },
                             "name": {
                                 "nodegroup_id": "77cef118-454b-46e8-98a1-ab72095b3e3c",
-                                "string_template": "Condition Report For <Associated Heritage Item>"
+                                "string_template": "<associated_monument_heritage_item|id>, <condition>, <report_date> "
                             }
                         }
                     },
-                    "function_id": "60000000-0000-0000-0000-000000000001",
+                    "function_id": "e7d7fd2a-973a-4b2c-8c6e-bd2238d7be70",
                     "graph_id": "9fccd932-8e8f-4595-89bd-3cb04ddfecae",
                     "id": "3447c3ef-8a5e-4a2b-a3a4-bb31a2613817"
                 }
