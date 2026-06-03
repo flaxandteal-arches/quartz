@@ -36,9 +36,9 @@ class ResourceIdDescriptor(AbstractPrimaryDescriptorsFunction):
     """
     Descriptor function that supports three placeholder forms in string_template:
 
-      <alias>             — replaced with the node's display value
-      <alias|id>          — replaced with the UUID of the first linked resource instance
-      <alias|nodealias>   — replaced with the value of <nodealias> on the linked resource
+      <alias>             - replaced with the node's display value
+      <alias|id>          - replaced with the UUID of the first linked resource instance
+      <alias|nodealias>   - replaced with the value of <nodealias> on the linked resource
     """
 
     def get_primary_descriptor_from_nodes(
