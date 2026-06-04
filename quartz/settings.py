@@ -25,6 +25,7 @@ WEBPACK_LOADER = {
     },
 }
 
+# NOTE: this requires request as a param in authenticate(...) calls
 # AUTHENTICATION_BACKENDS += ("axes.backends.AxesStandaloneBackend",)
 
 DATATYPE_LOCATIONS.append("quartz.datatypes")
