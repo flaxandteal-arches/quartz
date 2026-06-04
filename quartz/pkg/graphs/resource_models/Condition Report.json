@@ -128,7 +128,7 @@
                         "en": ""
                     },
                     "instructions": {
-                        "en": "Used to link this Condition Report to one or more related Monument, Heritage Area, Artefact, Maritime Vessel, or Historic Aircraft records."
+                        "en": "Used to link this Condition Report to one or more related Heritage Item"
                     },
                     "name": {
                         "en": "Associated Heritage Item"
@@ -427,8 +427,8 @@
                 {
                     "card_id": "a7f08502-c853-41da-bb6a-e87f0dfe0e07",
                     "config": {
-                        "defaultResourceInstance": [],
-                        "defaultValue": [],
+                        "defaultResourceInstance": null,
+                        "defaultValue": null,
                         "i18n_properties": [],
                         "label": "Associated Heritage Item",
                         "placeholder": ""
@@ -441,7 +441,7 @@
                     "sortorder": 0,
                     "source_identifier_id": null,
                     "visible": true,
-                    "widget_id": "ff3c400a-76ec-11e7-a793-784f435179ea"
+                    "widget_id": "31f3728c-7613-11e7-a139-784f435179ea"
                 },
                 {
                     "card_id": "5573f3f7-6be2-441f-b5dc-b90a7508485a",
@@ -812,7 +812,7 @@
                         "searchDsl": "",
                         "searchString": ""
                     },
-                    "datatype": "resource-instance-list",
+                    "datatype": "resource-instance",
                     "description": null,
                     "exportable": true,
                     "fieldname": "Assoc_Heri",
