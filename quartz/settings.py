@@ -672,3 +672,9 @@ except ImportError as e:
         from settings_local import *
     except ImportError as e:
         pass
+
+# Append after all other settings (including arches_her) have been loaded
+_condition_report_modifier = "quartz.search_indexes.displayname_search_modifier.DisplaynameSearchModifier"
+ES_MAPPING_MODIFIER_CLASSES = list(locals().get("ES_MAPPING_MODIFIER_CLASSES") or [])
+if _condition_report_modifier not in ES_MAPPING_MODIFIER_CLASSES:
+    ES_MAPPING_MODIFIER_CLASSES.append(_condition_report_modifier)
