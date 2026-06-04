@@ -346,7 +346,7 @@ def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
         if loc.get("location_type") == "Address":
             address = loc.get("cdm_name")
             lga = loc.get("dpp_localgovernmentareaname")
-            if address:
+            if address or lga:
                 tiles.append(
                     make_tile(
                         ADDRESSES_NODEGROUP,
