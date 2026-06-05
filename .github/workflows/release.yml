@@ -1,10 +1,14 @@
 name: Tag image as prod
-run-name: Tag image as prod (run ${{ inputs.run_id }})
+run-name: Tag image as prod (${{ inputs.source_tag }} → prod-${{ inputs.bid }})
 on:
   workflow_dispatch:
     inputs:
-      run_id:
-        description: 'The github.run_id of the build whose image you want to promote'
+      source_tag:
+        description: 'Existing image tag to promote (e.g. main-8234567)'
+        type: string
+        required: true
+      bid:
+        description: 'Hex build id for the prod- tag (e.g. git sha)'
         type: string
         required: true
 jobs:
@@ -16,7 +20,7 @@ jobs:
     env:
       IMAGE_REPO: ghcr.io/${{ github.repository }}_static_py
     steps:
-      - run: echo "🏷️ Promoting image from run ${{ inputs.run_id }} to prod."
+      - run: echo "🏷️ Promoting ${{ inputs.source_tag }} to prod-${{ inputs.bid }}."
       - name: Log in to Github
         uses: docker/login-action@v2
         with:
