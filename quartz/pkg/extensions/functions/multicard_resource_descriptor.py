@@ -6,6 +6,8 @@ import re
 
 from django.utils.translation import get_language, gettext as _
 
+from arches_resource_version_manager.models import VersionedResource
+
 # This duplicates the configuration declared in migration 0004,
 # but on first package load, the function will be re-registered, because
 # the .py file has not yet been placed in the destination folder.
@@ -52,7 +54,12 @@ class MulticardResourceDescriptor(AbstractPrimaryDescriptorsFunction):
         datatype_factory = None
         result = config["string_template"]
 
-        node_aliases = extract_substrings(result)
+        if (
+            str(resource.graph_id) == "076f9381-7b00-11e9-8d6b-80000b44d1d9"
+        ):  # heritage item graph
+            node_aliases, result = extract_heritige_item_substrings(result, resource)
+        else:
+            node_aliases = extract_substrings(result)
         nodes = models.Node.objects.filter(
             alias__in=node_aliases, graph_id=resource.graph_id
         )
@@ -80,3 +87,25 @@ def extract_substrings(template_string):
     substrings = re.findall(pattern, template_string)
 
     return substrings
+
+
+def extract_heritige_item_substrings(template_string, resource):
+    pattern = r"<(.*?)>"
+    substrings = re.findall(pattern, template_string)
+    try:
+        versioned_resource = VersionedResource.objects.get(
+            resourceinstance_id=resource.resourceinstanceid
+        )
+        working_draft = VersionedResource.objects.get_current_draft(
+            versioned_resource.resource_group_id
+        )
+        if working_draft == versioned_resource:
+            try:
+                substrings.remove("version")
+                template_string = template_string.replace("<version>", "")
+            except ValueError:
+                pass
+    except VersionedResource.DoesNotExist:
+        pass
+
+    return substrings, template_string
