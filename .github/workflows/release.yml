@@ -1,5 +1,5 @@
-name: Tag image as prod
-run-name: Tag image as prod (${{ inputs.source_tag }} → prod-${{ inputs.bid }})
+name: Tag images as prod
+run-name: Tag images as prod (${{ inputs.source_tag }} → prod-${{ inputs.bid }})
 on:
   workflow_dispatch:
     inputs:
@@ -18,9 +18,9 @@ jobs:
       contents: read
       packages: write
     env:
-      IMAGE_REPO: ghcr.io/${{ github.repository }}_static_py
+      REPO_BASE: ghcr.io/${{ github.repository }}
     steps:
-      - run: echo "🏷️ Promoting ${{ inputs.source_tag }} to prod-${{ inputs.bid }}."
+      - run: echo "🏷️ Promoting ${{ inputs.source_tag }} to prod-${{ inputs.bid }} across all three images."
       - name: Log in to Github
         uses: docker/login-action@v2
         with:
@@ -29,6 +29,10 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Install crane
         uses: imjasonh/setup-crane@v0.3
-      - name: Tag image as prod
+      - name: Tag images as prod
         run: |
-          crane tag ${IMAGE_REPO}:${{ inputs.source_tag }} prod-${{ inputs.bid }}
+          for SUFFIX in "" "_static" "_static_py"; do
+            IMG="${REPO_BASE}${SUFFIX}"
+            echo "Tagging ${IMG}:${{ inputs.source_tag }} -> prod-${{ inputs.bid }}"
+            crane tag "${IMG}:${{ inputs.source_tag }}" "prod-${{ inputs.bid }}"
+          done
