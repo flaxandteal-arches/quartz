@@ -310,6 +310,9 @@ ALLOWED_HOSTS = []
 SYSTEM_SETTINGS_LOCAL_PATH = os.path.join(
     APP_ROOT, "system_settings", "System_Settings.json"
 )
+
+MAPBOX_API_KEY = os.environ.get("MAPBOX_API_KEY", MAPBOX_API_KEY)
+
 WSGI_APPLICATION = "quartz.wsgi.application"
 
 # URL that handles the media served from MEDIA_ROOT, used for managing stored files.
@@ -672,3 +675,9 @@ except ImportError as e:
         from settings_local import *
     except ImportError as e:
         pass
+
+# Append after all other settings (including arches_her) have been loaded
+_condition_report_modifier = "quartz.search_indexes.displayname_search_modifier.DisplaynameSearchModifier"
+ES_MAPPING_MODIFIER_CLASSES = list(locals().get("ES_MAPPING_MODIFIER_CLASSES") or [])
+if _condition_report_modifier not in ES_MAPPING_MODIFIER_CLASSES:
+    ES_MAPPING_MODIFIER_CLASSES.append(_condition_report_modifier)

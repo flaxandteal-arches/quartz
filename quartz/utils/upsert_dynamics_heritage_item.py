@@ -84,6 +84,8 @@ LOCATION_DATA_NODEGROUP = "87d39b2e-f44f-11eb-9a4a-a87eeabdefba"
 # Addresses nodegroup  (repeatable — one tile per address; part of Location Data in UI)
 ADDRESSES_NODEGROUP = "87d39b25-f44f-11eb-95e5-a87eeabdefba"
 NODE_FULL_ADDRESS = "87d39b36-f44f-11eb-a905-a87eeabdefba"  # string
+NODE_LGA = "425a33ad-3d3d-5db1-9c25-6e3a04c8405c"
+LGA_LIST_NAME = "LGAs"
 
 # Geometry nodegroup  (one tile — all GPS points merged into one FeatureCollection)
 GEOMETRY_NODEGROUP = "87d3872b-f44f-11eb-bd0c-a87eeabdefba"
@@ -91,12 +93,9 @@ NODE_GEOSPATIAL_COORDS = (
     "87d3d7dc-f44f-11eb-bee9-a87eeabdefba"  # geojson-feature-collection
 )
 
-
-AREA_ASSIGNMENT_NODEGROUP = "87d39b22-f44f-11eb-887e-a87eeabdefba"
-NODE_AREA_REFERENCE_VALUE = "87d3c3fc-f44f-11eb-beff-a87eeabdefba"  # dpp_plan
-
 LOT_ON_PLAN_NODEGROUP = "6a19facf-8f47-54a2-84b8-d0173db7eaa3"
 NODE_LOT = "5717a450-e62b-5dfa-857a-c42e7791a6e4"  # dpp_lot
+NODE_PLAN = "a2040f08-746c-5405-aeae-3b439ee8d99c"  # dpp_plan
 
 # Nodegroups whose tiles are fully replaced on each sync.
 # Includes Location Data and all its UI child nodegroups (Addresses, Geometry, etc.).
@@ -106,7 +105,6 @@ _STATUTORY_NODEGROUPS = {
     DESIGNATION_NODEGROUP,
     ADDRESSES_NODEGROUP,
     GEOMETRY_NODEGROUP,
-    AREA_ASSIGNMENT_NODEGROUP,
     LOT_ON_PLAN_NODEGROUP,
 }
 
@@ -347,11 +345,15 @@ def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
     for loc in payload.get("Locations", []):
         if loc.get("location_type") == "Address":
             address = loc.get("cdm_name")
-            if address:
+            lga = loc.get("dpp_localgovernmentareaname")
+            if address or lga:
                 tiles.append(
                     make_tile(
                         ADDRESSES_NODEGROUP,
-                        {NODE_FULL_ADDRESS: i18n_string(address)},
+                        {
+                            NODE_FULL_ADDRESS: i18n_string(address),
+                            NODE_LGA: parse_reference_node(lga, LGA_LIST_NAME),
+                        },
                         parent_tile_id=location_data_tile.tileid,
                     )
                 )
@@ -359,26 +361,15 @@ def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
         if loc.get("location_type") == "dpp_lot dpp_plan":
             lot = loc.get("dpp_lot")
             plan = loc.get("dpp_plan")
-            if plan:
-                area_assignment_tile = make_tile(
-                    AREA_ASSIGNMENT_NODEGROUP,
-                    {NODE_AREA_REFERENCE_VALUE: i18n_string(plan)},
-                    parent_tile_id=location_data_tile.tileid,
-                )
-            else:
-                area_assignment_tile = make_tile(
-                    AREA_ASSIGNMENT_NODEGROUP,
-                    {},
-                    parent_tile_id=location_data_tile.tileid,
-                )
-            tiles.append(area_assignment_tile)
-
-            if lot:
+            if lot or plan:
                 tiles.append(
                     make_tile(
                         LOT_ON_PLAN_NODEGROUP,
-                        {NODE_LOT: i18n_string(lot)},
-                        parent_tile_id=area_assignment_tile.tileid,
+                        {
+                            NODE_LOT: i18n_string(lot),
+                            NODE_PLAN: i18n_string(plan),
+                        },
+                        parent_tile_id=location_data_tile.tileid,
                     )
                 )
 

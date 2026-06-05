@@ -128,7 +128,7 @@
                         "en": ""
                     },
                     "instructions": {
-                        "en": "Used to link this Condition Report to one or more related Monument, Heritage Area, Artefact, Maritime Vessel, or Historic Aircraft records."
+                        "en": "Used to link this Condition Report to one or more related Heritage Item"
                     },
                     "name": {
                         "en": "Associated Heritage Item"
@@ -427,8 +427,8 @@
                 {
                     "card_id": "a7f08502-c853-41da-bb6a-e87f0dfe0e07",
                     "config": {
-                        "defaultResourceInstance": [],
-                        "defaultValue": [],
+                        "defaultResourceInstance": null,
+                        "defaultValue": null,
                         "i18n_properties": [],
                         "label": "Associated Heritage Item",
                         "placeholder": ""
@@ -441,7 +441,7 @@
                     "sortorder": 0,
                     "source_identifier_id": null,
                     "visible": true,
-                    "widget_id": "ff3c400a-76ec-11e7-a793-784f435179ea"
+                    "widget_id": "31f3728c-7613-11e7-a139-784f435179ea"
                 },
                 {
                     "card_id": "5573f3f7-6be2-441f-b5dc-b90a7508485a",
@@ -625,19 +625,19 @@
                         "descriptor_types": {
                             "description": {
                                 "nodegroup_id": "77cef118-454b-46e8-98a1-ab72095b3e3c",
-                                "string_template": "Condition Report For <Associated Heritage Item>"
+                                "string_template": "<associated_monument_heritage_item|resourceid>, <condition>, <report_date>"
                             },
                             "map_popup": {
                                 "nodegroup_id": "77cef118-454b-46e8-98a1-ab72095b3e3c",
-                                "string_template": "Condition Report For <Associated Heritage Item>"
+                                "string_template": "<associated_monument_heritage_item|resourceid>, <condition>, <report_date>"
                             },
                             "name": {
                                 "nodegroup_id": "77cef118-454b-46e8-98a1-ab72095b3e3c",
-                                "string_template": "Condition Report For <Associated Heritage Item>"
+                                "string_template": "<associated_monument_heritage_item|resourceid>, <condition>, <report_date>"
                             }
                         }
                     },
-                    "function_id": "60000000-0000-0000-0000-000000000001",
+                    "function_id": "e7d7fd2a-973a-4b2c-8c6e-bd2238d7be70",
                     "graph_id": "9fccd932-8e8f-4595-89bd-3cb04ddfecae",
                     "id": "3447c3ef-8a5e-4a2b-a3a4-bb31a2613817"
                 }
@@ -812,7 +812,7 @@
                         "searchDsl": "",
                         "searchString": ""
                     },
-                    "datatype": "resource-instance-list",
+                    "datatype": "resource-instance",
                     "description": null,
                     "exportable": true,
                     "fieldname": "Assoc_Heri",
