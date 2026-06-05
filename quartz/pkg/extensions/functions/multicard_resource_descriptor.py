@@ -57,7 +57,7 @@ class MulticardResourceDescriptor(AbstractPrimaryDescriptorsFunction):
         if (
             str(resource.graph_id) == "076f9381-7b00-11e9-8d6b-80000b44d1d9"
         ):  # heritage item graph
-            node_aliases, result = extract_heritige_item_substrings(result, resource)
+            node_aliases, result = extract_heritage_item_substrings(result, resource)
         else:
             node_aliases = extract_substrings(result)
         nodes = models.Node.objects.filter(
@@ -89,7 +89,7 @@ def extract_substrings(template_string):
     return substrings
 
 
-def extract_heritige_item_substrings(template_string, resource):
+def extract_heritage_item_substrings(template_string, resource):
     pattern = r"<(.*?)>"
     substrings = re.findall(pattern, template_string)
     try:
