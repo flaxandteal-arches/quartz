@@ -1,0 +1,34 @@
+name: Tag image as prod
+run-name: Tag image as prod (run ${{ inputs.run_id }})
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: 'The github.run_id of the build whose image you want to promote'
+        type: string
+        required: true
+jobs:
+  Tag-Prod:
+    runs-on: [self-hosted]
+    permissions:
+      contents: read
+      packages: write
+    env:
+      IMAGE_REPO: ghcr.io/${{ github.repository }}_static_py
+    steps:
+      - run: echo "🏷️ Promoting image from run ${{ inputs.run_id }} to prod."
+      - name: Log in to Github
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+        with:
+          version: latest
+      - name: Tag image as prod
+        run: |
+          docker buildx imagetools create \
+            -t ${IMAGE_REPO}:prod-${{ inputs.bid }} \
+            ${IMAGE_REPO}:${{ inputs.source_tag }}
