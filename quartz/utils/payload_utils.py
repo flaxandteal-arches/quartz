@@ -2,7 +2,10 @@ import logging
 import uuid
 from datetime import datetime
 
+from arches.app.datatypes.datatypes import DataTypeFactory
 from arches.app.models.tile import Tile
+
+from arches_controlled_lists.models import List
 
 logger = logging.getLogger(__name__)
 
@@ -75,22 +78,13 @@ def extract_gps_features(locations: list) -> list:
     return features
 
 
-def parse_reference_node(value: str) -> dict:
-    # TODO: Implement this function to convert a reference node value to the format Arches expects.
+def parse_reference_node(value: str, list_name: str) -> dict:
     """Convert a reference node value to the format Arches expects."""
-    return {
-        # "uri": "6ed6a5c3-0136-5016-a9b3-56551bf3fbf6",
-        # "labels": [
-        #     {
-        #         "id": "5b2d6cdc-846a-45a6-bb0c-e0e7fa44adac",
-        #         "value": "Entered",
-        #         "language_id": "en",
-        #         "list_item_id": "6ed6a5c3-0136-5016-a9b3-56551bf3fbf6",
-        #         "valuetype_id": "prefLabel",
-        #     }
-        # ],
-        # "list_id": "10b6d2e9-808d-504f-8ae3-235f526ada84",
-    }
+    reference = DataTypeFactory().get_instance("reference")
+    list_pk = str(List.objects.get(name=list_name).pk)
+    config = {"controlledList": list_pk}
+
+    return reference.transform_value_for_tile(value, **config)
 
 
 def make_tile(
