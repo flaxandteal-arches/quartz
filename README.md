@@ -84,3 +84,13 @@ The Monument resource model (graph ID `076f9381-7b00-11e9-8d6b-80000b44d1d9`, lo
 - New cards must be added to `resourceDataConfig` and `resourcesCards` in `monument.js` before they appear in the report
 - Node IDs used for Condition Report field extraction are hardcoded at the top of `resources.js` - if the Condition Report graph changes, update the `CR_*_NODE` constants there
 
+## Production Push
+To push to production the images need to be tagged with prod-{run-id}
+This can be done using github cli with
+```
+gh workflow run "Tag images as prod" \
+  -f source_tag=main-27012345678 \
+  -f bid=27012345678
+```
+`source` pulls the image that you want to use
+`bid` is the id you will tag the prod image with (this will be the same as the image)
