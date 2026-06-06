@@ -28,7 +28,7 @@ def unregister_plugin(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("quartz", "0006_enable_iiif_plugin"),
+        ("quartz", "0007_register_resource_id_descriptor"),
     ]
 
     operations = [

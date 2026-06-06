@@ -25,7 +25,7 @@ def set_admin_password(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("quartz", "0007_register_resource_id_descriptor"),
+        ("quartz", "0008_register_certificate_generator_plugin"),
     ]
 
     operations = [
