@@ -68,7 +68,7 @@ def noop(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("quartz", "0008_import_condition_report_graph"),
+        ("quartz", "0007_register_resource_id_descriptor"),
     ]
 
     operations = [
