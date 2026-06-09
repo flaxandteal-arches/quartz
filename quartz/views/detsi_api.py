@@ -4,6 +4,7 @@ from django.db import transaction
 from arches_resource_version_manager.views import ResourceVersionSyncView
 
 from quartz.utils.upsert_dynamics_heritage_item import process_heritage_item
+from quartz.utils.upsert_artefact import process_artefact
 
 logger = logging.getLogger(__name__)
 
@@ -30,6 +31,7 @@ class DynamicsHeritageSyncView(ResourceVersionSyncView):
             with transaction.atomic():
                 return process_heritage_item(payload, user)
         elif resource_type == "archaeology_discovery":
-            return self._upsert_archaeological_site(payload, user)
+            with transaction.atomic():
+                return process_artefact(payload, user)
         else:
             raise ValueError(f"Unsupported resource_type: {resource_type}")
