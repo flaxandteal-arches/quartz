@@ -10,7 +10,7 @@ def calculate_next_version(
     if is_final or (current_draft_version is None):
         major_version = (
             int(version_from_payload)
-            if version_from_payload
+            if version_from_payload is not None
             else current_draft_version.major_version + 1
         )
         return major_version, 0
