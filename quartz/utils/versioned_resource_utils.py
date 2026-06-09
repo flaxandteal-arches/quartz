@@ -7,14 +7,24 @@ def calculate_next_version(
     current_draft_version: VersionedResource, is_final: bool, version_from_payload: str
 ) -> tuple[int, int]:
 
-    if is_final or (current_draft_version is None):
+    if is_final:
         major_version = (
             int(version_from_payload)
-            if version_from_payload
-            else current_draft_version.major_version + 1
+            if version_from_payload is not None
+            else (current_draft_version.major_version + 1)
         )
         return major_version, 0
-    return current_draft_version.major_version, current_draft_version.minor_version + 1
+
+    if current_draft_version is None:
+        major_version = (
+            int(version_from_payload) if version_from_payload is not None else 0
+        )
+        return major_version, 1
+    else:
+        return (
+            current_draft_version.major_version,
+            current_draft_version.minor_version + 1,
+        )
 
 
 def increment_draft_version(
