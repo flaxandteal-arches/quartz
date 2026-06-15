@@ -65,7 +65,8 @@ ALTERNATIVE_NAME_USE_TYPE = {
 
 # Designation and Protection Assignment nodegroup  (repeatable — one tile per designation/protection entry)
 DESIGNATION_NODEGROUP = "6af2a0cb-efc5-11eb-8436-a87eeabdefba"
-DESIGNATION_OR_PROTECTION_TYPE = "6af2a0ce-efc5-11eb-88d1-a87eeabdefba"  # TODO
+DESIGNATION_OR_PROTECTION_TYPE = "6af2a0ce-efc5-11eb-88d1-a87eeabdefba"
+PLACE_STATUS_ROLES_LIST_NAME = "Place Status Roles"
 DESIGNATION_START_DATE = "6af2b69b-efc5-11eb-8d5a-a87eeabdefba"
 DESIGNATION_END_DATE = "6af2b6a0-efc5-11eb-985a-a87eeabdefba"
 
@@ -274,7 +275,7 @@ def _build_system_ref_tiles(payload: dict) -> list:
 
 
 def _build_designation_tiles(payload: dict) -> list:
-    designation = payload.get("dpp_designationprotection")
+    designation = payload.get("dpp_heritageitemstatus")
     designation_start_date = payload.get("dpp_dateenteredregister")
     designation_end_date = payload.get("dpp_dateremovedfromregister")
     if not (designation or designation_start_date or designation_end_date):
@@ -283,8 +284,9 @@ def _build_designation_tiles(payload: dict) -> list:
         make_tile(
             DESIGNATION_NODEGROUP,
             {
-                # TODO - map DESIGNATION_OR_PROTECTION_TYPE to a reference node
-                # DESIGNATION_OR_PROTECTION_TYPE: i18n_string(designation),
+                DESIGNATION_OR_PROTECTION_TYPE: parse_reference_node(
+                    designation, PLACE_STATUS_ROLES_LIST_NAME
+                ),
                 DESIGNATION_START_DATE: parse_date(designation_start_date),
                 DESIGNATION_END_DATE: parse_date(designation_end_date),
             },
