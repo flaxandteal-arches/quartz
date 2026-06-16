@@ -1,6 +1,8 @@
 import logging
 import uuid
 
+from django.db.models import Max
+
 from arches.app.models import models
 from arches.app.models.resource import Resource
 from arches.app.models.tile import Tile
@@ -19,8 +21,8 @@ from .payload_utils import (
     parse_date,
     parse_reference_node,
     parse_resource_instance_id,
+    has_value,
 )
-from .versioned_resource_utils import calculate_next_version
 
 logger = logging.getLogger(__name__)
 
@@ -36,6 +38,15 @@ SYSTEM_REF_NODEGROUP = "dd800bc9-b494-11ea-9af8-f875a44e0e11"
 NODE_PRIMARY_REF_NUM = "dd8032af-b494-11ea-8110-f875a44e0e11"  # number
 NODE_LEGACY_ID = "dd8032b1-b494-11ea-a183-f875a44e0e11"  # string
 
+# version information nodegroup (one tile — not repeatable)
+VERSIONING_NODEGROUP = "07028e38-c27c-572f-8be5-e37ec837ad4f"
+VERSION_NUMBER = "ddaac2c0-65f5-52ed-a843-43de724f9d01"  # string
+# WORKING_COPY = "415b7f11-e007-56d6-a794-ba18aea7325b"  # reference to working draft
+
+DEACTIVATION_REASON_NODEGROUP = "7def03f0-3bf7-52dc-b226-76b3d00bc8a2"
+NODE_DEACTIVATION_REASON = "7def03f0-3bf7-52dc-b226-76b3d00bc8a2"  # string
+DEACTIVATION_REASON_LIST_NAME = "Deactivation Reason"
+
 # Artefact Names nodegroup  (repeatable — one tile per name)
 ARTEFACT_NAMES_NODEGROUP = "5b0dfb23-7fe2-11ea-bf70-f875a44e0e11"
 NODE_ARTEFACT_NAME = "5b0dfb27-7fe2-11ea-8ac9-f875a44e0e11"  # string
@@ -47,15 +58,18 @@ NODE_EXTERNAL_CROSS_REF = "4844c745-eec7-11eb-9089-a87eeabdefba"  # string
 # Descriptions nodegroup  (repeatable — one tile per description)
 DESCRIPTIONS_NODEGROUP = "c30977ad-991e-11ea-9368-f875a44e0e11"
 NODE_DESCRIPTION = "c30977b0-991e-11ea-ba04-f875a44e0e11"  # string
-NODE_DESCRIPTION_TYPE = "c30977b1-991e-11ea-b259-f875a44e0e11"  # reference
+NODE_DESCRIPTION_TYPE = "c30977b1-991e-11ea-b259-f875a44e0e11"  # reference\
+DESCRIPTION_TYPE_LIST_NAME = "Description Roles"
 
 # Important Source of Information nodegroup  (one tile)
 IMPORTANT_SOURCE_NODEGROUP = "88ace5fb-927a-57b5-9aba-a63346e4e573"
 NODE_IMPORTANT_SOURCE = "88ace5fb-927a-57b5-9aba-a63346e4e573"  # reference
+IMPORTANT_SOURCE_LIST_NAME = "Important Source of Information"
 
 # Permission to Interfere nodegroup  (one tile)
 PERMISSION_NODEGROUP = "6452f897-1b16-5fc5-9fcd-e6d43f48ce49"
 NODE_PERMISSION = "6452f897-1b16-5fc5-9fcd-e6d43f48ce49"  # reference
+PERMISSION_LIST_NAME = "Permission to Interfere Previously Granted"
 
 # Condition Assessment nodegroup  (contains date_of_assessment_start)
 CONDITION_ASSESSMENT_NODEGROUP = "0b2fcd21-381d-11e8-b7d4-dca90488358a"
@@ -82,6 +96,8 @@ NODE_LOCATION_DESCRIPTION = "f7cca086-f447-11eb-a4c4-a87eeabdefba"  # string
 # Nodegroups whose tiles are fully replaced on each sync.
 _MANAGED_NODEGROUPS = {
     SYSTEM_REF_NODEGROUP,
+    VERSIONING_NODEGROUP,
+    DEACTIVATION_REASON_NODEGROUP,
     ARTEFACT_NAMES_NODEGROUP,
     EXTERNAL_CROSS_REFS_NODEGROUP,
     DESCRIPTIONS_NODEGROUP,
@@ -94,7 +110,34 @@ _MANAGED_NODEGROUPS = {
     LOCATION_DESCRIPTIONS_NODEGROUP,
 }
 
-FINAL_STATUSES = {"final"}
+FINAL_STATUSES = {"recorded"}
+
+
+def calculate_next_version(
+    current_draft_version: VersionedResource, is_final: bool, version_from_payload: str
+) -> tuple[int, int]:
+
+    if is_final:
+        current_major_version = (
+            VersionedResource.objects.aggregate(Max("major_version"))[
+                "major_version__max"
+            ]
+            or 0
+        )
+
+        major_version = current_major_version + 1
+        return major_version, 0
+
+    if current_draft_version is None:
+        major_version = (
+            int(version_from_payload) if version_from_payload is not None else 0
+        )
+        return major_version, 1
+    else:
+        return (
+            current_draft_version.major_version,
+            current_draft_version.minor_version + 1,
+        )
 
 
 def process_artefact(payload: dict, user) -> tuple:
@@ -116,11 +159,11 @@ def process_artefact(payload: dict, user) -> tuple:
 
     Returns (resource, created_bool, version_string).
     """
-    discovery_permit_number = payload.get("dpp_discoverypermitnumber")
+    discovery_permit_number = payload.get("dpp_permitnumber")
     version_from_payload = payload.get("dpp_version")
 
     if not discovery_permit_number:
-        raise ValueError("Missing required field: dpp_discoverypermitnumber")
+        raise ValueError("Missing required field: dpp_permitnumber")
 
     is_final = _is_final_payload(payload)
 
@@ -137,7 +180,9 @@ def process_artefact(payload: dict, user) -> tuple:
     if not current_draft_version:
         resource = Resource()
         resource.graph_id = ARTEFACT_GRAPH_ID
-        resource.tiles = _build_managed_tiles(payload, resource.pk)
+        resource.tiles = _build_managed_tiles(
+            payload, next_major, next_minor, resource.pk
+        )
         resource.save(user=user)
 
         register_new_draft(
@@ -180,7 +225,7 @@ def process_artefact(payload: dict, user) -> tuple:
     ).delete()
 
     current_draft_resource.tiles = _build_managed_tiles(
-        payload, current_draft_resource.pk
+        payload, next_major, next_minor, current_draft_resource.pk
     )
     current_draft_resource.save()
 
@@ -191,12 +236,18 @@ def process_artefact(payload: dict, user) -> tuple:
 
 
 def _is_final_payload(payload: dict) -> bool:
-    return (payload.get("status") or "").lower() in FINAL_STATUSES
+    return (payload.get("dpp_archaeologystatus") or "").lower() in FINAL_STATUSES
 
 
-def _build_managed_tiles(payload: dict, resource_instance_ref: str) -> list:
+def _build_managed_tiles(
+    payload: dict,
+    major_version: str | int,
+    minor_version: str | int,
+    resource_instance_ref: str,
+) -> list:
     return (
         _build_system_ref_tile(payload)
+        + _build_version_tile(major_version, minor_version, resource_instance_ref)
         + _build_name_tiles(payload)
         + _build_external_ref_tiles(payload)
         + _build_description_tiles(payload)
@@ -204,27 +255,39 @@ def _build_managed_tiles(payload: dict, resource_instance_ref: str) -> list:
         + _build_permission_tile(payload)
         + _build_condition_assessment_tile(payload)
         + _build_archaeology_status_tile(payload)
+        + _build_deactivation_reason_tile(payload)
         + _build_associated_monuments_tile(payload)
         + _build_location_tiles(payload, resource_instance_ref)
     )
 
 
+def _build_version_tile(
+    major_version: str | int, minor_version: str | int, resource_instance_ref: str
+) -> list:
+    return [
+        make_tile(
+            VERSIONING_NODEGROUP,
+            {VERSION_NUMBER: i18n_string(f"{major_version}.{minor_version}")},
+        )
+    ]
+
+
 def _build_system_ref_tile(payload: dict) -> list:
-    permit_number = payload.get("dpp_discoverypermitnumber")
+    permit_number = payload.get("dpp_permitnumber")
     legacy_id = payload.get("dpp_discoveryreferencenumber")
-    if not permit_number and not legacy_id:
+    if not has_value(permit_number) and not has_value(legacy_id):
         return []
     data = {}
-    if permit_number is not None:
+    if has_value(permit_number):
         data[NODE_PRIMARY_REF_NUM] = int(permit_number)
-    if legacy_id is not None:
+    if has_value(legacy_id):
         data[NODE_LEGACY_ID] = i18n_string(str(legacy_id))
     return [make_tile(SYSTEM_REF_NODEGROUP, data)]
 
 
 def _build_name_tiles(payload: dict) -> list:
     name = payload.get("dpp_discoveryname")
-    if not name:
+    if not has_value(name):
         return []
     return [
         make_tile(
@@ -236,12 +299,28 @@ def _build_name_tiles(payload: dict) -> list:
 
 def _build_external_ref_tiles(payload: dict) -> list:
     ref = payload.get("dpp_externalreferencenumber")
-    if not ref:
+    if not has_value(ref):
         return []
     return [
         make_tile(
             EXTERNAL_CROSS_REFS_NODEGROUP,
             {NODE_EXTERNAL_CROSS_REF: i18n_string(str(ref))},
+        )
+    ]
+
+
+def _build_deactivation_reason_tile(payload: dict) -> list:
+    reason = payload.get("dpp_deactivationreason")
+    if not has_value(reason):
+        return []
+    return [
+        make_tile(
+            DEACTIVATION_REASON_NODEGROUP,
+            {
+                NODE_DEACTIVATION_REASON: parse_reference_node(
+                    reason, DEACTIVATION_REASON_LIST_NAME
+                )
+            },
         )
     ]
 
@@ -254,13 +333,15 @@ def _build_description_tiles(payload: dict) -> list:
     ]
     for field, _type_label in descriptions:
         value = payload.get(field)
-        if value:
+        if has_value(value):
             tiles.append(
                 make_tile(
                     DESCRIPTIONS_NODEGROUP,
                     {
                         NODE_DESCRIPTION: i18n_string(value),
-                        # TODO: map NODE_DESCRIPTION_TYPE to a reference node for _type_label
+                        NODE_DESCRIPTION_TYPE: parse_reference_node(
+                            _type_label, DESCRIPTION_TYPE_LIST_NAME
+                        ),
                     },
                 )
             )
@@ -269,30 +350,37 @@ def _build_description_tiles(payload: dict) -> list:
 
 def _build_important_source_tile(payload: dict) -> list:
     value = payload.get("dpp_importantsourceofinformation")
-    if value is None:
+    if not has_value(value):
         return []
     # TODO: map integer value to a reference node
     return [
         make_tile(
             IMPORTANT_SOURCE_NODEGROUP,
-            {NODE_IMPORTANT_SOURCE: parse_reference_node(value)},
+            {
+                NODE_IMPORTANT_SOURCE: parse_reference_node(
+                    value, IMPORTANT_SOURCE_LIST_NAME
+                )
+            },
         )
     ]
 
 
 def _build_permission_tile(payload: dict) -> list:
     value = payload.get("dpp_permissiontointerferegranted")
-    if value is None:
+    if not has_value(value):
         return []
     # TODO: map integer value to a reference node
     return [
-        make_tile(PERMISSION_NODEGROUP, {NODE_PERMISSION: parse_reference_node(value)})
+        make_tile(
+            PERMISSION_NODEGROUP,
+            {NODE_PERMISSION: parse_reference_node(value, PERMISSION_LIST_NAME)},
+        )
     ]
 
 
 def _build_condition_assessment_tile(payload: dict) -> list:
     date_value = payload.get("dpp_dateofdiscovery")
-    if not date_value:
+    if not has_value(date_value):
         return []
     return [
         make_tile(
@@ -304,7 +392,7 @@ def _build_condition_assessment_tile(payload: dict) -> list:
 
 def _build_archaeology_status_tile(payload: dict) -> list:
     status = payload.get("dpp_archaeologystatus")
-    if status is None:
+    if not has_value(status):
         return []
     return [
         make_tile(
@@ -352,7 +440,7 @@ def _build_associated_monuments_tile(payload: dict) -> list:
 
 
 def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
-    locations = payload.get("dpp_locations", [])
+    locations = payload.get("locations", [])
     if not locations:
         return []
 
