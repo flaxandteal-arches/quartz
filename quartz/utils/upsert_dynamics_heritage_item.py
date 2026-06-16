@@ -344,7 +344,7 @@ def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
     tiles = []
     tiles.append(location_data_tile)
 
-    for loc in payload.get("Locations", []):
+    for loc in payload.get("locations", []):
         if loc.get("location_type") == "Address":
             address = loc.get("cdm_name")
             lga = loc.get("dpp_localgovernmentareaname")
@@ -360,7 +360,7 @@ def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
                     )
                 )
 
-        if loc.get("location_type") == "dpp_lot dpp_plan":
+        if loc.get("location_type") == "Lot Plan":
             lot = loc.get("dpp_lot")
             plan = loc.get("dpp_plan")
             if lot or plan:
@@ -375,7 +375,7 @@ def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
                     )
                 )
 
-    gps_features = extract_gps_features(payload.get("Locations", []))
+    gps_features = extract_gps_features(payload.get("locations", []))
     if gps_features:
         tiles.append(
             make_tile(
