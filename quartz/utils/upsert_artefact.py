@@ -214,7 +214,9 @@ def process_artefact(payload: dict, user) -> tuple:
         resource.tiles = _build_managed_tiles(payload, 0, 0, resource.pk)
         resource.save(user=user)
 
-        register_new_draft(resource, discovery_permit_number, 0, 0, payload)
+        current_draft_version = register_new_draft(
+            resource, discovery_permit_number, 0, 0, payload
+        )
 
         created = True
 
