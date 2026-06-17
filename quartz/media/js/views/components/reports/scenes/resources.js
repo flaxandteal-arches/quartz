@@ -13,6 +13,12 @@ const ACT_NAME_NODE      = "4a7be135-9938-11ea-b0e2-f875a44e0e11";
 const ACT_TYPE_NODE      = "394d15b8-8f7a-11ea-b4f5-f875a44e0e11";
 const ACT_DISP_DATE_NODE = "4f5eeb27-993e-11ea-b9f7-f875a44e0e11";
 
+// Consultation graph ID and node IDs
+const CONSULTATION_GRAPH_ID = "8d41e49e-a250-11e9-9eab-00224800b26d";
+const CONS_NAME_NODE        = "4ad69684-951f-11ea-b5c3-f875a44e0e11";
+const CONS_TYPE_NODE        = "771bb1e2-8895-11ea-8446-f875a44e0e11";
+const CONS_DATE_NODE        = "1cf746f2-1853-11eb-94f1-f875a44e0e11";
+
 // Condition Report graph and node IDs
 const CONDITION_REPORT_GRAPH_ID = "9fccd932-8e8f-4595-89bd-3cb04ddfecae";
 const CR_DATE_NODE         = "a15e9d62-742b-49d1-a6ae-8548828d852f";
@@ -85,6 +91,14 @@ export default ko.components.register(
 
             // 4 columns: Activity, Activity Type, Date, Actions
             self.activityTableConfig = {
+                ...self.defaultTableConfig,
+                paging: true,
+                searching: true,
+                columns: Array(4).fill(null),
+            };
+
+            // 4 columns: Consultation, Consultation Type, Date, Actions
+            self.consultationTableConfig = {
                 ...self.defaultTableConfig,
                 paging: true,
                 searching: true,
@@ -209,54 +223,49 @@ export default ko.components.register(
                     }
                 }
 
-                const associatedConsultationsNode = self.getRawNodeValue(
-                    params.data(),
-                    self.dataConfig.consultations,
-                    "instance_details"
-                );
-                if (Array.isArray(associatedConsultationsNode)) {
-                    const tileid = self.getTileId(
-                        self.getRawNodeValue(
-                            params.data(),
-                            self.dataConfig.consultations
-                        )
-                    );
-                    self.consultations(
-                        associatedConsultationsNode.map((x) => {
-                            const consultation = self.getNodeValue(x);
-                            const resourceUrl = self.getResourceLink(x);
-                            return { consultation, resourceUrl, tileid };
-                        })
-                    );
-                }
-
-                const userAvailableConsultationCards = () => {
-                    return $.ajax({
-                        url: generateArchesURL("arches:api_card", { resourceid: self.dataConfig.resourceinstanceid }),
-                        context: this,
-                    })
-                        .done(function (response) { return response; })
-                        .fail(function () { return false; });
-                };
-
-                if (self.dataConfig.resourceinstanceid) {
-                    userAvailableConsultationCards().then(function (cards_response) {
-                        if (cards_response !== false) {
-                            var card_names = [];
-                            for (const card in cards_response.cards) {
-                                card_names.push(cards_response.cards[card].name);
-                            }
-                            if (card_names.includes("Associated Consultations")) {
+                if (self.dataConfig.consultations && self.dataConfig.resourceinstanceid) {
+                    const consRelatedUrl = generateArchesURL(
+                        "arches:related_resources",
+                        { resourceid: self.dataConfig.resourceinstanceid }
+                    ) + "?paginate=false";
+                    $.ajax({ url: consRelatedUrl })
+                        .done(function (response) {
+                            const related = Array.isArray(response.related_resources)
+                                ? response.related_resources
+                                : [];
+                            const consultations = related
+                                .filter(r => r.graph_id === CONSULTATION_GRAPH_ID)
+                                .map(r => {
+                                    const tiles = r.tiles || [];
+                                    const consultation = i18nString(
+                                        getNodeFromTiles(tiles, CONS_NAME_NODE)
+                                    ) || r.displayname || "--";
+                                    const consultationType = conceptLabel(
+                                        getNodeFromTiles(tiles, CONS_TYPE_NODE)
+                                    );
+                                    const displayDate = i18nString(
+                                        getNodeFromTiles(tiles, CONS_DATE_NODE)
+                                    );
+                                    let resourceUrl;
+                                    try {
+                                        resourceUrl = generateArchesURL(
+                                            "arches:resource_report",
+                                            { resourceid: r.resourceinstanceid }
+                                        );
+                                    } catch (_e) {
+                                        resourceUrl = `/report/${r.resourceinstanceid}`;
+                                    }
+                                    return { consultation, consultationType, displayDate, resourceUrl, tileid: null };
+                                });
+                            self.consultations(consultations);
+                            if (!consultations.length) {
                                 self.consultations_message("No consultations for this resource");
-                            } else {
-                                self.consultations_message("You do not have permission to see this information");
                             }
-                        } else {
+                        })
+                        .fail(function (xhr, status, error) {
+                            console.error("[Consultations] fetch FAILED:", xhr.status, status, error, consRelatedUrl);
                             self.consultations_message("There was an issue checking for associated consultations.");
-                        }
-                    });
-                } else {
-                    self.consultations_message("There was an issue checking for associated consultations.");
+                        });
                 }
 
                 const associatedArchiveNode = self.getRawNodeValue(params.data(), self.dataConfig.archive);
