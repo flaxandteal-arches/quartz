@@ -19,6 +19,7 @@ from .payload_utils import (
     parse_date,
     parse_reference_node,
     parse_resource_instance_id,
+    has_value,
 )
 from .versioned_resource_utils import calculate_next_version
 
@@ -79,14 +80,20 @@ VERSIONING_NODEGROUP = "03d5eb66-d748-57cc-8390-5788078696d7"
 VERSION_NUMBER = "4b1880ea-33a8-50ea-aa1d-455c2ed95787"  # string
 WORKING_COPY = "0f5a7e18-c9a0-52ea-81f1-9a493b4f1f23"  # reference to working draft
 
-# Location Data nodegroup  (container — cleared on upsert along with child nodegroups)
+# Location Data nodegroup  (container — not cleared on upsert; contains child nodegroups for different location types)
 LOCATION_DATA_NODEGROUP = "87d39b2e-f44f-11eb-9a4a-a87eeabdefba"
 
 # Addresses nodegroup  (repeatable — one tile per address; part of Location Data in UI)
 ADDRESSES_NODEGROUP = "87d39b25-f44f-11eb-95e5-a87eeabdefba"
 NODE_FULL_ADDRESS = "87d39b36-f44f-11eb-a905-a87eeabdefba"  # string
+NODE_POSTCODE = "87d3ff23-f44f-11eb-ad2f-a87eeabdefba"  # string
+NODE_BUILDING_NUMBER = "87d39b49-f44f-11eb-a564-a87eeabdefba"
+NODE_STREET_NAME = "87d39b4b-f44f-11eb-80ef-a87eeabdefba"
+NODE_SUBURBS = "a396cb5e-5358-5db3-a933-3fd3f19dc246"
+NODE_COUNTY = "87d3ff32-f44f-11eb-aa82-a87eeabdefba"
 NODE_LGA = "425a33ad-3d3d-5db1-9c25-6e3a04c8405c"
 LGA_LIST_NAME = "LGAs"
+SUBURB_LIST_NAME = "Suburbs"
 
 # Geometry nodegroup  (one tile — all GPS points merged into one FeatureCollection)
 GEOMETRY_NODEGROUP = "87d3872b-f44f-11eb-bd0c-a87eeabdefba"
@@ -314,7 +321,7 @@ def _build_name_tiles(payload: dict) -> list:
     for alt in payload.get("alternative_names", []):
         alt_name = alt.get("dpp_name")
         if alt_name:
-            for index, part in enumerate(alt_name.split(" | ")):
+            for index, part in enumerate(alt_name.split("|")):
                 part = part.strip()
                 if part:
                     tiles.append(
@@ -347,15 +354,43 @@ def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
     for loc in payload.get("locations", []):
         if loc.get("location_type") == "Address":
             address = loc.get("cdm_name")
+            street_number = loc.get("dpp_numberfirst")
+            street_name = loc.get("dpp_roadname")
+            street_type = loc.get("dpp_roadtypecode")
+            suburb = loc.get("dpp_localitynametext")
+            state = loc.get("dpp_state")
+            postcode = loc.get("dpp_postcode")
             lga = loc.get("dpp_localgovernmentareaname")
-            if address or lga:
+
+            street_name_full = (
+                street_name + (" " + street_type if has_value(street_type) else "")
+                if has_value(street_name)
+                else None
+            )
+
+            data = {
+                node: fn(val)
+                for node, val, fn in [
+                    (NODE_FULL_ADDRESS, address, i18n_string),
+                    (NODE_LGA, lga, lambda v: parse_reference_node(v, LGA_LIST_NAME)),
+                    (NODE_POSTCODE, postcode, i18n_string),
+                    (NODE_BUILDING_NUMBER, street_number, i18n_string),
+                    (NODE_STREET_NAME, street_name_full, i18n_string),
+                    (
+                        NODE_SUBURBS,
+                        suburb,
+                        lambda v: parse_reference_node(v, SUBURB_LIST_NAME),
+                    ),
+                    (NODE_COUNTY, state, i18n_string),
+                ]
+                if has_value(val)
+            }
+
+            if data:
                 tiles.append(
                     make_tile(
                         ADDRESSES_NODEGROUP,
-                        {
-                            NODE_FULL_ADDRESS: i18n_string(address),
-                            NODE_LGA: parse_reference_node(lga, LGA_LIST_NAME),
-                        },
+                        data,
                         parent_tile_id=location_data_tile.tileid,
                     )
                 )
