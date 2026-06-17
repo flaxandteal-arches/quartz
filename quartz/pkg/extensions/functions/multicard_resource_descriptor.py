@@ -6,8 +6,6 @@ import re
 
 from django.utils.translation import get_language, gettext as _
 
-from arches_resource_version_manager.models import VersionedResource
-
 # This duplicates the configuration declared in migration 0004,
 # but on first package load, the function will be re-registered, because
 # the .py file has not yet been placed in the destination folder.
@@ -92,20 +90,12 @@ def extract_substrings(template_string):
 def extract_heritage_item_substrings(template_string, resource):
     pattern = r"<(.*?)>"
     substrings = re.findall(pattern, template_string)
-    try:
-        versioned_resource = VersionedResource.objects.get(
-            resourceinstance_id=resource.resourceinstanceid
-        )
-        working_draft = VersionedResource.objects.get_current_draft(
-            versioned_resource.resource_group_id
-        )
-        if working_draft == versioned_resource:
-            try:
-                substrings.remove("version")
-                template_string = template_string.replace("<version>", "")
-            except ValueError:
-                pass
-    except VersionedResource.DoesNotExist:
-        pass
+
+    if (
+        "version" in substrings
+        and resource.resource_instance_lifecycle_state.name == "Draft"
+    ):
+        substrings.remove("version")
+        template_string = template_string.replace("<version>", "")
 
     return substrings, template_string
