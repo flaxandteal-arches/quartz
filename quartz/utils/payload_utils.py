@@ -99,3 +99,8 @@ def make_tile(
             "sortorder": sortorder,
         }
     )
+
+
+def has_value(value) -> bool:
+    """Return True if the value is not None and not an empty string."""
+    return value is not None and str(value).strip() != ""
