@@ -96,10 +96,12 @@
                         <thead>
                             <tr class="aher-table-header">
                                 <th>{% trans "Consultation" %}</th>
+                                <th>{% trans "Consultation Type" %}</th>
+                                <th>{% trans "Date" %}</th>
                                 <th class="aher-table-control all">{% trans "Actions" %}</th>
                             </tr>
                         </thead>
-                        <tbody data-bind="dataTablesForEach: { data: consultations, dataTableOptions: relatedResourceTwoColumnTableConfig}">
+                        <tbody data-bind="dataTablesForEach: { data: consultations, dataTableOptions: consultationTableConfig}">
                             <tr>
                                 <td>
                                     <!-- ko if: resourceUrl -->
@@ -109,6 +111,8 @@
                                     <span data-bind="text: consultation"></span>
                                     <!-- /ko -->
                                 </td>
+                                <td data-bind="text: consultationType"></td>
+                                <td data-bind="text: displayDate"></td>
                                 <td class="aher-table-control">
                                     <div data-bind="if: $parent.cards.consultations">
                                         <a href="#" data-bind="onEnterkeyClick, onSpaceClick, click: function() {$parent.editTile(tileid, $parent.cards.consultations)}">
