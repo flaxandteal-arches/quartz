@@ -362,25 +362,31 @@ def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
             postcode = loc.get("dpp_postcode")
             lga = loc.get("dpp_localgovernmentareaname")
 
-            data = {}
-            if has_value(address):
-                data[NODE_FULL_ADDRESS] = i18n_string(address)
-            if has_value(lga):
-                data[NODE_LGA] = parse_reference_node(lga, LGA_LIST_NAME)
-            if has_value(postcode):
-                data[NODE_POSTCODE] = i18n_string(postcode)
-            if has_value(street_number):
-                data[NODE_BUILDING_NUMBER] = i18n_string(street_number)
-            if has_value(street_name):
-                data[NODE_STREET_NAME] = i18n_string(
-                    street_name + (" " + street_type if has_value(street_type) else "")
-                )
-            if has_value(suburb):
-                data[NODE_SUBURBS] = parse_reference_node(suburb, SUBURB_LIST_NAME)
-            if has_value(state):
-                data[NODE_COUNTY] = i18n_string(state)
+            street_name_full = (
+                street_name + (" " + street_type if has_value(street_type) else "")
+                if has_value(street_name)
+                else None
+            )
 
-            if len(data.keys()) > 0:
+            data = {
+                node: fn(val)
+                for node, val, fn in [
+                    (NODE_FULL_ADDRESS, address, i18n_string),
+                    (NODE_LGA, lga, lambda v: parse_reference_node(v, LGA_LIST_NAME)),
+                    (NODE_POSTCODE, postcode, i18n_string),
+                    (NODE_BUILDING_NUMBER, street_number, i18n_string),
+                    (NODE_STREET_NAME, street_name_full, i18n_string),
+                    (
+                        NODE_SUBURBS,
+                        suburb,
+                        lambda v: parse_reference_node(v, SUBURB_LIST_NAME),
+                    ),
+                    (NODE_COUNTY, state, i18n_string),
+                ]
+                if has_value(val)
+            }
+
+            if data:
                 tiles.append(
                     make_tile(
                         ADDRESSES_NODEGROUP,
