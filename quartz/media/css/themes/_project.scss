@@ -35,3 +35,7 @@ article.main-search-container .search-results-container {
 article.main-search-container .search-footer {
     flex: 0 0 50px;
 }
+
+.search-results-body{
+    overflow-y: scroll;
+}
