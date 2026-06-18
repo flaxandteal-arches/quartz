@@ -2,6 +2,7 @@
 *.log
 node_modules
 coverage/
+tmp/
 quartz/logs
 quartz/export_deliverables
 quartz/cantaloupe/*
