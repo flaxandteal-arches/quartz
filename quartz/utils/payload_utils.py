@@ -48,18 +48,13 @@ def extract_gps_features(locations: list) -> list:
     for loc in locations:
         if loc.get("location_type") != "GPS":
             continue
-        lat = loc.get("dpp_latitude")
-        lon = loc.get("dpp_longitude")
 
-        if lat is None or lon is None:
-            # Fallback: parse "lat,lon" string from cdm_name
-            cdm_name = loc.get("cdm_name", "")
-            try:
-                lat_str, lon_str = cdm_name.split(",", 1)
-                lat, lon = float(lat_str.strip()), float(lon_str.strip())
-            except (ValueError, AttributeError):
-                logger.warning("Could not parse GPS coords from cdm_name: %r", cdm_name)
-                continue
+        if "dpp_WGS84_lat" in loc and "dpp_WGS84_long" in loc:
+            lat = loc.get("dpp_WGS84_lat")
+            lon = loc.get("dpp_WGS84_lon")
+        else:
+            lat = loc.get("dpp_latitude")
+            lon = loc.get("dpp_longitude")
 
         try:
             features.append(
@@ -99,3 +94,8 @@ def make_tile(
             "sortorder": sortorder,
         }
     )
+
+
+def has_value(value) -> bool:
+    """Return True if the value is not None and not an empty string."""
+    return value is not None and str(value).strip() != ""

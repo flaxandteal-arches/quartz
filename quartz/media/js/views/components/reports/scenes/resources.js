@@ -1,3 +1,4 @@
+import $ from "jquery";
 import _ from "underscore";
 import ko from "knockout";
 import reportUtils from "utils/report";
@@ -5,6 +6,12 @@ import ResourcesTemplate from "templates/views/components/reports/scenes/resourc
 import "bindings/datatable";
 import "bindings/reports";
 import { generateArchesURL } from "@/arches/utils/generate-arches-url.ts";
+
+// Activity graph ID and node IDs
+const ACTIVITY_GRAPH_ID  = "b9e0701e-5463-11e9-b5f5-000d3ab1e588";
+const ACT_NAME_NODE      = "4a7be135-9938-11ea-b0e2-f875a44e0e11";
+const ACT_TYPE_NODE      = "394d15b8-8f7a-11ea-b4f5-f875a44e0e11";
+const ACT_DISP_DATE_NODE = "4f5eeb27-993e-11ea-b9f7-f875a44e0e11";
 
 // Condition Report graph and node IDs
 const CONDITION_REPORT_GRAPH_ID = "9fccd932-8e8f-4595-89bd-3cb04ddfecae";
@@ -76,6 +83,14 @@ export default ko.components.register(
                 columns: Array(2).fill(null),
             };
 
+            // 4 columns: Activity, Activity Type, Date, Actions
+            self.activityTableConfig = {
+                ...self.defaultTableConfig,
+                paging: true,
+                searching: true,
+                columns: Array(4).fill(null),
+            };
+
             // 7 columns: Date, Summary Type, Summary, Officer, Condition, Occupancy, Maintenance
             self.conditionReportTableConfig = {
                 ...self.defaultTableConfig,
@@ -125,25 +140,73 @@ export default ko.components.register(
             Object.assign(self.dataConfig, params.dataConfig || {});
 
             if (!(params?.compiled)) {
-                const associatedActivitiesNode = self.getRawNodeValue(
-                    params.data(),
-                    self.dataConfig.activities,
-                    "instance_details"
-                );
-                if (Array.isArray(associatedActivitiesNode)) {
-                    const tileid = self.getTileId(
-                        self.getRawNodeValue(
-                            params.data(),
-                            self.dataConfig.activities
-                        )
-                    );
-                    self.activities(
-                        associatedActivitiesNode.map((x) => {
-                            const activity = self.getNodeValue(x);
-                            const resourceUrl = self.getResourceLink(x);
-                            return { activity, resourceUrl, tileid };
+                if (self.dataConfig.activities && self.dataConfig.resourceinstanceid) {
+                    const actRelatedUrl = generateArchesURL(
+                        "arches:related_resources",
+                        { resourceid: self.dataConfig.resourceinstanceid }
+                    ) + "?paginate=false";
+                    $.ajax({ url: actRelatedUrl })
+                        .done(function (response) {
+                            const related = Array.isArray(response.related_resources)
+                                ? response.related_resources
+                                : [];
+                            self.activities(
+                                related
+                                    .filter(r => r.graph_id === ACTIVITY_GRAPH_ID)
+                                    .map(r => {
+                                        const tiles = r.tiles || [];
+                                        const activityName = i18nString(
+                                            getNodeFromTiles(tiles, ACT_NAME_NODE)
+                                        ) || r.displayname || "--";
+                                        const activityType = conceptLabel(
+                                            getNodeFromTiles(tiles, ACT_TYPE_NODE)
+                                        );
+                                        const displayDate = i18nString(
+                                            getNodeFromTiles(tiles, ACT_DISP_DATE_NODE)
+                                        );
+                                        let resourceUrl;
+                                        try {
+                                            resourceUrl = generateArchesURL(
+                                                "arches:resource_report",
+                                                { resourceid: r.resourceinstanceid }
+                                            );
+                                        } catch (_e) {
+                                            resourceUrl = `/report/${r.resourceinstanceid}`;
+                                        }
+                                        return {
+                                            activity: activityName,
+                                            activityType,
+                                            displayDate,
+                                            resourceUrl,
+                                            tileid: null,
+                                        };
+                                    })
+                            );
                         })
+                        .fail(function (xhr, status, error) {
+                            console.error("[Activities] fetch FAILED:", xhr.status, status, error, actRelatedUrl);
+                        });
+                } else if (self.dataConfig.activities) {
+                    const associatedActivitiesNode = self.getRawNodeValue(
+                        params.data(),
+                        self.dataConfig.activities,
+                        "instance_details"
                     );
+                    if (Array.isArray(associatedActivitiesNode)) {
+                        const tileid = self.getTileId(
+                            self.getRawNodeValue(
+                                params.data(),
+                                self.dataConfig.activities
+                            )
+                        );
+                        self.activities(
+                            associatedActivitiesNode.map((x) => {
+                                const activity = self.getNodeValue(x);
+                                const resourceUrl = self.getResourceLink(x);
+                                return { activity, resourceUrl, tileid };
+                            })
+                        );
+                    }
                 }
 
                 const associatedConsultationsNode = self.getRawNodeValue(

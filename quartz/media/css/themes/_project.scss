@@ -5,6 +5,16 @@
 // eg:
 // $link-color: red;
 
+#main-content:has(#arches-search-mounting-point) {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+#main-content:has(#arches-search-mounting-point) > div {
+    flex: 1;
+    min-height: 0;
+}
+
 article.main-search-container .search-results-panel {
     height: calc(100vh - 50px);
     min-height: 0;
@@ -24,4 +34,8 @@ article.main-search-container .search-results-container {
 }
 article.main-search-container .search-footer {
     flex: 0 0 50px;
+}
+
+.search-results-body{
+    overflow-y: scroll;
 }
