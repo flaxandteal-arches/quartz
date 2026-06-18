@@ -140,6 +140,7 @@ def process_heritage_item(payload: dict, user) -> tuple:
 
     Returns (resource, created_bool).
     """
+    created = False
     heritage_id_number = payload.get("dpp_heritageidnumber")
     version_from_payload = payload.get("dpp_version")
 
@@ -160,30 +161,25 @@ def process_heritage_item(payload: dict, user) -> tuple:
         is_final,
         version_from_payload,
     )
+    transaction_id = uuid.uuid4()
 
     if not current_draft_version:
         # New item: create a Draft Resource and record it in the version table.
         # TODO - should we be checking if a resource instance already exists with the incoming 6000 number?
         resource = Resource()
         resource.graph_id = HERITAGE_ITEM_GRAPH_ID
-        resource.tiles = _build_managed_tiles(
-            payload, next_major, next_minor, resource.pk
-        )
+        resource.tiles = _build_managed_tiles(payload, 0, 0, resource.pk)
         resource.save(user=user)
 
-        register_new_draft(
-            resource, heritage_id_number, next_major, next_minor, payload
+        current_draft_version = register_new_draft(
+            resource, heritage_id_number, 0, 0, payload
         )
 
-        if is_final:
-            finalize_draft(heritage_id_number, user, next_major, next_minor, payload)
-
-        return resource, True, f"{next_major}.{next_minor}"
+        created = True
 
     # ------------------------------------------------------------------
     # Existing item: archive the current Draft and get back the resource.
     # ------------------------------------------------------------------
-    transaction_id = uuid.uuid4()
     archived_version = archive_copy_of_current_draft(
         heritage_id_number, user, transaction_id
     )
@@ -223,7 +219,7 @@ def process_heritage_item(payload: dict, user) -> tuple:
     if is_final:
         finalize_draft(heritage_id_number, user, next_major, next_minor, payload)
 
-    return current_draft_resource, False, f"{next_major}.{next_minor}"
+    return current_draft_resource, created, f"{next_major}.{next_minor}"
 
 
 def increment_current_working_draft_version(

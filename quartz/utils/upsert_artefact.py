@@ -86,8 +86,37 @@ NODE_MONUMENT_AREA_OR_ARTEFACT = (
     "b0a53628-b539-11ea-8b11-f875a44e0e11"  # resource-instance-list
 )
 
-# Location Data nodegroup  (container — cleared on upsert along with child nodegroups)
+# Discovery nodegroup (container — not cleared on upsert; contains child nodegroups for different location types)
+DISCOVERY_NODEGROUP = "28c9f728-2c5f-11e8-90fa-0242ac120005"
+
+# Location Data nodegroup  (container — not cleared on upsert; contains child nodegroups for different location types)
 LOCATION_DATA_NODEGROUP = "f7cc62b1-f447-11eb-bde0-a87eeabdefba"
+
+# Addresses nodegroup  (repeatable — one tile per address; part of Location Data in UI)
+ADDRESSES_NODEGROUP = "f7cc62a8-f447-11eb-9fae-a87eeabdefba"
+NODE_FULL_ADDRESS = "f7cc8c72-f447-11eb-a7f5-a87eeabdefba"  # string
+NODE_POSTCODE = "f7ccef67-f447-11eb-a0eb-a87eeabdefba"  # string
+NODE_BUILDING_NUMBER = "f7cc8c85-f447-11eb-b1c8-a87eeabdefba"
+NODE_STREET_NAME = "f7cca076-f447-11eb-8e8e-a87eeabdefba"
+NODE_SUBURBS = ""
+NODE_COUNTY = "f7ccef76-f447-11eb-ae38-a87eeabdefba"
+NODE_LGA = ""
+LGA_LIST_NAME = "LGAs"
+SUBURB_LIST_NAME = "Suburbs"
+
+# Geometry nodegroup  (one tile — all GPS points merged into one FeatureCollection)
+GEOMETRY_NODEGROUP = "f7cc629f-f447-11eb-b2d3-a87eeabdefba"
+NODE_GEOSPATIAL_COORDS = (
+    "f7ccc8b9-f447-11eb-9cb1-a87eeabdefba"  # geojson-feature-collection
+)
+
+COORDINATE_SYSTEM_NODEGROUP = "f7cca095-f447-11eb-b171-a87eeabdefba"
+NODE_COORDINATE_SYSTEM = "f7cc8c78-f447-11eb-9fc1-a87eeabdefba"
+COORDINATE_SYSTEM_LIST_NAME = "SCS"
+
+LOT_ON_PLAN_NODEGROUP = ""
+NODE_LOT = ""  # dpp_lot
+NODE_PLAN = ""  # dpp_plan
 
 # Location Descriptions nodegroup  (repeatable — child of Location Data)
 LOCATION_DESCRIPTIONS_NODEGROUP = "f7cc62ab-f447-11eb-8614-a87eeabdefba"
@@ -106,8 +135,8 @@ _MANAGED_NODEGROUPS = {
     CONDITION_ASSESSMENT_NODEGROUP,
     ARCHAEOLOGY_STATUS_NODEGROUP,
     ASSOCIATED_MONUMENTS_NODEGROUP,
-    LOCATION_DATA_NODEGROUP,
-    LOCATION_DESCRIPTIONS_NODEGROUP,
+    ADDRESSES_NODEGROUP,
+    GEOMETRY_NODEGROUP,
 }
 
 FINAL_STATUSES = {"recorded"}
@@ -159,6 +188,7 @@ def process_artefact(payload: dict, user) -> tuple:
 
     Returns (resource, created_bool, version_string).
     """
+    created = False
     discovery_permit_number = payload.get("dpp_permitnumber")
     version_from_payload = payload.get("dpp_version")
 
@@ -176,27 +206,20 @@ def process_artefact(payload: dict, user) -> tuple:
         is_final,
         version_from_payload,
     )
+    transaction_id = uuid.uuid4()
 
     if not current_draft_version:
         resource = Resource()
         resource.graph_id = ARTEFACT_GRAPH_ID
-        resource.tiles = _build_managed_tiles(
-            payload, next_major, next_minor, resource.pk
-        )
+        resource.tiles = _build_managed_tiles(payload, 0, 0, resource.pk)
         resource.save(user=user)
 
-        register_new_draft(
-            resource, discovery_permit_number, next_major, next_minor, payload
+        current_draft_version = register_new_draft(
+            resource, discovery_permit_number, 0, 0, payload
         )
 
-        if is_final:
-            finalize_draft(
-                discovery_permit_number, user, next_major, next_minor, payload
-            )
+        created = True
 
-        return resource, True, f"{next_major}.{next_minor}"
-
-    transaction_id = uuid.uuid4()
     archived_version = archive_copy_of_current_draft(
         discovery_permit_number, user, transaction_id
     )
@@ -232,7 +255,7 @@ def process_artefact(payload: dict, user) -> tuple:
     if is_final:
         finalize_draft(discovery_permit_number, user, next_major, next_minor, payload)
 
-    return current_draft_resource, False, f"{next_major}.{next_minor}"
+    return current_draft_resource, created, f"{next_major}.{next_minor}"
 
 
 def _is_final_payload(payload: dict) -> bool:
@@ -440,9 +463,7 @@ def _build_associated_monuments_tile(payload: dict) -> list:
 
 
 def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
-    locations = payload.get("locations", [])
-    if not locations:
-        return []
+    tiles = []
 
     try:
         location_data_tile = Tile.objects.get(
@@ -450,27 +471,103 @@ def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
             nodegroup_id=LOCATION_DATA_NODEGROUP,
         )
     except Tile.DoesNotExist:
-        location_data_tile = make_tile(LOCATION_DATA_NODEGROUP, {})
+        try:
+            discovery_tile = Tile.objects.get(
+                resourceinstance_id=resource_instance_ref,
+                nodegroup_id=DISCOVERY_NODEGROUP,
+            )
+        except Tile.DoesNotExist:
+            discovery_tile = make_tile(DISCOVERY_NODEGROUP, {})
+            tiles.append(discovery_tile)
 
-    tiles = [location_data_tile]
+        location_data_tile = make_tile(
+            LOCATION_DATA_NODEGROUP, {}, parent_tile_id=discovery_tile.tileid
+        )
+        tiles.append(location_data_tile)
 
-    for loc in locations:
-        name = loc.get("cdm_name")
-        if name:
-            tiles.append(
-                make_tile(
-                    LOCATION_DESCRIPTIONS_NODEGROUP,
-                    {NODE_LOCATION_DESCRIPTION: i18n_string(name)},
-                    parent_tile_id=location_data_tile.tileid,
-                )
+    for loc in payload.get("locations", []):
+        if loc.get("location_type") == "Address":
+            address = loc.get("cdm_name")
+            street_number = loc.get("dpp_numberfirst")
+            street_name = loc.get("dpp_roadname")
+            street_type = loc.get("dpp_roadtypecode")
+            suburb = loc.get("dpp_localitynametext")
+            state = loc.get("dpp_state")
+            postcode = loc.get("dpp_postcode")
+            lga = loc.get("dpp_localgovernmentareaname")
+
+            street_name_full = (
+                street_name + (" " + street_type if has_value(street_type) else "")
+                if has_value(street_name)
+                else None
             )
 
-    gps_features = extract_gps_features(locations)
-    if gps_features:
-        # GPS features go into a geometry node if one exists; log a warning for now
-        logger.warning(
-            "GPS features found in artefact payload but no geometry node is mapped: %s",
-            gps_features,
-        )
+            data = {
+                node: fn(val)
+                for node, val, fn in [
+                    (NODE_FULL_ADDRESS, address, i18n_string),
+                    # (NODE_LGA, lga, lambda v: parse_reference_node(v, LGA_LIST_NAME)),
+                    (NODE_POSTCODE, postcode, i18n_string),
+                    (NODE_BUILDING_NUMBER, street_number, i18n_string),
+                    (NODE_STREET_NAME, street_name_full, i18n_string),
+                    # (
+                    #     NODE_SUBURBS,
+                    #     suburb,
+                    #     lambda v: parse_reference_node(v, SUBURB_LIST_NAME),
+                    # ),
+                    (NODE_COUNTY, state, i18n_string),
+                ]
+                if has_value(val)
+            }
+
+            if data:
+                tiles.append(
+                    make_tile(
+                        ADDRESSES_NODEGROUP,
+                        data,
+                        parent_tile_id=location_data_tile.tileid,
+                    )
+                )
+
+        # if loc.get("location_type") == "Lot Plan":
+        #     lot = loc.get("dpp_lot")
+        #     plan = loc.get("dpp_plan")
+        #     if lot or plan:
+        #         tiles.append(
+        #             make_tile(
+        #                 LOT_ON_PLAN_NODEGROUP,
+        #                 {
+        #                     NODE_LOT: i18n_string(lot),
+        #                     NODE_PLAN: i18n_string(plan),
+        #                 },
+        #                 parent_tile_id=location_data_tile.tileid,
+        #             )
+        #         )
+
+        if loc.get("location_type") == "GPS":
+            gps_features = extract_gps_features([loc])
+            geometry_tile = make_tile(
+                GEOMETRY_NODEGROUP,
+                {
+                    NODE_GEOSPATIAL_COORDS: {
+                        "type": "FeatureCollection",
+                        "features": gps_features,
+                    }
+                },
+                parent_tile_id=location_data_tile.tileid,
+            )
+            tiles.append(
+                make_tile(
+                    COORDINATE_SYSTEM_NODEGROUP,
+                    {
+                        NODE_COORDINATE_SYSTEM: parse_reference_node(
+                            loc.get("dpp_spatialcoordinatesystem"),
+                            COORDINATE_SYSTEM_LIST_NAME,
+                        )
+                    },
+                    parent_tile_id=geometry_tile.tileid,
+                )
+            )
+            tiles.append(geometry_tile)
 
     return tiles
