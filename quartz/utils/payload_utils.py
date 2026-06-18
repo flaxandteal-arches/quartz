@@ -51,7 +51,7 @@ def extract_gps_features(locations: list) -> list:
 
         if "dpp_WGS84_lat" in loc and "dpp_WGS84_long" in loc:
             lat = loc.get("dpp_WGS84_lat")
-            lon = loc.get("dpp_WGS84_long")
+            lon = loc.get("dpp_WGS84_lon")
         else:
             lat = loc.get("dpp_latitude")
             lon = loc.get("dpp_longitude")
