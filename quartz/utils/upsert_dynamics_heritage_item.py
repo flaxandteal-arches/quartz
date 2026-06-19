@@ -16,6 +16,7 @@ from .payload_utils import (
     extract_gps_features,
     i18n_string,
     make_tile,
+    update_tiles,
     parse_date,
     parse_reference_node,
     parse_resource_instance_id,
@@ -110,7 +111,6 @@ NODE_PLAN = "a2040f08-746c-5405-aeae-3b439ee8d99c"  # dpp_plan
 _STATUTORY_NODEGROUPS = {
     NAMES_NODEGROUP,
     SYSTEM_REF_NODEGROUP,
-    DESIGNATION_NODEGROUP,
     ADDRESSES_NODEGROUP,
     GEOMETRY_NODEGROUP,
     LOT_ON_PLAN_NODEGROUP,
@@ -249,7 +249,7 @@ def _build_managed_tiles(
 ) -> list:
     return (
         _build_system_ref_tiles(payload)
-        + _build_designation_tiles(payload)
+        + _build_designation_tiles(payload, resource_instance_ref)
         + _build_name_tiles(payload)
         + _build_location_tiles(payload, resource_instance_ref)
         + _build_version_tile(major_version, minor_version, resource_instance_ref)
@@ -277,24 +277,43 @@ def _build_system_ref_tiles(payload: dict) -> list:
     return [make_tile(SYSTEM_REF_NODEGROUP, {NODE_PRIMARY_REF_NUM: int(heritage_id)})]
 
 
-def _build_designation_tiles(payload: dict) -> list:
+def _build_designation_tiles(payload: dict, resource_instance_ref: str) -> list:
     designation = payload.get("dpp_heritageitemstatus")
     designation_start_date = payload.get("dpp_dateenteredregister")
     designation_end_date = payload.get("dpp_dateremovedfromregister")
     if not (designation or designation_start_date or designation_end_date):
         return []
-    return [
-        make_tile(
-            DESIGNATION_NODEGROUP,
-            {
-                DESIGNATION_OR_PROTECTION_TYPE: parse_reference_node(
-                    designation, PLACE_STATUS_ROLES_LIST_NAME
-                ),
-                DESIGNATION_START_DATE: parse_date(designation_start_date),
-                DESIGNATION_END_DATE: parse_date(designation_end_date),
-            },
+
+    tiles = Tile.objects.filter(
+        resourceinstance_id=resource_instance_ref,
+        nodegroup_id=DESIGNATION_NODEGROUP,
+    )
+    if tiles.exists():
+        return list(
+            update_tiles(
+                tiles,
+                {
+                    DESIGNATION_OR_PROTECTION_TYPE: parse_reference_node(
+                        designation, PLACE_STATUS_ROLES_LIST_NAME
+                    ),
+                    DESIGNATION_START_DATE: parse_date(designation_start_date),
+                    DESIGNATION_END_DATE: parse_date(designation_end_date),
+                },
+            )
         )
-    ]
+    else:
+        return [
+            make_tile(
+                DESIGNATION_NODEGROUP,
+                {
+                    DESIGNATION_OR_PROTECTION_TYPE: parse_reference_node(
+                        designation, PLACE_STATUS_ROLES_LIST_NAME
+                    ),
+                    DESIGNATION_START_DATE: parse_date(designation_start_date),
+                    DESIGNATION_END_DATE: parse_date(designation_end_date),
+                },
+            )
+        ]
 
 
 def _build_name_tiles(payload: dict) -> list:
