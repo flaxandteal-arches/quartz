@@ -402,12 +402,20 @@ export default ko.components.register(
                                     ["associated monument, area or artefact", "instance_details"],
                                 ]
                             });
-                            if (Array.isArray(instances)) {
+                            const monumentNode = self.getRawNodeValue(tile, {
+                                testPaths: [
+                                    ["monument, area or artefact"],
+                                    ["associated monument, area or artefact"],
+                                ]
+                            });
+                            if (Array.isArray(instances) && instances.length) {
                                 for (const inst of instances) {
                                     if (inst?.resourceId) {
                                         assocTypeByResourceId[inst.resourceId] = assocType;
                                     }
                                 }
+                            } else if (monumentNode?.resourceId) {
+                                assocTypeByResourceId[monumentNode.resourceId] = assocType;
                             }
                         }
                     }
