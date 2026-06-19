@@ -17,7 +17,6 @@ const ACT_DISP_DATE_NODE = "4f5eeb27-993e-11ea-b9f7-f875a44e0e11";
 const CONSULTATION_GRAPH_ID = "8d41e49e-a250-11e9-9eab-00224800b26d";
 const CONS_NAME_NODE        = "4ad69684-951f-11ea-b5c3-f875a44e0e11";
 const CONS_TYPE_NODE        = "771bb1e2-8895-11ea-8446-f875a44e0e11";
-const CONS_DATE_NODE        = "1cf746f2-1853-11eb-94f1-f875a44e0e11";
 
 // Digital Object graph ID
 const DIGITAL_OBJECT_GRAPH_ID = "a535a235-8481-11ea-a6b9-f875a44e0e11";
@@ -133,12 +132,12 @@ export default ko.components.register(
                 columns: Array(4).fill(null),
             };
 
-            // 4 columns: Consultation, Consultation Type, Date, Actions
+            // 4 columns: Consultation, Consultation Type
             self.consultationTableConfig = {
                 ...self.defaultTableConfig,
                 paging: true,
                 searching: true,
-                columns: Array(4).fill(null),
+                columns: Array(2).fill(null),
             };
 
             // 7 columns: Date, Summary Type, Summary, Officer, Condition, Occupancy, Maintenance
@@ -279,9 +278,6 @@ export default ko.components.register(
                                     const consultationType = conceptLabel(
                                         getNodeFromTiles(tiles, CONS_TYPE_NODE)
                                     );
-                                    const displayDate = i18nString(
-                                        getNodeFromTiles(tiles, CONS_DATE_NODE)
-                                    );
                                     let resourceUrl;
                                     try {
                                         resourceUrl = generateArchesURL(
@@ -291,7 +287,7 @@ export default ko.components.register(
                                     } catch (_e) {
                                         resourceUrl = `/report/${r.resourceinstanceid}`;
                                     }
-                                    return { consultation, consultationType, displayDate, resourceUrl, tileid: null };
+                                    return { consultation, consultationType, resourceUrl, tileid: null };
                                 });
                             self.consultations(consultations);
                             if (!consultations.length) {
@@ -394,24 +390,18 @@ export default ko.components.register(
                     // is always reliably populated; only display_value in instance_details may be missing)
                     const assocTypeByResourceId = {};
                     const assetsData = self.getRawNodeValue(params.data(), self.dataConfig.assets);
-                    console.log("[Assets] params.data() top-level keys:", params.data() ? Object.keys(params.data()) : "null/undefined");
-                    console.log("[Assets] assetsData:", assetsData);
                     if (Array.isArray(assetsData)) {
                         for (const tile of assetsData) {
-                            console.log("[Assets] tile keys:", Object.keys(tile));
                             const rawAssocType = self.getRawNodeValue(tile, "association type");
-                            console.log("[Assets] rawAssocType:", rawAssocType);
                             const assocType = Array.isArray(rawAssocType)
                                 ? (rawAssocType[0]?.["@display_value"] || conceptLabel(rawAssocType) || "--")
                                 : self.getNodeValue(tile, "association type");
-                            console.log("[Assets] assocType:", assocType);
                             const instances = self.getRawNodeValue(tile, {
                                 testPaths: [
                                     ["monument, area or artefact", "instance_details"],
                                     ["associated monument, area or artefact", "instance_details"],
                                 ]
                             });
-                            console.log("[Assets] instances:", instances);
                             if (Array.isArray(instances)) {
                                 for (const inst of instances) {
                                     if (inst?.resourceId) {
@@ -421,7 +411,6 @@ export default ko.components.register(
                             }
                         }
                     }
-                    console.log("[Assets] assocTypeByResourceId:", assocTypeByResourceId);
 
                     const assetsRelatedUrl = generateArchesURL(
                         "arches:related_resources",
