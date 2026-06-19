@@ -97,8 +97,6 @@
                             <tr class="aher-table-header">
                                 <th>{% trans "Consultation" %}</th>
                                 <th>{% trans "Consultation Type" %}</th>
-                                <th>{% trans "Date" %}</th>
-                                <th class="aher-table-control all">{% trans "Actions" %}</th>
                             </tr>
                         </thead>
                         <tbody data-bind="dataTablesForEach: { data: consultations, dataTableOptions: consultationTableConfig}">
@@ -112,17 +110,6 @@
                                     <!-- /ko -->
                                 </td>
                                 <td data-bind="text: consultationType"></td>
-                                <td data-bind="text: displayDate"></td>
-                                <td class="aher-table-control">
-                                    <div data-bind="if: $parent.cards.consultations">
-                                        <a href="#" data-bind="onEnterkeyClick, onSpaceClick, click: function() {$parent.editTile(tileid, $parent.cards.consultations)}">
-                                            <i class="fa fa-mail-reply"></i>
-                                        </a>
-                                        <a href="#" data-bind="if: $parent.cards.consultations.cardinality == 'n', onEnterkeyClick, onSpaceClick, click: $parent.deleteTile.bind($data, tileid, $parent.cards.consultations, $parent.resource)">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
