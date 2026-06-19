@@ -22,6 +22,15 @@ const CONS_DATE_NODE        = "1cf746f2-1853-11eb-94f1-f875a44e0e11";
 // Digital Object graph ID
 const DIGITAL_OBJECT_GRAPH_ID = "a535a235-8481-11ea-a6b9-f875a44e0e11";
 
+// Associated Monuments/Areas/Artefacts: graph IDs mapped to display labels
+const ASSET_GRAPH_LABELS = {
+    "076f9381-7b00-11e9-8d6b-80000b44d1d9": "Heritage Item",
+    "343cc20c-2c5a-11e8-90fa-0242ac120005": "Artefact",
+    "49bac32e-5464-11e9-a6e2-000d3ab1e588": "Maritime Vessel",
+    "b8032b00-594d-11e9-9cf0-18cf5eb368c4": "Historic Aircraft",
+    "979aaf0b-7042-11ea-9674-287fcf6a5e72": "Area",
+};
+
 // Condition Report graph and node IDs
 const CONDITION_REPORT_GRAPH_ID = "9fccd932-8e8f-4595-89bd-3cb04ddfecae";
 const CR_DATE_NODE         = "a15e9d62-742b-49d1-a6ae-8548828d852f";
@@ -100,6 +109,13 @@ export default ko.components.register(
                 paging: true,
                 searching: true,
                 columns: Array(3).fill(null),
+            };
+
+            self.relatedResourceFourColumnTableConfig = {
+                ...self.defaultTableConfig,
+                paging: true,
+                searching: true,
+                columns: Array(4).fill(null),
             };
 
             self.applicationAreaTableConfig = {
@@ -373,40 +389,74 @@ export default ko.components.register(
                     }
                 }
 
-                const associatedArtifactsNode = self.getRawNodeValue(params.data(), self.dataConfig.assets);
-                if (associatedArtifactsNode) {
-                    if (Array.isArray(associatedArtifactsNode)) {
-                        let key = "Monument, Area or Artefact";
-                        if (!(key in associatedArtifactsNode[0])) key = "Associated Monument, Area or Artefact";
-                        self.assets(
-                            associatedArtifactsNode.map((x) => {
-                                var resource = [];
-                                for (const element of (x[key]?.["instance_details"] || [])) {                                                                                                                                     
-                                    if (element) {
-                                        resource.push({
-                                            resourceName: self.getNodeValue(element),
-                                            resourceUrl: self.getResourceLink(element),
-                                        });
+                if (self.dataConfig.assets && self.dataConfig.resourceinstanceid) {
+                    // Build resourceId -> association type from tile data (association type
+                    // is always reliably populated; only display_value in instance_details may be missing)
+                    const assocTypeByResourceId = {};
+                    const assetsData = self.getRawNodeValue(params.data(), self.dataConfig.assets);
+                    console.log("[Assets] params.data() top-level keys:", params.data() ? Object.keys(params.data()) : "null/undefined");
+                    console.log("[Assets] assetsData:", assetsData);
+                    if (Array.isArray(assetsData)) {
+                        for (const tile of assetsData) {
+                            console.log("[Assets] tile keys:", Object.keys(tile));
+                            const rawAssocType = self.getRawNodeValue(tile, "association type");
+                            console.log("[Assets] rawAssocType:", rawAssocType);
+                            const assocType = Array.isArray(rawAssocType)
+                                ? (rawAssocType[0]?.["@display_value"] || conceptLabel(rawAssocType) || "--")
+                                : self.getNodeValue(tile, "association type");
+                            console.log("[Assets] assocType:", assocType);
+                            const instances = self.getRawNodeValue(tile, {
+                                testPaths: [
+                                    ["monument, area or artefact", "instance_details"],
+                                    ["associated monument, area or artefact", "instance_details"],
+                                ]
+                            });
+                            console.log("[Assets] instances:", instances);
+                            if (Array.isArray(instances)) {
+                                for (const inst of instances) {
+                                    if (inst?.resourceId) {
+                                        assocTypeByResourceId[inst.resourceId] = assocType;
                                     }
                                 }
-                                const association = self.getNodeValue(x, "association type");
-                                const tileid = self.getTileId(x);
-                                return { resource, association, tileid };
-                            })
-                        );
-                    } else {
-                        const instanceDetails = self.getRawNodeValue(associatedArtifactsNode, "instance_details");
-                        if (Array.isArray(instanceDetails)) {
-                            const tileid = self.getTileId(associatedArtifactsNode);
-                            self.assets(
-                                instanceDetails.map((x) => {
-                                    const resourceName = self.getNodeValue(x);
-                                    const resourceUrl = self.getResourceLink(x);
-                                    return { resource: [{ resourceName, resourceUrl }], association: "--", tileid };
-                                })
-                            );
+                            }
                         }
                     }
+                    console.log("[Assets] assocTypeByResourceId:", assocTypeByResourceId);
+
+                    const assetsRelatedUrl = generateArchesURL(
+                        "arches:related_resources",
+                        { resourceid: self.dataConfig.resourceinstanceid }
+                    ) + "?paginate=false";
+                    $.ajax({ url: assetsRelatedUrl })
+                        .done(function (response) {
+                            const related = Array.isArray(response.related_resources)
+                                ? response.related_resources
+                                : [];
+                            self.assets(
+                                related
+                                    .filter(r => r.graph_id in ASSET_GRAPH_LABELS)
+                                    .map(r => {
+                                        let resourceUrl;
+                                        try {
+                                            resourceUrl = generateArchesURL(
+                                                "arches:resource_report",
+                                                { resourceid: r.resourceinstanceid }
+                                            );
+                                        } catch (_e) {
+                                            resourceUrl = `/report/${r.resourceinstanceid}`;
+                                        }
+                                        return {
+                                            resource: [{ resourceName: r.displayname || "--", resourceUrl }],
+                                            resourceType: ASSET_GRAPH_LABELS[r.graph_id],
+                                            association: assocTypeByResourceId[r.resourceinstanceid] || "--",
+                                            tileid: null,
+                                        };
+                                    })
+                            );
+                        })
+                        .fail(function (xhr, status, error) {
+                            console.error("[Assets] fetch FAILED:", xhr.status, status, error, assetsRelatedUrl);
+                        });
                 }
 
                 const associatedActorsNode = self.getRawNodeValue(params.data(), self.dataConfig.actors);
