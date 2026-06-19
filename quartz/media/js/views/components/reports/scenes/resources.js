@@ -124,15 +124,15 @@ export default ko.components.register(
                 columns: Array(2).fill(null),
             };
 
-            // 4 columns: Activity, Activity Type, Date, Actions
+            // 3 columns: Activity, Activity Type, Date
             self.activityTableConfig = {
                 ...self.defaultTableConfig,
                 paging: true,
                 searching: true,
-                columns: Array(4).fill(null),
+                columns: Array(3).fill(null),
             };
 
-            // 4 columns: Consultation, Consultation Type
+            // 2 columns: Consultation, Consultation Type
             self.consultationTableConfig = {
                 ...self.defaultTableConfig,
                 paging: true,
