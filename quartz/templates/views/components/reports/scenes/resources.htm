@@ -218,11 +218,12 @@
                         <thead>
                             <tr class="aher-table-header">
                                 <th>{% trans "Resource Name" %}</th>
+                                <th>{% trans "Resource Type" %}</th>
                                 <th>{% trans "Association" %}</th>
                                 <th class="aher-table-control all">{% trans "Actions" %}</th>
                             </tr>
                         </thead>
-                        <tbody data-bind="dataTablesForEach: { data: assets, dataTableOptions: relatedResourceThreeColumnTableConfig}">
+                        <tbody data-bind="dataTablesForEach: { data: assets, dataTableOptions: relatedResourceFourColumnTableConfig}">
                             <tr>
                                 <td data-bind="foreach: resource">
                                     <span data-bind="visible: $index() > 0">, </span>
@@ -233,6 +234,7 @@
                                     <span data-bind="text: resourceName"></span>
                                     <!-- /ko -->
                                 </td>
+                                <td data-bind="text: resourceType"></td>
                                 <td data-bind="text: association"></td>
                                 <td class="aher-table-control">
                                     <div data-bind="if: $parent.cards.assets">
