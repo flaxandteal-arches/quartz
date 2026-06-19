@@ -32,7 +32,6 @@
                                 <th>{% trans "Archive Holder" %}</th>
                                 <th>{% trans "Title" %}</th>
                                 <th>{% trans "References" %}</th>
-                                <th class="aher-table-control all">{% trans "Actions" %}</th>
                             </tr>
                         </thead>
                         <tbody data-bind="dataTablesForEach: { data: archive, dataTableOptions: archiveHolderTableConfig}">
@@ -48,16 +47,6 @@
                                 </td>
                                 <td data-bind="text:title"></td>
                                 <td data-bind="text:reference"></td>
-                                <td class="aher-table-control">
-                                    <div data-bind="if: $parent.cards.archive">
-                                        <a href="#" data-bind="onEnterkeyClick, onSpaceClick, click: function() {$parent.editTile(tileid, $parent.cards.archive)}">
-                                            <i class="fa fa-mail-reply"></i>
-                                        </a>
-                                        <a href="#" data-bind="if: $parent.cards.archive.cardinality == 'n', onEnterkeyClick, onSpaceClick, click: $parent.deleteTile.bind($data, tileid, $parent.cards.archive, $parent.resource)">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -146,7 +135,6 @@
                         <thead>
                             <tr class="aher-table-header">
                                 <th>{% trans "File Name" %}</th>
-                                <th class="aher-table-control all">{% trans "Actions" %}</th>
                             </tr>
                         </thead>
                         <tbody data-bind="dataTablesForEach: { data: files, dataTableOptions: relatedResourceTwoColumnTableConfig}">
@@ -158,16 +146,6 @@
                                     <!-- ko ifnot: resourceUrl -->
                                     <span data-bind="text:file"></span>
                                     <!-- /ko -->
-                                </td>
-                                <td class="aher-table-control">
-                                    <div data-bind="if: $parent.cards.files">
-                                        <a href="#" data-bind="onEnterkeyClick, onSpaceClick, click: function() {$parent.editTile(tileid, $parent.cards.files)}">
-                                            <i class="fa fa-mail-reply"></i>
-                                        </a>
-                                        <a href="#" data-bind="if: $parent.cards.files.cardinality == 'n', onEnterkeyClick, onSpaceClick, click: $parent.deleteTile.bind($data, tileid, $parent.cards.files, $parent.resource)">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -207,7 +185,6 @@
                                 <th>{% trans "Resource Name" %}</th>
                                 <th>{% trans "Resource Type" %}</th>
                                 <th>{% trans "Association" %}</th>
-                                <th class="aher-table-control all">{% trans "Actions" %}</th>
                             </tr>
                         </thead>
                         <tbody data-bind="dataTablesForEach: { data: assets, dataTableOptions: relatedResourceFourColumnTableConfig}">
@@ -223,16 +200,6 @@
                                 </td>
                                 <td data-bind="text: resourceType"></td>
                                 <td data-bind="text: association"></td>
-                                <td class="aher-table-control">
-                                    <div data-bind="if: $parent.cards.assets">
-                                        <a href="#" data-bind="onEnterkeyClick, onSpaceClick, click: function() {$parent.editTile(tileid, $parent.cards.assets)}">
-                                            <i class="fa fa-mail-reply"></i>
-                                        </a>
-                                        <a href="#" data-bind="if: $parent.cards.assets.cardinality == 'n', onEnterkeyClick, onSpaceClick, click: $parent.deleteTile.bind($data, tileid, $parent.cards.assets, $parent.resource)">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -270,7 +237,6 @@
                         <thead>
                             <tr class="aher-table-header">
                                 <th>{% trans "Associated Person or Organisation" %}</th>
-                                <th class="aher-table-control all">{% trans "Actions" %}</th>
                             </tr>
                         </thead>
                         <tbody data-bind="dataTablesForEach: { data: actors, dataTableOptions: relatedResourceTwoColumnTableConfig}">
@@ -283,16 +249,6 @@
                                     <!-- ko ifnot: actorLink -->
                                     <span data-bind="text: actor"></span>
                                     <!-- /ko -->
-                                </td>
-                                <td class="aher-table-control">
-                                    <div data-bind="if: $parent.cards.actors">
-                                        <a href="#" data-bind="onEnterkeyClick, onSpaceClick, click: function() {$parent.editTile(tileid, $parent.cards.actors)}">
-                                            <i class="fa fa-mail-reply"></i>
-                                        </a>
-                                        <a href="#" data-bind="if: $parent.cards.actors.cardinality == 'n', onEnterkeyClick, onSpaceClick, click: $parent.deleteTile.bind($data, tileid, $parent.cards.actors, $parent.resource)">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -328,7 +284,6 @@
                         <thead>
                             <tr class="aher-table-header">
                                 <th>{% trans "Application Area" %}</th>
-                                <th class="aher-table-control all">{% trans "Actions" %}</th>
                             </tr>
                         </thead>
                         <tbody data-bind="dataTablesForEach: { data: applicationArea, dataTableOptions: applicationAreaTableConfig}">
@@ -340,16 +295,6 @@
                                     <!-- ko ifnot: resourceLink -->
                                     <span data-bind="text: resource"></span>
                                     <!-- /ko -->
-                                </td>
-                                <td class="aher-table-control">
-                                    <div data-bind="if: $parent.cards.relatedApplicationArea">
-                                        <a href="#" data-bind="onEnterkeyClick, onSpaceClick, click: function() {$parent.editTile(tileid, $parent.cards.relatedApplicationArea)}">
-                                            <i class="fa fa-mail-reply"></i>
-                                        </a>
-                                        <a href="#" data-bind="if: $parent.cards.relatedApplicationArea.cardinality == 'n', onEnterkeyClick, onSpaceClick, click: $parent.deleteTile.bind($data, tileid, $parent.cards.relatedApplicationArea, $parent.resource)">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -388,7 +333,6 @@
                         <thead>
                             <tr class="aher-table-header">
                                 <th>{% trans "Translation" %}</th>
-                                <th class="aher-table-control all">{% trans "Actions" %}</th>
                             </tr>
                         </thead>
                         <tbody data-bind="dataTablesForEach: { data: translation, dataTableOptions: relatedResourceTwoColumnTableConfig}">
@@ -400,16 +344,6 @@
                                     <!-- ko ifnot: resourceLink -->
                                     <span data-bind="text: resource"></span>
                                     <!-- /ko -->
-                                </td>
-                                <td class="aher-table-control">
-                                    <div data-bind="if: $parent.cards.translation">
-                                        <a href="#" data-bind="onEnterkeyClick, onSpaceClick, click: function() {$parent.editTile(tileid, $parent.cards.translation)}">
-                                            <i class="fa fa-mail-reply"></i>
-                                        </a>
-                                        <a href="#" data-bind="if: $parent.cards.translation.cardinality == 'n', onEnterkeyClick, onSpaceClick, click: $parent.deleteTile.bind($data, tileid, $parent.cards.translation, $parent.resource)">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -447,7 +381,6 @@
                         <thead>
                             <tr class="aher-table-header">
                                 <th>{% trans "Period" %}</th>
-                                <th class="aher-table-control all">{% trans "Actions" %}</th>
                             </tr>
                         </thead>
                         <tbody data-bind="dataTablesForEach: { data: period, dataTableOptions: relatedResourceTwoColumnTableConfig}">
@@ -460,16 +393,6 @@
                                     <!-- ko ifnot: resourceUrl -->
                                     <span data-bind="text: resourceName"></span>
                                     <!-- /ko -->
-                                </td>
-                                <td class="aher-table-control">
-                                    <div data-bind="if: $parent.cards.period">
-                                        <a href="#" data-bind="onEnterkeyClick, onSpaceClick, click: function() {$parent.editTile(tileid, $parent.cards.period)}">
-                                            <i class="fa fa-mail-reply"></i>
-                                        </a>
-                                        <a href="#" data-bind="if: $parent.cards.period.cardinality == 'n', onEnterkeyClick, onSpaceClick, click: $parent.deleteTile.bind($data, tileid, $parent.cards.period, $parent.resource)">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
                                 </td>
                             </tr>
                         </tbody>

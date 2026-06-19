@@ -93,14 +93,14 @@ export default ko.components.register(
                 ...self.defaultTableConfig,
                 paging: true,
                 searching: true,
-                columns: Array(2).fill(null),
+                columns: Array(1).fill(null),
             };
 
             self.archiveHolderTableConfig = {
                 ...self.defaultTableConfig,
                 paging: true,
                 searching: true,
-                columns: Array(4).fill(null),
+                columns: Array(3).fill(null),
             };
 
             self.relatedResourceThreeColumnTableConfig = {
@@ -114,14 +114,14 @@ export default ko.components.register(
                 ...self.defaultTableConfig,
                 paging: true,
                 searching: true,
-                columns: Array(4).fill(null),
+                columns: Array(3).fill(null),
             };
 
             self.applicationAreaTableConfig = {
                 ...self.defaultTableConfig,
                 paging: true,
                 searching: true,
-                columns: Array(2).fill(null),
+                columns: Array(1).fill(null),
             };
 
             // 3 columns: Activity, Activity Type, Date
