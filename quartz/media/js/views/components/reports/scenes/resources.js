@@ -19,6 +19,9 @@ const CONS_NAME_NODE        = "4ad69684-951f-11ea-b5c3-f875a44e0e11";
 const CONS_TYPE_NODE        = "771bb1e2-8895-11ea-8446-f875a44e0e11";
 const CONS_DATE_NODE        = "1cf746f2-1853-11eb-94f1-f875a44e0e11";
 
+// Digital Object graph ID
+const DIGITAL_OBJECT_GRAPH_ID = "a535a235-8481-11ea-a6b9-f875a44e0e11";
+
 // Condition Report graph and node IDs
 const CONDITION_REPORT_GRAPH_ID = "9fccd932-8e8f-4595-89bd-3cb04ddfecae";
 const CR_DATE_NODE         = "a15e9d62-742b-49d1-a6ae-8548828d852f";
@@ -326,16 +329,48 @@ export default ko.components.register(
                     );
                 }
 
-                const associatedFilesNode = self.getRawNodeValue(params.data(), self.dataConfig.files, "instance_details");
-                if (Array.isArray(associatedFilesNode)) {
-                    const tileid = self.getTileId(self.getRawNodeValue(params.data(), self.dataConfig.files));
-                    self.files(
-                        associatedFilesNode.map((x) => {
-                            const file = self.getNodeValue(x);
-                            const resourceUrl = self.getResourceLink(x);
-                            return { file, resourceUrl, tileid };
+                if (self.dataConfig.files && self.dataConfig.resourceinstanceid) {
+                    const filesRelatedUrl = generateArchesURL(
+                        "arches:related_resources",
+                        { resourceid: self.dataConfig.resourceinstanceid }
+                    ) + "?paginate=false";
+                    $.ajax({ url: filesRelatedUrl })
+                        .done(function (response) {
+                            const related = Array.isArray(response.related_resources)
+                                ? response.related_resources
+                                : [];
+                            self.files(
+                                related
+                                    .filter(r => r.graph_id === DIGITAL_OBJECT_GRAPH_ID)
+                                    .map(r => {
+                                        let resourceUrl;
+                                        try {
+                                            resourceUrl = generateArchesURL(
+                                                "arches:resource_report",
+                                                { resourceid: r.resourceinstanceid }
+                                            );
+                                        } catch (_e) {
+                                            resourceUrl = `/report/${r.resourceinstanceid}`;
+                                        }
+                                        return { file: r.displayname || "--", resourceUrl, tileid: null };
+                                    })
+                            );
                         })
-                    );
+                        .fail(function (xhr, status, error) {
+                            console.error("[Files] fetch FAILED:", xhr.status, status, error, filesRelatedUrl);
+                        });
+                } else if (self.dataConfig.files) {
+                    const associatedFilesNode = self.getRawNodeValue(params.data(), self.dataConfig.files, "instance_details");
+                    if (Array.isArray(associatedFilesNode)) {
+                        const tileid = self.getTileId(self.getRawNodeValue(params.data(), self.dataConfig.files));
+                        self.files(
+                            associatedFilesNode.map((x) => {
+                                const file = self.getNodeValue(x);
+                                const resourceUrl = self.getResourceLink(x);
+                                return { file, resourceUrl, tileid };
+                            })
+                        );
+                    }
                 }
 
                 const associatedArtifactsNode = self.getRawNodeValue(params.data(), self.dataConfig.assets);
