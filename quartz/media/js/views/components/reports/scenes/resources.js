@@ -60,6 +60,23 @@ export default ko.components.register(
             const self = this;
             Object.assign(self, reportUtils);
 
+            self.getResourceLink = (node) => {
+                if (node) {
+                    const resourceId = node?.resourceId || node?.instance_details?.[0]?.resourceId;
+                    if (resourceId) {
+                        try {
+                            const urlPathname = window.location.pathname;
+                            const urlName = urlPathname.includes("resource")
+                                ? "arches:resource"
+                                : "arches:resource_report";
+                            return generateArchesURL(urlName, { resourceid: resourceId });
+                        } catch (_e) {
+                            return `/report/${resourceId}`;
+                        }
+                    }
+                }
+            };
+
             //Related Resource 2 column table configuration
             self.relatedResourceTwoColumnTableConfig = {
                 ...self.defaultTableConfig,
@@ -275,24 +292,35 @@ export default ko.components.register(
                     self.archive(
                         associatedArchiveNode.map((x) => {
                             const archiveHolders = [];
-                            var reference, title, tileid, holders;
+                            var reference, title, tileid, holderNode;
                             if (key) {
                                 reference = self.getNodeValue(x, key, "archive object references", "archive object reference");
                                 title = self.getNodeValue(x, key, "archive object titles", "archive object title");
                                 tileid = self.getTileId(x);
-                                holders = self.getRawNodeValue(x, key, "archive holder", "instance_details");
+                                holderNode = self.getRawNodeValue(x, key, "archive holder");
                             } else {
                                 reference = self.getNodeValue(x, "archive object references", "archive object reference");
                                 title = self.getNodeValue(x, "archive object titles", "archive object title");
                                 tileid = self.getTileId(x);
-                                holders = self.getRawNodeValue(x, "archive holder", "instance_details");
+                                holderNode = self.getRawNodeValue(x, "archive holder");
                             }
-                            holders?.forEach((element) => {
-                                archiveHolders.push({
-                                    holder: self.getNodeValue(element),
-                                    holderLink: self.getResourceLink(element),
+                            const holders = holderNode?.instance_details;
+                            if (Array.isArray(holders) && holders.length) {
+                                holders.forEach((element) => {
+                                    archiveHolders.push({
+                                        holder: self.getNodeValue(element),
+                                        holderLink: self.getResourceLink(element),
+                                    });
                                 });
-                            });
+                            } else if (holderNode) {
+                                const holder = self.processRawValue(holderNode);
+                                if (holder && holder !== "--") {
+                                    archiveHolders.push({
+                                        holder,
+                                        holderLink: self.getResourceLink(holderNode),
+                                    });
+                                }
+                            }
                             return { archiveHolders, reference, title, tileid };
                         })
                     );
