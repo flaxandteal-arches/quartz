@@ -18,6 +18,7 @@ from .payload_utils import (
     extract_gps_features,
     i18n_string,
     make_tile,
+    make_or_update_tiles,
     parse_date,
     parse_reference_node,
     parse_resource_instance_id,
@@ -38,13 +39,13 @@ SYSTEM_REF_NODEGROUP = "dd800bc9-b494-11ea-9af8-f875a44e0e11"
 NODE_PRIMARY_REF_NUM = "dd8032af-b494-11ea-8110-f875a44e0e11"  # number
 NODE_LEGACY_ID = "dd8032b1-b494-11ea-a183-f875a44e0e11"  # string
 
-# version information nodegroup (one tile — not repeatable)
+# Version information nodegroup  (one tile — not repeatable)
 VERSIONING_NODEGROUP = "07028e38-c27c-572f-8be5-e37ec837ad4f"
 VERSION_NUMBER = "ddaac2c0-65f5-52ed-a843-43de724f9d01"  # string
 # WORKING_COPY = "415b7f11-e007-56d6-a794-ba18aea7325b"  # reference to working draft
 
 DEACTIVATION_REASON_NODEGROUP = "7def03f0-3bf7-52dc-b226-76b3d00bc8a2"
-NODE_DEACTIVATION_REASON = "7def03f0-3bf7-52dc-b226-76b3d00bc8a2"  # string
+NODE_DEACTIVATION_REASON = "7def03f0-3bf7-52dc-b226-76b3d00bc8a2"  # reference
 DEACTIVATION_REASON_LIST_NAME = "Deactivation Reason"
 
 # Artefact Names nodegroup  (repeatable — one tile per name)
@@ -58,7 +59,7 @@ NODE_EXTERNAL_CROSS_REF = "4844c745-eec7-11eb-9089-a87eeabdefba"  # string
 # Descriptions nodegroup  (repeatable — one tile per description)
 DESCRIPTIONS_NODEGROUP = "c30977ad-991e-11ea-9368-f875a44e0e11"
 NODE_DESCRIPTION = "c30977b0-991e-11ea-ba04-f875a44e0e11"  # string
-NODE_DESCRIPTION_TYPE = "c30977b1-991e-11ea-b259-f875a44e0e11"  # reference\
+NODE_DESCRIPTION_TYPE = "c30977b1-991e-11ea-b259-f875a44e0e11"  # reference
 DESCRIPTION_TYPE_LIST_NAME = "Description Roles"
 
 # Important Source of Information nodegroup  (one tile)
@@ -71,9 +72,22 @@ PERMISSION_NODEGROUP = "6452f897-1b16-5fc5-9fcd-e6d43f48ce49"
 NODE_PERMISSION = "6452f897-1b16-5fc5-9fcd-e6d43f48ce49"  # reference
 PERMISSION_LIST_NAME = "Permission to Interfere Previously Granted"
 
-# Condition Assessment nodegroup  (contains date_of_assessment_start)
+# Production nodegroup  (contains artefact_type — repeatable)
+PRODUCTION_NODEGROUP = "99cfca45-381d-11e8-968a-dca90488358a"
+NODE_ARTEFACT_TYPE = "546b1630-3ba4-11eb-9030-f875a44e0e11"  # reference
+ARTEFACT_TYPE_LIST_NAME = "Artefact Types AD"
+
+# Discovery nodegroup  (contains discovery_method)
+DISCOVERY_NODEGROUP = "28c9f728-2c5f-11e8-90fa-0242ac120005"
+NODE_DISCOVERY_METHOD = "28ca0042-2c5f-11e8-90fa-0242ac120005"  # reference
+NODE_ARCHAEOLOGY_DISCOVERY_TYPE = "e1fd4c86-30e8-5f1b-b605-9452a5ded960"
+DISCOVERY_METHOD_LIST_NAME = "Contexts"
+ARCHAEOLOGY_DISCOVERY_TYPE_LIST_NAME = "Archaeological Discovery Type"
+
+# Condition Assessment nodegroup  (contains start and end dates)
 CONDITION_ASSESSMENT_NODEGROUP = "0b2fcd21-381d-11e8-b7d4-dca90488358a"
 NODE_DATE_OF_ASSESSMENT_START = "0b2fdbc7-381d-11e8-ac6d-dca90488358a"  # date
+NODE_DATE_OF_ASSESSMENT_END = "e75b6d90-863b-11ea-90c0-f875a44e0e11"  # date
 
 # Archaeology Status nodegroup  (one tile)
 ARCHAEOLOGY_STATUS_NODEGROUP = "6d658d05-857e-5aa3-b265-314f89e1804e"
@@ -86,10 +100,11 @@ NODE_MONUMENT_AREA_OR_ARTEFACT = (
     "b0a53628-b539-11ea-8b11-f875a44e0e11"  # resource-instance-list
 )
 
-# Discovery nodegroup (container — not cleared on upsert; contains child nodegroups for different location types)
-DISCOVERY_NODEGROUP = "28c9f728-2c5f-11e8-90fa-0242ac120005"
+# Digital Files nodegroup  (one tile — resource-instance-list)
+DIGITAL_FILE_NODEGROUP = "1cfbc009-860f-11ea-a7a6-f875a44e0e11"
+NODE_DIGITAL_FILE = "1cfbc009-860f-11ea-a7a6-f875a44e0e11"  # resource-instance-list
 
-# Location Data nodegroup  (container — not cleared on upsert; contains child nodegroups for different location types)
+# Location Data nodegroup  (container — cleared on upsert along with child nodegroups)
 LOCATION_DATA_NODEGROUP = "f7cc62b1-f447-11eb-bde0-a87eeabdefba"
 
 # Addresses nodegroup  (repeatable — one tile per address; part of Location Data in UI)
@@ -110,17 +125,30 @@ NODE_GEOSPATIAL_COORDS = (
     "f7ccc8b9-f447-11eb-9cb1-a87eeabdefba"  # geojson-feature-collection
 )
 
+# Coordinate System nodegroup  (coordinate_system_value — child of location_data)
 COORDINATE_SYSTEM_NODEGROUP = "f7cca095-f447-11eb-b171-a87eeabdefba"
-NODE_COORDINATE_SYSTEM = "f7cc8c78-f447-11eb-9fc1-a87eeabdefba"
+NODE_COORDINATE_SYSTEM = "f7cc8c78-f447-11eb-9fc1-a87eeabdefba"  # reference
 COORDINATE_SYSTEM_LIST_NAME = "SCS"
+
+# Capture Scale nodegroup  (one tile per location — child of location_data)
+CAPTURE_SCALE_NODEGROUP = "f7ccef5f-f447-11eb-8b98-a87eeabdefba"
+NODE_CAPTURE_SCALE = "f7ccef5f-f447-11eb-8b98-a87eeabdefba"  # reference
+CAPTURE_SCALE_LIST_NAME = "Capture Scale"
+
+# Spatial Accuracy Qualifier nodegroup  (one tile per location — child of location_data)
+SPATIAL_ACCURACY_NODEGROUP = "f7cca099-f447-11eb-8a56-a87eeabdefba"
+NODE_SPATIAL_ACCURACY = "f7cca099-f447-11eb-8a56-a87eeabdefba"  # reference
+SPATIAL_ACCURACY_LIST_NAME = (
+    "6afdfd0e-5c44-510f-bc75-dcca147cb4d1"  # "Spatial Accuracy Qualifiers"
+)
+
+# Spatial Metadata Descriptions nodegroup  (repeatable — child of location_data)
+SPATIAL_METADATA_DESCRIPTIONS_NODEGROUP = "f7ccef51-f447-11eb-8c32-a87eeabdefba"
+NODE_SPATIAL_METADATA_NOTES = "f7ccef57-f447-11eb-9619-a87eeabdefba"  # string
 
 LOT_ON_PLAN_NODEGROUP = ""
 NODE_LOT = ""  # dpp_lot
 NODE_PLAN = ""  # dpp_plan
-
-# Location Descriptions nodegroup  (repeatable — child of Location Data)
-LOCATION_DESCRIPTIONS_NODEGROUP = "f7cc62ab-f447-11eb-8614-a87eeabdefba"
-NODE_LOCATION_DESCRIPTION = "f7cca086-f447-11eb-a4c4-a87eeabdefba"  # string
 
 # Nodegroups whose tiles are fully replaced on each sync.
 _MANAGED_NODEGROUPS = {
@@ -132,11 +160,17 @@ _MANAGED_NODEGROUPS = {
     DESCRIPTIONS_NODEGROUP,
     IMPORTANT_SOURCE_NODEGROUP,
     PERMISSION_NODEGROUP,
+    PRODUCTION_NODEGROUP,
     CONDITION_ASSESSMENT_NODEGROUP,
     ARCHAEOLOGY_STATUS_NODEGROUP,
     ASSOCIATED_MONUMENTS_NODEGROUP,
+    DIGITAL_FILE_NODEGROUP,
     ADDRESSES_NODEGROUP,
     GEOMETRY_NODEGROUP,
+    COORDINATE_SYSTEM_NODEGROUP,
+    CAPTURE_SCALE_NODEGROUP,
+    SPATIAL_ACCURACY_NODEGROUP,
+    SPATIAL_METADATA_DESCRIPTIONS_NODEGROUP,
 }
 
 FINAL_STATUSES = {"recorded"}
@@ -268,19 +302,23 @@ def _build_managed_tiles(
     minor_version: str | int,
     resource_instance_ref: str,
 ) -> list:
+    discovery_tile = _get_or_build_discovery_tile(payload, resource_instance_ref)
     return (
         _build_system_ref_tile(payload)
         + _build_version_tile(major_version, minor_version, resource_instance_ref)
+        + _build_deactivation_reason_tile(payload)
         + _build_name_tiles(payload)
         + _build_external_ref_tiles(payload)
         + _build_description_tiles(payload)
         + _build_important_source_tile(payload)
         + _build_permission_tile(payload)
+        + _build_artefact_type_tile(payload)
+        + [discovery_tile]
         + _build_condition_assessment_tile(payload)
         + _build_archaeology_status_tile(payload)
-        + _build_deactivation_reason_tile(payload)
         + _build_associated_monuments_tile(payload)
-        + _build_location_tiles(payload, resource_instance_ref)
+        + _build_digital_file_tile(payload)
+        + _build_location_tiles(payload, resource_instance_ref, discovery_tile)
     )
 
 
@@ -308,6 +346,22 @@ def _build_system_ref_tile(payload: dict) -> list:
     return [make_tile(SYSTEM_REF_NODEGROUP, data)]
 
 
+def _build_deactivation_reason_tile(payload: dict) -> list:
+    reason = payload.get("dpp_deactivationreason")
+    if not has_value(reason):
+        return []
+    return [
+        make_tile(
+            DEACTIVATION_REASON_NODEGROUP,
+            {
+                NODE_DEACTIVATION_REASON: parse_reference_node(
+                    reason, DEACTIVATION_REASON_LIST_NAME
+                )
+            },
+        )
+    ]
+
+
 def _build_name_tiles(payload: dict) -> list:
     name = payload.get("dpp_discoveryname")
     if not has_value(name):
@@ -328,22 +382,6 @@ def _build_external_ref_tiles(payload: dict) -> list:
         make_tile(
             EXTERNAL_CROSS_REFS_NODEGROUP,
             {NODE_EXTERNAL_CROSS_REF: i18n_string(str(ref))},
-        )
-    ]
-
-
-def _build_deactivation_reason_tile(payload: dict) -> list:
-    reason = payload.get("dpp_deactivationreason")
-    if not has_value(reason):
-        return []
-    return [
-        make_tile(
-            DEACTIVATION_REASON_NODEGROUP,
-            {
-                NODE_DEACTIVATION_REASON: parse_reference_node(
-                    reason, DEACTIVATION_REASON_LIST_NAME
-                )
-            },
         )
     ]
 
@@ -375,7 +413,6 @@ def _build_important_source_tile(payload: dict) -> list:
     value = payload.get("dpp_importantsourceofinformation")
     if not has_value(value):
         return []
-    # TODO: map integer value to a reference node
     return [
         make_tile(
             IMPORTANT_SOURCE_NODEGROUP,
@@ -392,7 +429,6 @@ def _build_permission_tile(payload: dict) -> list:
     value = payload.get("dpp_permissiontointerferegranted")
     if not has_value(value):
         return []
-    # TODO: map integer value to a reference node
     return [
         make_tile(
             PERMISSION_NODEGROUP,
@@ -401,16 +437,46 @@ def _build_permission_tile(payload: dict) -> list:
     ]
 
 
-def _build_condition_assessment_tile(payload: dict) -> list:
-    date_value = payload.get("dpp_dateofdiscovery")
-    if not has_value(date_value):
+def _build_artefact_type_tile(payload: dict) -> list:
+    value = payload.get("dpp_discoverysubtype")
+    if not has_value(value):
         return []
     return [
         make_tile(
-            CONDITION_ASSESSMENT_NODEGROUP,
-            {NODE_DATE_OF_ASSESSMENT_START: parse_date(date_value)},
+            PRODUCTION_NODEGROUP,
+            {NODE_ARTEFACT_TYPE: parse_reference_node(value, ARTEFACT_TYPE_LIST_NAME)},
         )
     ]
+
+
+def _get_or_build_discovery_tile(payload: dict, resource_instance_ref: str) -> object:
+    value = payload.get("dpp_context")
+    discovery_type = payload.get("dpp_archaeologytype")
+    data = {
+        NODE_DISCOVERY_METHOD: parse_reference_node(value, DISCOVERY_METHOD_LIST_NAME),
+        NODE_ARCHAEOLOGY_DISCOVERY_TYPE: parse_reference_node(
+            discovery_type,
+            ARCHAEOLOGY_DISCOVERY_TYPE_LIST_NAME,
+        ),
+    }
+    tiles = make_or_update_tiles(
+        DISCOVERY_NODEGROUP, data, resource_instance_ref, parent_tile_id=None
+    )
+
+    return tiles[0]
+
+
+def _build_condition_assessment_tile(payload: dict) -> list:
+    start_date = payload.get("dpp_dateofdiscovery")
+    end_date = payload.get("dpp_notificationdate")
+    if not has_value(start_date) and not has_value(end_date):
+        return []
+    data = {}
+    if has_value(start_date):
+        data[NODE_DATE_OF_ASSESSMENT_START] = parse_date(start_date)
+    if has_value(end_date):
+        data[NODE_DATE_OF_ASSESSMENT_END] = parse_date(end_date)
+    return [make_tile(CONDITION_ASSESSMENT_NODEGROUP, data)]
 
 
 def _build_archaeology_status_tile(payload: dict) -> list:
@@ -462,7 +528,22 @@ def _build_associated_monuments_tile(payload: dict) -> list:
     ]
 
 
-def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
+def _build_digital_file_tile(payload: dict) -> list:
+    # TODO: dpp_edocsnumber is a string eDocs reference — look up the corresponding
+    # Document resource instance by this number and link it here.
+    edocs = payload.get("dpp_edocsnumber")
+    if not has_value(edocs):
+        return []
+    logger.warning(
+        "dpp_edocsnumber %r received but resource-instance lookup not yet implemented; skipping digital_file tile",
+        edocs,
+    )
+    return []
+
+
+def _build_location_tiles(
+    payload: dict, resource_instance_ref: str, discovery_tile: object
+) -> list:
     tiles = []
 
     try:
@@ -471,15 +552,6 @@ def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
             nodegroup_id=LOCATION_DATA_NODEGROUP,
         )
     except Tile.DoesNotExist:
-        try:
-            discovery_tile = Tile.objects.get(
-                resourceinstance_id=resource_instance_ref,
-                nodegroup_id=DISCOVERY_NODEGROUP,
-            )
-        except Tile.DoesNotExist:
-            discovery_tile = make_tile(DISCOVERY_NODEGROUP, {})
-            tiles.append(discovery_tile)
-
         location_data_tile = make_tile(
             LOCATION_DATA_NODEGROUP, {}, parent_tile_id=discovery_tile.tileid
         )
@@ -545,29 +617,88 @@ def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
         #         )
 
         if loc.get("location_type") == "GPS":
-            gps_features = extract_gps_features([loc])
-            geometry_tile = make_tile(
-                GEOMETRY_NODEGROUP,
-                {
-                    NODE_GEOSPATIAL_COORDS: {
-                        "type": "FeatureCollection",
-                        "features": gps_features,
-                    }
-                },
-                parent_tile_id=location_data_tile.tileid,
+            gps_features = extract_gps_features(
+                [loc], lat_key="dpp_WGS84_lat", lon_key="dpp_WGS84_lon"
             )
+            tiles.append(
+                make_tile(
+                    GEOMETRY_NODEGROUP,
+                    {
+                        NODE_GEOSPATIAL_COORDS: {
+                            "type": "FeatureCollection",
+                            "features": gps_features,
+                        }
+                    },
+                    parent_tile_id=location_data_tile.tileid,
+                )
+            )
+
+        # capture_scale — locations.dpp_locationsource
+        source = loc.get("dpp_locationsource")
+        if has_value(source):
+            tiles.append(
+                make_tile(
+                    CAPTURE_SCALE_NODEGROUP,
+                    {
+                        NODE_CAPTURE_SCALE: parse_reference_node(
+                            source, CAPTURE_SCALE_LIST_NAME
+                        )
+                    },
+                    parent_tile_id=location_data_tile.tileid,
+                )
+            )
+
+        # spatial_accuracy_qualifier — locations.dpp_locationaccuracy
+        accuracy = loc.get("dpp_locationaccuracy")
+        if has_value(accuracy):
+            tiles.append(
+                make_tile(
+                    SPATIAL_ACCURACY_NODEGROUP,
+                    {
+                        NODE_SPATIAL_ACCURACY: parse_reference_node(
+                            accuracy, SPATIAL_ACCURACY_LIST_NAME
+                        )
+                    },
+                    parent_tile_id=location_data_tile.tileid,
+                )
+            )
+
+        # coordinate_system_value — locations.dpp_spatialcoordinatesystem
+        coord_system = loc.get("dpp_spatialcoordinatesystem")
+        if has_value(coord_system):
             tiles.append(
                 make_tile(
                     COORDINATE_SYSTEM_NODEGROUP,
                     {
                         NODE_COORDINATE_SYSTEM: parse_reference_node(
-                            loc.get("dpp_spatialcoordinatesystem"),
-                            COORDINATE_SYSTEM_LIST_NAME,
+                            coord_system, COORDINATE_SYSTEM_LIST_NAME
                         )
                     },
-                    parent_tile_id=geometry_tile.tileid,
+                    parent_tile_id=location_data_tile.tileid,
                 )
             )
-            tiles.append(geometry_tile)
+
+        # spatial_metadata_notes — lat/lon/easting/northing combined into one string tile
+        lat = loc.get("dpp_latitude")
+        lon = loc.get("dpp_longitude")
+        easting = loc.get("dpp_easting")
+        northing = loc.get("dpp_northing")
+        notes_parts = []
+        if has_value(lat):
+            notes_parts.append(f"Latitude: {lat}")
+        if has_value(lon):
+            notes_parts.append(f"Longitude: {lon}")
+        if has_value(easting):
+            notes_parts.append(f"Easting: {easting}")
+        if has_value(northing):
+            notes_parts.append(f"Northing: {northing}")
+        if notes_parts:
+            tiles.append(
+                make_tile(
+                    SPATIAL_METADATA_DESCRIPTIONS_NODEGROUP,
+                    {NODE_SPATIAL_METADATA_NOTES: i18n_string(", ".join(notes_parts))},
+                    parent_tile_id=location_data_tile.tileid,
+                )
+            )
 
     return tiles
