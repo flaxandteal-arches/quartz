@@ -16,6 +16,7 @@ from arches_resource_version_manager.models import VersionedResource
 
 from .payload_utils import (
     extract_gps_features,
+    get_or_create_person_resource_from_name,
     i18n_string,
     make_tile,
     make_or_update_tiles,
@@ -75,6 +76,9 @@ PERMISSION_LIST_NAME = "Permission to Interfere Previously Granted"
 # Production nodegroup  (contains artefact_type — repeatable)
 PRODUCTION_NODEGROUP = "99cfca45-381d-11e8-968a-dca90488358a"
 NODE_ARTEFACT_TYPE = "546b1630-3ba4-11eb-9030-f875a44e0e11"  # reference
+NODE_ASSOCIATED_PERSON = (
+    "dde0f338-bd41-11ea-afd6-f875a44e0e11"  # resource instance list
+)
 ARTEFACT_TYPE_LIST_NAME = "Artefact Types AD"
 
 # Discovery nodegroup  (contains discovery_method)
@@ -441,10 +445,35 @@ def _build_artefact_type_tile(payload: dict) -> list:
     value = payload.get("dpp_discoverysubtype")
     if not has_value(value):
         return []
+    data = {
+        NODE_ARTEFACT_TYPE: parse_reference_node(value, ARTEFACT_TYPE_LIST_NAME),
+        NODE_ASSOCIATED_PERSON: [],
+    }
+    if has_value(payload.get("dpp_contact")):
+        person_resource_id = get_or_create_person_resource_from_name(
+            payload.get("dpp_contact")
+        )
+        data[NODE_ASSOCIATED_PERSON].extend(
+            parse_resource_instance_id(person_resource_id)
+        )
+    if has_value(payload.get("dpp_applicant")):
+        person_resource_id = get_or_create_person_resource_from_name(
+            payload.get("dpp_applicant")
+        )
+        data[NODE_ASSOCIATED_PERSON].extend(
+            parse_resource_instance_id(person_resource_id)
+        )
+    if has_value(payload.get("ownerid")):
+        person_resource_id = get_or_create_person_resource_from_name(
+            payload.get("ownerid")
+        )
+        data[NODE_ASSOCIATED_PERSON].extend(
+            parse_resource_instance_id(person_resource_id)
+        )
     return [
         make_tile(
             PRODUCTION_NODEGROUP,
-            {NODE_ARTEFACT_TYPE: parse_reference_node(value, ARTEFACT_TYPE_LIST_NAME)},
+            data,
         )
     ]
 

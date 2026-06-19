@@ -2,9 +2,12 @@ import logging
 import uuid
 from datetime import datetime
 
-from arches.app.datatypes.datatypes import DataTypeFactory
-from arches.app.models.tile import Tile
+from django.contrib.auth import get_user_model
+from django.db.models import Q
 
+from arches.app.datatypes.datatypes import DataTypeFactory
+from arches.app.models.resource import Resource
+from arches.app.models.tile import Tile
 from arches_controlled_lists.models import List
 
 logger = logging.getLogger(__name__)
@@ -152,15 +155,11 @@ def has_value(value) -> bool:
     return value is not None and str(value).strip() != ""
 
 
-def get_or_create_person_resource_from_name(name: str, user) -> str:
+def get_or_create_person_resource_from_name(name: str) -> str:
     """
     Get or create a Person resource with the given name, and return its resourceinstanceid.
     This is used for mapping the 'modifiedby' field from the payload to a Person resource in Arches.
     """
-    from arches.app.models.resource import Resource
-    from arches.app.models.tile import Tile
-    from django.db.models import Q
-
     resource_filter = Q(nodegroup_id="4110f741-1a44-11e9-885e-000d3ab1e588") & Q(
         **{"data__5f8ded26-7ef9-11ea-8e29-f875a44e0e11__en__value": name}
     )
@@ -168,20 +167,24 @@ def get_or_create_person_resource_from_name(name: str, user) -> str:
     existing = Tile.objects.filter(resource_filter).first()
 
     if existing:
-        return str(existing.resourceinstanceid)
+        return str(existing.resourceinstance_id)
 
-    return "not found"
+    new_resource = Resource()
+    new_resource.graph_id = "22477f01-1a44-11e9-b0a9-000d3ab1e588"
+    name_tile = Tile(
+        {
+            "tileid": uuid.uuid4(),
+            "nodegroup_id": "4110f741-1a44-11e9-885e-000d3ab1e588",
+            "data": {"5f8ded26-7ef9-11ea-8e29-f875a44e0e11": i18n_string(name)},
+        }
+    )
+    new_resource.tiles.append(name_tile)
 
-    # new_resource = Resource()
-    # new_resource.save(user=user)
-    # name_tile = Tile(
-    #     {
-    #         "tileid": uuid.uuid4(),
-    #         "nodegroup_id": "4110f741-1a44-11e9-885e-000d3ab1e588",
-    #         "data": {"dpp_person_name": i18n_string(name)},
-    #     }
-    # )
-    # name_tile.save()
-    # new_resource.tiles.add(name_tile)
-    # new_resource.save()
-    # return str(new_resource.resourceinstanceid)
+    User = get_user_model()
+    dynamics_user = User.objects.filter(username="dynamics_user").first()
+    new_resource.save(
+        user=dynamics_user,
+        edit_log_type="create",
+        edit_log_note=f"Created Person resource from Dynamics payload: {name}",
+    )
+    return str(new_resource.resourceinstanceid)
