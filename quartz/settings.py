@@ -32,6 +32,18 @@ DATATYPE_LOCATIONS.append("quartz.datatypes")
 FUNCTION_LOCATIONS.append("quartz.functions")
 ETL_MODULE_LOCATIONS.append("quartz.etl_modules")
 SEARCH_COMPONENT_LOCATIONS.append("quartz.search_components")
+PERMISSION_LOCATIONS.append("quartz.permissions")
+
+# Resource-instance permissions default to ALLOW (the Arches default), so this
+# is a no-op for production unless explicitly enabled. Setting
+# QUARTZ_BLANKET_ROLES=True switches to default-DENY with the stopgap
+# Delegate / Heritage Officer blanket-role framework (see
+# quartz.permissions.blanket_roles). Roll out on dev/staging first and run
+# `manage.py seed_permission_role_groups --preflight` before enabling in prod —
+# every active non-superuser NOT in a blanket group loses default instance
+# access once deny is on.
+if os.environ.get("QUARTZ_BLANKET_ROLES", "False").lower() in ("true", "1", "yes"):
+    PERMISSION_FRAMEWORK = "blanket_roles.BlanketRoleDenyFramework"
 
 LOCALE_PATHS.insert(0, os.path.join(APP_ROOT, "locale"))
 
