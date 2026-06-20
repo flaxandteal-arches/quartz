@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import migrations
 
 USERNAME = "dynamics_user"
-APPLICATION_NAME = "DETSI API OAuth Application"
+APPLICATION_NAME = "Dynamics API OAuth Application"
 
 
 class Migration(migrations.Migration):

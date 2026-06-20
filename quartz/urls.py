@@ -5,7 +5,7 @@ from django.urls import include, path, re_path
 
 import django_saml2_auth.views
 
-from quartz.views.detsi_api import DynamicsHeritageSyncView
+from quartz.views.dynamics_api import DynamicsHeritageSyncView
 from quartz.views.resource import (
     VersionedResourceEditorView,
     VersionedResourceEditLogView,
