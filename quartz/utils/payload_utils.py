@@ -96,6 +96,12 @@ def make_tile(
     )
 
 
+def update_tiles(tiles: list, data: dict) -> list:
+    for tile in tiles:
+        tile.data = {**tile.data, **data}
+    return tiles
+
+
 def has_value(value) -> bool:
     """Return True if the value is not None and not an empty string."""
     return value is not None and str(value).strip() != ""
