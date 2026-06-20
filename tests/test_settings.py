@@ -37,17 +37,22 @@ DATABASES = {
         "AUTOCOMMIT": True,
         "CONN_MAX_AGE": 0,
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        "HOST": "localhost",
-        "NAME": "quartz",
+        # Honour the standard Arches PG* env vars so the same settings work both
+        # when run directly on the runner (main.yml, services on localhost) and
+        # inside a container job where Postgres is reached by service hostname
+        # (project.yml Test-Public-Export). Defaults preserve the original
+        # localhost behaviour, so main.yml is unaffected.
+        "HOST": os.environ.get("PGHOST", "localhost"),
+        "NAME": os.environ.get("PGDBNAME", "quartz"),
         "OPTIONS": {
             "options": "-c cursor_tuple_fraction=1",
         },
-        "PASSWORD": "postgis",
-        "PORT": "5432",
+        "PASSWORD": os.environ.get("PGPASSWORD", "postgis"),
+        "PORT": os.environ.get("PGPORT", "5432"),
         "POSTGIS_TEMPLATE": "template_postgis",
         "TEST": {"CHARSET": None, "COLLATION": None, "MIRROR": None, "NAME": None},
         "TIME_ZONE": None,
-        "USER": "postgres",
+        "USER": os.environ.get("PGUSERNAME", "postgres"),
     }
 }
 
@@ -73,5 +78,11 @@ SILENCED_SYSTEM_CHECKS.append(
 ELASTICSEARCH_HOSTS = [
     # int(): some environments inject the port as a string via env vars, which
     # the elasticsearch-py client rejects (TypeError comparing str < int).
-    {"scheme": "http", "host": "localhost", "port": int(ELASTICSEARCH_HTTP_PORT)}
+    # ESHOST/ESPORT let a container job point at the elasticsearch service by
+    # hostname; defaults keep the original localhost behaviour for main.yml.
+    {
+        "scheme": "http",
+        "host": os.environ.get("ESHOST", "localhost"),
+        "port": int(os.environ.get("ESPORT", ELASTICSEARCH_HTTP_PORT)),
+    }
 ]

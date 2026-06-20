@@ -252,6 +252,40 @@ class Command(BaseCommand):
         run_async = options["run_async"]
         blob_name = options["blob_name"]
 
+        # Async: hand the WHOLE pipeline to a worker, which generates output_dir
+        # itself (nothing pre-staged). Dry-run still previews locally below.
+        if run_async and not dry_run:
+            from django.conf import settings as dj_settings
+
+            if getattr(dj_settings, "CELERY_BROKER_URL", ""):
+                from quartz.tasks import run_public_export
+
+                async_result = run_public_export.delay(
+                    visibility=target_labels,
+                    output_dir=output_dir,
+                    use_drafts=use_drafts,
+                    indent=indent,
+                    as_user=options["as_user"],
+                    push=push,
+                    trigger=trigger,
+                    blob_name=blob_name,
+                )
+                self.stdout.write(
+                    self.style.SUCCESS(
+                        f"Dispatched full public-export pipeline to worker: "
+                        f"{async_result.id}"
+                    )
+                )
+                return
+
+            self.stderr.write(
+                self.style.WARNING(
+                    "--async requested but CELERY_BROKER_URL is not "
+                    "configured; running the full export synchronously."
+                )
+            )
+            run_async = False
+
         # 0. Resolve the optional export user (applies nodegroup read perms).
         export_user = self._resolve_export_user(
             options["as_user"], options["group"]

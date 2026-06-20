@@ -779,3 +779,160 @@ def trigger_validation_build(event_type="prebuild", payload=None):
     logger.info("Triggered repository_dispatch '%s' on %s (HTTP %s)",
                 event_type, repo, response.status_code)
     return response.status_code
+
+
+def resolve_export_user(username=None, expected_group="Public Export"):
+    """Resolve the user whose nodegroup read-permissions the export applies.
+
+    Mirrors the management command's --as-user handling so the Celery task and
+    the command behave identically:
+      * falsy username -> the 'anonymous' user (public-visitor view); if there
+        is no 'anonymous' user, returns None (no nodegroup filtering).
+      * a superuser raises ValueError (superusers bypass nodegroup permissions,
+        which would silently export everything).
+
+    Returns (user_or_None, messages) where messages is a list of
+    (level, text) tuples for the caller to log.
+    """
+    from django.contrib.auth import get_user_model
+
+    User = get_user_model()
+    messages = []
+
+    if not username:
+        try:
+            user = User.objects.get(username="anonymous")
+        except User.DoesNotExist:
+            messages.append((
+                "warning",
+                "No export user and no 'anonymous' user found: NO nodegroup "
+                "filtering applied (every nodegroup will be exported).",
+            ))
+            return None, messages
+        messages.append((
+            "info",
+            "Applying the 'anonymous' user's nodegroup permissions "
+            "(public-visitor view).",
+        ))
+        return user, messages
+
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        raise ValueError(f"export user '{username}' does not exist")
+    if user.is_superuser:
+        raise ValueError(
+            f"export user '{username}' is a superuser; superusers bypass "
+            f"nodegroup permissions so the whitelist would not apply."
+        )
+
+    group_names = set(user.groups.values_list("name", flat=True))
+    if expected_group not in group_names:
+        messages.append((
+            "warning",
+            f"'{username}' is not in the '{expected_group}' group, so the "
+            f"public-export whitelist will not be applied.",
+        ))
+    extra = group_names - {expected_group}
+    if extra:
+        messages.append((
+            "warning",
+            f"'{username}' also belongs to {sorted(extra)}; read_nodegroup "
+            f"grants from those groups can re-expose denied nodegroups.",
+        ))
+    return user, messages
+
+
+def run_export_pipeline(
+    target_labels,
+    output_dir="public_export",
+    use_drafts=False,
+    indent=2,
+    user=None,
+):
+    """Run the full public-export selection+write pipeline (no console IO).
+
+    Discovers visibility nodes, selects the matching Heritage Items (Final
+    versions, or the Drafts themselves when ``use_drafts``), and writes the
+    pkg-style export to ``output_dir`` via export_resources (honouring ``user``
+    nodegroup permissions and pulling in visible related Digital Objects).
+
+    Returns a dict:
+        {
+          "result": <output_dir> or None,
+          "diagnostics": {...} or None,
+          "export_ids": [str, ...],
+          "missing_final_groups": [str, ...],
+          "messages": [(level, text), ...],
+        }
+    """
+    out = {
+        "result": None,
+        "diagnostics": None,
+        "export_ids": [],
+        "missing_final_groups": [],
+        "messages": [],
+    }
+    msg = out["messages"]
+
+    visibility_nodes = get_visibility_nodes()
+    if not visibility_nodes:
+        msg.append(("error", "No visibility nodes found in any graph."))
+        return out
+
+    hi_visibility = get_visibility_node_for_graph(
+        visibility_nodes, HERITAGE_ITEM_GRAPH_ID
+    )
+    if not hi_visibility:
+        msg.append(("error", "Heritage Item graph has no visibility node."))
+        return out
+
+    uris = get_visibility_uris(target_labels)
+    if not uris:
+        msg.append((
+            "error", f"No controlled list items found for labels: {target_labels}"
+        ))
+        return out
+
+    draft_ids = get_visible_draft_resource_ids(hi_visibility, uris)
+    if not draft_ids:
+        msg.append(("warning", "No matching Heritage Items found."))
+        return out
+    draft_labels = get_draft_visibility_labels(hi_visibility, uris)
+
+    if use_drafts:
+        export_ids = list(draft_ids)
+        export_labels = {str(k): v for k, v in draft_labels.items()}
+        msg.append((
+            "warning",
+            f"Exporting {len(export_ids)} Draft versions directly (use_drafts).",
+        ))
+    else:
+        export_ids, missing_groups, export_labels = get_final_resource_ids(
+            draft_ids, draft_labels=draft_labels,
+        )
+        out["missing_final_groups"] = [str(g) for g in missing_groups]
+        for g in missing_groups:
+            msg.append(("warning", f"resource group {g} has no Final version"))
+
+    if not export_ids:
+        msg.append(("warning", "No versions to export."))
+        return out
+    out["export_ids"] = [str(r) for r in export_ids]
+
+    result, diagnostics = export_resources(
+        export_ids,
+        output_dir=output_dir,
+        visibility_nodes=visibility_nodes,
+        visibility_uris=uris,
+        resource_labels=export_labels,
+        user=user,
+        indent=indent,
+    )
+    if not result:
+        msg.append(("error", "Export produced no output."))
+        return out
+
+    out["result"] = result
+    out["diagnostics"] = diagnostics
+    return out
