@@ -200,6 +200,86 @@ def get_visible_resource_ids(visibility_nodes, visibility_uris):
     return visible_ids
 
 
+def get_user_filtered_nodegroups(resource_ids, user):
+    """Nodegroups present in the given resources' tiles that ``user`` cannot
+    read — i.e. those the export writer dropped due to nodegroup permissions.
+
+    The writer (Writer.get_tiles) keeps only tiles whose nodegroup is in
+    ``get_nodegroups_by_perm(user, "models.read_nodegroup")``. This reports the
+    complement for the resources being exported, so the effect of an --as-user
+    whitelist is visible at a glance.
+
+    Returns a list of {"nodegroup_id", "alias", "graph_name"} dicts, sorted by
+    graph then alias. Empty when nothing was filtered (or user is None).
+    """
+    if user is None:
+        return []
+
+    from arches.app.utils.permission_backend import get_nodegroups_by_perm
+
+    permitted = {
+        str(ng) for ng in get_nodegroups_by_perm(user, "models.read_nodegroup")
+    }
+    present = {
+        str(ng)
+        for ng in TileModel.objects.filter(resourceinstance_id__in=resource_ids)
+        .values_list("nodegroup_id", flat=True)
+        .distinct()
+        if ng is not None
+    }
+    filtered_ids = present - permitted
+    if not filtered_ids:
+        return []
+
+    # Label via the grouping node (nodeid == nodegroup_id).
+    labels = {
+        str(nodegroup_id): {"alias": alias, "graph_name": str(graph_name)}
+        for nodegroup_id, alias, graph_name in Node.objects.filter(
+            nodeid__in=filtered_ids,
+            source_identifier__isnull=True,
+        ).values_list("nodegroup_id", "alias", "graph__name")
+    }
+    return sorted(
+        (
+            {
+                "nodegroup_id": ng_id,
+                "alias": labels.get(ng_id, {}).get("alias"),
+                "graph_name": labels.get(ng_id, {}).get("graph_name"),
+            }
+            for ng_id in filtered_ids
+        ),
+        key=lambda d: (d["graph_name"] or "", d["alias"] or "", d["nodegroup_id"]),
+    )
+
+
+def get_visibility_labels_for_resources(visibility_nodes, resource_ids):
+    """Map resource IDs (in any graph with a visibility node) → visibility label.
+
+    Used to scope related resources (e.g. Digital Objects) correctly: a target
+    that is only Staging-visible must not be exported with a public scope. Works
+    across every graph that has a visibility node, so it is not Heritage-Item or
+    lifecycle specific (unlike get_draft_visibility_labels).
+    """
+    uri_to_label = get_visibility_uri_to_label_map()
+    result = {}
+    for vnode in visibility_nodes:
+        node_id = vnode["node_id"]
+        tiles = TileModel.objects.filter(
+            nodegroup_id=vnode["nodegroup_id"],
+            resourceinstance__graph_id=vnode["graph_id"],
+            resourceinstance_id__in=resource_ids,
+        )
+        for tile in tiles:
+            node_data = tile.data.get(node_id, [])
+            if isinstance(node_data, list):
+                for entry in node_data:
+                    uri = entry.get("uri") if isinstance(entry, dict) else None
+                    if uri and uri in uri_to_label:
+                        result[str(tile.resourceinstance_id)] = uri_to_label[uri]
+                        break
+    return result
+
+
 def get_outbound_relations(
     resource_ids,
     visibility_nodes,
@@ -221,7 +301,10 @@ def get_outbound_relations(
         permitted_nodegroups: optional set of nodegroup UUIDs to filter source tiles
 
     Returns:
-        tuple: (relations list, diagnostics dict)
+        tuple: (relations list, diagnostics dict, set of visible target
+                resource IDs — the related resources that passed the visibility
+                filter, e.g. Public Digital Objects, suitable for exporting as
+                full resources)
     """
     # Graphs that have a visibility node
     graphs_with_visibility = {n["graph_id"] for n in visibility_nodes}
@@ -272,7 +355,7 @@ def get_outbound_relations(
         if rel.to_resource_id in allowed_target_ids
     ]
 
-    return relations, diagnostics
+    return relations, diagnostics, allowed_target_ids
 
 
 def get_controlled_list_ids_for_graphs(graph_ids):
@@ -288,6 +371,70 @@ def get_controlled_list_ids_for_graphs(graph_ids):
         if cl_id:
             list_ids.add(cl_id)
     return list_ids
+
+
+def get_file_node_ids(graph_ids=None):
+    """Node IDs of file-list datatype nodes (image / document uploads).
+
+    These are the nodes that carry actual file attachments — Heritage Item
+    ``images``, Digital Object ``file_content``, etc. Restrict to ``graph_ids``
+    when given, otherwise return them across all graphs.
+    """
+    qs = Node.objects.filter(datatype="file-list", source_identifier__isnull=True)
+    if graph_ids is not None:
+        qs = qs.filter(graph_id__in=[str(g) for g in graph_ids])
+    return {str(nid) for nid in qs.values_list("nodeid", flat=True)}
+
+
+def extract_file_references(resources, file_node_ids=None):
+    """Collect file references from exported resource tiles.
+
+    Scans the already-exported business_data resources for file-list datatype
+    nodes and returns the de-duplicated set of files they reference, so a
+    downstream job can copy/publish exactly the media that ships with the
+    package. Because it reads the exported tiles (not the DB directly), it
+    honours the same permission- and visibility-filtering the export applied —
+    only files on tiles that actually made it into the package are listed.
+
+    Args:
+        resources: list of resource dicts (export["business_data"]["resources"])
+        file_node_ids: optional set of file-list nodeids; queried if omitted
+
+    Returns:
+        list of {"file_id", "name", "url", "resourceinstanceid", "nodeid"} dicts,
+        de-duplicated by file_id (falling back to name), sorted by name.
+    """
+    if file_node_ids is None:
+        file_node_ids = get_file_node_ids()
+
+    seen = set()
+    files = []
+    for resource_data in resources:
+        rid = resource_data.get("resourceinstance", {}).get(
+            "resourceinstanceid", ""
+        )
+        for tile in resource_data.get("tiles", []):
+            data = tile.get("data") or {}
+            for node_id, value in data.items():
+                if node_id not in file_node_ids or not isinstance(value, list):
+                    continue
+                for entry in value:
+                    if not isinstance(entry, dict):
+                        continue
+                    file_id = entry.get("file_id")
+                    name = entry.get("name")
+                    key = file_id or name
+                    if not key or key in seen:
+                        continue
+                    seen.add(key)
+                    files.append({
+                        "file_id": file_id,
+                        "name": name,
+                        "url": entry.get("url"),
+                        "resourceinstanceid": rid,
+                        "nodeid": node_id,
+                    })
+    return sorted(files, key=lambda f: (f["name"] or "", f["file_id"] or ""))
 
 
 def _resolve_i18n_name(name):
@@ -413,11 +560,14 @@ def export_resources(
     export = json.loads(raw_json)
 
     # Assign scopes based on each resource's visibility label and collect
-    # in-scope nodegroups from the tiles that were actually exported
+    # in-scope nodegroups from the tiles that were actually exported.
     exported_nodegroups = set()
-    for resource_data in export.get("business_data", {}).get("resources", []):
-        rid = resource_data.get("resourceinstance", {}).get("resourceinstanceid", "")
-        label = (resource_labels or {}).get(rid, "public")
+
+    def _scope_resource(resource_data, label_map):
+        rid = resource_data.get("resourceinstance", {}).get(
+            "resourceinstanceid", ""
+        )
+        label = (label_map or {}).get(rid, "public")
         scopes = ["public"]
         if label == "staging":
             scopes.append("staging")
@@ -426,14 +576,49 @@ def export_resources(
             if ng := tile.get("nodegroup_id"):
                 exported_nodegroups.add(ng)
 
-    # Get outbound relations filtered by target visibility
-    relations, diagnostics = get_outbound_relations(
+    resources = export.get("business_data", {}).get("resources", [])
+    for resource_data in resources:
+        _scope_resource(resource_data, resource_labels)
+
+    # Get outbound relations filtered by target visibility, plus the set of
+    # visible related resources (e.g. Public Digital Objects) those relations
+    # point at.
+    relations, diagnostics, target_ids = get_outbound_relations(
         resource_ids,
         visibility_nodes=visibility_nodes,
         visibility_uris=visibility_uris,
         permitted_nodegroups=exported_nodegroups or None,
     )
     export["business_data"]["relations"] = relations
+
+    # Second pass: export the visible related resources as full resources so the
+    # package carries the Digital Objects (etc.) the relations reference, not
+    # just dangling links. Still permission-filtered via the same user; scoped
+    # by each target's own visibility label so a Staging-only target is not
+    # leaked into the public scope. One level deep — targets-of-targets are not
+    # followed.
+    target_ids = {str(t) for t in target_ids} - {str(r) for r in resource_ids}
+    diagnostics["included_target_resources"] = 0
+    if target_ids:
+        target_results = ArchesFileWriter().write_resources(
+            resourceinstanceids=sorted(target_ids),
+            user=user,
+            indent=indent,
+        )
+        target_resources = (
+            json.loads(target_results[0]["outputfile"].getvalue())
+            .get("business_data", {})
+            .get("resources", [])
+            if target_results
+            else []
+        )
+        target_labels = get_visibility_labels_for_resources(
+            visibility_nodes, target_ids
+        )
+        for resource_data in target_resources:
+            _scope_resource(resource_data, target_labels)
+        resources.extend(target_resources)
+        diagnostics["included_target_resources"] = len(target_resources)
 
     # Include all resource model graphs with visibility nodes (these are
     # the ones the public export ecosystem needs to understand), plus any
@@ -461,12 +646,24 @@ def export_resources(
     if registry:
         graph_ids.add(str(registry.graphid))
 
+    # Collect the files (images + Digital Object file_content, etc.) referenced
+    # by the exported tiles, so a downstream job can publish exactly the media
+    # that ships with this package. Reads the exported tiles, so it inherits the
+    # same permission/visibility filtering already applied.
+    file_refs = extract_file_references(resources)
+    diagnostics["referenced_files"] = file_refs
+
     # 1. Write business_data
     bd_dir = os.path.join(output_dir, "business_data")
     os.makedirs(bd_dir, exist_ok=True)
     bd_path = os.path.join(bd_dir, "Heritage_Item.json")
     with open(bd_path, "w") as f:
         json.dump(export, f, indent=indent)
+
+    # 1b. Write the referenced-file manifest at the package root.
+    files_path = os.path.join(output_dir, "files.json")
+    with open(files_path, "w") as f:
+        json.dump({"files": file_refs}, f, indent=indent)
 
     # 2. Export graphs
     exported_graphs = export_graphs_to_dir(graph_ids, output_dir, indent=indent)
@@ -478,3 +675,107 @@ def export_resources(
     diagnostics["exported_controlled_lists"] = exported_lists
 
     return output_dir, diagnostics
+
+
+def package_export(output_dir, archive_name="prebuild.tgz"):
+    """Tar+gzip an exported package directory into a single artefact.
+
+    The directory contents are placed at the archive root (arcname=".") so
+    that unpacking yields business_data/, graphs/, reference_data/ directly.
+
+    Returns the path to the created archive (in a temp directory).
+    """
+    import tarfile
+    import tempfile
+
+    # basename only: archive_name may be a slash-prefixed blob name and the
+    # local temp file must not point at a non-existent subdirectory.
+    archive_path = os.path.join(
+        tempfile.gettempdir(), os.path.basename(archive_name)
+    )
+    with tarfile.open(archive_path, "w:gz") as tar:
+        tar.add(output_dir, arcname=".")
+    logger.info("Packaged export %s -> %s", output_dir, archive_path)
+    return archive_path
+
+
+def upload_artifact(archive_path, container=None, blob_name="prebuild.tgz"):
+    """Upload an artefact to an Azure blob container.
+
+    Uses the same storage account as the configured AZURE_ACCOUNT_NAME /
+    AZURE_ACCOUNT_KEY but targets a separate container (default:
+    STARCHES_VALIDATION_CONTAINER). Returns the blob URL on success.
+
+    Raises RuntimeError if Azure credentials are not configured.
+    """
+    from django.conf import settings
+    from azure.storage.blob import BlobServiceClient
+
+    account_name = getattr(settings, "AZURE_ACCOUNT_NAME", None) or os.environ.get(
+        "AZURE_ACCOUNT_NAME"
+    )
+    account_key = getattr(settings, "AZURE_ACCOUNT_KEY", None) or os.environ.get(
+        "AZURE_ACCOUNT_KEY"
+    )
+    if not (account_name and account_key):
+        raise RuntimeError(
+            "Azure credentials not configured "
+            "(AZURE_ACCOUNT_NAME / AZURE_ACCOUNT_KEY)."
+        )
+
+    container = (
+        container
+        or getattr(settings, "STARCHES_VALIDATION_CONTAINER", None)
+        or os.environ.get("STARCHES_VALIDATION_CONTAINER")
+        or "starches-validation"
+    )
+
+    service = BlobServiceClient(
+        f"https://{account_name}.blob.core.windows.net",
+        credential=account_key,
+    )
+    blob = service.get_blob_client(container=container, blob=blob_name)
+    with open(archive_path, "rb") as fh:
+        blob.upload_blob(fh, overwrite=True)
+    logger.info("Uploaded %s to container '%s' as '%s'",
+                archive_path, container, blob_name)
+    return blob.url
+
+
+def trigger_validation_build(event_type="prebuild", payload=None):
+    """Trigger a GitHub Action via the repository_dispatch event.
+
+    POSTs to /repos/{owner}/{repo}/dispatches using GITHUB_DISPATCH_REPO and
+    GITHUB_DISPATCH_TOKEN. Returns the HTTP status code on success.
+
+    Raises RuntimeError if the repo or token are not configured.
+    """
+    from django.conf import settings
+    import requests
+
+    repo = getattr(settings, "GITHUB_DISPATCH_REPO", None) or os.environ.get(
+        "GITHUB_DISPATCH_REPO"
+    )
+    token = getattr(settings, "GITHUB_DISPATCH_TOKEN", None) or os.environ.get(
+        "GITHUB_DISPATCH_TOKEN"
+    )
+    if not (repo and token):
+        raise RuntimeError(
+            "GitHub dispatch not configured "
+            "(GITHUB_DISPATCH_REPO / GITHUB_DISPATCH_TOKEN)."
+        )
+
+    response = requests.post(
+        f"https://api.github.com/repos/{repo}/dispatches",
+        headers={
+            "Accept": "application/vnd.github+json",
+            "Authorization": f"Bearer {token}",
+            "X-GitHub-Api-Version": "2022-11-28",
+        },
+        json={"event_type": event_type, "client_payload": payload or {}},
+        timeout=30,
+    )
+    response.raise_for_status()
+    logger.info("Triggered repository_dispatch '%s' on %s (HTTP %s)",
+                event_type, repo, response.status_code)
+    return response.status_code

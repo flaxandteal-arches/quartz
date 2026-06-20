@@ -338,6 +338,18 @@ AZURE_CONTAINER = os.environ.get("AZURE_CONTAINER", None)
 AZURE_LOCATION = os.environ.get("AZURE_LOCATION", "")
 AZURE_URL_EXPIRATION_SECS = int(os.environ.get("AZURE_URL_EXPIRATION_SECS", 3600))
 
+# Separate container (same storage account) for the public-export prebuild
+# artefact consumed by the starches validation pipeline.
+STARCHES_VALIDATION_CONTAINER = os.environ.get(
+    "STARCHES_VALIDATION_CONTAINER", "starches-validation"
+)
+
+# GitHub repository_dispatch target for triggering the validation build
+# after the prebuild artefact is uploaded. "owner/repo" + a token with
+# the repo (contents/dispatch) scope.
+GITHUB_DISPATCH_REPO = os.environ.get("GITHUB_DISPATCH_REPO", None)
+GITHUB_DISPATCH_TOKEN = os.environ.get("GITHUB_DISPATCH_TOKEN", None)
+
 if AZURE_ACCOUNT_NAME and AZURE_ACCOUNT_KEY and AZURE_CONTAINER:
     INSTALLED_APPS = (
         *INSTALLED_APPS,

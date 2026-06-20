@@ -71,5 +71,7 @@ SILENCED_SYSTEM_CHECKS.append(
 )
 
 ELASTICSEARCH_HOSTS = [
-    {"scheme": "http", "host": "localhost", "port": ELASTICSEARCH_HTTP_PORT}
+    # int(): some environments inject the port as a string via env vars, which
+    # the elasticsearch-py client rejects (TypeError comparing str < int).
+    {"scheme": "http", "host": "localhost", "port": int(ELASTICSEARCH_HTTP_PORT)}
 ]
