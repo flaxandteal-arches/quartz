@@ -137,7 +137,7 @@ COORDINATE_SYSTEM_LIST_NAME = "SCS"
 # Capture Scale nodegroup  (one tile per location — child of location_data)
 CAPTURE_SCALE_NODEGROUP = "f7ccef5f-f447-11eb-8b98-a87eeabdefba"
 NODE_CAPTURE_SCALE = "f7ccef5f-f447-11eb-8b98-a87eeabdefba"  # reference
-CAPTURE_SCALE_LIST_NAME = "Capture Scale"
+CAPTURE_SCALE_LIST_NAME = "Point Sources"
 
 # Spatial Accuracy Qualifier nodegroup  (one tile per location — child of location_data)
 SPATIAL_ACCURACY_NODEGROUP = "f7cca099-f447-11eb-8a56-a87eeabdefba"
@@ -532,10 +532,6 @@ def _build_associated_monuments_tile(payload: dict) -> list:
     for item in items:
         heritage_id_number = item.get("dpp_heritageidnumber")
         if heritage_id_number:
-            print(
-                "Looking up associated heritage item with ID number:",
-                heritage_id_number,
-            )
             # look up the heritage item from the 6000 number.
             # Get the current Draft version's resource instance ID to associate with.
             current_draft_version = VersionedResource.objects.get_current_draft(
@@ -649,85 +645,88 @@ def _build_location_tiles(
             gps_features = extract_gps_features(
                 [loc], lat_key="dpp_WGS84_lat", lon_key="dpp_WGS84_lon"
             )
-            tiles.append(
-                make_tile(
-                    GEOMETRY_NODEGROUP,
-                    {
-                        NODE_GEOSPATIAL_COORDS: {
-                            "type": "FeatureCollection",
-                            "features": gps_features,
-                        }
-                    },
-                    parent_tile_id=location_data_tile.tileid,
-                )
+            geometry_tile = make_tile(
+                GEOMETRY_NODEGROUP,
+                {
+                    NODE_GEOSPATIAL_COORDS: {
+                        "type": "FeatureCollection",
+                        "features": gps_features,
+                    }
+                },
+                parent_tile_id=location_data_tile.tileid,
             )
+            tiles.append(geometry_tile)
 
-        # capture_scale — locations.dpp_locationsource
-        source = loc.get("dpp_locationsource")
-        if has_value(source):
-            tiles.append(
-                make_tile(
-                    CAPTURE_SCALE_NODEGROUP,
-                    {
-                        NODE_CAPTURE_SCALE: parse_reference_node(
-                            source, CAPTURE_SCALE_LIST_NAME
-                        )
-                    },
-                    parent_tile_id=location_data_tile.tileid,
+            # capture_scale — locations.dpp_locationsource
+            source = loc.get("dpp_locationsource")
+            if has_value(source):
+                tiles.append(
+                    make_tile(
+                        CAPTURE_SCALE_NODEGROUP,
+                        {
+                            NODE_CAPTURE_SCALE: parse_reference_node(
+                                source, CAPTURE_SCALE_LIST_NAME
+                            )
+                        },
+                        parent_tile_id=geometry_tile.tileid,
+                    )
                 )
-            )
 
-        # spatial_accuracy_qualifier — locations.dpp_locationaccuracy
-        accuracy = loc.get("dpp_locationaccuracy")
-        if has_value(accuracy):
-            tiles.append(
-                make_tile(
-                    SPATIAL_ACCURACY_NODEGROUP,
-                    {
-                        NODE_SPATIAL_ACCURACY: parse_reference_node(
-                            accuracy, SPATIAL_ACCURACY_LIST_NAME
-                        )
-                    },
-                    parent_tile_id=location_data_tile.tileid,
+            # spatial_accuracy_qualifier — locations.dpp_locationaccuracy
+            accuracy = loc.get("dpp_locationaccuracy")
+            if has_value(accuracy):
+                tiles.append(
+                    make_tile(
+                        SPATIAL_ACCURACY_NODEGROUP,
+                        {
+                            NODE_SPATIAL_ACCURACY: parse_reference_node(
+                                accuracy, SPATIAL_ACCURACY_LIST_NAME
+                            )
+                        },
+                        parent_tile_id=geometry_tile.tileid,
+                    )
                 )
-            )
 
-        # coordinate_system_value — locations.dpp_spatialcoordinatesystem
-        coord_system = loc.get("dpp_spatialcoordinatesystem")
-        if has_value(coord_system):
-            tiles.append(
-                make_tile(
-                    COORDINATE_SYSTEM_NODEGROUP,
-                    {
-                        NODE_COORDINATE_SYSTEM: parse_reference_node(
-                            coord_system, COORDINATE_SYSTEM_LIST_NAME
-                        )
-                    },
-                    parent_tile_id=location_data_tile.tileid,
+            # coordinate_system_value — locations.dpp_spatialcoordinatesystem
+            coord_system = loc.get("dpp_spatialcoordinatesystem")
+            if has_value(coord_system):
+                tiles.append(
+                    make_tile(
+                        COORDINATE_SYSTEM_NODEGROUP,
+                        {
+                            NODE_COORDINATE_SYSTEM: parse_reference_node(
+                                coord_system, COORDINATE_SYSTEM_LIST_NAME
+                            )
+                        },
+                        parent_tile_id=geometry_tile.tileid,
+                    )
                 )
-            )
 
-        # spatial_metadata_notes — lat/lon/easting/northing combined into one string tile
-        lat = loc.get("dpp_latitude")
-        lon = loc.get("dpp_longitude")
-        easting = loc.get("dpp_easting")
-        northing = loc.get("dpp_northing")
-        notes_parts = []
-        if has_value(lat):
-            notes_parts.append(f"Latitude: {lat}")
-        if has_value(lon):
-            notes_parts.append(f"Longitude: {lon}")
-        if has_value(easting):
-            notes_parts.append(f"Easting: {easting}")
-        if has_value(northing):
-            notes_parts.append(f"Northing: {northing}")
-        if notes_parts:
-            tiles.append(
-                make_tile(
-                    SPATIAL_METADATA_DESCRIPTIONS_NODEGROUP,
-                    {NODE_SPATIAL_METADATA_NOTES: i18n_string(", ".join(notes_parts))},
-                    parent_tile_id=location_data_tile.tileid,
+            # spatial_metadata_notes — lat/lon/easting/northing combined into one string tile
+            lat = loc.get("dpp_latitude")
+            lon = loc.get("dpp_longitude")
+            easting = loc.get("dpp_easting")
+            northing = loc.get("dpp_northing")
+            notes_parts = []
+            if has_value(lat):
+                notes_parts.append(f"Latitude: {lat}")
+            if has_value(lon):
+                notes_parts.append(f"Longitude: {lon}")
+            if has_value(easting):
+                notes_parts.append(f"Easting: {easting}")
+            if has_value(northing):
+                notes_parts.append(f"Northing: {northing}")
+            if notes_parts:
+                tiles.append(
+                    make_tile(
+                        SPATIAL_METADATA_DESCRIPTIONS_NODEGROUP,
+                        {
+                            NODE_SPATIAL_METADATA_NOTES: i18n_string(
+                                ", ".join(notes_parts)
+                            )
+                        },
+                        parent_tile_id=geometry_tile.tileid,
+                    )
                 )
-            )
 
     return tiles
