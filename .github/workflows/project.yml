@@ -295,3 +295,78 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 1000
+
+  Test-Public-Export:
+    runs-on: [self-hosted]
+    needs: [Build-Arches]
+    # Run the targeted Python integration test for the public Heritage Item
+    # export. Unlike Test-Arches (Cypress E2E in a node container), this uses the
+    # built arches image as the job container so manage.py + the project code and
+    # virtualenv are available, with their own Postgres/Elasticsearch services.
+    container:
+      image: "${{ needs['Build-Arches'].outputs.image }}"
+    env:
+      # DB/ES are reached by service hostname (container job), not localhost.
+      PGHOST: "db"
+      PGPORT: "5432"
+      PGUSERNAME: "postgres"
+      PGPASSWORD: "postgis"
+      PGDBNAME: "quartz"
+      ESHOST: "elasticsearch"
+      ESPORT: "9200"
+      # Enough of the runtime env for quartz.settings to import cleanly.
+      DJANGO_MODE: "DEV"
+      DJANGO_DEBUG: "True"
+      DOMAIN_NAMES: "localhost"
+      RABBITMQ_USER: "rabbitmq"
+      RABBITMQ_PASS: "rabbitmq"
+      COUCHDB_HOST: "couchdb"
+      COUCHDB_PORT: "5984"
+      COUCHDB_USER: "admin"
+      COUCHDB_PASS: "password"
+      CANTALOUPE_HOST: "cantaloupe"
+      CANTALOUPE_PORT: "8182"
+      PYTHONUNBUFFERED: "1"
+      TZ: "PST"
+    steps:
+      - run: echo "🎉 Running the public export integration test (triggered by ${{ github.event_name }})."
+      - name: Run public export test
+        shell: bash
+        run: |
+          . "${WEB_ROOT}/ENV/bin/activate"
+          cd "${WEB_ROOT}/${ARCHES_PROJECT}"
+          PYTHONPATH=. python manage.py test tests.test_public_export \
+            --settings="tests.test_settings" -v 2
+    services:
+      elasticsearch:
+        image: elasticsearch:8.4.0
+        ports:
+          - "9200:9200"
+          - "9300:9300"
+        env:
+          TZ: "PST"
+          discovery.type: "single-node"
+          discovery.seed_hosts: "[]"
+          xpack.security.enabled: "false"
+          ES_JAVA_OPTS: "-Xms400m -Xmx400m"
+        options: >-
+          --health-cmd "curl -s --fail http://localhost:9200/_cat/health || exit 1"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+      db:
+        image: ghcr.io/flaxandteal/arches-postgis:docker-8.1
+        ports:
+          - '5432:5432'
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgis
+          POSTGRES_DB: quartz
+          POSTGRES_MULTIPLE_EXTENSIONS: postgis,postgis_topology
+          TZ: PST
+        options: >-
+          --health-cmd "pg_isready -h 127.0.0.1 -U postgres -d postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 20
