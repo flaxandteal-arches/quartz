@@ -193,7 +193,10 @@ class Command(BaseCommand):
             user = User.objects.get(username=username)
         except User.DoesNotExist:
             raise CommandError(
-                f"--as-user '{username}' does not exist. Seed it with: "
+                f"--as-user '{username}' does not exist. The standard export "
+                f"account 'public_export' is seeded with the Public Export group "
+                f"by pkg/post_sql/seed_public_export.sql during load_package. To "
+                f"create a different account manually, run: "
                 f"manage.py sync_public_export_group --ensure-user {username}"
             )
 

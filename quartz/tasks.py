@@ -45,6 +45,7 @@ def run_public_export(visibility=None, output_dir="public_export",
     try:
         user, user_messages = resolve_export_user(as_user)
     except ValueError as e:
+        logger.error("Public export aborted resolving user %r: %s", as_user, e)
         return {"export": {"messages": [("error", str(e))]}, "packaging": None}
 
     pipeline = run_export_pipeline(

@@ -1,0 +1,59 @@
+{% extends "base-manager.htm" %}
+{% comment %}
+Overrides: arches/app/templates/base-manager.htm
+Changes:
+  - Adds an "Export to Website" nav item to the main navigation, shown ONLY to
+    users with the quartz.export_to_website permission (the Delegate group, plus
+    superusers, who pass has_perm automatically). The item POSTs to the
+    website_export endpoint, which enforces the SAME permission server-side — so
+    hiding the button here is convenience; the endpoint is the real gate.
+
+    Uses {{ block.super }} so the core navbar is untouched (no full-file copy to
+    drift on upgrades); the item is appended as its own nav group.
+{% endcomment %}
+{% load i18n %}
+
+{% block navbar %}
+{{ block.super }}
+{% if perms.quartz.export_to_website %}
+<ul class="list-group">
+    <li>
+        <a href="#" id="quartz-export-to-website"
+           aria-label="{% trans 'Export to Website' %}">
+            <i class="fa fa-globe"></i>
+            <span class="nav-item-label">{% trans "Export to Website" %}</span>
+        </a>
+    </li>
+</ul>
+<script>
+(function () {
+    var btn = document.getElementById("quartz-export-to-website");
+    if (!btn) { return; }
+    btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (!window.confirm("{% trans 'Start exporting public heritage to the website?' %}")) {
+            return;
+        }
+        var csrftoken = (document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/) || [])[1] || "";
+        fetch("{% url 'website_export' %}", {
+            method: "POST",
+            headers: { "X-CSRFToken": csrftoken },
+            credentials: "same-origin"
+        })
+        .then(function (r) {
+            return r.json().then(function (d) { return { ok: r.ok, body: d }; });
+        })
+        .then(function (res) {
+            window.alert(
+                res.ok ? (res.body.message || "{% trans 'Export to website started.' %}")
+                       : (res.body.message || "{% trans 'Export request was refused.' %}")
+            );
+        })
+        .catch(function () {
+            window.alert("{% trans 'Export request failed.' %}");
+        });
+    });
+})();
+</script>
+{% endif %}
+{% endblock navbar %}
