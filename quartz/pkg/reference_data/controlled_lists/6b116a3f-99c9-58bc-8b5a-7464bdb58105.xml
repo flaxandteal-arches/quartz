@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/6b116a3f-99c9-58bc-8b5a-7464bdb58105">
+    <dcterms:title xml:lang="en">Contexts</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1cb25257-da8d-5cca-a589-b4973936e9ae"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/42446b9b-f469-5e36-bf48-ef5686360034"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/43677e4a-57f3-5312-9357-e467e08e8fac"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a433e715-439e-5f1c-ada5-af6d28be283b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/bf239b85-0fd9-5a62-bbf4-3e4527decdec"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e39edc3e-fe36-59cd-8ca4-fb9280372f8d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e69b10eb-dc16-5bf3-8a41-7e4e67f07e53"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1cb25257-da8d-5cca-a589-b4973936e9ae">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6b116a3f-99c9-58bc-8b5a-7464bdb58105"/>
+    <skos:prefLabel xml:lang="en">Archaeological Intervention</skos:prefLabel>
+    <dcterms:identifier>1cb25257-da8d-5cca-a589-b4973936e9ae</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/42446b9b-f469-5e36-bf48-ef5686360034">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6b116a3f-99c9-58bc-8b5a-7464bdb58105"/>
+    <skos:prefLabel xml:lang="en">Research</skos:prefLabel>
+    <dcterms:identifier>42446b9b-f469-5e36-bf48-ef5686360034</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/43677e4a-57f3-5312-9357-e467e08e8fac">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6b116a3f-99c9-58bc-8b5a-7464bdb58105"/>
+    <skos:prefLabel xml:lang="en">Development related</skos:prefLabel>
+    <dcterms:identifier>43677e4a-57f3-5312-9357-e467e08e8fac</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a433e715-439e-5f1c-ada5-af6d28be283b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6b116a3f-99c9-58bc-8b5a-7464bdb58105"/>
+    <skos:prefLabel xml:lang="en">Incidental Find</skos:prefLabel>
+    <dcterms:identifier>a433e715-439e-5f1c-ada5-af6d28be283b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bf239b85-0fd9-5a62-bbf4-3e4527decdec">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6b116a3f-99c9-58bc-8b5a-7464bdb58105"/>
+    <skos:prefLabel xml:lang="en">Metal Detecting</skos:prefLabel>
+    <dcterms:identifier>bf239b85-0fd9-5a62-bbf4-3e4527decdec</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e39edc3e-fe36-59cd-8ca4-fb9280372f8d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6b116a3f-99c9-58bc-8b5a-7464bdb58105"/>
+    <skos:prefLabel xml:lang="en">Chance discovery</skos:prefLabel>
+    <dcterms:identifier>e39edc3e-fe36-59cd-8ca4-fb9280372f8d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e69b10eb-dc16-5bf3-8a41-7e4e67f07e53">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6b116a3f-99c9-58bc-8b5a-7464bdb58105"/>
+    <skos:prefLabel xml:lang="en">Other</skos:prefLabel>
+    <dcterms:identifier>e69b10eb-dc16-5bf3-8a41-7e4e67f07e53</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

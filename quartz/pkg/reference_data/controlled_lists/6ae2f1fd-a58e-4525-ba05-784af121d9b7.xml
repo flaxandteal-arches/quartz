@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/6ae2f1fd-a58e-4525-ba05-784af121d9b7">
+    <dcterms:title xml:lang="en">Construction Phase Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5f0892b4-402b-446d-90ac-a85089b29e76"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/6c049531-c0bd-417b-b604-7033e1326869"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a55bacce-1186-47b9-abca-e3606f26f961"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b010e402-2126-4260-854f-48e5405f380c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/bfcbafbd-26ab-4b2f-9b49-c8a06fb6a8ea"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5f0892b4-402b-446d-90ac-a85089b29e76">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6ae2f1fd-a58e-4525-ba05-784af121d9b7"/>
+    <skos:prefLabel xml:lang="en">Conversion</skos:prefLabel>
+    <dcterms:identifier>5f0892b4-402b-446d-90ac-a85089b29e76</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6c049531-c0bd-417b-b604-7033e1326869">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6ae2f1fd-a58e-4525-ba05-784af121d9b7"/>
+    <skos:prefLabel xml:lang="en">Repairs</skos:prefLabel>
+    <dcterms:identifier>6c049531-c0bd-417b-b604-7033e1326869</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a55bacce-1186-47b9-abca-e3606f26f961">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6ae2f1fd-a58e-4525-ba05-784af121d9b7"/>
+    <skos:prefLabel xml:lang="en">Destruction</skos:prefLabel>
+    <dcterms:identifier>a55bacce-1186-47b9-abca-e3606f26f961</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b010e402-2126-4260-854f-48e5405f380c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6ae2f1fd-a58e-4525-ba05-784af121d9b7"/>
+    <skos:prefLabel xml:lang="en">Alteration</skos:prefLabel>
+    <dcterms:identifier>b010e402-2126-4260-854f-48e5405f380c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bfcbafbd-26ab-4b2f-9b49-c8a06fb6a8ea">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6ae2f1fd-a58e-4525-ba05-784af121d9b7"/>
+    <skos:prefLabel xml:lang="en">Construction</skos:prefLabel>
+    <dcterms:identifier>bfcbafbd-26ab-4b2f-9b49-c8a06fb6a8ea</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

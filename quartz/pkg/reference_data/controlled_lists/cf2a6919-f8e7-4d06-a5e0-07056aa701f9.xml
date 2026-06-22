@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9">
+    <dcterms:title xml:lang="en">Condition Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0ce89ebc-ab0b-46f4-9359-68ee83836886"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/16a5314d-ec42-48a1-a735-bc45f4e9e778"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/23618424-8b0a-4536-b6c4-ebb07c0a8a65"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2415696f-8ce3-4d42-851d-ca3322d09bd5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/27a62120-5938-428e-b775-3aca79407ec0"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2887d3ef-ddaa-44c7-89dd-7c9883896172"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/39448997-f9a9-4724-9f0f-17e472f7a765"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/410ca86c-f8f0-4168-a0d1-e76f95ca7cd1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/454358a6-86b5-4a72-a9fe-c0a9f99aacbc"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4637f16c-ae9a-42fe-aeb3-5f915a546648"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4826af71-d2d6-4c84-ae44-847a80d56bbb"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/54790e5e-40b4-448f-a1fc-d3b734c5c850"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/75097790-e5eb-4e28-b20f-f6cd9590dae5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/764f7cd9-dcbc-4f37-9128-609247856c8a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/858e5050-8030-40d9-a3f4-124500c74759"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8ca5f9b2-6616-4999-8aa1-5984edba7080"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9c768d77-b43d-4d2c-be81-31a63287a765"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/aa17403a-5df4-4543-8915-9f7370dd1732"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/aa4a23f1-f242-415c-af19-fc447f8554bf"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ad42eaab-6bbf-4c8a-bc13-6add20dfb7a8"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c656c1b7-9498-4307-8918-27ac25aa9306"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d1a3e4ef-1fb8-4d39-836d-0ebdb5baf570"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e65b8cb7-be42-496c-a1e8-886ce91a0972"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e76496c8-610d-41f5-9ec3-481dbe245429"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e8d42888-47b8-45c2-b603-4d9a47619e4a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ec16a2bd-df80-48fc-b961-ecdf506540bc"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f4e24875-5cb1-492b-a291-73839e6d2269"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f9cd4eed-93e9-4940-a0dc-7eaf05624df3"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/fbfc98d5-5561-4e36-8fcd-71a8581d42a2"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0ce89ebc-ab0b-46f4-9359-68ee83836886">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Condition Satisfied</skos:prefLabel>
+    <dcterms:identifier>0ce89ebc-ab0b-46f4-9359-68ee83836886</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/16a5314d-ec42-48a1-a735-bc45f4e9e778">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Informative</skos:prefLabel>
+    <dcterms:identifier>16a5314d-ec42-48a1-a735-bc45f4e9e778</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/23618424-8b0a-4536-b6c4-ebb07c0a8a65">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Discharge Condition</skos:prefLabel>
+    <dcterms:identifier>23618424-8b0a-4536-b6c4-ebb07c0a8a65</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2415696f-8ce3-4d42-851d-ca3322d09bd5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Non Standard Condition</skos:prefLabel>
+    <dcterms:identifier>2415696f-8ce3-4d42-851d-ca3322d09bd5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/27a62120-5938-428e-b775-3aca79407ec0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Breach of Condition</skos:prefLabel>
+    <dcterms:identifier>27a62120-5938-428e-b775-3aca79407ec0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2887d3ef-ddaa-44c7-89dd-7c9883896172">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Scope In To EIA</skos:prefLabel>
+    <dcterms:identifier>2887d3ef-ddaa-44c7-89dd-7c9883896172</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/39448997-f9a9-4724-9f0f-17e472f7a765">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Foundation design approval</skos:prefLabel>
+    <dcterms:identifier>39448997-f9a9-4724-9f0f-17e472f7a765</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/410ca86c-f8f0-4168-a0d1-e76f95ca7cd1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Enforcement Issue</skos:prefLabel>
+    <dcterms:identifier>410ca86c-f8f0-4168-a0d1-e76f95ca7cd1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/454358a6-86b5-4a72-a9fe-c0a9f99aacbc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Condition Two-Stage</skos:prefLabel>
+    <dcterms:identifier>454358a6-86b5-4a72-a9fe-c0a9f99aacbc</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4637f16c-ae9a-42fe-aeb3-5f915a546648">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Possible archaeological implications</skos:prefLabel>
+    <dcterms:identifier>4637f16c-ae9a-42fe-aeb3-5f915a546648</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4826af71-d2d6-4c84-ae44-847a80d56bbb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Environmental Stewardship - normal</skos:prefLabel>
+    <dcterms:identifier>4826af71-d2d6-4c84-ae44-847a80d56bbb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/54790e5e-40b4-448f-a1fc-d3b734c5c850">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">No Progression</skos:prefLabel>
+    <dcterms:identifier>54790e5e-40b4-448f-a1fc-d3b734c5c850</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/75097790-e5eb-4e28-b20f-f6cd9590dae5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Public Engagement</skos:prefLabel>
+    <dcterms:identifier>75097790-e5eb-4e28-b20f-f6cd9590dae5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/764f7cd9-dcbc-4f37-9128-609247856c8a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Refusal</skos:prefLabel>
+    <dcterms:identifier>764f7cd9-dcbc-4f37-9128-609247856c8a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/858e5050-8030-40d9-a3f4-124500c74759">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Report Approve</skos:prefLabel>
+    <dcterms:identifier>858e5050-8030-40d9-a3f4-124500c74759</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8ca5f9b2-6616-4999-8aa1-5984edba7080">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Condition Building Recording</skos:prefLabel>
+    <dcterms:identifier>8ca5f9b2-6616-4999-8aa1-5984edba7080</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9c768d77-b43d-4d2c-be81-31a63287a765">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Agree WSI</skos:prefLabel>
+    <dcterms:identifier>9c768d77-b43d-4d2c-be81-31a63287a765</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/aa17403a-5df4-4543-8915-9f7370dd1732">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Condition Foundation Design</skos:prefLabel>
+    <dcterms:identifier>aa17403a-5df4-4543-8915-9f7370dd1732</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/aa4a23f1-f242-415c-af19-fc447f8554bf">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Amend WSI</skos:prefLabel>
+    <dcterms:identifier>aa4a23f1-f242-415c-af19-fc447f8554bf</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ad42eaab-6bbf-4c8a-bc13-6add20dfb7a8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Environmental Stewardship - high</skos:prefLabel>
+    <dcterms:identifier>ad42eaab-6bbf-4c8a-bc13-6add20dfb7a8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c656c1b7-9498-4307-8918-27ac25aa9306">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">EAS Service Order Form</skos:prefLabel>
+    <dcterms:identifier>c656c1b7-9498-4307-8918-27ac25aa9306</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d1a3e4ef-1fb8-4d39-836d-0ebdb5baf570">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Predetermination</skos:prefLabel>
+    <dcterms:identifier>d1a3e4ef-1fb8-4d39-836d-0ebdb5baf570</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e65b8cb7-be42-496c-a1e8-886ce91a0972">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Scope Out of EIA</skos:prefLabel>
+    <dcterms:identifier>e65b8cb7-be42-496c-a1e8-886ce91a0972</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e76496c8-610d-41f5-9ec3-481dbe245429">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Extended Pre-Application Advice</skos:prefLabel>
+    <dcterms:identifier>e76496c8-610d-41f5-9ec3-481dbe245429</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e8d42888-47b8-45c2-b603-4d9a47619e4a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Report Amend</skos:prefLabel>
+    <dcterms:identifier>e8d42888-47b8-45c2-b603-4d9a47619e4a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ec16a2bd-df80-48fc-b961-ecdf506540bc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Condition Protective Fencing</skos:prefLabel>
+    <dcterms:identifier>ec16a2bd-df80-48fc-b961-ecdf506540bc</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f4e24875-5cb1-492b-a291-73839e6d2269">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Condition Investigation</skos:prefLabel>
+    <dcterms:identifier>f4e24875-5cb1-492b-a291-73839e6d2269</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f9cd4eed-93e9-4940-a0dc-7eaf05624df3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">No Need to Consult</skos:prefLabel>
+    <dcterms:identifier>f9cd4eed-93e9-4940-a0dc-7eaf05624df3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fbfc98d5-5561-4e36-8fcd-71a8581d42a2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/cf2a6919-f8e7-4d06-a5e0-07056aa701f9"/>
+    <skos:prefLabel xml:lang="en">Condition Public Engagement</skos:prefLabel>
+    <dcterms:identifier>fbfc98d5-5561-4e36-8fcd-71a8581d42a2</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

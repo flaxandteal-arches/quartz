@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/a5187be1-7459-4462-929b-8d998cbf8c0a">
+    <dcterms:title xml:lang="en">Designation Description Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0d33e40b-c45d-4e9e-9206-90aa8f4796de"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/196df723-f598-4a33-9d7f-11c77ac7d611"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/25c04a66-2abc-4a8b-823b-767d6fa977ea"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5392a0ad-5eb3-444c-9e74-740d48dd2272"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e318a6ed-0eab-48cb-a27b-7ffb7c6a6c98"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0d33e40b-c45d-4e9e-9206-90aa8f4796de">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/a5187be1-7459-4462-929b-8d998cbf8c0a"/>
+    <skos:prefLabel xml:lang="en">Details</skos:prefLabel>
+    <dcterms:identifier>0d33e40b-c45d-4e9e-9206-90aa8f4796de</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/196df723-f598-4a33-9d7f-11c77ac7d611">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/a5187be1-7459-4462-929b-8d998cbf8c0a"/>
+    <skos:prefLabel xml:lang="en">History</skos:prefLabel>
+    <dcterms:identifier>196df723-f598-4a33-9d7f-11c77ac7d611</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/25c04a66-2abc-4a8b-823b-767d6fa977ea">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/a5187be1-7459-4462-929b-8d998cbf8c0a"/>
+    <skos:prefLabel xml:lang="en">Legal</skos:prefLabel>
+    <dcterms:identifier>25c04a66-2abc-4a8b-823b-767d6fa977ea</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5392a0ad-5eb3-444c-9e74-740d48dd2272">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/a5187be1-7459-4462-929b-8d998cbf8c0a"/>
+    <skos:prefLabel xml:lang="en">Reasons for Designation</skos:prefLabel>
+    <dcterms:identifier>5392a0ad-5eb3-444c-9e74-740d48dd2272</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e318a6ed-0eab-48cb-a27b-7ffb7c6a6c98">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/a5187be1-7459-4462-929b-8d998cbf8c0a"/>
+    <skos:prefLabel xml:lang="en">Summary</skos:prefLabel>
+    <dcterms:identifier>e318a6ed-0eab-48cb-a27b-7ffb7c6a6c98</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf">
+    <dcterms:title xml:lang="en">FISH Maritime Nationality Thesaurus</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/bf2f644f-e888-3d47-bc45-a260ea1ad3bf"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bf2f644f-e888-3d47-bc45-a260ea1ad3bf">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:prefLabel xml:lang="en">Maritime Nationality</skos:prefLabel>
+    <dcterms:identifier>bf2f644f-e888-3d47-bc45-a260ea1ad3bf</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/0a15f6f2-9b34-3bab-bdd3-3cc2ff469c42"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/871e42d6-d569-3769-825f-72e477f04452"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/975e28f6-fc0e-3122-9596-7f24f27999e0"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c8022934-42a6-368f-918e-a5ac59694928"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d4de147b-987a-36a2-b05d-00ad0d8337fd"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f348aeb4-6b07-3bae-9c14-5b70b6677df1"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0a15f6f2-9b34-3bab-bdd3-3cc2ff469c42">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/bf2f644f-e888-3d47-bc45-a260ea1ad3bf"/>
+    <skos:prefLabel xml:lang="en">African</skos:prefLabel>
+    <dcterms:identifier>0a15f6f2-9b34-3bab-bdd3-3cc2ff469c42</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/031d86a0-566c-3c9b-a8ae-58901eab372f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5fb18492-3d25-327c-b282-6663d27320d0"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6b516ce7-f864-360b-bd92-db9d74587e0b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9fb67dde-6823-395d-b4bb-75212ab8c24b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/cd8b9dda-9973-3c3a-a33d-8cfd84677efa"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d17f8ba8-d457-3e0f-81cd-f087ccbf20b9"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/031d86a0-566c-3c9b-a8ae-58901eab372f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/0a15f6f2-9b34-3bab-bdd3-3cc2ff469c42"/>
+    <skos:prefLabel xml:lang="en">Liberian</skos:prefLabel>
+    <dcterms:identifier>031d86a0-566c-3c9b-a8ae-58901eab372f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5fb18492-3d25-327c-b282-6663d27320d0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/0a15f6f2-9b34-3bab-bdd3-3cc2ff469c42"/>
+    <skos:prefLabel xml:lang="en">Algerian</skos:prefLabel>
+    <dcterms:identifier>5fb18492-3d25-327c-b282-6663d27320d0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6b516ce7-f864-360b-bd92-db9d74587e0b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/0a15f6f2-9b34-3bab-bdd3-3cc2ff469c42"/>
+    <skos:prefLabel xml:lang="en">Moroccan</skos:prefLabel>
+    <dcterms:identifier>6b516ce7-f864-360b-bd92-db9d74587e0b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9fb67dde-6823-395d-b4bb-75212ab8c24b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/0a15f6f2-9b34-3bab-bdd3-3cc2ff469c42"/>
+    <skos:prefLabel xml:lang="en">Egyptian</skos:prefLabel>
+    <dcterms:identifier>9fb67dde-6823-395d-b4bb-75212ab8c24b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cd8b9dda-9973-3c3a-a33d-8cfd84677efa">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/0a15f6f2-9b34-3bab-bdd3-3cc2ff469c42"/>
+    <skos:prefLabel xml:lang="en">South African</skos:prefLabel>
+    <dcterms:identifier>cd8b9dda-9973-3c3a-a33d-8cfd84677efa</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d17f8ba8-d457-3e0f-81cd-f087ccbf20b9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/0a15f6f2-9b34-3bab-bdd3-3cc2ff469c42"/>
+    <skos:prefLabel xml:lang="en">Somali</skos:prefLabel>
+    <dcterms:identifier>d17f8ba8-d457-3e0f-81cd-f087ccbf20b9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/871e42d6-d569-3769-825f-72e477f04452">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/bf2f644f-e888-3d47-bc45-a260ea1ad3bf"/>
+    <skos:prefLabel xml:lang="en">Asian</skos:prefLabel>
+    <dcterms:identifier>871e42d6-d569-3769-825f-72e477f04452</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/08cd9385-507d-3301-812d-1628939aa8fa"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/14bc66a4-f140-307c-b5a5-f85f3843ae30"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/1fd83f21-6426-3beb-b8ee-09decb1c847e"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/23ff6174-3b33-3cd0-a55f-2d6e62eeb32f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/32607224-e680-3693-a967-0cafa3c89284"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/34689562-2521-3c49-8024-b4d27cb6c584"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4683fa74-b5b1-330d-85b6-a5fa3abc1806"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4817bb51-1ca1-3cd3-9839-7c9d913fd31b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/542d8d76-140a-3c54-a29e-fa9e4c08792a"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/56f691fa-efa4-3d14-b7bf-eabb2581768f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/7efd233d-e691-358e-83c5-bb7b23a1024c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/bf9befe3-e7ec-34e7-8ed2-5f90f797d2a2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/08cd9385-507d-3301-812d-1628939aa8fa">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/871e42d6-d569-3769-825f-72e477f04452"/>
+    <skos:prefLabel xml:lang="en">Georgian</skos:prefLabel>
+    <dcterms:identifier>08cd9385-507d-3301-812d-1628939aa8fa</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/14bc66a4-f140-307c-b5a5-f85f3843ae30">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/871e42d6-d569-3769-825f-72e477f04452"/>
+    <skos:prefLabel xml:lang="en">Japanese</skos:prefLabel>
+    <dcterms:identifier>14bc66a4-f140-307c-b5a5-f85f3843ae30</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1fd83f21-6426-3beb-b8ee-09decb1c847e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/871e42d6-d569-3769-825f-72e477f04452"/>
+    <skos:prefLabel xml:lang="en">Russian</skos:prefLabel>
+    <dcterms:identifier>1fd83f21-6426-3beb-b8ee-09decb1c847e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/23ff6174-3b33-3cd0-a55f-2d6e62eeb32f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/871e42d6-d569-3769-825f-72e477f04452"/>
+    <skos:prefLabel xml:lang="en">Indian</skos:prefLabel>
+    <dcterms:identifier>23ff6174-3b33-3cd0-a55f-2d6e62eeb32f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/32607224-e680-3693-a967-0cafa3c89284">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/871e42d6-d569-3769-825f-72e477f04452"/>
+    <skos:prefLabel xml:lang="en">Vietnamese</skos:prefLabel>
+    <dcterms:identifier>32607224-e680-3693-a967-0cafa3c89284</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/34689562-2521-3c49-8024-b4d27cb6c584">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/871e42d6-d569-3769-825f-72e477f04452"/>
+    <skos:prefLabel xml:lang="en">Cypriot</skos:prefLabel>
+    <dcterms:identifier>34689562-2521-3c49-8024-b4d27cb6c584</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4683fa74-b5b1-330d-85b6-a5fa3abc1806">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/871e42d6-d569-3769-825f-72e477f04452"/>
+    <skos:prefLabel xml:lang="en">Lebanese</skos:prefLabel>
+    <dcterms:identifier>4683fa74-b5b1-330d-85b6-a5fa3abc1806</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4817bb51-1ca1-3cd3-9839-7c9d913fd31b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/871e42d6-d569-3769-825f-72e477f04452"/>
+    <skos:prefLabel xml:lang="en">Philippine</skos:prefLabel>
+    <dcterms:identifier>4817bb51-1ca1-3cd3-9839-7c9d913fd31b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/542d8d76-140a-3c54-a29e-fa9e4c08792a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/871e42d6-d569-3769-825f-72e477f04452"/>
+    <skos:prefLabel xml:lang="en">Turkish</skos:prefLabel>
+    <dcterms:identifier>542d8d76-140a-3c54-a29e-fa9e4c08792a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/56f691fa-efa4-3d14-b7bf-eabb2581768f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/871e42d6-d569-3769-825f-72e477f04452"/>
+    <skos:prefLabel xml:lang="en">Chinese</skos:prefLabel>
+    <dcterms:identifier>56f691fa-efa4-3d14-b7bf-eabb2581768f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7efd233d-e691-358e-83c5-bb7b23a1024c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/871e42d6-d569-3769-825f-72e477f04452"/>
+    <skos:prefLabel xml:lang="en">Pakistani</skos:prefLabel>
+    <dcterms:identifier>7efd233d-e691-358e-83c5-bb7b23a1024c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bf9befe3-e7ec-34e7-8ed2-5f90f797d2a2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/871e42d6-d569-3769-825f-72e477f04452"/>
+    <skos:prefLabel xml:lang="en">Malaysian</skos:prefLabel>
+    <dcterms:identifier>bf9befe3-e7ec-34e7-8ed2-5f90f797d2a2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/975e28f6-fc0e-3122-9596-7f24f27999e0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/bf2f644f-e888-3d47-bc45-a260ea1ad3bf"/>
+    <skos:prefLabel xml:lang="en">Australasian</skos:prefLabel>
+    <dcterms:identifier>975e28f6-fc0e-3122-9596-7f24f27999e0</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4cc19a5c-aa8d-3e87-8b43-0125f80c3565"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/61c50330-ee15-34ec-aae6-3adcfa9b8ea0"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4cc19a5c-aa8d-3e87-8b43-0125f80c3565">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/975e28f6-fc0e-3122-9596-7f24f27999e0"/>
+    <skos:prefLabel xml:lang="en">Australian</skos:prefLabel>
+    <dcterms:identifier>4cc19a5c-aa8d-3e87-8b43-0125f80c3565</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/61c50330-ee15-34ec-aae6-3adcfa9b8ea0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/975e28f6-fc0e-3122-9596-7f24f27999e0"/>
+    <skos:prefLabel xml:lang="en">New Zealander</skos:prefLabel>
+    <dcterms:identifier>61c50330-ee15-34ec-aae6-3adcfa9b8ea0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c8022934-42a6-368f-918e-a5ac59694928">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/bf2f644f-e888-3d47-bc45-a260ea1ad3bf"/>
+    <skos:prefLabel xml:lang="en">Central American</skos:prefLabel>
+    <dcterms:identifier>c8022934-42a6-368f-918e-a5ac59694928</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/0656689d-35e4-3d91-9f77-922e8734df21"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f8ee0b9d-7a55-3652-bd3c-285a9dd287ae"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0656689d-35e4-3d91-9f77-922e8734df21">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c8022934-42a6-368f-918e-a5ac59694928"/>
+    <skos:prefLabel xml:lang="en">Hondurian</skos:prefLabel>
+    <dcterms:identifier>0656689d-35e4-3d91-9f77-922e8734df21</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f8ee0b9d-7a55-3652-bd3c-285a9dd287ae">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c8022934-42a6-368f-918e-a5ac59694928"/>
+    <skos:prefLabel xml:lang="en">Panamanian</skos:prefLabel>
+    <dcterms:identifier>f8ee0b9d-7a55-3652-bd3c-285a9dd287ae</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/bf2f644f-e888-3d47-bc45-a260ea1ad3bf"/>
+    <skos:prefLabel xml:lang="en">European</skos:prefLabel>
+    <dcterms:identifier>d1dac625-0e37-33d0-b2b7-3b61d7b793a0</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/01dd3a31-4c0d-3eb8-a3cb-5bed02532d1c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/0503ee19-2de1-3a97-b408-44910cf0052e"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/1f1cb776-eda5-4fd3-99c0-f3c2af4f1c09"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/2474df3c-acb0-3c80-a2b7-143d475a5d7f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/248d3ded-f3ff-33a8-8770-25b79de06841"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/2f43ae5b-044e-3e0d-b488-d41cd962dc78"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/33fca785-4991-3e16-87e9-2889d833a435"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3af30de6-0128-3db5-9877-ea7e1bbbad6f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4466734b-069b-34d0-a426-b082556e3990"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/486b42ae-6724-393c-8b4b-c1cc7ec4ebbc"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4f606518-c9b1-32fc-b1c5-c4536e0fa87a"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/508930d2-3d6a-30a4-b8ce-fb83527909e1"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/55938878-f68a-3067-af45-0688cbe44826"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5619d956-178b-349e-ba52-0f283adb01a0"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5ac14bb0-b8f9-3237-8608-7e9121e6d250"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6c874f1c-2854-31b1-a3d1-2b11b22e0d47"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6e04acef-c050-3bd9-af19-abe21bdb20a8"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/72f28e7a-39b9-3090-82c2-779202636e76"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/7846792b-2f6b-3872-9250-a2ef0d9e530a"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/787e4108-1e67-3e9c-aac2-5d561d6c219d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/795751a1-c70b-3a02-b2a5-394a31ceaaf6"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8bb7a679-fe21-3a42-b972-3b4c81f746e9"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8cd2fc23-9d90-3ee6-87a8-7650b66fcc80"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9491fb94-815b-3d83-984e-2fd8e00e92a6"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/94c9e9b9-5e58-348f-9a77-c5d10495f723"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a4e65fa4-e131-3309-a04e-034fab13ac3a"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a73efa66-22f0-439b-8ce1-5b3c159cb469"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b2f18614-377b-3773-90ca-2a3da6a86d63"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c0f4e0d1-c637-4ea6-8778-01631df27e3c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/caef6b24-2031-381f-85b9-f124c6d44535"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/df940205-70ca-3ffd-913b-198202fe58c1"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e93fa6da-3cb8-3185-b997-41a9b7c0a910"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e9a27d04-00b4-388f-96d9-98c7df06f124"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/eb9619f1-e449-39b2-ad24-9758cc89019e"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f645c6ce-a4b9-3a63-8ab7-96d58dd72ff9"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f8a51857-bfdc-3714-bc97-4f9bce8c6d1f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/fc7a0178-3b61-3011-8195-895b547ecf67"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/01dd3a31-4c0d-3eb8-a3cb-5bed02532d1c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Portuguese</skos:prefLabel>
+    <dcterms:identifier>01dd3a31-4c0d-3eb8-a3cb-5bed02532d1c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0503ee19-2de1-3a97-b408-44910cf0052e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Slovene</skos:prefLabel>
+    <dcterms:identifier>0503ee19-2de1-3a97-b408-44910cf0052e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1f1cb776-eda5-4fd3-99c0-f3c2af4f1c09">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Russian</skos:prefLabel>
+    <dcterms:identifier>1f1cb776-eda5-4fd3-99c0-f3c2af4f1c09</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2474df3c-acb0-3c80-a2b7-143d475a5d7f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Swedish</skos:prefLabel>
+    <dcterms:identifier>2474df3c-acb0-3c80-a2b7-143d475a5d7f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/248d3ded-f3ff-33a8-8770-25b79de06841">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">French</skos:prefLabel>
+    <dcterms:identifier>248d3ded-f3ff-33a8-8770-25b79de06841</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2f43ae5b-044e-3e0d-b488-d41cd962dc78">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Estonian</skos:prefLabel>
+    <dcterms:identifier>2f43ae5b-044e-3e0d-b488-d41cd962dc78</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/33fca785-4991-3e16-87e9-2889d833a435">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Romanian</skos:prefLabel>
+    <dcterms:identifier>33fca785-4991-3e16-87e9-2889d833a435</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3af30de6-0128-3db5-9877-ea7e1bbbad6f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Finnish</skos:prefLabel>
+    <dcterms:identifier>3af30de6-0128-3db5-9877-ea7e1bbbad6f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4466734b-069b-34d0-a426-b082556e3990">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">British</skos:prefLabel>
+    <dcterms:identifier>4466734b-069b-34d0-a426-b082556e3990</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5ee26bac-d5eb-34b9-8b05-df36095ad7a0"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8b1103a5-bbb3-3812-9353-86a9c03e0f54"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c944869a-940d-34af-a65f-a1967d672e8d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f8510bca-02de-3c3b-a32f-62e0c6619286"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5ee26bac-d5eb-34b9-8b05-df36095ad7a0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4466734b-069b-34d0-a426-b082556e3990"/>
+    <skos:prefLabel xml:lang="en">Scottish</skos:prefLabel>
+    <dcterms:identifier>5ee26bac-d5eb-34b9-8b05-df36095ad7a0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8b1103a5-bbb3-3812-9353-86a9c03e0f54">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4466734b-069b-34d0-a426-b082556e3990"/>
+    <skos:prefLabel xml:lang="en">Northern Irish</skos:prefLabel>
+    <dcterms:identifier>8b1103a5-bbb3-3812-9353-86a9c03e0f54</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c944869a-940d-34af-a65f-a1967d672e8d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4466734b-069b-34d0-a426-b082556e3990"/>
+    <skos:prefLabel xml:lang="en">English</skos:prefLabel>
+    <dcterms:identifier>c944869a-940d-34af-a65f-a1967d672e8d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f8510bca-02de-3c3b-a32f-62e0c6619286">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4466734b-069b-34d0-a426-b082556e3990"/>
+    <skos:prefLabel xml:lang="en">Welsh</skos:prefLabel>
+    <dcterms:identifier>f8510bca-02de-3c3b-a32f-62e0c6619286</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/486b42ae-6724-393c-8b4b-c1cc7ec4ebbc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Swiss</skos:prefLabel>
+    <dcterms:identifier>486b42ae-6724-393c-8b4b-c1cc7ec4ebbc</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4f606518-c9b1-32fc-b1c5-c4536e0fa87a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Norwegian</skos:prefLabel>
+    <dcterms:identifier>4f606518-c9b1-32fc-b1c5-c4536e0fa87a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/508930d2-3d6a-30a4-b8ce-fb83527909e1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Yugoslavian</skos:prefLabel>
+    <dcterms:identifier>508930d2-3d6a-30a4-b8ce-fb83527909e1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/55938878-f68a-3067-af45-0688cbe44826">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Czech</skos:prefLabel>
+    <dcterms:identifier>55938878-f68a-3067-af45-0688cbe44826</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5619d956-178b-349e-ba52-0f283adb01a0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Czechoslovakian</skos:prefLabel>
+    <dcterms:identifier>5619d956-178b-349e-ba52-0f283adb01a0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5ac14bb0-b8f9-3237-8608-7e9121e6d250">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Slovak</skos:prefLabel>
+    <dcterms:identifier>5ac14bb0-b8f9-3237-8608-7e9121e6d250</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6c874f1c-2854-31b1-a3d1-2b11b22e0d47">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Belgian</skos:prefLabel>
+    <dcterms:identifier>6c874f1c-2854-31b1-a3d1-2b11b22e0d47</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6e04acef-c050-3bd9-af19-abe21bdb20a8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Channel Islander</skos:prefLabel>
+    <dcterms:identifier>6e04acef-c050-3bd9-af19-abe21bdb20a8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/72f28e7a-39b9-3090-82c2-779202636e76">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+    <dcterms:identifier>72f28e7a-39b9-3090-82c2-779202636e76</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7846792b-2f6b-3872-9250-a2ef0d9e530a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Polish</skos:prefLabel>
+    <dcterms:identifier>7846792b-2f6b-3872-9250-a2ef0d9e530a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/787e4108-1e67-3e9c-aac2-5d561d6c219d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Greek</skos:prefLabel>
+    <dcterms:identifier>787e4108-1e67-3e9c-aac2-5d561d6c219d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/795751a1-c70b-3a02-b2a5-394a31ceaaf6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Croatian</skos:prefLabel>
+    <dcterms:identifier>795751a1-c70b-3a02-b2a5-394a31ceaaf6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8bb7a679-fe21-3a42-b972-3b4c81f746e9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Spanish</skos:prefLabel>
+    <dcterms:identifier>8bb7a679-fe21-3a42-b972-3b4c81f746e9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8cd2fc23-9d90-3ee6-87a8-7650b66fcc80">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Manx</skos:prefLabel>
+    <dcterms:identifier>8cd2fc23-9d90-3ee6-87a8-7650b66fcc80</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9491fb94-815b-3d83-984e-2fd8e00e92a6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Latvian</skos:prefLabel>
+    <dcterms:identifier>9491fb94-815b-3d83-984e-2fd8e00e92a6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/94c9e9b9-5e58-348f-9a77-c5d10495f723">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Italian</skos:prefLabel>
+    <dcterms:identifier>94c9e9b9-5e58-348f-9a77-c5d10495f723</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a4e65fa4-e131-3309-a04e-034fab13ac3a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Irish</skos:prefLabel>
+    <dcterms:identifier>a4e65fa4-e131-3309-a04e-034fab13ac3a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a73efa66-22f0-439b-8ce1-5b3c159cb469">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Cypriot</skos:prefLabel>
+    <dcterms:identifier>a73efa66-22f0-439b-8ce1-5b3c159cb469</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b2f18614-377b-3773-90ca-2a3da6a86d63">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Ukrainian</skos:prefLabel>
+    <dcterms:identifier>b2f18614-377b-3773-90ca-2a3da6a86d63</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c0f4e0d1-c637-4ea6-8778-01631df27e3c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Turkish</skos:prefLabel>
+    <dcterms:identifier>c0f4e0d1-c637-4ea6-8778-01631df27e3c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/caef6b24-2031-381f-85b9-f124c6d44535">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Faroese</skos:prefLabel>
+    <dcterms:identifier>caef6b24-2031-381f-85b9-f124c6d44535</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/df940205-70ca-3ffd-913b-198202fe58c1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">German</skos:prefLabel>
+    <dcterms:identifier>df940205-70ca-3ffd-913b-198202fe58c1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e93fa6da-3cb8-3185-b997-41a9b7c0a910">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Hungarian</skos:prefLabel>
+    <dcterms:identifier>e93fa6da-3cb8-3185-b997-41a9b7c0a910</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e9a27d04-00b4-388f-96d9-98c7df06f124">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Maltese</skos:prefLabel>
+    <dcterms:identifier>e9a27d04-00b4-388f-96d9-98c7df06f124</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/eb9619f1-e449-39b2-ad24-9758cc89019e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Icelandic</skos:prefLabel>
+    <dcterms:identifier>eb9619f1-e449-39b2-ad24-9758cc89019e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f645c6ce-a4b9-3a63-8ab7-96d58dd72ff9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Lithuanian</skos:prefLabel>
+    <dcterms:identifier>f645c6ce-a4b9-3a63-8ab7-96d58dd72ff9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f8a51857-bfdc-3714-bc97-4f9bce8c6d1f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Danish</skos:prefLabel>
+    <dcterms:identifier>f8a51857-bfdc-3714-bc97-4f9bce8c6d1f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fc7a0178-3b61-3011-8195-895b547ecf67">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d1dac625-0e37-33d0-b2b7-3b61d7b793a0"/>
+    <skos:prefLabel xml:lang="en">Austrian</skos:prefLabel>
+    <dcterms:identifier>fc7a0178-3b61-3011-8195-895b547ecf67</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d4de147b-987a-36a2-b05d-00ad0d8337fd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/bf2f644f-e888-3d47-bc45-a260ea1ad3bf"/>
+    <skos:prefLabel xml:lang="en">South American</skos:prefLabel>
+    <dcterms:identifier>d4de147b-987a-36a2-b05d-00ad0d8337fd</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/afc7ce92-19e2-35f4-b9fd-e58f8b6a7eff"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b70f178b-e446-3f6a-a645-40433dfe8154"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d5d3b250-f9c4-3700-aecc-05d4905059fd"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f86fce3c-2998-393f-aded-a577ecf40834"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/fcc100a8-c042-319b-9958-206b29a70f5a"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/afc7ce92-19e2-35f4-b9fd-e58f8b6a7eff">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d4de147b-987a-36a2-b05d-00ad0d8337fd"/>
+    <skos:prefLabel xml:lang="en">Peruvian</skos:prefLabel>
+    <dcterms:identifier>afc7ce92-19e2-35f4-b9fd-e58f8b6a7eff</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b70f178b-e446-3f6a-a645-40433dfe8154">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d4de147b-987a-36a2-b05d-00ad0d8337fd"/>
+    <skos:prefLabel xml:lang="en">Uruguayan</skos:prefLabel>
+    <dcterms:identifier>b70f178b-e446-3f6a-a645-40433dfe8154</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d5d3b250-f9c4-3700-aecc-05d4905059fd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d4de147b-987a-36a2-b05d-00ad0d8337fd"/>
+    <skos:prefLabel xml:lang="en">Argentinian</skos:prefLabel>
+    <dcterms:identifier>d5d3b250-f9c4-3700-aecc-05d4905059fd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f86fce3c-2998-393f-aded-a577ecf40834">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d4de147b-987a-36a2-b05d-00ad0d8337fd"/>
+    <skos:prefLabel xml:lang="en">Venezuelan</skos:prefLabel>
+    <dcterms:identifier>f86fce3c-2998-393f-aded-a577ecf40834</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fcc100a8-c042-319b-9958-206b29a70f5a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d4de147b-987a-36a2-b05d-00ad0d8337fd"/>
+    <skos:prefLabel xml:lang="en">Brazilian</skos:prefLabel>
+    <dcterms:identifier>fcc100a8-c042-319b-9958-206b29a70f5a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f348aeb4-6b07-3bae-9c14-5b70b6677df1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/bf2f644f-e888-3d47-bc45-a260ea1ad3bf"/>
+    <skos:prefLabel xml:lang="en">North American</skos:prefLabel>
+    <dcterms:identifier>f348aeb4-6b07-3bae-9c14-5b70b6677df1</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/051d7445-5f19-3a5d-923d-e437aff4d5b4"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/093e8e78-bd7e-3ccc-86bb-7e29e316d0b9"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3b45d968-0b48-3342-9671-dff754b6adcb"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/74b6275e-a56d-3ded-ad78-43148600b53b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/caefce7b-7809-36c6-8106-57ed86db7092"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e9c5f5df-b1f8-36cb-aa7e-20098ecd0b9b"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/051d7445-5f19-3a5d-923d-e437aff4d5b4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f348aeb4-6b07-3bae-9c14-5b70b6677df1"/>
+    <skos:prefLabel xml:lang="en">Antiguan</skos:prefLabel>
+    <dcterms:identifier>051d7445-5f19-3a5d-923d-e437aff4d5b4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/093e8e78-bd7e-3ccc-86bb-7e29e316d0b9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f348aeb4-6b07-3bae-9c14-5b70b6677df1"/>
+    <skos:prefLabel xml:lang="en">Jamaican</skos:prefLabel>
+    <dcterms:identifier>093e8e78-bd7e-3ccc-86bb-7e29e316d0b9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3b45d968-0b48-3342-9671-dff754b6adcb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f348aeb4-6b07-3bae-9c14-5b70b6677df1"/>
+    <skos:prefLabel xml:lang="en">Cuban</skos:prefLabel>
+    <dcterms:identifier>3b45d968-0b48-3342-9671-dff754b6adcb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/74b6275e-a56d-3ded-ad78-43148600b53b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f348aeb4-6b07-3bae-9c14-5b70b6677df1"/>
+    <skos:prefLabel xml:lang="en">American</skos:prefLabel>
+    <dcterms:identifier>74b6275e-a56d-3ded-ad78-43148600b53b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/caefce7b-7809-36c6-8106-57ed86db7092">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f348aeb4-6b07-3bae-9c14-5b70b6677df1"/>
+    <skos:prefLabel xml:lang="en">Canadian</skos:prefLabel>
+    <dcterms:identifier>caefce7b-7809-36c6-8106-57ed86db7092</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e9c5f5df-b1f8-36cb-aa7e-20098ecd0b9b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/fc7631d8-849d-41b8-902e-45c6b9bb07bf"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f348aeb4-6b07-3bae-9c14-5b70b6677df1"/>
+    <skos:prefLabel xml:lang="en">Barbadian</skos:prefLabel>
+    <dcterms:identifier>e9c5f5df-b1f8-36cb-aa7e-20098ecd0b9b</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

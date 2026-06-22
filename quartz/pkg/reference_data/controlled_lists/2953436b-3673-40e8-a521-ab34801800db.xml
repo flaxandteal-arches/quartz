@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db">
+    <dcterms:title xml:lang="en">FISH Event Types Thesaurus</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7bb714d1-3eb9-31c9-876b-47eda7726b94"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d34af480-0815-37f7-818d-cd14dde404f2"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7bb714d1-3eb9-31c9-876b-47eda7726b94">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:prefLabel xml:lang="en">Intrusive Event</skos:prefLabel>
+    <dcterms:identifier>7bb714d1-3eb9-31c9-876b-47eda7726b94</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/7a255cb8-4179-394b-a428-2995477fe495"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9c51f27c-7393-35b8-aa78-8c39a4ec7cc5"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9f7dc02b-c5a4-39a1-af8c-fbf927526541"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7a255cb8-4179-394b-a428-2995477fe495">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7bb714d1-3eb9-31c9-876b-47eda7726b94"/>
+    <skos:prefLabel xml:lang="en">Environmental Intervention</skos:prefLabel>
+    <dcterms:identifier>7a255cb8-4179-394b-a428-2995477fe495</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/074903f1-9fde-377b-bed7-51dce980ae27"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4dd37873-8058-3f4d-a88a-a3b4892a7efd"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5c8f9e8e-2268-3bb9-9275-7ffdc446bd6b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a1452621-d92d-334c-8006-83af83d53fc8"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e27afeea-44e1-3365-8c26-57e4a9faab59"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ea69bc7c-efe2-38ed-9428-85ef5e770d46"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/074903f1-9fde-377b-bed7-51dce980ae27">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7a255cb8-4179-394b-a428-2995477fe495"/>
+    <skos:prefLabel xml:lang="en">Dendrochronological Survey</skos:prefLabel>
+    <dcterms:identifier>074903f1-9fde-377b-bed7-51dce980ae27</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4dd37873-8058-3f4d-a88a-a3b4892a7efd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7a255cb8-4179-394b-a428-2995477fe495"/>
+    <skos:prefLabel xml:lang="en">Timber Sampling</skos:prefLabel>
+    <dcterms:identifier>4dd37873-8058-3f4d-a88a-a3b4892a7efd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5c8f9e8e-2268-3bb9-9275-7ffdc446bd6b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7a255cb8-4179-394b-a428-2995477fe495"/>
+    <skos:prefLabel xml:lang="en">Auger Survey</skos:prefLabel>
+    <dcterms:identifier>5c8f9e8e-2268-3bb9-9275-7ffdc446bd6b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a1452621-d92d-334c-8006-83af83d53fc8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7a255cb8-4179-394b-a428-2995477fe495"/>
+    <skos:prefLabel xml:lang="en">Environmental Sampling</skos:prefLabel>
+    <dcterms:identifier>a1452621-d92d-334c-8006-83af83d53fc8</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5cb9c784-ad5b-3cc4-bf54-920f270f6c02"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/84d7fc9f-cf92-3853-856d-509005ef7c2f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/be59d57f-b3fd-3739-bcb6-06b830b40ad4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5cb9c784-ad5b-3cc4-bf54-920f270f6c02">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a1452621-d92d-334c-8006-83af83d53fc8"/>
+    <skos:prefLabel xml:lang="en">Monolith Sampling</skos:prefLabel>
+    <dcterms:identifier>5cb9c784-ad5b-3cc4-bf54-920f270f6c02</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/84d7fc9f-cf92-3853-856d-509005ef7c2f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a1452621-d92d-334c-8006-83af83d53fc8"/>
+    <skos:prefLabel xml:lang="en">Archaeomagnetic Sampling</skos:prefLabel>
+    <dcterms:identifier>84d7fc9f-cf92-3853-856d-509005ef7c2f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/be59d57f-b3fd-3739-bcb6-06b830b40ad4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a1452621-d92d-334c-8006-83af83d53fc8"/>
+    <skos:prefLabel xml:lang="en">Core Sampling</skos:prefLabel>
+    <dcterms:identifier>be59d57f-b3fd-3739-bcb6-06b830b40ad4</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3d210556-5cb3-3f9c-b4de-31c50774a4a6"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/707feccd-66eb-342f-b8db-0228482cc636"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3d210556-5cb3-3f9c-b4de-31c50774a4a6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/be59d57f-b3fd-3739-bcb6-06b830b40ad4"/>
+    <skos:prefLabel xml:lang="en">Vibro Core</skos:prefLabel>
+    <dcterms:identifier>3d210556-5cb3-3f9c-b4de-31c50774a4a6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/707feccd-66eb-342f-b8db-0228482cc636">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/be59d57f-b3fd-3739-bcb6-06b830b40ad4"/>
+    <skos:prefLabel xml:lang="en">Gravity Core</skos:prefLabel>
+    <dcterms:identifier>707feccd-66eb-342f-b8db-0228482cc636</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e27afeea-44e1-3365-8c26-57e4a9faab59">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7a255cb8-4179-394b-a428-2995477fe495"/>
+    <skos:prefLabel xml:lang="en">Geochemical Survey</skos:prefLabel>
+    <dcterms:identifier>e27afeea-44e1-3365-8c26-57e4a9faab59</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/00614110-1d5a-30d0-802a-741678a23925"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/aa258c68-9e4c-3bc7-8635-01f89f9698f0"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/00614110-1d5a-30d0-802a-741678a23925">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e27afeea-44e1-3365-8c26-57e4a9faab59"/>
+    <skos:prefLabel xml:lang="en">Phosphate Survey</skos:prefLabel>
+    <dcterms:identifier>00614110-1d5a-30d0-802a-741678a23925</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/aa258c68-9e4c-3bc7-8635-01f89f9698f0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e27afeea-44e1-3365-8c26-57e4a9faab59"/>
+    <skos:prefLabel xml:lang="en">X Ray Fluorescence Survey</skos:prefLabel>
+    <dcterms:identifier>aa258c68-9e4c-3bc7-8635-01f89f9698f0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ea69bc7c-efe2-38ed-9428-85ef5e770d46">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7a255cb8-4179-394b-a428-2995477fe495"/>
+    <skos:prefLabel xml:lang="en">Borehole Survey</skos:prefLabel>
+    <dcterms:identifier>ea69bc7c-efe2-38ed-9428-85ef5e770d46</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9c51f27c-7393-35b8-aa78-8c39a4ec7cc5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7bb714d1-3eb9-31c9-876b-47eda7726b94"/>
+    <skos:prefLabel xml:lang="en">Non Archaeological Intervention</skos:prefLabel>
+    <dcterms:identifier>9c51f27c-7393-35b8-aa78-8c39a4ec7cc5</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/351c183a-0fd2-3c16-a7d3-6a4f2169687e"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/82449d55-0956-4725-a416-36213adb83d6"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8fb58adb-3380-3e06-ba43-e53f1960568b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9fc47817-8b59-32dc-be10-de66681586be"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b67d4c42-e97b-4695-b9d3-fc694f430e77"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/351c183a-0fd2-3c16-a7d3-6a4f2169687e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9c51f27c-7393-35b8-aa78-8c39a4ec7cc5"/>
+    <skos:prefLabel xml:lang="en">Geotechnical Survey</skos:prefLabel>
+    <dcterms:identifier>351c183a-0fd2-3c16-a7d3-6a4f2169687e</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5f680674-c3c6-320a-9b8d-165e9d6ed0fb"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5f680674-c3c6-320a-9b8d-165e9d6ed0fb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/351c183a-0fd2-3c16-a7d3-6a4f2169687e"/>
+    <skos:prefLabel xml:lang="en">Geotechnical Test Pit</skos:prefLabel>
+    <dcterms:identifier>5f680674-c3c6-320a-9b8d-165e9d6ed0fb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/82449d55-0956-4725-a416-36213adb83d6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9c51f27c-7393-35b8-aa78-8c39a4ec7cc5"/>
+    <skos:prefLabel xml:lang="en">Borehole Survey</skos:prefLabel>
+    <dcterms:identifier>82449d55-0956-4725-a416-36213adb83d6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8fb58adb-3380-3e06-ba43-e53f1960568b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9c51f27c-7393-35b8-aa78-8c39a4ec7cc5"/>
+    <skos:prefLabel xml:lang="en">Casual Observation</skos:prefLabel>
+    <dcterms:identifier>8fb58adb-3380-3e06-ba43-e53f1960568b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9fc47817-8b59-32dc-be10-de66681586be">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9c51f27c-7393-35b8-aa78-8c39a4ec7cc5"/>
+    <skos:prefLabel xml:lang="en">Metal Detecting Use</skos:prefLabel>
+    <dcterms:identifier>9fc47817-8b59-32dc-be10-de66681586be</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b67d4c42-e97b-4695-b9d3-fc694f430e77">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9c51f27c-7393-35b8-aa78-8c39a4ec7cc5"/>
+    <skos:prefLabel xml:lang="en">Auger Survey</skos:prefLabel>
+    <dcterms:identifier>b67d4c42-e97b-4695-b9d3-fc694f430e77</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9f7dc02b-c5a4-39a1-af8c-fbf927526541">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7bb714d1-3eb9-31c9-876b-47eda7726b94"/>
+    <skos:prefLabel xml:lang="en">Archaeological Intervention</skos:prefLabel>
+    <dcterms:identifier>9f7dc02b-c5a4-39a1-af8c-fbf927526541</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/09256f22-8342-4d42-916b-fbc049231186"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3d5ea623-5ae6-3e50-8a69-60a58625f222"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/438f006c-e120-3b5c-b8d5-47e96b50cded"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/456f88db-a232-36ad-9a66-c2b6c1b7281d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/52a591de-ecde-39c2-9e97-3135e825f78c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9f893f4e-cce0-323c-8f96-88e856d8340a"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/aa36a15a-d33e-3775-9ef1-e704bdc7d42d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/aea3c20d-ee71-4607-a49a-6cafd28052f0"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/bacadfda-8b97-4599-9fcc-2220487c04d2"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/09256f22-8342-4d42-916b-fbc049231186">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9f7dc02b-c5a4-39a1-af8c-fbf927526541"/>
+    <skos:prefLabel xml:lang="en">Auger Survey</skos:prefLabel>
+    <dcterms:identifier>09256f22-8342-4d42-916b-fbc049231186</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3d5ea623-5ae6-3e50-8a69-60a58625f222">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9f7dc02b-c5a4-39a1-af8c-fbf927526541"/>
+    <skos:prefLabel xml:lang="en">Watching Brief</skos:prefLabel>
+    <dcterms:identifier>3d5ea623-5ae6-3e50-8a69-60a58625f222</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/438f006c-e120-3b5c-b8d5-47e96b50cded">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9f7dc02b-c5a4-39a1-af8c-fbf927526541"/>
+    <skos:prefLabel xml:lang="en">Grab Sampling</skos:prefLabel>
+    <dcterms:identifier>438f006c-e120-3b5c-b8d5-47e96b50cded</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/456f88db-a232-36ad-9a66-c2b6c1b7281d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9f7dc02b-c5a4-39a1-af8c-fbf927526541"/>
+    <skos:prefLabel xml:lang="en">Field Observation (Monitoring)</skos:prefLabel>
+    <dcterms:identifier>456f88db-a232-36ad-9a66-c2b6c1b7281d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/52a591de-ecde-39c2-9e97-3135e825f78c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9f7dc02b-c5a4-39a1-af8c-fbf927526541"/>
+    <skos:prefLabel xml:lang="en">Salvage Recording</skos:prefLabel>
+    <dcterms:identifier>52a591de-ecde-39c2-9e97-3135e825f78c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9f893f4e-cce0-323c-8f96-88e856d8340a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9f7dc02b-c5a4-39a1-af8c-fbf927526541"/>
+    <skos:prefLabel xml:lang="en">Excavation</skos:prefLabel>
+    <dcterms:identifier>9f893f4e-cce0-323c-8f96-88e856d8340a</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/12dd47c2-9ac9-3570-a8a8-3e34d2af642f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4ff2115a-fbcb-38e8-93ce-6e757cf1f590"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6591ec17-fcf0-3960-bfc5-5fea89fa258c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a4225258-4fdd-3880-8e9f-e76e025ddc79"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d69890b8-9d64-3b26-bdec-a14547d0a3a9"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d82abce4-42b9-36ed-8152-22665e3d4dca"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/12dd47c2-9ac9-3570-a8a8-3e34d2af642f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9f893f4e-cce0-323c-8f96-88e856d8340a"/>
+    <skos:prefLabel xml:lang="en">Research Excavation</skos:prefLabel>
+    <dcterms:identifier>12dd47c2-9ac9-3570-a8a8-3e34d2af642f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4ff2115a-fbcb-38e8-93ce-6e757cf1f590">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9f893f4e-cce0-323c-8f96-88e856d8340a"/>
+    <skos:prefLabel xml:lang="en">Open Area Excavation</skos:prefLabel>
+    <dcterms:identifier>4ff2115a-fbcb-38e8-93ce-6e757cf1f590</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6591ec17-fcf0-3960-bfc5-5fea89fa258c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9f893f4e-cce0-323c-8f96-88e856d8340a"/>
+    <skos:prefLabel xml:lang="en">Rescue Excavation</skos:prefLabel>
+    <dcterms:identifier>6591ec17-fcf0-3960-bfc5-5fea89fa258c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a4225258-4fdd-3880-8e9f-e76e025ddc79">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9f893f4e-cce0-323c-8f96-88e856d8340a"/>
+    <skos:prefLabel xml:lang="en">Box Trenching</skos:prefLabel>
+    <dcterms:identifier>a4225258-4fdd-3880-8e9f-e76e025ddc79</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d69890b8-9d64-3b26-bdec-a14547d0a3a9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9f893f4e-cce0-323c-8f96-88e856d8340a"/>
+    <skos:prefLabel xml:lang="en">Strip Map And Sample</skos:prefLabel>
+    <dcterms:identifier>d69890b8-9d64-3b26-bdec-a14547d0a3a9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d82abce4-42b9-36ed-8152-22665e3d4dca">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9f893f4e-cce0-323c-8f96-88e856d8340a"/>
+    <skos:prefLabel xml:lang="en">Underwater Excavation</skos:prefLabel>
+    <dcterms:identifier>d82abce4-42b9-36ed-8152-22665e3d4dca</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/aa36a15a-d33e-3775-9ef1-e704bdc7d42d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9f7dc02b-c5a4-39a1-af8c-fbf927526541"/>
+    <skos:prefLabel xml:lang="en">Evaluation</skos:prefLabel>
+    <dcterms:identifier>aa36a15a-d33e-3775-9ef1-e704bdc7d42d</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/16e0311c-34f2-3925-af72-5dc04250bcb3"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3153ddd5-d3a1-3be0-8e54-c6075b0b3fdf"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f08a7991-c591-36de-9727-70673a49b42a"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/16e0311c-34f2-3925-af72-5dc04250bcb3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/aa36a15a-d33e-3775-9ef1-e704bdc7d42d"/>
+    <skos:prefLabel xml:lang="en">Trial Trench</skos:prefLabel>
+    <dcterms:identifier>16e0311c-34f2-3925-af72-5dc04250bcb3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3153ddd5-d3a1-3be0-8e54-c6075b0b3fdf">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/aa36a15a-d33e-3775-9ef1-e704bdc7d42d"/>
+    <skos:prefLabel xml:lang="en">Test Pit</skos:prefLabel>
+    <dcterms:identifier>3153ddd5-d3a1-3be0-8e54-c6075b0b3fdf</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f08a7991-c591-36de-9727-70673a49b42a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/aa36a15a-d33e-3775-9ef1-e704bdc7d42d"/>
+    <skos:prefLabel xml:lang="en">Underwater Evaluation</skos:prefLabel>
+    <dcterms:identifier>f08a7991-c591-36de-9727-70673a49b42a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/aea3c20d-ee71-4607-a49a-6cafd28052f0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9f7dc02b-c5a4-39a1-af8c-fbf927526541"/>
+    <skos:prefLabel xml:lang="en">Borehole Survey</skos:prefLabel>
+    <dcterms:identifier>aea3c20d-ee71-4607-a49a-6cafd28052f0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bacadfda-8b97-4599-9fcc-2220487c04d2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9f7dc02b-c5a4-39a1-af8c-fbf927526541"/>
+    <skos:prefLabel xml:lang="en">Metal Detecting Use</skos:prefLabel>
+    <dcterms:identifier>bacadfda-8b97-4599-9fcc-2220487c04d2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d34af480-0815-37f7-818d-cd14dde404f2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:prefLabel xml:lang="en">Non Intrusive Event</skos:prefLabel>
+    <dcterms:identifier>d34af480-0815-37f7-818d-cd14dde404f2</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/46d6e857-9cf8-3ced-aab8-83e77a23df23"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d7049ce8-20e4-33e8-bf37-6650081a8817"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/46d6e857-9cf8-3ced-aab8-83e77a23df23">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d34af480-0815-37f7-818d-cd14dde404f2"/>
+    <skos:prefLabel xml:lang="en">Observation</skos:prefLabel>
+    <dcterms:identifier>46d6e857-9cf8-3ced-aab8-83e77a23df23</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5c450bf8-8f8a-376e-9fea-9c150ece0868"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9728ef38-f362-331e-8f16-0d42d671eae0"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ca8ae17c-ef0e-3d21-bc4e-e676297da1ed"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d5de8649-9afe-3f08-b9b9-eeedf0089e84"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5c450bf8-8f8a-376e-9fea-9c150ece0868">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/46d6e857-9cf8-3ced-aab8-83e77a23df23"/>
+    <skos:prefLabel xml:lang="en">Antiquarian Observation</skos:prefLabel>
+    <dcterms:identifier>5c450bf8-8f8a-376e-9fea-9c150ece0868</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9728ef38-f362-331e-8f16-0d42d671eae0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/46d6e857-9cf8-3ced-aab8-83e77a23df23"/>
+    <skos:prefLabel xml:lang="en">Field Observation (Visual Assessment)</skos:prefLabel>
+    <dcterms:identifier>9728ef38-f362-331e-8f16-0d42d671eae0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ca8ae17c-ef0e-3d21-bc4e-e676297da1ed">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/46d6e857-9cf8-3ced-aab8-83e77a23df23"/>
+    <skos:prefLabel xml:lang="en">Field Visit</skos:prefLabel>
+    <dcterms:identifier>ca8ae17c-ef0e-3d21-bc4e-e676297da1ed</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d5de8649-9afe-3f08-b9b9-eeedf0089e84">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/46d6e857-9cf8-3ced-aab8-83e77a23df23"/>
+    <skos:prefLabel xml:lang="en">Diver Inspection</skos:prefLabel>
+    <dcterms:identifier>d5de8649-9afe-3f08-b9b9-eeedf0089e84</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d34af480-0815-37f7-818d-cd14dde404f2"/>
+    <skos:prefLabel xml:lang="en">Survey</skos:prefLabel>
+    <dcterms:identifier>8f23981b-46e1-3643-a3dd-748716563d76</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/22729726-8448-3340-a668-e2a367b557a5"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/473f3600-ee13-3a57-9f53-70d81db2483f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/53939d3f-31ee-39d5-8454-00e4977edaae"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6409ebaa-e5e5-3fd4-936c-5a088577b6de"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6faf9a0b-59bc-339d-bfad-943eb665dbef"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8096d14f-aec6-3a77-80cd-30540b5705dc"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/89d21336-fbe9-3118-8c74-7f999b1bc2eb"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/89f06a2d-0dfe-3f2a-b977-93d883975495"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/936758d2-62af-3f38-a78e-74a24060ed93"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9cd94279-bd17-3389-a16a-d1c20f2775a9"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9ff8ed10-4f84-3f95-93d7-ffd304515a7b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a5532d61-8be8-3700-8125-8df0cc716f08"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b08f79c0-88df-34c9-8a2f-f0ba6b06681c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c2a86ff9-d98f-31e6-aeb6-d8b752ca3895"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c5ef88c7-447f-3942-9353-35db94b86af2"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/cacb7e9b-bf1c-3735-903c-a616240f90cf"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d78a4384-cd0c-3024-94ee-9bb7d11e3c83"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e0df9319-d006-3ebf-ae36-7d0c9741407d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ea785346-97dc-3649-afc1-057c6ed3d6bc"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f8abd10d-b1fb-32b0-ba06-97a72c9aee3b"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/22729726-8448-3340-a668-e2a367b557a5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Geomorphological Survey</skos:prefLabel>
+    <dcterms:identifier>22729726-8448-3340-a668-e2a367b557a5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/473f3600-ee13-3a57-9f53-70d81db2483f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Laser Scanning Survey</skos:prefLabel>
+    <dcterms:identifier>473f3600-ee13-3a57-9f53-70d81db2483f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/53939d3f-31ee-39d5-8454-00e4977edaae">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Geophysical Survey</skos:prefLabel>
+    <dcterms:identifier>53939d3f-31ee-39d5-8454-00e4977edaae</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4dfdfe50-283e-3743-b132-3fca4badeab3"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/586c591f-ea02-3abd-8a00-680f3fc709e1"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/65b5e104-53b6-3689-9898-9c55537460c0"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/7579f4eb-a792-3a7a-be7f-43e6d187cc0f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/7c3bcdf7-10ca-3605-83d3-5fe9791dcfe0"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/907d29f6-c27f-36c9-9c74-b4540f36b1f1"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/965b5f1d-f612-323a-8543-c98aec9bfb27"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ae9df789-d17d-33d2-a5ca-cc742ebacdd4"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b83a442a-88c5-39eb-9750-383dc9fefe2a"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/bb329415-6632-3e60-b285-b597300f5f2c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/be7c0f23-b525-3bbc-95dd-c23d541fda28"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4dfdfe50-283e-3743-b132-3fca4badeab3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/53939d3f-31ee-39d5-8454-00e4977edaae"/>
+    <skos:prefLabel xml:lang="en">Sonar Survey</skos:prefLabel>
+    <dcterms:identifier>4dfdfe50-283e-3743-b132-3fca4badeab3</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/10cefb98-7063-3773-b522-eb9ce06dbed6"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/2643293e-c5e7-38a9-91bf-851490f09a58"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c518108c-a8a8-3a53-8cc2-f0a317f13810"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d4c70de7-999f-3bdc-9df5-fec07fa8f919"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/dcb4584f-2496-3365-bd46-8d5516eddb35"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/10cefb98-7063-3773-b522-eb9ce06dbed6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4dfdfe50-283e-3743-b132-3fca4badeab3"/>
+    <skos:prefLabel xml:lang="en">Side Scan Sonar Survey</skos:prefLabel>
+    <dcterms:identifier>10cefb98-7063-3773-b522-eb9ce06dbed6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2643293e-c5e7-38a9-91bf-851490f09a58">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4dfdfe50-283e-3743-b132-3fca4badeab3"/>
+    <skos:prefLabel xml:lang="en">Single Beam Echo Sounder Survey</skos:prefLabel>
+    <dcterms:identifier>2643293e-c5e7-38a9-91bf-851490f09a58</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c518108c-a8a8-3a53-8cc2-f0a317f13810">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4dfdfe50-283e-3743-b132-3fca4badeab3"/>
+    <skos:prefLabel xml:lang="en">Sub Bottom Profiling Survey</skos:prefLabel>
+    <dcterms:identifier>c518108c-a8a8-3a53-8cc2-f0a317f13810</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d4c70de7-999f-3bdc-9df5-fec07fa8f919">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4dfdfe50-283e-3743-b132-3fca4badeab3"/>
+    <skos:prefLabel xml:lang="en">Bathymetric Survey</skos:prefLabel>
+    <dcterms:identifier>d4c70de7-999f-3bdc-9df5-fec07fa8f919</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/dcb4584f-2496-3365-bd46-8d5516eddb35">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4dfdfe50-283e-3743-b132-3fca4badeab3"/>
+    <skos:prefLabel xml:lang="en">Multi Beam Echo Sounder Survey</skos:prefLabel>
+    <dcterms:identifier>dcb4584f-2496-3365-bd46-8d5516eddb35</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/586c591f-ea02-3abd-8a00-680f3fc709e1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/53939d3f-31ee-39d5-8454-00e4977edaae"/>
+    <skos:prefLabel xml:lang="en">Magnetometry Survey</skos:prefLabel>
+    <dcterms:identifier>586c591f-ea02-3abd-8a00-680f3fc709e1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/65b5e104-53b6-3689-9898-9c55537460c0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/53939d3f-31ee-39d5-8454-00e4977edaae"/>
+    <skos:prefLabel xml:lang="en">Seismic Survey</skos:prefLabel>
+    <dcterms:identifier>65b5e104-53b6-3689-9898-9c55537460c0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7579f4eb-a792-3a7a-be7f-43e6d187cc0f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/53939d3f-31ee-39d5-8454-00e4977edaae"/>
+    <skos:prefLabel xml:lang="en">Earth Resistance (Resistivity) Survey</skos:prefLabel>
+    <dcterms:identifier>7579f4eb-a792-3a7a-be7f-43e6d187cc0f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7c3bcdf7-10ca-3605-83d3-5fe9791dcfe0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/53939d3f-31ee-39d5-8454-00e4977edaae"/>
+    <skos:prefLabel xml:lang="en">Acoustic Ground Discriminating Radar</skos:prefLabel>
+    <dcterms:identifier>7c3bcdf7-10ca-3605-83d3-5fe9791dcfe0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/907d29f6-c27f-36c9-9c74-b4540f36b1f1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/53939d3f-31ee-39d5-8454-00e4977edaae"/>
+    <skos:prefLabel xml:lang="en">Microgravity Survey</skos:prefLabel>
+    <dcterms:identifier>907d29f6-c27f-36c9-9c74-b4540f36b1f1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/965b5f1d-f612-323a-8543-c98aec9bfb27">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/53939d3f-31ee-39d5-8454-00e4977edaae"/>
+    <skos:prefLabel xml:lang="en">Ground Penetrating Radar Survey</skos:prefLabel>
+    <dcterms:identifier>965b5f1d-f612-323a-8543-c98aec9bfb27</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ae9df789-d17d-33d2-a5ca-cc742ebacdd4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/53939d3f-31ee-39d5-8454-00e4977edaae"/>
+    <skos:prefLabel xml:lang="en">Electrical Resistivity Tomography</skos:prefLabel>
+    <dcterms:identifier>ae9df789-d17d-33d2-a5ca-cc742ebacdd4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b83a442a-88c5-39eb-9750-383dc9fefe2a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/53939d3f-31ee-39d5-8454-00e4977edaae"/>
+    <skos:prefLabel xml:lang="en">Electromagnetic Survey</skos:prefLabel>
+    <dcterms:identifier>b83a442a-88c5-39eb-9750-383dc9fefe2a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bb329415-6632-3e60-b285-b597300f5f2c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/53939d3f-31ee-39d5-8454-00e4977edaae"/>
+    <skos:prefLabel xml:lang="en">3D Seismic Survey</skos:prefLabel>
+    <dcterms:identifier>bb329415-6632-3e60-b285-b597300f5f2c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/be7c0f23-b525-3bbc-95dd-c23d541fda28">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/53939d3f-31ee-39d5-8454-00e4977edaae"/>
+    <skos:prefLabel xml:lang="en">Magnetic Susceptibility Survey</skos:prefLabel>
+    <dcterms:identifier>be7c0f23-b525-3bbc-95dd-c23d541fda28</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6409ebaa-e5e5-3fd4-936c-5a088577b6de">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Bosing Survey</skos:prefLabel>
+    <dcterms:identifier>6409ebaa-e5e5-3fd4-936c-5a088577b6de</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6faf9a0b-59bc-339d-bfad-943eb665dbef">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Fieldwalking Survey</skos:prefLabel>
+    <dcterms:identifier>6faf9a0b-59bc-339d-bfad-943eb665dbef</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/7582081d-96f3-39d2-aed7-b166795d8133"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e07bf226-34d5-37d6-9d0b-fdbb5c0e049a"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7582081d-96f3-39d2-aed7-b166795d8133">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/6faf9a0b-59bc-339d-bfad-943eb665dbef"/>
+    <skos:prefLabel xml:lang="en">Unsystematic Fieldwalking Survey</skos:prefLabel>
+    <dcterms:identifier>7582081d-96f3-39d2-aed7-b166795d8133</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e07bf226-34d5-37d6-9d0b-fdbb5c0e049a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/6faf9a0b-59bc-339d-bfad-943eb665dbef"/>
+    <skos:prefLabel xml:lang="en">Systematic Fieldwalking Survey</skos:prefLabel>
+    <dcterms:identifier>e07bf226-34d5-37d6-9d0b-fdbb5c0e049a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8096d14f-aec6-3a77-80cd-30540b5705dc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Architectural Survey</skos:prefLabel>
+    <dcterms:identifier>8096d14f-aec6-3a77-80cd-30540b5705dc</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/89d21336-fbe9-3118-8c74-7f999b1bc2eb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Hedgerow Survey</skos:prefLabel>
+    <dcterms:identifier>89d21336-fbe9-3118-8c74-7f999b1bc2eb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/89f06a2d-0dfe-3f2a-b977-93d883975495">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Dowsing Survey</skos:prefLabel>
+    <dcterms:identifier>89f06a2d-0dfe-3f2a-b977-93d883975495</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/936758d2-62af-3f38-a78e-74a24060ed93">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Graveyard Survey</skos:prefLabel>
+    <dcterms:identifier>936758d2-62af-3f38-a78e-74a24060ed93</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9cd94279-bd17-3389-a16a-d1c20f2775a9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Photographic Survey</skos:prefLabel>
+    <dcterms:identifier>9cd94279-bd17-3389-a16a-d1c20f2775a9</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6c3a4bbd-eee8-3ca3-b483-23751b494e28"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/bc39942b-fa6f-3731-979b-efb3ec6b82f4"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6c3a4bbd-eee8-3ca3-b483-23751b494e28">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9cd94279-bd17-3389-a16a-d1c20f2775a9"/>
+    <skos:prefLabel xml:lang="en">Photogrammetric Survey</skos:prefLabel>
+    <dcterms:identifier>6c3a4bbd-eee8-3ca3-b483-23751b494e28</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bc39942b-fa6f-3731-979b-efb3ec6b82f4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9cd94279-bd17-3389-a16a-d1c20f2775a9"/>
+    <skos:prefLabel xml:lang="en">Rectified Photographic Survey</skos:prefLabel>
+    <dcterms:identifier>bc39942b-fa6f-3731-979b-efb3ec6b82f4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9ff8ed10-4f84-3f95-93d7-ffd304515a7b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Analytical Earthwork Survey</skos:prefLabel>
+    <dcterms:identifier>9ff8ed10-4f84-3f95-93d7-ffd304515a7b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a5532d61-8be8-3700-8125-8df0cc716f08">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Buildings Recording And Investigation</skos:prefLabel>
+    <dcterms:identifier>a5532d61-8be8-3700-8125-8df0cc716f08</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/00cd395d-28a6-3745-b53a-c7834183def3"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/2604f141-b59a-3d15-bffb-e74646f65fd0"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/00cd395d-28a6-3745-b53a-c7834183def3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a5532d61-8be8-3700-8125-8df0cc716f08"/>
+    <skos:prefLabel xml:lang="en">Buildings Investigation (England)</skos:prefLabel>
+    <dcterms:identifier>00cd395d-28a6-3745-b53a-c7834183def3</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3dc90dcb-06f9-37d4-b9e6-7e0c1093e9e3"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/40da59f3-1ed5-3446-a5cc-b5a7bc06b8aa"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/7e85cd65-9852-38d6-ba7e-86165ef95cdb"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8ad49ab7-9cac-3c9a-98c4-8bcffbcfcb5b"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3dc90dcb-06f9-37d4-b9e6-7e0c1093e9e3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/00cd395d-28a6-3745-b53a-c7834183def3"/>
+    <skos:prefLabel xml:lang="en">Comprehensive Analytical Buildings Record</skos:prefLabel>
+    <dcterms:identifier>3dc90dcb-06f9-37d4-b9e6-7e0c1093e9e3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/40da59f3-1ed5-3446-a5cc-b5a7bc06b8aa">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/00cd395d-28a6-3745-b53a-c7834183def3"/>
+    <skos:prefLabel xml:lang="en">Analytical Buildings Record (Level 3)</skos:prefLabel>
+    <dcterms:identifier>40da59f3-1ed5-3446-a5cc-b5a7bc06b8aa</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7e85cd65-9852-38d6-ba7e-86165ef95cdb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/00cd395d-28a6-3745-b53a-c7834183def3"/>
+    <skos:prefLabel xml:lang="en">Visual Buildings Record (Level 1)</skos:prefLabel>
+    <dcterms:identifier>7e85cd65-9852-38d6-ba7e-86165ef95cdb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8ad49ab7-9cac-3c9a-98c4-8bcffbcfcb5b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/00cd395d-28a6-3745-b53a-c7834183def3"/>
+    <skos:prefLabel xml:lang="en">Descriptive Buildings Record (Level 2)</skos:prefLabel>
+    <dcterms:identifier>8ad49ab7-9cac-3c9a-98c4-8bcffbcfcb5b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2604f141-b59a-3d15-bffb-e74646f65fd0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a5532d61-8be8-3700-8125-8df0cc716f08"/>
+    <skos:prefLabel xml:lang="en">Buildings Investigation (Scotland)</skos:prefLabel>
+    <dcterms:identifier>2604f141-b59a-3d15-bffb-e74646f65fd0</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/2b1ecc09-c7d7-3ddd-9f02-8936b38df269"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6b81a766-aa81-3fb2-850b-b02838547529"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c5436d6a-9440-33ef-a0e4-517183c3e15b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/cf9da46e-e5fe-3165-a0c8-0c922ca9d7bb"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f620171e-663d-3736-b831-185d03687ea1"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2b1ecc09-c7d7-3ddd-9f02-8936b38df269">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/2604f141-b59a-3d15-bffb-e74646f65fd0"/>
+    <skos:prefLabel xml:lang="en">Basic Building Survey (Level 1)</skos:prefLabel>
+    <dcterms:identifier>2b1ecc09-c7d7-3ddd-9f02-8936b38df269</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6b81a766-aa81-3fb2-850b-b02838547529">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/2604f141-b59a-3d15-bffb-e74646f65fd0"/>
+    <skos:prefLabel xml:lang="en">Enhanced Building Survey (Level 2)</skos:prefLabel>
+    <dcterms:identifier>6b81a766-aa81-3fb2-850b-b02838547529</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c5436d6a-9440-33ef-a0e4-517183c3e15b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/2604f141-b59a-3d15-bffb-e74646f65fd0"/>
+    <skos:prefLabel xml:lang="en">Buildings Appraisal</skos:prefLabel>
+    <dcterms:identifier>c5436d6a-9440-33ef-a0e4-517183c3e15b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cf9da46e-e5fe-3165-a0c8-0c922ca9d7bb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/2604f141-b59a-3d15-bffb-e74646f65fd0"/>
+    <skos:prefLabel xml:lang="en">Comprehensive Building Survey (Level 4)</skos:prefLabel>
+    <dcterms:identifier>cf9da46e-e5fe-3165-a0c8-0c922ca9d7bb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f620171e-663d-3736-b831-185d03687ea1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/2604f141-b59a-3d15-bffb-e74646f65fd0"/>
+    <skos:prefLabel xml:lang="en">Detailed Building Survey (Level 3)</skos:prefLabel>
+    <dcterms:identifier>f620171e-663d-3736-b831-185d03687ea1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b08f79c0-88df-34c9-8a2f-f0ba6b06681c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Field Survey</skos:prefLabel>
+    <dcterms:identifier>b08f79c0-88df-34c9-8a2f-f0ba6b06681c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c2a86ff9-d98f-31e6-aeb6-d8b752ca3895">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Measured Survey</skos:prefLabel>
+    <dcterms:identifier>c2a86ff9-d98f-31e6-aeb6-d8b752ca3895</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c5ef88c7-447f-3942-9353-35db94b86af2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Underwater Survey</skos:prefLabel>
+    <dcterms:identifier>c5ef88c7-447f-3942-9353-35db94b86af2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cacb7e9b-bf1c-3735-903c-a616240f90cf">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Topographic Survey</skos:prefLabel>
+    <dcterms:identifier>cacb7e9b-bf1c-3735-903c-a616240f90cf</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d78a4384-cd0c-3024-94ee-9bb7d11e3c83">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Building Survey</skos:prefLabel>
+    <dcterms:identifier>d78a4384-cd0c-3024-94ee-9bb7d11e3c83</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e0df9319-d006-3ebf-ae36-7d0c9741407d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Metal Detecting Survey</skos:prefLabel>
+    <dcterms:identifier>e0df9319-d006-3ebf-ae36-7d0c9741407d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ea785346-97dc-3649-afc1-057c6ed3d6bc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Photographic Recording</skos:prefLabel>
+    <dcterms:identifier>ea785346-97dc-3649-afc1-057c6ed3d6bc</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f8abd10d-b1fb-32b0-ba06-97a72c9aee3b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8f23981b-46e1-3643-a3dd-748716563d76"/>
+    <skos:prefLabel xml:lang="en">Walkover Survey</skos:prefLabel>
+    <dcterms:identifier>f8abd10d-b1fb-32b0-ba06-97a72c9aee3b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d34af480-0815-37f7-818d-cd14dde404f2"/>
+    <skos:prefLabel xml:lang="en">Assessment And Analysis</skos:prefLabel>
+    <dcterms:identifier>cfcd7604-1730-3722-ab54-d0f84125f7d9</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/176b5afb-1482-32b0-b32f-dfc1a0f96dbf"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/1b857197-5d9e-395d-b834-c39c2a3cfaf4"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/21965e79-dd55-33de-92a7-cdcafdb79bce"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/2dedddfb-ac9b-3439-b34e-68e3514e5b40"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3148aace-e911-3b49-aaaa-a656bf814167"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/54188985-128f-3d29-afe6-84c1825cb368"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6147865f-3260-3735-ba2c-e1efd6660b4b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/64508e99-1316-3315-bf0c-9f0a4492ee49"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/69d5d3ba-98e7-30bc-b582-ef5ce506bff5"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/72c4b06d-c8fd-3e68-a406-860140bc1517"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8531bb92-7c14-329f-90ab-83640e730ee6"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/96e31362-e19c-3ece-8937-c18b7d633e2f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a14ff88a-2e41-33f3-9acb-c0af12d7b11b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ceccdbee-7042-337a-9c68-37e77b83cf8a"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ead0fa1d-e56e-393d-8582-95dd9d926cb1"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f0a3bf57-d98e-3812-9eaa-3008966e35a6"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/176b5afb-1482-32b0-b32f-dfc1a0f96dbf">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:prefLabel xml:lang="en">Condition Survey</skos:prefLabel>
+    <dcterms:identifier>176b5afb-1482-32b0-b32f-dfc1a0f96dbf</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1b857197-5d9e-395d-b834-c39c2a3cfaf4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:prefLabel xml:lang="en">Historic Area Assessment</skos:prefLabel>
+    <dcterms:identifier>1b857197-5d9e-395d-b834-c39c2a3cfaf4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/21965e79-dd55-33de-92a7-cdcafdb79bce">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:prefLabel xml:lang="en">Desk Based Assessment</skos:prefLabel>
+    <dcterms:identifier>21965e79-dd55-33de-92a7-cdcafdb79bce</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2dedddfb-ac9b-3439-b34e-68e3514e5b40">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:prefLabel xml:lang="en">Post Excavation Assessment</skos:prefLabel>
+    <dcterms:identifier>2dedddfb-ac9b-3439-b34e-68e3514e5b40</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3148aace-e911-3b49-aaaa-a656bf814167">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:prefLabel xml:lang="en">Environmental Impact Assessment</skos:prefLabel>
+    <dcterms:identifier>3148aace-e911-3b49-aaaa-a656bf814167</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/54188985-128f-3d29-afe6-84c1825cb368">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:prefLabel xml:lang="en">Historic Seascape Characterisation</skos:prefLabel>
+    <dcterms:identifier>54188985-128f-3d29-afe6-84c1825cb368</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6147865f-3260-3735-ba2c-e1efd6660b4b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:prefLabel xml:lang="en">Management Survey</skos:prefLabel>
+    <dcterms:identifier>6147865f-3260-3735-ba2c-e1efd6660b4b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/64508e99-1316-3315-bf0c-9f0a4492ee49">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:prefLabel xml:lang="en">Historic Landscape Characterisation</skos:prefLabel>
+    <dcterms:identifier>64508e99-1316-3315-bf0c-9f0a4492ee49</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/69d5d3ba-98e7-30bc-b582-ef5ce506bff5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:prefLabel xml:lang="en">Airborne Laser Scanning Survey</skos:prefLabel>
+    <dcterms:identifier>69d5d3ba-98e7-30bc-b582-ef5ce506bff5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/72c4b06d-c8fd-3e68-a406-860140bc1517">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:prefLabel xml:lang="en">Historic Urban Characterisation</skos:prefLabel>
+    <dcterms:identifier>72c4b06d-c8fd-3e68-a406-860140bc1517</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8531bb92-7c14-329f-90ab-83640e730ee6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:prefLabel xml:lang="en">Building Fabric Analysis</skos:prefLabel>
+    <dcterms:identifier>8531bb92-7c14-329f-90ab-83640e730ee6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/96e31362-e19c-3ece-8937-c18b7d633e2f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:prefLabel xml:lang="en">Documentary Research</skos:prefLabel>
+    <dcterms:identifier>96e31362-e19c-3ece-8937-c18b7d633e2f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a14ff88a-2e41-33f3-9acb-c0af12d7b11b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:prefLabel xml:lang="en">Aerial Photograph Interpretation</skos:prefLabel>
+    <dcterms:identifier>a14ff88a-2e41-33f3-9acb-c0af12d7b11b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ceccdbee-7042-337a-9c68-37e77b83cf8a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:prefLabel xml:lang="en">Conservation Area Appraisal</skos:prefLabel>
+    <dcterms:identifier>ceccdbee-7042-337a-9c68-37e77b83cf8a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ead0fa1d-e56e-393d-8582-95dd9d926cb1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:prefLabel xml:lang="en">Heritage Assessment</skos:prefLabel>
+    <dcterms:identifier>ead0fa1d-e56e-393d-8582-95dd9d926cb1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f0a3bf57-d98e-3812-9eaa-3008966e35a6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cfcd7604-1730-3722-ab54-d0f84125f7d9"/>
+    <skos:prefLabel xml:lang="en">Thematic Survey</skos:prefLabel>
+    <dcterms:identifier>f0a3bf57-d98e-3812-9eaa-3008966e35a6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d7049ce8-20e4-33e8-bf37-6650081a8817">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d34af480-0815-37f7-818d-cd14dde404f2"/>
+    <skos:prefLabel xml:lang="en">Remote Sensing</skos:prefLabel>
+    <dcterms:identifier>d7049ce8-20e4-33e8-bf37-6650081a8817</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/45ec48bd-61fe-3830-a07c-ff367fb20929"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/552db418-1e89-3fe7-b534-c696e73c1e5d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/dbfae7cf-83a9-3efc-bb11-0f4ecb2235f1"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/45ec48bd-61fe-3830-a07c-ff367fb20929">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d7049ce8-20e4-33e8-bf37-6650081a8817"/>
+    <skos:prefLabel xml:lang="en">Aerial Reconnaissance</skos:prefLabel>
+    <dcterms:identifier>45ec48bd-61fe-3830-a07c-ff367fb20929</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/609f837c-8917-3ba4-91a2-ff356cca26d6"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ec44df92-b6b9-3e74-90b9-8de0cb2bb33c"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/609f837c-8917-3ba4-91a2-ff356cca26d6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/45ec48bd-61fe-3830-a07c-ff367fb20929"/>
+    <skos:prefLabel xml:lang="en">Aerial Photography</skos:prefLabel>
+    <dcterms:identifier>609f837c-8917-3ba4-91a2-ff356cca26d6</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5ad1fab5-9671-32d3-9666-241d06539e7e"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/dafd747d-54ee-3a8f-a5b6-442d6a515480"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5ad1fab5-9671-32d3-9666-241d06539e7e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/609f837c-8917-3ba4-91a2-ff356cca26d6"/>
+    <skos:prefLabel xml:lang="en">Multi Spectral Aerial Photography</skos:prefLabel>
+    <dcterms:identifier>5ad1fab5-9671-32d3-9666-241d06539e7e</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/23e5cb7d-4d85-3aac-bcdf-996cbb6d7352"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/58d5a5ea-e214-3a8e-a6fa-b2a988174abb"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b8af0e08-92f5-3af9-a456-6e0d367d9a02"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/23e5cb7d-4d85-3aac-bcdf-996cbb6d7352">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/5ad1fab5-9671-32d3-9666-241d06539e7e"/>
+    <skos:prefLabel xml:lang="en">Infrared Aerial Photography</skos:prefLabel>
+    <dcterms:identifier>23e5cb7d-4d85-3aac-bcdf-996cbb6d7352</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/58d5a5ea-e214-3a8e-a6fa-b2a988174abb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/5ad1fab5-9671-32d3-9666-241d06539e7e"/>
+    <skos:prefLabel xml:lang="en">Infrared Thermography Survey</skos:prefLabel>
+    <dcterms:identifier>58d5a5ea-e214-3a8e-a6fa-b2a988174abb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b8af0e08-92f5-3af9-a456-6e0d367d9a02">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/5ad1fab5-9671-32d3-9666-241d06539e7e"/>
+    <skos:prefLabel xml:lang="en">Infrared Line Scan Aerial Photography</skos:prefLabel>
+    <dcterms:identifier>b8af0e08-92f5-3af9-a456-6e0d367d9a02</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/dafd747d-54ee-3a8f-a5b6-442d6a515480">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/609f837c-8917-3ba4-91a2-ff356cca26d6"/>
+    <skos:prefLabel xml:lang="en">Conventional Aerial Photography</skos:prefLabel>
+    <dcterms:identifier>dafd747d-54ee-3a8f-a5b6-442d6a515480</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ec44df92-b6b9-3e74-90b9-8de0cb2bb33c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/45ec48bd-61fe-3830-a07c-ff367fb20929"/>
+    <skos:prefLabel xml:lang="en">Lidar Survey</skos:prefLabel>
+    <dcterms:identifier>ec44df92-b6b9-3e74-90b9-8de0cb2bb33c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/552db418-1e89-3fe7-b534-c696e73c1e5d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d7049ce8-20e4-33e8-bf37-6650081a8817"/>
+    <skos:prefLabel xml:lang="en">Satellite Imaging</skos:prefLabel>
+    <dcterms:identifier>552db418-1e89-3fe7-b534-c696e73c1e5d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/dbfae7cf-83a9-3efc-bb11-0f4ecb2235f1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2953436b-3673-40e8-a521-ab34801800db"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d7049ce8-20e4-33e8-bf37-6650081a8817"/>
+    <skos:prefLabel xml:lang="en">Remote Operated Vehicle Survey</skos:prefLabel>
+    <dcterms:identifier>dbfae7cf-83a9-3efc-bb11-0f4ecb2235f1</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

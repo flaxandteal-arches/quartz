@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/14339cdc-46db-4ee6-b359-93e5e5bae5fb">
+    <dcterms:title xml:lang="en">Consultation Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2492b491-969b-4996-942c-79661c48cfc0"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/288d42c2-24a8-4939-8d65-504a3b4875f0"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/6fa135d9-b04f-4bcc-a7b2-acd23ca6c6de"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/eaf2a776-9555-47b1-b1c4-3da0a01046dc"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2492b491-969b-4996-942c-79661c48cfc0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/14339cdc-46db-4ee6-b359-93e5e5bae5fb"/>
+    <skos:prefLabel xml:lang="en">Pre-Application</skos:prefLabel>
+    <dcterms:identifier>2492b491-969b-4996-942c-79661c48cfc0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/288d42c2-24a8-4939-8d65-504a3b4875f0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/14339cdc-46db-4ee6-b359-93e5e5bae5fb"/>
+    <skos:prefLabel xml:lang="en">Non-Planning Application</skos:prefLabel>
+    <dcterms:identifier>288d42c2-24a8-4939-8d65-504a3b4875f0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6fa135d9-b04f-4bcc-a7b2-acd23ca6c6de">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/14339cdc-46db-4ee6-b359-93e5e5bae5fb"/>
+    <skos:prefLabel xml:lang="en">Condition Application</skos:prefLabel>
+    <dcterms:identifier>6fa135d9-b04f-4bcc-a7b2-acd23ca6c6de</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/eaf2a776-9555-47b1-b1c4-3da0a01046dc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/14339cdc-46db-4ee6-b359-93e5e5bae5fb"/>
+    <skos:prefLabel xml:lang="en">Post-Application</skos:prefLabel>
+    <dcterms:identifier>eaf2a776-9555-47b1-b1c4-3da0a01046dc</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

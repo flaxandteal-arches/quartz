@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/1f339679-d3e6-589e-ade6-9363bffab3a3">
+    <dcterms:title xml:lang="en">Classification</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/78eade48-dd69-57f0-8452-f3d6ba4e8d38"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/af84a362-7906-5829-bb60-80201d0e5be7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c080260e-894f-50a1-ac24-95995f79170c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c47137e7-e8cd-549d-9185-74795f3ad97e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e4e6e711-8dd9-5fd8-a1f1-18524552b4bf"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/fac682d9-78e5-5c70-9f50-8f9e6ed35257"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/78eade48-dd69-57f0-8452-f3d6ba4e8d38">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/1f339679-d3e6-589e-ade6-9363bffab3a3"/>
+    <skos:prefLabel xml:lang="en">Maritime-Other</skos:prefLabel>
+    <dcterms:identifier>78eade48-dd69-57f0-8452-f3d6ba4e8d38</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/af84a362-7906-5829-bb60-80201d0e5be7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/1f339679-d3e6-589e-ade6-9363bffab3a3"/>
+    <skos:prefLabel xml:lang="en">Maritime-Shipwreck</skos:prefLabel>
+    <dcterms:identifier>af84a362-7906-5829-bb60-80201d0e5be7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c080260e-894f-50a1-ac24-95995f79170c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/1f339679-d3e6-589e-ade6-9363bffab3a3"/>
+    <skos:prefLabel xml:lang="en">Maritime-Aircraft</skos:prefLabel>
+    <dcterms:identifier>c080260e-894f-50a1-ac24-95995f79170c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c47137e7-e8cd-549d-9185-74795f3ad97e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/1f339679-d3e6-589e-ade6-9363bffab3a3"/>
+    <skos:prefLabel xml:lang="en">Archaeological Place</skos:prefLabel>
+    <dcterms:identifier>c47137e7-e8cd-549d-9185-74795f3ad97e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e4e6e711-8dd9-5fd8-a1f1-18524552b4bf">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/1f339679-d3e6-589e-ade6-9363bffab3a3"/>
+    <skos:prefLabel xml:lang="en">Protected Area</skos:prefLabel>
+    <dcterms:identifier>e4e6e711-8dd9-5fd8-a1f1-18524552b4bf</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fac682d9-78e5-5c70-9f50-8f9e6ed35257">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/1f339679-d3e6-589e-ade6-9363bffab3a3"/>
+    <skos:prefLabel xml:lang="en">Place</skos:prefLabel>
+    <dcterms:identifier>fac682d9-78e5-5c70-9f50-8f9e6ed35257</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

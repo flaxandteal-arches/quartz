@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/1f4d8420-7123-4695-bb36-b929b1ed4b85">
+    <dcterms:title xml:lang="en">Craft Site Status</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/07829e4f-1810-43ed-bcde-1e807ff55f92"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/20abb36c-9b94-477c-981d-abda1691e12b"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/07829e4f-1810-43ed-bcde-1e807ff55f92">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/1f4d8420-7123-4695-bb36-b929b1ed4b85"/>
+    <skos:prefLabel xml:lang="en">Casualty</skos:prefLabel>
+    <dcterms:identifier>07829e4f-1810-43ed-bcde-1e807ff55f92</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/20abb36c-9b94-477c-981d-abda1691e12b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/1f4d8420-7123-4695-bb36-b929b1ed4b85"/>
+    <skos:prefLabel xml:lang="en">Known Site</skos:prefLabel>
+    <dcterms:identifier>20abb36c-9b94-477c-981d-abda1691e12b</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

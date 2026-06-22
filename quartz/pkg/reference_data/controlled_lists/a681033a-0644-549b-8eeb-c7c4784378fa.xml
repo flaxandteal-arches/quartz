@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/a681033a-0644-549b-8eeb-c7c4784378fa">
+    <dcterms:title xml:lang="en">Feature Types</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/12591bd9-05af-5333-a661-63cb0658515a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2dc993f5-9518-5e52-a1c9-f752ad544ff0"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/3bd40dba-06fc-5384-952f-75ae5c181b46"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/58b56887-38f2-598b-82a9-ebfda25c5808"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8361c3d9-2ae2-5e31-8c01-603f9d064900"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9fa1cd16-5011-5ab8-bcec-85fb3fa4789d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b7f7a1e1-fce6-56c8-bdad-92a0d2adc893"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/12591bd9-05af-5333-a661-63cb0658515a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/a681033a-0644-549b-8eeb-c7c4784378fa"/>
+    <skos:prefLabel xml:lang="en">Other Maritime</skos:prefLabel>
+    <dcterms:identifier>12591bd9-05af-5333-a661-63cb0658515a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2dc993f5-9518-5e52-a1c9-f752ad544ff0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/a681033a-0644-549b-8eeb-c7c4784378fa"/>
+    <skos:prefLabel xml:lang="en">Feature</skos:prefLabel>
+    <dcterms:identifier>2dc993f5-9518-5e52-a1c9-f752ad544ff0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3bd40dba-06fc-5384-952f-75ae5c181b46">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/a681033a-0644-549b-8eeb-c7c4784378fa"/>
+    <skos:prefLabel xml:lang="en">Unknown</skos:prefLabel>
+    <dcterms:identifier>3bd40dba-06fc-5384-952f-75ae5c181b46</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/58b56887-38f2-598b-82a9-ebfda25c5808">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/a681033a-0644-549b-8eeb-c7c4784378fa"/>
+    <skos:prefLabel xml:lang="en">Boundary</skos:prefLabel>
+    <dcterms:identifier>58b56887-38f2-598b-82a9-ebfda25c5808</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8361c3d9-2ae2-5e31-8c01-603f9d064900">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/a681033a-0644-549b-8eeb-c7c4784378fa"/>
+    <skos:prefLabel xml:lang="en">Centroid</skos:prefLabel>
+    <dcterms:identifier>8361c3d9-2ae2-5e31-8c01-603f9d064900</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9fa1cd16-5011-5ab8-bcec-85fb3fa4789d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/a681033a-0644-549b-8eeb-c7c4784378fa"/>
+    <skos:prefLabel xml:lang="en">Aircraft</skos:prefLabel>
+    <dcterms:identifier>9fa1cd16-5011-5ab8-bcec-85fb3fa4789d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b7f7a1e1-fce6-56c8-bdad-92a0d2adc893">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/a681033a-0644-549b-8eeb-c7c4784378fa"/>
+    <skos:prefLabel xml:lang="en">Shipwreck</skos:prefLabel>
+    <dcterms:identifier>b7f7a1e1-fce6-56c8-bdad-92a0d2adc893</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6">
+    <dcterms:title xml:lang="en">Historic England Maritime Object Material</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c8878e6d-14b3-3ce7-822b-aedbaa515f6f"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c8878e6d-14b3-3ce7-822b-aedbaa515f6f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:prefLabel xml:lang="en">Object Material</skos:prefLabel>
+    <dcterms:identifier>c8878e6d-14b3-3ce7-822b-aedbaa515f6f</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/10684ffb-e683-3007-b66b-4fd1ba48e080"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/39ae909a-f963-3223-9741-ad5897711371"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/565caf8a-efe4-30d7-a90b-d5768feb988d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/7c20a10b-a1b7-39b8-8391-f468c01129e1"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9054bb98-3240-3f65-b2e1-f5031831b5af"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a1ab008a-30e1-3688-baa1-1e1c3c3b25fc"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b0192b87-64b6-3233-966f-7138df34881c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b44c9b3e-6903-39ed-8051-78539837694f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b68f3814-cbdc-314b-ad8d-fcd8316036f2"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/bf06b58f-770e-3c71-aa67-bd36902f6ab6"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/10684ffb-e683-3007-b66b-4fd1ba48e080">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c8878e6d-14b3-3ce7-822b-aedbaa515f6f"/>
+    <skos:prefLabel xml:lang="en">Charcoal</skos:prefLabel>
+    <dcterms:identifier>10684ffb-e683-3007-b66b-4fd1ba48e080</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/39ae909a-f963-3223-9741-ad5897711371">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c8878e6d-14b3-3ce7-822b-aedbaa515f6f"/>
+    <skos:prefLabel xml:lang="en">Metal</skos:prefLabel>
+    <dcterms:identifier>39ae909a-f963-3223-9741-ad5897711371</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/024a47a8-7cf2-3ce7-90fd-1d7f44a47d9d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/19cb5103-f026-3e2e-8cf3-9fa296027c6e"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/2f8555d3-ef48-37d7-9414-0b274733e9e7"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3b282adb-0d5e-36f9-980c-b80a0c5d8871"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/651b3082-58db-3b90-817c-7fa174f19ad7"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8666b882-8149-3148-aa8d-beb3836668b8"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/96dab00c-bc01-3cbe-9cfd-77b747983c31"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b31fdd8a-41a0-3292-ac7a-d09da3ead9ac"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b6f68226-4099-3c46-aef2-0c6cd8de283c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d60a78bd-2fa7-39ab-90c7-2f267734687c"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/024a47a8-7cf2-3ce7-90fd-1d7f44a47d9d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/39ae909a-f963-3223-9741-ad5897711371"/>
+    <skos:prefLabel xml:lang="en">Alloy</skos:prefLabel>
+    <dcterms:identifier>024a47a8-7cf2-3ce7-90fd-1d7f44a47d9d</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/04d86f00-9143-3a48-a862-2ff3544e71d3"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/0c413066-5f57-30f8-81c0-dab32a18cfac"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a6f0f369-4dc5-3311-b3af-4f473a96a016"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ca9e2b31-95e1-3eba-9b03-1218f574eea5"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/dcceb1e5-a0b4-30ca-bdc8-1f40feb39acb"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e377fcb7-f954-3a70-ab0b-00251747fa15"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/04d86f00-9143-3a48-a862-2ff3544e71d3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/024a47a8-7cf2-3ce7-90fd-1d7f44a47d9d"/>
+    <skos:prefLabel xml:lang="en">Pewter</skos:prefLabel>
+    <dcterms:identifier>04d86f00-9143-3a48-a862-2ff3544e71d3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0c413066-5f57-30f8-81c0-dab32a18cfac">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/024a47a8-7cf2-3ce7-90fd-1d7f44a47d9d"/>
+    <skos:prefLabel xml:lang="en">Bronze</skos:prefLabel>
+    <dcterms:identifier>0c413066-5f57-30f8-81c0-dab32a18cfac</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a6f0f369-4dc5-3311-b3af-4f473a96a016">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/024a47a8-7cf2-3ce7-90fd-1d7f44a47d9d"/>
+    <skos:prefLabel xml:lang="en">Steel</skos:prefLabel>
+    <dcterms:identifier>a6f0f369-4dc5-3311-b3af-4f473a96a016</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ca9e2b31-95e1-3eba-9b03-1218f574eea5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/024a47a8-7cf2-3ce7-90fd-1d7f44a47d9d"/>
+    <skos:prefLabel xml:lang="en">Lead Alloy</skos:prefLabel>
+    <dcterms:identifier>ca9e2b31-95e1-3eba-9b03-1218f574eea5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/dcceb1e5-a0b4-30ca-bdc8-1f40feb39acb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/024a47a8-7cf2-3ce7-90fd-1d7f44a47d9d"/>
+    <skos:prefLabel xml:lang="en">Copper Alloy</skos:prefLabel>
+    <dcterms:identifier>dcceb1e5-a0b4-30ca-bdc8-1f40feb39acb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e377fcb7-f954-3a70-ab0b-00251747fa15">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/024a47a8-7cf2-3ce7-90fd-1d7f44a47d9d"/>
+    <skos:prefLabel xml:lang="en">Brass</skos:prefLabel>
+    <dcterms:identifier>e377fcb7-f954-3a70-ab0b-00251747fa15</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/19cb5103-f026-3e2e-8cf3-9fa296027c6e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/39ae909a-f963-3223-9741-ad5897711371"/>
+    <skos:prefLabel xml:lang="en">Gold</skos:prefLabel>
+    <dcterms:identifier>19cb5103-f026-3e2e-8cf3-9fa296027c6e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2f8555d3-ef48-37d7-9414-0b274733e9e7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/39ae909a-f963-3223-9741-ad5897711371"/>
+    <skos:prefLabel xml:lang="en">Zinc</skos:prefLabel>
+    <dcterms:identifier>2f8555d3-ef48-37d7-9414-0b274733e9e7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3b282adb-0d5e-36f9-980c-b80a0c5d8871">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/39ae909a-f963-3223-9741-ad5897711371"/>
+    <skos:prefLabel xml:lang="en">Lead</skos:prefLabel>
+    <dcterms:identifier>3b282adb-0d5e-36f9-980c-b80a0c5d8871</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/651b3082-58db-3b90-817c-7fa174f19ad7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/39ae909a-f963-3223-9741-ad5897711371"/>
+    <skos:prefLabel xml:lang="en">Tin</skos:prefLabel>
+    <dcterms:identifier>651b3082-58db-3b90-817c-7fa174f19ad7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8666b882-8149-3148-aa8d-beb3836668b8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/39ae909a-f963-3223-9741-ad5897711371"/>
+    <skos:prefLabel xml:lang="en">Copper</skos:prefLabel>
+    <dcterms:identifier>8666b882-8149-3148-aa8d-beb3836668b8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/96dab00c-bc01-3cbe-9cfd-77b747983c31">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/39ae909a-f963-3223-9741-ad5897711371"/>
+    <skos:prefLabel xml:lang="en">Aluminium</skos:prefLabel>
+    <dcterms:identifier>96dab00c-bc01-3cbe-9cfd-77b747983c31</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b31fdd8a-41a0-3292-ac7a-d09da3ead9ac">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/39ae909a-f963-3223-9741-ad5897711371"/>
+    <skos:prefLabel xml:lang="en">Silver</skos:prefLabel>
+    <dcterms:identifier>b31fdd8a-41a0-3292-ac7a-d09da3ead9ac</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b6f68226-4099-3c46-aef2-0c6cd8de283c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/39ae909a-f963-3223-9741-ad5897711371"/>
+    <skos:prefLabel xml:lang="en">Antimony</skos:prefLabel>
+    <dcterms:identifier>b6f68226-4099-3c46-aef2-0c6cd8de283c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d60a78bd-2fa7-39ab-90c7-2f267734687c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/39ae909a-f963-3223-9741-ad5897711371"/>
+    <skos:prefLabel xml:lang="en">Iron</skos:prefLabel>
+    <dcterms:identifier>d60a78bd-2fa7-39ab-90c7-2f267734687c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/565caf8a-efe4-30d7-a90b-d5768feb988d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c8878e6d-14b3-3ce7-822b-aedbaa515f6f"/>
+    <skos:prefLabel xml:lang="en">Bakelite</skos:prefLabel>
+    <dcterms:identifier>565caf8a-efe4-30d7-a90b-d5768feb988d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c8878e6d-14b3-3ce7-822b-aedbaa515f6f"/>
+    <skos:prefLabel xml:lang="en">Mineral</skos:prefLabel>
+    <dcterms:identifier>65ebe4e1-fb65-3499-830b-70199c88aa86</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/1b396d82-0d1e-3d4f-a121-374ee3975b6f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/1c1867c2-5a59-337e-8405-a21e267ee54a"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/1e91f149-51bc-3f2e-b5a9-6a79d0cb0c65"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/1f555f44-1836-3d24-8e23-c69671ee8ad2"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/29cd08a6-c552-3443-9acf-5693d0a81ccf"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4a523f75-84a6-313f-b37d-b84baeeb90e7"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/70fc8728-5af1-350e-a226-8e5ea5221259"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/76a52f1c-0c33-309c-8a14-c14fd4673065"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/7e09aefc-dd0c-32b9-8905-670e73e8aa55"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8db307c0-4fbe-3f76-9a88-3c68fe652dc2"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/92a1c879-b540-3131-9386-acd841b2ccc4"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/950b67d4-961d-3903-b4c4-37ce1cc0e029"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9e732503-667a-34ee-9e7e-0a1e74ede2ce"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a85d5b35-695b-3635-96ab-4a427f995611"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ac856b3d-539a-3933-ac36-d9ed38caa12e"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c2ee197d-082a-385f-aaf0-1a8e70ae1102"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/cbbe3b05-477c-3464-9dfa-6c0300c78cd5"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/cbd927c7-3cca-385f-8116-4a95477e68a3"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ea138316-134b-36c7-bb86-0a56ac835d8d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f970c931-1693-3bf0-99c0-4c2bef695126"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/fead8c9d-7d2c-3ec8-8eab-a87e447dba71"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1b396d82-0d1e-3d4f-a121-374ee3975b6f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Faience</skos:prefLabel>
+    <dcterms:identifier>1b396d82-0d1e-3d4f-a121-374ee3975b6f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1c1867c2-5a59-337e-8405-a21e267ee54a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Concrete</skos:prefLabel>
+    <dcterms:identifier>1c1867c2-5a59-337e-8405-a21e267ee54a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1e91f149-51bc-3f2e-b5a9-6a79d0cb0c65">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Emerald</skos:prefLabel>
+    <dcterms:identifier>1e91f149-51bc-3f2e-b5a9-6a79d0cb0c65</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1f555f44-1836-3d24-8e23-c69671ee8ad2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Cement</skos:prefLabel>
+    <dcterms:identifier>1f555f44-1836-3d24-8e23-c69671ee8ad2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/29cd08a6-c552-3443-9acf-5693d0a81ccf">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Enamel</skos:prefLabel>
+    <dcterms:identifier>29cd08a6-c552-3443-9acf-5693d0a81ccf</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Stone</skos:prefLabel>
+    <dcterms:identifier>443198e1-5a0c-3180-9f69-449d7dc4a1b7</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/09186abc-0ab1-3366-a119-88f25562cf5d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/1fef2313-2ae6-3045-8003-b40d60267ef9"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/2ebf511c-0da2-397f-ab74-013f86af7864"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/56400462-e7cb-3bf3-a91d-fdfd9033a56c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5b64a5de-7587-36ef-a29d-59e621b45d1e"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/778eb60c-aa0c-3be4-b1cb-2ee9c3cd7dab"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8325a80a-a087-36c6-9e49-a5a78bd3b829"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8d77a01d-221b-3992-b9a4-614d3c944726"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/98b9430a-5cd3-3c36-8619-e97261d72a31"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9e17347b-a57c-3e83-8f34-89beef124973"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b9bc2aba-19a9-39d0-8171-3d2a38e25e3f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/cda70fa6-94df-301f-b18a-07522884122f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d20f93e6-2f07-3549-b746-df25fb139072"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d46b8583-838f-3d5a-aaaa-bdbaa25a43ec"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d753021f-99df-3594-a030-293913c45617"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e235b9c1-f729-38e0-a547-ffbd8dc6f69d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e9488296-ef95-361e-8381-5c4e8efcc210"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f9e9d888-94e3-3c91-80a6-197a3373ace9"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/09186abc-0ab1-3366-a119-88f25562cf5d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Dolerite</skos:prefLabel>
+    <dcterms:identifier>09186abc-0ab1-3366-a119-88f25562cf5d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1fef2313-2ae6-3045-8003-b40d60267ef9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Carnelian</skos:prefLabel>
+    <dcterms:identifier>1fef2313-2ae6-3045-8003-b40d60267ef9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2ebf511c-0da2-397f-ab74-013f86af7864">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Slate</skos:prefLabel>
+    <dcterms:identifier>2ebf511c-0da2-397f-ab74-013f86af7864</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/56400462-e7cb-3bf3-a91d-fdfd9033a56c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Siltstone</skos:prefLabel>
+    <dcterms:identifier>56400462-e7cb-3bf3-a91d-fdfd9033a56c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5b64a5de-7587-36ef-a29d-59e621b45d1e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Amphibolite</skos:prefLabel>
+    <dcterms:identifier>5b64a5de-7587-36ef-a29d-59e621b45d1e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/778eb60c-aa0c-3be4-b1cb-2ee9c3cd7dab">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Granite</skos:prefLabel>
+    <dcterms:identifier>778eb60c-aa0c-3be4-b1cb-2ee9c3cd7dab</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8325a80a-a087-36c6-9e49-a5a78bd3b829">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Jadeite</skos:prefLabel>
+    <dcterms:identifier>8325a80a-a087-36c6-9e49-a5a78bd3b829</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8d77a01d-221b-3992-b9a4-614d3c944726">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Shale</skos:prefLabel>
+    <dcterms:identifier>8d77a01d-221b-3992-b9a4-614d3c944726</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/98b9430a-5cd3-3c36-8619-e97261d72a31">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Schist</skos:prefLabel>
+    <dcterms:identifier>98b9430a-5cd3-3c36-8619-e97261d72a31</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9e17347b-a57c-3e83-8f34-89beef124973">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Jade</skos:prefLabel>
+    <dcterms:identifier>9e17347b-a57c-3e83-8f34-89beef124973</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b9bc2aba-19a9-39d0-8171-3d2a38e25e3f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Sandstone</skos:prefLabel>
+    <dcterms:identifier>b9bc2aba-19a9-39d0-8171-3d2a38e25e3f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cda70fa6-94df-301f-b18a-07522884122f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Marble</skos:prefLabel>
+    <dcterms:identifier>cda70fa6-94df-301f-b18a-07522884122f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d20f93e6-2f07-3549-b746-df25fb139072">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Puddingstone</skos:prefLabel>
+    <dcterms:identifier>d20f93e6-2f07-3549-b746-df25fb139072</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b244aea9-4db4-35f0-a3b4-7cfce7c2b429"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b244aea9-4db4-35f0-a3b4-7cfce7c2b429">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/d20f93e6-2f07-3549-b746-df25fb139072"/>
+    <skos:prefLabel xml:lang="en">Hertfordshire Puddingstone</skos:prefLabel>
+    <dcterms:identifier>b244aea9-4db4-35f0-a3b4-7cfce7c2b429</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d46b8583-838f-3d5a-aaaa-bdbaa25a43ec">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Mudstone</skos:prefLabel>
+    <dcterms:identifier>d46b8583-838f-3d5a-aaaa-bdbaa25a43ec</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d753021f-99df-3594-a030-293913c45617">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Chalk</skos:prefLabel>
+    <dcterms:identifier>d753021f-99df-3594-a030-293913c45617</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e235b9c1-f729-38e0-a547-ffbd8dc6f69d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Limestone</skos:prefLabel>
+    <dcterms:identifier>e235b9c1-f729-38e0-a547-ffbd8dc6f69d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e9488296-ef95-361e-8381-5c4e8efcc210">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Greenstone</skos:prefLabel>
+    <dcterms:identifier>e9488296-ef95-361e-8381-5c4e8efcc210</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f9e9d888-94e3-3c91-80a6-197a3373ace9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/443198e1-5a0c-3180-9f69-449d7dc4a1b7"/>
+    <skos:prefLabel xml:lang="en">Lava</skos:prefLabel>
+    <dcterms:identifier>f9e9d888-94e3-3c91-80a6-197a3373ace9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4a523f75-84a6-313f-b37d-b84baeeb90e7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Quartz</skos:prefLabel>
+    <dcterms:identifier>4a523f75-84a6-313f-b37d-b84baeeb90e7</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/29325a72-2436-3a83-a76e-1da8395db25f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/89d65750-e6cd-39f6-b321-6c57148285c1"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/29325a72-2436-3a83-a76e-1da8395db25f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4a523f75-84a6-313f-b37d-b84baeeb90e7"/>
+    <skos:prefLabel xml:lang="en">Amethyst</skos:prefLabel>
+    <dcterms:identifier>29325a72-2436-3a83-a76e-1da8395db25f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/89d65750-e6cd-39f6-b321-6c57148285c1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4a523f75-84a6-313f-b37d-b84baeeb90e7"/>
+    <skos:prefLabel xml:lang="en">Onyx</skos:prefLabel>
+    <dcterms:identifier>89d65750-e6cd-39f6-b321-6c57148285c1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/70fc8728-5af1-350e-a226-8e5ea5221259">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Clay</skos:prefLabel>
+    <dcterms:identifier>70fc8728-5af1-350e-a226-8e5ea5221259</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/76a52f1c-0c33-309c-8a14-c14fd4673065">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Jet</skos:prefLabel>
+    <dcterms:identifier>76a52f1c-0c33-309c-8a14-c14fd4673065</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7e09aefc-dd0c-32b9-8905-670e73e8aa55">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Glass</skos:prefLabel>
+    <dcterms:identifier>7e09aefc-dd0c-32b9-8905-670e73e8aa55</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8db307c0-4fbe-3f76-9a88-3c68fe652dc2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Flint</skos:prefLabel>
+    <dcterms:identifier>8db307c0-4fbe-3f76-9a88-3c68fe652dc2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/92a1c879-b540-3131-9386-acd841b2ccc4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Graphite</skos:prefLabel>
+    <dcterms:identifier>92a1c879-b540-3131-9386-acd841b2ccc4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/950b67d4-961d-3903-b4c4-37ce1cc0e029">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Plaster</skos:prefLabel>
+    <dcterms:identifier>950b67d4-961d-3903-b4c4-37ce1cc0e029</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9e732503-667a-34ee-9e7e-0a1e74ede2ce">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Chert</skos:prefLabel>
+    <dcterms:identifier>9e732503-667a-34ee-9e7e-0a1e74ede2ce</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a85d5b35-695b-3635-96ab-4a427f995611">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Obsidian</skos:prefLabel>
+    <dcterms:identifier>a85d5b35-695b-3635-96ab-4a427f995611</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ac856b3d-539a-3933-ac36-d9ed38caa12e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Variscite</skos:prefLabel>
+    <dcterms:identifier>ac856b3d-539a-3933-ac36-d9ed38caa12e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c2ee197d-082a-385f-aaf0-1a8e70ae1102">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Alabaster</skos:prefLabel>
+    <dcterms:identifier>c2ee197d-082a-385f-aaf0-1a8e70ae1102</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cbbe3b05-477c-3464-9dfa-6c0300c78cd5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Quartzite</skos:prefLabel>
+    <dcterms:identifier>cbbe3b05-477c-3464-9dfa-6c0300c78cd5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cbd927c7-3cca-385f-8116-4a95477e68a3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Garnet</skos:prefLabel>
+    <dcterms:identifier>cbd927c7-3cca-385f-8116-4a95477e68a3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ea138316-134b-36c7-bb86-0a56ac835d8d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Coal</skos:prefLabel>
+    <dcterms:identifier>ea138316-134b-36c7-bb86-0a56ac835d8d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f970c931-1693-3bf0-99c0-4c2bef695126">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Amber</skos:prefLabel>
+    <dcterms:identifier>f970c931-1693-3bf0-99c0-4c2bef695126</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fead8c9d-7d2c-3ec8-8eab-a87e447dba71">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/65ebe4e1-fb65-3499-830b-70199c88aa86"/>
+    <skos:prefLabel xml:lang="en">Pottery</skos:prefLabel>
+    <dcterms:identifier>fead8c9d-7d2c-3ec8-8eab-a87e447dba71</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/57904dff-418b-36fc-a2b5-98279bb51603"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b33822e2-9e95-3905-82af-47ff7ba82839"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/57904dff-418b-36fc-a2b5-98279bb51603">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/fead8c9d-7d2c-3ec8-8eab-a87e447dba71"/>
+    <skos:prefLabel xml:lang="en">Earthenware</skos:prefLabel>
+    <dcterms:identifier>57904dff-418b-36fc-a2b5-98279bb51603</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b33822e2-9e95-3905-82af-47ff7ba82839">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/fead8c9d-7d2c-3ec8-8eab-a87e447dba71"/>
+    <skos:prefLabel xml:lang="en">Terracotta</skos:prefLabel>
+    <dcterms:identifier>b33822e2-9e95-3905-82af-47ff7ba82839</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7c20a10b-a1b7-39b8-8391-f468c01129e1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c8878e6d-14b3-3ce7-822b-aedbaa515f6f"/>
+    <skos:prefLabel xml:lang="en">Ceramic</skos:prefLabel>
+    <dcterms:identifier>7c20a10b-a1b7-39b8-8391-f468c01129e1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9054bb98-3240-3f65-b2e1-f5031831b5af">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c8878e6d-14b3-3ce7-822b-aedbaa515f6f"/>
+    <skos:prefLabel xml:lang="en">Animal</skos:prefLabel>
+    <dcterms:identifier>9054bb98-3240-3f65-b2e1-f5031831b5af</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/16f3aae2-5aa0-3076-bf34-6e632ff9c245"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/1d69bd6e-3a7e-344d-a10b-c69bb4ff45ef"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4d9bca60-a262-39c2-b6fd-580e62e01e68"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d5bbcae8-aa5c-3706-8b5e-a70d8018d5d8"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f40091fa-4434-3989-919d-0d35ce49b255"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/16f3aae2-5aa0-3076-bf34-6e632ff9c245">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9054bb98-3240-3f65-b2e1-f5031831b5af"/>
+    <skos:prefLabel xml:lang="en">Shell</skos:prefLabel>
+    <dcterms:identifier>16f3aae2-5aa0-3076-bf34-6e632ff9c245</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1d69bd6e-3a7e-344d-a10b-c69bb4ff45ef">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9054bb98-3240-3f65-b2e1-f5031831b5af"/>
+    <skos:prefLabel xml:lang="en">Tooth</skos:prefLabel>
+    <dcterms:identifier>1d69bd6e-3a7e-344d-a10b-c69bb4ff45ef</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/20ae5258-a14a-3123-a8d2-1161d9388fbd"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/20ae5258-a14a-3123-a8d2-1161d9388fbd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/1d69bd6e-3a7e-344d-a10b-c69bb4ff45ef"/>
+    <skos:prefLabel xml:lang="en">Ivory</skos:prefLabel>
+    <dcterms:identifier>20ae5258-a14a-3123-a8d2-1161d9388fbd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4d9bca60-a262-39c2-b6fd-580e62e01e68">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9054bb98-3240-3f65-b2e1-f5031831b5af"/>
+    <skos:prefLabel xml:lang="en">Horn</skos:prefLabel>
+    <dcterms:identifier>4d9bca60-a262-39c2-b6fd-580e62e01e68</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d5bbcae8-aa5c-3706-8b5e-a70d8018d5d8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9054bb98-3240-3f65-b2e1-f5031831b5af"/>
+    <skos:prefLabel xml:lang="en">Leather</skos:prefLabel>
+    <dcterms:identifier>d5bbcae8-aa5c-3706-8b5e-a70d8018d5d8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f40091fa-4434-3989-919d-0d35ce49b255">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/9054bb98-3240-3f65-b2e1-f5031831b5af"/>
+    <skos:prefLabel xml:lang="en">Bone</skos:prefLabel>
+    <dcterms:identifier>f40091fa-4434-3989-919d-0d35ce49b255</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d7fa4af2-85ab-359f-9079-2a7318097fec"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d7fa4af2-85ab-359f-9079-2a7318097fec">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f40091fa-4434-3989-919d-0d35ce49b255"/>
+    <skos:prefLabel xml:lang="en">Antler</skos:prefLabel>
+    <dcterms:identifier>d7fa4af2-85ab-359f-9079-2a7318097fec</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a1ab008a-30e1-3688-baa1-1e1c3c3b25fc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c8878e6d-14b3-3ce7-822b-aedbaa515f6f"/>
+    <skos:prefLabel xml:lang="en">Wood</skos:prefLabel>
+    <dcterms:identifier>a1ab008a-30e1-3688-baa1-1e1c3c3b25fc</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/087e7714-408f-3c55-97d4-7e2c75d09dbc"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/08e2c381-63f8-324a-aba5-12c9d393dae8"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/46dda390-a0b7-3196-af24-93dad1c84e3c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/584c7374-4d3a-30c1-b483-cbd5ba7048a9"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/59e35118-d6ab-3200-9a5d-8993cb317185"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/71cb38d9-720e-3e0a-b33e-a2c01b428b19"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/7b07f600-473a-3b50-a22f-fc5aaaa8db5c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9aaf2dc2-37d8-3182-b861-ef79aa112d45"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a230a49c-1f04-3a5f-952e-0a8e0458c9fe"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b950ffd2-6003-3699-acde-9b5d7f8884b8"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c8d2948a-0f6c-3ef0-a74a-7bb15668a5da"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f5d85585-6b74-30a5-a7d8-c1bd5782b222"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/087e7714-408f-3c55-97d4-7e2c75d09dbc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a1ab008a-30e1-3688-baa1-1e1c3c3b25fc"/>
+    <skos:prefLabel xml:lang="en">Hazel</skos:prefLabel>
+    <dcterms:identifier>087e7714-408f-3c55-97d4-7e2c75d09dbc</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/08e2c381-63f8-324a-aba5-12c9d393dae8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a1ab008a-30e1-3688-baa1-1e1c3c3b25fc"/>
+    <skos:prefLabel xml:lang="en">Larch</skos:prefLabel>
+    <dcterms:identifier>08e2c381-63f8-324a-aba5-12c9d393dae8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/46dda390-a0b7-3196-af24-93dad1c84e3c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a1ab008a-30e1-3688-baa1-1e1c3c3b25fc"/>
+    <skos:prefLabel xml:lang="en">Pine</skos:prefLabel>
+    <dcterms:identifier>46dda390-a0b7-3196-af24-93dad1c84e3c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/584c7374-4d3a-30c1-b483-cbd5ba7048a9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a1ab008a-30e1-3688-baa1-1e1c3c3b25fc"/>
+    <skos:prefLabel xml:lang="en">Ebony</skos:prefLabel>
+    <dcterms:identifier>584c7374-4d3a-30c1-b483-cbd5ba7048a9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/59e35118-d6ab-3200-9a5d-8993cb317185">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a1ab008a-30e1-3688-baa1-1e1c3c3b25fc"/>
+    <skos:prefLabel xml:lang="en">Teak</skos:prefLabel>
+    <dcterms:identifier>59e35118-d6ab-3200-9a5d-8993cb317185</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/71cb38d9-720e-3e0a-b33e-a2c01b428b19">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a1ab008a-30e1-3688-baa1-1e1c3c3b25fc"/>
+    <skos:prefLabel xml:lang="en">Oak</skos:prefLabel>
+    <dcterms:identifier>71cb38d9-720e-3e0a-b33e-a2c01b428b19</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7b07f600-473a-3b50-a22f-fc5aaaa8db5c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a1ab008a-30e1-3688-baa1-1e1c3c3b25fc"/>
+    <skos:prefLabel xml:lang="en">Tamarac</skos:prefLabel>
+    <dcterms:identifier>7b07f600-473a-3b50-a22f-fc5aaaa8db5c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9aaf2dc2-37d8-3182-b861-ef79aa112d45">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a1ab008a-30e1-3688-baa1-1e1c3c3b25fc"/>
+    <skos:prefLabel xml:lang="en">Elm</skos:prefLabel>
+    <dcterms:identifier>9aaf2dc2-37d8-3182-b861-ef79aa112d45</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a230a49c-1f04-3a5f-952e-0a8e0458c9fe">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a1ab008a-30e1-3688-baa1-1e1c3c3b25fc"/>
+    <skos:prefLabel xml:lang="en">Fir</skos:prefLabel>
+    <dcterms:identifier>a230a49c-1f04-3a5f-952e-0a8e0458c9fe</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b950ffd2-6003-3699-acde-9b5d7f8884b8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a1ab008a-30e1-3688-baa1-1e1c3c3b25fc"/>
+    <skos:prefLabel xml:lang="en">Birch</skos:prefLabel>
+    <dcterms:identifier>b950ffd2-6003-3699-acde-9b5d7f8884b8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c8d2948a-0f6c-3ef0-a74a-7bb15668a5da">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a1ab008a-30e1-3688-baa1-1e1c3c3b25fc"/>
+    <skos:prefLabel xml:lang="en">Beech</skos:prefLabel>
+    <dcterms:identifier>c8d2948a-0f6c-3ef0-a74a-7bb15668a5da</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f5d85585-6b74-30a5-a7d8-c1bd5782b222">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a1ab008a-30e1-3688-baa1-1e1c3c3b25fc"/>
+    <skos:prefLabel xml:lang="en">Spruce</skos:prefLabel>
+    <dcterms:identifier>f5d85585-6b74-30a5-a7d8-c1bd5782b222</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b0192b87-64b6-3233-966f-7138df34881c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c8878e6d-14b3-3ce7-822b-aedbaa515f6f"/>
+    <skos:prefLabel xml:lang="en">Fibreglass</skos:prefLabel>
+    <dcterms:identifier>b0192b87-64b6-3233-966f-7138df34881c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b44c9b3e-6903-39ed-8051-78539837694f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c8878e6d-14b3-3ce7-822b-aedbaa515f6f"/>
+    <skos:prefLabel xml:lang="en">Paper</skos:prefLabel>
+    <dcterms:identifier>b44c9b3e-6903-39ed-8051-78539837694f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b68f3814-cbdc-314b-ad8d-fcd8316036f2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c8878e6d-14b3-3ce7-822b-aedbaa515f6f"/>
+    <skos:prefLabel xml:lang="en">Rubber</skos:prefLabel>
+    <dcterms:identifier>b68f3814-cbdc-314b-ad8d-fcd8316036f2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bf06b58f-770e-3c71-aa67-bd36902f6ab6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c8878e6d-14b3-3ce7-822b-aedbaa515f6f"/>
+    <skos:prefLabel xml:lang="en">Textile</skos:prefLabel>
+    <dcterms:identifier>bf06b58f-770e-3c71-aa67-bd36902f6ab6</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/daa364fe-6040-3388-93fd-92d9700f7de1"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/daa364fe-6040-3388-93fd-92d9700f7de1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/38a74f79-7930-4ace-a387-a86d2c1ec7c6"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/bf06b58f-770e-3c71-aa67-bd36902f6ab6"/>
+    <skos:prefLabel xml:lang="en">Felt</skos:prefLabel>
+    <dcterms:identifier>daa364fe-6040-3388-93fd-92d9700f7de1</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

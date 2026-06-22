@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/2d3a5103-bed9-5085-94bf-8fd6f2f97441">
+    <dcterms:title xml:lang="en">Archaeology Status</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/04279943-2b7d-51c6-891e-4668d17b17f4"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9ae26383-6074-50a2-aed8-6e5b4eb00032"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/04279943-2b7d-51c6-891e-4668d17b17f4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2d3a5103-bed9-5085-94bf-8fd6f2f97441"/>
+    <skos:prefLabel xml:lang="en">Draft</skos:prefLabel>
+    <dcterms:identifier>04279943-2b7d-51c6-891e-4668d17b17f4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9ae26383-6074-50a2-aed8-6e5b4eb00032">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2d3a5103-bed9-5085-94bf-8fd6f2f97441"/>
+    <skos:prefLabel xml:lang="en">Recorded</skos:prefLabel>
+    <dcterms:identifier>9ae26383-6074-50a2-aed8-6e5b4eb00032</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

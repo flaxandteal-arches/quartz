@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/64dccd3a-5139-4e28-8a95-bfbea1a4e544">
+    <dcterms:title xml:lang="en">Audience Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/21895fcf-1008-4fbd-bad1-c787c205dacd"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2423e05f-a665-4067-8b9f-44b4ef5d0323"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/28e3309a-7b54-40eb-9afe-8a681abc886c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/563f1da7-2f38-445d-95be-64c3d3b26259"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e392f3c6-6b73-4a5c-8040-3500f2794f4e"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/21895fcf-1008-4fbd-bad1-c787c205dacd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/64dccd3a-5139-4e28-8a95-bfbea1a4e544"/>
+    <skos:prefLabel xml:lang="en-US">Public</skos:prefLabel>
+    <dcterms:identifier>21895fcf-1008-4fbd-bad1-c787c205dacd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2423e05f-a665-4067-8b9f-44b4ef5d0323">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/64dccd3a-5139-4e28-8a95-bfbea1a4e544"/>
+    <skos:prefLabel xml:lang="en">Adults</skos:prefLabel>
+    <dcterms:identifier>2423e05f-a665-4067-8b9f-44b4ef5d0323</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/28e3309a-7b54-40eb-9afe-8a681abc886c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/64dccd3a-5139-4e28-8a95-bfbea1a4e544"/>
+    <skos:prefLabel xml:lang="en">Private</skos:prefLabel>
+    <dcterms:identifier>28e3309a-7b54-40eb-9afe-8a681abc886c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/563f1da7-2f38-445d-95be-64c3d3b26259">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/64dccd3a-5139-4e28-8a95-bfbea1a4e544"/>
+    <skos:prefLabel xml:lang="en">Children</skos:prefLabel>
+    <dcterms:identifier>563f1da7-2f38-445d-95be-64c3d3b26259</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e392f3c6-6b73-4a5c-8040-3500f2794f4e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/64dccd3a-5139-4e28-8a95-bfbea1a4e544"/>
+    <skos:prefLabel xml:lang="en">Academics</skos:prefLabel>
+    <dcterms:identifier>e392f3c6-6b73-4a5c-8040-3500f2794f4e</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

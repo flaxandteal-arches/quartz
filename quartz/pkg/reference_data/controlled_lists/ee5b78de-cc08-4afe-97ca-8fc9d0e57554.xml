@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/ee5b78de-cc08-4afe-97ca-8fc9d0e57554">
+    <dcterms:title xml:lang="en">Address Types</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/10276814-89a6-4aaf-baf4-de85168c8fc3"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/fb56ffbb-a30f-4889-a817-bd149e4a5828"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/10276814-89a6-4aaf-baf4-de85168c8fc3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ee5b78de-cc08-4afe-97ca-8fc9d0e57554"/>
+    <skos:prefLabel xml:lang="en">Personal</skos:prefLabel>
+    <dcterms:identifier>10276814-89a6-4aaf-baf4-de85168c8fc3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fb56ffbb-a30f-4889-a817-bd149e4a5828">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ee5b78de-cc08-4afe-97ca-8fc9d0e57554"/>
+    <skos:prefLabel xml:lang="en">Organizational</skos:prefLabel>
+    <dcterms:identifier>fb56ffbb-a30f-4889-a817-bd149e4a5828</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

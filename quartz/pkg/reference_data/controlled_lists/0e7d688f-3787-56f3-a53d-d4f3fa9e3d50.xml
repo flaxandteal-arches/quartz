@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/0e7d688f-3787-56f3-a53d-d4f3fa9e3d50">
+    <dcterms:title xml:lang="en">Artefact Types AD</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/175a484b-0a4b-572f-8b96-9a9db58c4b6e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/90fb5584-acff-53c0-92a3-562e64c4a85f"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a0efa760-2265-5fee-b964-db32745727c5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a5717dd0-b9a3-51b9-8299-3acdd2554dbe"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/175a484b-0a4b-572f-8b96-9a9db58c4b6e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/0e7d688f-3787-56f3-a53d-d4f3fa9e3d50"/>
+    <skos:prefLabel xml:lang="en">Aircraft wreck</skos:prefLabel>
+    <dcterms:identifier>175a484b-0a4b-572f-8b96-9a9db58c4b6e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/90fb5584-acff-53c0-92a3-562e64c4a85f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/0e7d688f-3787-56f3-a53d-d4f3fa9e3d50"/>
+    <skos:prefLabel xml:lang="en">Archaeological Site</skos:prefLabel>
+    <dcterms:identifier>90fb5584-acff-53c0-92a3-562e64c4a85f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a0efa760-2265-5fee-b964-db32745727c5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/0e7d688f-3787-56f3-a53d-d4f3fa9e3d50"/>
+    <skos:prefLabel xml:lang="en">Archaeological Artefact or Feature</skos:prefLabel>
+    <dcterms:identifier>a0efa760-2265-5fee-b964-db32745727c5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a5717dd0-b9a3-51b9-8299-3acdd2554dbe">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/0e7d688f-3787-56f3-a53d-d4f3fa9e3d50"/>
+    <skos:prefLabel xml:lang="en">Shipwreck</skos:prefLabel>
+    <dcterms:identifier>a5717dd0-b9a3-51b9-8299-3acdd2554dbe</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

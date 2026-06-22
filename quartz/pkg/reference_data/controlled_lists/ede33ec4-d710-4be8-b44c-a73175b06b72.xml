@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72">
+    <dcterms:title xml:lang="en">Street Pattern</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/031533d7-4a90-4b91-bbf0-f8fb0fe8d0dd"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1cdb97ad-de4d-452a-b973-357bc3f8083d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1de337e9-af32-4f4d-a77c-c4996c3f1f76"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/211cc05e-a638-40c0-af7c-b9557581729d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/26461b65-44c6-46f5-b0f7-82eb8b5778f6"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/317e26ee-7c18-48af-a215-c891a9f57b93"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/3465214d-7137-4677-9ac4-d5750fe5269a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/3d940408-0127-4330-820d-de33ea7abef6"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5d5bcf49-90ea-45bc-9bfe-5fd8cd7769c7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/6c781739-0a16-464e-afb7-55ce85034cb4"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7459e72c-f8a3-4dcf-8976-00c2aea6fcc5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7b226136-bdf8-4d5b-b60d-5b5c54e576a7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b5a0bf36-adda-43fe-8db1-f083da22c502"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/bf46c899-647e-41e4-906c-4a6ea98a1364"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c0db999d-0ae7-4420-9615-ca593bd40e14"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c1cebbe0-eb44-4e07-910b-9729dec26f5d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f9575634-6033-4f43-8d8f-ea1cb60dfd51"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/031533d7-4a90-4b91-bbf0-f8fb0fe8d0dd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Irregular</skos:prefLabel>
+    <dcterms:identifier>031533d7-4a90-4b91-bbf0-f8fb0fe8d0dd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1cdb97ad-de4d-452a-b973-357bc3f8083d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Branching</skos:prefLabel>
+    <dcterms:identifier>1cdb97ad-de4d-452a-b973-357bc3f8083d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1de337e9-af32-4f4d-a77c-c4996c3f1f76">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Sinuous</skos:prefLabel>
+    <dcterms:identifier>1de337e9-af32-4f4d-a77c-c4996c3f1f76</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/211cc05e-a638-40c0-af7c-b9557581729d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Circus</skos:prefLabel>
+    <dcterms:identifier>211cc05e-a638-40c0-af7c-b9557581729d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/26461b65-44c6-46f5-b0f7-82eb8b5778f6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Rectilinear</skos:prefLabel>
+    <dcterms:identifier>26461b65-44c6-46f5-b0f7-82eb8b5778f6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/317e26ee-7c18-48af-a215-c891a9f57b93">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Curvilinear</skos:prefLabel>
+    <dcterms:identifier>317e26ee-7c18-48af-a215-c891a9f57b93</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3465214d-7137-4677-9ac4-d5750fe5269a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Radial</skos:prefLabel>
+    <dcterms:identifier>3465214d-7137-4677-9ac4-d5750fe5269a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3d940408-0127-4330-820d-de33ea7abef6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Axial</skos:prefLabel>
+    <dcterms:identifier>3d940408-0127-4330-820d-de33ea7abef6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5d5bcf49-90ea-45bc-9bfe-5fd8cd7769c7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Straight</skos:prefLabel>
+    <dcterms:identifier>5d5bcf49-90ea-45bc-9bfe-5fd8cd7769c7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6c781739-0a16-464e-afb7-55ce85034cb4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Grid-iron</skos:prefLabel>
+    <dcterms:identifier>6c781739-0a16-464e-afb7-55ce85034cb4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7459e72c-f8a3-4dcf-8976-00c2aea6fcc5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Cul-de-sac</skos:prefLabel>
+    <dcterms:identifier>7459e72c-f8a3-4dcf-8976-00c2aea6fcc5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7b226136-bdf8-4d5b-b60d-5b5c54e576a7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Concentric</skos:prefLabel>
+    <dcterms:identifier>7b226136-bdf8-4d5b-b60d-5b5c54e576a7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b5a0bf36-adda-43fe-8db1-f083da22c502">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Crescent</skos:prefLabel>
+    <dcterms:identifier>b5a0bf36-adda-43fe-8db1-f083da22c502</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bf46c899-647e-41e4-906c-4a6ea98a1364">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Mixed</skos:prefLabel>
+    <dcterms:identifier>bf46c899-647e-41e4-906c-4a6ea98a1364</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c0db999d-0ae7-4420-9615-ca593bd40e14">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Geometric</skos:prefLabel>
+    <dcterms:identifier>c0db999d-0ae7-4420-9615-ca593bd40e14</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c1cebbe0-eb44-4e07-910b-9729dec26f5d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Pre-urban</skos:prefLabel>
+    <dcterms:identifier>c1cebbe0-eb44-4e07-910b-9729dec26f5d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f9575634-6033-4f43-8d8f-ea1cb60dfd51">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ede33ec4-d710-4be8-b44c-a73175b06b72"/>
+    <skos:prefLabel xml:lang="en">Circuit</skos:prefLabel>
+    <dcterms:identifier>f9575634-6033-4f43-8d8f-ea1cb60dfd51</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

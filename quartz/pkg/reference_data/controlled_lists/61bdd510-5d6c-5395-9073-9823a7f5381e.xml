@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/61bdd510-5d6c-5395-9073-9823a7f5381e">
+    <dcterms:title xml:lang="en">Assessments</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/015b5df4-f052-59b8-8497-2a8865582825"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/376d9dd9-1e22-588f-8209-f91f18fb89bb"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/edf2ae33-b720-560f-a075-9e4a43c1063e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f137aa6f-1901-57bb-ab6d-266a449f441f"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/015b5df4-f052-59b8-8497-2a8865582825">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/61bdd510-5d6c-5395-9073-9823a7f5381e"/>
+    <skos:prefLabel xml:lang="en">Source of information requiring management strategies</skos:prefLabel>
+    <dcterms:identifier>015b5df4-f052-59b8-8497-2a8865582825</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/376d9dd9-1e22-588f-8209-f91f18fb89bb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/61bdd510-5d6c-5395-9073-9823a7f5381e"/>
+    <skos:prefLabel xml:lang="en">Important source of information (Local)</skos:prefLabel>
+    <dcterms:identifier>376d9dd9-1e22-588f-8209-f91f18fb89bb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/edf2ae33-b720-560f-a075-9e4a43c1063e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/61bdd510-5d6c-5395-9073-9823a7f5381e"/>
+    <skos:prefLabel xml:lang="en">Not an important source of information</skos:prefLabel>
+    <dcterms:identifier>edf2ae33-b720-560f-a075-9e4a43c1063e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f137aa6f-1901-57bb-ab6d-266a449f441f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/61bdd510-5d6c-5395-9073-9823a7f5381e"/>
+    <skos:prefLabel xml:lang="en">Important source of information (State)</skos:prefLabel>
+    <dcterms:identifier>f137aa6f-1901-57bb-ab6d-266a449f441f</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

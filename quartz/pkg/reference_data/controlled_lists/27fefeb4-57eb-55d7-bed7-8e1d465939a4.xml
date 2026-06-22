@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/27fefeb4-57eb-55d7-bed7-8e1d465939a4">
+    <dcterms:title xml:lang="en">Location Description Types</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0ff7c7b5-d95c-5655-9d4e-96d889fb67b4"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/190922f7-f277-5fc3-9c65-eab657757e55"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/67d1659e-868b-5303-9e9b-ba6d6f1df5af"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d5595737-29dc-5d95-a0b5-fb5e6e0af04c"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0ff7c7b5-d95c-5655-9d4e-96d889fb67b4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/27fefeb4-57eb-55d7-bed7-8e1d465939a4"/>
+    <skos:prefLabel xml:lang="en">Summary</skos:prefLabel>
+    <dcterms:identifier>0ff7c7b5-d95c-5655-9d4e-96d889fb67b4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/190922f7-f277-5fc3-9c65-eab657757e55">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/27fefeb4-57eb-55d7-bed7-8e1d465939a4"/>
+    <skos:prefLabel xml:lang="en">RemovedCalculated</skos:prefLabel>
+    <dcterms:identifier>190922f7-f277-5fc3-9c65-eab657757e55</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/67d1659e-868b-5303-9e9b-ba6d6f1df5af">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/27fefeb4-57eb-55d7-bed7-8e1d465939a4"/>
+    <skos:prefLabel xml:lang="en">NearTown</skos:prefLabel>
+    <dcterms:identifier>67d1659e-868b-5303-9e9b-ba6d6f1df5af</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d5595737-29dc-5d95-a0b5-fb5e6e0af04c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/27fefeb4-57eb-55d7-bed7-8e1d465939a4"/>
+    <skos:prefLabel xml:lang="en">EnteredCalculated</skos:prefLabel>
+    <dcterms:identifier>d5595737-29dc-5d95-a0b5-fb5e6e0af04c</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

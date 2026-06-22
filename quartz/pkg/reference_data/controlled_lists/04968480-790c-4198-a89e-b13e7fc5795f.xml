@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/04968480-790c-4198-a89e-b13e7fc5795f">
+    <dcterms:title xml:lang="en">SIte Visit Attendees</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0409f050-6aec-4c52-a4eb-0c017533d5fa"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2da3f9ad-cdea-40d2-b3ec-dbc0a59d8403"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/31be646a-9f4f-4b23-be23-53c965096f5b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/6df3c7cb-1629-4543-8545-1133b78aaa02"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/853128e1-f5cd-4552-bd13-bbcb767207f1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9540b10d-ed97-400a-948c-67412623c0c9"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9e5ac413-ec99-4e82-9969-b90ac0e895fc"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c66842eb-2bc0-4c6a-b177-82bd61e2729a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e0a7517e-a05d-4b39-a47a-210074761473"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e15dd453-494f-4078-b987-ef3e592abae7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e5a077eb-91eb-4fda-a68d-2bdbbb324828"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/fba90786-3f54-40e9-856b-00b708fa8c4c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/fd84f7f8-046e-4e7d-ae94-410231044ba8"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0409f050-6aec-4c52-a4eb-0c017533d5fa">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/04968480-790c-4198-a89e-b13e7fc5795f"/>
+    <skos:prefLabel xml:lang="en">Demolition Contractor</skos:prefLabel>
+    <dcterms:identifier>0409f050-6aec-4c52-a4eb-0c017533d5fa</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2da3f9ad-cdea-40d2-b3ec-dbc0a59d8403">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/04968480-790c-4198-a89e-b13e7fc5795f"/>
+    <skos:prefLabel xml:lang="en">Borough Enforcement Officer</skos:prefLabel>
+    <dcterms:identifier>2da3f9ad-cdea-40d2-b3ec-dbc0a59d8403</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/31be646a-9f4f-4b23-be23-53c965096f5b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/04968480-790c-4198-a89e-b13e7fc5795f"/>
+    <skos:prefLabel xml:lang="en">Borough Conservation Officer</skos:prefLabel>
+    <dcterms:identifier>31be646a-9f4f-4b23-be23-53c965096f5b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6df3c7cb-1629-4543-8545-1133b78aaa02">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/04968480-790c-4198-a89e-b13e7fc5795f"/>
+    <skos:prefLabel xml:lang="en">Historic England GLAAS Advisor</skos:prefLabel>
+    <dcterms:identifier>6df3c7cb-1629-4543-8545-1133b78aaa02</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/853128e1-f5cd-4552-bd13-bbcb767207f1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/04968480-790c-4198-a89e-b13e7fc5795f"/>
+    <skos:prefLabel xml:lang="en">Archaeological Consultant</skos:prefLabel>
+    <dcterms:identifier>853128e1-f5cd-4552-bd13-bbcb767207f1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9540b10d-ed97-400a-948c-67412623c0c9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/04968480-790c-4198-a89e-b13e7fc5795f"/>
+    <skos:prefLabel xml:lang="en">Archaeological Contractor</skos:prefLabel>
+    <dcterms:identifier>9540b10d-ed97-400a-948c-67412623c0c9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9e5ac413-ec99-4e82-9969-b90ac0e895fc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/04968480-790c-4198-a89e-b13e7fc5795f"/>
+    <skos:prefLabel xml:lang="en">Applicant</skos:prefLabel>
+    <dcterms:identifier>9e5ac413-ec99-4e82-9969-b90ac0e895fc</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c66842eb-2bc0-4c6a-b177-82bd61e2729a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/04968480-790c-4198-a89e-b13e7fc5795f"/>
+    <skos:prefLabel xml:lang="en">Historic England Science Advisor</skos:prefLabel>
+    <dcterms:identifier>c66842eb-2bc0-4c6a-b177-82bd61e2729a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e0a7517e-a05d-4b39-a47a-210074761473">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/04968480-790c-4198-a89e-b13e7fc5795f"/>
+    <skos:prefLabel xml:lang="en">HIstoric England Inspector of Ancient Monuments</skos:prefLabel>
+    <dcterms:identifier>e0a7517e-a05d-4b39-a47a-210074761473</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e15dd453-494f-4078-b987-ef3e592abae7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/04968480-790c-4198-a89e-b13e7fc5795f"/>
+    <skos:prefLabel xml:lang="en">Historic England Buildings Inspector</skos:prefLabel>
+    <dcterms:identifier>e15dd453-494f-4078-b987-ef3e592abae7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e5a077eb-91eb-4fda-a68d-2bdbbb324828">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/04968480-790c-4198-a89e-b13e7fc5795f"/>
+    <skos:prefLabel xml:lang="en">Construction Contractor</skos:prefLabel>
+    <dcterms:identifier>e5a077eb-91eb-4fda-a68d-2bdbbb324828</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fba90786-3f54-40e9-856b-00b708fa8c4c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/04968480-790c-4198-a89e-b13e7fc5795f"/>
+    <skos:prefLabel xml:lang="en">Borough Case Officer</skos:prefLabel>
+    <dcterms:identifier>fba90786-3f54-40e9-856b-00b708fa8c4c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fd84f7f8-046e-4e7d-ae94-410231044ba8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/04968480-790c-4198-a89e-b13e7fc5795f"/>
+    <skos:prefLabel xml:lang="en">Other</skos:prefLabel>
+    <dcterms:identifier>fd84f7f8-046e-4e7d-ae94-410231044ba8</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

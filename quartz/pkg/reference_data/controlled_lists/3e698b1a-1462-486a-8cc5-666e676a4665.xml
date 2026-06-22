@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/3e698b1a-1462-486a-8cc5-666e676a4665">
+    <dcterms:title xml:lang="en">Shape Qualifier</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0237fb2f-15a7-4339-b743-4d3f51637a2a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1d9b0e31-fd4a-416f-8c91-cd2fe30040d1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/60261556-988a-4531-9f80-891fc36dcd52"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/61ea2f34-5cba-44da-91d1-3ec74ee4854d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/91aa5853-4315-4eb3-b52b-c4bda21c2ca1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/93c9b9df-f236-460a-aa4e-e10e45f15ec7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b51437f6-f170-46de-90f8-e40700691ef6"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/cb6daecc-e918-4501-aa02-974c07a133a5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e1bd0a99-efa7-4a03-9422-6790ef396470"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0237fb2f-15a7-4339-b743-4d3f51637a2a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/3e698b1a-1462-486a-8cc5-666e676a4665"/>
+    <skos:prefLabel xml:lang="en">Dispersed Event</skos:prefLabel>
+    <dcterms:identifier>0237fb2f-15a7-4339-b743-4d3f51637a2a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1d9b0e31-fd4a-416f-8c91-cd2fe30040d1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/3e698b1a-1462-486a-8cc5-666e676a4665"/>
+    <skos:prefLabel xml:lang="en">Approx</skos:prefLabel>
+    <dcterms:identifier>1d9b0e31-fd4a-416f-8c91-cd2fe30040d1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/60261556-988a-4531-9f80-891fc36dcd52">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/3e698b1a-1462-486a-8cc5-666e676a4665"/>
+    <skos:prefLabel xml:lang="en">Archaeological Event</skos:prefLabel>
+    <dcterms:identifier>60261556-988a-4531-9f80-891fc36dcd52</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/61ea2f34-5cba-44da-91d1-3ec74ee4854d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/3e698b1a-1462-486a-8cc5-666e676a4665"/>
+    <skos:prefLabel xml:lang="en">Linear</skos:prefLabel>
+    <dcterms:identifier>61ea2f34-5cba-44da-91d1-3ec74ee4854d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/91aa5853-4315-4eb3-b52b-c4bda21c2ca1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/3e698b1a-1462-486a-8cc5-666e676a4665"/>
+    <skos:prefLabel xml:lang="en">Point</skos:prefLabel>
+    <dcterms:identifier>91aa5853-4315-4eb3-b52b-c4bda21c2ca1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/93c9b9df-f236-460a-aa4e-e10e45f15ec7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/3e698b1a-1462-486a-8cc5-666e676a4665"/>
+    <skos:prefLabel xml:lang="en">Area</skos:prefLabel>
+    <dcterms:identifier>93c9b9df-f236-460a-aa4e-e10e45f15ec7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b51437f6-f170-46de-90f8-e40700691ef6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/3e698b1a-1462-486a-8cc5-666e676a4665"/>
+    <skos:prefLabel xml:lang="en">Unknown</skos:prefLabel>
+    <dcterms:identifier>b51437f6-f170-46de-90f8-e40700691ef6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cb6daecc-e918-4501-aa02-974c07a133a5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/3e698b1a-1462-486a-8cc5-666e676a4665"/>
+    <skos:prefLabel xml:lang="en">Locality</skos:prefLabel>
+    <dcterms:identifier>cb6daecc-e918-4501-aa02-974c07a133a5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e1bd0a99-efa7-4a03-9422-6790ef396470">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/3e698b1a-1462-486a-8cc5-666e676a4665"/>
+    <skos:prefLabel xml:lang="en">Named Loc</skos:prefLabel>
+    <dcterms:identifier>e1bd0a99-efa7-4a03-9422-6790ef396470</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

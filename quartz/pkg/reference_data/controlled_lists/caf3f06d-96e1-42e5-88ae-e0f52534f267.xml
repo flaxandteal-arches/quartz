@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/caf3f06d-96e1-42e5-88ae-e0f52534f267">
+    <dcterms:title xml:lang="en">Site Proportion At Risk</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0903c487-9555-4d5f-998d-9ce34abace81"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/6e70cb3a-4993-4ac8-b413-7575159f5e73"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/97935a3d-25b5-4290-b927-c71b2fc28296"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c5d06fdd-e735-4a90-94ed-b909a9147bac"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0903c487-9555-4d5f-998d-9ce34abace81">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/caf3f06d-96e1-42e5-88ae-e0f52534f267"/>
+    <skos:prefLabel xml:lang="en">50-75%</skos:prefLabel>
+    <dcterms:identifier>0903c487-9555-4d5f-998d-9ce34abace81</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6e70cb3a-4993-4ac8-b413-7575159f5e73">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/caf3f06d-96e1-42e5-88ae-e0f52534f267"/>
+    <skos:prefLabel xml:lang="en">10-50%</skos:prefLabel>
+    <dcterms:identifier>6e70cb3a-4993-4ac8-b413-7575159f5e73</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/97935a3d-25b5-4290-b927-c71b2fc28296">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/caf3f06d-96e1-42e5-88ae-e0f52534f267"/>
+    <skos:prefLabel xml:lang="en">75-100%</skos:prefLabel>
+    <dcterms:identifier>97935a3d-25b5-4290-b927-c71b2fc28296</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c5d06fdd-e735-4a90-94ed-b909a9147bac">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/caf3f06d-96e1-42e5-88ae-e0f52534f267"/>
+    <skos:prefLabel xml:lang="en">&lt;10%</skos:prefLabel>
+    <dcterms:identifier>c5d06fdd-e735-4a90-94ed-b909a9147bac</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

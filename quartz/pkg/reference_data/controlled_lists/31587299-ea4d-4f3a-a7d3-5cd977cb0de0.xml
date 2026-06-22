@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/31587299-ea4d-4f3a-a7d3-5cd977cb0de0">
+    <dcterms:title xml:lang="en"></dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/180396c7-1c2e-4e55-9f77-4a1c138c46b2"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/cd9521ea-2c71-4034-94d7-22dcde2264a7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e2394add-2fad-4fdd-8b91-825570875162"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e3d610d6-0877-4418-90e7-f2949eb20067"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e9ab6297-f83d-4d99-b4ad-1064aa61152f"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/fb7af553-53d5-4079-bba1-4b069cc5dca2"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/180396c7-1c2e-4e55-9f77-4a1c138c46b2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/31587299-ea4d-4f3a-a7d3-5cd977cb0de0"/>
+    <skos:prefLabel xml:lang="en">Schooner</skos:prefLabel>
+    <dcterms:identifier>180396c7-1c2e-4e55-9f77-4a1c138c46b2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cd9521ea-2c71-4034-94d7-22dcde2264a7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/31587299-ea4d-4f3a-a7d3-5cd977cb0de0"/>
+    <skos:prefLabel xml:lang="en">Full Rigged Ship</skos:prefLabel>
+    <dcterms:identifier>cd9521ea-2c71-4034-94d7-22dcde2264a7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e2394add-2fad-4fdd-8b91-825570875162">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/31587299-ea4d-4f3a-a7d3-5cd977cb0de0"/>
+    <skos:prefLabel xml:lang="en">Square Rigged Vessel</skos:prefLabel>
+    <dcterms:identifier>e2394add-2fad-4fdd-8b91-825570875162</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/0e2b7ad3-79d8-4cac-b6b6-bfd3e8172a8d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/33369a45-1483-4750-a942-97f395d07109"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/bccf908b-8e2f-49be-b8d8-14c2020b0bdc"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c5dea8e8-644c-4dce-809a-cd4b2f6d0f36"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d1a56755-bdeb-4679-a8af-7cf7436cced8"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0e2b7ad3-79d8-4cac-b6b6-bfd3e8172a8d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/31587299-ea4d-4f3a-a7d3-5cd977cb0de0"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2394add-2fad-4fdd-8b91-825570875162"/>
+    <skos:prefLabel xml:lang="en">Brig</skos:prefLabel>
+    <dcterms:identifier>0e2b7ad3-79d8-4cac-b6b6-bfd3e8172a8d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/33369a45-1483-4750-a942-97f395d07109">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/31587299-ea4d-4f3a-a7d3-5cd977cb0de0"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2394add-2fad-4fdd-8b91-825570875162"/>
+    <skos:prefLabel xml:lang="en">Pinnace</skos:prefLabel>
+    <dcterms:identifier>33369a45-1483-4750-a942-97f395d07109</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bccf908b-8e2f-49be-b8d8-14c2020b0bdc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/31587299-ea4d-4f3a-a7d3-5cd977cb0de0"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2394add-2fad-4fdd-8b91-825570875162"/>
+    <skos:prefLabel xml:lang="en">Barque</skos:prefLabel>
+    <dcterms:identifier>bccf908b-8e2f-49be-b8d8-14c2020b0bdc</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c5dea8e8-644c-4dce-809a-cd4b2f6d0f36">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/31587299-ea4d-4f3a-a7d3-5cd977cb0de0"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2394add-2fad-4fdd-8b91-825570875162"/>
+    <skos:prefLabel xml:lang="en">Pink</skos:prefLabel>
+    <dcterms:identifier>c5dea8e8-644c-4dce-809a-cd4b2f6d0f36</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d1a56755-bdeb-4679-a8af-7cf7436cced8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/31587299-ea4d-4f3a-a7d3-5cd977cb0de0"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2394add-2fad-4fdd-8b91-825570875162"/>
+    <skos:prefLabel xml:lang="en">Snow</skos:prefLabel>
+    <dcterms:identifier>d1a56755-bdeb-4679-a8af-7cf7436cced8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e3d610d6-0877-4418-90e7-f2949eb20067">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/31587299-ea4d-4f3a-a7d3-5cd977cb0de0"/>
+    <skos:prefLabel xml:lang="en">Brigantine</skos:prefLabel>
+    <dcterms:identifier>e3d610d6-0877-4418-90e7-f2949eb20067</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e9ab6297-f83d-4d99-b4ad-1064aa61152f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/31587299-ea4d-4f3a-a7d3-5cd977cb0de0"/>
+    <skos:prefLabel xml:lang="en">Barquentine</skos:prefLabel>
+    <dcterms:identifier>e9ab6297-f83d-4d99-b4ad-1064aa61152f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fb7af553-53d5-4079-bba1-4b069cc5dca2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/31587299-ea4d-4f3a-a7d3-5cd977cb0de0"/>
+    <skos:prefLabel xml:lang="en">Lug Boat</skos:prefLabel>
+    <dcterms:identifier>fb7af553-53d5-4079-bba1-4b069cc5dca2</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

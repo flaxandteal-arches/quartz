@@ -1,0 +1,359 @@
+{
+    "graph": [
+        {
+            "author": "Philip Carlisle - Historic England",
+            "cards": [
+                {
+                    "active": true,
+                    "cardid": "8f6b220d-3e8f-11ea-8be4-c4d9877d154e",
+                    "component_id": "f05e4d3a-53c1-11e8-b0ea-784f435179ea",
+                    "constraints": [],
+                    "description": {
+                        "en": ""
+                    },
+                    "graph_id": "8f6b220a-3e8f-11ea-ae87-c4d9877d154e",
+                    "helpenabled": false,
+                    "helptext": {
+                        "en": ""
+                    },
+                    "helptitle": {
+                        "en": ""
+                    },
+                    "instructions": {
+                        "en": ""
+                    },
+                    "is_editable": null,
+                    "name": {
+                        "en": "Crew"
+                    },
+                    "nodegroup_id": "8f6b220b-3e8f-11ea-ab49-c4d9877d154e",
+                    "sortorder": null,
+                    "visible": true
+                }
+            ],
+            "cards_x_nodes_x_widgets": [
+                {
+                    "card_id": "8f6b220d-3e8f-11ea-8be4-c4d9877d154e",
+                    "config": {
+                        "defaultResourceInstance": [],
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Crew member",
+                        "placeholder": {
+                            "en": ""
+                        }
+                    },
+                    "id": "cc4cb159-3ed2-11eb-aad4-f875a44e0e11",
+                    "label": {
+                        "en": "Crew member"
+                    },
+                    "node_id": "12a71603-29bc-11eb-8604-f875a44e0e11",
+                    "sortorder": 0,
+                    "visible": true,
+                    "widget_id": "31f3728c-7613-11e7-a139-784f435179ea"
+                },
+                {
+                    "card_id": "8f6b220d-3e8f-11ea-8be4-c4d9877d154e",
+                    "config": {
+                        "defaultValue": "",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Crew Role",
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "cc4e5edf-3ed2-11eb-8e90-f875a44e0e11",
+                    "label": {
+                        "en": "Crew Role"
+                    },
+                    "node_id": "12a7160d-29bc-11eb-afa7-f875a44e0e11",
+                    "sortorder": 1,
+                    "visible": true,
+                    "widget_id": "19e56148-82b8-47eb-b66e-f6243639a1a8"
+                },
+                {
+                    "card_id": "8f6b220d-3e8f-11ea-8be4-c4d9877d154e",
+                    "config": {
+                        "defaultValue": [
+                            {
+                                "labels": [
+                                    {
+                                        "id": "b81d4b16-0633-4d7a-b4b2-5c2d3e2e782e",
+                                        "language_id": "en",
+                                        "list_item_id": "06b7d7f1-c7a4-4dd5-aca5-893f4b968970",
+                                        "value": "Role Type",
+                                        "valuetype_id": "prefLabel"
+                                    }
+                                ],
+                                "list_id": "1e63c514-eb9d-48d3-94b5-35e060e5f368",
+                                "uri": "http://localhost:8000/plugins/controlled-list-manager/item/06b7d7f1-c7a4-4dd5-aca5-893f4b968970"
+                            }
+                        ],
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Crew Role Metatype",
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "cc4fe583-3ed2-11eb-b2fc-f875a44e0e11",
+                    "label": {
+                        "en": "Crew Role Metatype"
+                    },
+                    "node_id": "12a7160e-29bc-11eb-a561-f875a44e0e11",
+                    "sortorder": 2,
+                    "visible": false,
+                    "widget_id": "19e56148-82b8-47eb-b66e-f6243639a1a8"
+                }
+            ],
+            "color": null,
+            "config": {
+                "basemap": "streets",
+                "bearing": 0,
+                "centerX": -1.5983286851933372,
+                "centerY": 53.155430248627454,
+                "featureColor": "#FF0000",
+                "featureEditingDisabled": true,
+                "featureLineWidth": 1,
+                "featurePointSize": 3,
+                "geocodePlaceholder": "Search",
+                "geocodeProvider": "10000000-0000-0000-0000-010000000000",
+                "geocoderVisible": true,
+                "geometryTypes": [
+                    {
+                        "id": "Point",
+                        "text": "Point"
+                    },
+                    {
+                        "id": "Line",
+                        "text": "Line"
+                    },
+                    {
+                        "id": "Polygon",
+                        "text": "Polygon"
+                    }
+                ],
+                "mapControlsHidden": false,
+                "maxZoom": 20,
+                "minZoom": 0,
+                "overlayConfigs": [],
+                "overlayOpacity": 0,
+                "pitch": 0,
+                "zoom": "4.908319487490616"
+            },
+            "deploymentdate": null,
+            "deploymentfile": null,
+            "description": {
+                "en": ""
+            },
+            "edges": [
+                {
+                    "description": null,
+                    "domainnode_id": "12a71603-29bc-11eb-8604-f875a44e0e11",
+                    "edgeid": "12a73d29-29bc-11eb-b5ca-f875a44e0e11",
+                    "graph_id": "8f6b220a-3e8f-11ea-ae87-c4d9877d154e",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "12a7160d-29bc-11eb-afa7-f875a44e0e11"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "12a7160d-29bc-11eb-afa7-f875a44e0e11",
+                    "edgeid": "12a73d2b-29bc-11eb-bf82-f875a44e0e11",
+                    "graph_id": "8f6b220a-3e8f-11ea-ae87-c4d9877d154e",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "12a7160e-29bc-11eb-a561-f875a44e0e11"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "8f6b220b-3e8f-11ea-ab49-c4d9877d154e",
+                    "edgeid": "12a73d2c-29bc-11eb-a124-f875a44e0e11",
+                    "graph_id": "8f6b220a-3e8f-11ea-ae87-c4d9877d154e",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P107_has_current_or_former_member",
+                    "rangenode_id": "12a71603-29bc-11eb-8604-f875a44e0e11"
+                }
+            ],
+            "functions_x_graphs": [],
+            "graphid": "8f6b220a-3e8f-11ea-ae87-c4d9877d154e",
+            "group_permissions": {},
+            "has_unpublished_changes": true,
+            "iconclass": "fa fa-plane",
+            "is_active": false,
+            "is_copy_immutable": false,
+            "is_editable": null,
+            "isresource": false,
+            "jsonldcontext": null,
+            "name": {
+                "en": "Crew"
+            },
+            "nodegroups": [
+                {
+                    "cardinality": "n",
+                    "grouping_node_id": "8f6b220b-3e8f-11ea-ab49-c4d9877d154e",
+                    "legacygroupid": null,
+                    "nodegroupid": "8f6b220b-3e8f-11ea-ab49-c4d9877d154e",
+                    "parentnodegroup_id": null
+                }
+            ],
+            "nodes": [
+                {
+                    "alias": "crew_member",
+                    "config": {
+                        "graphs": [
+                            {
+                                "graphid": "22477f01-1a44-11e9-b0a9-000d3ab1e588",
+                                "name": "Person"
+                            }
+                        ],
+                        "searchDsl": "",
+                        "searchString": ""
+                    },
+                    "datatype": "resource-instance",
+                    "description": {
+                        "en": ""
+                    },
+                    "exportable": false,
+                    "fieldname": "",
+                    "graph_id": "8f6b220a-3e8f-11ea-ae87-c4d9877d154e",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "is_immutable": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Crew member",
+                    "nodegroup_id": "8f6b220b-3e8f-11ea-ab49-c4d9877d154e",
+                    "nodeid": "12a71603-29bc-11eb-8604-f875a44e0e11",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E21_Person",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P107_has_current_or_former_member",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "crew_role",
+                    "config": {
+                        "controlledList": "0cdf5418-d21b-4d01-9760-8edad86ac4f0",
+                        "multiValue": true
+                    },
+                    "datatype": "reference",
+                    "description": {
+                        "en": "Represents a single node in a graph"
+                    },
+                    "exportable": false,
+                    "fieldname": "",
+                    "graph_id": "8f6b220a-3e8f-11ea-ae87-c4d9877d154e",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "is_immutable": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Crew Role",
+                    "nodegroup_id": "8f6b220b-3e8f-11ea-ab49-c4d9877d154e",
+                    "nodeid": "12a7160d-29bc-11eb-afa7-f875a44e0e11",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "crew_role_metatype",
+                    "config": {
+                        "controlledList": "1e63c514-eb9d-48d3-94b5-35e060e5f368",
+                        "multiValue": false
+                    },
+                    "datatype": "reference",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "8f6b220a-3e8f-11ea-ae87-c4d9877d154e",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "is_immutable": false,
+                    "isrequired": false,
+                    "issearchable": false,
+                    "istopnode": false,
+                    "name": "Crew Role Metatype",
+                    "nodegroup_id": "8f6b220b-3e8f-11ea-ab49-c4d9877d154e",
+                    "nodeid": "12a7160e-29bc-11eb-a561-f875a44e0e11",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "crew",
+                    "config": {},
+                    "datatype": "semantic",
+                    "description": {
+                        "en": "Represents a single node in a graph"
+                    },
+                    "exportable": false,
+                    "fieldname": "",
+                    "graph_id": "8f6b220a-3e8f-11ea-ae87-c4d9877d154e",
+                    "hascustomalias": false,
+                    "is_collector": true,
+                    "is_immutable": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": true,
+                    "name": "Crew",
+                    "nodegroup_id": "8f6b220b-3e8f-11ea-ab49-c4d9877d154e",
+                    "nodeid": "8f6b220b-3e8f-11ea-ab49-c4d9877d154e",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E74_Group",
+                    "parentproperty": "",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                }
+            ],
+            "ontology_id": "e6e8db47-2ccf-11e6-927e-b8f6b115d7dd",
+            "publication": {
+                "graph_id": "8f6b220a-3e8f-11ea-ae87-c4d9877d154e",
+                "most_recent_edit_id": null,
+                "notes": "Migrated concept/concept-list nodes to reference datatype",
+                "publicationid": "f9d93201-3948-4679-b050-5409048bda31",
+                "published_time": "2025-10-22T19:39:41.116"
+            },
+            "relatable_resource_model_ids": [],
+            "resource_2_resource_constraints": [],
+            "root": {
+                "alias": "crew",
+                "config": {},
+                "datatype": "semantic",
+                "description": {
+                    "en": "Represents a single node in a graph"
+                },
+                "exportable": false,
+                "fieldname": "",
+                "graph_id": "8f6b220a-3e8f-11ea-ae87-c4d9877d154e",
+                "hascustomalias": false,
+                "is_collector": true,
+                "is_immutable": false,
+                "isrequired": false,
+                "issearchable": true,
+                "istopnode": true,
+                "name": "Crew",
+                "nodegroup_id": "8f6b220b-3e8f-11ea-ab49-c4d9877d154e",
+                "nodeid": "8f6b220b-3e8f-11ea-ab49-c4d9877d154e",
+                "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E74_Group",
+                "parentproperty": null,
+                "sortorder": 0,
+                "sourcebranchpublication_id": null
+            },
+            "slug": "crew",
+            "spatial_views": [],
+            "subtitle": {
+                "en": "Used to record the names and roles of the members of crew for a vessel or aircraft"
+            },
+            "template_id": "50000000-0000-0000-0000-000000000002",
+            "user_permissions": {},
+            "version": ""
+        }
+    ]
+}

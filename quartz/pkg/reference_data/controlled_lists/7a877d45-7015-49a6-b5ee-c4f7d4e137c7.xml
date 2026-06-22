@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/7a877d45-7015-49a6-b5ee-c4f7d4e137c7">
+    <dcterms:title xml:lang="en">Condition on Survey</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/06c3797c-a437-4281-803e-cb03e598c80e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/10acc7ed-4949-427e-b8c1-4e22e3537c6e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1ea27803-00c7-4b43-8cad-d2b531bede13"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/738ba472-2110-4686-aeb8-098943331ec1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8cc5c3b8-11f8-44a2-b509-f50e5c3a2f36"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c95dcfab-9e66-4d60-8f29-cab6303a08e7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e100c7da-365b-45cf-8927-4a88322aeda8"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/06c3797c-a437-4281-803e-cb03e598c80e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7a877d45-7015-49a6-b5ee-c4f7d4e137c7"/>
+    <skos:prefLabel xml:lang="en">Infilled</skos:prefLabel>
+    <dcterms:identifier>06c3797c-a437-4281-803e-cb03e598c80e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/10acc7ed-4949-427e-b8c1-4e22e3537c6e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7a877d45-7015-49a6-b5ee-c4f7d4e137c7"/>
+    <skos:prefLabel xml:lang="en">Destroyed</skos:prefLabel>
+    <dcterms:identifier>10acc7ed-4949-427e-b8c1-4e22e3537c6e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1ea27803-00c7-4b43-8cad-d2b531bede13">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7a877d45-7015-49a6-b5ee-c4f7d4e137c7"/>
+    <skos:prefLabel xml:lang="en">Fair</skos:prefLabel>
+    <dcterms:identifier>1ea27803-00c7-4b43-8cad-d2b531bede13</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/738ba472-2110-4686-aeb8-098943331ec1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7a877d45-7015-49a6-b5ee-c4f7d4e137c7"/>
+    <skos:prefLabel xml:lang="en">Uncertain</skos:prefLabel>
+    <dcterms:identifier>738ba472-2110-4686-aeb8-098943331ec1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8cc5c3b8-11f8-44a2-b509-f50e5c3a2f36">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7a877d45-7015-49a6-b5ee-c4f7d4e137c7"/>
+    <skos:prefLabel xml:lang="en">Good</skos:prefLabel>
+    <dcterms:identifier>8cc5c3b8-11f8-44a2-b509-f50e5c3a2f36</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c95dcfab-9e66-4d60-8f29-cab6303a08e7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7a877d45-7015-49a6-b5ee-c4f7d4e137c7"/>
+    <skos:prefLabel xml:lang="en">Poor</skos:prefLabel>
+    <dcterms:identifier>c95dcfab-9e66-4d60-8f29-cab6303a08e7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e100c7da-365b-45cf-8927-4a88322aeda8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7a877d45-7015-49a6-b5ee-c4f7d4e137c7"/>
+    <skos:prefLabel xml:lang="en">Very Bad</skos:prefLabel>
+    <dcterms:identifier>e100c7da-365b-45cf-8927-4a88322aeda8</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

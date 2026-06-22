@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/8e8902f8-de47-4313-b7f0-d967246dadf5">
+    <dcterms:title xml:lang="en">Street Frontage</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7d64ed67-b98a-4133-8bfb-6f58fa961cc6"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8e0fe54f-435a-41a1-a7d1-510641370a9c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/fed71f6d-2dcc-4bec-b9e5-371940b92e7f"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7d64ed67-b98a-4133-8bfb-6f58fa961cc6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/8e8902f8-de47-4313-b7f0-d967246dadf5"/>
+    <skos:prefLabel xml:lang="en">No set back</skos:prefLabel>
+    <dcterms:identifier>7d64ed67-b98a-4133-8bfb-6f58fa961cc6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8e0fe54f-435a-41a1-a7d1-510641370a9c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/8e8902f8-de47-4313-b7f0-d967246dadf5"/>
+    <skos:prefLabel xml:lang="en">Large set back</skos:prefLabel>
+    <dcterms:identifier>8e0fe54f-435a-41a1-a7d1-510641370a9c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fed71f6d-2dcc-4bec-b9e5-371940b92e7f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/8e8902f8-de47-4313-b7f0-d967246dadf5"/>
+    <skos:prefLabel xml:lang="en">Small set back</skos:prefLabel>
+    <dcterms:identifier>fed71f6d-2dcc-4bec-b9e5-371940b92e7f</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

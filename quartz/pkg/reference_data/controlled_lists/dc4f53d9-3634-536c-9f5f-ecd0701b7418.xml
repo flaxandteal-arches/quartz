@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/dc4f53d9-3634-536c-9f5f-ecd0701b7418">
+    <dcterms:title xml:lang="en">Occupancy Types</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/162a6293-95c9-5f1b-93bb-408e365bc7c3"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/62f996b5-330e-5eb2-b5c4-a1762c3f2e05"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/969d9767-bc2c-5656-b5e1-698fd40494dd"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a5ad5bf9-12a9-524e-aad1-755eefa92b8b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ac69ebd2-69f2-5737-8831-3ca2d8ceafe6"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/162a6293-95c9-5f1b-93bb-408e365bc7c3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/dc4f53d9-3634-536c-9f5f-ecd0701b7418"/>
+    <skos:prefLabel xml:lang="en">Occupied</skos:prefLabel>
+    <dcterms:identifier>162a6293-95c9-5f1b-93bb-408e365bc7c3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/62f996b5-330e-5eb2-b5c4-a1762c3f2e05">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/dc4f53d9-3634-536c-9f5f-ecd0701b7418"/>
+    <skos:prefLabel xml:lang="en">Unknown</skos:prefLabel>
+    <dcterms:identifier>62f996b5-330e-5eb2-b5c4-a1762c3f2e05</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/969d9767-bc2c-5656-b5e1-698fd40494dd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/dc4f53d9-3634-536c-9f5f-ecd0701b7418"/>
+    <skos:prefLabel xml:lang="en">Not Applicable</skos:prefLabel>
+    <dcterms:identifier>969d9767-bc2c-5656-b5e1-698fd40494dd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a5ad5bf9-12a9-524e-aad1-755eefa92b8b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/dc4f53d9-3634-536c-9f5f-ecd0701b7418"/>
+    <skos:prefLabel xml:lang="en">Semi-occupied</skos:prefLabel>
+    <dcterms:identifier>a5ad5bf9-12a9-524e-aad1-755eefa92b8b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ac69ebd2-69f2-5737-8831-3ca2d8ceafe6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/dc4f53d9-3634-536c-9f5f-ecd0701b7418"/>
+    <skos:prefLabel xml:lang="en">Unoccupied</skos:prefLabel>
+    <dcterms:identifier>ac69ebd2-69f2-5737-8831-3ca2d8ceafe6</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

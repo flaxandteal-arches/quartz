@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/b8e5cd4f-3808-5397-a05e-eda1df4ab062">
+    <dcterms:title xml:lang="en">Cross Reference Sources</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7193ee08-38ff-5f1b-8460-272fba51e5dc"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7193ee08-38ff-5f1b-8460-272fba51e5dc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/b8e5cd4f-3808-5397-a05e-eda1df4ab062"/>
+    <skos:prefLabel xml:lang="en">Sketchfab</skos:prefLabel>
+    <dcterms:identifier>7193ee08-38ff-5f1b-8460-272fba51e5dc</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/59a0a035-bbd0-4e5e-9528-862790edc610">
+    <dcterms:title xml:lang="en">Administrative Area Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/134002f4-c7ef-4d87-a251-2db395f91159"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1969f734-fb54-41a1-a21d-1064d6510b6b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/44a30cb3-e168-46f4-8398-331344daff2b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7adf9ae8-e391-411a-9438-3c1f18b7fb92"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/cbf31401-691b-4267-a380-d7de452f8b0b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/efaf6911-f907-434e-8964-be372953e32d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f481d1b8-f079-4336-bd1a-b8ab597829c0"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ff2aaa01-13c6-4a85-9f4f-b0e2aec6f64c"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/134002f4-c7ef-4d87-a251-2db395f91159">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/59a0a035-bbd0-4e5e-9528-862790edc610"/>
+    <skos:prefLabel xml:lang="en">Non Parish Area</skos:prefLabel>
+    <dcterms:identifier>134002f4-c7ef-4d87-a251-2db395f91159</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1969f734-fb54-41a1-a21d-1064d6510b6b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/59a0a035-bbd0-4e5e-9528-862790edc610"/>
+    <skos:prefLabel xml:lang="en">Parish</skos:prefLabel>
+    <dcterms:identifier>1969f734-fb54-41a1-a21d-1064d6510b6b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/44a30cb3-e168-46f4-8398-331344daff2b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/59a0a035-bbd0-4e5e-9528-862790edc610"/>
+    <skos:prefLabel xml:lang="en">Locality</skos:prefLabel>
+    <dcterms:identifier>44a30cb3-e168-46f4-8398-331344daff2b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7adf9ae8-e391-411a-9438-3c1f18b7fb92">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/59a0a035-bbd0-4e5e-9528-862790edc610"/>
+    <skos:prefLabel xml:lang="en">Borough</skos:prefLabel>
+    <dcterms:identifier>7adf9ae8-e391-411a-9438-3c1f18b7fb92</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cbf31401-691b-4267-a380-d7de452f8b0b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/59a0a035-bbd0-4e5e-9528-862790edc610"/>
+    <skos:prefLabel xml:lang="en">District</skos:prefLabel>
+    <dcterms:identifier>cbf31401-691b-4267-a380-d7de452f8b0b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/efaf6911-f907-434e-8964-be372953e32d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/59a0a035-bbd0-4e5e-9528-862790edc610"/>
+    <skos:prefLabel xml:lang="en">Ecclesiastical</skos:prefLabel>
+    <dcterms:identifier>efaf6911-f907-434e-8964-be372953e32d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f481d1b8-f079-4336-bd1a-b8ab597829c0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/59a0a035-bbd0-4e5e-9528-862790edc610"/>
+    <skos:prefLabel xml:lang="en">County</skos:prefLabel>
+    <dcterms:identifier>f481d1b8-f079-4336-bd1a-b8ab597829c0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ff2aaa01-13c6-4a85-9f4f-b0e2aec6f64c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/59a0a035-bbd0-4e5e-9528-862790edc610"/>
+    <skos:prefLabel xml:lang="en">Unitary Authority</skos:prefLabel>
+    <dcterms:identifier>ff2aaa01-13c6-4a85-9f4f-b0e2aec6f64c</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

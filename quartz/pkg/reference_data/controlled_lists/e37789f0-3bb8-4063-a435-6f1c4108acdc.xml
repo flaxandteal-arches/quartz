@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/e37789f0-3bb8-4063-a435-6f1c4108acdc">
+    <dcterms:title xml:lang="en">Survey Access</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/181e5dbb-6dde-420d-8868-e25a0b5dd682"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2cd57a03-8b7e-4094-be63-0c9b62c9a2b9"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/50e79dbe-43b2-47ce-b055-5ae80f417c24"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ee804ff5-7763-4326-b2b4-108c06a1ae9c"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/181e5dbb-6dde-420d-8868-e25a0b5dd682">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/e37789f0-3bb8-4063-a435-6f1c4108acdc"/>
+    <skos:prefLabel xml:lang="en">Exterior Access Only</skos:prefLabel>
+    <dcterms:identifier>181e5dbb-6dde-420d-8868-e25a0b5dd682</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2cd57a03-8b7e-4094-be63-0c9b62c9a2b9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/e37789f0-3bb8-4063-a435-6f1c4108acdc"/>
+    <skos:prefLabel xml:lang="en">No Access</skos:prefLabel>
+    <dcterms:identifier>2cd57a03-8b7e-4094-be63-0c9b62c9a2b9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/50e79dbe-43b2-47ce-b055-5ae80f417c24">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/e37789f0-3bb8-4063-a435-6f1c4108acdc"/>
+    <skos:prefLabel xml:lang="en">Interior Access</skos:prefLabel>
+    <dcterms:identifier>50e79dbe-43b2-47ce-b055-5ae80f417c24</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ee804ff5-7763-4326-b2b4-108c06a1ae9c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/e37789f0-3bb8-4063-a435-6f1c4108acdc"/>
+    <skos:prefLabel xml:lang="en">Site Access Only</skos:prefLabel>
+    <dcterms:identifier>ee804ff5-7763-4326-b2b4-108c06a1ae9c</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

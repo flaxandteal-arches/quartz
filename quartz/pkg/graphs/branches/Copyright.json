@@ -1,0 +1,571 @@
+{
+    "graph": [
+        {
+            "author": "Philip Carlisle - Historic England",
+            "cards": [
+                {
+                    "active": true,
+                    "cardid": "fb1484f9-992e-11ea-8e3c-f875a44e0e11",
+                    "component_id": "f05e4d3a-53c1-11e8-b0ea-784f435179ea",
+                    "constraints": [],
+                    "description": {
+                        "en": ""
+                    },
+                    "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                    "helpenabled": false,
+                    "helptext": {
+                        "en": ""
+                    },
+                    "helptitle": {
+                        "en": ""
+                    },
+                    "instructions": {
+                        "en": ""
+                    },
+                    "is_editable": null,
+                    "name": {
+                        "en": "Copyright"
+                    },
+                    "nodegroup_id": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                    "sortorder": 9,
+                    "visible": true
+                }
+            ],
+            "cards_x_nodes_x_widgets": [
+                {
+                    "card_id": "fb1484f9-992e-11ea-8e3c-f875a44e0e11",
+                    "config": {
+                        "defaultValue": null,
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Copyright Type",
+                        "placeholder": {
+                            "en": "Select an option"
+                        },
+                        "url": "/concepts/dropdown?conceptid=c73164aa-acbd-4d7b-878b-1e8b723d0e57"
+                    },
+                    "id": "fb14ac10-992e-11ea-afe0-f875a44e0e11",
+                    "label": {
+                        "en": "Copyright Type"
+                    },
+                    "node_id": "fb14ac0d-992e-11ea-8b85-f875a44e0e11",
+                    "sortorder": 1,
+                    "visible": true,
+                    "widget_id": "19e56148-82b8-47eb-b66e-f6243639a1a8"
+                },
+                {
+                    "card_id": "fb1484f9-992e-11ea-8e3c-f875a44e0e11",
+                    "config": {
+                        "defaultResourceInstance": [],
+                        "defaultValue": null,
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Copyright Holder",
+                        "maxLength": null,
+                        "placeholder": {
+                            "en": "Enter text"
+                        },
+                        "width": "100%"
+                    },
+                    "id": "fb14ac11-992e-11ea-b794-f875a44e0e11",
+                    "label": {
+                        "en": "Copyright Holder"
+                    },
+                    "node_id": "fb14ac0c-992e-11ea-90df-f875a44e0e11",
+                    "sortorder": 0,
+                    "visible": true,
+                    "widget_id": "ff3c400a-76ec-11e7-a793-784f435179ea"
+                },
+                {
+                    "card_id": "fb1484f9-992e-11ea-8e3c-f875a44e0e11",
+                    "config": {
+                        "defaultValue": [
+                            {
+                                "labels": [
+                                    {
+                                        "id": "daa4cddc-8636-4842-b836-eb2e10aabe18",
+                                        "language_id": "en",
+                                        "list_item_id": "f1cbae8f-0090-47dc-8252-ee533a2deb29",
+                                        "value": "Notes",
+                                        "valuetype_id": "prefLabel"
+                                    }
+                                ],
+                                "list_id": "0ff39ed3-cc95-4c60-9321-6d4e65fb1f2d",
+                                "uri": "http://localhost:8000/plugins/controlled-list-manager/item/f1cbae8f-0090-47dc-8252-ee533a2deb29"
+                            }
+                        ],
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Copyright Note Type",
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "fb14ac12-992e-11ea-a284-f875a44e0e11",
+                    "label": {
+                        "en": "Copyright Note Type"
+                    },
+                    "node_id": "fb1484fa-992e-11ea-b957-f875a44e0e11",
+                    "sortorder": 3,
+                    "visible": false,
+                    "widget_id": "19e56148-82b8-47eb-b66e-f6243639a1a8"
+                },
+                {
+                    "card_id": "fb1484f9-992e-11ea-8e3c-f875a44e0e11",
+                    "config": {
+                        "defaultValue": [
+                            {
+                                "labels": [
+                                    {
+                                        "id": "561dc137-3557-4e2f-986e-a8855cad74cf",
+                                        "language_id": "en",
+                                        "list_item_id": "afc200ff-f35d-4bc2-827a-f90ad6268802",
+                                        "value": "Copyright Type",
+                                        "valuetype_id": "prefLabel"
+                                    }
+                                ],
+                                "list_id": "1e63c514-eb9d-48d3-94b5-35e060e5f368",
+                                "uri": "http://localhost:8000/plugins/controlled-list-manager/item/afc200ff-f35d-4bc2-827a-f90ad6268802"
+                            }
+                        ],
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Copyright Metatype",
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "fb14ac13-992e-11ea-9a8e-f875a44e0e11",
+                    "label": {
+                        "en": "Copyright Metatype"
+                    },
+                    "node_id": "fb14ac0a-992e-11ea-90a2-f875a44e0e11",
+                    "sortorder": 2,
+                    "visible": false,
+                    "widget_id": "19e56148-82b8-47eb-b66e-f6243639a1a8"
+                },
+                {
+                    "card_id": "fb1484f9-992e-11ea-8e3c-f875a44e0e11",
+                    "config": {
+                        "defaultValue": [
+                            {
+                                "labels": [
+                                    {
+                                        "id": "6fbe3775-e51d-4f90-af53-5695dd204c9a",
+                                        "language_id": "en",
+                                        "list_item_id": "58283be2-b1d1-4e00-83f2-af87ca292738",
+                                        "value": "Description Type",
+                                        "valuetype_id": "prefLabel"
+                                    }
+                                ],
+                                "list_id": "1e63c514-eb9d-48d3-94b5-35e060e5f368",
+                                "uri": "http://localhost:8000/plugins/controlled-list-manager/item/58283be2-b1d1-4e00-83f2-af87ca292738"
+                            }
+                        ],
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Copyright Note Metatype",
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "fb14ac14-992e-11ea-a531-f875a44e0e11",
+                    "label": {
+                        "en": "Copyright Note Metatype"
+                    },
+                    "node_id": "fb14ac0b-992e-11ea-97fa-f875a44e0e11",
+                    "sortorder": 5,
+                    "visible": false,
+                    "widget_id": "19e56148-82b8-47eb-b66e-f6243639a1a8"
+                },
+                {
+                    "card_id": "fb1484f9-992e-11ea-8e3c-f875a44e0e11",
+                    "config": {
+                        "defaultValue": {
+                            "en": {
+                                "direction": "ltr",
+                                "value": ""
+                            }
+                        },
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Copyright Note Text",
+                        "maxLength": null,
+                        "placeholder": {
+                            "en": "Enter text"
+                        },
+                        "uneditable": false,
+                        "width": "100%"
+                    },
+                    "id": "fb14ac15-992e-11ea-ac30-f875a44e0e11",
+                    "label": {
+                        "en": "Copyright Note Text"
+                    },
+                    "node_id": "fb14ac0f-992e-11ea-9981-f875a44e0e11",
+                    "sortorder": 4,
+                    "visible": true,
+                    "widget_id": "10000000-0000-0000-0000-000000000005"
+                }
+            ],
+            "color": null,
+            "config": {},
+            "deploymentdate": null,
+            "deploymentfile": null,
+            "description": {
+                "en": ""
+            },
+            "edges": [
+                {
+                    "description": null,
+                    "domainnode_id": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                    "edgeid": "fb14ac16-992e-11ea-af93-f875a44e0e11",
+                    "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P75i_is_possessed_by",
+                    "rangenode_id": "fb14ac0c-992e-11ea-90df-f875a44e0e11"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                    "edgeid": "fb14ac17-992e-11ea-a5ae-f875a44e0e11",
+                    "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "fb14ac0d-992e-11ea-8b85-f875a44e0e11"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "fb14ac0e-992e-11ea-997f-f875a44e0e11",
+                    "edgeid": "fb14ac18-992e-11ea-9a62-f875a44e0e11",
+                    "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "fb1484fa-992e-11ea-b957-f875a44e0e11"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                    "edgeid": "fb14ac19-992e-11ea-9009-f875a44e0e11",
+                    "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
+                    "rangenode_id": "fb14ac0e-992e-11ea-997f-f875a44e0e11"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "fb14ac0e-992e-11ea-997f-f875a44e0e11",
+                    "edgeid": "fb14ac1a-992e-11ea-9566-f875a44e0e11",
+                    "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+                    "rangenode_id": "fb14ac0f-992e-11ea-9981-f875a44e0e11"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "fb14ac0d-992e-11ea-8b85-f875a44e0e11",
+                    "edgeid": "fb14ac1b-992e-11ea-ba12-f875a44e0e11",
+                    "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "fb14ac0a-992e-11ea-90a2-f875a44e0e11"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "fb1484fa-992e-11ea-b957-f875a44e0e11",
+                    "edgeid": "fb14ac1c-992e-11ea-975d-f875a44e0e11",
+                    "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "fb14ac0b-992e-11ea-97fa-f875a44e0e11"
+                }
+            ],
+            "functions_x_graphs": [],
+            "graphid": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+            "group_permissions": {},
+            "has_unpublished_changes": true,
+            "iconclass": "fa fa-copyright",
+            "is_active": false,
+            "is_copy_immutable": false,
+            "is_editable": null,
+            "isresource": false,
+            "jsonldcontext": null,
+            "name": {
+                "en": "Copyright"
+            },
+            "nodegroups": [
+                {
+                    "cardinality": "1",
+                    "grouping_node_id": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                    "legacygroupid": null,
+                    "nodegroupid": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                    "parentnodegroup_id": null
+                }
+            ],
+            "nodes": [
+                {
+                    "alias": "copyright",
+                    "config": {
+                        "fillColor": "rgba(233,112,111,0.8)"
+                    },
+                    "datatype": "semantic",
+                    "description": {
+                        "en": ""
+                    },
+                    "exportable": false,
+                    "fieldname": "",
+                    "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                    "hascustomalias": false,
+                    "is_collector": true,
+                    "is_immutable": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": true,
+                    "name": "Copyright",
+                    "nodegroup_id": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                    "nodeid": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E30_Right",
+                    "parentproperty": "",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "copyright_note_type",
+                    "config": {
+                        "controlledList": "0ff39ed3-cc95-4c60-9321-6d4e65fb1f2d",
+                        "multiValue": false
+                    },
+                    "datatype": "reference",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "is_immutable": false,
+                    "isrequired": false,
+                    "issearchable": false,
+                    "istopnode": false,
+                    "name": "Copyright Note Type",
+                    "nodegroup_id": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                    "nodeid": "fb1484fa-992e-11ea-b957-f875a44e0e11",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "copyright_metatype",
+                    "config": {
+                        "controlledList": "1e63c514-eb9d-48d3-94b5-35e060e5f368",
+                        "multiValue": false
+                    },
+                    "datatype": "reference",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "is_immutable": false,
+                    "isrequired": false,
+                    "issearchable": false,
+                    "istopnode": false,
+                    "name": "Copyright Metatype",
+                    "nodegroup_id": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                    "nodeid": "fb14ac0a-992e-11ea-90a2-f875a44e0e11",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "copyright_note_metatype",
+                    "config": {
+                        "controlledList": "1e63c514-eb9d-48d3-94b5-35e060e5f368",
+                        "multiValue": false
+                    },
+                    "datatype": "reference",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "is_immutable": false,
+                    "isrequired": false,
+                    "issearchable": false,
+                    "istopnode": false,
+                    "name": "Copyright Note Metatype",
+                    "nodegroup_id": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                    "nodeid": "fb14ac0b-992e-11ea-97fa-f875a44e0e11",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "copyright_holder",
+                    "config": {
+                        "graphid": [
+                            "d4a88461-5463-11e9-90d9-000d3ab1e588",
+                            "22477f01-1a44-11e9-b0a9-000d3ab1e588"
+                        ],
+                        "graphs": [
+                            {
+                                "graphid": "22477f01-1a44-11e9-b0a9-000d3ab1e588",
+                                "name": "Person"
+                            },
+                            {
+                                "graphid": "d4a88461-5463-11e9-90d9-000d3ab1e588",
+                                "name": "Organization"
+                            }
+                        ],
+                        "searchDsl": "",
+                        "searchString": ""
+                    },
+                    "datatype": "resource-instance-list",
+                    "description": {
+                        "en": "Represents a single node in a graph"
+                    },
+                    "exportable": true,
+                    "fieldname": "CopyHolder",
+                    "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "is_immutable": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Copyright Holder",
+                    "nodegroup_id": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                    "nodeid": "fb14ac0c-992e-11ea-90df-f875a44e0e11",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E39_Actor",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P75i_is_possessed_by",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "copyright_type",
+                    "config": {
+                        "controlledList": "c73164aa-acbd-4d7b-878b-1e8b723d0e57",
+                        "multiValue": false
+                    },
+                    "datatype": "reference",
+                    "description": {
+                        "en": "Represents a single node in a graph"
+                    },
+                    "exportable": true,
+                    "fieldname": "Copy_type",
+                    "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "is_immutable": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Copyright Type",
+                    "nodegroup_id": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                    "nodeid": "fb14ac0d-992e-11ea-8b85-f875a44e0e11",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "copyright_note",
+                    "config": {},
+                    "datatype": "semantic",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "is_immutable": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Copyright Note",
+                    "nodegroup_id": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                    "nodeid": "fb14ac0e-992e-11ea-997f-f875a44e0e11",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "copyright_note_text",
+                    "config": {},
+                    "datatype": "string",
+                    "description": null,
+                    "exportable": true,
+                    "fieldname": "Copy_note",
+                    "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "is_immutable": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Copyright Note Text",
+                    "nodegroup_id": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                    "nodeid": "fb14ac0f-992e-11ea-9981-f875a44e0e11",
+                    "ontologyclass": "http://www.w3.org/2000/01/rdf-schema#Literal",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                }
+            ],
+            "ontology_id": "e6e8db47-2ccf-11e6-927e-b8f6b115d7dd",
+            "publication": {
+                "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                "most_recent_edit_id": null,
+                "notes": "Migrated concept/concept-list nodes to reference datatype",
+                "publicationid": "4bfe671c-ddf1-4ca5-a641-e333ab83a32d",
+                "published_time": "2025-10-22T19:38:35.643"
+            },
+            "relatable_resource_model_ids": [],
+            "resource_2_resource_constraints": [],
+            "root": {
+                "alias": "copyright",
+                "config": {
+                    "fillColor": "rgba(233,112,111,0.8)"
+                },
+                "datatype": "semantic",
+                "description": {
+                    "en": ""
+                },
+                "exportable": false,
+                "fieldname": "",
+                "graph_id": "fb1484f6-992e-11ea-9d18-f875a44e0e11",
+                "hascustomalias": false,
+                "is_collector": true,
+                "is_immutable": false,
+                "isrequired": false,
+                "issearchable": true,
+                "istopnode": true,
+                "name": "Copyright",
+                "nodegroup_id": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                "nodeid": "fb1484f7-992e-11ea-a732-f875a44e0e11",
+                "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E30_Right",
+                "parentproperty": null,
+                "sortorder": 0,
+                "sourcebranchpublication_id": null
+            },
+            "slug": "copyright",
+            "spatial_views": [],
+            "subtitle": {
+                "en": "Used to record the type and copyright statement associated with a bibliographic or archive source."
+            },
+            "template_id": "50000000-0000-0000-0000-000000000001",
+            "user_permissions": {},
+            "version": ""
+        }
+    ]
+}

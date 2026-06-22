@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/802f8b18-5b12-5fa3-b419-254c936ce672">
+    <dcterms:title xml:lang="en">Open To Public Types</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/64d8716a-4723-5a04-98b7-55b1c4ac9814"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/768cc9ee-2341-5393-9574-b40f086b4267"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/88d9f7ba-de32-5298-bcac-d49b9bf2e44d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ace4433f-ed9e-5ef1-b257-84202939de27"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/64d8716a-4723-5a04-98b7-55b1c4ac9814">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/802f8b18-5b12-5fa3-b419-254c936ce672"/>
+    <skos:prefLabel xml:lang="en">Public</skos:prefLabel>
+    <dcterms:identifier>64d8716a-4723-5a04-98b7-55b1c4ac9814</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/768cc9ee-2341-5393-9574-b40f086b4267">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/802f8b18-5b12-5fa3-b419-254c936ce672"/>
+    <skos:prefLabel xml:lang="en">Private</skos:prefLabel>
+    <dcterms:identifier>768cc9ee-2341-5393-9574-b40f086b4267</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/88d9f7ba-de32-5298-bcac-d49b9bf2e44d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/802f8b18-5b12-5fa3-b419-254c936ce672"/>
+    <skos:prefLabel xml:lang="en">Unknown</skos:prefLabel>
+    <dcterms:identifier>88d9f7ba-de32-5298-bcac-d49b9bf2e44d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ace4433f-ed9e-5ef1-b257-84202939de27">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/802f8b18-5b12-5fa3-b419-254c936ce672"/>
+    <skos:prefLabel xml:lang="en">Mixed</skos:prefLabel>
+    <dcterms:identifier>ace4433f-ed9e-5ef1-b257-84202939de27</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

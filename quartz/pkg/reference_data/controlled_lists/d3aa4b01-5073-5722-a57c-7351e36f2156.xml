@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156">
+    <dcterms:title xml:lang="en">State Themes</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/03b286ce-575e-562f-a3fc-1526c098b93e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/099b361a-257a-5dbf-863b-da8e870d4922"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0b423d2e-5705-584e-856d-0bb78afad85c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/10b8f4a1-8508-5459-84ab-f8c6ba0495f9"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1213ca71-c3f4-5455-99fb-691beca37bf0"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/169fb80f-2145-5aba-9aa9-dc5314821def"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1caae3ef-86db-52dc-8c1c-977e98c2e5ee"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/270e96c8-a65a-5ceb-a25c-7b3fee363a1c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2cc5d4a1-4c12-5152-bc65-0c57761dda41"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2e8521f4-d276-501c-b8cb-71bdccdf8af6"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/344d74ac-e7e5-5f63-9e09-26eb1587cddc"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/3b610b50-6917-58da-87f8-e9ebed2f6988"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/406868ad-9d48-54e7-a6d9-d95cbc4593c5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/460b6ee3-7fa3-5894-acd9-1436d012d23a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/486c3578-12d4-5a74-8c89-7bfcfb947626"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5125b53e-a04e-507b-97ce-d330848c9e86"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/52d37f6a-e09b-5a2f-b681-9af4f5a7289c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/536c8ef3-c10a-5b1c-badd-26e767158407"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/570d083d-f479-506a-a9bc-29d322922468"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5f83519d-b387-58fc-ba69-f4d6e4b3f112"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5fa41ac1-6559-5704-b963-301bc7a0544e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/68a0fffd-a0b9-53d1-8ee5-5e1e331f5b07"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/69c88d9d-f8e9-5ebf-a2b8-681fe9552af0"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7036f77e-d99a-5b68-8397-16831d6e25e2"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7409da8b-9a30-519d-af1c-230dbbf68fbf"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/742a2dff-fbc6-5b51-a044-4ab405c67082"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/74495f84-9fc5-5c86-bba3-bc80444d8317"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7531686f-15ab-5b19-8c78-45319f2c8e45"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7bc41ece-b861-5ccf-8ea4-3d01ccd4e1d9"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7f816977-46b9-55fb-9eea-716c1436bbf4"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/81fdf533-8a3e-5300-8a83-fadca219339d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/82f65e4a-c532-5ecb-8b68-f4d635648306"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/86f8178f-925e-5139-88ef-21d8d6532deb"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8da237bc-8d2b-5fe3-b6bb-f265237ed62a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8f7d2321-5ba8-59d0-ad50-7b8a8e6e252d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9dca5103-f431-5614-879f-b5cd24d0d8a8"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a1f9aec6-f721-596b-98b1-06186f75d519"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a67399ab-ced5-54b1-ba67-3667b6b60af0"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a82141b1-86a1-59a3-b602-3467e993ad89"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ab6eb147-3a1f-5587-a2c2-75d198dc5e68"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/af9b33f8-f7d7-5319-873c-421cf5cabe12"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b059ec8a-8299-53a0-835e-a5b9c3c8363d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b4819031-6d90-5f8b-828f-f3ad210460d1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b615b685-1963-5c4a-a70d-f81bf4d8a37d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b933770a-a440-5acb-8672-e51553b65127"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c35b9d56-e8f9-5472-a046-d0513c7a942c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c5ef3bed-2c7e-5294-9ce1-93f9df727997"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/cdf61ce3-d0da-51ef-94b0-a152ed279eef"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/cf827d2a-6690-5c40-bd55-f26f674e3a25"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/cfdcb264-702a-5462-9e3b-48386e3fff8d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d193c0f0-c929-52d0-85d8-960c1f88fb30"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d4e06aee-956e-51a6-8d28-14072a37e1c8"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d5cdb200-eb29-568a-ae8d-7f1a55d7c4b1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d67ef4d1-259e-5e40-986e-e5640e99eb9d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d8844265-c561-5601-baa4-92498f597287"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/dd6586e5-d483-5ca6-9033-95115e8c0acd"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/dda3da63-572c-527b-aafc-f479d567ff33"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e0a80e5f-be19-53ba-a53f-706c381f4983"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e20baacc-f34b-58a2-afc3-419faba02c56"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/eb796bed-cf7b-5807-9c1b-9dc453270e35"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ece0d708-e713-5e6a-87c9-50d3869523ab"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f734d3ce-6e69-53de-91ee-0a8f0a388dc0"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/fa3066a0-cca9-59ee-b197-f0ff0374fa6d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/fd26f3c1-5621-5d21-87ac-cb66a1fbd5aa"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/fe62865d-e30d-5d4c-87bf-0eb78b682df2"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/03b286ce-575e-562f-a3fc-1526c098b93e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">05.08 Moving goods, people and information: Postal services</skos:prefLabel>
+    <dcterms:identifier>03b286ce-575e-562f-a3fc-1526c098b93e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/099b361a-257a-5dbf-863b-da8e870d4922">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">08.01 Creating social and cultural institutions: Worshipping and religious institutions</skos:prefLabel>
+    <dcterms:identifier>099b361a-257a-5dbf-863b-da8e870d4922</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0b423d2e-5705-584e-856d-0bb78afad85c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">02.03 Exploiting, utilising and transforming the land: Pastoral activities</skos:prefLabel>
+    <dcterms:identifier>0b423d2e-5705-584e-856d-0bb78afad85c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/10b8f4a1-8508-5459-84ab-f8c6ba0495f9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">04.01 Working: Organising workers and workplaces</skos:prefLabel>
+    <dcterms:identifier>10b8f4a1-8508-5459-84ab-f8c6ba0495f9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1213ca71-c3f4-5455-99fb-691beca37bf0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">03.05 Developing secondary and tertiary industries: Struggling with remoteness, hardship and failure</skos:prefLabel>
+    <dcterms:identifier>1213ca71-c3f4-5455-99fb-691beca37bf0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/169fb80f-2145-5aba-9aa9-dc5314821def">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">04.02 Working: Facilities for children of workers</skos:prefLabel>
+    <dcterms:identifier>169fb80f-2145-5aba-9aa9-dc5314821def</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1caae3ef-86db-52dc-8c1c-977e98c2e5ee">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">04.04 Working: Unpaid labour</skos:prefLabel>
+    <dcterms:identifier>1caae3ef-86db-52dc-8c1c-977e98c2e5ee</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/270e96c8-a65a-5ceb-a25c-7b3fee363a1c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">05.05 Moving goods, people and information: Using motor vehicles</skos:prefLabel>
+    <dcterms:identifier>270e96c8-a65a-5ceb-a25c-7b3fee363a1c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2cc5d4a1-4c12-5152-bc65-0c57761dda41">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">02.04 Exploiting, utilising and transforming the land: Agricultural activities</skos:prefLabel>
+    <dcterms:identifier>2cc5d4a1-4c12-5152-bc65-0c57761dda41</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2e8521f4-d276-501c-b8cb-71bdccdf8af6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">10.03 Providing health and welfare services: Caring for women and children</skos:prefLabel>
+    <dcterms:identifier>2e8521f4-d276-501c-b8cb-71bdccdf8af6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/344d74ac-e7e5-5f63-9e09-26eb1587cddc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">03.02 Developing secondary and tertiary industries: Developing manufacturing capacities</skos:prefLabel>
+    <dcterms:identifier>344d74ac-e7e5-5f63-9e09-26eb1587cddc</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3b610b50-6917-58da-87f8-e9ebed2f6988">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">06.02 Building settlements, towns, cities and dwellings: Planning and form of settlements</skos:prefLabel>
+    <dcterms:identifier>3b610b50-6917-58da-87f8-e9ebed2f6988</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/406868ad-9d48-54e7-a6d9-d95cbc4593c5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">03.03 Developing secondary and tertiary industries: Developing engineering and construction industries</skos:prefLabel>
+    <dcterms:identifier>406868ad-9d48-54e7-a6d9-d95cbc4593c5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/460b6ee3-7fa3-5894-acd9-1436d012d23a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">05.06 Moving goods, people and information: Using air transport</skos:prefLabel>
+    <dcterms:identifier>460b6ee3-7fa3-5894-acd9-1436d012d23a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/486c3578-12d4-5a74-8c89-7bfcfb947626">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">07.02 Maintaining order: Government and public administration</skos:prefLabel>
+    <dcterms:identifier>486c3578-12d4-5a74-8c89-7bfcfb947626</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5125b53e-a04e-507b-97ce-d330848c9e86">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">04.05 Working: Surviving as Indigenous people in a white-dominated economy</skos:prefLabel>
+    <dcterms:identifier>5125b53e-a04e-507b-97ce-d330848c9e86</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/52d37f6a-e09b-5a2f-b681-9af4f5a7289c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">01.03 Peopling places: Encounters between Indigenous and non-Indigenous peoples</skos:prefLabel>
+    <dcterms:identifier>52d37f6a-e09b-5a2f-b681-9af4f5a7289c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/536c8ef3-c10a-5b1c-badd-26e767158407">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">02.08 Exploiting, utilising and transforming the land: Protecting and conserving the environment</skos:prefLabel>
+    <dcterms:identifier>536c8ef3-c10a-5b1c-badd-26e767158407</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/570d083d-f479-506a-a9bc-29d322922468">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">05.03 Moving goods, people and information: Using rail</skos:prefLabel>
+    <dcterms:identifier>570d083d-f479-506a-a9bc-29d322922468</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5f83519d-b387-58fc-ba69-f4d6e4b3f112">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">08.06 Creating social and cultural institutions: Commemorating significant events</skos:prefLabel>
+    <dcterms:identifier>5f83519d-b387-58fc-ba69-f4d6e4b3f112</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5fa41ac1-6559-5704-b963-301bc7a0544e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">03.06 Developing secondary and tertiary industries: Inventing devices</skos:prefLabel>
+    <dcterms:identifier>5fa41ac1-6559-5704-b963-301bc7a0544e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/68a0fffd-a0b9-53d1-8ee5-5e1e331f5b07">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">06.04 Building settlements, towns, cities and dwellings: Dwellings</skos:prefLabel>
+    <dcterms:identifier>68a0fffd-a0b9-53d1-8ee5-5e1e331f5b07</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/69c88d9d-f8e9-5ebf-a2b8-681fe9552af0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">03.10 Developing secondary and tertiary industries: Entertaining for profit</skos:prefLabel>
+    <dcterms:identifier>69c88d9d-f8e9-5ebf-a2b8-681fe9552af0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7036f77e-d99a-5b68-8397-16831d6e25e2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">01.01 Peopling places: The first inhabitants</skos:prefLabel>
+    <dcterms:identifier>7036f77e-d99a-5b68-8397-16831d6e25e2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7409da8b-9a30-519d-af1c-230dbbf68fbf">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">06.01 Building settlements, towns, cities and dwellings: Establishing settlements and towns</skos:prefLabel>
+    <dcterms:identifier>7409da8b-9a30-519d-af1c-230dbbf68fbf</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/742a2dff-fbc6-5b51-a044-4ab405c67082">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">07.05 Maintaining order: Withstanding physical threats to order</skos:prefLabel>
+    <dcterms:identifier>742a2dff-fbc6-5b51-a044-4ab405c67082</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/74495f84-9fc5-5c86-bba3-bc80444d8317">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">02.02 Exploiting, utilising and transforming the land: Exploiting natural resources</skos:prefLabel>
+    <dcterms:identifier>74495f84-9fc5-5c86-bba3-bc80444d8317</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7531686f-15ab-5b19-8c78-45319f2c8e45">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">02.09 Exploiting, utilising and transforming the land: Valuing and appreciating the environment and landscapes</skos:prefLabel>
+    <dcterms:identifier>7531686f-15ab-5b19-8c78-45319f2c8e45</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7bc41ece-b861-5ccf-8ea4-3d01ccd4e1d9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">07.03 Maintaining order: Customs and quarantine services</skos:prefLabel>
+    <dcterms:identifier>7bc41ece-b861-5ccf-8ea4-3d01ccd4e1d9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7f816977-46b9-55fb-9eea-716c1436bbf4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">07.06 Maintaining order: Defending the country</skos:prefLabel>
+    <dcterms:identifier>7f816977-46b9-55fb-9eea-716c1436bbf4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/81fdf533-8a3e-5300-8a83-fadca219339d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">08.04 Creating social and cultural institutions: Festivals</skos:prefLabel>
+    <dcterms:identifier>81fdf533-8a3e-5300-8a83-fadca219339d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/82f65e4a-c532-5ecb-8b68-f4d635648306">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">02.06 Exploiting, utilising and transforming the land: Managing flora and fauna</skos:prefLabel>
+    <dcterms:identifier>82f65e4a-c532-5ecb-8b68-f4d635648306</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/86f8178f-925e-5139-88ef-21d8d6532deb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">03.01 Developing secondary and tertiary industries: Feeding Queenslanders</skos:prefLabel>
+    <dcterms:identifier>86f8178f-925e-5139-88ef-21d8d6532deb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8da237bc-8d2b-5fe3-b6bb-f265237ed62a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">09.01 Educating Queenslanders: Providing primary schooling</skos:prefLabel>
+    <dcterms:identifier>8da237bc-8d2b-5fe3-b6bb-f265237ed62a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8f7d2321-5ba8-59d0-ad50-7b8a8e6e252d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">03.09 Developing secondary and tertiary industries: Informing Queenslanders</skos:prefLabel>
+    <dcterms:identifier>8f7d2321-5ba8-59d0-ad50-7b8a8e6e252d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9dca5103-f431-5614-879f-b5cd24d0d8a8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">08.03 Creating social and cultural institutions: Organisations and societies</skos:prefLabel>
+    <dcterms:identifier>9dca5103-f431-5614-879f-b5cd24d0d8a8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a1f9aec6-f721-596b-98b1-06186f75d519">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">07.01 Maintaining order: Policing and maintaining law and order</skos:prefLabel>
+    <dcterms:identifier>a1f9aec6-f721-596b-98b1-06186f75d519</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a67399ab-ced5-54b1-ba67-3667b6b60af0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">06.03 Building settlements, towns, cities and dwellings: Developing urban services and amenities</skos:prefLabel>
+    <dcterms:identifier>a67399ab-ced5-54b1-ba67-3667b6b60af0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a82141b1-86a1-59a3-b602-3467e993ad89">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">05.04 Moving goods, people and information: Using shipping</skos:prefLabel>
+    <dcterms:identifier>a82141b1-86a1-59a3-b602-3467e993ad89</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ab6eb147-3a1f-5587-a2c2-75d198dc5e68">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">03.13 Developing secondary and tertiary industries: Adorning Queenslanders</skos:prefLabel>
+    <dcterms:identifier>ab6eb147-3a1f-5587-a2c2-75d198dc5e68</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/af9b33f8-f7d7-5319-873c-421cf5cabe12">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">10.04 Providing health and welfare services: Caring for the aged and infirm</skos:prefLabel>
+    <dcterms:identifier>af9b33f8-f7d7-5319-873c-421cf5cabe12</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b059ec8a-8299-53a0-835e-a5b9c3c8363d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">01.04 Peopling places: Family and marking the phases of life</skos:prefLabel>
+    <dcterms:identifier>b059ec8a-8299-53a0-835e-a5b9c3c8363d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b4819031-6d90-5f8b-828f-f3ad210460d1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">03.11 Developing secondary and tertiary industries: Lodging people</skos:prefLabel>
+    <dcterms:identifier>b4819031-6d90-5f8b-828f-f3ad210460d1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b615b685-1963-5c4a-a70d-f81bf4d8a37d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">02.01 Exploiting, utilising and transforming the land: Exploring, surveying and mapping the land</skos:prefLabel>
+    <dcterms:identifier>b615b685-1963-5c4a-a70d-f81bf4d8a37d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b933770a-a440-5acb-8672-e51553b65127">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">02.05 Exploiting, utilising and transforming the land: Managing water</skos:prefLabel>
+    <dcterms:identifier>b933770a-a440-5acb-8672-e51553b65127</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c35b9d56-e8f9-5472-a046-d0513c7a942c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">05.07 Moving goods, people and information: Telecommunications</skos:prefLabel>
+    <dcterms:identifier>c35b9d56-e8f9-5472-a046-d0513c7a942c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c5ef3bed-2c7e-5294-9ce1-93f9df727997">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">09.04 Educating Queenslanders: Providing tertiary education</skos:prefLabel>
+    <dcterms:identifier>c5ef3bed-2c7e-5294-9ce1-93f9df727997</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cdf61ce3-d0da-51ef-94b0-a152ed279eef">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">02.10 Exploiting, utilising and transforming the land: Responding to climate and climatic events</skos:prefLabel>
+    <dcterms:identifier>cdf61ce3-d0da-51ef-94b0-a152ed279eef</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cf827d2a-6690-5c40-bd55-f26f674e3a25">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">05.01 Moving goods, people and information: Utilising human movement</skos:prefLabel>
+    <dcterms:identifier>cf827d2a-6690-5c40-bd55-f26f674e3a25</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cfdcb264-702a-5462-9e3b-48386e3fff8d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">08.02 Creating social and cultural institutions: Cultural activities</skos:prefLabel>
+    <dcterms:identifier>cfdcb264-702a-5462-9e3b-48386e3fff8d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d193c0f0-c929-52d0-85d8-960c1f88fb30">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">09.02 Educating Queenslanders: Providing secondary education</skos:prefLabel>
+    <dcterms:identifier>d193c0f0-c929-52d0-85d8-960c1f88fb30</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d4e06aee-956e-51a6-8d28-14072a37e1c8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">10.01 Providing health and welfare services: Providing health services</skos:prefLabel>
+    <dcterms:identifier>d4e06aee-956e-51a6-8d28-14072a37e1c8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d5cdb200-eb29-568a-ae8d-7f1a55d7c4b1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">02.07 Exploiting, utilising and transforming the land: Experimenting, developing technologies and innovation</skos:prefLabel>
+    <dcterms:identifier>d5cdb200-eb29-568a-ae8d-7f1a55d7c4b1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d67ef4d1-259e-5e40-986e-e5640e99eb9d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">03.08 Developing secondary and tertiary industries: Marketing, retailing and service industries</skos:prefLabel>
+    <dcterms:identifier>d67ef4d1-259e-5e40-986e-e5640e99eb9d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d8844265-c561-5601-baa4-92498f597287">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">07.04 Maintaining order: Local government</skos:prefLabel>
+    <dcterms:identifier>d8844265-c561-5601-baa4-92498f597287</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/dd6586e5-d483-5ca6-9033-95115e8c0acd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">03.04 Developing secondary and tertiary industries: Developing economic links outside Queensland</skos:prefLabel>
+    <dcterms:identifier>dd6586e5-d483-5ca6-9033-95115e8c0acd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/dda3da63-572c-527b-aafc-f479d567ff33">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">04.03 Working: Working in offices</skos:prefLabel>
+    <dcterms:identifier>dda3da63-572c-527b-aafc-f479d567ff33</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e0a80e5f-be19-53ba-a53f-706c381f4983">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">05.02 Moving goods, people and information: Using draught animals</skos:prefLabel>
+    <dcterms:identifier>e0a80e5f-be19-53ba-a53f-706c381f4983</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e20baacc-f34b-58a2-afc3-419faba02c56">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">10.02 Providing health and welfare services: Caring for the homeless and destitute</skos:prefLabel>
+    <dcterms:identifier>e20baacc-f34b-58a2-afc3-419faba02c56</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/eb796bed-cf7b-5807-9c1b-9dc453270e35">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">08.05 Creating social and cultural institutions: Sport and recreation</skos:prefLabel>
+    <dcterms:identifier>eb796bed-cf7b-5807-9c1b-9dc453270e35</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ece0d708-e713-5e6a-87c9-50d3869523ab">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">04.06 Working: Working as exploited/indentured labour</skos:prefLabel>
+    <dcterms:identifier>ece0d708-e713-5e6a-87c9-50d3869523ab</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f734d3ce-6e69-53de-91ee-0a8f0a388dc0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">03.12 Developing secondary and tertiary industries: Catering for tourists</skos:prefLabel>
+    <dcterms:identifier>f734d3ce-6e69-53de-91ee-0a8f0a388dc0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fa3066a0-cca9-59ee-b197-f0ff0374fa6d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">09.03 Educating Queenslanders: Educating adults</skos:prefLabel>
+    <dcterms:identifier>fa3066a0-cca9-59ee-b197-f0ff0374fa6d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fd26f3c1-5621-5d21-87ac-cb66a1fbd5aa">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">01.02 Peopling places: Migration from outside and within</skos:prefLabel>
+    <dcterms:identifier>fd26f3c1-5621-5d21-87ac-cb66a1fbd5aa</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fe62865d-e30d-5d4c-87bf-0eb78b682df2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d3aa4b01-5073-5722-a57c-7351e36f2156"/>
+    <skos:prefLabel xml:lang="en">03.07 Developing secondary and tertiary industries: Financing</skos:prefLabel>
+    <dcterms:identifier>fe62865d-e30d-5d4c-87bf-0eb78b682df2</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

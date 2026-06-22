@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/4b28b6fb-c6b3-4258-a2b8-07c2e42255cc">
+    <dcterms:title xml:lang="en">Average Height</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/37dcd334-6ba6-4746-b0c1-de39afa04b56"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8330ef66-140e-4901-900b-931aba60f8db"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8a1a9721-38b8-4baa-8a79-620bc0dc7dc5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a3f5de0c-e19f-4d9f-b326-c7d515dedc56"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/fbab569f-f57a-465d-9021-f0dec9207b9a"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/37dcd334-6ba6-4746-b0c1-de39afa04b56">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4b28b6fb-c6b3-4258-a2b8-07c2e42255cc"/>
+    <skos:prefLabel xml:lang="en">Four to ten storey</skos:prefLabel>
+    <dcterms:identifier>37dcd334-6ba6-4746-b0c1-de39afa04b56</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8330ef66-140e-4901-900b-931aba60f8db">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4b28b6fb-c6b3-4258-a2b8-07c2e42255cc"/>
+    <skos:prefLabel xml:lang="en">Ten or more storeys</skos:prefLabel>
+    <dcterms:identifier>8330ef66-140e-4901-900b-931aba60f8db</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8a1a9721-38b8-4baa-8a79-620bc0dc7dc5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4b28b6fb-c6b3-4258-a2b8-07c2e42255cc"/>
+    <skos:prefLabel xml:lang="en">Three storey</skos:prefLabel>
+    <dcterms:identifier>8a1a9721-38b8-4baa-8a79-620bc0dc7dc5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a3f5de0c-e19f-4d9f-b326-c7d515dedc56">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4b28b6fb-c6b3-4258-a2b8-07c2e42255cc"/>
+    <skos:prefLabel xml:lang="en">Two storey</skos:prefLabel>
+    <dcterms:identifier>a3f5de0c-e19f-4d9f-b326-c7d515dedc56</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fbab569f-f57a-465d-9021-f0dec9207b9a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4b28b6fb-c6b3-4258-a2b8-07c2e42255cc"/>
+    <skos:prefLabel xml:lang="en">Single storey</skos:prefLabel>
+    <dcterms:identifier>fbab569f-f57a-465d-9021-f0dec9207b9a</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

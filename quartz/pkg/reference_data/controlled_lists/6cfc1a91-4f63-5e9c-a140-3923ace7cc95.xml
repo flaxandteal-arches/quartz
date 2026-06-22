@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/6cfc1a91-4f63-5e9c-a140-3923ace7cc95">
+    <dcterms:title xml:lang="en">Tenure Types</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/09666674-0465-5d6f-a375-4f6668607fdf"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/17338c0a-f0fc-515d-8554-e38be1743db7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/509d4583-6ab6-5ff5-92c1-da3c588c615f"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/648bc7dd-1a97-5f5e-b6dd-f562ed1358bb"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7cb3deca-ef4d-57f2-8f7d-bb4594107901"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7f1327ab-ac0f-5443-b11b-eb96e2be6c4e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8ca58e5a-e124-5d86-9c98-7428f54fbcf2"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a1322bba-0a81-5d40-99ba-92cf0a4bf262"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ce450a8c-40a8-58f1-bd70-2291629a4bcf"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/09666674-0465-5d6f-a375-4f6668607fdf">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6cfc1a91-4f63-5e9c-a140-3923ace7cc95"/>
+    <skos:prefLabel xml:lang="en">State Forest</skos:prefLabel>
+    <dcterms:identifier>09666674-0465-5d6f-a375-4f6668607fdf</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/17338c0a-f0fc-515d-8554-e38be1743db7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6cfc1a91-4f63-5e9c-a140-3923ace7cc95"/>
+    <skos:prefLabel xml:lang="en">Freehold</skos:prefLabel>
+    <dcterms:identifier>17338c0a-f0fc-515d-8554-e38be1743db7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/509d4583-6ab6-5ff5-92c1-da3c588c615f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6cfc1a91-4f63-5e9c-a140-3923ace7cc95"/>
+    <skos:prefLabel xml:lang="en">National Park</skos:prefLabel>
+    <dcterms:identifier>509d4583-6ab6-5ff5-92c1-da3c588c615f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/648bc7dd-1a97-5f5e-b6dd-f562ed1358bb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6cfc1a91-4f63-5e9c-a140-3923ace7cc95"/>
+    <skos:prefLabel xml:lang="en">Road</skos:prefLabel>
+    <dcterms:identifier>648bc7dd-1a97-5f5e-b6dd-f562ed1358bb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7cb3deca-ef4d-57f2-8f7d-bb4594107901">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6cfc1a91-4f63-5e9c-a140-3923ace7cc95"/>
+    <skos:prefLabel xml:lang="en">Bridge</skos:prefLabel>
+    <dcterms:identifier>7cb3deca-ef4d-57f2-8f7d-bb4594107901</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7f1327ab-ac0f-5443-b11b-eb96e2be6c4e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6cfc1a91-4f63-5e9c-a140-3923ace7cc95"/>
+    <skos:prefLabel xml:lang="en">Railway</skos:prefLabel>
+    <dcterms:identifier>7f1327ab-ac0f-5443-b11b-eb96e2be6c4e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8ca58e5a-e124-5d86-9c98-7428f54fbcf2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6cfc1a91-4f63-5e9c-a140-3923ace7cc95"/>
+    <skos:prefLabel xml:lang="en">Lands Lease</skos:prefLabel>
+    <dcterms:identifier>8ca58e5a-e124-5d86-9c98-7428f54fbcf2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a1322bba-0a81-5d40-99ba-92cf0a4bf262">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6cfc1a91-4f63-5e9c-a140-3923ace7cc95"/>
+    <skos:prefLabel xml:lang="en">Reserve</skos:prefLabel>
+    <dcterms:identifier>a1322bba-0a81-5d40-99ba-92cf0a4bf262</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ce450a8c-40a8-58f1-bd70-2291629a4bcf">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6cfc1a91-4f63-5e9c-a140-3923ace7cc95"/>
+    <skos:prefLabel xml:lang="en">State Land</skos:prefLabel>
+    <dcterms:identifier>ce450a8c-40a8-58f1-bd70-2291629a4bcf</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

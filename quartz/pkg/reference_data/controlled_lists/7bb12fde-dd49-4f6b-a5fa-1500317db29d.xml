@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/7bb12fde-dd49-4f6b-a5fa-1500317db29d">
+    <dcterms:title xml:lang="en">Sub-Soil Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1b2975ab-570e-45fc-84b5-ca5879ff7530"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1ca47510-618a-4f28-a1f9-e729cee18b09"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/256b2775-feed-4179-bc2b-05a330916a21"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7547e2ab-02ea-40cb-97f4-211c03b1ce4a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8783f82a-5284-472a-9ace-b5ea9bcebe37"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/bfeada9a-434f-4a48-8287-6f2caa52915a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/cdc0d66c-3560-41a8-8c90-b1c6fd167536"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1b2975ab-570e-45fc-84b5-ca5879ff7530">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7bb12fde-dd49-4f6b-a5fa-1500317db29d"/>
+    <skos:prefLabel xml:lang="en">Peat</skos:prefLabel>
+    <dcterms:identifier>1b2975ab-570e-45fc-84b5-ca5879ff7530</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1ca47510-618a-4f28-a1f9-e729cee18b09">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7bb12fde-dd49-4f6b-a5fa-1500317db29d"/>
+    <skos:prefLabel xml:lang="en">Sand</skos:prefLabel>
+    <dcterms:identifier>1ca47510-618a-4f28-a1f9-e729cee18b09</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/256b2775-feed-4179-bc2b-05a330916a21">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7bb12fde-dd49-4f6b-a5fa-1500317db29d"/>
+    <skos:prefLabel xml:lang="en">Silt</skos:prefLabel>
+    <dcterms:identifier>256b2775-feed-4179-bc2b-05a330916a21</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7547e2ab-02ea-40cb-97f4-211c03b1ce4a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7bb12fde-dd49-4f6b-a5fa-1500317db29d"/>
+    <skos:prefLabel xml:lang="en">Gravel</skos:prefLabel>
+    <dcterms:identifier>7547e2ab-02ea-40cb-97f4-211c03b1ce4a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8783f82a-5284-472a-9ace-b5ea9bcebe37">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7bb12fde-dd49-4f6b-a5fa-1500317db29d"/>
+    <skos:prefLabel xml:lang="en">Clay</skos:prefLabel>
+    <dcterms:identifier>8783f82a-5284-472a-9ace-b5ea9bcebe37</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bfeada9a-434f-4a48-8287-6f2caa52915a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7bb12fde-dd49-4f6b-a5fa-1500317db29d"/>
+    <skos:prefLabel xml:lang="en">Loess</skos:prefLabel>
+    <dcterms:identifier>bfeada9a-434f-4a48-8287-6f2caa52915a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cdc0d66c-3560-41a8-8c90-b1c6fd167536">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7bb12fde-dd49-4f6b-a5fa-1500317db29d"/>
+    <skos:prefLabel xml:lang="en">Loam</skos:prefLabel>
+    <dcterms:identifier>cdc0d66c-3560-41a8-8c90-b1c6fd167536</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/00000000-0000-0000-0000-000000000005">
+    <dcterms:title xml:lang="en">Resource To Resource Relationship Types</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/00000000-0000-0000-0000-000000000007"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/00000000-0000-0000-0000-000000000007">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/00000000-0000-0000-0000-000000000005"/>
+    <skos:prefLabel xml:lang="en">is related to</skos:prefLabel>
+    <dcterms:identifier>00000000-0000-0000-0000-000000000007</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

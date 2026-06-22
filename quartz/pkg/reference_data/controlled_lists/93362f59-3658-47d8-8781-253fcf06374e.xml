@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/93362f59-3658-47d8-8781-253fcf06374e">
+    <dcterms:title xml:lang="en">Association Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/03bf7d19-aa14-480d-aabf-ae17adfb6a05"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/645c268e-5b26-4cba-b252-f39ceaa66525"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f33ccf7e-6107-4eb7-96b1-fe231401e746"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/03bf7d19-aa14-480d-aabf-ae17adfb6a05">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/93362f59-3658-47d8-8781-253fcf06374e"/>
+    <skos:prefLabel xml:lang="en">Is referred to by</skos:prefLabel>
+    <dcterms:identifier>03bf7d19-aa14-480d-aabf-ae17adfb6a05</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/645c268e-5b26-4cba-b252-f39ceaa66525">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/93362f59-3658-47d8-8781-253fcf06374e"/>
+    <skos:prefLabel xml:lang="en">General association</skos:prefLabel>
+    <dcterms:identifier>645c268e-5b26-4cba-b252-f39ceaa66525</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f33ccf7e-6107-4eb7-96b1-fe231401e746">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/93362f59-3658-47d8-8781-253fcf06374e"/>
+    <skos:prefLabel xml:lang="en">Identified as</skos:prefLabel>
+    <dcterms:identifier>f33ccf7e-6107-4eb7-96b1-fe231401e746</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

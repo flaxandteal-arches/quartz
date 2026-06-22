@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/c57ec787-4e1f-5f04-b98c-485563dd654b">
+    <dcterms:title xml:lang="en">Permission to Interfere Previously Granted</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0f3a586a-8281-5736-8d13-34d76d7d30ca"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/da2acdea-f251-5430-918f-cab8cf32fbfb"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0f3a586a-8281-5736-8d13-34d76d7d30ca">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/c57ec787-4e1f-5f04-b98c-485563dd654b"/>
+    <skos:prefLabel xml:lang="en">Yes</skos:prefLabel>
+    <dcterms:identifier>0f3a586a-8281-5736-8d13-34d76d7d30ca</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/da2acdea-f251-5430-918f-cab8cf32fbfb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/c57ec787-4e1f-5f04-b98c-485563dd654b"/>
+    <skos:prefLabel xml:lang="en">No</skos:prefLabel>
+    <dcterms:identifier>da2acdea-f251-5430-918f-cab8cf32fbfb</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

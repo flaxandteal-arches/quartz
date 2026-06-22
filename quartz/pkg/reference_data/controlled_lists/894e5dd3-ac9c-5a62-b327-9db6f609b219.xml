@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/894e5dd3-ac9c-5a62-b327-9db6f609b219">
+    <dcterms:title xml:lang="en">Construction Phase Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/308cc5ca-97dd-5f61-8c9e-26a0a3272849"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4c259285-16ec-56a2-b929-836c1c8dca4a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/503df944-6a1c-5f71-96b8-a6d4973d1581"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/799311ae-d167-57bc-b778-58fc0c8394d2"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/80e08a1b-a898-566b-be01-a6f805bf11dc"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8292c372-68b5-5060-be24-76f18f6737d7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9f5f3433-b974-5c53-8b8f-e32bb6d7a8f3"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b882ea3e-e4c4-514a-bbff-47dd95585adf"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b935c585-be0e-55ef-9fc6-c22090e9f341"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c2a1d498-f879-51bf-a5af-df9f3f5f90ab"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c8e54bea-b155-5b39-93aa-3311f4f11c60"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d0138dab-992a-501d-bab2-1d04714ce211"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/da6f2dd5-3565-5ca8-a5f3-91f17454e573"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f074eb98-8b9e-59a9-85fe-ce59badb6fba"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/fd8dfbfc-2475-5253-a0e0-dd0074d8b717"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/308cc5ca-97dd-5f61-8c9e-26a0a3272849">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/894e5dd3-ac9c-5a62-b327-9db6f609b219"/>
+    <skos:prefLabel xml:lang="en">pre 1824 Pre-convict settlement</skos:prefLabel>
+    <dcterms:identifier>308cc5ca-97dd-5f61-8c9e-26a0a3272849</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4c259285-16ec-56a2-b929-836c1c8dca4a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/894e5dd3-ac9c-5a62-b327-9db6f609b219"/>
+    <skos:prefLabel xml:lang="en">1860s Separation and consolidation</skos:prefLabel>
+    <dcterms:identifier>4c259285-16ec-56a2-b929-836c1c8dca4a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/503df944-6a1c-5f71-96b8-a6d4973d1581">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/894e5dd3-ac9c-5a62-b327-9db6f609b219"/>
+    <skos:prefLabel xml:lang="en">1900s - 1910s Early 20th century I</skos:prefLabel>
+    <dcterms:identifier>503df944-6a1c-5f71-96b8-a6d4973d1581</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/799311ae-d167-57bc-b778-58fc0c8394d2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/894e5dd3-ac9c-5a62-b327-9db6f609b219"/>
+    <skos:prefLabel xml:lang="en">1824 - 1841 Convict settlement</skos:prefLabel>
+    <dcterms:identifier>799311ae-d167-57bc-b778-58fc0c8394d2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/80e08a1b-a898-566b-be01-a6f805bf11dc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/894e5dd3-ac9c-5a62-b327-9db6f609b219"/>
+    <skos:prefLabel xml:lang="en">1914 - 1919 World War I</skos:prefLabel>
+    <dcterms:identifier>80e08a1b-a898-566b-be01-a6f805bf11dc</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8292c372-68b5-5060-be24-76f18f6737d7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/894e5dd3-ac9c-5a62-b327-9db6f609b219"/>
+    <skos:prefLabel xml:lang="en">2000 - 2020 Early 21st century</skos:prefLabel>
+    <dcterms:identifier>8292c372-68b5-5060-be24-76f18f6737d7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9f5f3433-b974-5c53-8b8f-e32bb6d7a8f3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/894e5dd3-ac9c-5a62-b327-9db6f609b219"/>
+    <skos:prefLabel xml:lang="en">1919 - 1938 Interwar period</skos:prefLabel>
+    <dcterms:identifier>9f5f3433-b974-5c53-8b8f-e32bb6d7a8f3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b882ea3e-e4c4-514a-bbff-47dd95585adf">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/894e5dd3-ac9c-5a62-b327-9db6f609b219"/>
+    <skos:prefLabel xml:lang="en">1900 - 1914 Early 20th century</skos:prefLabel>
+    <dcterms:identifier>b882ea3e-e4c4-514a-bbff-47dd95585adf</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b935c585-be0e-55ef-9fc6-c22090e9f341">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/894e5dd3-ac9c-5a62-b327-9db6f609b219"/>
+    <skos:prefLabel xml:lang="en">1970 - 1999 Late 20th century</skos:prefLabel>
+    <dcterms:identifier>b935c585-be0e-55ef-9fc6-c22090e9f341</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c2a1d498-f879-51bf-a5af-df9f3f5f90ab">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/894e5dd3-ac9c-5a62-b327-9db6f609b219"/>
+    <skos:prefLabel xml:lang="en">1939 - 1945 World War II</skos:prefLabel>
+    <dcterms:identifier>c2a1d498-f879-51bf-a5af-df9f3f5f90ab</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c8e54bea-b155-5b39-93aa-3311f4f11c60">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/894e5dd3-ac9c-5a62-b327-9db6f609b219"/>
+    <skos:prefLabel xml:lang="en">1946 - 1969 Post-WWII</skos:prefLabel>
+    <dcterms:identifier>c8e54bea-b155-5b39-93aa-3311f4f11c60</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d0138dab-992a-501d-bab2-1d04714ce211">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/894e5dd3-ac9c-5a62-b327-9db6f609b219"/>
+    <skos:prefLabel xml:lang="en">1929 - 1933 Interwar depression</skos:prefLabel>
+    <dcterms:identifier>d0138dab-992a-501d-bab2-1d04714ce211</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/da6f2dd5-3565-5ca8-a5f3-91f17454e573">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/894e5dd3-ac9c-5a62-b327-9db6f609b219"/>
+    <skos:prefLabel xml:lang="en">1842 - 1859 Early free settlement</skos:prefLabel>
+    <dcterms:identifier>da6f2dd5-3565-5ca8-a5f3-91f17454e573</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f074eb98-8b9e-59a9-85fe-ce59badb6fba">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/894e5dd3-ac9c-5a62-b327-9db6f609b219"/>
+    <skos:prefLabel xml:lang="en">1842 - 1869 Mid-19th century</skos:prefLabel>
+    <dcterms:identifier>f074eb98-8b9e-59a9-85fe-ce59badb6fba</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fd8dfbfc-2475-5253-a0e0-dd0074d8b717">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/894e5dd3-ac9c-5a62-b327-9db6f609b219"/>
+    <skos:prefLabel xml:lang="en">1870 - 1899 Late 19th century</skos:prefLabel>
+    <dcterms:identifier>fd8dfbfc-2475-5253-a0e0-dd0074d8b717</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

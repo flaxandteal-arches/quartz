@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/266193e0-21e9-475b-9de4-97d81ee8012e">
+    <dcterms:title xml:lang="en">Development Impacts</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1db0698f-e16b-4be6-ba9a-c1838b939ad7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/33105c05-07e8-45bd-b267-0438b2fe7db2"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/35d5c7dd-3b78-44ad-8d07-52fed4c47843"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/3b81ed81-ffc8-49e3-8f2a-54c8c0fec189"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/48bf8f55-3148-4e2f-b647-e8c0b4cf9194"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5273e89f-be54-43cb-9ea7-1199008ee599"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/73a2980e-c2b6-4a5c-a8ea-5bbaae738400"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7581d663-cf6d-44ca-8c8b-ad887c8239d2"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8b312d27-80aa-4cbe-aa9a-9059c84745fb"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a9b05bc3-50ab-44bd-a433-b0fa6ffbffd9"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d3b32efd-733c-45f1-b76a-47fb67a7c4b1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f5469154-3d44-4e0f-8acb-5eebf8c4252b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/fb061455-3c96-42b6-8071-2ab62912745d"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1db0698f-e16b-4be6-ba9a-c1838b939ad7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/266193e0-21e9-475b-9de4-97d81ee8012e"/>
+    <skos:prefLabel xml:lang="en">Landscaping</skos:prefLabel>
+    <dcterms:identifier>1db0698f-e16b-4be6-ba9a-c1838b939ad7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/33105c05-07e8-45bd-b267-0438b2fe7db2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/266193e0-21e9-475b-9de4-97d81ee8012e"/>
+    <skos:prefLabel xml:lang="en">Swimming Pool</skos:prefLabel>
+    <dcterms:identifier>33105c05-07e8-45bd-b267-0438b2fe7db2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/35d5c7dd-3b78-44ad-8d07-52fed4c47843">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/266193e0-21e9-475b-9de4-97d81ee8012e"/>
+    <skos:prefLabel xml:lang="en-US">Remediation</skos:prefLabel>
+    <dcterms:identifier>35d5c7dd-3b78-44ad-8d07-52fed4c47843</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3b81ed81-ffc8-49e3-8f2a-54c8c0fec189">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/266193e0-21e9-475b-9de4-97d81ee8012e"/>
+    <skos:prefLabel xml:lang="en">Terracing</skos:prefLabel>
+    <dcterms:identifier>3b81ed81-ffc8-49e3-8f2a-54c8c0fec189</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/48bf8f55-3148-4e2f-b647-e8c0b4cf9194">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/266193e0-21e9-475b-9de4-97d81ee8012e"/>
+    <skos:prefLabel xml:lang="en">Site stripping</skos:prefLabel>
+    <dcterms:identifier>48bf8f55-3148-4e2f-b647-e8c0b4cf9194</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5273e89f-be54-43cb-9ea7-1199008ee599">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/266193e0-21e9-475b-9de4-97d81ee8012e"/>
+    <skos:prefLabel xml:lang="en">Dewatering/Groundwater</skos:prefLabel>
+    <dcterms:identifier>5273e89f-be54-43cb-9ea7-1199008ee599</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/73a2980e-c2b6-4a5c-a8ea-5bbaae738400">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/266193e0-21e9-475b-9de4-97d81ee8012e"/>
+    <skos:prefLabel xml:lang="en">Services</skos:prefLabel>
+    <dcterms:identifier>73a2980e-c2b6-4a5c-a8ea-5bbaae738400</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7581d663-cf6d-44ca-8c8b-ad887c8239d2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/266193e0-21e9-475b-9de4-97d81ee8012e"/>
+    <skos:prefLabel xml:lang="en">Vehicle movements</skos:prefLabel>
+    <dcterms:identifier>7581d663-cf6d-44ca-8c8b-ad887c8239d2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8b312d27-80aa-4cbe-aa9a-9059c84745fb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/266193e0-21e9-475b-9de4-97d81ee8012e"/>
+    <skos:prefLabel xml:lang="en">Lift pit</skos:prefLabel>
+    <dcterms:identifier>8b312d27-80aa-4cbe-aa9a-9059c84745fb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a9b05bc3-50ab-44bd-a433-b0fa6ffbffd9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/266193e0-21e9-475b-9de4-97d81ee8012e"/>
+    <skos:prefLabel xml:lang="en">Setting</skos:prefLabel>
+    <dcterms:identifier>a9b05bc3-50ab-44bd-a433-b0fa6ffbffd9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d3b32efd-733c-45f1-b76a-47fb67a7c4b1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/266193e0-21e9-475b-9de4-97d81ee8012e"/>
+    <skos:prefLabel xml:lang="en">Basement</skos:prefLabel>
+    <dcterms:identifier>d3b32efd-733c-45f1-b76a-47fb67a7c4b1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f5469154-3d44-4e0f-8acb-5eebf8c4252b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/266193e0-21e9-475b-9de4-97d81ee8012e"/>
+    <skos:prefLabel xml:lang="en">Foundations</skos:prefLabel>
+    <dcterms:identifier>f5469154-3d44-4e0f-8acb-5eebf8c4252b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fb061455-3c96-42b6-8071-2ab62912745d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/266193e0-21e9-475b-9de4-97d81ee8012e"/>
+    <skos:prefLabel xml:lang="en">Demolition</skos:prefLabel>
+    <dcterms:identifier>fb061455-3c96-42b6-8071-2ab62912745d</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/d67be3d7-4f88-4c0d-9a1b-e1ac0f0c7921">
+    <dcterms:title xml:lang="en">Protection Grade</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0ad5eaba-b124-415e-bf9d-16f0eafda918"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2dba87da-fc3c-4af7-b7d2-4ebbdd90c0cf"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/3f18c9b6-1a06-443c-9f8a-d7ce8550415d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/6b377080-3a45-4404-9c35-7fd63c0a424e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/74ca8c7b-b0a7-475e-8617-314999120ff1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/84b306e0-2a04-4f2b-ac2e-bba1e0ac739e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a3c88145-d3a6-4f76-8fb9-d78156fde630"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a502a690-3f86-47f4-9383-9de787b7f39c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c4f8e7af-3aa3-4762-bd44-962730233d75"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/dd8cc868-1730-41bd-8a52-43127a0ea938"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f4b1fa81-9676-49ad-9e1c-1a10d3404b7f"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0ad5eaba-b124-415e-bf9d-16f0eafda918">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d67be3d7-4f88-4c0d-9a1b-e1ac0f0c7921"/>
+    <skos:prefLabel xml:lang="en">Not Listed</skos:prefLabel>
+    <dcterms:identifier>0ad5eaba-b124-415e-bf9d-16f0eafda918</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2dba87da-fc3c-4af7-b7d2-4ebbdd90c0cf">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d67be3d7-4f88-4c0d-9a1b-e1ac0f0c7921"/>
+    <skos:prefLabel xml:lang="en">Grade B</skos:prefLabel>
+    <dcterms:identifier>2dba87da-fc3c-4af7-b7d2-4ebbdd90c0cf</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3f18c9b6-1a06-443c-9f8a-d7ce8550415d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d67be3d7-4f88-4c0d-9a1b-e1ac0f0c7921"/>
+    <skos:prefLabel xml:lang="en">Grade I</skos:prefLabel>
+    <dcterms:identifier>3f18c9b6-1a06-443c-9f8a-d7ce8550415d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6b377080-3a45-4404-9c35-7fd63c0a424e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d67be3d7-4f88-4c0d-9a1b-e1ac0f0c7921"/>
+    <skos:prefLabel xml:lang="en">Grade III</skos:prefLabel>
+    <dcterms:identifier>6b377080-3a45-4404-9c35-7fd63c0a424e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/74ca8c7b-b0a7-475e-8617-314999120ff1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d67be3d7-4f88-4c0d-9a1b-e1ac0f0c7921"/>
+    <skos:prefLabel xml:lang="en">Grade II</skos:prefLabel>
+    <dcterms:identifier>74ca8c7b-b0a7-475e-8617-314999120ff1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/84b306e0-2a04-4f2b-ac2e-bba1e0ac739e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d67be3d7-4f88-4c0d-9a1b-e1ac0f0c7921"/>
+    <skos:prefLabel xml:lang="en">Locally Listed</skos:prefLabel>
+    <dcterms:identifier>84b306e0-2a04-4f2b-ac2e-bba1e0ac739e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a3c88145-d3a6-4f76-8fb9-d78156fde630">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d67be3d7-4f88-4c0d-9a1b-e1ac0f0c7921"/>
+    <skos:prefLabel xml:lang="en">Grade A</skos:prefLabel>
+    <dcterms:identifier>a3c88145-d3a6-4f76-8fb9-d78156fde630</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a502a690-3f86-47f4-9383-9de787b7f39c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d67be3d7-4f88-4c0d-9a1b-e1ac0f0c7921"/>
+    <skos:prefLabel xml:lang="en">Not Given</skos:prefLabel>
+    <dcterms:identifier>a502a690-3f86-47f4-9383-9de787b7f39c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c4f8e7af-3aa3-4762-bd44-962730233d75">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d67be3d7-4f88-4c0d-9a1b-e1ac0f0c7921"/>
+    <skos:prefLabel xml:lang="en">Grade C</skos:prefLabel>
+    <dcterms:identifier>c4f8e7af-3aa3-4762-bd44-962730233d75</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/dd8cc868-1730-41bd-8a52-43127a0ea938">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d67be3d7-4f88-4c0d-9a1b-e1ac0f0c7921"/>
+    <skos:prefLabel xml:lang="en">Delisted</skos:prefLabel>
+    <dcterms:identifier>dd8cc868-1730-41bd-8a52-43127a0ea938</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f4b1fa81-9676-49ad-9e1c-1a10d3404b7f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d67be3d7-4f88-4c0d-9a1b-e1ac0f0c7921"/>
+    <skos:prefLabel xml:lang="en">Grade II*</skos:prefLabel>
+    <dcterms:identifier>f4b1fa81-9676-49ad-9e1c-1a10d3404b7f</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

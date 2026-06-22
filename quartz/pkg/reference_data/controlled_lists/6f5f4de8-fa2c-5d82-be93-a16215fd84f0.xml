@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/6f5f4de8-fa2c-5d82-be93-a16215fd84f0">
+    <dcterms:title xml:lang="en">Deactivation Reason</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/bf676ead-4daa-5898-9cbc-83bad907e4e9"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/caa09842-1a9c-5fef-962f-4fd0ea793f37"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bf676ead-4daa-5898-9cbc-83bad907e4e9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6f5f4de8-fa2c-5d82-be93-a16215fd84f0"/>
+    <skos:prefLabel xml:lang="en">Destroyed</skos:prefLabel>
+    <dcterms:identifier>bf676ead-4daa-5898-9cbc-83bad907e4e9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/caa09842-1a9c-5fef-962f-4fd0ea793f37">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6f5f4de8-fa2c-5d82-be93-a16215fd84f0"/>
+    <skos:prefLabel xml:lang="en">Archived</skos:prefLabel>
+    <dcterms:identifier>caa09842-1a9c-5fef-962f-4fd0ea793f37</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

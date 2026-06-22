@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/bc54efea-5dea-47c8-ad37-8fbd85275397">
+    <dcterms:title xml:lang="en">Scale of Development</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/26545194-e839-44bb-80f5-44da1daf6191"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/340c37a0-7f76-4d5a-a00a-4d3e02aea29b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9a7a0097-c935-4e83-9870-37c40559f850"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b6fcb23b-b191-4d5e-b556-5dd4fd2e0337"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ffb125b1-7bc9-4bbb-8e33-57a38b8c7acd"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/26545194-e839-44bb-80f5-44da1daf6191">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/bc54efea-5dea-47c8-ad37-8fbd85275397"/>
+    <skos:prefLabel xml:lang="en">Large Major (2HA-10HA)</skos:prefLabel>
+    <dcterms:identifier>26545194-e839-44bb-80f5-44da1daf6191</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/340c37a0-7f76-4d5a-a00a-4d3e02aea29b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/bc54efea-5dea-47c8-ad37-8fbd85275397"/>
+    <skos:prefLabel xml:lang="en">Major (0.5HA-2HA)</skos:prefLabel>
+    <dcterms:identifier>340c37a0-7f76-4d5a-a00a-4d3e02aea29b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9a7a0097-c935-4e83-9870-37c40559f850">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/bc54efea-5dea-47c8-ad37-8fbd85275397"/>
+    <skos:prefLabel xml:lang="en">Very Minor/Household (&lt;0.05HA)</skos:prefLabel>
+    <dcterms:identifier>9a7a0097-c935-4e83-9870-37c40559f850</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b6fcb23b-b191-4d5e-b556-5dd4fd2e0337">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/bc54efea-5dea-47c8-ad37-8fbd85275397"/>
+    <skos:prefLabel xml:lang="en">Very Large Major (&gt;10HA)</skos:prefLabel>
+    <dcterms:identifier>b6fcb23b-b191-4d5e-b556-5dd4fd2e0337</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ffb125b1-7bc9-4bbb-8e33-57a38b8c7acd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/bc54efea-5dea-47c8-ad37-8fbd85275397"/>
+    <skos:prefLabel xml:lang="en">Minor (0.05HA-0.5HA)</skos:prefLabel>
+    <dcterms:identifier>ffb125b1-7bc9-4bbb-8e33-57a38b8c7acd</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

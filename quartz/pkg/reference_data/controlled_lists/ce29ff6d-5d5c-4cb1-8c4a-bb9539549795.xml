@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/ce29ff6d-5d5c-4cb1-8c4a-bb9539549795">
+    <dcterms:title xml:lang="en">Occupancy</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0afba9d0-8bf3-4255-a661-88a57af3d80a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/559bed7c-fbbe-43e1-bde0-d7c075d6eaca"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c8afd54a-a9d6-4048-af12-94caa5b341a0"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0afba9d0-8bf3-4255-a661-88a57af3d80a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ce29ff6d-5d5c-4cb1-8c4a-bb9539549795"/>
+    <skos:prefLabel xml:lang="en">Partially Occupied</skos:prefLabel>
+    <dcterms:identifier>0afba9d0-8bf3-4255-a661-88a57af3d80a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/559bed7c-fbbe-43e1-bde0-d7c075d6eaca">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ce29ff6d-5d5c-4cb1-8c4a-bb9539549795"/>
+    <skos:prefLabel xml:lang="en">Occupied</skos:prefLabel>
+    <dcterms:identifier>559bed7c-fbbe-43e1-bde0-d7c075d6eaca</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c8afd54a-a9d6-4048-af12-94caa5b341a0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/ce29ff6d-5d5c-4cb1-8c4a-bb9539549795"/>
+    <skos:prefLabel xml:lang="en">Vacant</skos:prefLabel>
+    <dcterms:identifier>c8afd54a-a9d6-4048-af12-94caa5b341a0</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

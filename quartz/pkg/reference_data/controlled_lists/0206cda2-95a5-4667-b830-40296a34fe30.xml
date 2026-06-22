@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/0206cda2-95a5-4667-b830-40296a34fe30">
+    <dcterms:title xml:lang="en">Container units</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/34b62784-1bf3-43dc-8fae-94c4c84b4d5d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/48b30d6b-6dcb-4f8c-8d09-7ae1ebc9008e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5c19e67b-d053-4900-b01c-e8d6cede66a4"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5ff15b63-02ef-4bbc-aa3b-3eec02a0d2fe"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/72a86b7f-c556-4394-865e-c4483d6fdfec"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/75176355-82e0-4edd-b48f-60196865137e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/83feb7c3-77fa-4b2e-be38-8fb746667d71"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/93e0d3b5-cb0b-4d27-971e-78d926291c49"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/94bb9a80-1af9-47ec-9535-900cfae9dd5b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9adab730-8fcc-498d-ba52-de1f97110cf9"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/de4628c7-761f-4493-902a-f93163d89645"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/34b62784-1bf3-43dc-8fae-94c4c84b4d5d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/0206cda2-95a5-4667-b830-40296a34fe30"/>
+    <skos:prefLabel xml:lang="en">file/folder</skos:prefLabel>
+    <dcterms:identifier>34b62784-1bf3-43dc-8fae-94c4c84b4d5d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/48b30d6b-6dcb-4f8c-8d09-7ae1ebc9008e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/0206cda2-95a5-4667-b830-40296a34fe30"/>
+    <skos:prefLabel xml:lang="en">bookcase</skos:prefLabel>
+    <dcterms:identifier>48b30d6b-6dcb-4f8c-8d09-7ae1ebc9008e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5c19e67b-d053-4900-b01c-e8d6cede66a4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/0206cda2-95a5-4667-b830-40296a34fe30"/>
+    <skos:prefLabel xml:lang="en">rack</skos:prefLabel>
+    <dcterms:identifier>5c19e67b-d053-4900-b01c-e8d6cede66a4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5ff15b63-02ef-4bbc-aa3b-3eec02a0d2fe">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/0206cda2-95a5-4667-b830-40296a34fe30"/>
+    <skos:prefLabel xml:lang="en">file</skos:prefLabel>
+    <dcterms:identifier>5ff15b63-02ef-4bbc-aa3b-3eec02a0d2fe</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/72a86b7f-c556-4394-865e-c4483d6fdfec">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/0206cda2-95a5-4667-b830-40296a34fe30"/>
+    <skos:prefLabel xml:lang="en">plan chest</skos:prefLabel>
+    <dcterms:identifier>72a86b7f-c556-4394-865e-c4483d6fdfec</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/75176355-82e0-4edd-b48f-60196865137e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/0206cda2-95a5-4667-b830-40296a34fe30"/>
+    <skos:prefLabel xml:lang="en">cabinet</skos:prefLabel>
+    <dcterms:identifier>75176355-82e0-4edd-b48f-60196865137e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/83feb7c3-77fa-4b2e-be38-8fb746667d71">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/0206cda2-95a5-4667-b830-40296a34fe30"/>
+    <skos:prefLabel xml:lang="en">box</skos:prefLabel>
+    <dcterms:identifier>83feb7c3-77fa-4b2e-be38-8fb746667d71</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/93e0d3b5-cb0b-4d27-971e-78d926291c49">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/0206cda2-95a5-4667-b830-40296a34fe30"/>
+    <skos:prefLabel xml:lang="en">shelf</skos:prefLabel>
+    <dcterms:identifier>93e0d3b5-cb0b-4d27-971e-78d926291c49</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/94bb9a80-1af9-47ec-9535-900cfae9dd5b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/0206cda2-95a5-4667-b830-40296a34fe30"/>
+    <skos:prefLabel xml:lang="en">cupboard</skos:prefLabel>
+    <dcterms:identifier>94bb9a80-1af9-47ec-9535-900cfae9dd5b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9adab730-8fcc-498d-ba52-de1f97110cf9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/0206cda2-95a5-4667-b830-40296a34fe30"/>
+    <skos:prefLabel xml:lang="en">bay</skos:prefLabel>
+    <dcterms:identifier>9adab730-8fcc-498d-ba52-de1f97110cf9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/de4628c7-761f-4493-902a-f93163d89645">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/0206cda2-95a5-4667-b830-40296a34fe30"/>
+    <skos:prefLabel xml:lang="en">sheet</skos:prefLabel>
+    <dcterms:identifier>de4628c7-761f-4493-902a-f93163d89645</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

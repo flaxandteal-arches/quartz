@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/8f72585f-f1ec-4177-b4a2-1b13a79599c9">
+    <dcterms:title xml:lang="en">Recovery techniques</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/24bbb521-1361-40d1-8c61-10779323a0b1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7b752e22-eb71-4e88-a21c-48774a4d352f"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/24bbb521-1361-40d1-8c61-10779323a0b1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/8f72585f-f1ec-4177-b4a2-1b13a79599c9"/>
+    <skos:prefLabel xml:lang="en">Chance find</skos:prefLabel>
+    <dcterms:identifier>24bbb521-1361-40d1-8c61-10779323a0b1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7b752e22-eb71-4e88-a21c-48774a4d352f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/8f72585f-f1ec-4177-b4a2-1b13a79599c9"/>
+    <skos:prefLabel xml:lang="en">Excavation</skos:prefLabel>
+    <dcterms:identifier>7b752e22-eb71-4e88-a21c-48774a4d352f</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/46734933-da4e-4de7-86d3-b0852b9b5315"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/fcc39e94-1041-4230-bd7f-91633ba239ee"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/46734933-da4e-4de7-86d3-b0852b9b5315">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/8f72585f-f1ec-4177-b4a2-1b13a79599c9"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7b752e22-eb71-4e88-a21c-48774a4d352f"/>
+    <skos:prefLabel xml:lang="en">Hand excavation</skos:prefLabel>
+    <dcterms:identifier>46734933-da4e-4de7-86d3-b0852b9b5315</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fcc39e94-1041-4230-bd7f-91633ba239ee">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/8f72585f-f1ec-4177-b4a2-1b13a79599c9"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7b752e22-eb71-4e88-a21c-48774a4d352f"/>
+    <skos:prefLabel xml:lang="en">Mechanical excavation</skos:prefLabel>
+    <dcterms:identifier>fcc39e94-1041-4230-bd7f-91633ba239ee</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

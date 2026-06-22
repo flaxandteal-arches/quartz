@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/366686d6-deb0-4245-81a3-f94d791a388c">
+    <dcterms:title xml:lang="en">Date Qualifier Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/29b0400e-07ff-44cb-91c9-de7fb6c949b2"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/6449a0a6-f4d3-4afa-8674-52b882281b05"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8ca2e056-69a1-4122-871f-1295fd3660c9"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9681efcd-e4e4-4f11-92fa-ca05c7e0cc44"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b2f1cccc-65b7-4633-847f-ec9b09ef07f0"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/bcdc2f2f-18e7-4311-bebd-760a13e94070"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c7cdd5ac-b431-4f05-a7a0-ddd39645cd89"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e24789dd-3534-4599-b79f-a631dbfedde3"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/29b0400e-07ff-44cb-91c9-de7fb6c949b2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/366686d6-deb0-4245-81a3-f94d791a388c"/>
+    <skos:prefLabel xml:lang="en">Throughout</skos:prefLabel>
+    <dcterms:identifier>29b0400e-07ff-44cb-91c9-de7fb6c949b2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6449a0a6-f4d3-4afa-8674-52b882281b05">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/366686d6-deb0-4245-81a3-f94d791a388c"/>
+    <skos:prefLabel xml:lang="en">Once between</skos:prefLabel>
+    <dcterms:identifier>6449a0a6-f4d3-4afa-8674-52b882281b05</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8ca2e056-69a1-4122-871f-1295fd3660c9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/366686d6-deb0-4245-81a3-f94d791a388c"/>
+    <skos:prefLabel xml:lang="en">Occasionally</skos:prefLabel>
+    <dcterms:identifier>8ca2e056-69a1-4122-871f-1295fd3660c9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9681efcd-e4e4-4f11-92fa-ca05c7e0cc44">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/366686d6-deb0-4245-81a3-f94d791a388c"/>
+    <skos:prefLabel xml:lang="en">Post</skos:prefLabel>
+    <dcterms:identifier>9681efcd-e4e4-4f11-92fa-ca05c7e0cc44</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b2f1cccc-65b7-4633-847f-ec9b09ef07f0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/366686d6-deb0-4245-81a3-f94d791a388c"/>
+    <skos:prefLabel xml:lang="en">On</skos:prefLabel>
+    <dcterms:identifier>b2f1cccc-65b7-4633-847f-ec9b09ef07f0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bcdc2f2f-18e7-4311-bebd-760a13e94070">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/366686d6-deb0-4245-81a3-f94d791a388c"/>
+    <skos:prefLabel xml:lang="en">At some time</skos:prefLabel>
+    <dcterms:identifier>bcdc2f2f-18e7-4311-bebd-760a13e94070</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c7cdd5ac-b431-4f05-a7a0-ddd39645cd89">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/366686d6-deb0-4245-81a3-f94d791a388c"/>
+    <skos:prefLabel xml:lang="en">Pre</skos:prefLabel>
+    <dcterms:identifier>c7cdd5ac-b431-4f05-a7a0-ddd39645cd89</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e24789dd-3534-4599-b79f-a631dbfedde3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/366686d6-deb0-4245-81a3-f94d791a388c"/>
+    <skos:prefLabel xml:lang="en">Between</skos:prefLabel>
+    <dcterms:identifier>e24789dd-3534-4599-b79f-a631dbfedde3</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

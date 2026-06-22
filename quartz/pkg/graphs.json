@@ -1,0 +1,61 @@
+{
+    "models": {
+        "343cc20c-2c5a-11e8-90fa-0242ac120005": {
+            "name": "Artefact"
+        },
+        "076f9381-7b00-11e9-8d6b-80000b44d1d9": {
+            "name": "Heritage Item"
+        },
+        "b9e0701e-5463-11e9-b5f5-000d3ab1e588": {
+            "name": "Activity"
+        },
+        "a535a235-8481-11ea-a6b9-f875a44e0e11": {
+            "name": "Digital Object"
+        },
+        "22477f01-1a44-11e9-b0a9-000d3ab1e588": {
+            "name": "Person"
+        },
+        "d4a88461-5463-11e9-90d9-000d3ab1e588": {
+            "name": "Organization"
+        },
+        "b07cfa6f-894d-11ea-82aa-f875a44e0e11": {
+            "name": "Archive Source"
+        },
+        "c8a3b083-e953-5558-b7f3-641466c68534": {
+            "name": "Registry"
+        },
+        "f9045867-8861-11ea-b06f-f875a44e0e11": {
+            "name": "Period"
+        },
+        "9fccd932-8e8f-4595-89bd-3cb04ddfecae": {
+            "name": "Condition Report"
+        },
+        "8d41e49e-a250-11e9-9eab-00224800b26d": {
+            "name": "Consultation"
+        },
+        "24d7b54f-5464-11e9-a86b-000d3ab1e588": {
+            "name": "Bibliographic Source"
+        },
+        "78b32d8c-b6f2-11ea-af42-f875a44e0e11": {
+            "name": "Place"
+        },
+        "934cd7f0-480a-11ea-9240-c4d9877d154e": {
+            "name": "Historic Landscape Characterization"
+        },
+        "0add0e11-99aa-11ea-9ab8-f875a44e0e11": {
+            "name": "Heritage Story"
+        },
+        "b8032b00-594d-11e9-9cf0-18cf5eb368c4": {
+            "name": "Historic Aircraft"
+        },
+        "42ce82f6-83bf-11ea-b1e8-f875a44e0e11": {
+            "name": "Application Area"
+        },
+        "49bac32e-5464-11e9-a6e2-000d3ab1e588": {
+            "name": "Maritime Vessel"
+        },
+        "979aaf0b-7042-11ea-9674-287fcf6a5e72": {
+            "name": "Area"
+        }
+    }
+}

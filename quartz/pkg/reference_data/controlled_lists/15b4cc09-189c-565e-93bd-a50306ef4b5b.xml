@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/15b4cc09-189c-565e-93bd-a50306ef4b5b">
+    <dcterms:title xml:lang="en">Area Name Types</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5d0d737a-f2bc-5965-a1a0-77e20c5a4e53"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5d0d737a-f2bc-5965-a1a0-77e20c5a4e53">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/15b4cc09-189c-565e-93bd-a50306ef4b5b"/>
+    <skos:prefLabel xml:lang="en">Region</skos:prefLabel>
+    <dcterms:identifier>5d0d737a-f2bc-5965-a1a0-77e20c5a4e53</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

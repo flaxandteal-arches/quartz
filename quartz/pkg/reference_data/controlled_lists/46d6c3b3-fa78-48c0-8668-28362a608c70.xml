@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/46d6c3b3-fa78-48c0-8668-28362a608c70">
+    <dcterms:title xml:lang="en">Address Status Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/174f2456-1491-44a7-b62c-aa8c5b00dcf6"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1b097069-bf5c-4509-a337-dd909229e634"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/20f99cf2-c1c3-4c7c-8d89-f4a5c6c3ca26"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/64c2ecf2-7d76-4a18-9e77-960cd6128587"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8344a7fc-3e04-4ba5-8108-de0568e34ce1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/cd2c7058-7649-431c-a97c-479d54cf7e89"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e3ebe935-f011-410a-91c5-e262cf539549"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/174f2456-1491-44a7-b62c-aa8c5b00dcf6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/46d6c3b3-fa78-48c0-8668-28362a608c70"/>
+    <skos:prefLabel xml:lang="en">Statutory</skos:prefLabel>
+    <dcterms:identifier>174f2456-1491-44a7-b62c-aa8c5b00dcf6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1b097069-bf5c-4509-a337-dd909229e634">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/46d6c3b3-fa78-48c0-8668-28362a608c70"/>
+    <skos:prefLabel xml:lang="en">Contemporary</skos:prefLabel>
+    <dcterms:identifier>1b097069-bf5c-4509-a337-dd909229e634</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/20f99cf2-c1c3-4c7c-8d89-f4a5c6c3ca26">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/46d6c3b3-fa78-48c0-8668-28362a608c70"/>
+    <skos:prefLabel xml:lang="en">Latest</skos:prefLabel>
+    <dcterms:identifier>20f99cf2-c1c3-4c7c-8d89-f4a5c6c3ca26</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/64c2ecf2-7d76-4a18-9e77-960cd6128587">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/46d6c3b3-fa78-48c0-8668-28362a608c70"/>
+    <skos:prefLabel xml:lang="en">Primary</skos:prefLabel>
+    <dcterms:identifier>64c2ecf2-7d76-4a18-9e77-960cd6128587</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8344a7fc-3e04-4ba5-8108-de0568e34ce1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/46d6c3b3-fa78-48c0-8668-28362a608c70"/>
+    <skos:prefLabel xml:lang="en">Former</skos:prefLabel>
+    <dcterms:identifier>8344a7fc-3e04-4ba5-8108-de0568e34ce1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cd2c7058-7649-431c-a97c-479d54cf7e89">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/46d6c3b3-fa78-48c0-8668-28362a608c70"/>
+    <skos:prefLabel xml:lang="en">Subsequent</skos:prefLabel>
+    <dcterms:identifier>cd2c7058-7649-431c-a97c-479d54cf7e89</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e3ebe935-f011-410a-91c5-e262cf539549">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/46d6c3b3-fa78-48c0-8668-28362a608c70"/>
+    <skos:prefLabel xml:lang="en">Alternate</skos:prefLabel>
+    <dcterms:identifier>e3ebe935-f011-410a-91c5-e262cf539549</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

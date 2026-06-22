@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/718d95c7-d36e-4338-b4b2-1c7ebe38dcbb">
+    <dcterms:title xml:lang="en">Risk to Site</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/98cae5e0-6675-426e-a104-dd92dd6349f8"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9b61f81a-081e-4f81-8ded-3a71975d2f9b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/bbc896d3-5919-48eb-ae55-2b8b7e3f367a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f395a71c-a21c-4d38-bb27-17a6a62d1b25"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f648c5bd-34e1-430d-a49c-bd351a6cace5"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/98cae5e0-6675-426e-a104-dd92dd6349f8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/718d95c7-d36e-4338-b4b2-1c7ebe38dcbb"/>
+    <skos:prefLabel xml:lang="en">Very High</skos:prefLabel>
+    <dcterms:identifier>98cae5e0-6675-426e-a104-dd92dd6349f8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9b61f81a-081e-4f81-8ded-3a71975d2f9b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/718d95c7-d36e-4338-b4b2-1c7ebe38dcbb"/>
+    <skos:prefLabel xml:lang="en">Immediate</skos:prefLabel>
+    <dcterms:identifier>9b61f81a-081e-4f81-8ded-3a71975d2f9b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bbc896d3-5919-48eb-ae55-2b8b7e3f367a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/718d95c7-d36e-4338-b4b2-1c7ebe38dcbb"/>
+    <skos:prefLabel xml:lang="en">High</skos:prefLabel>
+    <dcterms:identifier>bbc896d3-5919-48eb-ae55-2b8b7e3f367a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f395a71c-a21c-4d38-bb27-17a6a62d1b25">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/718d95c7-d36e-4338-b4b2-1c7ebe38dcbb"/>
+    <skos:prefLabel xml:lang="en">Low</skos:prefLabel>
+    <dcterms:identifier>f395a71c-a21c-4d38-bb27-17a6a62d1b25</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f648c5bd-34e1-430d-a49c-bd351a6cace5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/718d95c7-d36e-4338-b4b2-1c7ebe38dcbb"/>
+    <skos:prefLabel xml:lang="en">Medium</skos:prefLabel>
+    <dcterms:identifier>f648c5bd-34e1-430d-a49c-bd351a6cace5</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

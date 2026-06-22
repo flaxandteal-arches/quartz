@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd">
+    <dcterms:title xml:lang="en">Area Status Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0e095d42-7b6f-4cec-8cce-21950dbd25b2"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0ec5d43f-3abe-4142-8835-24864cdb01fe"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1f15a40e-8fad-45be-998a-71bb212db394"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2bfef6fc-b646-47e6-90d6-69ef3aebe076"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2c1f2aed-d1b2-44cc-ac21-c0c94f2fe883"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2f5d4854-d5c4-429c-97c8-3a194867859f"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/38318344-89e0-46bb-b690-78f978e2070e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/38434726-9f99-4412-846b-293755656cde"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/3a8492ad-7a37-4ab6-ae98-421b8606ee27"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/3ff1f37f-88a5-4e92-8fa7-70db887b7448"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4890a4be-319e-4e6b-8cdc-cc3cbc32ba1e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/51022369-2a7c-4910-8a0c-20c0b6a18b62"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5481e277-748a-407c-bd19-7b7533e7c873"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/63d1ef21-c05f-451a-a185-77c6726d6662"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/6ca5e0cd-07d8-45ff-9330-b8ad9244ddd4"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/6d456ac5-cacb-4428-8f66-cf5ce04260f1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/6d797a93-2f0d-4c5f-989b-872546ebeb86"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/72e0cabf-9101-4075-9bf6-2e5a462a022e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/79a61d01-3939-45b4-8f31-100411e2435b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7bd5885c-2b93-4937-b772-e265fb0a20b7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7c36647b-8063-432c-af28-1f09df5767c0"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/810a8e45-6d14-4e40-b8bf-bf88c510c88a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8689ec31-7982-4bc0-b191-4aeb10505d2c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8bc25349-14dc-4080-a014-3629b58fd5a3"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9a371690-f3e7-4b4e-aa28-0165d21feaec"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9cca95e4-e703-452d-8852-b9cfe5703a1c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9e052317-0e98-408e-a245-ade3aa7623be"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a89640ba-ecb9-439d-a24c-354a3feb6cd5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a8c249c5-c28e-4097-ab8a-7675953c67ce"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ab5bb715-8a20-4c0b-9c08-3d08810804a5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ac81652c-633a-45e6-8071-9ac6c82dfe9e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ad4d1242-94ce-4914-b136-f4d1bca70692"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c9c53b0e-a26c-4dde-9bde-7236d394cf7e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/cedfec8f-13c4-4ef4-a164-6a3b38b4af94"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/cf17bab0-d843-4b10-af94-50f61c29e21c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/cf91901a-cc46-47bb-836d-26fe858ade7e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/cfaa7087-d9be-4da2-b399-4436745ca2e9"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d25da6ec-d233-41e8-9efa-7441018a150b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d7861436-08d4-4faf-aeaa-e8aae2a96277"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d8e246ab-1316-4f2d-badd-9417c1a8f0cc"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/dd333f84-4517-4fe1-afde-14a3678c4ef1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e096fa1d-cc47-4149-98ef-97b50f4dbea9"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ea8bf148-5d0f-4f4a-b0b3-9215934f724e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f8709632-ac68-4a35-a248-27ee9588e4ea"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0e095d42-7b6f-4cec-8cce-21950dbd25b2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">National Forest</skos:prefLabel>
+    <dcterms:identifier>0e095d42-7b6f-4cec-8cce-21950dbd25b2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0ec5d43f-3abe-4142-8835-24864cdb01fe">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">National Nature Reserve</skos:prefLabel>
+    <dcterms:identifier>0ec5d43f-3abe-4142-8835-24864cdb01fe</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1f15a40e-8fad-45be-998a-71bb212db394">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Guardianship Monument</skos:prefLabel>
+    <dcterms:identifier>1f15a40e-8fad-45be-998a-71bb212db394</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2bfef6fc-b646-47e6-90d6-69ef3aebe076">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Area of Outstanding Natural Beauty</skos:prefLabel>
+    <dcterms:identifier>2bfef6fc-b646-47e6-90d6-69ef3aebe076</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2c1f2aed-d1b2-44cc-ac21-c0c94f2fe883">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Registered Battlefield</skos:prefLabel>
+    <dcterms:identifier>2c1f2aed-d1b2-44cc-ac21-c0c94f2fe883</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2f5d4854-d5c4-429c-97c8-3a194867859f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">National Park</skos:prefLabel>
+    <dcterms:identifier>2f5d4854-d5c4-429c-97c8-3a194867859f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/38318344-89e0-46bb-b690-78f978e2070e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Archaeological Priority Area</skos:prefLabel>
+    <dcterms:identifier>38318344-89e0-46bb-b690-78f978e2070e</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8b7317af-2922-4472-a2c0-9c5955f537c8"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/bca4e119-9f70-4129-b150-68874d448bfe"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/fc3c8112-b850-4059-9616-3905d220c919"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8b7317af-2922-4472-a2c0-9c5955f537c8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/38318344-89e0-46bb-b690-78f978e2070e"/>
+    <skos:prefLabel xml:lang="en">Archaeological Priority Area - Tier II</skos:prefLabel>
+    <dcterms:identifier>8b7317af-2922-4472-a2c0-9c5955f537c8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bca4e119-9f70-4129-b150-68874d448bfe">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/38318344-89e0-46bb-b690-78f978e2070e"/>
+    <skos:prefLabel xml:lang="en">Archaeological Priority Area - Tier I</skos:prefLabel>
+    <dcterms:identifier>bca4e119-9f70-4129-b150-68874d448bfe</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fc3c8112-b850-4059-9616-3905d220c919">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/38318344-89e0-46bb-b690-78f978e2070e"/>
+    <skos:prefLabel xml:lang="en">Archaeological Priority Area - Tier III</skos:prefLabel>
+    <dcterms:identifier>fc3c8112-b850-4059-9616-3905d220c919</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/38434726-9f99-4412-846b-293755656cde">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">County Council Ownership</skos:prefLabel>
+    <dcterms:identifier>38434726-9f99-4412-846b-293755656cde</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3a8492ad-7a37-4ab6-ae98-421b8606ee27">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Military Remains Protected Place</skos:prefLabel>
+    <dcterms:identifier>3a8492ad-7a37-4ab6-ae98-421b8606ee27</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3ff1f37f-88a5-4e92-8fa7-70db887b7448">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">De-Registered Park or Garden</skos:prefLabel>
+    <dcterms:identifier>3ff1f37f-88a5-4e92-8fa7-70db887b7448</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4890a4be-319e-4e6b-8cdc-cc3cbc32ba1e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Ecclesiastical Use</skos:prefLabel>
+    <dcterms:identifier>4890a4be-319e-4e6b-8cdc-cc3cbc32ba1e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/51022369-2a7c-4910-8a0c-20c0b6a18b62">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Conservation Area</skos:prefLabel>
+    <dcterms:identifier>51022369-2a7c-4910-8a0c-20c0b6a18b62</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5481e277-748a-407c-bd19-7b7533e7c873">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Scheduled Monument</skos:prefLabel>
+    <dcterms:identifier>5481e277-748a-407c-bd19-7b7533e7c873</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/63d1ef21-c05f-451a-a185-77c6726d6662">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Listed Building</skos:prefLabel>
+    <dcterms:identifier>63d1ef21-c05f-451a-a185-77c6726d6662</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6ca5e0cd-07d8-45ff-9330-b8ad9244ddd4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Designated Wreck</skos:prefLabel>
+    <dcterms:identifier>6ca5e0cd-07d8-45ff-9330-b8ad9244ddd4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6d456ac5-cacb-4428-8f66-cf5ce04260f1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Delisted Building</skos:prefLabel>
+    <dcterms:identifier>6d456ac5-cacb-4428-8f66-cf5ce04260f1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6d797a93-2f0d-4c5f-989b-872546ebeb86">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Military Maritime Grave</skos:prefLabel>
+    <dcterms:identifier>6d797a93-2f0d-4c5f-989b-872546ebeb86</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/72e0cabf-9101-4075-9bf6-2e5a462a022e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Duchy of Cornwall</skos:prefLabel>
+    <dcterms:identifier>72e0cabf-9101-4075-9bf6-2e5a462a022e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/79a61d01-3939-45b4-8f31-100411e2435b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Heritage Coast</skos:prefLabel>
+    <dcterms:identifier>79a61d01-3939-45b4-8f31-100411e2435b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7bd5885c-2b93-4937-b772-e265fb0a20b7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Environmentally Sensitive Area</skos:prefLabel>
+    <dcterms:identifier>7bd5885c-2b93-4937-b772-e265fb0a20b7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7c36647b-8063-432c-af28-1f09df5767c0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Local Nature Reserve</skos:prefLabel>
+    <dcterms:identifier>7c36647b-8063-432c-af28-1f09df5767c0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/810a8e45-6d14-4e40-b8bf-bf88c510c88a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Other Government Department</skos:prefLabel>
+    <dcterms:identifier>810a8e45-6d14-4e40-b8bf-bf88c510c88a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8689ec31-7982-4bc0-b191-4aeb10505d2c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">World Heritage Site</skos:prefLabel>
+    <dcterms:identifier>8689ec31-7982-4bc0-b191-4aeb10505d2c</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/04599ef8-6d54-485f-a36e-ac77ce4a225b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/67cd05d1-f550-46b8-96c2-704bf4eb1acc"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f1b65632-1314-4bb6-b86d-dde73ada7f4a"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/04599ef8-6d54-485f-a36e-ac77ce4a225b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8689ec31-7982-4bc0-b191-4aeb10505d2c"/>
+    <skos:prefLabel xml:lang="en">Natural World Heritage Site</skos:prefLabel>
+    <dcterms:identifier>04599ef8-6d54-485f-a36e-ac77ce4a225b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/67cd05d1-f550-46b8-96c2-704bf4eb1acc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8689ec31-7982-4bc0-b191-4aeb10505d2c"/>
+    <skos:prefLabel xml:lang="en">Mixed World Heritage Site</skos:prefLabel>
+    <dcterms:identifier>67cd05d1-f550-46b8-96c2-704bf4eb1acc</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f1b65632-1314-4bb6-b86d-dde73ada7f4a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8689ec31-7982-4bc0-b191-4aeb10505d2c"/>
+    <skos:prefLabel xml:lang="en">Cultural World Heritage Site</skos:prefLabel>
+    <dcterms:identifier>f1b65632-1314-4bb6-b86d-dde73ada7f4a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8bc25349-14dc-4080-a014-3629b58fd5a3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Crown Land</skos:prefLabel>
+    <dcterms:identifier>8bc25349-14dc-4080-a014-3629b58fd5a3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9a371690-f3e7-4b4e-aa28-0165d21feaec">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Crown Estate</skos:prefLabel>
+    <dcterms:identifier>9a371690-f3e7-4b4e-aa28-0165d21feaec</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9cca95e4-e703-452d-8852-b9cfe5703a1c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Site of Special Scientific Interest</skos:prefLabel>
+    <dcterms:identifier>9cca95e4-e703-452d-8852-b9cfe5703a1c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9e052317-0e98-408e-a245-ade3aa7623be">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">National Trust</skos:prefLabel>
+    <dcterms:identifier>9e052317-0e98-408e-a245-ade3aa7623be</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a89640ba-ecb9-439d-a24c-354a3feb6cd5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Registered Park or Garden</skos:prefLabel>
+    <dcterms:identifier>a89640ba-ecb9-439d-a24c-354a3feb6cd5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a8c249c5-c28e-4097-ab8a-7675953c67ce">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Country Park</skos:prefLabel>
+    <dcterms:identifier>a8c249c5-c28e-4097-ab8a-7675953c67ce</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ab5bb715-8a20-4c0b-9c08-3d08810804a5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Descheduled Monument</skos:prefLabel>
+    <dcterms:identifier>ab5bb715-8a20-4c0b-9c08-3d08810804a5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ac81652c-633a-45e6-8071-9ac6c82dfe9e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Common Land</skos:prefLabel>
+    <dcterms:identifier>ac81652c-633a-45e6-8071-9ac6c82dfe9e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ad4d1242-94ce-4914-b136-f4d1bca70692">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Area of Archaeological Importance</skos:prefLabel>
+    <dcterms:identifier>ad4d1242-94ce-4914-b136-f4d1bca70692</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c9c53b0e-a26c-4dde-9bde-7236d394cf7e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Non-Designated Decisisions</skos:prefLabel>
+    <dcterms:identifier>c9c53b0e-a26c-4dde-9bde-7236d394cf7e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cedfec8f-13c4-4ef4-a164-6a3b38b4af94">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Adopted Wreck</skos:prefLabel>
+    <dcterms:identifier>cedfec8f-13c4-4ef4-a164-6a3b38b4af94</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cf17bab0-d843-4b10-af94-50f61c29e21c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Marine Archaeological Dive Trail</skos:prefLabel>
+    <dcterms:identifier>cf17bab0-d843-4b10-af94-50f61c29e21c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cf91901a-cc46-47bb-836d-26fe858ade7e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">De-Designated Wreck</skos:prefLabel>
+    <dcterms:identifier>cf91901a-cc46-47bb-836d-26fe858ade7e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cfaa7087-d9be-4da2-b399-4436745ca2e9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Outstanding Conservation Area</skos:prefLabel>
+    <dcterms:identifier>cfaa7087-d9be-4da2-b399-4436745ca2e9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d25da6ec-d233-41e8-9efa-7441018a150b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">SHINE - Selected Heritage Inventory for Natural England</skos:prefLabel>
+    <dcterms:identifier>d25da6ec-d233-41e8-9efa-7441018a150b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d7861436-08d4-4faf-aeaa-e8aae2a96277">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Public Access</skos:prefLabel>
+    <dcterms:identifier>d7861436-08d4-4faf-aeaa-e8aae2a96277</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d8e246ab-1316-4f2d-badd-9417c1a8f0cc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Alternative Action Report</skos:prefLabel>
+    <dcterms:identifier>d8e246ab-1316-4f2d-badd-9417c1a8f0cc</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/dd333f84-4517-4fe1-afde-14a3678c4ef1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Public Right of Way</skos:prefLabel>
+    <dcterms:identifier>dd333f84-4517-4fe1-afde-14a3678c4ef1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e096fa1d-cc47-4149-98ef-97b50f4dbea9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">London Square</skos:prefLabel>
+    <dcterms:identifier>e096fa1d-cc47-4149-98ef-97b50f4dbea9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ea8bf148-5d0f-4f4a-b0b3-9215934f724e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">New Forest Heritage Area</skos:prefLabel>
+    <dcterms:identifier>ea8bf148-5d0f-4f4a-b0b3-9215934f724e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f8709632-ac68-4a35-a248-27ee9588e4ea">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/d1532f63-7ad9-4fc3-926c-84a89f97aadd"/>
+    <skos:prefLabel xml:lang="en">Military Remains Controlled Site</skos:prefLabel>
+    <dcterms:identifier>f8709632-ac68-4a35-a248-27ee9588e4ea</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

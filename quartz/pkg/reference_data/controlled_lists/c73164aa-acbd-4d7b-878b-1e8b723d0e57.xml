@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/c73164aa-acbd-4d7b-878b-1e8b723d0e57">
+    <dcterms:title xml:lang="en">Copyright Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4b20fbcd-a0d2-4a47-83e3-e8acd72b7182"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9c7e055b-6ce8-45e2-a89f-3cef96503bc1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a942fca4-2947-4096-8d83-873193f7b395"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b402a3df-fd66-4179-a99d-2ce396bbfac5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f0373651-e12b-4ea9-8e64-2eea9e6df73d"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4b20fbcd-a0d2-4a47-83e3-e8acd72b7182">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/c73164aa-acbd-4d7b-878b-1e8b723d0e57"/>
+    <skos:prefLabel xml:lang="en">Copyright - All Rights Reserved</skos:prefLabel>
+    <dcterms:identifier>4b20fbcd-a0d2-4a47-83e3-e8acd72b7182</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9c7e055b-6ce8-45e2-a89f-3cef96503bc1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/c73164aa-acbd-4d7b-878b-1e8b723d0e57"/>
+    <skos:prefLabel xml:lang="en">Crown Copyright</skos:prefLabel>
+    <dcterms:identifier>9c7e055b-6ce8-45e2-a89f-3cef96503bc1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a942fca4-2947-4096-8d83-873193f7b395">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/c73164aa-acbd-4d7b-878b-1e8b723d0e57"/>
+    <skos:prefLabel xml:lang="en">No Known Copyright Restriction</skos:prefLabel>
+    <dcterms:identifier>a942fca4-2947-4096-8d83-873193f7b395</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b402a3df-fd66-4179-a99d-2ce396bbfac5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/c73164aa-acbd-4d7b-878b-1e8b723d0e57"/>
+    <skos:prefLabel xml:lang="en">Public Domain</skos:prefLabel>
+    <dcterms:identifier>b402a3df-fd66-4179-a99d-2ce396bbfac5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f0373651-e12b-4ea9-8e64-2eea9e6df73d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/c73164aa-acbd-4d7b-878b-1e8b723d0e57"/>
+    <skos:prefLabel xml:lang="en">Copyright Licence (e.g. Creative Commons)</skos:prefLabel>
+    <dcterms:identifier>f0373651-e12b-4ea9-8e64-2eea9e6df73d</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

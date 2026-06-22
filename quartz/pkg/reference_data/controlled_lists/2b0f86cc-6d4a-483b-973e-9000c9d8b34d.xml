@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/2b0f86cc-6d4a-483b-973e-9000c9d8b34d">
+    <dcterms:title xml:lang="en">Certainty Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/179a8de4-4ad6-468c-97c4-4a62780cc98d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9333e08e-6407-434d-95b3-798c9cf5537c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ef70b9c8-2317-46de-b8b3-73497d9d2fed"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/faea4c23-e89f-477a-b97c-50bc08f489c1"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/179a8de4-4ad6-468c-97c4-4a62780cc98d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2b0f86cc-6d4a-483b-973e-9000c9d8b34d"/>
+    <skos:prefLabel xml:lang="en">Probable</skos:prefLabel>
+    <dcterms:identifier>179a8de4-4ad6-468c-97c4-4a62780cc98d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9333e08e-6407-434d-95b3-798c9cf5537c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2b0f86cc-6d4a-483b-973e-9000c9d8b34d"/>
+    <skos:prefLabel xml:lang="en">Possible</skos:prefLabel>
+    <dcterms:identifier>9333e08e-6407-434d-95b3-798c9cf5537c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ef70b9c8-2317-46de-b8b3-73497d9d2fed">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2b0f86cc-6d4a-483b-973e-9000c9d8b34d"/>
+    <skos:prefLabel xml:lang="en">Certain</skos:prefLabel>
+    <dcterms:identifier>ef70b9c8-2317-46de-b8b3-73497d9d2fed</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/faea4c23-e89f-477a-b97c-50bc08f489c1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/2b0f86cc-6d4a-483b-973e-9000c9d8b34d"/>
+    <skos:prefLabel xml:lang="en">Uncertain</skos:prefLabel>
+    <dcterms:identifier>faea4c23-e89f-477a-b97c-50bc08f489c1</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

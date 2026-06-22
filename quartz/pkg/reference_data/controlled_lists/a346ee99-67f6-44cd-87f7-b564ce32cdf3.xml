@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/a346ee99-67f6-44cd-87f7-b564ce32cdf3">
+    <dcterms:title xml:lang="en">Currency Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4ef38f1c-ff8c-4d4c-bc0b-c06231419c80"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9f404b29-797a-44cf-8693-25089566935f"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d8b0f140-9cce-482b-be4e-fbaedc4e04c2"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4ef38f1c-ff8c-4d4c-bc0b-c06231419c80">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/a346ee99-67f6-44cd-87f7-b564ce32cdf3"/>
+    <skos:prefLabel xml:lang="en">Historic</skos:prefLabel>
+    <dcterms:identifier>4ef38f1c-ff8c-4d4c-bc0b-c06231419c80</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9f404b29-797a-44cf-8693-25089566935f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/a346ee99-67f6-44cd-87f7-b564ce32cdf3"/>
+    <skos:prefLabel xml:lang="en">Current</skos:prefLabel>
+    <dcterms:identifier>9f404b29-797a-44cf-8693-25089566935f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d8b0f140-9cce-482b-be4e-fbaedc4e04c2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/a346ee99-67f6-44cd-87f7-b564ce32cdf3"/>
+    <skos:prefLabel xml:lang="en">Former</skos:prefLabel>
+    <dcterms:identifier>d8b0f140-9cce-482b-be4e-fbaedc4e04c2</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/3a6e31d6-0de9-49be-ae0b-80a7bae14b0a">
+    <dcterms:title xml:lang="en">Contact Point Types</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/084c4ed7-e6c5-4af4-be0f-7fe5d20375a0"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/12acd509-aadb-4692-a152-b404c1f7a626"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/183d4d65-5a7e-466d-83df-858eef939448"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f061dc1b-97db-45e6-aa70-1ffb00e9cfdc"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/084c4ed7-e6c5-4af4-be0f-7fe5d20375a0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/3a6e31d6-0de9-49be-ae0b-80a7bae14b0a"/>
+    <skos:prefLabel xml:lang="en">Email</skos:prefLabel>
+    <dcterms:identifier>084c4ed7-e6c5-4af4-be0f-7fe5d20375a0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/12acd509-aadb-4692-a152-b404c1f7a626">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/3a6e31d6-0de9-49be-ae0b-80a7bae14b0a"/>
+    <skos:prefLabel xml:lang="en">Mail</skos:prefLabel>
+    <dcterms:identifier>12acd509-aadb-4692-a152-b404c1f7a626</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/183d4d65-5a7e-466d-83df-858eef939448">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/3a6e31d6-0de9-49be-ae0b-80a7bae14b0a"/>
+    <skos:prefLabel xml:lang="en">Telephone</skos:prefLabel>
+    <dcterms:identifier>183d4d65-5a7e-466d-83df-858eef939448</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f061dc1b-97db-45e6-aa70-1ffb00e9cfdc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/3a6e31d6-0de9-49be-ae0b-80a7bae14b0a"/>
+    <skos:prefLabel xml:lang="en">Fax</skos:prefLabel>
+    <dcterms:identifier>f061dc1b-97db-45e6-aa70-1ffb00e9cfdc</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

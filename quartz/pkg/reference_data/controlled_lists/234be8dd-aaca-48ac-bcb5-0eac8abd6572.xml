@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/234be8dd-aaca-48ac-bcb5-0eac8abd6572">
+    <dcterms:title xml:lang="en">Height Qualifiers</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/58131f31-c16f-45b7-8700-6531df456468"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/622e2191-22e4-4722-bd19-243e090dff3c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/64fc3479-334e-412f-b09a-b5dcc00aba20"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/70ff70c8-27d6-40c4-8264-c32c9ed1eecc"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/58131f31-c16f-45b7-8700-6531df456468">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/234be8dd-aaca-48ac-bcb5-0eac8abd6572"/>
+    <skos:prefLabel xml:lang="en">Chart Datum</skos:prefLabel>
+    <dcterms:identifier>58131f31-c16f-45b7-8700-6531df456468</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/622e2191-22e4-4722-bd19-243e090dff3c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/234be8dd-aaca-48ac-bcb5-0eac8abd6572"/>
+    <skos:prefLabel xml:lang="en">General Depth</skos:prefLabel>
+    <dcterms:identifier>622e2191-22e4-4722-bd19-243e090dff3c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/64fc3479-334e-412f-b09a-b5dcc00aba20">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/234be8dd-aaca-48ac-bcb5-0eac8abd6572"/>
+    <skos:prefLabel xml:lang="en">Unknown</skos:prefLabel>
+    <dcterms:identifier>64fc3479-334e-412f-b09a-b5dcc00aba20</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/70ff70c8-27d6-40c4-8264-c32c9ed1eecc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/234be8dd-aaca-48ac-bcb5-0eac8abd6572"/>
+    <skos:prefLabel xml:lang="en">Ordnance Datum</skos:prefLabel>
+    <dcterms:identifier>70ff70c8-27d6-40c4-8264-c32c9ed1eecc</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

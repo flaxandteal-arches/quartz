@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/6ae5c172-fd2b-4475-8682-07827b9814bb">
+    <dcterms:title xml:lang="en">Project Objectives</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/05c6f71e-fe79-47c9-9628-c610a3ba7163"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4ece11d0-57c8-4e4c-9cc3-df71e4ff8b9c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/79863936-e37b-4dae-8cd6-4bf81aa3e1c6"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9f155fc8-4d23-48df-9ed2-edb522988ccf"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/bddf9956-c110-4e59-a58f-ffcf3163e9a3"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f10b6cf4-6ebb-4cfb-91b5-66a169a8f12b"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/05c6f71e-fe79-47c9-9628-c610a3ba7163">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6ae5c172-fd2b-4475-8682-07827b9814bb"/>
+    <skos:prefLabel xml:lang="en">Preservation of archaeological remains</skos:prefLabel>
+    <dcterms:identifier>05c6f71e-fe79-47c9-9628-c610a3ba7163</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4ece11d0-57c8-4e4c-9cc3-df71e4ff8b9c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6ae5c172-fd2b-4475-8682-07827b9814bb"/>
+    <skos:prefLabel xml:lang="en">Community Engagement</skos:prefLabel>
+    <dcterms:identifier>4ece11d0-57c8-4e4c-9cc3-df71e4ff8b9c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/79863936-e37b-4dae-8cd6-4bf81aa3e1c6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6ae5c172-fd2b-4475-8682-07827b9814bb"/>
+    <skos:prefLabel xml:lang="en">Non-Project</skos:prefLabel>
+    <dcterms:identifier>79863936-e37b-4dae-8cd6-4bf81aa3e1c6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9f155fc8-4d23-48df-9ed2-edb522988ccf">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6ae5c172-fd2b-4475-8682-07827b9814bb"/>
+    <skos:prefLabel xml:lang="en">Advance Understanding</skos:prefLabel>
+    <dcterms:identifier>9f155fc8-4d23-48df-9ed2-edb522988ccf</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bddf9956-c110-4e59-a58f-ffcf3163e9a3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6ae5c172-fd2b-4475-8682-07827b9814bb"/>
+    <skos:prefLabel xml:lang="en">Place-shaping</skos:prefLabel>
+    <dcterms:identifier>bddf9956-c110-4e59-a58f-ffcf3163e9a3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f10b6cf4-6ebb-4cfb-91b5-66a169a8f12b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6ae5c172-fd2b-4475-8682-07827b9814bb"/>
+    <skos:prefLabel xml:lang="en">Informed decision-making</skos:prefLabel>
+    <dcterms:identifier>f10b6cf4-6ebb-4cfb-91b5-66a169a8f12b</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5">
+    <dcterms:title xml:lang="en">LGAs</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0031177d-f89b-5336-a489-e5755eeabbba"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0d827743-f3aa-54b4-9de1-b879f730e814"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0ebd9ab6-c6da-5a46-a7f0-bf7e9d3185d6"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/111c89e0-34a1-538b-8350-ee4e0d96e811"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/14ae1c49-0442-547e-b53b-fa7d71bbdb11"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1cf71e43-59a3-5072-8143-b0be2fc5e8e5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1cff984b-3388-5f1e-b47d-522042b6765d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/218f29c4-1299-5890-8654-cdd19ae73a18"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2314e803-3635-55ee-8a39-0e66b98aef23"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2569cbc0-df5c-555b-bb65-5c223b59e15a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2df82ca2-4d00-5665-8d91-8ce5aef9bbde"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2ea04635-8760-5bf2-97d6-1d92dbac287f"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2f9b81f8-4eef-5328-88a4-d5f9438d4b7b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/31c7c066-b108-5428-b1d0-aad3d0e33723"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/32918676-d413-5855-a670-47d4620f487d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/349c2f8b-4c4e-50d2-b64f-e83dca81f467"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/367277d2-fbcb-56e8-9ddc-80ae279bc858"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/37ac160e-c0bc-55a9-8c01-554b52914820"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/381b5593-3ada-545a-bbe6-efba679f69ce"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/3d2fe11c-5634-564b-b747-9084db715eae"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/42b7375e-eefe-545e-8374-330b5a040404"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/44dc7246-ce08-533a-85ad-92a80a78adb8"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4583a8d3-f147-5bfc-a853-58d90bbca83c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4abae032-d8f3-5bd5-a394-aebe0c00becd"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4b00be86-2765-5481-859b-e0dc1547420d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4c1e9019-8a9e-57e5-95ac-f297b4128b69"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5088c401-5b3e-544e-8968-26cdb912e9d2"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/54433788-018a-50aa-b172-bef93dce46e8"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5bbe8270-1e25-55d5-b3a5-0f14008e5976"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/6445c9c4-030b-593a-8fc2-56ad152ffd1c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/67e6c30a-1413-5220-8c6e-7eb086b8943c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/6911bd3b-7fee-517a-b925-0dee5e9e653f"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/691b659f-3cca-52d1-9c4e-3cb7fef5d2a1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/69c273d0-6c11-5ce8-8eec-803563e5d481"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/6a6225d6-5e18-5021-9858-332fa82d56d5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/74d9ff55-733c-5591-b988-bd923a1a923b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/76b66674-e4e0-551e-b72d-fff320c1beab"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/773afc5b-00fd-5b60-9b7d-90003577bf94"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7c139880-ac19-5015-84ac-d15318194523"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7c1f2059-765b-58ec-821a-74c9b1f20707"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7cf1d133-bcc8-522b-ad8e-e19793447d45"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/83d5a7a8-4d2c-57e9-95b5-3dd1280106ac"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/899455f3-6ca3-5fec-a343-5299edaa0877"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8f8943c6-5b2a-5772-8500-0c8254a0c061"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9cf916c5-6b94-5e46-a133-9c2c140e3e09"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9d6f2d60-6566-5969-8172-73064edf186e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9f29c50e-7988-5606-a196-82c3f4fe12b2"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a00d4304-d5dc-5084-8cee-c66743076f44"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a23fc25a-4fa9-57af-91d8-b59134359d3f"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a25d7889-2d99-55e5-a28a-bbe36a9aaebe"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a5a63c72-565b-58fe-a4eb-aeb9eed6bbba"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a5d5d0d3-b236-5e3d-8974-75f4bf1c6b54"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a6ed784b-87d7-500f-9a68-3149af7b2a3e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a706c21d-81c5-533c-a2e5-a69bcc7fe225"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a9fffe8b-0f81-56ea-8b9a-3a7b00b8abd5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b2c02f16-3508-53d3-ba54-699e8f5bfe46"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b8bf1ace-59ce-5340-8936-519a3e7d1970"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/bb41830d-b944-5758-9054-c1f89d41a2fa"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/bd036951-2e3d-59e3-8224-5b0736d0689b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/bd58ca06-b132-51bb-bd85-c740817cdcc7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c2f510b4-97b4-5c5f-b2ea-15df9b27364d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c494d02a-80c5-5bd8-90c0-92a54ccfed70"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c5792d0c-19aa-5a05-ab67-314b8beac99b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ccbc0a3b-7b2d-5f31-9987-60afeeeca721"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d1d98b7e-4b06-5b58-af61-aa238bc45b87"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d23bd57c-4e61-57ac-bbb0-b2f1727a9ac6"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d46e1838-0b7e-50ac-ab17-8da065c481e9"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d7d57ac1-21fd-5bf8-b37d-abb245a84aa7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d7f0afab-4e43-5fd0-89f2-4ac301b97ef6"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e3361520-9f4d-5c06-9369-ec8ec0d23549"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e5b02c0e-1c57-5b65-ad44-e012706a6204"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ece84b9d-98b9-5218-a5df-66c5b3bb17ce"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ede861da-84e2-5d7a-b371-7b5d663ea699"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f00a3966-ef60-5c5d-bf67-9a31a88df106"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f00cf2fd-b01f-59b1-ba5c-342420c7a72a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f27097f0-7607-5dab-be74-c125c1dbe590"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f7157aad-ab8c-523f-8ee6-7c202ec3e47b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/fd47113d-e642-5aa8-85cd-7ba99cd8d268"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0031177d-f89b-5336-a489-e5755eeabbba">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">BURKE SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>0031177d-f89b-5336-a489-e5755eeabbba</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0d827743-f3aa-54b4-9de1-b879f730e814">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">MORETON BAY CITY COUNCIL</skos:prefLabel>
+    <dcterms:identifier>0d827743-f3aa-54b4-9de1-b879f730e814</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0ebd9ab6-c6da-5a46-a7f0-bf7e9d3185d6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">BARCOO SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>0ebd9ab6-c6da-5a46-a7f0-bf7e9d3185d6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/111c89e0-34a1-538b-8350-ee4e0d96e811">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">TOWNSVILLE CITY COUNCIL</skos:prefLabel>
+    <dcterms:identifier>111c89e0-34a1-538b-8350-ee4e0d96e811</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/14ae1c49-0442-547e-b53b-fa7d71bbdb11">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">NAPRANUM SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>14ae1c49-0442-547e-b53b-fa7d71bbdb11</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1cf71e43-59a3-5072-8143-b0be2fc5e8e5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">WUJAL WUJAL SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>1cf71e43-59a3-5072-8143-b0be2fc5e8e5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1cff984b-3388-5f1e-b47d-522042b6765d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">CROYDON SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>1cff984b-3388-5f1e-b47d-522042b6765d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/218f29c4-1299-5890-8654-cdd19ae73a18">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">CARPENTARIA SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>218f29c4-1299-5890-8654-cdd19ae73a18</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2314e803-3635-55ee-8a39-0e66b98aef23">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">DIAMANTINA SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>2314e803-3635-55ee-8a39-0e66b98aef23</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2569cbc0-df5c-555b-bb65-5c223b59e15a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">SOUTHERN DOWNS REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>2569cbc0-df5c-555b-bb65-5c223b59e15a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2df82ca2-4d00-5665-8d91-8ce5aef9bbde">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">HINCHINBROOK SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>2df82ca2-4d00-5665-8d91-8ce5aef9bbde</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2ea04635-8760-5bf2-97d6-1d92dbac287f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">BURDEKIN SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>2ea04635-8760-5bf2-97d6-1d92dbac287f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2f9b81f8-4eef-5328-88a4-d5f9438d4b7b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">FRASER COAST REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>2f9b81f8-4eef-5328-88a4-d5f9438d4b7b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/31c7c066-b108-5428-b1d0-aad3d0e33723">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">CHARTERS TOWERS REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>31c7c066-b108-5428-b1d0-aad3d0e33723</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/32918676-d413-5855-a670-47d4620f487d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">REDLAND CITY COUNCIL</skos:prefLabel>
+    <dcterms:identifier>32918676-d413-5855-a670-47d4620f487d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/349c2f8b-4c4e-50d2-b64f-e83dca81f467">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">GYMPIE REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>349c2f8b-4c4e-50d2-b64f-e83dca81f467</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/367277d2-fbcb-56e8-9ddc-80ae279bc858">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">TOOWOOMBA REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>367277d2-fbcb-56e8-9ddc-80ae279bc858</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/37ac160e-c0bc-55a9-8c01-554b52914820">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">DOUGLAS SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>37ac160e-c0bc-55a9-8c01-554b52914820</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/381b5593-3ada-545a-bbe6-efba679f69ce">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">NOOSA SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>381b5593-3ada-545a-bbe6-efba679f69ce</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3d2fe11c-5634-564b-b747-9084db715eae">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">SOMERSET REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>3d2fe11c-5634-564b-b747-9084db715eae</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/42b7375e-eefe-545e-8374-330b5a040404">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">BULLOO SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>42b7375e-eefe-545e-8374-330b5a040404</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/44dc7246-ce08-533a-85ad-92a80a78adb8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">MACKAY REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>44dc7246-ce08-533a-85ad-92a80a78adb8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4583a8d3-f147-5bfc-a853-58d90bbca83c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">PALM ISLAND SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>4583a8d3-f147-5bfc-a853-58d90bbca83c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4abae032-d8f3-5bd5-a394-aebe0c00becd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">LOCKHART RIVER SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>4abae032-d8f3-5bd5-a394-aebe0c00becd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4b00be86-2765-5481-859b-e0dc1547420d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">CLONCURRY SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>4b00be86-2765-5481-859b-e0dc1547420d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4c1e9019-8a9e-57e5-95ac-f297b4128b69">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">WEIPA TOWN COUNCIL</skos:prefLabel>
+    <dcterms:identifier>4c1e9019-8a9e-57e5-95ac-f297b4128b69</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5088c401-5b3e-544e-8968-26cdb912e9d2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">TORRES STRAIT ISLAND REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>5088c401-5b3e-544e-8968-26cdb912e9d2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/54433788-018a-50aa-b172-bef93dce46e8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">CASSOWARY COAST REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>54433788-018a-50aa-b172-bef93dce46e8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5bbe8270-1e25-55d5-b3a5-0f14008e5976">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">CHERBOURG SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>5bbe8270-1e25-55d5-b3a5-0f14008e5976</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6445c9c4-030b-593a-8fc2-56ad152ffd1c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">BLACKALL-TAMBO REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>6445c9c4-030b-593a-8fc2-56ad152ffd1c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/67e6c30a-1413-5220-8c6e-7eb086b8943c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">TORRES SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>67e6c30a-1413-5220-8c6e-7eb086b8943c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6911bd3b-7fee-517a-b925-0dee5e9e653f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">BANANA SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>6911bd3b-7fee-517a-b925-0dee5e9e653f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/691b659f-3cca-52d1-9c4e-3cb7fef5d2a1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">BRISBANE CITY COUNCIL</skos:prefLabel>
+    <dcterms:identifier>691b659f-3cca-52d1-9c4e-3cb7fef5d2a1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/69c273d0-6c11-5ce8-8eec-803563e5d481">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">BUNDABERG REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>69c273d0-6c11-5ce8-8eec-803563e5d481</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6a6225d6-5e18-5021-9858-332fa82d56d5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">LIVINGSTONE SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>6a6225d6-5e18-5021-9858-332fa82d56d5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/74d9ff55-733c-5591-b988-bd923a1a923b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">YARRABAH SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>74d9ff55-733c-5591-b988-bd923a1a923b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/76b66674-e4e0-551e-b72d-fff320c1beab">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">DOOMADGEE SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>76b66674-e4e0-551e-b72d-fff320c1beab</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/773afc5b-00fd-5b60-9b7d-90003577bf94">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">HOPE VALE SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>773afc5b-00fd-5b60-9b7d-90003577bf94</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7c139880-ac19-5015-84ac-d15318194523">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">QUILPIE SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>7c139880-ac19-5015-84ac-d15318194523</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7c1f2059-765b-58ec-821a-74c9b1f20707">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">LONGREACH REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>7c1f2059-765b-58ec-821a-74c9b1f20707</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7cf1d133-bcc8-522b-ad8e-e19793447d45">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">COOK SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>7cf1d133-bcc8-522b-ad8e-e19793447d45</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/83d5a7a8-4d2c-57e9-95b5-3dd1280106ac">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">TABLELANDS REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>83d5a7a8-4d2c-57e9-95b5-3dd1280106ac</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/899455f3-6ca3-5fec-a343-5299edaa0877">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">WESTERN DOWNS REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>899455f3-6ca3-5fec-a343-5299edaa0877</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8f8943c6-5b2a-5772-8500-0c8254a0c061">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">KOWANYAMA SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>8f8943c6-5b2a-5772-8500-0c8254a0c061</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9cf916c5-6b94-5e46-a133-9c2c140e3e09">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">WINTON SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>9cf916c5-6b94-5e46-a133-9c2c140e3e09</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9d6f2d60-6566-5969-8172-73064edf186e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">GOLD COAST CITY COUNCIL</skos:prefLabel>
+    <dcterms:identifier>9d6f2d60-6566-5969-8172-73064edf186e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9f29c50e-7988-5606-a196-82c3f4fe12b2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">WOORABINDA SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>9f29c50e-7988-5606-a196-82c3f4fe12b2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a00d4304-d5dc-5084-8cee-c66743076f44">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">ETHERIDGE SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>a00d4304-d5dc-5084-8cee-c66743076f44</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a23fc25a-4fa9-57af-91d8-b59134359d3f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">SOUTH BURNETT REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>a23fc25a-4fa9-57af-91d8-b59134359d3f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a25d7889-2d99-55e5-a28a-bbe36a9aaebe">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">SCENIC RIM REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>a25d7889-2d99-55e5-a28a-bbe36a9aaebe</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a5a63c72-565b-58fe-a4eb-aeb9eed6bbba">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">CENTRAL HIGHLANDS REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>a5a63c72-565b-58fe-a4eb-aeb9eed6bbba</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a5d5d0d3-b236-5e3d-8974-75f4bf1c6b54">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">PORMPURAAW SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>a5d5d0d3-b236-5e3d-8974-75f4bf1c6b54</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a6ed784b-87d7-500f-9a68-3149af7b2a3e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">LOCKYER VALLEY REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>a6ed784b-87d7-500f-9a68-3149af7b2a3e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a706c21d-81c5-533c-a2e5-a69bcc7fe225">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">NORTHERN PENINSULA AREA REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>a706c21d-81c5-533c-a2e5-a69bcc7fe225</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a9fffe8b-0f81-56ea-8b9a-3a7b00b8abd5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">MAREEBA SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>a9fffe8b-0f81-56ea-8b9a-3a7b00b8abd5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b2c02f16-3508-53d3-ba54-699e8f5bfe46">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">MAPOON SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>b2c02f16-3508-53d3-ba54-699e8f5bfe46</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b8bf1ace-59ce-5340-8936-519a3e7d1970">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">MCKINLAY SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>b8bf1ace-59ce-5340-8936-519a3e7d1970</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bb41830d-b944-5758-9054-c1f89d41a2fa">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">NORTH BURNETT REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>bb41830d-b944-5758-9054-c1f89d41a2fa</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bd036951-2e3d-59e3-8224-5b0736d0689b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">BOULIA SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>bd036951-2e3d-59e3-8224-5b0736d0689b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bd58ca06-b132-51bb-bd85-c740817cdcc7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">PAROO SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>bd58ca06-b132-51bb-bd85-c740817cdcc7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c2f510b4-97b4-5c5f-b2ea-15df9b27364d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">CAIRNS REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>c2f510b4-97b4-5c5f-b2ea-15df9b27364d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c494d02a-80c5-5bd8-90c0-92a54ccfed70">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">GLADSTONE REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>c494d02a-80c5-5bd8-90c0-92a54ccfed70</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c5792d0c-19aa-5a05-ab67-314b8beac99b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">MARANOA REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>c5792d0c-19aa-5a05-ab67-314b8beac99b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ccbc0a3b-7b2d-5f31-9987-60afeeeca721">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">FLINDERS SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>ccbc0a3b-7b2d-5f31-9987-60afeeeca721</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d1d98b7e-4b06-5b58-af61-aa238bc45b87">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">RICHMOND SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>d1d98b7e-4b06-5b58-af61-aa238bc45b87</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d23bd57c-4e61-57ac-bbb0-b2f1727a9ac6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">MURWEH SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>d23bd57c-4e61-57ac-bbb0-b2f1727a9ac6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d46e1838-0b7e-50ac-ab17-8da065c481e9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">WHITSUNDAY REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>d46e1838-0b7e-50ac-ab17-8da065c481e9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d7d57ac1-21fd-5bf8-b37d-abb245a84aa7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">ROCKHAMPTON REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>d7d57ac1-21fd-5bf8-b37d-abb245a84aa7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d7f0afab-4e43-5fd0-89f2-4ac301b97ef6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">SUNSHINE COAST REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>d7f0afab-4e43-5fd0-89f2-4ac301b97ef6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e3361520-9f4d-5c06-9369-ec8ec0d23549">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">ISAAC REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>e3361520-9f4d-5c06-9369-ec8ec0d23549</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e5b02c0e-1c57-5b65-ad44-e012706a6204">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">BARCALDINE REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>e5b02c0e-1c57-5b65-ad44-e012706a6204</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ece84b9d-98b9-5218-a5df-66c5b3bb17ce">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">MOUNT ISA CITY COUNCIL</skos:prefLabel>
+    <dcterms:identifier>ece84b9d-98b9-5218-a5df-66c5b3bb17ce</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ede861da-84e2-5d7a-b371-7b5d663ea699">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">MORNINGTON SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>ede861da-84e2-5d7a-b371-7b5d663ea699</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f00a3966-ef60-5c5d-bf67-9a31a88df106">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">GOONDIWINDI REGIONAL COUNCIL</skos:prefLabel>
+    <dcterms:identifier>f00a3966-ef60-5c5d-bf67-9a31a88df106</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f00cf2fd-b01f-59b1-ba5c-342420c7a72a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">IPSWICH CITY COUNCIL</skos:prefLabel>
+    <dcterms:identifier>f00cf2fd-b01f-59b1-ba5c-342420c7a72a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f27097f0-7607-5dab-be74-c125c1dbe590">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">LOGAN CITY COUNCIL</skos:prefLabel>
+    <dcterms:identifier>f27097f0-7607-5dab-be74-c125c1dbe590</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f7157aad-ab8c-523f-8ee6-7c202ec3e47b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">BALONNE SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>f7157aad-ab8c-523f-8ee6-7c202ec3e47b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fd47113d-e642-5aa8-85cd-7ba99cd8d268">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/06fcd762-f334-50e0-8db7-2b182f9b48b5"/>
+    <skos:prefLabel xml:lang="en">AURUKUN SHIRE COUNCIL</skos:prefLabel>
+    <dcterms:identifier>fd47113d-e642-5aa8-85cd-7ba99cd8d268</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

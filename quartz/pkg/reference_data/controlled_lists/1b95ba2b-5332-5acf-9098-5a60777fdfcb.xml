@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/1b95ba2b-5332-5acf-9098-5a60777fdfcb">
+    <dcterms:title xml:lang="en">Archaeological Discovery Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/45148ef4-a15e-5bf8-a702-ad5f62406ec6"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7a8df986-f7f9-505b-b5a0-0fe87fad321c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/cec3c2ea-dbd6-5396-92d7-bf214be93c55"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/45148ef4-a15e-5bf8-a702-ad5f62406ec6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/1b95ba2b-5332-5acf-9098-5a60777fdfcb"/>
+    <skos:prefLabel xml:lang="en">Archaeological Artefact / Site</skos:prefLabel>
+    <dcterms:identifier>45148ef4-a15e-5bf8-a702-ad5f62406ec6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7a8df986-f7f9-505b-b5a0-0fe87fad321c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/1b95ba2b-5332-5acf-9098-5a60777fdfcb"/>
+    <skos:prefLabel xml:lang="en">Underwater Cultural Heritage Artefact / Site (Commonwealth)</skos:prefLabel>
+    <dcterms:identifier>7a8df986-f7f9-505b-b5a0-0fe87fad321c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cec3c2ea-dbd6-5396-92d7-bf214be93c55">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/1b95ba2b-5332-5acf-9098-5a60777fdfcb"/>
+    <skos:prefLabel xml:lang="en">Underwater Cultural Heritage Artefact / Site (State)</skos:prefLabel>
+    <dcterms:identifier>cec3c2ea-dbd6-5396-92d7-bf214be93c55</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

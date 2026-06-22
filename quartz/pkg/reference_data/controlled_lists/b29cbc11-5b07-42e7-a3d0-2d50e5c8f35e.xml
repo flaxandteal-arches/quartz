@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/b29cbc11-5b07-42e7-a3d0-2d50e5c8f35e">
+    <dcterms:title xml:lang="en">Discovery Method</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/513405a4-f4de-4d5b-8282-fee4a00a905e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7928d3cb-a1f6-4140-81fb-3ec1e5479364"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d0e39ff0-17b5-4445-b2ac-ad0f14885537"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/513405a4-f4de-4d5b-8282-fee4a00a905e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/b29cbc11-5b07-42e7-a3d0-2d50e5c8f35e"/>
+    <skos:prefLabel xml:lang="en">Archaeological Intervention</skos:prefLabel>
+    <dcterms:identifier>513405a4-f4de-4d5b-8282-fee4a00a905e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7928d3cb-a1f6-4140-81fb-3ec1e5479364">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/b29cbc11-5b07-42e7-a3d0-2d50e5c8f35e"/>
+    <skos:prefLabel xml:lang="en">Chance discovery</skos:prefLabel>
+    <dcterms:identifier>7928d3cb-a1f6-4140-81fb-3ec1e5479364</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d0e39ff0-17b5-4445-b2ac-ad0f14885537">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/b29cbc11-5b07-42e7-a3d0-2d50e5c8f35e"/>
+    <skos:prefLabel xml:lang="en">Metal Detecting</skos:prefLabel>
+    <dcterms:identifier>d0e39ff0-17b5-4445-b2ac-ad0f14885537</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

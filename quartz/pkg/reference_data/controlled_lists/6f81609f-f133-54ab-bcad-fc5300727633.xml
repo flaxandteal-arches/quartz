@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/6f81609f-f133-54ab-bcad-fc5300727633">
+    <dcterms:title xml:lang="en">Administrative Areas</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1bddb776-4cba-5f53-8be7-7aeb13ec1897"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/3d15c4cb-1a4a-5dfd-9d54-fc35666184df"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4d31e260-2f66-5723-9c2e-f34df5deabb4"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5d6e9ee3-6740-5611-84f3-f22177860229"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5e894656-cb82-5fb5-a1ec-4daad80599e7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/73c3107d-cf36-5f39-b216-6e3acb7f1537"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/77a2d80a-9733-525d-af06-1fcf829488d5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a06c7fe7-e6e8-5e1a-8065-c7bb92d2d8fb"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a16f083a-0db1-5229-8ca4-679e3e0cbdc1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c1bc661b-5a4d-5d2e-bc98-486ed0b8d0f7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/dd8b256d-5b0a-5b4f-b753-2708440ea807"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f2c457fd-dddb-5e02-abd2-374ddeae2510"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f80178a4-cbff-59f4-ba48-3ee8c56f5f20"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1bddb776-4cba-5f53-8be7-7aeb13ec1897">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6f81609f-f133-54ab-bcad-fc5300727633"/>
+    <skos:prefLabel xml:lang="en">Townsville</skos:prefLabel>
+    <dcterms:identifier>1bddb776-4cba-5f53-8be7-7aeb13ec1897</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3d15c4cb-1a4a-5dfd-9d54-fc35666184df">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6f81609f-f133-54ab-bcad-fc5300727633"/>
+    <skos:prefLabel xml:lang="en">Brisbane</skos:prefLabel>
+    <dcterms:identifier>3d15c4cb-1a4a-5dfd-9d54-fc35666184df</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4d31e260-2f66-5723-9c2e-f34df5deabb4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6f81609f-f133-54ab-bcad-fc5300727633"/>
+    <skos:prefLabel xml:lang="en">Southern Qld</skos:prefLabel>
+    <dcterms:identifier>4d31e260-2f66-5723-9c2e-f34df5deabb4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5d6e9ee3-6740-5611-84f3-f22177860229">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6f81609f-f133-54ab-bcad-fc5300727633"/>
+    <skos:prefLabel xml:lang="en">Bundaberg</skos:prefLabel>
+    <dcterms:identifier>5d6e9ee3-6740-5611-84f3-f22177860229</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5e894656-cb82-5fb5-a1ec-4daad80599e7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6f81609f-f133-54ab-bcad-fc5300727633"/>
+    <skos:prefLabel xml:lang="en">Sunshine Coast</skos:prefLabel>
+    <dcterms:identifier>5e894656-cb82-5fb5-a1ec-4daad80599e7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/73c3107d-cf36-5f39-b216-6e3acb7f1537">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6f81609f-f133-54ab-bcad-fc5300727633"/>
+    <skos:prefLabel xml:lang="en">Mackay</skos:prefLabel>
+    <dcterms:identifier>73c3107d-cf36-5f39-b216-6e3acb7f1537</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/77a2d80a-9733-525d-af06-1fcf829488d5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6f81609f-f133-54ab-bcad-fc5300727633"/>
+    <skos:prefLabel xml:lang="en">Outback Qld</skos:prefLabel>
+    <dcterms:identifier>77a2d80a-9733-525d-af06-1fcf829488d5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a06c7fe7-e6e8-5e1a-8065-c7bb92d2d8fb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6f81609f-f133-54ab-bcad-fc5300727633"/>
+    <skos:prefLabel xml:lang="en">Gladstone</skos:prefLabel>
+    <dcterms:identifier>a06c7fe7-e6e8-5e1a-8065-c7bb92d2d8fb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a16f083a-0db1-5229-8ca4-679e3e0cbdc1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6f81609f-f133-54ab-bcad-fc5300727633"/>
+    <skos:prefLabel xml:lang="en">Whitsunday</skos:prefLabel>
+    <dcterms:identifier>a16f083a-0db1-5229-8ca4-679e3e0cbdc1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c1bc661b-5a4d-5d2e-bc98-486ed0b8d0f7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6f81609f-f133-54ab-bcad-fc5300727633"/>
+    <skos:prefLabel xml:lang="en">Tropical North Qld</skos:prefLabel>
+    <dcterms:identifier>c1bc661b-5a4d-5d2e-bc98-486ed0b8d0f7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/dd8b256d-5b0a-5b4f-b753-2708440ea807">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6f81609f-f133-54ab-bcad-fc5300727633"/>
+    <skos:prefLabel xml:lang="en">Fraser Coast</skos:prefLabel>
+    <dcterms:identifier>dd8b256d-5b0a-5b4f-b753-2708440ea807</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f2c457fd-dddb-5e02-abd2-374ddeae2510">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6f81609f-f133-54ab-bcad-fc5300727633"/>
+    <skos:prefLabel xml:lang="en">Capricorn</skos:prefLabel>
+    <dcterms:identifier>f2c457fd-dddb-5e02-abd2-374ddeae2510</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f80178a4-cbff-59f4-ba48-3ee8c56f5f20">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/6f81609f-f133-54ab-bcad-fc5300727633"/>
+    <skos:prefLabel xml:lang="en">Gold Coast</skos:prefLabel>
+    <dcterms:identifier>f80178a4-cbff-59f4-ba48-3ee8c56f5f20</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

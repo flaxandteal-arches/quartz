@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e">
+    <dcterms:title xml:lang="en">Propulsion</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/06d1972c-0b71-42b8-a488-643751520311"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/091f3448-f67c-4ba1-aa92-2b4ce7e77e48"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0978ff2f-3719-44b4-afc7-574224d9aaae"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/119ef7c1-fd1e-4d14-95e6-1b5a0b23f26f"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2cdd3620-a90e-4e8a-94f7-f299c5a9efea"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a4c6fc54-279f-48e1-bfa8-3f23ad0b53d2"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/eb1c4a93-21ad-415d-a1a6-536af611f8e8"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/06d1972c-0b71-42b8-a488-643751520311">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:prefLabel xml:lang="en">Engine</skos:prefLabel>
+    <dcterms:identifier>06d1972c-0b71-42b8-a488-643751520311</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/20816e45-3581-426b-a537-a2d699b45503"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/49b98c9d-1cb0-4f7d-9e48-f0b7adb93b1c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6981d9fb-433c-489e-b0d5-3de3bae279de"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8d2f4dfe-aaa8-4e78-b516-f82e9605b134"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/20816e45-3581-426b-a537-a2d699b45503">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/06d1972c-0b71-42b8-a488-643751520311"/>
+    <skos:prefLabel xml:lang="en">External Combustion Engine</skos:prefLabel>
+    <dcterms:identifier>20816e45-3581-426b-a537-a2d699b45503</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6abedf4f-52e6-4ec3-a3eb-a61386ba01dc"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6abedf4f-52e6-4ec3-a3eb-a61386ba01dc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/20816e45-3581-426b-a537-a2d699b45503"/>
+    <skos:prefLabel xml:lang="en">Steam Engine</skos:prefLabel>
+    <dcterms:identifier>6abedf4f-52e6-4ec3-a3eb-a61386ba01dc</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/26509bbd-3a3c-4421-9983-dffb62bb9486"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/62d3ff46-642a-4b61-8ba1-4c5ed3847835"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e99be05a-5e94-4539-9bf9-674478c14a67"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/26509bbd-3a3c-4421-9983-dffb62bb9486">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/6abedf4f-52e6-4ec3-a3eb-a61386ba01dc"/>
+    <skos:prefLabel xml:lang="en">Triple Expansion Engine</skos:prefLabel>
+    <dcterms:identifier>26509bbd-3a3c-4421-9983-dffb62bb9486</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/62d3ff46-642a-4b61-8ba1-4c5ed3847835">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/6abedf4f-52e6-4ec3-a3eb-a61386ba01dc"/>
+    <skos:prefLabel xml:lang="en">Steam Turbine Engine</skos:prefLabel>
+    <dcterms:identifier>62d3ff46-642a-4b61-8ba1-4c5ed3847835</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e99be05a-5e94-4539-9bf9-674478c14a67">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/6abedf4f-52e6-4ec3-a3eb-a61386ba01dc"/>
+    <skos:prefLabel xml:lang="en">Compound Engine</skos:prefLabel>
+    <dcterms:identifier>e99be05a-5e94-4539-9bf9-674478c14a67</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/49b98c9d-1cb0-4f7d-9e48-f0b7adb93b1c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/06d1972c-0b71-42b8-a488-643751520311"/>
+    <skos:prefLabel xml:lang="en">Turbine Engine</skos:prefLabel>
+    <dcterms:identifier>49b98c9d-1cb0-4f7d-9e48-f0b7adb93b1c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6981d9fb-433c-489e-b0d5-3de3bae279de">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/06d1972c-0b71-42b8-a488-643751520311"/>
+    <skos:prefLabel xml:lang="en">Internal Combustion Engine</skos:prefLabel>
+    <dcterms:identifier>6981d9fb-433c-489e-b0d5-3de3bae279de</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8d5d0071-63f1-4701-9cac-153bd847d98a"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/97a1ad9c-afce-498e-a63c-6b89dc8842bd"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8d5d0071-63f1-4701-9cac-153bd847d98a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/6981d9fb-433c-489e-b0d5-3de3bae279de"/>
+    <skos:prefLabel xml:lang="en">Petrol Engine</skos:prefLabel>
+    <dcterms:identifier>8d5d0071-63f1-4701-9cac-153bd847d98a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/97a1ad9c-afce-498e-a63c-6b89dc8842bd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/6981d9fb-433c-489e-b0d5-3de3bae279de"/>
+    <skos:prefLabel xml:lang="en">Diesel Engine</skos:prefLabel>
+    <dcterms:identifier>97a1ad9c-afce-498e-a63c-6b89dc8842bd</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ee544ce6-2080-4814-835f-c96ea517d0c9"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ee544ce6-2080-4814-835f-c96ea517d0c9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/97a1ad9c-afce-498e-a63c-6b89dc8842bd"/>
+    <skos:prefLabel xml:lang="en">Diesel Turbine Engine</skos:prefLabel>
+    <dcterms:identifier>ee544ce6-2080-4814-835f-c96ea517d0c9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8d2f4dfe-aaa8-4e78-b516-f82e9605b134">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/06d1972c-0b71-42b8-a488-643751520311"/>
+    <skos:prefLabel xml:lang="en">Reaction Engine</skos:prefLabel>
+    <dcterms:identifier>8d2f4dfe-aaa8-4e78-b516-f82e9605b134</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/685d36eb-0a49-4da6-ab90-d6698ad4a177"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c4fb71e8-77c4-4d9a-851c-e63b5924f164"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/685d36eb-0a49-4da6-ab90-d6698ad4a177">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8d2f4dfe-aaa8-4e78-b516-f82e9605b134"/>
+    <skos:prefLabel xml:lang="en">Rocket Engine</skos:prefLabel>
+    <dcterms:identifier>685d36eb-0a49-4da6-ab90-d6698ad4a177</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c4fb71e8-77c4-4d9a-851c-e63b5924f164">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/8d2f4dfe-aaa8-4e78-b516-f82e9605b134"/>
+    <skos:prefLabel xml:lang="en">Jet Engine</skos:prefLabel>
+    <dcterms:identifier>c4fb71e8-77c4-4d9a-851c-e63b5924f164</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/091f3448-f67c-4ba1-aa92-2b4ce7e77e48">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:prefLabel xml:lang="en">Sail</skos:prefLabel>
+    <dcterms:identifier>091f3448-f67c-4ba1-aa92-2b4ce7e77e48</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0978ff2f-3719-44b4-afc7-574224d9aaae">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:prefLabel xml:lang="en">Towed</skos:prefLabel>
+    <dcterms:identifier>0978ff2f-3719-44b4-afc7-574224d9aaae</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/119ef7c1-fd1e-4d14-95e6-1b5a0b23f26f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:prefLabel xml:lang="en">Pole</skos:prefLabel>
+    <dcterms:identifier>119ef7c1-fd1e-4d14-95e6-1b5a0b23f26f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2cdd3620-a90e-4e8a-94f7-f299c5a9efea">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:prefLabel xml:lang="en">Oar</skos:prefLabel>
+    <dcterms:identifier>2cdd3620-a90e-4e8a-94f7-f299c5a9efea</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a4c6fc54-279f-48e1-bfa8-3f23ad0b53d2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:prefLabel xml:lang="en">Motor</skos:prefLabel>
+    <dcterms:identifier>a4c6fc54-279f-48e1-bfa8-3f23ad0b53d2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/eb1c4a93-21ad-415d-a1a6-536af611f8e8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/4e7827a2-cb42-448c-bcdc-a6df93409b8e"/>
+    <skos:prefLabel xml:lang="en">Paddle</skos:prefLabel>
+    <dcterms:identifier>eb1c4a93-21ad-415d-a1a6-536af611f8e8</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

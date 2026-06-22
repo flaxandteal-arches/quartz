@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a">
+    <dcterms:title xml:lang="en">Administrative Area Name</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/550087b5-2362-438c-987c-ea0103bab9a2"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ae38febb-20ee-493c-bb25-db5f93796632"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c741c68b-779e-4cfb-8a50-70c2c45f81aa"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d2b10382-f7c6-468e-ac40-e8b265b8da1d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/550087b5-2362-438c-987c-ea0103bab9a2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:prefLabel xml:lang="en">District/borough</skos:prefLabel>
+    <dcterms:identifier>550087b5-2362-438c-987c-ea0103bab9a2</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4c9675dd-a4cc-4e2f-9570-790f1d78a614"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/7eed94fa-47c1-45d5-9925-390939ff7362"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9d0f3609-eee5-495c-9278-0dfea28c505c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a2569404-5739-4f84-8a58-a143606fcb22"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a7f5f5d5-c230-468d-b9e3-385d51da9fca"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a9c93d35-2faa-4c38-a6aa-e43dfe5a41b9"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e752c7aa-9d41-48a0-9cc7-18e3c0b4f1f9"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ec9fae97-a149-4c6d-8d8c-e1c2cafa7c7f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/fe324f50-b450-42ef-bcef-42856c80d913"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4c9675dd-a4cc-4e2f-9570-790f1d78a614">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/550087b5-2362-438c-987c-ea0103bab9a2"/>
+    <skos:prefLabel xml:lang="en">Reigate and Banstead</skos:prefLabel>
+    <dcterms:identifier>4c9675dd-a4cc-4e2f-9570-790f1d78a614</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7eed94fa-47c1-45d5-9925-390939ff7362">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/550087b5-2362-438c-987c-ea0103bab9a2"/>
+    <skos:prefLabel xml:lang="en">Epping Forest</skos:prefLabel>
+    <dcterms:identifier>7eed94fa-47c1-45d5-9925-390939ff7362</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9d0f3609-eee5-495c-9278-0dfea28c505c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/550087b5-2362-438c-987c-ea0103bab9a2"/>
+    <skos:prefLabel xml:lang="en">Slough</skos:prefLabel>
+    <dcterms:identifier>9d0f3609-eee5-495c-9278-0dfea28c505c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a2569404-5739-4f84-8a58-a143606fcb22">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/550087b5-2362-438c-987c-ea0103bab9a2"/>
+    <skos:prefLabel xml:lang="en">Three Rivers</skos:prefLabel>
+    <dcterms:identifier>a2569404-5739-4f84-8a58-a143606fcb22</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a7f5f5d5-c230-468d-b9e3-385d51da9fca">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/550087b5-2362-438c-987c-ea0103bab9a2"/>
+    <skos:prefLabel xml:lang="en">Thurrock</skos:prefLabel>
+    <dcterms:identifier>a7f5f5d5-c230-468d-b9e3-385d51da9fca</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a9c93d35-2faa-4c38-a6aa-e43dfe5a41b9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/550087b5-2362-438c-987c-ea0103bab9a2"/>
+    <skos:prefLabel xml:lang="en">Epsom and Ewell</skos:prefLabel>
+    <dcterms:identifier>a9c93d35-2faa-4c38-a6aa-e43dfe5a41b9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e752c7aa-9d41-48a0-9cc7-18e3c0b4f1f9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/550087b5-2362-438c-987c-ea0103bab9a2"/>
+    <skos:prefLabel xml:lang="en">Broxbourne</skos:prefLabel>
+    <dcterms:identifier>e752c7aa-9d41-48a0-9cc7-18e3c0b4f1f9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ec9fae97-a149-4c6d-8d8c-e1c2cafa7c7f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/550087b5-2362-438c-987c-ea0103bab9a2"/>
+    <skos:prefLabel xml:lang="en">Elmbridge</skos:prefLabel>
+    <dcterms:identifier>ec9fae97-a149-4c6d-8d8c-e1c2cafa7c7f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fe324f50-b450-42ef-bcef-42856c80d913">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/550087b5-2362-438c-987c-ea0103bab9a2"/>
+    <skos:prefLabel xml:lang="en">Tandridge</skos:prefLabel>
+    <dcterms:identifier>fe324f50-b450-42ef-bcef-42856c80d913</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ae38febb-20ee-493c-bb25-db5f93796632">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:prefLabel xml:lang="en">River Thames</skos:prefLabel>
+    <dcterms:identifier>ae38febb-20ee-493c-bb25-db5f93796632</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c741c68b-779e-4cfb-8a50-70c2c45f81aa">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:prefLabel xml:lang="en">County/Unitary Authority</skos:prefLabel>
+    <dcterms:identifier>c741c68b-779e-4cfb-8a50-70c2c45f81aa</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/356252cc-c7bb-44ce-b335-58495d55df5f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6757004c-b107-44a0-bca5-3320d1336a2e"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/80aabaf1-1a8e-49b4-ac6f-b6592966a90c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a804ae60-dfbf-4296-93a4-068a2254ac5e"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b99e9ba8-589b-43cd-8c91-0885edfb8e8d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f4ea3e4c-44c0-4107-994f-1461f7a64d33"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/356252cc-c7bb-44ce-b335-58495d55df5f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c741c68b-779e-4cfb-8a50-70c2c45f81aa"/>
+    <skos:prefLabel xml:lang="en">Kent</skos:prefLabel>
+    <dcterms:identifier>356252cc-c7bb-44ce-b335-58495d55df5f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6757004c-b107-44a0-bca5-3320d1336a2e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c741c68b-779e-4cfb-8a50-70c2c45f81aa"/>
+    <skos:prefLabel xml:lang="en">Hertfordshire</skos:prefLabel>
+    <dcterms:identifier>6757004c-b107-44a0-bca5-3320d1336a2e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/80aabaf1-1a8e-49b4-ac6f-b6592966a90c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c741c68b-779e-4cfb-8a50-70c2c45f81aa"/>
+    <skos:prefLabel xml:lang="en">Middlesex</skos:prefLabel>
+    <dcterms:identifier>80aabaf1-1a8e-49b4-ac6f-b6592966a90c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a804ae60-dfbf-4296-93a4-068a2254ac5e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c741c68b-779e-4cfb-8a50-70c2c45f81aa"/>
+    <skos:prefLabel xml:lang="en">Essex</skos:prefLabel>
+    <dcterms:identifier>a804ae60-dfbf-4296-93a4-068a2254ac5e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b99e9ba8-589b-43cd-8c91-0885edfb8e8d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c741c68b-779e-4cfb-8a50-70c2c45f81aa"/>
+    <skos:prefLabel xml:lang="en">Greater London Authority</skos:prefLabel>
+    <dcterms:identifier>b99e9ba8-589b-43cd-8c91-0885edfb8e8d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f4ea3e4c-44c0-4107-994f-1461f7a64d33">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c741c68b-779e-4cfb-8a50-70c2c45f81aa"/>
+    <skos:prefLabel xml:lang="en">Surrey</skos:prefLabel>
+    <dcterms:identifier>f4ea3e4c-44c0-4107-994f-1461f7a64d33</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d2b10382-f7c6-468e-ac40-e8b265b8da1d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:prefLabel xml:lang="en">Out of Area</skos:prefLabel>
+    <dcterms:identifier>d2b10382-f7c6-468e-ac40-e8b265b8da1d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:prefLabel xml:lang="en">London Borough</skos:prefLabel>
+    <dcterms:identifier>f917eb4a-4c25-402e-a28c-4df30569c666</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/013faeb6-d829-4742-b10c-061a81ef4e66"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/14890506-c22d-4cc1-b076-78e963588669"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/1b2112c2-9e32-44f1-beb3-33f8f1b9e6e9"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/285b1396-634f-4b67-9791-c12765c9668b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/38b0b67b-098b-4025-869b-a9bcee16abe6"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/38c86975-9f11-413a-922f-3bfe610c160e"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4883918f-9de0-48ab-b740-63ce1f926d23"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4c494161-d939-4a9a-8ab6-b8e63c5b3945"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5055bd23-452d-40b0-8707-b168af363703"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/60699993-4896-47ee-a6ee-53d5bc3f44d4"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6b72d0b4-d76c-4ad8-8ffb-f852278062ca"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6c1566fb-2174-4575-bb43-97787e20b037"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/71f964af-aae8-475c-a8d3-dde3dcb4ab5d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/724db863-69a3-4a19-8980-fb51eac3a91b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/86afcc48-2716-4570-b396-76fee46eb5a3"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8b933160-3c80-444f-93d0-70d263d4d139"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8ff9ebdd-bab3-4463-970d-5621f97de495"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9129cecc-064e-4a41-a0a2-5f7d37dac4ea"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/96716049-3b30-4651-a2c4-23c9534a3c7e"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a945afdd-3299-4ed2-814c-4a0e9613e9f5"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ac8a2420-5eef-4a5d-9eb1-48278fbd3fb1"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/adf4098c-86d0-4a1c-8ce7-1721654829c9"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b23a570b-e1df-45aa-ab2f-2a82c5a9708b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/bb2d5c8f-827a-42c2-bf13-ca8b476d7229"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c773950e-8f8f-4fe4-8588-686d4f4d4dc6"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c7ffb9d1-bced-44c3-b388-7a4b14f3c70a"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d26382f1-f390-4bd0-a1b4-747a3009a6c2"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d68f53fb-5ba1-484d-b02f-4a6f56b2bf68"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d8942f77-9ae8-484c-9ff0-7989659acb0a"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d8f7e061-cbc0-40a6-bb6c-0cfb9fd33719"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d9ec99a7-8eb4-4285-a804-6addddf3aace"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e3395f77-0ff5-4f62-99f5-40cdadbabb30"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/eab5bce8-60e0-4ea9-a13b-869a649e2d27"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/013faeb6-d829-4742-b10c-061a81ef4e66">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Hackney</skos:prefLabel>
+    <dcterms:identifier>013faeb6-d829-4742-b10c-061a81ef4e66</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/14890506-c22d-4cc1-b076-78e963588669">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Camden</skos:prefLabel>
+    <dcterms:identifier>14890506-c22d-4cc1-b076-78e963588669</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1b2112c2-9e32-44f1-beb3-33f8f1b9e6e9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Lambeth</skos:prefLabel>
+    <dcterms:identifier>1b2112c2-9e32-44f1-beb3-33f8f1b9e6e9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/285b1396-634f-4b67-9791-c12765c9668b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">City of London</skos:prefLabel>
+    <dcterms:identifier>285b1396-634f-4b67-9791-c12765c9668b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/38b0b67b-098b-4025-869b-a9bcee16abe6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en-US">Hammersmith and Fulham</skos:prefLabel>
+    <dcterms:identifier>38b0b67b-098b-4025-869b-a9bcee16abe6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/38c86975-9f11-413a-922f-3bfe610c160e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Merton</skos:prefLabel>
+    <dcterms:identifier>38c86975-9f11-413a-922f-3bfe610c160e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4883918f-9de0-48ab-b740-63ce1f926d23">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Havering</skos:prefLabel>
+    <dcterms:identifier>4883918f-9de0-48ab-b740-63ce1f926d23</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4c494161-d939-4a9a-8ab6-b8e63c5b3945">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Kensington and Chelsea</skos:prefLabel>
+    <dcterms:identifier>4c494161-d939-4a9a-8ab6-b8e63c5b3945</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5055bd23-452d-40b0-8707-b168af363703">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Wandsworth</skos:prefLabel>
+    <dcterms:identifier>5055bd23-452d-40b0-8707-b168af363703</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/60699993-4896-47ee-a6ee-53d5bc3f44d4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Islington</skos:prefLabel>
+    <dcterms:identifier>60699993-4896-47ee-a6ee-53d5bc3f44d4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6b72d0b4-d76c-4ad8-8ffb-f852278062ca">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Bexley</skos:prefLabel>
+    <dcterms:identifier>6b72d0b4-d76c-4ad8-8ffb-f852278062ca</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6c1566fb-2174-4575-bb43-97787e20b037">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Lewisham</skos:prefLabel>
+    <dcterms:identifier>6c1566fb-2174-4575-bb43-97787e20b037</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/71f964af-aae8-475c-a8d3-dde3dcb4ab5d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Brent</skos:prefLabel>
+    <dcterms:identifier>71f964af-aae8-475c-a8d3-dde3dcb4ab5d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/724db863-69a3-4a19-8980-fb51eac3a91b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Newham</skos:prefLabel>
+    <dcterms:identifier>724db863-69a3-4a19-8980-fb51eac3a91b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/86afcc48-2716-4570-b396-76fee46eb5a3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Richmond upon Thames</skos:prefLabel>
+    <dcterms:identifier>86afcc48-2716-4570-b396-76fee46eb5a3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8b933160-3c80-444f-93d0-70d263d4d139">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Bromley</skos:prefLabel>
+    <dcterms:identifier>8b933160-3c80-444f-93d0-70d263d4d139</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8ff9ebdd-bab3-4463-970d-5621f97de495">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Hounslow</skos:prefLabel>
+    <dcterms:identifier>8ff9ebdd-bab3-4463-970d-5621f97de495</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9129cecc-064e-4a41-a0a2-5f7d37dac4ea">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Croydon</skos:prefLabel>
+    <dcterms:identifier>9129cecc-064e-4a41-a0a2-5f7d37dac4ea</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/96716049-3b30-4651-a2c4-23c9534a3c7e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">City of Westminster</skos:prefLabel>
+    <dcterms:identifier>96716049-3b30-4651-a2c4-23c9534a3c7e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a945afdd-3299-4ed2-814c-4a0e9613e9f5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Sutton</skos:prefLabel>
+    <dcterms:identifier>a945afdd-3299-4ed2-814c-4a0e9613e9f5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ac8a2420-5eef-4a5d-9eb1-48278fbd3fb1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Southwark</skos:prefLabel>
+    <dcterms:identifier>ac8a2420-5eef-4a5d-9eb1-48278fbd3fb1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/adf4098c-86d0-4a1c-8ce7-1721654829c9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Kingston upon Thames</skos:prefLabel>
+    <dcterms:identifier>adf4098c-86d0-4a1c-8ce7-1721654829c9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b23a570b-e1df-45aa-ab2f-2a82c5a9708b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Waltham Forest</skos:prefLabel>
+    <dcterms:identifier>b23a570b-e1df-45aa-ab2f-2a82c5a9708b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bb2d5c8f-827a-42c2-bf13-ca8b476d7229">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Ealing</skos:prefLabel>
+    <dcterms:identifier>bb2d5c8f-827a-42c2-bf13-ca8b476d7229</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c773950e-8f8f-4fe4-8588-686d4f4d4dc6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Greenwich</skos:prefLabel>
+    <dcterms:identifier>c773950e-8f8f-4fe4-8588-686d4f4d4dc6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c7ffb9d1-bced-44c3-b388-7a4b14f3c70a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Enfield</skos:prefLabel>
+    <dcterms:identifier>c7ffb9d1-bced-44c3-b388-7a4b14f3c70a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d26382f1-f390-4bd0-a1b4-747a3009a6c2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Hillingdon</skos:prefLabel>
+    <dcterms:identifier>d26382f1-f390-4bd0-a1b4-747a3009a6c2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d68f53fb-5ba1-484d-b02f-4a6f56b2bf68">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en-US">Redbridge</skos:prefLabel>
+    <dcterms:identifier>d68f53fb-5ba1-484d-b02f-4a6f56b2bf68</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d8942f77-9ae8-484c-9ff0-7989659acb0a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Haringey</skos:prefLabel>
+    <dcterms:identifier>d8942f77-9ae8-484c-9ff0-7989659acb0a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d8f7e061-cbc0-40a6-bb6c-0cfb9fd33719">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Harrow</skos:prefLabel>
+    <dcterms:identifier>d8f7e061-cbc0-40a6-bb6c-0cfb9fd33719</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d9ec99a7-8eb4-4285-a804-6addddf3aace">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Tower Hamlets</skos:prefLabel>
+    <dcterms:identifier>d9ec99a7-8eb4-4285-a804-6addddf3aace</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e3395f77-0ff5-4f62-99f5-40cdadbabb30">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Barnet</skos:prefLabel>
+    <dcterms:identifier>e3395f77-0ff5-4f62-99f5-40cdadbabb30</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/eab5bce8-60e0-4ea9-a13b-869a649e2d27">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/acb5feaf-e491-4e53-bff2-2801167fd65a"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/f917eb4a-4c25-402e-a28c-4df30569c666"/>
+    <skos:prefLabel xml:lang="en">Barking and Dagenham</skos:prefLabel>
+    <dcterms:identifier>eab5bce8-60e0-4ea9-a13b-869a649e2d27</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

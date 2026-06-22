@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/63244526-1690-5cfb-af89-49bfe6667b23">
+    <dcterms:title xml:lang="en">Heritage Item Visibility</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1fc33401-70c7-5359-bd8d-c8590ddf2921"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7c8bb3d1-2d6d-519c-aef6-d6dfabc3b077"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/97e3d2eb-b955-554a-902a-80b5bcd7d4a1"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1fc33401-70c7-5359-bd8d-c8590ddf2921">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/63244526-1690-5cfb-af89-49bfe6667b23"/>
+    <skos:prefLabel xml:lang="en">Private</skos:prefLabel>
+    <dcterms:identifier>1fc33401-70c7-5359-bd8d-c8590ddf2921</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7c8bb3d1-2d6d-519c-aef6-d6dfabc3b077">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/63244526-1690-5cfb-af89-49bfe6667b23"/>
+    <skos:prefLabel xml:lang="en">Staging</skos:prefLabel>
+    <dcterms:identifier>7c8bb3d1-2d6d-519c-aef6-d6dfabc3b077</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/97e3d2eb-b955-554a-902a-80b5bcd7d4a1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/63244526-1690-5cfb-af89-49bfe6667b23"/>
+    <skos:prefLabel xml:lang="en">Public</skos:prefLabel>
+    <dcterms:identifier>97e3d2eb-b955-554a-902a-80b5bcd7d4a1</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

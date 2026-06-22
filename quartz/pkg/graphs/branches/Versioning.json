@@ -1,0 +1,209 @@
+{
+    "graph": [
+        {
+            "author": null,
+            "cards": [
+                {
+                    "active": true,
+                    "cardid": "3cc51c59-a766-5f51-9fbe-b8a6ab74887b",
+                    "component_id": "f05e4d3a-53c1-11e8-b0ea-784f435179ea",
+                    "constraints": [],
+                    "description": null,
+                    "graph_id": "24f83ff1-cc65-4946-9baf-fdce4141eff9",
+                    "helpenabled": false,
+                    "helptext": {},
+                    "helptitle": {},
+                    "instructions": {},
+                    "is_editable": null,
+                    "name": {
+                        "en": "Versioning"
+                    },
+                    "nodegroup_id": "6c7072f0-1a28-5a3b-8faa-0d6c9fc949ac",
+                    "sortorder": 0,
+                    "visible": true
+                }
+            ],
+            "cards_x_nodes_x_widgets": [],
+            "color": null,
+            "config": {},
+            "deploymentdate": null,
+            "deploymentfile": null,
+            "description": null,
+            "edges": [
+                {
+                    "description": null,
+                    "domainnode_id": "6c7072f0-1a28-5a3b-8faa-0d6c9fc949ac",
+                    "edgeid": "47249ae8-6026-56c2-89a6-ca24ead26826",
+                    "graph_id": "24f83ff1-cc65-4946-9baf-fdce4141eff9",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+                    "rangenode_id": "01e701ad-1d9c-5478-b0d9-60765a3ec5b6"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "6c7072f0-1a28-5a3b-8faa-0d6c9fc949ac",
+                    "edgeid": "80ccd311-1f59-5249-9682-093d48fc5119",
+                    "graph_id": "24f83ff1-cc65-4946-9baf-fdce4141eff9",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P130_shows_features_of",
+                    "rangenode_id": "7c4b678e-edfe-5f8d-a681-66a761f34792"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "6c7072f0-1a28-5a3b-8faa-0d6c9fc949ac",
+                    "edgeid": "0828852c-3545-5ea2-bdeb-cc869475fba6",
+                    "graph_id": "24f83ff1-cc65-4946-9baf-fdce4141eff9",
+                    "name": null,
+                    "ontologyproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "rangenode_id": "be2b768a-5692-5f30-a76a-bcd5556e220c"
+                }
+            ],
+            "functions_x_graphs": [],
+            "graphid": "24f83ff1-cc65-4946-9baf-fdce4141eff9",
+            "iconclass": null,
+            "is_active": false,
+            "is_editable": true,
+            "isresource": false,
+            "jsonldcontext": null,
+            "name": {
+                "en": "Versioning"
+            },
+            "nodegroups": [],
+            "nodes": [
+                {
+                    "alias": "versioning",
+                    "config": {},
+                    "datatype": "semantic",
+                    "description": null,
+                    "exportable": true,
+                    "fieldname": null,
+                    "graph_id": "24f83ff1-cc65-4946-9baf-fdce4141eff9",
+                    "hascustomalias": false,
+                    "is_collector": true,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": true,
+                    "name": "Versioning",
+                    "nodegroup_id": "6c7072f0-1a28-5a3b-8faa-0d6c9fc949ac",
+                    "nodeid": "6c7072f0-1a28-5a3b-8faa-0d6c9fc949ac",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object",
+                    "parentproperty": null,
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "version",
+                    "config": {},
+                    "datatype": "string",
+                    "description": {
+                        "en": "Version identifier"
+                    },
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "24f83ff1-cc65-4946-9baf-fdce4141eff9",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Version",
+                    "nodegroup_id": "6c7072f0-1a28-5a3b-8faa-0d6c9fc949ac",
+                    "nodeid": "01e701ad-1d9c-5478-b0d9-60765a3ec5b6",
+                    "ontologyclass": "http://www.w3.org/2000/01/rdf-schema#Literal",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "working_copy",
+                    "config": {
+                        "graphs": [
+                            {
+                                "graphid": "076f9381-7b00-11e9-8d6b-80000b44d1d9",
+                                "name": "Heritage Item"
+                            }
+                        ]
+                    },
+                    "datatype": "resource-instance",
+                    "description": {
+                        "en": "Working copy of this heritage item"
+                    },
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "24f83ff1-cc65-4946-9baf-fdce4141eff9",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Working Copy",
+                    "nodegroup_id": "6c7072f0-1a28-5a3b-8faa-0d6c9fc949ac",
+                    "nodeid": "7c4b678e-edfe-5f8d-a681-66a761f34792",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P130_shows_features_of",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "heritage_item_visibility",
+                    "config": {
+                        "controlledList": "63244526-1690-5cfb-af89-49bfe6667b23"
+                    },
+                    "datatype": "reference",
+                    "description": {
+                        "en": "Visibility status of this heritage item"
+                    },
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "24f83ff1-cc65-4946-9baf-fdce4141eff9",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Heritage Item Visibility",
+                    "nodegroup_id": "6c7072f0-1a28-5a3b-8faa-0d6c9fc949ac",
+                    "nodeid": "be2b768a-5692-5f30-a76a-bcd5556e220c",
+                    "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E55_Type",
+                    "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                }
+            ],
+            "ontology_id": "e6e8db47-2ccf-11e6-927e-b8f6b115d7dd",
+            "publication": {
+                "graph_id": "24f83ff1-cc65-4946-9baf-fdce4141eff9",
+                "notes": null,
+                "publicationid": "e2101594-2206-55aa-8eee-652ac683a06a",
+                "published_time": "2026-06-09T14:12:26.798"
+            },
+            "relatable_resource_model_ids": [],
+            "resource_2_resource_constraints": null,
+            "root": {
+                "alias": "versioning",
+                "config": {},
+                "datatype": "semantic",
+                "description": null,
+                "exportable": true,
+                "fieldname": null,
+                "graph_id": "24f83ff1-cc65-4946-9baf-fdce4141eff9",
+                "hascustomalias": false,
+                "is_collector": true,
+                "isrequired": false,
+                "issearchable": true,
+                "istopnode": true,
+                "name": "Versioning",
+                "nodegroup_id": "6c7072f0-1a28-5a3b-8faa-0d6c9fc949ac",
+                "nodeid": "6c7072f0-1a28-5a3b-8faa-0d6c9fc949ac",
+                "ontologyclass": "http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object",
+                "parentproperty": null,
+                "sortorder": 0,
+                "sourcebranchpublication_id": null
+            },
+            "slug": "versioning",
+            "subtitle": null,
+            "template_id": "50000000-0000-0000-0000-000000000001",
+            "version": "1"
+        }
+    ]
+}

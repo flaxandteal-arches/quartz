@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/98b8dd4b-81d3-4f82-8c9a-6da6ee5c4219">
+    <dcterms:title xml:lang="en">Validation Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0e551f00-ab73-4ffe-9e87-de097b948b41"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/14ea654c-049e-487d-b412-07903037615b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/3c469d1b-6afb-4078-b0c2-5443955090c5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c26fd724-4aab-4199-ad6b-fda7a1eeea1a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d746e0b4-4f9d-4365-9683-af810e618e1c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f25fb64d-01e0-4154-821a-176ef3008517"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f3b4de21-9895-4255-8977-e55ab3aba064"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0e551f00-ab73-4ffe-9e87-de097b948b41">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/98b8dd4b-81d3-4f82-8c9a-6da6ee5c4219"/>
+    <skos:prefLabel xml:lang="en">Unchecked</skos:prefLabel>
+    <dcterms:identifier>0e551f00-ab73-4ffe-9e87-de097b948b41</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/14ea654c-049e-487d-b412-07903037615b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/98b8dd4b-81d3-4f82-8c9a-6da6ee5c4219"/>
+    <skos:prefLabel xml:lang="en">Needs splitting</skos:prefLabel>
+    <dcterms:identifier>14ea654c-049e-487d-b412-07903037615b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3c469d1b-6afb-4078-b0c2-5443955090c5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/98b8dd4b-81d3-4f82-8c9a-6da6ee5c4219"/>
+    <skos:prefLabel xml:lang="en">Possible Duplicate</skos:prefLabel>
+    <dcterms:identifier>3c469d1b-6afb-4078-b0c2-5443955090c5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c26fd724-4aab-4199-ad6b-fda7a1eeea1a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/98b8dd4b-81d3-4f82-8c9a-6da6ee5c4219"/>
+    <skos:prefLabel xml:lang="en">Delete?</skos:prefLabel>
+    <dcterms:identifier>c26fd724-4aab-4199-ad6b-fda7a1eeea1a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d746e0b4-4f9d-4365-9683-af810e618e1c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/98b8dd4b-81d3-4f82-8c9a-6da6ee5c4219"/>
+    <skos:prefLabel xml:lang="en">Needs Work</skos:prefLabel>
+    <dcterms:identifier>d746e0b4-4f9d-4365-9683-af810e618e1c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f25fb64d-01e0-4154-821a-176ef3008517">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/98b8dd4b-81d3-4f82-8c9a-6da6ee5c4219"/>
+    <skos:prefLabel xml:lang="en">Checked OK</skos:prefLabel>
+    <dcterms:identifier>f25fb64d-01e0-4154-821a-176ef3008517</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f3b4de21-9895-4255-8977-e55ab3aba064">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/98b8dd4b-81d3-4f82-8c9a-6da6ee5c4219"/>
+    <skos:prefLabel xml:lang="en">Revoked</skos:prefLabel>
+    <dcterms:identifier>f3b4de21-9895-4255-8977-e55ab3aba064</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

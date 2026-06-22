@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/7da5e4d6-3865-4931-bed5-2df4d5d52e46">
+    <dcterms:title xml:lang="en">Authorization Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0df064b1-8da5-44d9-a3d4-7bed04826b07"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/3324413d-2873-478c-8cb8-91b32b3e6534"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/dd174aff-6f27-4aaa-ac77-c0c4ec228734"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0df064b1-8da5-44d9-a3d4-7bed04826b07">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7da5e4d6-3865-4931-bed5-2df4d5d52e46"/>
+    <skos:prefLabel xml:lang="en">Authorized</skos:prefLabel>
+    <dcterms:identifier>0df064b1-8da5-44d9-a3d4-7bed04826b07</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3324413d-2873-478c-8cb8-91b32b3e6534">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7da5e4d6-3865-4931-bed5-2df4d5d52e46"/>
+    <skos:prefLabel xml:lang="en">Not Authorized</skos:prefLabel>
+    <dcterms:identifier>3324413d-2873-478c-8cb8-91b32b3e6534</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/dd174aff-6f27-4aaa-ac77-c0c4ec228734">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7da5e4d6-3865-4931-bed5-2df4d5d52e46"/>
+    <skos:prefLabel xml:lang="en">Awaiting Authorization</skos:prefLabel>
+    <dcterms:identifier>dd174aff-6f27-4aaa-ac77-c0c4ec228734</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

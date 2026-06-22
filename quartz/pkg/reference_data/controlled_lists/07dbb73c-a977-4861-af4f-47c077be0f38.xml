@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/07dbb73c-a977-4861-af4f-47c077be0f38">
+    <dcterms:title xml:lang="en">Planning Outcome</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/08e06bde-9d35-4ca3-aef9-8ffb275f455d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7409fad8-8a4e-41d8-b00c-a1136d5cb095"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b2000c2d-8301-487c-a65f-cfdc65cdbcbb"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b9654036-bf3d-4eea-960a-662262d5e7d9"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/08e06bde-9d35-4ca3-aef9-8ffb275f455d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/07dbb73c-a977-4861-af4f-47c077be0f38"/>
+    <skos:prefLabel xml:lang="en">Implemented</skos:prefLabel>
+    <dcterms:identifier>08e06bde-9d35-4ca3-aef9-8ffb275f455d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7409fad8-8a4e-41d8-b00c-a1136d5cb095">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/07dbb73c-a977-4861-af4f-47c077be0f38"/>
+    <skos:prefLabel xml:lang="en">Approved</skos:prefLabel>
+    <dcterms:identifier>7409fad8-8a4e-41d8-b00c-a1136d5cb095</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3a751419-9e20-48a8-8617-82aa62344911"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8a6500c9-cedd-4016-ada4-6572b7a842eb"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c4f2c84f-ac38-430f-80a7-548beeee0430"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e00bfab2-9c85-4a10-b809-b0d48ccdfc86"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3a751419-9e20-48a8-8617-82aa62344911">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/07dbb73c-a977-4861-af4f-47c077be0f38"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7409fad8-8a4e-41d8-b00c-a1136d5cb095"/>
+    <skos:prefLabel xml:lang="en">Approved - with watching brief condition</skos:prefLabel>
+    <dcterms:identifier>3a751419-9e20-48a8-8617-82aa62344911</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8a6500c9-cedd-4016-ada4-6572b7a842eb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/07dbb73c-a977-4861-af4f-47c077be0f38"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7409fad8-8a4e-41d8-b00c-a1136d5cb095"/>
+    <skos:prefLabel xml:lang="en">Approved - with legal agreement</skos:prefLabel>
+    <dcterms:identifier>8a6500c9-cedd-4016-ada4-6572b7a842eb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c4f2c84f-ac38-430f-80a7-548beeee0430">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/07dbb73c-a977-4861-af4f-47c077be0f38"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7409fad8-8a4e-41d8-b00c-a1136d5cb095"/>
+    <skos:prefLabel xml:lang="en">Approved - subject to evaluation</skos:prefLabel>
+    <dcterms:identifier>c4f2c84f-ac38-430f-80a7-548beeee0430</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e00bfab2-9c85-4a10-b809-b0d48ccdfc86">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/07dbb73c-a977-4861-af4f-47c077be0f38"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7409fad8-8a4e-41d8-b00c-a1136d5cb095"/>
+    <skos:prefLabel xml:lang="en-US">Approved - with full condition</skos:prefLabel>
+    <dcterms:identifier>e00bfab2-9c85-4a10-b809-b0d48ccdfc86</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b2000c2d-8301-487c-a65f-cfdc65cdbcbb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/07dbb73c-a977-4861-af4f-47c077be0f38"/>
+    <skos:prefLabel xml:lang="en">Refused</skos:prefLabel>
+    <dcterms:identifier>b2000c2d-8301-487c-a65f-cfdc65cdbcbb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b9654036-bf3d-4eea-960a-662262d5e7d9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/07dbb73c-a977-4861-af4f-47c077be0f38"/>
+    <skos:prefLabel xml:lang="en">No outcome</skos:prefLabel>
+    <dcterms:identifier>b9654036-bf3d-4eea-960a-662262d5e7d9</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

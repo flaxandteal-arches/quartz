@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/50a44409-2caa-5622-aaa6-805c8a352115">
+    <dcterms:title xml:lang="en">Parcel Types</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5c390301-629b-5cde-87ad-93219a590288"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/77199858-0a09-576e-a3b3-db8a00201e96"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b1019f85-8c92-572b-9426-145bba2163b9"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/fc949f05-75b8-55ff-bacb-3c39e6fc8abd"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5c390301-629b-5cde-87ad-93219a590288">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/50a44409-2caa-5622-aaa6-805c8a352115"/>
+    <skos:prefLabel xml:lang="en">Easement</skos:prefLabel>
+    <dcterms:identifier>5c390301-629b-5cde-87ad-93219a590288</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/77199858-0a09-576e-a3b3-db8a00201e96">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/50a44409-2caa-5622-aaa6-805c8a352115"/>
+    <skos:prefLabel xml:lang="en">Volumetric</skos:prefLabel>
+    <dcterms:identifier>77199858-0a09-576e-a3b3-db8a00201e96</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b1019f85-8c92-572b-9426-145bba2163b9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/50a44409-2caa-5622-aaa6-805c8a352115"/>
+    <skos:prefLabel xml:lang="en">Base</skos:prefLabel>
+    <dcterms:identifier>b1019f85-8c92-572b-9426-145bba2163b9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fc949f05-75b8-55ff-bacb-3c39e6fc8abd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/50a44409-2caa-5622-aaa6-805c8a352115"/>
+    <skos:prefLabel xml:lang="en">Strata Title</skos:prefLabel>
+    <dcterms:identifier>fc949f05-75b8-55ff-bacb-3c39e6fc8abd</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

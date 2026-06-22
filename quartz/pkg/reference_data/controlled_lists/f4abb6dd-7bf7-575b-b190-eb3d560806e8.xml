@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/f4abb6dd-7bf7-575b-b190-eb3d560806e8">
+    <dcterms:title xml:lang="en">SCS</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2762d255-4804-506f-8ec6-11e5eba8372a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4065bbc4-ed14-510a-99f3-b3c83f0a8a5e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/58db0fdc-5c4f-5f59-b2a9-c9b8874273ec"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/795055d7-7255-555f-810f-5dd3fcbd0fdd"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/90d05d61-bd6f-529e-a293-0a7da2e5d90d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9a963413-b146-5a7a-a98a-bca95a8a5125"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9e0f77da-0693-5961-8ef7-f58b7c4d6ce4"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ae68cea9-9baf-525d-be83-8d186c93683d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b4735877-fdfe-58cf-904b-ce24216bc538"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b9e372cf-8554-5469-98ff-be53b9e48ad6"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c161cf4d-bb0a-58c8-8736-49bbe90ab08b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d797e40c-c284-5550-b914-12a999fea196"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2762d255-4804-506f-8ec6-11e5eba8372a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/f4abb6dd-7bf7-575b-b190-eb3d560806e8"/>
+    <skos:prefLabel xml:lang="en">GDA94 MGA ZONE 56 EAST/NORTHING</skos:prefLabel>
+    <dcterms:identifier>2762d255-4804-506f-8ec6-11e5eba8372a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4065bbc4-ed14-510a-99f3-b3c83f0a8a5e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/f4abb6dd-7bf7-575b-b190-eb3d560806e8"/>
+    <skos:prefLabel xml:lang="en">GDA94 MGA ZONE 54 EAST/NORTHING</skos:prefLabel>
+    <dcterms:identifier>4065bbc4-ed14-510a-99f3-b3c83f0a8a5e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/58db0fdc-5c4f-5f59-b2a9-c9b8874273ec">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/f4abb6dd-7bf7-575b-b190-eb3d560806e8"/>
+    <skos:prefLabel xml:lang="en">GDA2020 LAT/LONG</skos:prefLabel>
+    <dcterms:identifier>58db0fdc-5c4f-5f59-b2a9-c9b8874273ec</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/795055d7-7255-555f-810f-5dd3fcbd0fdd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/f4abb6dd-7bf7-575b-b190-eb3d560806e8"/>
+    <skos:prefLabel xml:lang="en">WGS84 MGA ZONE 56 EAST/NORTHING</skos:prefLabel>
+    <dcterms:identifier>795055d7-7255-555f-810f-5dd3fcbd0fdd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/90d05d61-bd6f-529e-a293-0a7da2e5d90d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/f4abb6dd-7bf7-575b-b190-eb3d560806e8"/>
+    <skos:prefLabel xml:lang="en">WGS84 MGA ZONE 55 EAST/NORTHING</skos:prefLabel>
+    <dcterms:identifier>90d05d61-bd6f-529e-a293-0a7da2e5d90d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9a963413-b146-5a7a-a98a-bca95a8a5125">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/f4abb6dd-7bf7-575b-b190-eb3d560806e8"/>
+    <skos:prefLabel xml:lang="en">GDA2020 MGA Zone 56 EAST/NORTHING</skos:prefLabel>
+    <dcterms:identifier>9a963413-b146-5a7a-a98a-bca95a8a5125</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9e0f77da-0693-5961-8ef7-f58b7c4d6ce4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/f4abb6dd-7bf7-575b-b190-eb3d560806e8"/>
+    <skos:prefLabel xml:lang="en">WGS84 LAT/LONG</skos:prefLabel>
+    <dcterms:identifier>9e0f77da-0693-5961-8ef7-f58b7c4d6ce4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ae68cea9-9baf-525d-be83-8d186c93683d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/f4abb6dd-7bf7-575b-b190-eb3d560806e8"/>
+    <skos:prefLabel xml:lang="en">GDA2020 MGA ZONE 55 EAST/NORTHING</skos:prefLabel>
+    <dcterms:identifier>ae68cea9-9baf-525d-be83-8d186c93683d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b4735877-fdfe-58cf-904b-ce24216bc538">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/f4abb6dd-7bf7-575b-b190-eb3d560806e8"/>
+    <skos:prefLabel xml:lang="en">GDA94 LAT/LONG</skos:prefLabel>
+    <dcterms:identifier>b4735877-fdfe-58cf-904b-ce24216bc538</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b9e372cf-8554-5469-98ff-be53b9e48ad6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/f4abb6dd-7bf7-575b-b190-eb3d560806e8"/>
+    <skos:prefLabel xml:lang="en">GDA94 MGA ZONE 55 EAST/NORTHING</skos:prefLabel>
+    <dcterms:identifier>b9e372cf-8554-5469-98ff-be53b9e48ad6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c161cf4d-bb0a-58c8-8736-49bbe90ab08b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/f4abb6dd-7bf7-575b-b190-eb3d560806e8"/>
+    <skos:prefLabel xml:lang="en">WGS84 MGA ZONE 54 EAST/NORTHING</skos:prefLabel>
+    <dcterms:identifier>c161cf4d-bb0a-58c8-8736-49bbe90ab08b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d797e40c-c284-5550-b914-12a999fea196">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/f4abb6dd-7bf7-575b-b190-eb3d560806e8"/>
+    <skos:prefLabel xml:lang="en">GDA2020 MGA ZONE 54 EAST/NORTHING</skos:prefLabel>
+    <dcterms:identifier>d797e40c-c284-5550-b914-12a999fea196</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

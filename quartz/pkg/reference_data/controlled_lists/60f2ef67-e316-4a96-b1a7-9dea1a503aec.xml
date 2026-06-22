@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/60f2ef67-e316-4a96-b1a7-9dea1a503aec">
+    <dcterms:title xml:lang="en">Location Precision</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1327d608-396c-4eb7-af6f-0dab5afc2e3a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2c5a0d8a-9fa0-42f8-9cb6-7c690a968f6e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/42c109d6-d374-42c3-b549-5455bad58fe5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/441259a4-2d1e-4a62-ad26-1ff5ad91389a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/5545ada4-f512-439c-af96-aa312715f7b7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8058e9e4-2298-41fb-84a1-b6fc4d398265"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/bb2281c1-ad61-4e04-bcae-315b44166569"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c5f0aaaf-579d-4041-88a5-58d7e5b43a73"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d6fe0fd6-215e-428c-b755-2cecf76dcefb"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1327d608-396c-4eb7-af6f-0dab5afc2e3a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/60f2ef67-e316-4a96-b1a7-9dea1a503aec"/>
+    <skos:prefLabel xml:lang="en">Grid Reference</skos:prefLabel>
+    <dcterms:identifier>1327d608-396c-4eb7-af6f-0dab5afc2e3a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2c5a0d8a-9fa0-42f8-9cb6-7c690a968f6e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/60f2ef67-e316-4a96-b1a7-9dea1a503aec"/>
+    <skos:prefLabel xml:lang="en">Locality</skos:prefLabel>
+    <dcterms:identifier>2c5a0d8a-9fa0-42f8-9cb6-7c690a968f6e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/42c109d6-d374-42c3-b549-5455bad58fe5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/60f2ef67-e316-4a96-b1a7-9dea1a503aec"/>
+    <skos:prefLabel xml:lang="en">Named Site/Structure</skos:prefLabel>
+    <dcterms:identifier>42c109d6-d374-42c3-b549-5455bad58fe5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/441259a4-2d1e-4a62-ad26-1ff5ad91389a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/60f2ef67-e316-4a96-b1a7-9dea1a503aec"/>
+    <skos:prefLabel xml:lang="en">County</skos:prefLabel>
+    <dcterms:identifier>441259a4-2d1e-4a62-ad26-1ff5ad91389a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5545ada4-f512-439c-af96-aa312715f7b7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/60f2ef67-e316-4a96-b1a7-9dea1a503aec"/>
+    <skos:prefLabel xml:lang="en">Postal District</skos:prefLabel>
+    <dcterms:identifier>5545ada4-f512-439c-af96-aa312715f7b7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8058e9e4-2298-41fb-84a1-b6fc4d398265">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/60f2ef67-e316-4a96-b1a7-9dea1a503aec"/>
+    <skos:prefLabel xml:lang="en">District</skos:prefLabel>
+    <dcterms:identifier>8058e9e4-2298-41fb-84a1-b6fc4d398265</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bb2281c1-ad61-4e04-bcae-315b44166569">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/60f2ef67-e316-4a96-b1a7-9dea1a503aec"/>
+    <skos:prefLabel xml:lang="en">Country</skos:prefLabel>
+    <dcterms:identifier>bb2281c1-ad61-4e04-bcae-315b44166569</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c5f0aaaf-579d-4041-88a5-58d7e5b43a73">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/60f2ef67-e316-4a96-b1a7-9dea1a503aec"/>
+    <skos:prefLabel xml:lang="en">Street</skos:prefLabel>
+    <dcterms:identifier>c5f0aaaf-579d-4041-88a5-58d7e5b43a73</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d6fe0fd6-215e-428c-b755-2cecf76dcefb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/60f2ef67-e316-4a96-b1a7-9dea1a503aec"/>
+    <skos:prefLabel xml:lang="en">Parish</skos:prefLabel>
+    <dcterms:identifier>d6fe0fd6-215e-428c-b755-2cecf76dcefb</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

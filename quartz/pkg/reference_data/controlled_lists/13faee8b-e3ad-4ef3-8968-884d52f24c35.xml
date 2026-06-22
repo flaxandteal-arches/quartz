@@ -1,0 +1,1672 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35">
+    <dcterms:title xml:lang="en">Historic Landscape Characterization</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/101d416d-dbe0-4053-a3e1-bad16bb5b34d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4227d269-67a6-4d10-a8c1-61099b6dee4c"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4dfcff92-0805-4242-a80f-427754b0d71a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4fd1b8dd-0f82-4f29-a866-caf6a8a35457"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/701eeb76-4b62-42f4-8433-e268f584e56e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7682b858-8429-4a41-bb97-f0bfc9b746d4"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b671cbe8-9729-4923-9df9-8faac9b821b7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c519ef07-bcf1-45d7-a7da-d589931eb247"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c989ff71-b50b-442b-b657-701daa9519fe"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e2883459-fb01-4c63-98e0-a47557d590bc"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e2c4703f-5d68-4589-9c42-e4364b5616e6"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e91f8870-85f1-4b3c-8ba9-c121b33d3f3d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/eb9d235c-9156-4972-9878-aaaf2dadb901"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f0c43f28-59b6-42e2-b172-f242b3611249"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/101d416d-dbe0-4053-a3e1-bad16bb5b34d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Unenclosed Land</skos:prefLabel>
+    <dcterms:identifier>101d416d-dbe0-4053-a3e1-bad16bb5b34d</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/13303628-0f47-436f-a395-46aac155c8cb"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4477b4b5-f568-48e3-b0ac-e0ee3336bf86"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/63c9712c-b50c-481f-8f3b-d179ba27618a"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6872f6cb-c9c1-4543-ad2b-42ccfa11d74a"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/7c1c2305-fa77-4c36-8f2e-ed7b7c4316b9"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/964ed483-c57e-4912-bcf6-7527cd4a9bd9"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/cc82f39a-fd4b-4f9b-a895-75edfd2ea939"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/cf599390-066e-4ea1-948d-16b96ec6322c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ec5d3821-daf5-4278-8ea4-f174346185c6"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/13303628-0f47-436f-a395-46aac155c8cb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/101d416d-dbe0-4053-a3e1-bad16bb5b34d"/>
+    <skos:prefLabel xml:lang="en">Wetland common</skos:prefLabel>
+    <dcterms:identifier>13303628-0f47-436f-a395-46aac155c8cb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4477b4b5-f568-48e3-b0ac-e0ee3336bf86">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/101d416d-dbe0-4053-a3e1-bad16bb5b34d"/>
+    <skos:prefLabel xml:lang="en">Heath</skos:prefLabel>
+    <dcterms:identifier>4477b4b5-f568-48e3-b0ac-e0ee3336bf86</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/63c9712c-b50c-481f-8f3b-d179ba27618a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/101d416d-dbe0-4053-a3e1-bad16bb5b34d"/>
+    <skos:prefLabel xml:lang="en">Rough grassland/scrub</skos:prefLabel>
+    <dcterms:identifier>63c9712c-b50c-481f-8f3b-d179ba27618a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6872f6cb-c9c1-4543-ad2b-42ccfa11d74a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/101d416d-dbe0-4053-a3e1-bad16bb5b34d"/>
+    <skos:prefLabel xml:lang="en">Intertidal</skos:prefLabel>
+    <dcterms:identifier>6872f6cb-c9c1-4543-ad2b-42ccfa11d74a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7c1c2305-fa77-4c36-8f2e-ed7b7c4316b9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/101d416d-dbe0-4053-a3e1-bad16bb5b34d"/>
+    <skos:prefLabel xml:lang="en">Marshland</skos:prefLabel>
+    <dcterms:identifier>7c1c2305-fa77-4c36-8f2e-ed7b7c4316b9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/964ed483-c57e-4912-bcf6-7527cd4a9bd9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/101d416d-dbe0-4053-a3e1-bad16bb5b34d"/>
+    <skos:prefLabel xml:lang="en">Pasture</skos:prefLabel>
+    <dcterms:identifier>964ed483-c57e-4912-bcf6-7527cd4a9bd9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cc82f39a-fd4b-4f9b-a895-75edfd2ea939">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/101d416d-dbe0-4053-a3e1-bad16bb5b34d"/>
+    <skos:prefLabel xml:lang="en">Osier bed</skos:prefLabel>
+    <dcterms:identifier>cc82f39a-fd4b-4f9b-a895-75edfd2ea939</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cf599390-066e-4ea1-948d-16b96ec6322c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/101d416d-dbe0-4053-a3e1-bad16bb5b34d"/>
+    <skos:prefLabel xml:lang="en">Commons and greens</skos:prefLabel>
+    <dcterms:identifier>cf599390-066e-4ea1-948d-16b96ec6322c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ec5d3821-daf5-4278-8ea4-f174346185c6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/101d416d-dbe0-4053-a3e1-bad16bb5b34d"/>
+    <skos:prefLabel xml:lang="en">Meadow</skos:prefLabel>
+    <dcterms:identifier>ec5d3821-daf5-4278-8ea4-f174346185c6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Ornamental, Parkland and Recreational</skos:prefLabel>
+    <dcterms:identifier>3216c5e8-e2c1-45b7-982a-b0eb0d0802a8</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/092504e4-8f0e-4ebc-a3d3-dd0f61fad2a4"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/1981728b-c979-47a8-ae7a-b090accc8276"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/20c026c3-932a-4fda-a271-ab29d70034bf"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/27bdc169-78a5-4a2e-8b14-5398cdd07a43"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/27ee60bc-c8a0-422b-88d9-b4aec7e10bcf"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/336fe1fe-e460-4385-a5b6-103cd6211e2c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/43d04031-0e66-47aa-a50a-478d118b2d26"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/47ad2999-f2a8-4fef-83d6-086403d303c1"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5bb1622b-f791-4617-9d75-bd5fddefec01"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/92003910-a025-46da-bb2b-0a1e597f8d8f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/954f4360-e41e-4f98-8aeb-9803e6f47054"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9df128c2-bc73-4be6-a8f0-17a7a53be102"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/bb6db22e-004c-4424-ad87-7e4607ae9ecd"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c34c9558-1e6c-465e-b2a2-3a6da47908db"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c86d8fd8-7c25-4d63-8bb9-9712a559a590"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d74720e6-ae25-4513-8f71-7ceeaee24cb6"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/deba931f-657b-4d39-910d-a73334ffb706"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e29c3388-e93a-4e84-bf30-095e1f87c8d7"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/eca0a79e-0f95-4154-86ac-061e424112ab"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f54e3465-566d-4557-a930-d6979acbbd05"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/092504e4-8f0e-4ebc-a3d3-dd0f61fad2a4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Leisure complex</skos:prefLabel>
+    <dcterms:identifier>092504e4-8f0e-4ebc-a3d3-dd0f61fad2a4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1981728b-c979-47a8-ae7a-b090accc8276">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Public Open Space</skos:prefLabel>
+    <dcterms:identifier>1981728b-c979-47a8-ae7a-b090accc8276</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/20c026c3-932a-4fda-a271-ab29d70034bf">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Historic park</skos:prefLabel>
+    <dcterms:identifier>20c026c3-932a-4fda-a271-ab29d70034bf</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/27bdc169-78a5-4a2e-8b14-5398cdd07a43">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Playing fields/recreation ground</skos:prefLabel>
+    <dcterms:identifier>27bdc169-78a5-4a2e-8b14-5398cdd07a43</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/27ee60bc-c8a0-422b-88d9-b4aec7e10bcf">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Private park</skos:prefLabel>
+    <dcterms:identifier>27ee60bc-c8a0-422b-88d9-b4aec7e10bcf</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/336fe1fe-e460-4385-a5b6-103cd6211e2c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Sports field</skos:prefLabel>
+    <dcterms:identifier>336fe1fe-e460-4385-a5b6-103cd6211e2c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/43d04031-0e66-47aa-a50a-478d118b2d26">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Nature reserve</skos:prefLabel>
+    <dcterms:identifier>43d04031-0e66-47aa-a50a-478d118b2d26</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/47ad2999-f2a8-4fef-83d6-086403d303c1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Country park</skos:prefLabel>
+    <dcterms:identifier>47ad2999-f2a8-4fef-83d6-086403d303c1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5bb1622b-f791-4617-9d75-bd5fddefec01">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Cemetery</skos:prefLabel>
+    <dcterms:identifier>5bb1622b-f791-4617-9d75-bd5fddefec01</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/92003910-a025-46da-bb2b-0a1e597f8d8f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Entertainment complex</skos:prefLabel>
+    <dcterms:identifier>92003910-a025-46da-bb2b-0a1e597f8d8f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/954f4360-e41e-4f98-8aeb-9803e6f47054">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Public square/green</skos:prefLabel>
+    <dcterms:identifier>954f4360-e41e-4f98-8aeb-9803e6f47054</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9df128c2-bc73-4be6-a8f0-17a7a53be102">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Cinema/Theatre</skos:prefLabel>
+    <dcterms:identifier>9df128c2-bc73-4be6-a8f0-17a7a53be102</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bb6db22e-004c-4424-ad87-7e4607ae9ecd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Deer park</skos:prefLabel>
+    <dcterms:identifier>bb6db22e-004c-4424-ad87-7e4607ae9ecd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c34c9558-1e6c-465e-b2a2-3a6da47908db">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Public park</skos:prefLabel>
+    <dcterms:identifier>c34c9558-1e6c-465e-b2a2-3a6da47908db</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c86d8fd8-7c25-4d63-8bb9-9712a559a590">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Golf course</skos:prefLabel>
+    <dcterms:identifier>c86d8fd8-7c25-4d63-8bb9-9712a559a590</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d74720e6-ae25-4513-8f71-7ceeaee24cb6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Public Gardens</skos:prefLabel>
+    <dcterms:identifier>d74720e6-ae25-4513-8f71-7ceeaee24cb6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/deba931f-657b-4d39-910d-a73334ffb706">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Rough ground</skos:prefLabel>
+    <dcterms:identifier>deba931f-657b-4d39-910d-a73334ffb706</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e29c3388-e93a-4e84-bf30-095e1f87c8d7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Sports complex</skos:prefLabel>
+    <dcterms:identifier>e29c3388-e93a-4e84-bf30-095e1f87c8d7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/eca0a79e-0f95-4154-86ac-061e424112ab">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Community Farm</skos:prefLabel>
+    <dcterms:identifier>eca0a79e-0f95-4154-86ac-061e424112ab</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f54e3465-566d-4557-a930-d6979acbbd05">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/3216c5e8-e2c1-45b7-982a-b0eb0d0802a8"/>
+    <skos:prefLabel xml:lang="en">Landscaped garden</skos:prefLabel>
+    <dcterms:identifier>f54e3465-566d-4557-a930-d6979acbbd05</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4227d269-67a6-4d10-a8c1-61099b6dee4c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Horticulture</skos:prefLabel>
+    <dcterms:identifier>4227d269-67a6-4d10-a8c1-61099b6dee4c</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3e6e0cd5-50c5-4970-83ca-5e30d53abb70"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/74c5a652-1143-4f89-9bec-42ed75da4ab7"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/78e1851f-776a-4ef5-9bb7-bef02a0b17c8"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/840ac219-23c7-4eeb-af96-90b668d185eb"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3e6e0cd5-50c5-4970-83ca-5e30d53abb70">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4227d269-67a6-4d10-a8c1-61099b6dee4c"/>
+    <skos:prefLabel xml:lang="en">Allotments</skos:prefLabel>
+    <dcterms:identifier>3e6e0cd5-50c5-4970-83ca-5e30d53abb70</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/74c5a652-1143-4f89-9bec-42ed75da4ab7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4227d269-67a6-4d10-a8c1-61099b6dee4c"/>
+    <skos:prefLabel xml:lang="en">Market Gardens</skos:prefLabel>
+    <dcterms:identifier>74c5a652-1143-4f89-9bec-42ed75da4ab7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/78e1851f-776a-4ef5-9bb7-bef02a0b17c8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4227d269-67a6-4d10-a8c1-61099b6dee4c"/>
+    <skos:prefLabel xml:lang="en">Orchard</skos:prefLabel>
+    <dcterms:identifier>78e1851f-776a-4ef5-9bb7-bef02a0b17c8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/840ac219-23c7-4eeb-af96-90b668d185eb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4227d269-67a6-4d10-a8c1-61099b6dee4c"/>
+    <skos:prefLabel xml:lang="en">Nursery (commercial)</skos:prefLabel>
+    <dcterms:identifier>840ac219-23c7-4eeb-af96-90b668d185eb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Industry</skos:prefLabel>
+    <dcterms:identifier>4da18499-adbe-4c8b-92e4-21fe72d9075e</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/10fd8752-66bf-4391-85f3-7d7167c1f036"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/197b3104-5d9a-4770-a141-2da107e7936d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/2acc7d7f-8fcb-47ac-ac56-f27a4c84ba49"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/30a87bd0-936a-490f-b842-7bde54106ed5"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3557ff4f-efe0-4017-9089-2f1377e3d76b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5cadeec0-1074-4e1c-9990-a3ce37ad4fdf"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6a24bed1-ea88-434a-b5d1-dccec0b1ce99"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/75139f69-62ba-4333-8618-c87549e411a3"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/92789d79-ef92-45f5-8c99-318f8c087d37"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a9165a43-068c-4533-ae29-6555545f8595"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a9e7df50-6842-4d6e-8c54-808fa7420c21"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/bd4b161a-219a-435a-abfe-aec442d189fb"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c3dce6a6-6c31-4515-b39a-a11742852cc1"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/dc574db4-dfe4-4ac0-ae52-f8f93dd3a8dc"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/fc68d9df-8b7f-45fd-b835-221ab2842014"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/fcdb88ea-8971-4d89-a875-577e77e5892b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/fcfae374-f25e-4ad6-a53b-20fa9ccb99eb"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/10fd8752-66bf-4391-85f3-7d7167c1f036">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Maltings</skos:prefLabel>
+    <dcterms:identifier>10fd8752-66bf-4391-85f3-7d7167c1f036</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/197b3104-5d9a-4770-a141-2da107e7936d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Warehousing</skos:prefLabel>
+    <dcterms:identifier>197b3104-5d9a-4770-a141-2da107e7936d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2acc7d7f-8fcb-47ac-ac56-f27a4c84ba49">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Car manufacturing</skos:prefLabel>
+    <dcterms:identifier>2acc7d7f-8fcb-47ac-ac56-f27a4c84ba49</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/30a87bd0-936a-490f-b842-7bde54106ed5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Mixed light industrial/commercial</skos:prefLabel>
+    <dcterms:identifier>30a87bd0-936a-490f-b842-7bde54106ed5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3557ff4f-efe0-4017-9089-2f1377e3d76b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Power Station</skos:prefLabel>
+    <dcterms:identifier>3557ff4f-efe0-4017-9089-2f1377e3d76b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5cadeec0-1074-4e1c-9990-a3ce37ad4fdf">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Pottery</skos:prefLabel>
+    <dcterms:identifier>5cadeec0-1074-4e1c-9990-a3ce37ad4fdf</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6a24bed1-ea88-434a-b5d1-dccec0b1ce99">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Mills</skos:prefLabel>
+    <dcterms:identifier>6a24bed1-ea88-434a-b5d1-dccec0b1ce99</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/75139f69-62ba-4333-8618-c87549e411a3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Industrial works (general)</skos:prefLabel>
+    <dcterms:identifier>75139f69-62ba-4333-8618-c87549e411a3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/92789d79-ef92-45f5-8c99-318f8c087d37">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Gas works</skos:prefLabel>
+    <dcterms:identifier>92789d79-ef92-45f5-8c99-318f8c087d37</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a9165a43-068c-4533-ae29-6555545f8595">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Water and sewage</skos:prefLabel>
+    <dcterms:identifier>a9165a43-068c-4533-ae29-6555545f8595</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a9e7df50-6842-4d6e-8c54-808fa7420c21">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Timber/joinery/builders yard</skos:prefLabel>
+    <dcterms:identifier>a9e7df50-6842-4d6e-8c54-808fa7420c21</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bd4b161a-219a-435a-abfe-aec442d189fb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Industrial estate</skos:prefLabel>
+    <dcterms:identifier>bd4b161a-219a-435a-abfe-aec442d189fb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c3dce6a6-6c31-4515-b39a-a11742852cc1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Brewery</skos:prefLabel>
+    <dcterms:identifier>c3dce6a6-6c31-4515-b39a-a11742852cc1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/dc574db4-dfe4-4ac0-ae52-f8f93dd3a8dc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Brownfield/disused industrial</skos:prefLabel>
+    <dcterms:identifier>dc574db4-dfe4-4ac0-ae52-f8f93dd3a8dc</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fc68d9df-8b7f-45fd-b835-221ab2842014">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Brickworks</skos:prefLabel>
+    <dcterms:identifier>fc68d9df-8b7f-45fd-b835-221ab2842014</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fcdb88ea-8971-4d89-a875-577e77e5892b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Foundry</skos:prefLabel>
+    <dcterms:identifier>fcdb88ea-8971-4d89-a875-577e77e5892b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fcfae374-f25e-4ad6-a53b-20fa9ccb99eb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4da18499-adbe-4c8b-92e4-21fe72d9075e"/>
+    <skos:prefLabel xml:lang="en">Oil storage</skos:prefLabel>
+    <dcterms:identifier>fcfae374-f25e-4ad6-a53b-20fa9ccb99eb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4dfcff92-0805-4242-a80f-427754b0d71a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Educational</skos:prefLabel>
+    <dcterms:identifier>4dfcff92-0805-4242-a80f-427754b0d71a</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5b605438-61c8-444c-ab81-7b2585c2ba3e"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5f0e58c4-1f3a-4a44-838c-8355555db97f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a20086e4-7c3d-47ee-9a87-6e89eb74f31c"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5b605438-61c8-444c-ab81-7b2585c2ba3e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4dfcff92-0805-4242-a80f-427754b0d71a"/>
+    <skos:prefLabel xml:lang="en">Further education (Polys/Unis)</skos:prefLabel>
+    <dcterms:identifier>5b605438-61c8-444c-ab81-7b2585c2ba3e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5f0e58c4-1f3a-4a44-838c-8355555db97f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4dfcff92-0805-4242-a80f-427754b0d71a"/>
+    <skos:prefLabel xml:lang="en">City Farm</skos:prefLabel>
+    <dcterms:identifier>5f0e58c4-1f3a-4a44-838c-8355555db97f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a20086e4-7c3d-47ee-9a87-6e89eb74f31c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4dfcff92-0805-4242-a80f-427754b0d71a"/>
+    <skos:prefLabel xml:lang="en">Nursery/school/college</skos:prefLabel>
+    <dcterms:identifier>a20086e4-7c3d-47ee-9a87-6e89eb74f31c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4fd1b8dd-0f82-4f29-a866-caf6a8a35457">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Waterbodies</skos:prefLabel>
+    <dcterms:identifier>4fd1b8dd-0f82-4f29-a866-caf6a8a35457</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/0591b44d-4bed-4973-8a1a-bff349f153c6"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/435f22f3-4956-4d8b-9485-8c4b283103a2"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/93d2fdc6-5deb-49f2-8ae7-e9b8015b14cd"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9cf3da9e-d5c1-4c1f-a45a-9d22ba942501"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a5e56910-a796-413a-84b6-7c7ee6f3757b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/bbda9f07-2f1b-4674-846a-33c2dce968fd"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ef0bea04-41e4-44cd-ada5-a86eb0598c66"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f44da271-d450-4a5b-8025-6578e8625fce"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0591b44d-4bed-4973-8a1a-bff349f153c6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4fd1b8dd-0f82-4f29-a866-caf6a8a35457"/>
+    <skos:prefLabel xml:lang="en">Artificial lake</skos:prefLabel>
+    <dcterms:identifier>0591b44d-4bed-4973-8a1a-bff349f153c6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/435f22f3-4956-4d8b-9485-8c4b283103a2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4fd1b8dd-0f82-4f29-a866-caf6a8a35457"/>
+    <skos:prefLabel xml:lang="en">Fish pond</skos:prefLabel>
+    <dcterms:identifier>435f22f3-4956-4d8b-9485-8c4b283103a2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/93d2fdc6-5deb-49f2-8ae7-e9b8015b14cd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4fd1b8dd-0f82-4f29-a866-caf6a8a35457"/>
+    <skos:prefLabel xml:lang="en">Reservoir</skos:prefLabel>
+    <dcterms:identifier>93d2fdc6-5deb-49f2-8ae7-e9b8015b14cd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9cf3da9e-d5c1-4c1f-a45a-9d22ba942501">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4fd1b8dd-0f82-4f29-a866-caf6a8a35457"/>
+    <skos:prefLabel xml:lang="en">Fishery</skos:prefLabel>
+    <dcterms:identifier>9cf3da9e-d5c1-4c1f-a45a-9d22ba942501</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a5e56910-a796-413a-84b6-7c7ee6f3757b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4fd1b8dd-0f82-4f29-a866-caf6a8a35457"/>
+    <skos:prefLabel xml:lang="en">Lake</skos:prefLabel>
+    <dcterms:identifier>a5e56910-a796-413a-84b6-7c7ee6f3757b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bbda9f07-2f1b-4674-846a-33c2dce968fd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4fd1b8dd-0f82-4f29-a866-caf6a8a35457"/>
+    <skos:prefLabel xml:lang="en">Artificial channel</skos:prefLabel>
+    <dcterms:identifier>bbda9f07-2f1b-4674-846a-33c2dce968fd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ef0bea04-41e4-44cd-ada5-a86eb0598c66">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4fd1b8dd-0f82-4f29-a866-caf6a8a35457"/>
+    <skos:prefLabel xml:lang="en">River</skos:prefLabel>
+    <dcterms:identifier>ef0bea04-41e4-44cd-ada5-a86eb0598c66</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f44da271-d450-4a5b-8025-6578e8625fce">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4fd1b8dd-0f82-4f29-a866-caf6a8a35457"/>
+    <skos:prefLabel xml:lang="en">Moat</skos:prefLabel>
+    <dcterms:identifier>f44da271-d450-4a5b-8025-6578e8625fce</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/701eeb76-4b62-42f4-8433-e268f584e56e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Religious</skos:prefLabel>
+    <dcterms:identifier>701eeb76-4b62-42f4-8433-e268f584e56e</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/00110835-593f-49a6-b2f3-0ea5eb4bb8c5"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/468e5998-1132-474a-8458-4e07bec1afd2"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/73d57ebf-391d-44ff-a140-c99986363d7d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/88dffde0-971d-4edd-862a-386cea9b6969"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a988a2b1-f2e3-4b74-aa43-dffb3da36a24"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c89c15c6-43dd-4bb9-a372-c57bf5bc2f8d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/cf1d9797-7644-41f8-ab4e-0418175aa770"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/cfdca54c-104d-4564-b14f-11b7ff7c9518"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/eed01cef-aac9-4e8d-ad49-a362b63ffc0a"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f8e9d674-7f71-4d82-a260-7295bfac18e5"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/00110835-593f-49a6-b2f3-0ea5eb4bb8c5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/701eeb76-4b62-42f4-8433-e268f584e56e"/>
+    <skos:prefLabel xml:lang="en">Temple</skos:prefLabel>
+    <dcterms:identifier>00110835-593f-49a6-b2f3-0ea5eb4bb8c5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/468e5998-1132-474a-8458-4e07bec1afd2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/701eeb76-4b62-42f4-8433-e268f584e56e"/>
+    <skos:prefLabel xml:lang="en">Monastery/nunnery</skos:prefLabel>
+    <dcterms:identifier>468e5998-1132-474a-8458-4e07bec1afd2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/73d57ebf-391d-44ff-a140-c99986363d7d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/701eeb76-4b62-42f4-8433-e268f584e56e"/>
+    <skos:prefLabel xml:lang="en">Non-conformist</skos:prefLabel>
+    <dcterms:identifier>73d57ebf-391d-44ff-a140-c99986363d7d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/88dffde0-971d-4edd-862a-386cea9b6969">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/701eeb76-4b62-42f4-8433-e268f584e56e"/>
+    <skos:prefLabel xml:lang="en">Synagogue</skos:prefLabel>
+    <dcterms:identifier>88dffde0-971d-4edd-862a-386cea9b6969</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a988a2b1-f2e3-4b74-aa43-dffb3da36a24">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/701eeb76-4b62-42f4-8433-e268f584e56e"/>
+    <skos:prefLabel xml:lang="en">Chapel</skos:prefLabel>
+    <dcterms:identifier>a988a2b1-f2e3-4b74-aa43-dffb3da36a24</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c89c15c6-43dd-4bb9-a372-c57bf5bc2f8d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/701eeb76-4b62-42f4-8433-e268f584e56e"/>
+    <skos:prefLabel xml:lang="en">Church</skos:prefLabel>
+    <dcterms:identifier>c89c15c6-43dd-4bb9-a372-c57bf5bc2f8d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cf1d9797-7644-41f8-ab4e-0418175aa770">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/701eeb76-4b62-42f4-8433-e268f584e56e"/>
+    <skos:prefLabel xml:lang="en">Mosque</skos:prefLabel>
+    <dcterms:identifier>cf1d9797-7644-41f8-ab4e-0418175aa770</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cfdca54c-104d-4564-b14f-11b7ff7c9518">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/701eeb76-4b62-42f4-8433-e268f584e56e"/>
+    <skos:prefLabel xml:lang="en">Burial ground</skos:prefLabel>
+    <dcterms:identifier>cfdca54c-104d-4564-b14f-11b7ff7c9518</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/eed01cef-aac9-4e8d-ad49-a362b63ffc0a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/701eeb76-4b62-42f4-8433-e268f584e56e"/>
+    <skos:prefLabel xml:lang="en">Cemetery</skos:prefLabel>
+    <dcterms:identifier>eed01cef-aac9-4e8d-ad49-a362b63ffc0a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f8e9d674-7f71-4d82-a260-7295bfac18e5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/701eeb76-4b62-42f4-8433-e268f584e56e"/>
+    <skos:prefLabel xml:lang="en">Abbey</skos:prefLabel>
+    <dcterms:identifier>f8e9d674-7f71-4d82-a260-7295bfac18e5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Residential</skos:prefLabel>
+    <dcterms:identifier>70fddf7f-8a1d-43fb-851b-c9e56ab61f0f</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/200d0999-a963-4e5b-873d-f656f22d75c4"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/2fc358c6-87d1-4b66-aa3f-5fda4570c1bd"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3107874a-0155-4cac-9bbc-8542a70d97ad"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/351e788f-59be-4897-a694-2098f035a10f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3570b043-6b4b-434d-9b4b-21e6e8edee63"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/39778958-44a9-4362-ab14-4a1312b93a8f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4161246f-6a40-4b50-87f3-a74b5b04dbe5"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4a3eabf6-959d-47fb-bb58-5e2f18dfe3f3"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4be0f0d8-073c-44f3-aec3-92e6fe6be821"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/53d5fb20-caca-49cd-84c1-a7eded58ab79"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5c915e2e-281f-49f1-8ea4-5627800a9dd5"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5f7cc9b1-9278-453a-b330-d89828e92b52"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/70fc2ba9-0de0-4e1a-aa5c-d161d9866dc2"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/734e4617-932e-4195-b9f4-d02f94514197"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/805303d3-adc0-4854-b651-eebd862fe7f5"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/86e896df-fac6-4194-b865-d2eeae0d4222"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8dca38f3-0f6d-4ed0-9798-5fc75f469756"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/95c3b273-2917-43ca-9b8a-b765a6bd1d89"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b93c0559-6944-4809-b51d-48407d2a7c38"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b94f0901-0ba7-497b-b757-dae232de0f91"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d27e3554-6d30-4f74-bfbb-d558a819cb59"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d667b260-cb82-4b6e-8f33-e57c0d80fdd6"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d98fd7d7-6d70-4751-af1d-22a5b40753be"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/de40a37d-523c-454d-96e8-85615fd333e5"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e6e72c0c-c5f8-4046-826e-fe154d7082f0"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e7f857da-a66e-42cd-b237-49308a2423bd"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f949bd2c-8b02-49a9-9121-fc27ae62fd49"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/fd9e7cef-565e-4464-b15d-34d95c3596d4"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/fdb6c347-e8c7-4af3-a31b-4d3883179ca5"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/200d0999-a963-4e5b-873d-f656f22d75c4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Semi-detached</skos:prefLabel>
+    <dcterms:identifier>200d0999-a963-4e5b-873d-f656f22d75c4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2fc358c6-87d1-4b66-aa3f-5fda4570c1bd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Residential Modern</skos:prefLabel>
+    <dcterms:identifier>2fc358c6-87d1-4b66-aa3f-5fda4570c1bd</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/0f3f0030-821c-4452-aef7-fe0732df3236"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/12ad847c-8f58-403a-baf5-213f3f610d82"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/2f546cc7-cee5-4065-af4b-9f0f8eae9792"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/633e2c85-cc4c-4552-ae52-cdfc6ed70068"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ab98d4be-f61c-427b-ae5a-403e384e2c8c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b08624fd-dfdf-40c8-861d-e3f4560e63ec"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/fd34f3cf-4b62-47ac-b1d6-6bd6c4329159"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0f3f0030-821c-4452-aef7-fe0732df3236">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/2fc358c6-87d1-4b66-aa3f-5fda4570c1bd"/>
+    <skos:prefLabel xml:lang="en">Terraces</skos:prefLabel>
+    <dcterms:identifier>0f3f0030-821c-4452-aef7-fe0732df3236</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/12ad847c-8f58-403a-baf5-213f3f610d82">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/2fc358c6-87d1-4b66-aa3f-5fda4570c1bd"/>
+    <skos:prefLabel xml:lang="en">High and low rise apartments</skos:prefLabel>
+    <dcterms:identifier>12ad847c-8f58-403a-baf5-213f3f610d82</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2f546cc7-cee5-4065-af4b-9f0f8eae9792">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/2fc358c6-87d1-4b66-aa3f-5fda4570c1bd"/>
+    <skos:prefLabel xml:lang="en">Apartments</skos:prefLabel>
+    <dcterms:identifier>2f546cc7-cee5-4065-af4b-9f0f8eae9792</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/633e2c85-cc4c-4552-ae52-cdfc6ed70068">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/2fc358c6-87d1-4b66-aa3f-5fda4570c1bd"/>
+    <skos:prefLabel xml:lang="en">Detached</skos:prefLabel>
+    <dcterms:identifier>633e2c85-cc4c-4552-ae52-cdfc6ed70068</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ab98d4be-f61c-427b-ae5a-403e384e2c8c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/2fc358c6-87d1-4b66-aa3f-5fda4570c1bd"/>
+    <skos:prefLabel xml:lang="en">Bungalow</skos:prefLabel>
+    <dcterms:identifier>ab98d4be-f61c-427b-ae5a-403e384e2c8c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b08624fd-dfdf-40c8-861d-e3f4560e63ec">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/2fc358c6-87d1-4b66-aa3f-5fda4570c1bd"/>
+    <skos:prefLabel xml:lang="en">Semi-detached</skos:prefLabel>
+    <dcterms:identifier>b08624fd-dfdf-40c8-861d-e3f4560e63ec</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fd34f3cf-4b62-47ac-b1d6-6bd6c4329159">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/2fc358c6-87d1-4b66-aa3f-5fda4570c1bd"/>
+    <skos:prefLabel xml:lang="en">Short terraces and semi-detached</skos:prefLabel>
+    <dcterms:identifier>fd34f3cf-4b62-47ac-b1d6-6bd6c4329159</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3107874a-0155-4cac-9bbc-8542a70d97ad">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Elite residences</skos:prefLabel>
+    <dcterms:identifier>3107874a-0155-4cac-9bbc-8542a70d97ad</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/351e788f-59be-4897-a694-2098f035a10f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Estate houses</skos:prefLabel>
+    <dcterms:identifier>351e788f-59be-4897-a694-2098f035a10f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3570b043-6b4b-434d-9b4b-21e6e8edee63">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Curtilage building</skos:prefLabel>
+    <dcterms:identifier>3570b043-6b4b-434d-9b4b-21e6e8edee63</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/39778958-44a9-4362-ab14-4a1312b93a8f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Residential Early-mid Victorian</skos:prefLabel>
+    <dcterms:identifier>39778958-44a9-4362-ab14-4a1312b93a8f</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4f5f86b5-0f5d-42f0-966a-c24eb54f92ef"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5da5d8ad-0eaf-4d52-b378-10f247be7072"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/697fe1bd-d2f4-488c-bc04-5cedb2973a6f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/72834f3d-6502-462b-88b4-17c825634d0a"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9fbdaa8d-e66f-4afc-8dee-08aac3a9e188"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/eb3d461e-f0f1-42ff-afca-70c0141e2fee"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4f5f86b5-0f5d-42f0-966a-c24eb54f92ef">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/39778958-44a9-4362-ab14-4a1312b93a8f"/>
+    <skos:prefLabel xml:lang="en">Villas</skos:prefLabel>
+    <dcterms:identifier>4f5f86b5-0f5d-42f0-966a-c24eb54f92ef</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5da5d8ad-0eaf-4d52-b378-10f247be7072">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/39778958-44a9-4362-ab14-4a1312b93a8f"/>
+    <skos:prefLabel xml:lang="en">Terraces</skos:prefLabel>
+    <dcterms:identifier>5da5d8ad-0eaf-4d52-b378-10f247be7072</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/697fe1bd-d2f4-488c-bc04-5cedb2973a6f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/39778958-44a9-4362-ab14-4a1312b93a8f"/>
+    <skos:prefLabel xml:lang="en">Detached and semis</skos:prefLabel>
+    <dcterms:identifier>697fe1bd-d2f4-488c-bc04-5cedb2973a6f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/72834f3d-6502-462b-88b4-17c825634d0a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/39778958-44a9-4362-ab14-4a1312b93a8f"/>
+    <skos:prefLabel xml:lang="en">Semi-detached</skos:prefLabel>
+    <dcterms:identifier>72834f3d-6502-462b-88b4-17c825634d0a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9fbdaa8d-e66f-4afc-8dee-08aac3a9e188">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/39778958-44a9-4362-ab14-4a1312b93a8f"/>
+    <skos:prefLabel xml:lang="en">Detached</skos:prefLabel>
+    <dcterms:identifier>9fbdaa8d-e66f-4afc-8dee-08aac3a9e188</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/eb3d461e-f0f1-42ff-afca-70c0141e2fee">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/39778958-44a9-4362-ab14-4a1312b93a8f"/>
+    <skos:prefLabel xml:lang="en">Cottages</skos:prefLabel>
+    <dcterms:identifier>eb3d461e-f0f1-42ff-afca-70c0141e2fee</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4161246f-6a40-4b50-87f3-a74b5b04dbe5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Farm complex</skos:prefLabel>
+    <dcterms:identifier>4161246f-6a40-4b50-87f3-a74b5b04dbe5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4a3eabf6-959d-47fb-bb58-5e2f18dfe3f3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Residential Inter-war</skos:prefLabel>
+    <dcterms:identifier>4a3eabf6-959d-47fb-bb58-5e2f18dfe3f3</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/0349bcf3-2cce-42d6-874d-d1463d4ec4ba"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/86e2a019-2ae4-49f9-8605-5a343b0dc4da"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/91c3ce9b-b3bd-4010-9bd5-6d6b00cf2dd1"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a1f89f58-d9e1-4101-a4cc-935fb0bb8c87"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c3d69461-4da6-4ee9-9479-e471d078e8f7"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/fc8bef41-e2dc-41e4-8ac4-1b97988f076e"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0349bcf3-2cce-42d6-874d-d1463d4ec4ba">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4a3eabf6-959d-47fb-bb58-5e2f18dfe3f3"/>
+    <skos:prefLabel xml:lang="en">Short terraces and semis</skos:prefLabel>
+    <dcterms:identifier>0349bcf3-2cce-42d6-874d-d1463d4ec4ba</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/86e2a019-2ae4-49f9-8605-5a343b0dc4da">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4a3eabf6-959d-47fb-bb58-5e2f18dfe3f3"/>
+    <skos:prefLabel xml:lang="en">Detached</skos:prefLabel>
+    <dcterms:identifier>86e2a019-2ae4-49f9-8605-5a343b0dc4da</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/91c3ce9b-b3bd-4010-9bd5-6d6b00cf2dd1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4a3eabf6-959d-47fb-bb58-5e2f18dfe3f3"/>
+    <skos:prefLabel xml:lang="en">Semi-detached</skos:prefLabel>
+    <dcterms:identifier>91c3ce9b-b3bd-4010-9bd5-6d6b00cf2dd1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a1f89f58-d9e1-4101-a4cc-935fb0bb8c87">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4a3eabf6-959d-47fb-bb58-5e2f18dfe3f3"/>
+    <skos:prefLabel xml:lang="en">Terraces</skos:prefLabel>
+    <dcterms:identifier>a1f89f58-d9e1-4101-a4cc-935fb0bb8c87</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c3d69461-4da6-4ee9-9479-e471d078e8f7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4a3eabf6-959d-47fb-bb58-5e2f18dfe3f3"/>
+    <skos:prefLabel xml:lang="en">Apartment blocks</skos:prefLabel>
+    <dcterms:identifier>c3d69461-4da6-4ee9-9479-e471d078e8f7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fc8bef41-e2dc-41e4-8ac4-1b97988f076e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/4a3eabf6-959d-47fb-bb58-5e2f18dfe3f3"/>
+    <skos:prefLabel xml:lang="en">Villas</skos:prefLabel>
+    <dcterms:identifier>fc8bef41-e2dc-41e4-8ac4-1b97988f076e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4be0f0d8-073c-44f3-aec3-92e6fe6be821">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Planned estate (industrial)</skos:prefLabel>
+    <dcterms:identifier>4be0f0d8-073c-44f3-aec3-92e6fe6be821</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/53d5fb20-caca-49cd-84c1-a7eded58ab79">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Residential Late Victorian/Edwardian</skos:prefLabel>
+    <dcterms:identifier>53d5fb20-caca-49cd-84c1-a7eded58ab79</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/628038a4-bfa4-4f09-a6c5-d2916d30662e"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/7435e853-17a8-4b3e-9bc2-c7a8ef76a6e1"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ab829792-9cd1-4c45-8f60-e94faa3310de"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/addfbc97-4f42-4ec6-86ff-21c14196e95f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f80212c0-90a1-4861-803d-10f94a6f67b8"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/628038a4-bfa4-4f09-a6c5-d2916d30662e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/53d5fb20-caca-49cd-84c1-a7eded58ab79"/>
+    <skos:prefLabel xml:lang="en">Detached and semi-detached</skos:prefLabel>
+    <dcterms:identifier>628038a4-bfa4-4f09-a6c5-d2916d30662e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7435e853-17a8-4b3e-9bc2-c7a8ef76a6e1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/53d5fb20-caca-49cd-84c1-a7eded58ab79"/>
+    <skos:prefLabel xml:lang="en">Villas</skos:prefLabel>
+    <dcterms:identifier>7435e853-17a8-4b3e-9bc2-c7a8ef76a6e1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ab829792-9cd1-4c45-8f60-e94faa3310de">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/53d5fb20-caca-49cd-84c1-a7eded58ab79"/>
+    <skos:prefLabel xml:lang="en">Semis</skos:prefLabel>
+    <dcterms:identifier>ab829792-9cd1-4c45-8f60-e94faa3310de</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/addfbc97-4f42-4ec6-86ff-21c14196e95f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/53d5fb20-caca-49cd-84c1-a7eded58ab79"/>
+    <skos:prefLabel xml:lang="en">Terraces</skos:prefLabel>
+    <dcterms:identifier>addfbc97-4f42-4ec6-86ff-21c14196e95f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f80212c0-90a1-4861-803d-10f94a6f67b8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/53d5fb20-caca-49cd-84c1-a7eded58ab79"/>
+    <skos:prefLabel xml:lang="en">Detached</skos:prefLabel>
+    <dcterms:identifier>f80212c0-90a1-4861-803d-10f94a6f67b8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5c915e2e-281f-49f1-8ea4-5627800a9dd5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Residential Post-war</skos:prefLabel>
+    <dcterms:identifier>5c915e2e-281f-49f1-8ea4-5627800a9dd5</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/06fdb484-d786-40c8-bbc3-66d8cb3b99fe"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/2ba7ba7c-e747-4108-9bc8-e5196840203d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6c2b7604-e71f-44b6-aec3-7b53f9066b88"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/83296b95-de11-4b2c-8467-2f20d53db34c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e2ef8127-e758-462c-a85a-627436c7e333"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ea5705b2-8832-49a9-b19b-bb45c3c59f66"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ebac796b-5e5c-41c7-a9c5-74652a0f8dff"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ece02300-4027-4e6f-9c22-ee1c69fd8232"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/06fdb484-d786-40c8-bbc3-66d8cb3b99fe">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/5c915e2e-281f-49f1-8ea4-5627800a9dd5"/>
+    <skos:prefLabel xml:lang="en">High and low rise apartments</skos:prefLabel>
+    <dcterms:identifier>06fdb484-d786-40c8-bbc3-66d8cb3b99fe</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2ba7ba7c-e747-4108-9bc8-e5196840203d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/5c915e2e-281f-49f1-8ea4-5627800a9dd5"/>
+    <skos:prefLabel xml:lang="en">Detached</skos:prefLabel>
+    <dcterms:identifier>2ba7ba7c-e747-4108-9bc8-e5196840203d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6c2b7604-e71f-44b6-aec3-7b53f9066b88">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/5c915e2e-281f-49f1-8ea4-5627800a9dd5"/>
+    <skos:prefLabel xml:lang="en">Apartment blocks</skos:prefLabel>
+    <dcterms:identifier>6c2b7604-e71f-44b6-aec3-7b53f9066b88</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/83296b95-de11-4b2c-8467-2f20d53db34c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/5c915e2e-281f-49f1-8ea4-5627800a9dd5"/>
+    <skos:prefLabel xml:lang="en">Terraces</skos:prefLabel>
+    <dcterms:identifier>83296b95-de11-4b2c-8467-2f20d53db34c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e2ef8127-e758-462c-a85a-627436c7e333">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/5c915e2e-281f-49f1-8ea4-5627800a9dd5"/>
+    <skos:prefLabel xml:lang="en">Short terraces and semi-detached</skos:prefLabel>
+    <dcterms:identifier>e2ef8127-e758-462c-a85a-627436c7e333</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ea5705b2-8832-49a9-b19b-bb45c3c59f66">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/5c915e2e-281f-49f1-8ea4-5627800a9dd5"/>
+    <skos:prefLabel xml:lang="en">Post-war housing</skos:prefLabel>
+    <dcterms:identifier>ea5705b2-8832-49a9-b19b-bb45c3c59f66</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ebac796b-5e5c-41c7-a9c5-74652a0f8dff">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/5c915e2e-281f-49f1-8ea4-5627800a9dd5"/>
+    <skos:prefLabel xml:lang="en">Villas</skos:prefLabel>
+    <dcterms:identifier>ebac796b-5e5c-41c7-a9c5-74652a0f8dff</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ece02300-4027-4e6f-9c22-ee1c69fd8232">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/5c915e2e-281f-49f1-8ea4-5627800a9dd5"/>
+    <skos:prefLabel xml:lang="en">Semi-detached</skos:prefLabel>
+    <dcterms:identifier>ece02300-4027-4e6f-9c22-ee1c69fd8232</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5f7cc9b1-9278-453a-b330-d89828e92b52">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Terraced housing</skos:prefLabel>
+    <dcterms:identifier>5f7cc9b1-9278-453a-b330-d89828e92b52</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/70fc2ba9-0de0-4e1a-aa5c-d161d9866dc2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Villas</skos:prefLabel>
+    <dcterms:identifier>70fc2ba9-0de0-4e1a-aa5c-d161d9866dc2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/734e4617-932e-4195-b9f4-d02f94514197">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Sheltered accomodation</skos:prefLabel>
+    <dcterms:identifier>734e4617-932e-4195-b9f4-d02f94514197</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/805303d3-adc0-4854-b651-eebd862fe7f5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Garages/lock-ups</skos:prefLabel>
+    <dcterms:identifier>805303d3-adc0-4854-b651-eebd862fe7f5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/86e896df-fac6-4194-b865-d2eeae0d4222">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Residential Georgian</skos:prefLabel>
+    <dcterms:identifier>86e896df-fac6-4194-b865-d2eeae0d4222</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/477f2c43-395d-4407-94f4-82afa2c35d65"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/81368a58-53c6-4d67-a550-d534b60e2620"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c8bafae5-d76c-40e5-b25d-37be42f3f1c5"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/477f2c43-395d-4407-94f4-82afa2c35d65">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/86e896df-fac6-4194-b865-d2eeae0d4222"/>
+    <skos:prefLabel xml:lang="en">Terraces</skos:prefLabel>
+    <dcterms:identifier>477f2c43-395d-4407-94f4-82afa2c35d65</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/81368a58-53c6-4d67-a550-d534b60e2620">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/86e896df-fac6-4194-b865-d2eeae0d4222"/>
+    <skos:prefLabel xml:lang="en">Cottages</skos:prefLabel>
+    <dcterms:identifier>81368a58-53c6-4d67-a550-d534b60e2620</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c8bafae5-d76c-40e5-b25d-37be42f3f1c5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/86e896df-fac6-4194-b865-d2eeae0d4222"/>
+    <skos:prefLabel xml:lang="en">Villas</skos:prefLabel>
+    <dcterms:identifier>c8bafae5-d76c-40e5-b25d-37be42f3f1c5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8dca38f3-0f6d-4ed0-9798-5fc75f469756">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Vernacular cottages</skos:prefLabel>
+    <dcterms:identifier>8dca38f3-0f6d-4ed0-9798-5fc75f469756</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/95c3b273-2917-43ca-9b8a-b765a6bd1d89">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Detached</skos:prefLabel>
+    <dcterms:identifier>95c3b273-2917-43ca-9b8a-b765a6bd1d89</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b93c0559-6944-4809-b51d-48407d2a7c38">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Planned estate (social housing)</skos:prefLabel>
+    <dcterms:identifier>b93c0559-6944-4809-b51d-48407d2a7c38</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b94f0901-0ba7-497b-b757-dae232de0f91">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Pre 20th century Hamlet</skos:prefLabel>
+    <dcterms:identifier>b94f0901-0ba7-497b-b757-dae232de0f91</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d27e3554-6d30-4f74-bfbb-d558a819cb59">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Prefabs</skos:prefLabel>
+    <dcterms:identifier>d27e3554-6d30-4f74-bfbb-d558a819cb59</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d667b260-cb82-4b6e-8f33-e57c0d80fdd6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Low rise flats</skos:prefLabel>
+    <dcterms:identifier>d667b260-cb82-4b6e-8f33-e57c0d80fdd6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d98fd7d7-6d70-4751-af1d-22a5b40753be">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Mixed period residential</skos:prefLabel>
+    <dcterms:identifier>d98fd7d7-6d70-4751-af1d-22a5b40753be</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/de40a37d-523c-454d-96e8-85615fd333e5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Traveller site</skos:prefLabel>
+    <dcterms:identifier>de40a37d-523c-454d-96e8-85615fd333e5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e6e72c0c-c5f8-4046-826e-fe154d7082f0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Private housing estate</skos:prefLabel>
+    <dcterms:identifier>e6e72c0c-c5f8-4046-826e-fe154d7082f0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e7f857da-a66e-42cd-b237-49308a2423bd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Manorial manor</skos:prefLabel>
+    <dcterms:identifier>e7f857da-a66e-42cd-b237-49308a2423bd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f949bd2c-8b02-49a9-9121-fc27ae62fd49">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Conversions</skos:prefLabel>
+    <dcterms:identifier>f949bd2c-8b02-49a9-9121-fc27ae62fd49</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fd9e7cef-565e-4464-b15d-34d95c3596d4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">High rise flats</skos:prefLabel>
+    <dcterms:identifier>fd9e7cef-565e-4464-b15d-34d95c3596d4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fdb6c347-e8c7-4af3-a31b-4d3883179ca5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/70fddf7f-8a1d-43fb-851b-c9e56ab61f0f"/>
+    <skos:prefLabel xml:lang="en">Empty housing plots</skos:prefLabel>
+    <dcterms:identifier>fdb6c347-e8c7-4af3-a31b-4d3883179ca5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7682b858-8429-4a41-bb97-f0bfc9b746d4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Extractive</skos:prefLabel>
+    <dcterms:identifier>7682b858-8429-4a41-bb97-f0bfc9b746d4</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/24405106-11a9-44de-a448-457f699a7bfc"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/449b7843-0eee-4cf6-900f-30520c58172b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a223b9ce-6b19-4cb9-baca-41fd9a1e96ff"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c1a1de71-0874-4aa8-87e7-04731e347505"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/24405106-11a9-44de-a448-457f699a7bfc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7682b858-8429-4a41-bb97-f0bfc9b746d4"/>
+    <skos:prefLabel xml:lang="en">Quarry</skos:prefLabel>
+    <dcterms:identifier>24405106-11a9-44de-a448-457f699a7bfc</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/449b7843-0eee-4cf6-900f-30520c58172b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7682b858-8429-4a41-bb97-f0bfc9b746d4"/>
+    <skos:prefLabel xml:lang="en">Brickworks</skos:prefLabel>
+    <dcterms:identifier>449b7843-0eee-4cf6-900f-30520c58172b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a223b9ce-6b19-4cb9-baca-41fd9a1e96ff">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7682b858-8429-4a41-bb97-f0bfc9b746d4"/>
+    <skos:prefLabel xml:lang="en">Other mineral extraction/processing</skos:prefLabel>
+    <dcterms:identifier>a223b9ce-6b19-4cb9-baca-41fd9a1e96ff</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c1a1de71-0874-4aa8-87e7-04731e347505">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/7682b858-8429-4a41-bb97-f0bfc9b746d4"/>
+    <skos:prefLabel xml:lang="en">Landfill</skos:prefLabel>
+    <dcterms:identifier>c1a1de71-0874-4aa8-87e7-04731e347505</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Enclosed Land</skos:prefLabel>
+    <dcterms:identifier>a95e39eb-932e-4b8a-be27-e2f7811f5ba8</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/034ed8c5-32bb-420f-865f-139e8eadeea8"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/11939877-d0b5-4081-89c0-4b8ae13bac8d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/15559d2d-000d-49d1-92ab-f5622c88c7f7"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/296ecd56-4e5b-483e-b312-e9cdd112ace3"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/369994ac-8efc-4afa-a041-4aee6f509aac"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/457985d7-71f8-4c1b-aa37-1d8b739e9875"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/671814c7-75c5-46b9-8cb5-d115f7389fec"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/7a3f46ff-50b6-44b8-acf3-3b5269039b2e"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a3ae6fb6-99bc-4480-b78d-1319d4d5bebd"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ab14e24a-dfc8-4061-b04f-ab1ac924283c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/bbab844a-b931-4c80-a083-4781902ab2c5"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c9d20ba4-a757-4cd3-98ae-2c9a1783982b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d5676899-ac8c-4b8b-a896-35be35097811"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/dc5d56c6-ab42-439d-842a-06fb3a3d71a6"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e0ae08cb-d947-496d-93b7-f740d5fceabb"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f466a47a-5c29-4ff2-b8c4-09cd4b573758"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f54a7f92-b727-4750-956f-d7d388ab58a3"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/fd1fb6cd-d20a-4544-a589-34af1202de03"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/034ed8c5-32bb-420f-865f-139e8eadeea8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Prehistoric field systems</skos:prefLabel>
+    <dcterms:identifier>034ed8c5-32bb-420f-865f-139e8eadeea8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/11939877-d0b5-4081-89c0-4b8ae13bac8d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Planned enclosure</skos:prefLabel>
+    <dcterms:identifier>11939877-d0b5-4081-89c0-4b8ae13bac8d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/15559d2d-000d-49d1-92ab-f5622c88c7f7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Irregular enclosure</skos:prefLabel>
+    <dcterms:identifier>15559d2d-000d-49d1-92ab-f5622c88c7f7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/296ecd56-4e5b-483e-b312-e9cdd112ace3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Meadow pasture</skos:prefLabel>
+    <dcterms:identifier>296ecd56-4e5b-483e-b312-e9cdd112ace3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/369994ac-8efc-4afa-a041-4aee6f509aac">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Historic Estate</skos:prefLabel>
+    <dcterms:identifier>369994ac-8efc-4afa-a041-4aee6f509aac</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/457985d7-71f8-4c1b-aa37-1d8b739e9875">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Open fields</skos:prefLabel>
+    <dcterms:identifier>457985d7-71f8-4c1b-aa37-1d8b739e9875</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/671814c7-75c5-46b9-8cb5-d115f7389fec">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Undeveloped Urban Land</skos:prefLabel>
+    <dcterms:identifier>671814c7-75c5-46b9-8cb5-d115f7389fec</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7a3f46ff-50b6-44b8-acf3-3b5269039b2e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Assarts</skos:prefLabel>
+    <dcterms:identifier>7a3f46ff-50b6-44b8-acf3-3b5269039b2e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a3ae6fb6-99bc-4480-b78d-1319d4d5bebd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Paddocks and closes</skos:prefLabel>
+    <dcterms:identifier>a3ae6fb6-99bc-4480-b78d-1319d4d5bebd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ab14e24a-dfc8-4061-b04f-ab1ac924283c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Surveyed enclosure</skos:prefLabel>
+    <dcterms:identifier>ab14e24a-dfc8-4061-b04f-ab1ac924283c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bbab844a-b931-4c80-a083-4781902ab2c5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Strip fields</skos:prefLabel>
+    <dcterms:identifier>bbab844a-b931-4c80-a083-4781902ab2c5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c9d20ba4-a757-4cd3-98ae-2c9a1783982b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Regular enclosure</skos:prefLabel>
+    <dcterms:identifier>c9d20ba4-a757-4cd3-98ae-2c9a1783982b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d5676899-ac8c-4b8b-a896-35be35097811">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Construction Site</skos:prefLabel>
+    <dcterms:identifier>d5676899-ac8c-4b8b-a896-35be35097811</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/dc5d56c6-ab42-439d-842a-06fb3a3d71a6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Pre-18th century farmland</skos:prefLabel>
+    <dcterms:identifier>dc5d56c6-ab42-439d-842a-06fb3a3d71a6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e0ae08cb-d947-496d-93b7-f740d5fceabb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Brownfield site</skos:prefLabel>
+    <dcterms:identifier>e0ae08cb-d947-496d-93b7-f740d5fceabb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f466a47a-5c29-4ff2-b8c4-09cd4b573758">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Drained wetland</skos:prefLabel>
+    <dcterms:identifier>f466a47a-5c29-4ff2-b8c4-09cd4b573758</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f54a7f92-b727-4750-956f-d7d388ab58a3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Piecemeal enclosure</skos:prefLabel>
+    <dcterms:identifier>f54a7f92-b727-4750-956f-d7d388ab58a3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/fd1fb6cd-d20a-4544-a589-34af1202de03">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/a95e39eb-932e-4b8a-be27-e2f7811f5ba8"/>
+    <skos:prefLabel xml:lang="en">Agglomerated field</skos:prefLabel>
+    <dcterms:identifier>fd1fb6cd-d20a-4544-a589-34af1202de03</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b671cbe8-9729-4923-9df9-8faac9b821b7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Woodland</skos:prefLabel>
+    <dcterms:identifier>b671cbe8-9729-4923-9df9-8faac9b821b7</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3f3ef857-8141-4da5-9bc0-1dd1943a7157"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/6113d288-7150-4c8f-bd60-029c8e25a279"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c21eaed8-e066-4319-b630-520098df556d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d6a285a9-292a-4283-b7e1-5017db86bd99"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f9d11a22-8fb9-41be-be19-8f7a0e9c09a6"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3f3ef857-8141-4da5-9bc0-1dd1943a7157">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/b671cbe8-9729-4923-9df9-8faac9b821b7"/>
+    <skos:prefLabel xml:lang="en">Semi-natural woodland</skos:prefLabel>
+    <dcterms:identifier>3f3ef857-8141-4da5-9bc0-1dd1943a7157</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/6113d288-7150-4c8f-bd60-029c8e25a279">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/b671cbe8-9729-4923-9df9-8faac9b821b7"/>
+    <skos:prefLabel xml:lang="en">Mixed woodland</skos:prefLabel>
+    <dcterms:identifier>6113d288-7150-4c8f-bd60-029c8e25a279</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c21eaed8-e066-4319-b630-520098df556d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/b671cbe8-9729-4923-9df9-8faac9b821b7"/>
+    <skos:prefLabel xml:lang="en">Regenerated scrub/woodland</skos:prefLabel>
+    <dcterms:identifier>c21eaed8-e066-4319-b630-520098df556d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d6a285a9-292a-4283-b7e1-5017db86bd99">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/b671cbe8-9729-4923-9df9-8faac9b821b7"/>
+    <skos:prefLabel xml:lang="en">Plantation</skos:prefLabel>
+    <dcterms:identifier>d6a285a9-292a-4283-b7e1-5017db86bd99</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f9d11a22-8fb9-41be-be19-8f7a0e9c09a6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/b671cbe8-9729-4923-9df9-8faac9b821b7"/>
+    <skos:prefLabel xml:lang="en">Ancient Woodland</skos:prefLabel>
+    <dcterms:identifier>f9d11a22-8fb9-41be-be19-8f7a0e9c09a6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c519ef07-bcf1-45d7-a7da-d589931eb247">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Unknown</skos:prefLabel>
+    <dcterms:identifier>c519ef07-bcf1-45d7-a7da-d589931eb247</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c989ff71-b50b-442b-b657-701daa9519fe">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Commercial</skos:prefLabel>
+    <dcterms:identifier>c989ff71-b50b-442b-b657-701daa9519fe</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/1a2bf38b-1ac2-4710-9dad-2876c220b3fd"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/2d0f1e08-88cb-4c6a-bfd8-d149d665ea2f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4cba019f-ba06-406d-bc57-4d4fae072418"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/584efc95-2801-4665-bbeb-b97c114e02e3"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5cdb4f11-78bd-4d4c-a9e0-01b591ccaa4b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5ffe4166-1166-4ea2-9f4d-748701c1a1a8"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/7908e9e5-79e1-44d2-9aa6-23f7771c15bc"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/96d445f1-3d61-4c3f-be72-04a168a93fe5"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a42caf74-186a-4968-8b0a-8d22ce3a40a2"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ad521164-4b3c-433a-a53a-28cd86715e85"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/c7cce164-e7fd-471e-ba56-872c6eb05d2f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/cb62331a-674d-4c66-a4e9-e6837a043665"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d33030f5-d89c-4e70-97b7-55dc48d7b7c6"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ffef8256-ed08-45d1-8d04-3e3a1a9640e6"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1a2bf38b-1ac2-4710-9dad-2876c220b3fd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c989ff71-b50b-442b-b657-701daa9519fe"/>
+    <skos:prefLabel xml:lang="en">Offices/business centres</skos:prefLabel>
+    <dcterms:identifier>1a2bf38b-1ac2-4710-9dad-2876c220b3fd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2d0f1e08-88cb-4c6a-bfd8-d149d665ea2f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c989ff71-b50b-442b-b657-701daa9519fe"/>
+    <skos:prefLabel xml:lang="en">Hotel/motel</skos:prefLabel>
+    <dcterms:identifier>2d0f1e08-88cb-4c6a-bfd8-d149d665ea2f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4cba019f-ba06-406d-bc57-4d4fae072418">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c989ff71-b50b-442b-b657-701daa9519fe"/>
+    <skos:prefLabel xml:lang="en">Mixed commercial/light industrial</skos:prefLabel>
+    <dcterms:identifier>4cba019f-ba06-406d-bc57-4d4fae072418</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/584efc95-2801-4665-bbeb-b97c114e02e3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c989ff71-b50b-442b-b657-701daa9519fe"/>
+    <skos:prefLabel xml:lang="en">Petrol station</skos:prefLabel>
+    <dcterms:identifier>584efc95-2801-4665-bbeb-b97c114e02e3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5cdb4f11-78bd-4d4c-a9e0-01b591ccaa4b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c989ff71-b50b-442b-b657-701daa9519fe"/>
+    <skos:prefLabel xml:lang="en">Retail parks</skos:prefLabel>
+    <dcterms:identifier>5cdb4f11-78bd-4d4c-a9e0-01b591ccaa4b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5ffe4166-1166-4ea2-9f4d-748701c1a1a8">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c989ff71-b50b-442b-b657-701daa9519fe"/>
+    <skos:prefLabel xml:lang="en">Shopping centres</skos:prefLabel>
+    <dcterms:identifier>5ffe4166-1166-4ea2-9f4d-748701c1a1a8</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7908e9e5-79e1-44d2-9aa6-23f7771c15bc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c989ff71-b50b-442b-b657-701daa9519fe"/>
+    <skos:prefLabel xml:lang="en">Garden centre/nursery</skos:prefLabel>
+    <dcterms:identifier>7908e9e5-79e1-44d2-9aa6-23f7771c15bc</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/96d445f1-3d61-4c3f-be72-04a168a93fe5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c989ff71-b50b-442b-b657-701daa9519fe"/>
+    <skos:prefLabel xml:lang="en">Retail (general)</skos:prefLabel>
+    <dcterms:identifier>96d445f1-3d61-4c3f-be72-04a168a93fe5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a42caf74-186a-4968-8b0a-8d22ce3a40a2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c989ff71-b50b-442b-b657-701daa9519fe"/>
+    <skos:prefLabel xml:lang="en">Public House</skos:prefLabel>
+    <dcterms:identifier>a42caf74-186a-4968-8b0a-8d22ce3a40a2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ad521164-4b3c-433a-a53a-28cd86715e85">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c989ff71-b50b-442b-b657-701daa9519fe"/>
+    <skos:prefLabel xml:lang="en">Mixed commercial/residential</skos:prefLabel>
+    <dcterms:identifier>ad521164-4b3c-433a-a53a-28cd86715e85</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c7cce164-e7fd-471e-ba56-872c6eb05d2f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c989ff71-b50b-442b-b657-701daa9519fe"/>
+    <skos:prefLabel xml:lang="en">Garage/car sales</skos:prefLabel>
+    <dcterms:identifier>c7cce164-e7fd-471e-ba56-872c6eb05d2f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cb62331a-674d-4c66-a4e9-e6837a043665">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c989ff71-b50b-442b-b657-701daa9519fe"/>
+    <skos:prefLabel xml:lang="en">Restaurant/food outlet</skos:prefLabel>
+    <dcterms:identifier>cb62331a-674d-4c66-a4e9-e6837a043665</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d33030f5-d89c-4e70-97b7-55dc48d7b7c6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c989ff71-b50b-442b-b657-701daa9519fe"/>
+    <skos:prefLabel xml:lang="en">Markets</skos:prefLabel>
+    <dcterms:identifier>d33030f5-d89c-4e70-97b7-55dc48d7b7c6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ffef8256-ed08-45d1-8d04-3e3a1a9640e6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/c989ff71-b50b-442b-b657-701daa9519fe"/>
+    <skos:prefLabel xml:lang="en">Stables/Kennels/Cattery</skos:prefLabel>
+    <dcterms:identifier>ffef8256-ed08-45d1-8d04-3e3a1a9640e6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Institutional</skos:prefLabel>
+    <dcterms:identifier>cac15cd7-4a82-41be-84e6-ed2557fd8cac</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/05572921-10b7-47e0-b6e7-7bda67a876cb"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/06298cdc-b391-455a-bf9b-181a90f68b9e"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/1883c699-7652-4593-b70b-3b4e430df8db"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/1d0b46aa-6ce9-4614-8c5e-945165f1f642"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3236d24e-b63f-4184-b2ca-7ebddff4386a"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/38323a29-2246-429a-97d7-92e438751ebd"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3c6ef76e-5e8c-4e8c-bd94-12bef17020e7"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/455888a0-014c-4f66-9aec-1e316c58ccb2"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/724dc886-91a3-4416-b030-a216cef31b59"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/73f7ce25-71a4-4406-a589-095460fbf143"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/7b4d8f85-ff8a-4b57-add7-708bb4b99de5"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8b8062d9-54cb-4888-aa3d-c5bdcdb8b454"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/8fe178cb-f450-448f-b083-6ec345e86845"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/902f38ec-1b6a-4449-b372-412f9bdb81db"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ac323c91-b769-4519-837e-39d4274a1570"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e7b02e1f-5c9c-4698-be35-4fa660015d9c"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/05572921-10b7-47e0-b6e7-7bda67a876cb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:prefLabel xml:lang="en">Nursing home</skos:prefLabel>
+    <dcterms:identifier>05572921-10b7-47e0-b6e7-7bda67a876cb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/06298cdc-b391-455a-bf9b-181a90f68b9e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:prefLabel xml:lang="en">Public buildings</skos:prefLabel>
+    <dcterms:identifier>06298cdc-b391-455a-bf9b-181a90f68b9e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1883c699-7652-4593-b70b-3b4e430df8db">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:prefLabel xml:lang="en">Ambulance station</skos:prefLabel>
+    <dcterms:identifier>1883c699-7652-4593-b70b-3b4e430df8db</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1d0b46aa-6ce9-4614-8c5e-945165f1f642">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:prefLabel xml:lang="en">Hospitals</skos:prefLabel>
+    <dcterms:identifier>1d0b46aa-6ce9-4614-8c5e-945165f1f642</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3236d24e-b63f-4184-b2ca-7ebddff4386a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:prefLabel xml:lang="en">Mortuary</skos:prefLabel>
+    <dcterms:identifier>3236d24e-b63f-4184-b2ca-7ebddff4386a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/38323a29-2246-429a-97d7-92e438751ebd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:prefLabel xml:lang="en">Almshouse</skos:prefLabel>
+    <dcterms:identifier>38323a29-2246-429a-97d7-92e438751ebd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3c6ef76e-5e8c-4e8c-bd94-12bef17020e7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:prefLabel xml:lang="en">Museum/gallery</skos:prefLabel>
+    <dcterms:identifier>3c6ef76e-5e8c-4e8c-bd94-12bef17020e7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/455888a0-014c-4f66-9aec-1e316c58ccb2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:prefLabel xml:lang="en">Charity</skos:prefLabel>
+    <dcterms:identifier>455888a0-014c-4f66-9aec-1e316c58ccb2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/724dc886-91a3-4416-b030-a216cef31b59">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:prefLabel xml:lang="en">Social/Members clubs</skos:prefLabel>
+    <dcterms:identifier>724dc886-91a3-4416-b030-a216cef31b59</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/73f7ce25-71a4-4406-a589-095460fbf143">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:prefLabel xml:lang="en">Workhouse</skos:prefLabel>
+    <dcterms:identifier>73f7ce25-71a4-4406-a589-095460fbf143</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7b4d8f85-ff8a-4b57-add7-708bb4b99de5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:prefLabel xml:lang="en">Fire station</skos:prefLabel>
+    <dcterms:identifier>7b4d8f85-ff8a-4b57-add7-708bb4b99de5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8b8062d9-54cb-4888-aa3d-c5bdcdb8b454">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:prefLabel xml:lang="en">Prison</skos:prefLabel>
+    <dcterms:identifier>8b8062d9-54cb-4888-aa3d-c5bdcdb8b454</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8fe178cb-f450-448f-b083-6ec345e86845">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:prefLabel xml:lang="en">Community establishment</skos:prefLabel>
+    <dcterms:identifier>8fe178cb-f450-448f-b083-6ec345e86845</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/902f38ec-1b6a-4449-b372-412f9bdb81db">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:prefLabel xml:lang="en">Childrens Home</skos:prefLabel>
+    <dcterms:identifier>902f38ec-1b6a-4449-b372-412f9bdb81db</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ac323c91-b769-4519-837e-39d4274a1570">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:prefLabel xml:lang="en">Health centre/Doctors</skos:prefLabel>
+    <dcterms:identifier>ac323c91-b769-4519-837e-39d4274a1570</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e7b02e1f-5c9c-4698-be35-4fa660015d9c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/cac15cd7-4a82-41be-84e6-ed2557fd8cac"/>
+    <skos:prefLabel xml:lang="en">Civic buildings</skos:prefLabel>
+    <dcterms:identifier>e7b02e1f-5c9c-4698-be35-4fa660015d9c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e2883459-fb01-4c63-98e0-a47557d590bc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Communications</skos:prefLabel>
+    <dcterms:identifier>e2883459-fb01-4c63-98e0-a47557d590bc</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3567c7f4-e84b-4acc-b5a6-887762296d5c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/3cd6db8e-6055-4d71-8756-3bbc2d43f032"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/561c6d50-cb24-43fd-8d2e-61757b8a110b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/574dce0a-949e-479c-8b9a-4264804a31b9"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5807d86b-83f3-4554-a854-4954dc5f68fb"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ad08f121-1c92-4c41-b778-12b5d7644b95"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b23af291-0b28-4f1e-b500-244abdeb7633"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ca48542b-9f31-480d-99b5-cc772fa2d2c3"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ec95520d-d3c5-4ad1-8eef-26726e847516"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3567c7f4-e84b-4acc-b5a6-887762296d5c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2883459-fb01-4c63-98e0-a47557d590bc"/>
+    <skos:prefLabel xml:lang="en">Roads (A, M)</skos:prefLabel>
+    <dcterms:identifier>3567c7f4-e84b-4acc-b5a6-887762296d5c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3cd6db8e-6055-4d71-8756-3bbc2d43f032">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2883459-fb01-4c63-98e0-a47557d590bc"/>
+    <skos:prefLabel xml:lang="en">Historic Route</skos:prefLabel>
+    <dcterms:identifier>3cd6db8e-6055-4d71-8756-3bbc2d43f032</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/561c6d50-cb24-43fd-8d2e-61757b8a110b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2883459-fb01-4c63-98e0-a47557d590bc"/>
+    <skos:prefLabel xml:lang="en">Airfield</skos:prefLabel>
+    <dcterms:identifier>561c6d50-cb24-43fd-8d2e-61757b8a110b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/574dce0a-949e-479c-8b9a-4264804a31b9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2883459-fb01-4c63-98e0-a47557d590bc"/>
+    <skos:prefLabel xml:lang="en">Railway Station</skos:prefLabel>
+    <dcterms:identifier>574dce0a-949e-479c-8b9a-4264804a31b9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5807d86b-83f3-4554-a854-4954dc5f68fb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2883459-fb01-4c63-98e0-a47557d590bc"/>
+    <skos:prefLabel xml:lang="en">Rail</skos:prefLabel>
+    <dcterms:identifier>5807d86b-83f3-4554-a854-4954dc5f68fb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ad08f121-1c92-4c41-b778-12b5d7644b95">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2883459-fb01-4c63-98e0-a47557d590bc"/>
+    <skos:prefLabel xml:lang="en">Bus station</skos:prefLabel>
+    <dcterms:identifier>ad08f121-1c92-4c41-b778-12b5d7644b95</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b23af291-0b28-4f1e-b500-244abdeb7633">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2883459-fb01-4c63-98e0-a47557d590bc"/>
+    <skos:prefLabel xml:lang="en">Canal</skos:prefLabel>
+    <dcterms:identifier>b23af291-0b28-4f1e-b500-244abdeb7633</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ca48542b-9f31-480d-99b5-cc772fa2d2c3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2883459-fb01-4c63-98e0-a47557d590bc"/>
+    <skos:prefLabel xml:lang="en">Docks/wharves</skos:prefLabel>
+    <dcterms:identifier>ca48542b-9f31-480d-99b5-cc772fa2d2c3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ec95520d-d3c5-4ad1-8eef-26726e847516">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2883459-fb01-4c63-98e0-a47557d590bc"/>
+    <skos:prefLabel xml:lang="en">Car Park</skos:prefLabel>
+    <dcterms:identifier>ec95520d-d3c5-4ad1-8eef-26726e847516</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e2c4703f-5d68-4589-9c42-e4364b5616e6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Military</skos:prefLabel>
+    <dcterms:identifier>e2c4703f-5d68-4589-9c42-e4364b5616e6</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/2d3d150f-612e-425e-9426-e922620d1657"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/9e4914c7-8f66-4093-85bb-62f325ce4398"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/a568bb02-6af0-4f86-817d-f8e43100852d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/d0fb1746-9bff-45f9-b042-6eea1562bbc9"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/ea1b6911-2dce-4eb1-9c9f-d6a45c2c716f"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f00d16f8-0142-4c2c-936f-5feeaf4e1558"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f280e13b-8b2a-46ce-85d0-097f7f652dfd"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2d3d150f-612e-425e-9426-e922620d1657">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2c4703f-5d68-4589-9c42-e4364b5616e6"/>
+    <skos:prefLabel xml:lang="en">Ammunition store</skos:prefLabel>
+    <dcterms:identifier>2d3d150f-612e-425e-9426-e922620d1657</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9e4914c7-8f66-4093-85bb-62f325ce4398">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2c4703f-5d68-4589-9c42-e4364b5616e6"/>
+    <skos:prefLabel xml:lang="en">Training ground/building</skos:prefLabel>
+    <dcterms:identifier>9e4914c7-8f66-4093-85bb-62f325ce4398</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a568bb02-6af0-4f86-817d-f8e43100852d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2c4703f-5d68-4589-9c42-e4364b5616e6"/>
+    <skos:prefLabel xml:lang="en">Wartime structures</skos:prefLabel>
+    <dcterms:identifier>a568bb02-6af0-4f86-817d-f8e43100852d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d0fb1746-9bff-45f9-b042-6eea1562bbc9">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2c4703f-5d68-4589-9c42-e4364b5616e6"/>
+    <skos:prefLabel xml:lang="en">Barracks</skos:prefLabel>
+    <dcterms:identifier>d0fb1746-9bff-45f9-b042-6eea1562bbc9</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ea1b6911-2dce-4eb1-9c9f-d6a45c2c716f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2c4703f-5d68-4589-9c42-e4364b5616e6"/>
+    <skos:prefLabel xml:lang="en">Cold war structures</skos:prefLabel>
+    <dcterms:identifier>ea1b6911-2dce-4eb1-9c9f-d6a45c2c716f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f00d16f8-0142-4c2c-936f-5feeaf4e1558">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2c4703f-5d68-4589-9c42-e4364b5616e6"/>
+    <skos:prefLabel xml:lang="en">Prisoner of war camp</skos:prefLabel>
+    <dcterms:identifier>f00d16f8-0142-4c2c-936f-5feeaf4e1558</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f280e13b-8b2a-46ce-85d0-097f7f652dfd">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/e2c4703f-5d68-4589-9c42-e4364b5616e6"/>
+    <skos:prefLabel xml:lang="en">Airbase</skos:prefLabel>
+    <dcterms:identifier>f280e13b-8b2a-46ce-85d0-097f7f652dfd</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e91f8870-85f1-4b3c-8ba9-c121b33d3f3d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Find Spot</skos:prefLabel>
+    <dcterms:identifier>e91f8870-85f1-4b3c-8ba9-c121b33d3f3d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/eb9d235c-9156-4972-9878-aaaf2dadb901">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Settlement Core/Early Historic</skos:prefLabel>
+    <dcterms:identifier>eb9d235c-9156-4972-9878-aaaf2dadb901</dcterms:identifier>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/007920f6-b67b-44d7-9bc2-55fcc443e9e4"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/0a22cc4b-f3ab-4da1-8c1a-8c58c7ed814b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/184f6c1a-46fb-4cb4-baf1-74aedf410239"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/1e989efe-a6e3-462d-b6f3-995e6e211e89"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/4c2d63d1-14bd-4ef9-8b48-cf1239e7f4e2"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/5017f999-dfcf-436b-a228-7ba2f042886d"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/507f8ff5-90cc-43df-97ef-b4611c688bf0"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b58800e9-02e7-4d5c-8854-574aeafb95f6"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/b825bece-7f83-4c97-b62b-2be51d35372c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/cde0e26a-05e9-4cb9-92c3-75b088160b8c"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/e2c2f460-93eb-4548-862b-7c4387caf9ac"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f2d802c2-5371-488e-b391-376deea1dc8b"/>
+    <skos:narrower rdf:resource="https://qhr.detsi.qld.gov.au/f9df841f-e0bf-40b8-83e8-b7a233bed991"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/007920f6-b67b-44d7-9bc2-55fcc443e9e4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/eb9d235c-9156-4972-9878-aaaf2dadb901"/>
+    <skos:prefLabel xml:lang="en">Mixed commercial and residential 1750-1870</skos:prefLabel>
+    <dcterms:identifier>007920f6-b67b-44d7-9bc2-55fcc443e9e4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0a22cc4b-f3ab-4da1-8c1a-8c58c7ed814b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/eb9d235c-9156-4972-9878-aaaf2dadb901"/>
+    <skos:prefLabel xml:lang="en">Mixed commercial and residential 1915-1939</skos:prefLabel>
+    <dcterms:identifier>0a22cc4b-f3ab-4da1-8c1a-8c58c7ed814b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/184f6c1a-46fb-4cb4-baf1-74aedf410239">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/eb9d235c-9156-4972-9878-aaaf2dadb901"/>
+    <skos:prefLabel xml:lang="en">Medieval settlement core</skos:prefLabel>
+    <dcterms:identifier>184f6c1a-46fb-4cb4-baf1-74aedf410239</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1e989efe-a6e3-462d-b6f3-995e6e211e89">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/eb9d235c-9156-4972-9878-aaaf2dadb901"/>
+    <skos:prefLabel xml:lang="en">Roman farmstead</skos:prefLabel>
+    <dcterms:identifier>1e989efe-a6e3-462d-b6f3-995e6e211e89</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4c2d63d1-14bd-4ef9-8b48-cf1239e7f4e2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/eb9d235c-9156-4972-9878-aaaf2dadb901"/>
+    <skos:prefLabel xml:lang="en">Mixed commercial</skos:prefLabel>
+    <dcterms:identifier>4c2d63d1-14bd-4ef9-8b48-cf1239e7f4e2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/5017f999-dfcf-436b-a228-7ba2f042886d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/eb9d235c-9156-4972-9878-aaaf2dadb901"/>
+    <skos:prefLabel xml:lang="en">Ancient settlement</skos:prefLabel>
+    <dcterms:identifier>5017f999-dfcf-436b-a228-7ba2f042886d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/507f8ff5-90cc-43df-97ef-b4611c688bf0">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/eb9d235c-9156-4972-9878-aaaf2dadb901"/>
+    <skos:prefLabel xml:lang="en">Postmedieval settlement core</skos:prefLabel>
+    <dcterms:identifier>507f8ff5-90cc-43df-97ef-b4611c688bf0</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b58800e9-02e7-4d5c-8854-574aeafb95f6">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/eb9d235c-9156-4972-9878-aaaf2dadb901"/>
+    <skos:prefLabel xml:lang="en">Mixed commercial and residential 1870-1915</skos:prefLabel>
+    <dcterms:identifier>b58800e9-02e7-4d5c-8854-574aeafb95f6</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b825bece-7f83-4c97-b62b-2be51d35372c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/eb9d235c-9156-4972-9878-aaaf2dadb901"/>
+    <skos:prefLabel xml:lang="en">Mixed commercial and residential 1945-present</skos:prefLabel>
+    <dcterms:identifier>b825bece-7f83-4c97-b62b-2be51d35372c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/cde0e26a-05e9-4cb9-92c3-75b088160b8c">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/eb9d235c-9156-4972-9878-aaaf2dadb901"/>
+    <skos:prefLabel xml:lang="en">Fortified site</skos:prefLabel>
+    <dcterms:identifier>cde0e26a-05e9-4cb9-92c3-75b088160b8c</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e2c2f460-93eb-4548-862b-7c4387caf9ac">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/eb9d235c-9156-4972-9878-aaaf2dadb901"/>
+    <skos:prefLabel xml:lang="en">Medieval dispersed settlement</skos:prefLabel>
+    <dcterms:identifier>e2c2f460-93eb-4548-862b-7c4387caf9ac</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f2d802c2-5371-488e-b391-376deea1dc8b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/eb9d235c-9156-4972-9878-aaaf2dadb901"/>
+    <skos:prefLabel xml:lang="en">Religious and residential</skos:prefLabel>
+    <dcterms:identifier>f2d802c2-5371-488e-b391-376deea1dc8b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f9df841f-e0bf-40b8-83e8-b7a233bed991">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:broader rdf:resource="https://qhr.detsi.qld.gov.au/eb9d235c-9156-4972-9878-aaaf2dadb901"/>
+    <skos:prefLabel xml:lang="en">Roman villa</skos:prefLabel>
+    <dcterms:identifier>f9df841f-e0bf-40b8-83e8-b7a233bed991</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f0c43f28-59b6-42e2-b172-f242b3611249">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/13faee8b-e3ad-4ef3-8968-884d52f24c35"/>
+    <skos:prefLabel xml:lang="en">Monument</skos:prefLabel>
+    <dcterms:identifier>f0c43f28-59b6-42e2-b172-f242b3611249</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

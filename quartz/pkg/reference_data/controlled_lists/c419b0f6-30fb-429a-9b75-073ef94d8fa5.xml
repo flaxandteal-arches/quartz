@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/c419b0f6-30fb-429a-9b75-073ef94d8fa5">
+    <dcterms:title xml:lang="en">Project Impact</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/01119de7-985e-4723-99e3-82082f09baf1"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/51727de7-cb9e-485e-a440-45dc12806e34"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7be7f51d-cd4a-44b4-9a1b-e2787286bc36"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/99af4762-e00d-4cb5-9fe3-018ccf38e29d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b6cea8dd-c194-4677-b419-fcbc83983097"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/01119de7-985e-4723-99e3-82082f09baf1">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/c419b0f6-30fb-429a-9b75-073ef94d8fa5"/>
+    <skos:prefLabel xml:lang="en">International impact</skos:prefLabel>
+    <dcterms:identifier>01119de7-985e-4723-99e3-82082f09baf1</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/51727de7-cb9e-485e-a440-45dc12806e34">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/c419b0f6-30fb-429a-9b75-073ef94d8fa5"/>
+    <skos:prefLabel xml:lang="en">National impact</skos:prefLabel>
+    <dcterms:identifier>51727de7-cb9e-485e-a440-45dc12806e34</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7be7f51d-cd4a-44b4-9a1b-e2787286bc36">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/c419b0f6-30fb-429a-9b75-073ef94d8fa5"/>
+    <skos:prefLabel xml:lang="en">Negligible impact</skos:prefLabel>
+    <dcterms:identifier>7be7f51d-cd4a-44b4-9a1b-e2787286bc36</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/99af4762-e00d-4cb5-9fe3-018ccf38e29d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/c419b0f6-30fb-429a-9b75-073ef94d8fa5"/>
+    <skos:prefLabel xml:lang="en">Regional impact</skos:prefLabel>
+    <dcterms:identifier>99af4762-e00d-4cb5-9fe3-018ccf38e29d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b6cea8dd-c194-4677-b419-fcbc83983097">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/c419b0f6-30fb-429a-9b75-073ef94d8fa5"/>
+    <skos:prefLabel xml:lang="en">Local impact</skos:prefLabel>
+    <dcterms:identifier>b6cea8dd-c194-4677-b419-fcbc83983097</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/02458080-9b7a-4a02-b298-f7ea61f60dbb">
+    <dcterms:title xml:lang="en">Address Part Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/16bbec7d-9e6e-45d8-a1a3-7b440faea18d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2fdafadb-b441-4e8b-8de8-0f0668e779e2"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/31b5ce40-c4cb-444c-958e-ef7ac9f2aab5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/4b02020e-047f-4410-94bb-b31de0c48e48"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/569920fe-8475-437d-9ee9-8c59f8224475"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/73994396-01d9-404f-ab65-522a3479e1ac"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/991fc425-e09d-4fe2-84d7-1056cd7e0196"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a9a69d32-583b-45d4-b793-68acfaabcb4a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c8572668-bf52-47d1-b79a-ecfb454cb7e5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ea3e2a1d-ad5b-411b-9c3d-3aaf5ee1a388"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/16bbec7d-9e6e-45d8-a1a3-7b440faea18d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/02458080-9b7a-4a02-b298-f7ea61f60dbb"/>
+    <skos:prefLabel xml:lang="en">County Name</skos:prefLabel>
+    <dcterms:identifier>16bbec7d-9e6e-45d8-a1a3-7b440faea18d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2fdafadb-b441-4e8b-8de8-0f0668e779e2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/02458080-9b7a-4a02-b298-f7ea61f60dbb"/>
+    <skos:prefLabel xml:lang="en">Sub-Street Name</skos:prefLabel>
+    <dcterms:identifier>2fdafadb-b441-4e8b-8de8-0f0668e779e2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/31b5ce40-c4cb-444c-958e-ef7ac9f2aab5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/02458080-9b7a-4a02-b298-f7ea61f60dbb"/>
+    <skos:prefLabel xml:lang="en">Building Number Sub-Street</skos:prefLabel>
+    <dcterms:identifier>31b5ce40-c4cb-444c-958e-ef7ac9f2aab5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/4b02020e-047f-4410-94bb-b31de0c48e48">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/02458080-9b7a-4a02-b298-f7ea61f60dbb"/>
+    <skos:prefLabel xml:lang="en">Street Name</skos:prefLabel>
+    <dcterms:identifier>4b02020e-047f-4410-94bb-b31de0c48e48</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/569920fe-8475-437d-9ee9-8c59f8224475">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/02458080-9b7a-4a02-b298-f7ea61f60dbb"/>
+    <skos:prefLabel xml:lang="en">Full Address Name</skos:prefLabel>
+    <dcterms:identifier>569920fe-8475-437d-9ee9-8c59f8224475</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/73994396-01d9-404f-ab65-522a3479e1ac">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/02458080-9b7a-4a02-b298-f7ea61f60dbb"/>
+    <skos:prefLabel xml:lang="en">Locality</skos:prefLabel>
+    <dcterms:identifier>73994396-01d9-404f-ab65-522a3479e1ac</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/991fc425-e09d-4fe2-84d7-1056cd7e0196">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/02458080-9b7a-4a02-b298-f7ea61f60dbb"/>
+    <skos:prefLabel xml:lang="en">Building Name</skos:prefLabel>
+    <dcterms:identifier>991fc425-e09d-4fe2-84d7-1056cd7e0196</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a9a69d32-583b-45d4-b793-68acfaabcb4a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/02458080-9b7a-4a02-b298-f7ea61f60dbb"/>
+    <skos:prefLabel xml:lang="en">Building Number</skos:prefLabel>
+    <dcterms:identifier>a9a69d32-583b-45d4-b793-68acfaabcb4a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c8572668-bf52-47d1-b79a-ecfb454cb7e5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/02458080-9b7a-4a02-b298-f7ea61f60dbb"/>
+    <skos:prefLabel xml:lang="en">Town or City Name</skos:prefLabel>
+    <dcterms:identifier>c8572668-bf52-47d1-b79a-ecfb454cb7e5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ea3e2a1d-ad5b-411b-9c3d-3aaf5ee1a388">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/02458080-9b7a-4a02-b298-f7ea61f60dbb"/>
+    <skos:prefLabel xml:lang="en">Postcode</skos:prefLabel>
+    <dcterms:identifier>ea3e2a1d-ad5b-411b-9c3d-3aaf5ee1a388</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

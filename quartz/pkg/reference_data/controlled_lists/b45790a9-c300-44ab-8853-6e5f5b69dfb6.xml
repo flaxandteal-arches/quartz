@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/b45790a9-c300-44ab-8853-6e5f5b69dfb6">
+    <dcterms:title xml:lang="en">Source Title Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1e9d346e-b339-4a13-93f1-1ca71415db2b"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8678ed2f-27fc-4f12-a5e8-a1c97bdee48f"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e0b26bf4-27e2-4f1a-a5f0-4034a5b06f4a"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1e9d346e-b339-4a13-93f1-1ca71415db2b">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/b45790a9-c300-44ab-8853-6e5f5b69dfb6"/>
+    <skos:prefLabel xml:lang="en">Title</skos:prefLabel>
+    <dcterms:identifier>1e9d346e-b339-4a13-93f1-1ca71415db2b</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8678ed2f-27fc-4f12-a5e8-a1c97bdee48f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/b45790a9-c300-44ab-8853-6e5f5b69dfb6"/>
+    <skos:prefLabel xml:lang="en">Subtitle</skos:prefLabel>
+    <dcterms:identifier>8678ed2f-27fc-4f12-a5e8-a1c97bdee48f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e0b26bf4-27e2-4f1a-a5f0-4034a5b06f4a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/b45790a9-c300-44ab-8853-6e5f5b69dfb6"/>
+    <skos:prefLabel xml:lang="en">Alternative Title</skos:prefLabel>
+    <dcterms:identifier>e0b26bf4-27e2-4f1a-a5f0-4034a5b06f4a</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

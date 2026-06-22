@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/79c54220-2a8c-43c7-a1cf-92c0ec7769af">
+    <dcterms:title xml:lang="en">Local Heritage List Criteria</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/267e89aa-c49e-454f-8385-bf0ee8126e94"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/3ab52ba2-b6d9-49cf-83c7-de8a99b26647"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/72b1c0ce-9a98-44c1-95fd-1e7a32ac3c36"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/8b973625-a747-4228-9b29-78c8da89b1b5"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9eb62ba2-17f3-421d-bab8-6a59732a45ec"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/bc272d6f-3b82-405c-ac31-e10ddcc4c5ae"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/c129c2af-703b-49a2-a2f1-8ef6cec4a1b7"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/f92e4475-7b91-4d8b-8e71-3223af0c0615"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/267e89aa-c49e-454f-8385-bf0ee8126e94">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/79c54220-2a8c-43c7-a1cf-92c0ec7769af"/>
+    <skos:prefLabel xml:lang="en">Age</skos:prefLabel>
+    <dcterms:identifier>267e89aa-c49e-454f-8385-bf0ee8126e94</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/3ab52ba2-b6d9-49cf-83c7-de8a99b26647">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/79c54220-2a8c-43c7-a1cf-92c0ec7769af"/>
+    <skos:prefLabel xml:lang="en">Asset Type</skos:prefLabel>
+    <dcterms:identifier>3ab52ba2-b6d9-49cf-83c7-de8a99b26647</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/72b1c0ce-9a98-44c1-95fd-1e7a32ac3c36">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/79c54220-2a8c-43c7-a1cf-92c0ec7769af"/>
+    <skos:prefLabel xml:lang="en">Archaeological Interest</skos:prefLabel>
+    <dcterms:identifier>72b1c0ce-9a98-44c1-95fd-1e7a32ac3c36</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/8b973625-a747-4228-9b29-78c8da89b1b5">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/79c54220-2a8c-43c7-a1cf-92c0ec7769af"/>
+    <skos:prefLabel xml:lang="en">Historic Interest</skos:prefLabel>
+    <dcterms:identifier>8b973625-a747-4228-9b29-78c8da89b1b5</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9eb62ba2-17f3-421d-bab8-6a59732a45ec">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/79c54220-2a8c-43c7-a1cf-92c0ec7769af"/>
+    <skos:prefLabel xml:lang="en">Architectural and Artistic Interest</skos:prefLabel>
+    <dcterms:identifier>9eb62ba2-17f3-421d-bab8-6a59732a45ec</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/bc272d6f-3b82-405c-ac31-e10ddcc4c5ae">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/79c54220-2a8c-43c7-a1cf-92c0ec7769af"/>
+    <skos:prefLabel xml:lang="en">Rarity</skos:prefLabel>
+    <dcterms:identifier>bc272d6f-3b82-405c-ac31-e10ddcc4c5ae</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/c129c2af-703b-49a2-a2f1-8ef6cec4a1b7">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/79c54220-2a8c-43c7-a1cf-92c0ec7769af"/>
+    <skos:prefLabel xml:lang="en">Group Value</skos:prefLabel>
+    <dcterms:identifier>c129c2af-703b-49a2-a2f1-8ef6cec4a1b7</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/f92e4475-7b91-4d8b-8e71-3223af0c0615">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/79c54220-2a8c-43c7-a1cf-92c0ec7769af"/>
+    <skos:prefLabel xml:lang="en">Landmark Status</skos:prefLabel>
+    <dcterms:identifier>f92e4475-7b91-4d8b-8e71-3223af0c0615</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

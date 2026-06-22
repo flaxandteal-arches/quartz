@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/677b63d9-496b-48bb-a4ad-e7d7b3579abd">
+    <dcterms:title xml:lang="en">Spatial Accuracy Qualifiers</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/17fbf407-6bbc-40f5-8bf7-a247de80d56d"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1cf061da-ea35-4871-82ec-eec45d21cf6e"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/22fe0738-f49d-4a6d-b63e-01bc2f0816ee"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2dc7fb27-8a8b-4502-a08c-81244dbe291a"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/55f9c578-3ca0-4b5c-a1d5-d3340d686af3"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/7372df8a-76fa-43c3-a385-a7543a80b034"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/9ed87fac-a5ec-4b13-8e70-78e8a17067b2"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/b8cb0f59-7ad1-445b-bcff-4b57e81af387"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d16601ba-4f17-4d4b-bee2-1413ebe0e96f"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ddfdcd87-398e-4b9c-9462-6013e5cdd339"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/e04efeb0-d6e3-4058-a5f0-6cff9d55d35d"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/17fbf407-6bbc-40f5-8bf7-a247de80d56d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/677b63d9-496b-48bb-a4ad-e7d7b3579abd"/>
+    <skos:prefLabel xml:lang="en">1000</skos:prefLabel>
+    <dcterms:identifier>17fbf407-6bbc-40f5-8bf7-a247de80d56d</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1cf061da-ea35-4871-82ec-eec45d21cf6e">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/677b63d9-496b-48bb-a4ad-e7d7b3579abd"/>
+    <skos:prefLabel xml:lang="en">Within 1 metre</skos:prefLabel>
+    <dcterms:identifier>1cf061da-ea35-4871-82ec-eec45d21cf6e</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/22fe0738-f49d-4a6d-b63e-01bc2f0816ee">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/677b63d9-496b-48bb-a4ad-e7d7b3579abd"/>
+    <skos:prefLabel xml:lang="en">10000</skos:prefLabel>
+    <dcterms:identifier>22fe0738-f49d-4a6d-b63e-01bc2f0816ee</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2dc7fb27-8a8b-4502-a08c-81244dbe291a">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/677b63d9-496b-48bb-a4ad-e7d7b3579abd"/>
+    <skos:prefLabel xml:lang="en">100</skos:prefLabel>
+    <dcterms:identifier>2dc7fb27-8a8b-4502-a08c-81244dbe291a</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/55f9c578-3ca0-4b5c-a1d5-d3340d686af3">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/677b63d9-496b-48bb-a4ad-e7d7b3579abd"/>
+    <skos:prefLabel xml:lang="en">Within 10 metres</skos:prefLabel>
+    <dcterms:identifier>55f9c578-3ca0-4b5c-a1d5-d3340d686af3</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/7372df8a-76fa-43c3-a385-a7543a80b034">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/677b63d9-496b-48bb-a4ad-e7d7b3579abd"/>
+    <skos:prefLabel xml:lang="en">10</skos:prefLabel>
+    <dcterms:identifier>7372df8a-76fa-43c3-a385-a7543a80b034</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/9ed87fac-a5ec-4b13-8e70-78e8a17067b2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/677b63d9-496b-48bb-a4ad-e7d7b3579abd"/>
+    <skos:prefLabel xml:lang="en">Within 100 metres</skos:prefLabel>
+    <dcterms:identifier>9ed87fac-a5ec-4b13-8e70-78e8a17067b2</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/b8cb0f59-7ad1-445b-bcff-4b57e81af387">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/677b63d9-496b-48bb-a4ad-e7d7b3579abd"/>
+    <skos:prefLabel xml:lang="en">0</skos:prefLabel>
+    <dcterms:identifier>b8cb0f59-7ad1-445b-bcff-4b57e81af387</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d16601ba-4f17-4d4b-bee2-1413ebe0e96f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/677b63d9-496b-48bb-a4ad-e7d7b3579abd"/>
+    <skos:prefLabel xml:lang="en">Within 1000 metres</skos:prefLabel>
+    <dcterms:identifier>d16601ba-4f17-4d4b-bee2-1413ebe0e96f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ddfdcd87-398e-4b9c-9462-6013e5cdd339">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/677b63d9-496b-48bb-a4ad-e7d7b3579abd"/>
+    <skos:prefLabel xml:lang="en">0.1</skos:prefLabel>
+    <dcterms:identifier>ddfdcd87-398e-4b9c-9462-6013e5cdd339</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/e04efeb0-d6e3-4058-a5f0-6cff9d55d35d">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/677b63d9-496b-48bb-a4ad-e7d7b3579abd"/>
+    <skos:prefLabel xml:lang="en">1</skos:prefLabel>
+    <dcterms:identifier>e04efeb0-d6e3-4058-a5f0-6cff9d55d35d</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>

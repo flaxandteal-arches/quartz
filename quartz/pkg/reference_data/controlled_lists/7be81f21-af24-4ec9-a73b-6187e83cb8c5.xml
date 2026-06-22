@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/7be81f21-af24-4ec9-a73b-6187e83cb8c5">
+    <dcterms:title xml:lang="en">Record Action Type</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/1b50dc8f-a1ff-4d9e-960f-75b451246baa"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/2085c060-e641-42cc-8c0b-7e505457d3c4"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/23c91944-dced-44c3-b99e-7cf776ff1efc"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/1b50dc8f-a1ff-4d9e-960f-75b451246baa">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7be81f21-af24-4ec9-a73b-6187e83cb8c5"/>
+    <skos:prefLabel xml:lang="en">Creation</skos:prefLabel>
+    <dcterms:identifier>1b50dc8f-a1ff-4d9e-960f-75b451246baa</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/2085c060-e641-42cc-8c0b-7e505457d3c4">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7be81f21-af24-4ec9-a73b-6187e83cb8c5"/>
+    <skos:prefLabel xml:lang="en">Update</skos:prefLabel>
+    <dcterms:identifier>2085c060-e641-42cc-8c0b-7e505457d3c4</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/23c91944-dced-44c3-b99e-7cf776ff1efc">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/7be81f21-af24-4ec9-a73b-6187e83cb8c5"/>
+    <skos:prefLabel xml:lang="en">Deletion</skos:prefLabel>
+    <dcterms:identifier>23c91944-dced-44c3-b99e-7cf776ff1efc</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>
