@@ -16,15 +16,7 @@ Changes:
 {% block navbar %}
 {{ block.super }}
 {% if perms.quartz.export_to_website %}
-<ul class="list-group">
-    <li>
-        <a href="#" id="quartz-export-to-website"
-           aria-label="{% trans 'Export to Website' %}">
-            <i class="fa fa-globe"></i>
-            <span class="nav-item-label">{% trans "Export to Website" %}</span>
-        </a>
-    </li>
-</ul>
+<!-- placeholder for export -->
 <script>
 (function () {
     var btn = document.getElementById("quartz-export-to-website");
