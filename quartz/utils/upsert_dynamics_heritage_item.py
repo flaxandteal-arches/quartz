@@ -425,7 +425,9 @@ def _build_location_tiles(payload: dict, resource_instance_ref: str) -> list:
                     )
                 )
 
-    gps_features = extract_gps_features(payload.get("locations", []))
+    gps_features = extract_gps_features(
+        payload.get("locations", []), lat_key="dpp_latitude", lon_key="dpp_longitude"
+    )
     if gps_features:
         tiles.append(
             make_tile(
