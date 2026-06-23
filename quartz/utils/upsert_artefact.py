@@ -27,6 +27,8 @@ from .payload_utils import (
     has_value,
 )
 
+from .versioned_resource_utils import calculate_next_version
+
 logger = logging.getLogger(__name__)
 
 
@@ -181,33 +183,6 @@ _MANAGED_NODEGROUPS = {
 FINAL_STATUSES = {"recorded"}
 
 
-def calculate_next_version(
-    current_draft_version: VersionedResource, is_final: bool, version_from_payload: str
-) -> tuple[int, int]:
-
-    if is_final:
-        current_major_version = (
-            VersionedResource.objects.aggregate(Max("major_version"))[
-                "major_version__max"
-            ]
-            or 0
-        )
-
-        major_version = current_major_version + 1
-        return major_version, 0
-
-    if current_draft_version is None:
-        major_version = (
-            int(version_from_payload) if version_from_payload is not None else 0
-        )
-        return major_version, 1
-    else:
-        return (
-            current_draft_version.major_version,
-            current_draft_version.minor_version + 1,
-        )
-
-
 def process_artefact(payload: dict, user) -> tuple:
     """
     Implements the Payload API logical data flow for Artefact resources:
@@ -295,6 +270,21 @@ def process_artefact(payload: dict, user) -> tuple:
         finalize_draft(discovery_permit_number, user, next_major, next_minor, payload)
 
     return current_draft_resource, created, f"{next_major}.{next_minor}"
+
+
+def increment_current_working_draft_version(
+    resourceid: str, major_version: int, minor_version: int
+):
+    """Update or create the version information tile for the given resource instance."""
+    current_draft_resource = Resource.objects.get(pk=resourceid)
+    models.TileModel.objects.filter(
+        resourceinstance_id=current_draft_resource.pk,
+        nodegroup_id=VERSIONING_NODEGROUP,
+    ).delete()
+    current_draft_resource.tiles = _build_version_tile(
+        major_version, minor_version, resourceid
+    )
+    return current_draft_resource
 
 
 def _is_final_payload(payload: dict) -> bool:
