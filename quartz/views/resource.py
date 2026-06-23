@@ -16,9 +16,11 @@ from arches_resource_version_manager.models import VersionedResource
 
 from quartz.utils.upsert_dynamics_heritage_item import (
     HERITAGE_ITEM_GRAPH_ID,
-    VERSIONING_NODEGROUP,
-    WORKING_COPY,
-    increment_current_working_draft_version,
+    increment_current_working_draft_version as increment_heritage_working_draft_version,
+)
+from quartz.utils.upsert_artefact import (
+    ARTEFACT_GRAPH_ID,
+    increment_current_working_draft_version as increment_artefact_working_draft_version,
 )
 from quartz.utils.versioned_resource_utils import increment_draft_version
 
@@ -26,6 +28,19 @@ logger = logging.getLogger(__name__)
 
 
 class VersionedResourceEditorView(ResourceEditorView):
+
+    def _increment_current_working_draft_version(self, current_draft_version):
+        graph_id = str(current_draft_version.resourceinstance.graph_id)
+        increment_fn = (
+            increment_heritage_working_draft_version
+            if graph_id == HERITAGE_ITEM_GRAPH_ID
+            else increment_artefact_working_draft_version
+        )
+        return increment_fn(
+            resourceid=current_draft_version.pk,
+            major_version=current_draft_version.major_version,
+            minor_version=current_draft_version.minor_version,
+        )
 
     def get(self, request, **kwargs):
         resourceid = kwargs.get("resourceid")
@@ -45,18 +60,17 @@ class VersionedResourceEditorView(ResourceEditorView):
             "arches_resource_version_manager.can_create_final_version"
         )
 
-        if resourceid and graphid == HERITAGE_ITEM_GRAPH_ID:
-            is_versioned = True
-            tile = models.TileModel.objects.filter(
-                resourceinstance_id=resourceid,
-                nodegroup_id=VERSIONING_NODEGROUP,
-            ).first()
-            if tile:
-                working_copy_refs = tile.data.get(WORKING_COPY, [])
-                if working_copy_refs:
-                    is_working_draft = str(
-                        working_copy_refs[0].get("resourceId", "")
-                    ) == str(resourceid)
+        if resourceid and graphid in [HERITAGE_ITEM_GRAPH_ID, ARTEFACT_GRAPH_ID]:
+            vr = VersionedResource.objects.filter(
+                resourceinstance_id=resourceid
+            ).select_related(
+                "resourceinstance__resource_instance_lifecycle_state",
+            )
+            if vr.exists():
+                is_versioned = True
+                resource = vr.first().resourceinstance
+                if resource.resource_instance_lifecycle_state.name == "Draft":
+                    is_working_draft = True
 
         context["is_versioned"] = is_versioned
         context["is_working_draft"] = is_working_draft
@@ -77,10 +91,8 @@ class VersionedResourceEditorView(ResourceEditorView):
                 increment_draft_version(current_draft_version, is_final=False)
                 current_draft_version.save()
 
-                current_draft_resource = increment_current_working_draft_version(
-                    resourceid=current_draft_version.pk,
-                    major_version=current_draft_version.major_version,
-                    minor_version=current_draft_version.minor_version,
+                current_draft_resource = self._increment_current_working_draft_version(
+                    current_draft_version
                 )
                 current_draft_resource.save(
                     transaction_id=transaction_id,
@@ -113,10 +125,8 @@ class VersionedResourceEditorView(ResourceEditorView):
                 increment_draft_version(current_draft_version, is_final=True)
                 current_draft_version.save()
 
-                current_draft_resource = increment_current_working_draft_version(
-                    resourceid=current_draft_version.pk,
-                    major_version=current_draft_version.major_version,
-                    minor_version=current_draft_version.minor_version,
+                current_draft_resource = self._increment_current_working_draft_version(
+                    current_draft_version
                 )
                 current_draft_resource.save(
                     transaction_id=transaction_id,
