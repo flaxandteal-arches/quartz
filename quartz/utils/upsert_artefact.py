@@ -17,6 +17,7 @@ from arches_resource_version_manager.models import VersionedResource
 from .payload_utils import (
     extract_gps_features,
     get_or_create_person_resource_from_name,
+    get_or_create_digitial_object_resource_from_name,
     i18n_string,
     make_tile,
     make_or_update_tiles,
@@ -105,8 +106,8 @@ NODE_MONUMENT_AREA_OR_ARTEFACT = (
 )
 
 # Digital Files nodegroup  (one tile — resource-instance-list)
-DIGITAL_FILE_NODEGROUP = "1cfbc009-860f-11ea-a7a6-f875a44e0e11"
-NODE_DIGITAL_FILE = "1cfbc009-860f-11ea-a7a6-f875a44e0e11"  # resource-instance-list
+DIGITAL_OBJECT_NODEGROUP = "1cfbc009-860f-11ea-a7a6-f875a44e0e11"
+NODE_DIGITAL_OBJECT = "1cfbc009-860f-11ea-a7a6-f875a44e0e11"  # resource-instance-list
 
 # Location Data nodegroup  (container — cleared on upsert along with child nodegroups)
 LOCATION_DATA_NODEGROUP = "f7cc62b1-f447-11eb-bde0-a87eeabdefba"
@@ -168,7 +169,7 @@ _MANAGED_NODEGROUPS = {
     CONDITION_ASSESSMENT_NODEGROUP,
     ARCHAEOLOGY_STATUS_NODEGROUP,
     ASSOCIATED_MONUMENTS_NODEGROUP,
-    DIGITAL_FILE_NODEGROUP,
+    DIGITAL_OBJECT_NODEGROUP,
     ADDRESSES_NODEGROUP,
     GEOMETRY_NODEGROUP,
     COORDINATE_SYSTEM_NODEGROUP,
@@ -451,21 +452,21 @@ def _build_artefact_type_tile(payload: dict) -> list:
     }
     if has_value(payload.get("dpp_contact")):
         person_resource_id = get_or_create_person_resource_from_name(
-            payload.get("dpp_contact")
+            payload.get("dpp_contact"), "Correspondent"
         )
         data[NODE_ASSOCIATED_PERSON].extend(
             parse_resource_instance_id(person_resource_id)
         )
     if has_value(payload.get("dpp_applicant")):
         person_resource_id = get_or_create_person_resource_from_name(
-            payload.get("dpp_applicant")
+            payload.get("dpp_applicant"), "Notifier"
         )
         data[NODE_ASSOCIATED_PERSON].extend(
             parse_resource_instance_id(person_resource_id)
         )
     if has_value(payload.get("ownerid")):
         person_resource_id = get_or_create_person_resource_from_name(
-            payload.get("ownerid")
+            payload.get("ownerid"), "Owner"
         )
         data[NODE_ASSOCIATED_PERSON].extend(
             parse_resource_instance_id(person_resource_id)
@@ -554,16 +555,20 @@ def _build_associated_monuments_tile(payload: dict) -> list:
 
 
 def _build_digital_file_tile(payload: dict) -> list:
-    # TODO: dpp_edocsnumber is a string eDocs reference — look up the corresponding
-    # Document resource instance by this number and link it here.
-    edocs = payload.get("dpp_edocsnumber")
-    if not has_value(edocs):
-        return []
-    logger.warning(
-        "dpp_edocsnumber %r received but resource-instance lookup not yet implemented; skipping digital_file tile",
-        edocs,
-    )
-    return []
+    if has_value(payload.get("dpp_edocsnumber")):
+        digital_object_resource_id = get_or_create_digitial_object_resource_from_name(
+            payload.get("dpp_edocsnumber")
+        )
+        return [
+            make_tile(
+                DIGITAL_OBJECT_NODEGROUP,
+                {
+                    NODE_DIGITAL_OBJECT: parse_resource_instance_id(
+                        digital_object_resource_id
+                    )
+                },
+            )
+        ]
 
 
 def _build_location_tiles(

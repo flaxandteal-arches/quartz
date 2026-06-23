@@ -155,13 +155,22 @@ def has_value(value) -> bool:
     return value is not None and str(value).strip() != ""
 
 
-def get_or_create_person_resource_from_name(name: str) -> str:
+def get_or_create_person_resource_from_name(name: str, person_type: str) -> str:
     """
     Get or create a Person resource with the given name, and return its resourceinstanceid.
     This is used for mapping the 'modifiedby' field from the payload to a Person resource in Arches.
     """
-    resource_filter = Q(nodegroup_id="4110f741-1a44-11e9-885e-000d3ab1e588") & Q(
-        **{"data__5f8ded26-7ef9-11ea-8e29-f875a44e0e11__en__value": name}
+    PERSON_GRAPH_ID = "22477f01-1a44-11e9-b0a9-000d3ab1e588"
+    NAME_NODEGROUP = "4110f741-1a44-11e9-885e-000d3ab1e588"
+    NODE_NAME = "5f8ded26-7ef9-11ea-8e29-f875a44e0e11"
+    ASSOCIATED_PERSON_NODEGROUP = "bdec691d-186c-11eb-b4fe-f875a44e0e11"
+    NODE_ASSOCIATED_PERSON_TYPE = "bdec6922-186c-11eb-b09e-f875a44e0e11"
+    ASSOCIATED_PERSON_TYPE_LIST_ID = (
+        "da85b5fd-e78d-5566-b0c3-475dfd1cf5da"  # "Role Labels"
+    )
+
+    resource_filter = Q(nodegroup_id=NAME_NODEGROUP) & Q(
+        **{f"data__{NODE_NAME}__en__value": name}
     )
 
     existing = Tile.objects.filter(resource_filter).first()
@@ -170,15 +179,23 @@ def get_or_create_person_resource_from_name(name: str) -> str:
         return str(existing.resourceinstance_id)
 
     new_resource = Resource()
-    new_resource.graph_id = "22477f01-1a44-11e9-b0a9-000d3ab1e588"
-    name_tile = Tile(
-        {
-            "tileid": uuid.uuid4(),
-            "nodegroup_id": "4110f741-1a44-11e9-885e-000d3ab1e588",
-            "data": {"5f8ded26-7ef9-11ea-8e29-f875a44e0e11": i18n_string(name)},
-        }
+    new_resource.graph_id = PERSON_GRAPH_ID
+    new_resource.tiles.append(
+        make_tile(
+            nodegroup_id=NAME_NODEGROUP,
+            data={NODE_NAME: i18n_string(name)},
+        )
     )
-    new_resource.tiles.append(name_tile)
+    new_resource.tiles.append(
+        make_tile(
+            nodegroup_id=ASSOCIATED_PERSON_NODEGROUP,
+            data={
+                NODE_ASSOCIATED_PERSON_TYPE: parse_reference_node(
+                    person_type, ASSOCIATED_PERSON_TYPE_LIST_ID
+                )
+            },
+        )
+    )
 
     User = get_user_model()
     dynamics_user = User.objects.filter(username="dynamics_user").first()
@@ -186,5 +203,42 @@ def get_or_create_person_resource_from_name(name: str) -> str:
         user=dynamics_user,
         edit_log_type="create",
         edit_log_note=f"Created Person resource from Dynamics payload: {name}",
+    )
+    return str(new_resource.resourceinstanceid)
+
+
+def get_or_create_digitial_object_resource_from_name(name: str) -> str:
+    """
+    Get or create a Digital Object resource with the given name, and return its resourceinstanceid.
+    This is used for mapping the 'modifiedby' field from the payload to a Digital Object resource in Arches.
+    """
+    DIGITAL_OBJECT_GRAPHID = "a535a235-8481-11ea-a6b9-f875a44e0e11"
+    NAME_NODEGROUP = "c61ab163-9513-11ea-9bb6-f875a44e0e11"
+    NODE_NAME = "c61ab16c-9513-11ea-89a4-f875a44e0e11"
+
+    resource_filter = Q(nodegroup_id=NAME_NODEGROUP) & Q(
+        **{f"data__{NODE_NAME}__en__value": name}
+    )
+
+    existing = Tile.objects.filter(resource_filter).first()
+
+    if existing:
+        return str(existing.resourceinstance_id)
+
+    new_resource = Resource()
+    new_resource.graph_id = DIGITAL_OBJECT_GRAPHID
+    new_resource.tiles.append(
+        make_tile(
+            nodegroup_id=NAME_NODEGROUP,
+            data={NODE_NAME: i18n_string(name)},
+        )
+    )
+
+    User = get_user_model()
+    dynamics_user = User.objects.filter(username="dynamics_user").first()
+    new_resource.save(
+        user=dynamics_user,
+        edit_log_type="create",
+        edit_log_note=f"Created Digital Object resource from Dynamics payload: {name}",
     )
     return str(new_resource.resourceinstanceid)
