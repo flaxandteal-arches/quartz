@@ -22,8 +22,10 @@ CREATE OR REPLACE VIEW public.heritage_register_points AS
         geo.geom
     FROM geojson_geometries geo
         JOIN sp_attr_heritage_item att ON geo.resourceinstanceid::text = att.resourceinstanceid
+        JOIN resource_instances res ON geo.resourceinstanceid = res.resourceinstanceid
     WHERE geo.nodeid = '87d3d7dc-f44f-11eb-bee9-a87eeabdefba'::uuid
-    AND ST_GeometryType(geo.geom) = 'ST_Point';
+        AND res.resource_instance_lifecycle_state_id = '9375c9a7-dad2-4f14-a5c1-d7e329fdde4f'
+        AND ST_GeometryType(geo.geom) = 'ST_Point';
 
 DROP VIEW IF EXISTS public.heritage_register_boundaries;
 CREATE OR REPLACE VIEW public.heritage_register_boundaries AS
@@ -47,8 +49,10 @@ CREATE OR REPLACE VIEW public.heritage_register_boundaries AS
         geo.geom
     FROM geojson_geometries geo
         JOIN sp_attr_heritage_item att ON geo.resourceinstanceid::text = att.resourceinstanceid
+        JOIN resource_instances res ON geo.resourceinstanceid = res.resourceinstanceid
     WHERE geo.nodeid = '87d3d7dc-f44f-11eb-bee9-a87eeabdefba'::uuid
-    AND ST_GeometryType(geo.geom) = 'ST_Polygon';
+        AND res.resource_instance_lifecycle_state_id = '9375c9a7-dad2-4f14-a5c1-d7e329fdde4f'
+        AND ST_GeometryType(geo.geom) = 'ST_Polygon';
 
 DROP VIEW IF EXISTS public.reported_places;
 CREATE OR REPLACE VIEW public.reported_places AS
@@ -70,9 +74,11 @@ CREATE OR REPLACE VIEW public.reported_places AS
         geo.geom
     FROM geojson_geometries geo
         JOIN sp_attr_heritage_item att ON geo.resourceinstanceid::text = att.resourceinstanceid
+        JOIN resource_instances res ON geo.resourceinstanceid = res.resourceinstanceid
     WHERE geo.nodeid = '87d3d7dc-f44f-11eb-bee9-a87eeabdefba'::uuid
-    AND att.designation_or_protection_type <> ''
-    AND att.designation_or_protection_type IS NOT NULL;
+        AND res.resource_instance_lifecycle_state_id = '9375c9a7-dad2-4f14-a5c1-d7e329fdde4f'
+        AND att.designation_or_protection_type <> ''
+        AND att.designation_or_protection_type IS NOT NULL;
 
 DROP VIEW IF EXISTS public.archaeological_discoveries;
 CREATE OR REPLACE VIEW public.archaeological_discoveries AS
@@ -97,7 +103,9 @@ CREATE OR REPLACE VIEW public.archaeological_discoveries AS
         geo.geom
     FROM geojson_geometries geo
         JOIN sp_attr_artefact att ON geo.resourceinstanceid::text = att.resourceinstanceid
-    WHERE geo.nodeid = 'f7ccc8b9-f447-11eb-9cb1-a87eeabdefba'::uuid;
+        JOIN resource_instances res ON geo.resourceinstanceid = res.resourceinstanceid
+    WHERE geo.nodeid = 'f7ccc8b9-f447-11eb-9cb1-a87eeabdefba'::uuid
+        AND res.resource_instance_lifecycle_state_id = '9375c9a7-dad2-4f14-a5c1-d7e329fdde4f';
 
 DROP VIEW IF EXISTS public.aircraft_wrecks;
 CREATE OR REPLACE VIEW public.aircraft_wrecks AS
@@ -126,7 +134,9 @@ CREATE OR REPLACE VIEW public.aircraft_wrecks AS
         geo.geom
     FROM geojson_geometries geo
         JOIN sp_attr_historic_aircraft att ON geo.resourceinstanceid::text = att.resourceinstanceid
-    WHERE geo.nodeid = '9766b0d4-f450-11eb-83b6-a87eeabdefba'::uuid;
+        JOIN resource_instances res ON geo.resourceinstanceid = res.resourceinstanceid
+    WHERE geo.nodeid = '9766b0d4-f450-11eb-83b6-a87eeabdefba'::uuid
+        AND res.resource_instance_lifecycle_state_id = '9375c9a7-dad2-4f14-a5c1-d7e329fdde4f';
 
 DROP VIEW IF EXISTS public.shipwrecks;
 CREATE OR REPLACE VIEW public.shipwrecks AS
@@ -155,4 +165,6 @@ CREATE OR REPLACE VIEW public.shipwrecks AS
         geo.geom
     FROM geojson_geometries geo
         JOIN sp_attr_maritime_vessel att ON geo.resourceinstanceid::text = att.resourceinstanceid
-    WHERE geo.nodeid = '9f07fa25-f457-11eb-98c7-a87eeabdefba'::uuid;
+        JOIN resource_instances res ON geo.resourceinstanceid = res.resourceinstanceid
+    WHERE geo.nodeid = '9f07fa25-f457-11eb-98c7-a87eeabdefba'::uuid
+        AND res.resource_instance_lifecycle_state_id = '9375c9a7-dad2-4f14-a5c1-d7e329fdde4f';
