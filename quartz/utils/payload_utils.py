@@ -83,7 +83,7 @@ def parse_reference_node(value: str, list_name: str) -> dict:
 
     config = {"controlledList": list_pk}
 
-    return reference.transform_value_for_tile(value, **config)
+    return reference.transform_value_for_tile(str(value), **config)
 
 
 def make_or_update_tiles(
