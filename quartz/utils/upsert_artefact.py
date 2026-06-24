@@ -545,20 +545,23 @@ def _build_associated_monuments_tile(payload: dict) -> list:
 
 
 def _build_digital_file_tile(payload: dict) -> list:
-    if has_value(payload.get("dpp_edocsnumber")):
-        digital_object_resource_id = get_or_create_digitial_object_resource_from_name(
-            payload.get("dpp_edocsnumber")
+    edocs_number = payload.get("dpp_edocsnumber")
+    if not has_value(edocs_number):
+        return []
+    
+    digital_object_resource_id = get_or_create_digitial_object_resource_from_name(
+        edocs_number
+    )
+    return [
+        make_tile(
+            DIGITAL_OBJECT_NODEGROUP,
+            {
+                NODE_DIGITAL_OBJECT: parse_resource_instance_id(
+                    digital_object_resource_id
+                )
+            },
         )
-        return [
-            make_tile(
-                DIGITAL_OBJECT_NODEGROUP,
-                {
-                    NODE_DIGITAL_OBJECT: parse_resource_instance_id(
-                        digital_object_resource_id
-                    )
-                },
-            )
-        ]
+    ]
 
 
 def _build_location_tiles(
