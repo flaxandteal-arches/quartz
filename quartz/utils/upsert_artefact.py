@@ -716,6 +716,10 @@ def _build_location_tiles(
                 notes_parts.append(f"Easting: {easting}")
             if has_value(northing):
                 notes_parts.append(f"Northing: {northing}")
+            if has_value(loc.get("dpp_spatialcoordinatesystem")):
+                notes_parts.append(
+                    f"Coordinate System: {loc.get('dpp_spatialcoordinatesystem')}"
+                )
             if notes_parts:
                 tiles.append(
                     make_tile(

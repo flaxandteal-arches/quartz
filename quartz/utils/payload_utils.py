@@ -56,16 +56,17 @@ def extract_gps_features(locations: list, lat_key: str, lon_key: str) -> list:
         lon = loc.get(lon_key)
 
         try:
-            features.append(
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [float(lon), float(lat)],  # GeoJSON: [lon, lat]
-                    },
-                    "properties": {},
-                }
-            )
+            if lat is not None and lon is not None:
+                features.append(
+                    {
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [float(lon), float(lat)],  # GeoJSON: [lon, lat]
+                        },
+                        "properties": {},
+                    }
+                )
         except (TypeError, ValueError) as exc:
             logger.warning("Invalid GPS values lat=%r lon=%r: %s", lat, lon, exc)
 
