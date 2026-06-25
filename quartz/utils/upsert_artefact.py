@@ -1,8 +1,6 @@
 import logging
 import uuid
 
-from django.db.models import Max
-
 from arches.app.models import models
 from arches.app.models.resource import Resource
 from arches.app.models.tile import Tile
@@ -17,7 +15,7 @@ from arches_resource_version_manager.models import VersionedResource
 from .payload_utils import (
     extract_gps_features,
     get_or_create_person_resource_from_name,
-    get_or_create_digitial_object_resource_from_name,
+    get_or_create_digital_object_resource_from_name,
     i18n_string,
     make_tile,
     make_or_update_tiles,
@@ -25,6 +23,7 @@ from .payload_utils import (
     parse_reference_node,
     parse_resource_instance_id,
     has_value,
+    has_any_value,
 )
 
 from .versioned_resource_utils import calculate_next_version
@@ -434,7 +433,10 @@ def _build_permission_tile(payload: dict) -> list:
 
 def _build_artefact_type_tile(payload: dict) -> list:
     value = payload.get("dpp_discoverysubtype")
-    if not has_value(value):
+    contact = payload.get("dpp_contact")
+    applicant = payload.get("dpp_applicant")
+    owner = payload.get("ownerid")
+    if not has_any_value([value, contact, applicant, owner]):
         return []
     data = {
         NODE_ARTEFACT_TYPE: parse_reference_node(value, ARTEFACT_TYPE_LIST_NAME),
@@ -549,7 +551,7 @@ def _build_digital_file_tile(payload: dict) -> list:
     if not has_value(edocs_number):
         return []
     
-    digital_object_resource_id = get_or_create_digitial_object_resource_from_name(
+    digital_object_resource_id = get_or_create_digital_object_resource_from_name(
         edocs_number
     )
     return [
