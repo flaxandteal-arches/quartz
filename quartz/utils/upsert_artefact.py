@@ -160,28 +160,6 @@ LOT_ON_PLAN_NODEGROUP = "925d9a2b-b933-4436-af2f-9c7aaf2c742e"
 NODE_LOT = "2ea01f80-4846-4293-9a01-748666814140"  # dpp_lot
 NODE_PLAN = "67045457-12b1-4a71-9cae-276c5a5b2522"  # dpp_plan
 
-# Nodegroups whose tiles are fully replaced on each sync.
-# _MANAGED_NODEGROUPS = {
-#     SYSTEM_REF_NODEGROUP,
-#     VERSIONING_NODEGROUP,
-#     DEACTIVATION_REASON_NODEGROUP,
-#     ARTEFACT_NAMES_NODEGROUP,
-#     EXTERNAL_CROSS_REFS_NODEGROUP,
-#     DESCRIPTIONS_NODEGROUP,
-#     IMPORTANT_SOURCE_NODEGROUP,
-#     PERMISSION_NODEGROUP,
-#     PRODUCTION_NODEGROUP,
-#     CONDITION_ASSESSMENT_NODEGROUP,
-#     ARCHAEOLOGY_STATUS_NODEGROUP,
-#     ASSOCIATED_MONUMENTS_NODEGROUP,
-#     DIGITAL_OBJECT_NODEGROUP,
-#     ADDRESSES_NODEGROUP,
-#     GEOMETRY_NODEGROUP,
-#     COORDINATE_SYSTEM_NODEGROUP,
-#     CAPTURE_SCALE_NODEGROUP,
-#     SPATIAL_ACCURACY_NODEGROUP,
-#     SPATIAL_METADATA_DESCRIPTIONS_NODEGROUP,
-# }
 
 FINAL_STATUSES = {"recorded"}
 
@@ -258,12 +236,7 @@ def process_artefact(payload: dict, user) -> tuple:
             "descriptors": archived_resource.descriptors,
         },
     )
-
-    # models.TileModel.objects.filter(
-    #     resourceinstance_id=current_draft_resource.pk,
-    #     nodegroup_id__in=_MANAGED_NODEGROUPS,
-    # ).delete()
-
+    
     current_draft_resource.tiles = _build_managed_tiles(
         payload, next_major, next_minor, current_draft_resource.pk
     )
