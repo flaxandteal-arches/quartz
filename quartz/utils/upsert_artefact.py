@@ -236,7 +236,7 @@ def process_artefact(payload: dict, user) -> tuple:
             "descriptors": archived_resource.descriptors,
         },
     )
-    
+
     current_draft_resource.tiles = _build_managed_tiles(
         payload, next_major, next_minor, current_draft_resource.pk
     )
@@ -308,12 +308,15 @@ def _build_system_ref_tile(payload: dict, resource_instance_ref: str) -> list:
     legacy_id = payload.get("dpp_discoveryreferencenumber")
     if not has_value(permit_number) and not has_value(legacy_id):
         return []
-    data = {}
-    if has_value(permit_number):
-        data[NODE_PRIMARY_REF_NUM] = int(permit_number)
-    if has_value(legacy_id):
-        data[NODE_LEGACY_ID] = i18n_string(str(legacy_id))
-    return make_or_update_tiles(SYSTEM_REF_NODEGROUP, data, resource_instance_ref=resource_instance_ref)
+    
+    return make_or_update_tiles(
+        SYSTEM_REF_NODEGROUP, 
+        {
+            NODE_PRIMARY_REF_NUM: int(permit_number),
+            NODE_LEGACY_ID: i18n_string(str(legacy_id)),
+        }, 
+        resource_instance_ref=resource_instance_ref
+    )
 
 
 def _build_deactivation_reason_tile(payload: dict, resource_instance_ref: str) -> list:
@@ -449,15 +452,17 @@ def _build_artefact_type_tile(payload: dict, resource_instance_ref: str) -> list
 def _get_or_build_discovery_tile(payload: dict, resource_instance_ref: str) -> object:
     value = payload.get("dpp_context")
     discovery_type = payload.get("dpp_archaeologytype")
-    data = {
-        NODE_DISCOVERY_METHOD: parse_reference_node(value, DISCOVERY_METHOD_LIST_NAME),
-        NODE_ARCHAEOLOGY_DISCOVERY_TYPE: parse_reference_node(
-            discovery_type,
-            ARCHAEOLOGY_DISCOVERY_TYPE_LIST_NAME,
-        ),
-    }
     tiles = make_or_update_tiles(
-        DISCOVERY_NODEGROUP, data, parent_tile_id=None, resource_instance_ref=resource_instance_ref
+        DISCOVERY_NODEGROUP, 
+        {
+            NODE_DISCOVERY_METHOD: parse_reference_node(value, DISCOVERY_METHOD_LIST_NAME),
+            NODE_ARCHAEOLOGY_DISCOVERY_TYPE: parse_reference_node(
+                discovery_type,
+                ARCHAEOLOGY_DISCOVERY_TYPE_LIST_NAME,
+            ),
+        }, 
+        parent_tile_id=None, 
+        resource_instance_ref=resource_instance_ref
     )
 
     return tiles[0]
@@ -468,12 +473,14 @@ def _build_condition_assessment_tile(payload: dict, resource_instance_ref: str) 
     end_date = payload.get("dpp_notificationdate")
     if not has_value(start_date) and not has_value(end_date):
         return []
-    data = {}
-    if has_value(start_date):
-        data[NODE_DATE_OF_ASSESSMENT_START] = parse_date(start_date)
-    if has_value(end_date):
-        data[NODE_DATE_OF_ASSESSMENT_END] = parse_date(end_date)
-    return make_or_update_tiles(CONDITION_ASSESSMENT_NODEGROUP, data, resource_instance_ref=resource_instance_ref)
+
+    return make_or_update_tiles(
+        CONDITION_ASSESSMENT_NODEGROUP, 
+        {
+            NODE_DATE_OF_ASSESSMENT_START: parse_date(start_date),
+            NODE_DATE_OF_ASSESSMENT_END: parse_date(end_date),
+        }, 
+        resource_instance_ref=resource_instance_ref)
 
 
 def _build_archaeology_status_tile(payload: dict, resource_instance_ref: str) -> list:
@@ -543,16 +550,11 @@ def _build_location_tiles(
 ) -> list:
     tiles = []
 
-    # try:
-    #     location_data_tile = Tile.objects.get(
-    #         resourceinstance_id=resource_instance_ref,
-    #         nodegroup_id=LOCATION_DATA_NODEGROUP,
-    #     )
-    # except Tile.DoesNotExist:
-    # import ipdb; ipdb.set_trace()
-    
     location_data_tile = make_or_update_tiles(
-        LOCATION_DATA_NODEGROUP, {}, parent_tile_id=discovery_tile.tileid, resource_instance_ref=resource_instance_ref
+        LOCATION_DATA_NODEGROUP, 
+        {}, 
+        parent_tile_id=discovery_tile.tileid, 
+        resource_instance_ref=resource_instance_ref
     )[0]
     tiles.append(location_data_tile)
 
@@ -588,7 +590,6 @@ def _build_location_tiles(
                     ),
                     (NODE_COUNTY, state, i18n_string),
                 ]
-                if has_value(val)
             }
 
             if data:
