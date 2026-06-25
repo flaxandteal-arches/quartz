@@ -25,6 +25,7 @@ from .payload_utils import (
     parse_reference_node,
     parse_resource_instance_id,
     has_value,
+    has_any_value,
 )
 
 from .versioned_resource_utils import calculate_next_version
@@ -434,7 +435,10 @@ def _build_permission_tile(payload: dict) -> list:
 
 def _build_artefact_type_tile(payload: dict) -> list:
     value = payload.get("dpp_discoverysubtype")
-    if not has_value(value):
+    contact = payload.get("dpp_contact")
+    applicant = payload.get("dpp_applicant")
+    owner = payload.get("ownerid")
+    if not has_any_value([value, contact, applicant, owner]):
         return []
     data = {
         NODE_ARTEFACT_TYPE: parse_reference_node(value, ARTEFACT_TYPE_LIST_NAME),
