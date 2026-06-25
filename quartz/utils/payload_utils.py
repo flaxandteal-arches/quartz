@@ -56,16 +56,17 @@ def extract_gps_features(locations: list, lat_key: str, lon_key: str) -> list:
         lon = loc.get(lon_key)
 
         try:
-            features.append(
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [float(lon), float(lat)],  # GeoJSON: [lon, lat]
-                    },
-                    "properties": {},
-                }
-            )
+            if lat is not None and lon is not None:
+                features.append(
+                    {
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [float(lon), float(lat)],  # GeoJSON: [lon, lat]
+                        },
+                        "properties": {},
+                    }
+                )
         except (TypeError, ValueError) as exc:
             logger.warning("Invalid GPS values lat=%r lon=%r: %s", lat, lon, exc)
 
@@ -149,6 +150,10 @@ def update_tiles(tiles: list, data: dict) -> list:
         tile.data = {**tile.data, **data}
     return tiles
 
+def has_any_value(values: list) -> bool:
+    """Return True if any of the values are not None and not an empty string."""
+    return any(value is not None and str(value).strip() != "" for value in values)
+
 
 def has_value(value) -> bool:
     """Return True if the value is not None and not an empty string."""
@@ -207,7 +212,7 @@ def get_or_create_person_resource_from_name(name: str, person_type: str) -> str:
     return str(new_resource.resourceinstanceid)
 
 
-def get_or_create_digitial_object_resource_from_name(name: str) -> str:
+def get_or_create_digital_object_resource_from_name(name: str) -> str:
     """
     Get or create a Digital Object resource with the given name, and return its resourceinstanceid.
     This is used for mapping the 'modifiedby' field from the payload to a Digital Object resource in Arches.
