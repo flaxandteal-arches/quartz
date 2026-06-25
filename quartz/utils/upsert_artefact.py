@@ -18,7 +18,7 @@ from .payload_utils import (
     get_or_create_digital_object_resource_from_name,
     i18n_string,
     make_tile,
-    make_or_update_tiles,
+    make_or_update_tiles as payload_make_or_update_tiles,
     parse_date,
     parse_reference_node,
     parse_resource_instance_id,
@@ -164,6 +164,120 @@ NODE_PLAN = "67045457-12b1-4a71-9cae-276c5a5b2522"  # dpp_plan
 FINAL_STATUSES = {"recorded"}
 
 
+def _managed_nodegroup_ids() -> set[str]:
+    return {
+        value
+        for name, value in globals().items()
+        if name.endswith("_NODEGROUP") and isinstance(value, str) and value
+    }
+
+
+def _managed_node_ids() -> set[str]:
+    return {
+        value
+        for name, value in globals().items()
+        if name.startswith("NODE_") and isinstance(value, str) and value
+    }
+
+
+def _clear_managed_node_values(resource_instance_ref: str) -> None:
+    """Clear managed node values from managed nodegroup tiles for a resource."""
+    if not resource_instance_ref:
+        return
+
+    nodegroups = _managed_nodegroup_ids()
+    node_ids = _managed_node_ids()
+    if not nodegroups or not node_ids:
+        return
+
+    tiles = models.TileModel.objects.filter(
+        resourceinstance_id=resource_instance_ref,
+        nodegroup_id__in=nodegroups,
+    )
+
+    updated_tiles = []
+    for tile in tiles:
+        data = tile.data or {}
+        had_changes = False
+        for node_id in node_ids:
+            if node_id in data:
+                data.pop(node_id, None)
+                had_changes = True
+
+        if had_changes:
+            tile.data = data
+            updated_tiles.append(tile)
+
+    if updated_tiles:
+        models.TileModel.objects.bulk_update(updated_tiles, ["data"])
+
+
+def _prefetch_managed_tiles_by_nodegroup(resource_instance_ref: str) -> dict[str, list]:
+    """Fetch all managed nodegroup tiles once and index them by nodegroup ID."""
+    nodegroups = _managed_nodegroup_ids()
+    if not resource_instance_ref or not nodegroups:
+        return {}
+
+    tiles_by_nodegroup = {}
+    tiles = Tile.objects.filter(
+        resourceinstance_id=resource_instance_ref,
+        nodegroup_id__in=nodegroups,
+    ).order_by("sortorder")
+
+    for tile in tiles:
+        key = str(tile.nodegroup_id)
+        tiles_by_nodegroup.setdefault(key, []).append(tile)
+
+    return tiles_by_nodegroup
+
+
+def _make_or_update_tiles_cached(
+    nodegroup_id: str,
+    new_data: list[dict] | dict,
+    parent_tile_id: str = None,
+    resource_instance_ref: str = None,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
+) -> list:
+    """Use pre-fetched tiles when available, falling back to payload helper behavior."""
+    if existing_tiles_by_nodegroup is None:
+        return payload_make_or_update_tiles(
+            nodegroup_id,
+            new_data,
+            parent_tile_id=parent_tile_id,
+            resource_instance_ref=resource_instance_ref,
+        )
+
+    if isinstance(new_data, dict):
+        new_data = [new_data]
+
+    nodegroup_key = str(nodegroup_id)
+    existing_tiles = existing_tiles_by_nodegroup.setdefault(nodegroup_key, [])
+
+    if not existing_tiles:
+        created_tiles = [make_tile(nodegroup_id, item, parent_tile_id) for item in new_data]
+        existing_tiles.extend(created_tiles)
+        return created_tiles
+
+    keys_to_replace = set(new_data[0].keys()) if new_data else set()
+
+    for tile in existing_tiles:
+        tile.data = tile.data or {}
+        for key in keys_to_replace:
+            tile.data.pop(key, None)
+
+    tiles = list(existing_tiles)
+
+    for idx, item in enumerate(new_data):
+        if idx < len(tiles):
+            tiles[idx].data = {**(tiles[idx].data or {}), **item}
+        else:
+            new_tile = make_tile(nodegroup_id, item, parent_tile_id)
+            tiles.append(new_tile)
+            existing_tiles.append(new_tile)
+
+    return tiles
+
+
 def process_artefact(payload: dict, user) -> tuple:
     """
     Implements the Payload API logical data flow for Artefact resources:
@@ -237,8 +351,17 @@ def process_artefact(payload: dict, user) -> tuple:
         },
     )
 
+    _clear_managed_node_values(str(current_draft_resource.pk))
+    existing_tiles_by_nodegroup = _prefetch_managed_tiles_by_nodegroup(
+        str(current_draft_resource.pk)
+    )
+
     current_draft_resource.tiles = _build_managed_tiles(
-        payload, next_major, next_minor, current_draft_resource.pk
+        payload,
+        next_major,
+        next_minor,
+        current_draft_resource.pk,
+        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
     )
     current_draft_resource.save()
 
@@ -272,58 +395,134 @@ def _build_managed_tiles(
     major_version: str | int,
     minor_version: str | int,
     resource_instance_ref: str,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
 ) -> list:
-    discovery_tile = _get_or_build_discovery_tile(payload, resource_instance_ref)
+    discovery_tile = _get_or_build_discovery_tile(
+        payload,
+        resource_instance_ref,
+        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
+    )
     return (
-        _build_system_ref_tile(payload, resource_instance_ref)
-        + _build_version_tile(major_version, minor_version, resource_instance_ref)
-        + _build_deactivation_reason_tile(payload, resource_instance_ref)
-        + _build_name_tiles(payload, resource_instance_ref)
-        + _build_external_ref_tiles(payload, resource_instance_ref)
-        + _build_description_tiles(payload, resource_instance_ref)
-        + _build_important_source_tile(payload, resource_instance_ref)
-        + _build_permission_tile(payload, resource_instance_ref)
-        + _build_artefact_type_tile(payload, resource_instance_ref)
+        _build_system_ref_tile(
+            payload,
+            resource_instance_ref,
+            existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
+        )
+        + _build_version_tile(
+            major_version,
+            minor_version,
+            resource_instance_ref,
+            existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
+        )
+        + _build_deactivation_reason_tile(
+            payload,
+            resource_instance_ref,
+            existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
+        )
+        + _build_name_tiles(
+            payload,
+            resource_instance_ref,
+            existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
+        )
+        + _build_external_ref_tiles(
+            payload,
+            resource_instance_ref,
+            existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
+        )
+        + _build_description_tiles(
+            payload,
+            resource_instance_ref,
+            existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
+        )
+        + _build_important_source_tile(
+            payload,
+            resource_instance_ref,
+            existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
+        )
+        + _build_permission_tile(
+            payload,
+            resource_instance_ref,
+            existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
+        )
+        + _build_artefact_type_tile(
+            payload,
+            resource_instance_ref,
+            existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
+        )
         + [discovery_tile]
-        + _build_condition_assessment_tile(payload, resource_instance_ref)
-        + _build_archaeology_status_tile(payload, resource_instance_ref)
-        + _build_associated_monuments_tile(payload, resource_instance_ref)
-        + _build_digital_file_tile(payload, resource_instance_ref)
-        + _build_location_tiles(payload, resource_instance_ref, discovery_tile)
+        + _build_condition_assessment_tile(
+            payload,
+            resource_instance_ref,
+            existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
+        )
+        + _build_archaeology_status_tile(
+            payload,
+            resource_instance_ref,
+            existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
+        )
+        + _build_associated_monuments_tile(
+            payload,
+            resource_instance_ref,
+            existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
+        )
+        + _build_digital_file_tile(
+            payload,
+            resource_instance_ref,
+            existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
+        )
+        + _build_location_tiles(
+            payload,
+            resource_instance_ref,
+            discovery_tile,
+            existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
+        )
     )
 
 
 def _build_version_tile(
-    major_version: str | int, minor_version: str | int, resource_instance_ref: str
+    major_version: str | int,
+    minor_version: str | int,
+    resource_instance_ref: str,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
 ) -> list:
-    return make_or_update_tiles(
+    return _make_or_update_tiles_cached(
         VERSIONING_NODEGROUP,
         {VERSION_NUMBER: i18n_string(f"{major_version}.{minor_version}")},
         resource_instance_ref=resource_instance_ref,
+        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
     )
 
 
-def _build_system_ref_tile(payload: dict, resource_instance_ref: str) -> list:
+def _build_system_ref_tile(
+    payload: dict,
+    resource_instance_ref: str,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
+) -> list:
     permit_number = payload.get("dpp_permitnumber")
     legacy_id = payload.get("dpp_discoveryreferencenumber")
     if not has_value(permit_number) and not has_value(legacy_id):
         return []
-    
-    return make_or_update_tiles(
-        SYSTEM_REF_NODEGROUP, 
+
+    return _make_or_update_tiles_cached(
+        SYSTEM_REF_NODEGROUP,
         {
             NODE_PRIMARY_REF_NUM: int(permit_number),
             NODE_LEGACY_ID: i18n_string(str(legacy_id)),
-        }, 
-        resource_instance_ref=resource_instance_ref
+        },
+        resource_instance_ref=resource_instance_ref,
+        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
     )
 
 
-def _build_deactivation_reason_tile(payload: dict, resource_instance_ref: str) -> list:
+def _build_deactivation_reason_tile(
+    payload: dict,
+    resource_instance_ref: str,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
+) -> list:
     reason = payload.get("dpp_deactivationreason")
     if not has_value(reason):
         return []
-    return make_or_update_tiles(
+    return _make_or_update_tiles_cached(
         DEACTIVATION_REASON_NODEGROUP,
         {
             NODE_DEACTIVATION_REASON: parse_reference_node(
@@ -331,33 +530,48 @@ def _build_deactivation_reason_tile(payload: dict, resource_instance_ref: str) -
             )
         },
         resource_instance_ref=resource_instance_ref,
+        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
     )
 
 
 
-def _build_name_tiles(payload: dict, resource_instance_ref: str) -> list:
+def _build_name_tiles(
+    payload: dict,
+    resource_instance_ref: str,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
+) -> list:
     name = payload.get("dpp_discoveryname")
     if not has_value(name):
         return []
-    return make_or_update_tiles(
+    return _make_or_update_tiles_cached(
         ARTEFACT_NAMES_NODEGROUP,
         {NODE_ARTEFACT_NAME: i18n_string(name)},
         resource_instance_ref=resource_instance_ref,
+        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
     )
 
 
-def _build_external_ref_tiles(payload: dict, resource_instance_ref: str) -> list:
+def _build_external_ref_tiles(
+    payload: dict,
+    resource_instance_ref: str,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
+) -> list:
     ref = payload.get("dpp_externalreferencenumber")
     if not has_value(ref):
         return []
-    return make_or_update_tiles(
+    return _make_or_update_tiles_cached(
         EXTERNAL_CROSS_REFS_NODEGROUP,
         {NODE_EXTERNAL_CROSS_REF: i18n_string(str(ref))},
         resource_instance_ref=resource_instance_ref,
+        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
     )
 
 
-def _build_description_tiles(payload: dict, resource_instance_ref: str) -> list:
+def _build_description_tiles(
+    payload: dict,
+    resource_instance_ref: str,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
+) -> list:
     descriptions = [
         ("dpp_response", "Response"),
         ("dpp_descriptionsummary", "Summary"),
@@ -375,20 +589,25 @@ def _build_description_tiles(payload: dict, resource_instance_ref: str) -> list:
                 }
             )
     if data:
-        return make_or_update_tiles(
+        return _make_or_update_tiles_cached(
             DESCRIPTIONS_NODEGROUP,
             data,
             resource_instance_ref=resource_instance_ref,
+            existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
         )
 
     return []
 
 
-def _build_important_source_tile(payload: dict, resource_instance_ref: str) -> list:
+def _build_important_source_tile(
+    payload: dict,
+    resource_instance_ref: str,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
+) -> list:
     value = payload.get("dpp_importantsourceofinformation")
     if not has_value(value):
         return []
-    return make_or_update_tiles(
+    return _make_or_update_tiles_cached(
         IMPORTANT_SOURCE_NODEGROUP,
         {
             NODE_IMPORTANT_SOURCE: parse_reference_node(
@@ -396,21 +615,31 @@ def _build_important_source_tile(payload: dict, resource_instance_ref: str) -> l
             )
         },
         resource_instance_ref=resource_instance_ref,
+        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
     )
 
 
-def _build_permission_tile(payload: dict, resource_instance_ref: str) -> list:
+def _build_permission_tile(
+    payload: dict,
+    resource_instance_ref: str,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
+) -> list:
     value = payload.get("dpp_permissiontointerferegranted")
     if not has_value(value):
         return []
-    return make_or_update_tiles(
+    return _make_or_update_tiles_cached(
         PERMISSION_NODEGROUP,
         {NODE_PERMISSION: parse_reference_node(value, PERMISSION_LIST_NAME)},
         resource_instance_ref=resource_instance_ref,
+        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
     )
 
 
-def _build_artefact_type_tile(payload: dict, resource_instance_ref: str) -> list:
+def _build_artefact_type_tile(
+    payload: dict,
+    resource_instance_ref: str,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
+) -> list:
     value = payload.get("dpp_discoverysubtype")
     contact = payload.get("dpp_contact")
     applicant = payload.get("dpp_applicant")
@@ -442,52 +671,70 @@ def _build_artefact_type_tile(payload: dict, resource_instance_ref: str) -> list
         data[NODE_ASSOCIATED_PERSON].extend(
             parse_resource_instance_id(person_resource_id)
         )
-    return make_or_update_tiles(
+    return _make_or_update_tiles_cached(
         PRODUCTION_NODEGROUP,
         data,
         resource_instance_ref=resource_instance_ref,
+        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
     )
 
 
-def _get_or_build_discovery_tile(payload: dict, resource_instance_ref: str) -> object:
+def _get_or_build_discovery_tile(
+    payload: dict,
+    resource_instance_ref: str,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
+) -> object:
     value = payload.get("dpp_context")
     discovery_type = payload.get("dpp_archaeologytype")
-    tiles = make_or_update_tiles(
-        DISCOVERY_NODEGROUP, 
+    tiles = _make_or_update_tiles_cached(
+        DISCOVERY_NODEGROUP,
         {
-            NODE_DISCOVERY_METHOD: parse_reference_node(value, DISCOVERY_METHOD_LIST_NAME),
+            NODE_DISCOVERY_METHOD: parse_reference_node(
+                value, DISCOVERY_METHOD_LIST_NAME
+            ),
             NODE_ARCHAEOLOGY_DISCOVERY_TYPE: parse_reference_node(
                 discovery_type,
                 ARCHAEOLOGY_DISCOVERY_TYPE_LIST_NAME,
             ),
-        }, 
-        parent_tile_id=None, 
-        resource_instance_ref=resource_instance_ref
+        },
+        parent_tile_id=None,
+        resource_instance_ref=resource_instance_ref,
+        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
     )
 
     return tiles[0]
 
 
-def _build_condition_assessment_tile(payload: dict, resource_instance_ref: str) -> list:
+def _build_condition_assessment_tile(
+    payload: dict,
+    resource_instance_ref: str,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
+) -> list:
     start_date = payload.get("dpp_dateofdiscovery")
     end_date = payload.get("dpp_notificationdate")
     if not has_value(start_date) and not has_value(end_date):
         return []
 
-    return make_or_update_tiles(
-        CONDITION_ASSESSMENT_NODEGROUP, 
+    return _make_or_update_tiles_cached(
+        CONDITION_ASSESSMENT_NODEGROUP,
         {
             NODE_DATE_OF_ASSESSMENT_START: parse_date(start_date),
             NODE_DATE_OF_ASSESSMENT_END: parse_date(end_date),
-        }, 
-        resource_instance_ref=resource_instance_ref)
+        },
+        resource_instance_ref=resource_instance_ref,
+        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
+    )
 
 
-def _build_archaeology_status_tile(payload: dict, resource_instance_ref: str) -> list:
+def _build_archaeology_status_tile(
+    payload: dict,
+    resource_instance_ref: str,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
+) -> list:
     status = payload.get("dpp_archaeologystatus")
     if not has_value(status):
         return []
-    return make_or_update_tiles(
+    return _make_or_update_tiles_cached(
         ARCHAEOLOGY_STATUS_NODEGROUP,
         {
             NODE_ARCHAEOLOGY_STATUS: parse_reference_node(
@@ -495,10 +742,15 @@ def _build_archaeology_status_tile(payload: dict, resource_instance_ref: str) ->
             )
         },
         resource_instance_ref=resource_instance_ref,
+        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
     )
 
 
-def _build_associated_monuments_tile(payload: dict, resource_instance_ref: str) -> list:
+def _build_associated_monuments_tile(
+    payload: dict,
+    resource_instance_ref: str,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
+) -> list:
     items = payload.get("dpp_heritageitems", [])
     if not items:
         return []
@@ -519,14 +771,19 @@ def _build_associated_monuments_tile(payload: dict, resource_instance_ref: str) 
                 )
     if not resource_instances:
         return []
-    return make_or_update_tiles(
+    return _make_or_update_tiles_cached(
         ASSOCIATED_MONUMENTS_NODEGROUP,
         {NODE_MONUMENT_AREA_OR_ARTEFACT: resource_instances},
         resource_instance_ref=resource_instance_ref,
+        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
     )
 
 
-def _build_digital_file_tile(payload: dict, resource_instance_ref: str) -> list:
+def _build_digital_file_tile(
+    payload: dict,
+    resource_instance_ref: str,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
+) -> list:
     edocs_number = payload.get("dpp_edocsnumber")
     if not has_value(edocs_number):
         return []
@@ -534,27 +791,32 @@ def _build_digital_file_tile(payload: dict, resource_instance_ref: str) -> list:
     digital_object_resource_id = get_or_create_digital_object_resource_from_name(
         edocs_number
     )
-    return make_or_update_tiles(
+    return _make_or_update_tiles_cached(
         DIGITAL_OBJECT_NODEGROUP,
         {
             NODE_DIGITAL_OBJECT: parse_resource_instance_id(
                 digital_object_resource_id
             )
         },
-        resource_instance_ref=resource_instance_ref
+        resource_instance_ref=resource_instance_ref,
+        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
     )
 
 
 def _build_location_tiles(
-    payload: dict, resource_instance_ref: str, discovery_tile: object
+    payload: dict,
+    resource_instance_ref: str,
+    discovery_tile: object,
+    existing_tiles_by_nodegroup: dict[str, list] | None = None,
 ) -> list:
     tiles = []
 
-    location_data_tile = make_or_update_tiles(
-        LOCATION_DATA_NODEGROUP, 
-        {}, 
-        parent_tile_id=discovery_tile.tileid, 
-        resource_instance_ref=resource_instance_ref
+    location_data_tile = _make_or_update_tiles_cached(
+        LOCATION_DATA_NODEGROUP,
+        {},
+        parent_tile_id=discovery_tile.tileid,
+        resource_instance_ref=resource_instance_ref,
+        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
     )[0]
     tiles.append(location_data_tile)
 
@@ -594,11 +856,12 @@ def _build_location_tiles(
 
             if data:
                 tiles.extend(
-                    make_or_update_tiles(
+                    _make_or_update_tiles_cached(
                         ADDRESSES_NODEGROUP,
                         data,
                         parent_tile_id=location_data_tile.tileid,
-                        resource_instance_ref=resource_instance_ref
+                        resource_instance_ref=resource_instance_ref,
+                        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
                     )
                 )
 
@@ -622,7 +885,7 @@ def _build_location_tiles(
                 [loc], lat_key="dpp_latitude", lon_key="dpp_longitude"
             )
             feature_shape = loc.get("dpp_coordinatetype")
-            geometry_tile = make_or_update_tiles(
+            geometry_tile = _make_or_update_tiles_cached(
                 GEOMETRY_NODEGROUP,
                 {
                     NODE_GEOSPATIAL_COORDS: {
@@ -632,7 +895,8 @@ def _build_location_tiles(
                     NODE_FEATURE_SHAPE: parse_reference_node(feature_shape, FEATURE_SHAPE_LIST_NAME),
                 },
                 parent_tile_id=location_data_tile.tileid,
-                resource_instance_ref=resource_instance_ref
+                resource_instance_ref=resource_instance_ref,
+                existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
             )[0]
             tiles.append(geometry_tile)
 
@@ -640,7 +904,7 @@ def _build_location_tiles(
             source = loc.get("dpp_locationsource")
             if has_value(source):
                 tiles.extend(
-                    make_or_update_tiles(
+                    _make_or_update_tiles_cached(
                         CAPTURE_SCALE_NODEGROUP,
                         {
                             NODE_CAPTURE_SCALE: parse_reference_node(
@@ -648,7 +912,8 @@ def _build_location_tiles(
                             )
                         },
                         parent_tile_id=geometry_tile.tileid,
-                        resource_instance_ref=resource_instance_ref
+                        resource_instance_ref=resource_instance_ref,
+                        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
                     )
                 )
 
@@ -656,7 +921,7 @@ def _build_location_tiles(
             accuracy = loc.get("dpp_locationaccuracy")
             if has_value(accuracy):
                 tiles.extend(
-                    make_or_update_tiles(
+                    _make_or_update_tiles_cached(
                         SPATIAL_ACCURACY_NODEGROUP,
                         {
                             NODE_SPATIAL_ACCURACY: parse_reference_node(
@@ -664,7 +929,8 @@ def _build_location_tiles(
                             )
                         },
                         parent_tile_id=geometry_tile.tileid,
-                        resource_instance_ref=resource_instance_ref
+                        resource_instance_ref=resource_instance_ref,
+                        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
                     )
                 )
 
@@ -672,7 +938,7 @@ def _build_location_tiles(
             coord_system = loc.get("dpp_spatialcoordinatesystem")
             if has_value(coord_system):
                 tiles.extend(
-                    make_or_update_tiles(
+                    _make_or_update_tiles_cached(
                         COORDINATE_SYSTEM_NODEGROUP,
                         {
                             NODE_COORDINATE_SYSTEM: parse_reference_node(
@@ -680,7 +946,8 @@ def _build_location_tiles(
                             )
                         },
                         parent_tile_id=geometry_tile.tileid,
-                        resource_instance_ref=resource_instance_ref
+                        resource_instance_ref=resource_instance_ref,
+                        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
                     )
                 )
 
@@ -720,7 +987,7 @@ def _build_location_tiles(
                 )
             if notes_parts:
                 tiles.extend(
-                    make_or_update_tiles(
+                    _make_or_update_tiles_cached(
                         SPATIAL_METADATA_DESCRIPTIONS_NODEGROUP,
                         {
                             NODE_SPATIAL_METADATA_NOTES: i18n_string(
@@ -728,7 +995,8 @@ def _build_location_tiles(
                             )
                         },
                         parent_tile_id=geometry_tile.tileid,
-                        resource_instance_ref=resource_instance_ref
+                        resource_instance_ref=resource_instance_ref,
+                        existing_tiles_by_nodegroup=existing_tiles_by_nodegroup,
                     )
                 )
                 
