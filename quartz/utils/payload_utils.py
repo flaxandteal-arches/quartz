@@ -211,7 +211,7 @@ def get_or_create_person_resource_from_name(name: str, person_type: str) -> str:
     return str(new_resource.resourceinstanceid)
 
 
-def get_or_create_digitial_object_resource_from_name(name: str) -> str:
+def get_or_create_digital_object_resource_from_name(name: str) -> str:
     """
     Get or create a Digital Object resource with the given name, and return its resourceinstanceid.
     This is used for mapping the 'modifiedby' field from the payload to a Digital Object resource in Arches.
