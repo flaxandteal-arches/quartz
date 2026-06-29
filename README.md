@@ -84,6 +84,38 @@ The Monument resource model (graph ID `076f9381-7b00-11e9-8d6b-80000b44d1d9`, lo
 - New cards must be added to `resourceDataConfig` and `resourcesCards` in `monument.js` before they appear in the report
 - Node IDs used for Condition Report field extraction are hardcoded at the top of `resources.js` - if the Condition Report graph changes, update the `CR_*_NODE` constants there
 
+## Arches Search setup
+
+Both commands need to run after `load_package` (they read graphs/resources, so
+they can't be migrations). Re-run them whenever graphs or data change.
+
+### `setup_search_report_configs`
+Creates the report configs that control how a search result is displayed (the
+detail/result pane). Pass `--overwrite` to replace existing configs.
+
+### `setup_search_filter_configs`
+Creates the attribute-filter config (`NodeFilterConfig`) per graph — i.e. which
+nodes show up as filters in the search panel. Only `reference` nodes backed by a
+controlled list are usable as filters, so that's all it seeds.
+
+Flags:
+- `--overwrite` — replace existing configs instead of skipping them.
+- `--graph <slug|name>` — limit to one graph (default: all resource graphs).
+- `--populated-only` — only include nodes that resources actually fill in (skips
+  filters that would always be empty).
+- `--max-options N` — skip nodes whose controlled list has more than N items
+  (long checkbox lists are slow). Default 25, 0 = no limit.
+- `--max-nodes N` — hard cap on filters per graph. Default 0 = no cap.
+
+Duplicate labels are collapsed to one filter (the data model reuses node names
+like "Association Type" across nodegroups).
+
+Typical run:
+
+    python manage.py setup_search_report_configs --overwrite
+    python manage.py setup_search_filter_configs --overwrite --populated-only
+
+
 ## Production Push
 To push to production the images need to be tagged with prod-{run-id}
 This can be done using github cli with
