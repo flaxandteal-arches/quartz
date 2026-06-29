@@ -45,7 +45,6 @@ NODE_LEGACY_ID = "dd8032b1-b494-11ea-a183-f875a44e0e11"  # string
 # Version information nodegroup  (one tile — not repeatable)
 VERSIONING_NODEGROUP = "07028e38-c27c-572f-8be5-e37ec837ad4f"
 VERSION_NUMBER = "ddaac2c0-65f5-52ed-a843-43de724f9d01"  # string
-# WORKING_COPY = "415b7f11-e007-56d6-a794-ba18aea7325b"  # reference to working draft
 
 DEACTIVATION_REASON_NODEGROUP = "7def03f0-3bf7-52dc-b226-76b3d00bc8a2"
 NODE_DEACTIVATION_REASON = "7def03f0-3bf7-52dc-b226-76b3d00bc8a2"  # reference
