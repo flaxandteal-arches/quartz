@@ -327,6 +327,18 @@ SYSTEM_SETTINGS_LOCAL_PATH = os.path.join(
 
 MAPBOX_API_KEY = os.environ.get("MAPBOX_API_KEY", MAPBOX_API_KEY)
 
+BASEMAPS = [
+    {
+        "name": "bright",
+        "title": "Light",
+        "url": os.environ.get(
+            "BASEMAP_STYLE_URL",
+            "https://tiles.openfreemap.org/styles/bright",
+        ),
+        "addtomap": True,
+    }
+]
+
 WSGI_APPLICATION = "quartz.wsgi.application"
 
 # URL that handles the media served from MEDIA_ROOT, used for managing stored files.

@@ -21,3 +21,4 @@ class QuartzConfig(AppConfig):
 
     def ready(self):
         import quartz.utils.resource_thumbnail_fetcher  # noqa: F401
+        import quartz.utils.search_indexing_overrides  # noqa: F401
