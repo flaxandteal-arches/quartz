@@ -45,7 +45,6 @@ NODE_LEGACY_ID = "dd8032b1-b494-11ea-a183-f875a44e0e11"  # string
 # Version information nodegroup  (one tile — not repeatable)
 VERSIONING_NODEGROUP = "07028e38-c27c-572f-8be5-e37ec837ad4f"
 VERSION_NUMBER = "ddaac2c0-65f5-52ed-a843-43de724f9d01"  # string
-# WORKING_COPY = "415b7f11-e007-56d6-a794-ba18aea7325b"  # reference to working draft
 
 DEACTIVATION_REASON_NODEGROUP = "7def03f0-3bf7-52dc-b226-76b3d00bc8a2"
 NODE_DEACTIVATION_REASON = "7def03f0-3bf7-52dc-b226-76b3d00bc8a2"  # reference
@@ -119,9 +118,9 @@ NODE_FULL_ADDRESS = "f7cc8c72-f447-11eb-a7f5-a87eeabdefba"  # string
 NODE_POSTCODE = "f7ccef67-f447-11eb-a0eb-a87eeabdefba"  # string
 NODE_BUILDING_NUMBER = "f7cc8c85-f447-11eb-b1c8-a87eeabdefba"
 NODE_STREET_NAME = "f7cca076-f447-11eb-8e8e-a87eeabdefba"
-NODE_SUBURBS = ""
+NODE_SUBURBS = "0a2dfbb1-c230-4c95-bad6-1c264d90b6e9"
 NODE_COUNTY = "f7ccef76-f447-11eb-ae38-a87eeabdefba"
-NODE_LGA = ""
+NODE_LGA = "a0294ac1-7d0f-44fc-ba9e-08db1dc79e0b"
 LGA_LIST_NAME = "LGAs"
 SUBURB_LIST_NAME = "Suburbs"
 
@@ -152,9 +151,9 @@ SPATIAL_ACCURACY_LIST_NAME = (
 SPATIAL_METADATA_DESCRIPTIONS_NODEGROUP = "f7ccef51-f447-11eb-8c32-a87eeabdefba"
 NODE_SPATIAL_METADATA_NOTES = "f7ccef57-f447-11eb-9619-a87eeabdefba"  # string
 
-LOT_ON_PLAN_NODEGROUP = ""
-NODE_LOT = ""  # dpp_lot
-NODE_PLAN = ""  # dpp_plan
+LOT_ON_PLAN_NODEGROUP = "925d9a2b-b933-4436-af2f-9c7aaf2c742e"
+NODE_LOT = "2ea01f80-4846-4293-9a01-748666814140"  # dpp_lot
+NODE_PLAN = "67045457-12b1-4a71-9cae-276c5a5b2522"  # dpp_plan
 
 # Nodegroups whose tiles are fully replaced on each sync.
 _MANAGED_NODEGROUPS = {
@@ -177,6 +176,7 @@ _MANAGED_NODEGROUPS = {
     CAPTURE_SCALE_NODEGROUP,
     SPATIAL_ACCURACY_NODEGROUP,
     SPATIAL_METADATA_DESCRIPTIONS_NODEGROUP,
+    LOT_ON_PLAN_NODEGROUP,
 }
 
 FINAL_STATUSES = {"recorded"}
@@ -603,15 +603,15 @@ def _build_location_tiles(
                 node: fn(val)
                 for node, val, fn in [
                     (NODE_FULL_ADDRESS, address, i18n_string),
-                    # (NODE_LGA, lga, lambda v: parse_reference_node(v, LGA_LIST_NAME)),
+                    (NODE_LGA, lga, lambda v: parse_reference_node(v, LGA_LIST_NAME)),
                     (NODE_POSTCODE, postcode, i18n_string),
                     (NODE_BUILDING_NUMBER, street_number, i18n_string),
                     (NODE_STREET_NAME, street_name_full, i18n_string),
-                    # (
-                    #     NODE_SUBURBS,
-                    #     suburb,
-                    #     lambda v: parse_reference_node(v, SUBURB_LIST_NAME),
-                    # ),
+                    (
+                        NODE_SUBURBS,
+                        suburb,
+                        lambda v: parse_reference_node(v, SUBURB_LIST_NAME),
+                    ),
                     (NODE_COUNTY, state, i18n_string),
                 ]
                 if has_value(val)
@@ -626,20 +626,20 @@ def _build_location_tiles(
                     )
                 )
 
-        # if loc.get("location_type") == "Lot Plan":
-        #     lot = loc.get("dpp_lot")
-        #     plan = loc.get("dpp_plan")
-        #     if lot or plan:
-        #         tiles.append(
-        #             make_tile(
-        #                 LOT_ON_PLAN_NODEGROUP,
-        #                 {
-        #                     NODE_LOT: i18n_string(lot),
-        #                     NODE_PLAN: i18n_string(plan),
-        #                 },
-        #                 parent_tile_id=location_data_tile.tileid,
-        #             )
-        #         )
+        if loc.get("location_type") == "Lot Plan":
+            lot = loc.get("dpp_lot")
+            plan = loc.get("dpp_plan")
+            if has_value(lot) or has_value(plan):
+                tiles.append(
+                    make_tile(
+                        LOT_ON_PLAN_NODEGROUP,
+                        {
+                            NODE_LOT: i18n_string(lot),
+                            NODE_PLAN: i18n_string(plan),
+                        },
+                        parent_tile_id=location_data_tile.tileid,
+                    )
+                )
 
         if loc.get("location_type") == "GPS":
             gps_features = extract_gps_features(
