@@ -643,7 +643,7 @@ def _build_location_tiles(
 
         if loc.get("location_type") == "GPS":
             gps_features = extract_gps_features(
-                [loc], lat_key="dpp_WGS84_lat", lon_key="dpp_WGS84_lon"
+                [loc], lat_key="dpp_latitude", lon_key="dpp_longitude"
             )
             geometry_tile = make_tile(
                 GEOMETRY_NODEGROUP,
