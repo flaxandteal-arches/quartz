@@ -129,6 +129,8 @@ GEOMETRY_NODEGROUP = "f7cc629f-f447-11eb-b2d3-a87eeabdefba"
 NODE_GEOSPATIAL_COORDS = (
     "f7ccc8b9-f447-11eb-9cb1-a87eeabdefba"  # geojson-feature-collection
 )
+NODE_FEATURE_SHAPE = "f7cc8c75-f447-11eb-953a-a87eeabdefba"
+FEATURE_SHAPE_LIST_NAME = "Feature Types"
 
 # Coordinate System nodegroup  (coordinate_system_value — child of location_data)
 COORDINATE_SYSTEM_NODEGROUP = "f7cca095-f447-11eb-b171-a87eeabdefba"
@@ -146,6 +148,9 @@ NODE_SPATIAL_ACCURACY = "f7cca099-f447-11eb-8a56-a87eeabdefba"  # reference
 SPATIAL_ACCURACY_LIST_NAME = (
     "6afdfd0e-5c44-510f-bc75-dcca147cb4d1"  # "Spatial Accuracy Qualifiers"
 )
+
+SPATIAL_RECORD_UPDATE_NODEGROUP = "f7ccc8ae-f447-11eb-8d86-a87eeabdefba"
+NODE_UPDATE_START_DATE = "f7ccc899-f447-11eb-8271-a87eeabdefba"
 
 # Spatial Metadata Descriptions nodegroup  (repeatable — child of location_data)
 SPATIAL_METADATA_DESCRIPTIONS_NODEGROUP = "f7ccef51-f447-11eb-8c32-a87eeabdefba"
@@ -645,13 +650,15 @@ def _build_location_tiles(
             gps_features = extract_gps_features(
                 [loc], lat_key="dpp_latitude", lon_key="dpp_longitude"
             )
+            feature_shape = loc.get("dpp_coordinatetype")
             geometry_tile = make_tile(
                 GEOMETRY_NODEGROUP,
                 {
                     NODE_GEOSPATIAL_COORDS: {
                         "type": "FeatureCollection",
                         "features": gps_features,
-                    }
+                    },
+                    NODE_FEATURE_SHAPE: parse_reference_node(feature_shape, FEATURE_SHAPE_LIST_NAME),
                 },
                 parent_tile_id=location_data_tile.tileid,
             )
@@ -702,12 +709,28 @@ def _build_location_tiles(
                     )
                 )
 
+            # spatial_record_update — locations.dpp_coordinatedate
+            coord_date = loc.get("dpp_coordinatedate")
+            if has_value(coord_date):
+                tiles.append(
+                    make_tile(
+                        SPATIAL_RECORD_UPDATE_NODEGROUP,
+                        {
+                            NODE_UPDATE_START_DATE: parse_date(coord_date)
+                        },
+                        parent_tile_id=geometry_tile.tileid,
+                    )
+                )
+
             # spatial_metadata_notes — lat/lon/easting/northing combined into one string tile
             lat = loc.get("dpp_latitude")
             lon = loc.get("dpp_longitude")
             easting = loc.get("dpp_easting")
             northing = loc.get("dpp_northing")
+            coordinate_description = loc.get("dpp_coordinatedescription")
             notes_parts = []
+            if has_value(coordinate_description):
+                notes_parts.append(f"{coordinate_description}")
             if has_value(lat):
                 notes_parts.append(f"Latitude: {lat}")
             if has_value(lon):
@@ -726,7 +749,7 @@ def _build_location_tiles(
                         SPATIAL_METADATA_DESCRIPTIONS_NODEGROUP,
                         {
                             NODE_SPATIAL_METADATA_NOTES: i18n_string(
-                                ", ".join(notes_parts)
+                                "<br>".join(notes_parts)
                             )
                         },
                         parent_tile_id=geometry_tile.tileid,
