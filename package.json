@@ -29,7 +29,7 @@
         "arches_search": "archesproject/arches-search#main",
         "online-3d-viewer": "^0.18.0",
         "potree-core": "^2.0.15",
-        "three": "^0.184.0"
+        "three": "^0.185.1"
     },
     "devDependencies": {
         "arches-dev-dependencies": "archesproject/arches-dev-dependencies#dev/8.1.x"
