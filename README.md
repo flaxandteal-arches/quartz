@@ -72,6 +72,25 @@ make manage CMD="packages -o import_graphs -s quartz/pkg/graphs/resource_models/
 ```
 This will load in the onotologies and resource models.
 
+10. Download the quartz-graphs package from the latest GitHub release and extract it:
+```
+mkdir -p tmp
+```
+```
+gh release download -R flaxandteal/quartz-graphs -p "*.zip" --clobber --output tmp/quartz-graphs.zip
+```
+```
+unzip -o tmp/quartz-graphs.zip -d tmp/pkg-quartz-graphs
+```
+
+Or if you don't have gh CLI you can just go to `https://github.com/flaxandteal/quartz-graphs/releases` and download the zip for the latest release and unzip it into the `tmp` folder.
+
+
+11. Load the quartz-graphs package:
+```
+make manage CMD="packages -o load_package -s /web_root/quartz/tmp/pkg-quartz-graphs -y"
+```
+
 ## Custom Monument / Heritage Item Report
 
 The Monument resource model (graph ID `076f9381-7b00-11e9-8d6b-80000b44d1d9`, locally renamed to **Heritage Item**) uses a custom report defined in:
