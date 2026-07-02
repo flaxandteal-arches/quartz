@@ -213,25 +213,55 @@ export default ko.components.register(
 
                 const geometryNode = self.getRawNodeValue(locationNode, self.dataConfig.geometry);
                 if (geometryNode) {
-                    const locationDataCoordinates = self.getNodeValue(geometryNode, "geospatial coordinates");
-                    if (locationDataCoordinates && locationDataCoordinates != "--") {
-                        self.coordinateData = locationDataCoordinates;
+                    // the geometry nodegroup can have cardinality "n", in which case
+                    // geometryNode is an array of tiles rather than a single tile.
+                    const geometryNodes = Array.isArray(geometryNode) ? geometryNode : [geometryNode];
+
+                    const firstGeometryNodeValue = (...args) => {
+                        for (const node of geometryNodes) {
+                            const value = self.getNodeValue(node, ...args);
+                            if (value && value != "--") {
+                                return value;
+                            }
+                        }
+                        return "--";
+                    };
+
+                    const collectedFeatures = [];
+                    geometryNodes.forEach((node) => {
+                        const nodeCoordinates = self.getNodeValue(node, "geospatial coordinates");
+                        if (nodeCoordinates && nodeCoordinates != "--") {
+                            try {
+                                const parsedCoordinates = typeof nodeCoordinates === "string"
+                                    ? JSON.parse(nodeCoordinates.replaceAll("'", '"'))
+                                    : nodeCoordinates;
+                                if (parsedCoordinates?.features) {
+                                    collectedFeatures.push(...parsedCoordinates.features);
+                                }
+                            } catch (e) {
+                                // pass
+                            }
+                        }
+                    });
+                    if (collectedFeatures.length) {
+                        self.coordinateData({ type: "FeatureCollection", features: collectedFeatures });
                     }
-                    self.geometryShape(self.getNodeValue(geometryNode, "feature shape"));
-                    self.geometryNotes(self.getNodeValue(geometryNode, "spatial metadata descriptions", "spatial metadata notes"));
-                    self.geometryMetadata.compilerName(self.getNodeValue(geometryNode, "spatial record compilation", "spatial record compiler", "compiler names", "compiler name"));
-                    self.geometryMetadata.compileDate(self.getNodeValue(geometryNode, "spatial record compilation", "spatial record compilation timespan", "compilation start date"));
-                    self.geometryMetadata.updateDate(self.getNodeValue(geometryNode, "spatial record update", "spatial record update timespan", "update start date"));
-                    self.geometryMetadata.updaterName(self.getNodeValue(geometryNode, "spatial record update", "spatial record updater", "updater names", "updater name"));
-                    self.geometryMetadata.authorizationDate(self.getNodeValue(geometryNode, "spatial record authorization", "authorization timespan", "date of authorization"));
-                    self.geometryMetadata.authorizerName(self.getNodeValue(geometryNode, "spatial record authorization", "authorizer", "authorizer names", "authorizer name"));
-                    self.geometryMetadata.typeOfAuthorization(self.getNodeValue(geometryNode, "spatial record authorization", "authorization type"));
+
+                    self.geometryShape(firstGeometryNodeValue("feature shape"));
+                    self.geometryNotes(firstGeometryNodeValue("spatial metadata descriptions", "spatial metadata notes"));
+                    self.geometryMetadata.compilerName(firstGeometryNodeValue("spatial record compilation", "spatial record compiler", "compiler names", "compiler name"));
+                    self.geometryMetadata.compileDate(firstGeometryNodeValue("spatial record compilation", "spatial record compilation timespan", "compilation start date"));
+                    self.geometryMetadata.updateDate(firstGeometryNodeValue("spatial record update", "spatial record update timespan", "update start date"));
+                    self.geometryMetadata.updaterName(firstGeometryNodeValue("spatial record update", "spatial record updater", "updater names", "updater name"));
+                    self.geometryMetadata.authorizationDate(firstGeometryNodeValue("spatial record authorization", "authorization timespan", "date of authorization"));
+                    self.geometryMetadata.authorizerName(firstGeometryNodeValue("spatial record authorization", "authorizer", "authorizer names", "authorizer name"));
+                    self.geometryMetadata.typeOfAuthorization(firstGeometryNodeValue("spatial record authorization", "authorization type"));
                     self.recordEditExists(self.observableValueSet(self.geometryMetadata));
 
-                    self.geometryScale.accuracy(self.getNodeValue(geometryNode, "spatial accuracy qualifier"));
-                    self.geometryScale.basemap(self.getNodeValue(geometryNode, "current base map", "current base map names", "current base map name"));
-                    self.geometryScale.captureScale(self.getNodeValue(geometryNode, "capture scale"));
-                    self.geometryScale.coordinateSystem(self.getNodeValue(geometryNode, "coordinate system", "coordinate system value"));
+                    self.geometryScale.accuracy(firstGeometryNodeValue("spatial accuracy qualifier"));
+                    self.geometryScale.basemap(firstGeometryNodeValue("current base map", "current base map names", "current base map name"));
+                    self.geometryScale.captureScale(firstGeometryNodeValue("capture scale"));
+                    self.geometryScale.coordinateSystem(firstGeometryNodeValue("coordinate system", "coordinate system value"));
                     self.geometryScaleExists(self.observableValueSet(self.geometryScale));
                 }
 
