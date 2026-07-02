@@ -39,15 +39,16 @@ export default ko.components.register("monument-report", {
         self.activeSection = ko.observable("name");
 
         self.nameDataConfig = {
-            name: "monument",
-            nameChildren: "child monument",
-            parent: "parent monument or area",
+            name: "heritage place names",
+            nameChildren: "heritage item",
+            parent: "parent heritage place or area",
         };
 
         self.classificationDataConfig = {
             production: "construction phases",
             components: "components",
             usePhase: "use phases",
+            historicalPeriodType: "historical period type",
         };
 
         self.descriptionDataConfig = {
@@ -87,12 +88,12 @@ export default ko.components.register("monument-report", {
             self.cards = self.createCardDictionary(cards);
 
             self.nameCards = {
-                name: self.cards?.["monument names"],
+                name: self.cards?.["heritage place names"],
                 externalCrossReferences:
                     self.cards?.["external cross references"],
                 systemReferenceNumbers:
                     self.cards?.["system reference numbers"],
-                parent: self.cards?.["parent monuments"],
+                parent: self.cards?.["parent heritage place or area"],
             };
 
             self.descriptionCards = {
