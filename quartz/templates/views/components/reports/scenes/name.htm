@@ -4,54 +4,6 @@
 
 {% block body %}
 
-<!-- Display Name section -->
-<!-- ko if: $data.displayName && displayName() -->
-<div class="aher-report-section">
-    <h2 class="aher-report-section-title"><i tabindex="0" data-bind="onEnterkeyClick, onSpaceClick, click: function() {toggleVisibility(visible.displayName)}, onReportSectionToggleAria: visible.displayName, sectionName: '{% trans "Display Name" %}'" class="fa toggle"></i> {% trans "Display Name" %}</h2>
-    <a data-bind="{if: cards.displayName, click: function(){ addNewTile(cards.displayName) }}" class="aher-report-a">
-        <i class="fa fa-mail-reply"></i>
-        <span data-bind="if: cards.displayName.tiles().length">{% trans "Edit Identifier" %}</span>
-        <span data-bind="ifnot: cards.displayName.tiles().length">{% trans "Add Identifier" %}</span>
-    </a>
-
-    <!-- Collapsible content -->
-    <div data-bind="visible: visible.displayName" class="aher-report-collapsible-container pad-lft">
-        <!-- ko ifnot: displayName() -->
-        <div class="aher-nodata-note">No references for this resource</div>
-        <!-- /ko -->
-
-        <!-- ko if: displayName() -->
-        <div class="aher-report-subsection" data-bind="with: displayName, as: 'srn'">
-            <div class="firstchild-container">
-                <div class="aher-report-subsection-ite">
-                    <div class="aher-block-attributes">
-                        <span class="aher-block-key">Name: </span>
-                        <div class="aher-block-value" data-bind="text: srn.name"></div>
-                    </div>
-                    <div class="aher-block-attributes">
-                        <span class="aher-block-key">Show SMR Number: </span>
-                        <div class="aher-block-value" data-bind="text: srn.showSmr"></div>
-                    </div>
-                    <div class="aher-block-attributes">
-                        <span class="aher-block-key">Show IHR Number: </span>
-                        <div class="aher-block-value" data-bind="text: srn.showIhr"></div>
-                    </div>
-                    <div class="aher-block-attributes">
-                        <span class="aher-block-key">Show HB Number: </span>
-                        <div class="aher-block-value" data-bind="text: srn.showHb"></div>
-                    </div>
-                    <div class="aher-block-attributes">
-                        <span class="aher-block-key">Show Historic Parks and Gardens Number: </span>
-                        <div class="aher-block-value" data-bind="text: srn.showHpg"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /ko -->
-    </div>
-</div>
-<!-- /ko -->
-
 <!-- ko ifnot: hideNames() -->
 <div data-bind="visible: !!dataConfig.name" class="aher-report-section">
     <h2 class="aher-report-section-title"><i tabindex="0" data-bind="onEnterkeyClick, onSpaceClick, click: function() {toggleVisibility(visible.names)}, onReportSectionToggleAria: visible.names, sectionName: '{% trans "Names" %}'" class="fa toggle"></i> {% trans "Names" %}</h2>
@@ -206,50 +158,6 @@
         <!-- /ko -->
     </div>
 </div>
-
-<!-- Heritage Asset References section -->
-<!-- ko if: $data.haReferences && haReferences() -->
-<div class="aher-report-section">
-    <h2 class="aher-report-section-title"><i tabindex="0" data-bind="onEnterkeyClick, onSpaceClick, click: function() {toggleVisibility(visible.haReferences)}, onReportSectionToggleAria: visible.haReferences, sectionName: '{% trans "Heritage Asset References" %}'" class="fa toggle"></i> {% trans "Heritage Asset References" %}</h2>
-    <a href="#" data-bind="{if: cards.haReferences, click: function(){ addNewTile(cards.haReferences) }}" class="aher-report-a">
-        <i class="fa fa-mail-reply"></i>
-        <span data-bind="if: cards.haReferences.tiles().length">{% trans "Edit Identifier" %}</span>
-        <span data-bind="ifnot: cards.haReferences.tiles().length">{% trans "Add Identifier" %}</span>
-    </a>
-
-    <!-- Collapsible content -->
-    <div data-bind="visible: visible.haReferences" class="aher-report-collapsible-container pad-lft">
-        <!-- ko ifnot: haReferences() -->
-        <div class="aher-nodata-note">No references for this resource</div>
-        <!-- /ko -->
-
-        <!-- ko if: haReferences() -->
-        <div class="aher-report-subsection" data-bind="with: haReferences, as: 'srn'">
-            <div class="firstchild-container">
-                <div class="aher-report-subsection-ite">
-                    <div class="aher-block-attributes">
-                        <span class="aher-block-key">SMR Number: </span>
-                        <div class="aher-block-value" data-bind="text: srn.smrNumber"></div>
-                    </div>
-                    <div class="aher-block-attributes">
-                        <span class="aher-block-key">IHR Number: </span>
-                        <div class="aher-block-value" data-bind="text: srn.ihrNumber"></div>
-                    </div>
-                    <div class="aher-block-attributes">
-                        <span class="aher-block-key">HB Number: </span>
-                        <div class="aher-block-value" data-bind="text: srn.hbNumber"></div>
-                    </div>
-                    <div class="aher-block-attributes">
-                        <span class="aher-block-key">Historic Parks and Gardens Number: </span>
-                        <div class="aher-block-value" data-bind="text: srn.hpgNumber"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /ko -->
-    </div>
-</div>
-<!-- /ko -->
 
 <div data-bind="visible: !!dataConfig.parent, component: {
     name: 'views/components/reports/scenes/default',
