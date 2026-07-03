@@ -42,9 +42,6 @@ export default ko.components.register(
                 areaAssignment: ko.observable(true),
                 landUse: ko.observable(true),
                 namedLocations: ko.observable(true),
-                buFusionId: ko.observable(true),
-                uniqueBuildingId: ko.observable(true),
-                lpFusionId: ko.observable(true),
             };
             Object.assign(self.dataConfig, params.dataConfig || {});
 
@@ -129,10 +126,6 @@ export default ko.components.register(
             self.namedLocations = ko.observableArray();
             self.locationRoot = undefined;
 
-            self.buFusionId = ko.observable();
-            self.uniqueBuildingId = ko.observable();
-            self.lpFusionId = ko.observable();
-
             self.observableValueSet = (...observables) => {
                 for (let observable of observables) {
                     if (ko.isObservable(observable)) {
@@ -196,8 +189,7 @@ export default ko.components.register(
                 }
             };
 
-            if (params?.compiled) {
-            } else {
+            if (!params?.compiled) {
                 const locationNode = self.getRawNodeValue(
                     params.data(),
                     ...self.dataConfig.location
@@ -348,27 +340,6 @@ export default ko.components.register(
                 if (placename && placename !== "--") {
                     self.namedLocations([{ placename, tileid }]);
                 }
-            }
-
-            const buFusionIdData = self.getRawNodeValue(params.data(), {
-                testPaths: [["bu fusion id"]],
-            });
-            if (buFusionIdData) {
-                self.buFusionId(self.getRawNodeValue(buFusionIdData, "bu fusion id number", "en", "value"));
-            }
-
-            const uniqueBuildingIdData = self.getRawNodeValue(params.data(), {
-                testPaths: [["unique building id"]],
-            });
-            if (uniqueBuildingIdData) {
-                self.uniqueBuildingId(self.getRawNodeValue(uniqueBuildingIdData, "unique building id number", "en", "value"));
-            }
-
-            const lpFusionIdData = self.getRawNodeValue(params.data(), {
-                testPaths: [["lp fusion id"]],
-            });
-            if (lpFusionIdData) {
-                self.lpFusionId(self.getRawNodeValue(lpFusionIdData, "lp fusion id number", "en", "value"));
             }
         },
         template: LocationTemplate,

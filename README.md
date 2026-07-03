@@ -98,11 +98,11 @@ The Monument resource model (graph ID `076f9381-7b00-11e9-8d6b-80000b44d1d9`, lo
 - `quartz/media/js/views/components/reports/monument.js` - overrides the `arches_her` upstream; configures which sections appear in the report. Critically, `nameDataConfig` uses the node **display names** (e.g. `"heritage place names"`) not alias-derived strings -- `LabelBasedGraphV2` keys its output by display name, so alias-based lookups silently return nothing.
 - `quartz/media/js/utils/report.js` - overrides the `arches_her` upstream; fixes URL generation to use the `"arches:"` Django namespace prefix (`"arches:tile"`, `"arches:resource_editor"`, `"arches:resource_report"`) which the bare names in `arches_her` do not resolve to in this project.
 - `quartz/media/js/views/components/reports/scenes/resources.js` - overrides the `arches_her` upstream; adds the Condition Reports table (fetched via the related-resources API) and handles data extraction for all associated-resource sections.
-- `quartz/media/js/views/components/reports/scenes/name.js` / `name.htm` - overrides the `arches_her` upstream; adds Heritage Asset References (SMR, IHR, HB, HPG numbers), Display Name flags, and the parent Heritage Place link. The template guards Knockout bindings with `$data.displayName && displayName()` to avoid `ReferenceError` if the wrong viewModel is bound.
+- `quartz/media/js/views/components/reports/scenes/name.js` / `name.htm` - overrides the `arches_her` upstream; adds Heritage Asset References (SMR, IHR, HB, HPG numbers), Display Name flags, and the parent Heritage Place link.
 - `quartz/media/js/views/components/reports/scenes/assessments.js` - overrides the `arches_her` upstream; adds the Issue Reports section (`issue_report` nodegroup), which `arches_her` has no code to display.
 - `quartz/media/js/views/components/reports/scenes/classifications.js` - overrides the `arches_her` upstream; adds Historical Period Type and makes cultural period / producer values into clickable links to their resource reports.
 - `quartz/media/js/views/components/reports/scenes/description.js` - overrides the `arches_her` upstream; adds the Designation Descriptions section (`designation_description` nodegroup).
-- `quartz/media/js/views/components/reports/scenes/location.js` - overrides the `arches_her` upstream; adds Northern Ireland-specific location identifiers: BU Fusion ID, Unique Building ID, and LP Fusion ID.
+- `quartz/media/js/views/components/reports/scenes/location.js` - overrides the `arches_her` upstream;.
 
 **If the Monument graph is updated** (new cards added, node names or IDs changed), the files above will likely need updating:
 
