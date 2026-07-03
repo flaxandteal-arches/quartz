@@ -42,6 +42,7 @@ export default ko.components.register("monument-report", {
             name: "heritage place names",
             nameChildren: "heritage item",
             parent: "parent heritage place or area",
+            versioning: "versioning",
         };
 
         self.classificationDataConfig = {
@@ -94,6 +95,7 @@ export default ko.components.register("monument-report", {
                 systemReferenceNumbers:
                     self.cards?.["system reference numbers"],
                 parent: self.cards?.["parent heritage place or area"],
+                versioning: self.cards?.["versioning"],
             };
 
             self.descriptionCards = {
