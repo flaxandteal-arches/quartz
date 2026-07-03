@@ -14,7 +14,9 @@ export default ko.components.register("views/components/reports/scenes/name", {
         self.nameTableConfig = {
             ...self.defaultTableConfig,
             columns: [
-                { width: "100%" },
+                { width: "50%" },
+                { width: "30%" },
+                { width: "20%" },
                 null,
             ],
         };
