@@ -9,6 +9,12 @@
         data: typeData,
     }
 }"></div>
+<div data-bind="visible: !!dataConfig.recordType, component: {
+    name: 'views/components/reports/scenes/default',
+    params: {
+        data: recordTypeData,
+    }
+}"></div>
 <div data-bind="visible: !!dataConfig.activityTimespan, component: {
     name: 'views/components/reports/scenes/default',
     params: {

@@ -48,6 +48,7 @@ export default ko.components.register("monument-report", {
             production: "construction phases",
             components: "components",
             usePhase: "use phases",
+            recordType: "record type",
         };
 
         self.descriptionDataConfig = {
@@ -104,6 +105,7 @@ export default ko.components.register("monument-report", {
                 production: self.cards?.["construction phases"],
                 components: self.cards?.["components"],
                 usePhase: self.cards?.["use phase"],
+                recordType: self.cards?.["record type"],
             };
 
             self.assessmentCards = {
