@@ -22,6 +22,7 @@ export default ko.components.register(
                 administrativeAreas: "localities/administrative areas",
                 geometry: "geometry",
                 namedLocations: "named locations",
+                lotOnPlan: "lot-on-plan",
             };
 
             self.cards = Object.assign({}, params.cards);
@@ -42,6 +43,7 @@ export default ko.components.register(
                 areaAssignment: ko.observable(true),
                 landUse: ko.observable(true),
                 namedLocations: ko.observable(true),
+                lotOnPlan: ko.observable(true),
             };
             Object.assign(self.dataConfig, params.dataConfig || {});
 
@@ -97,6 +99,11 @@ export default ko.components.register(
                 columns: Array(2).fill(null),
             };
 
+            self.lotOnPlanTableConfig = {
+                ...self.defaultTableConfig,
+                columns: Array(5).fill(null),
+            };
+
             self.coordinateData = ko.observable();
             self.geometryMetadata = {
                 compilerName: ko.observable(),
@@ -124,6 +131,7 @@ export default ko.components.register(
             self.areaAssignment = ko.observableArray();
             self.landUseClassification = ko.observableArray();
             self.namedLocations = ko.observableArray();
+            self.lotOnPlan = ko.observableArray();
             self.locationRoot = undefined;
 
             self.observableValueSet = (...observables) => {
@@ -339,6 +347,29 @@ export default ko.components.register(
                 const tileid = self.getTileId(namedLocationsNode);
                 if (placename && placename !== "--") {
                     self.namedLocations([{ placename, tileid }]);
+                }
+
+                const rawLotOnPlanNode = self.getRawNodeValue(locationNode, self.dataConfig.lotOnPlan);
+                if (rawLotOnPlanNode) {
+                    const lotOnPlanNodes = Array.isArray(rawLotOnPlanNode) ? rawLotOnPlanNode : [rawLotOnPlanNode];
+                    self.lotOnPlan(
+                        lotOnPlanNodes
+                            .map((lotOnPlanNode) => {
+                                const lot = self.getNodeValue(lotOnPlanNode, "lot");
+                                const plan = self.getNodeValue(lotOnPlanNode, "plan");
+                                const parcelType = self.getNodeValue(lotOnPlanNode, "parcel type");
+                                const tenure = self.getNodeValue(lotOnPlanNode, "tenure");
+                                const ownership = self.getNodeValue(lotOnPlanNode, "ownership");
+                                const tileid = self.getTileId(lotOnPlanNode);
+                                return { lot, plan, parcelType, tenure, ownership, tileid };
+                            })
+                            .filter(
+                                ({ lot, plan, parcelType, tenure, ownership }) =>
+                                    [lot, plan, parcelType, tenure, ownership].some(
+                                        (value) => value && value !== "--"
+                                    )
+                            )
+                    );
                 }
             }
         },
