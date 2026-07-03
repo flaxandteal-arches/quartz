@@ -3,51 +3,6 @@
 {% block report %}
 
 {% block body %}
-<!-- Issue Reports -->
-<!-- ko if: issueReports().length -->
-<div class="aher-report-section">
-    <h2 class="aher-report-section-title"><i tabindex="0" data-bind="onEnterkeyClick, onSpaceClick, click: function() {toggleVisibility(visible.issueReports)}, onReportSectionToggleAria: visible.issueReports, sectionName: '{% trans "Issue Reports" %}'" class="fa toggle"></i> {% trans "Issue Reports" %}</h2>
-
-    <!-- Collapsible content -->
-    <div data-bind="visible: visible.issueReports" class="aher-report-collapsible-container pad-lft">
-
-        <!-- ko ifnot: issueReports().length -->
-        <div class="aher-nodata-note">No issue reports for this resource</div>
-        <!-- /ko -->
-
-        <!-- ko if: issueReports().length -->
-        <div class="aher-report-subsection">
-            <div class="firstchild-container">
-                <div class="aher-table">
-                    <table class="table table-striped" cellspacing="0" width="100%">
-                        <thead>
-                            <tr class="aher-table-header">
-                                <th>{% trans "Name" %}</th>
-                                <th>{% trans "Status" %}</th>
-                                <th>{% trans "Damage Type" %}</th>
-                                <th>{% trans "Action Type" %}</th>
-                                <th>{% trans "Sign Off Date" %}</th>
-                                <th class="none">{% trans "Notes" %}</th>
-                            </tr>
-                        </thead>
-                        <tbody data-bind="dataTablesForEach: {data: issueReports, dataTableOptions: issueReportsTableConfig}">
-                            <tr>
-                                <td data-bind="text: reference"></td>
-                                <td data-bind="text: statusType"></td>
-                                <td data-bind="text: damageType"></td>
-                                <td data-bind="text: proposalActionType"></td>
-                                <td data-bind="text: signOffDate"></td>
-                                <td data-bind="text: notes"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <!-- /ko -->
-    </div>
-</div>
-<!-- /ko -->
 
 <!-- Artefact condition section -->
 <div class="aher-report-section" data-bind="visible: !!dataConfig.artefactCondition">
