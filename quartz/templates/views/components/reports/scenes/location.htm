@@ -356,6 +356,50 @@
     </div>
 </div>
 
+<!-- Lot on Plan -->
+<div class="aher-report-section" data-bind="if: !!dataConfig.lotOnPlan">
+    <h2 class="aher-report-section-title"><i tabindex="0" data-bind="onEnterkeyClick, onSpaceClick, click: function() {toggleVisibility(visible.lotOnPlan)}, onReportSectionToggleAria: visible.lotOnPlan, sectionName: '{% trans "Lot on Plan" %}'" class="fa toggle"></i> {% trans "Lot on Plan" %}</h2>
+
+    <!-- Collapsible content -->
+    <div data-bind="visible: visible.lotOnPlan" class="aher-report-collapsible-container pad-lft">
+
+        <!-- ko ifnot: lotOnPlan().length -->
+        <div class="aher-nodata-note">No lot on plan references for this resource</div>
+        <!-- /ko -->
+
+        <!-- ko if: lotOnPlan().length -->
+        <div class="aher-report-subsection">
+
+            <div class="firstchild-container">
+                <!-- Lot on Plan Table -->
+                <div class="aher-table pad-btm">
+                    <table class="table table-striped" cellspacing="0" width="100%">
+                        <thead>
+                            <tr class="aher-table-header">
+                                <th>{% trans "Lot" %}</th>
+                                <th>{% trans "Plan" %}</th>
+                                <th>{% trans "Parcel Type" %}</th>
+                                <th>{% trans "Tenure" %}</th>
+                                <th>{% trans "Ownership" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="dataTablesForEach: {data: lotOnPlan, dataTableOptions: lotOnPlanTableConfig}">
+                            <tr>
+                                <td data-bind="text: lot"></td>
+                                <td data-bind="text: plan"></td>
+                                <td data-bind="text: parcelType"></td>
+                                <td data-bind="text: tenure"></td>
+                                <td data-bind="text: ownership"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+
 <!-- Named Locations -->
 <div class="aher-report-section" data-bind="if: !!dataConfig.namedLocations">
     <h2 class="aher-report-section-title"><i tabindex="0" data-bind="onEnterkeyClick, onSpaceClick, click: function() {toggleVisibility(visible.namedLocations)}, onReportSectionToggleAria: visible.namedLocations, sectionName: '{% trans "Named Locations" %}'" class="fa toggle"></i> {% trans "Named Locations" %}</h2>
