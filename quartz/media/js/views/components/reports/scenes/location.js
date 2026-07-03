@@ -343,10 +343,12 @@ export default ko.components.register(
                 }
 
                 const namedLocationsNode = self.getRawNodeValue(locationNode, self.dataConfig.namedLocations);
-                const placename = self.getNodeValue(namedLocationsNode, "named location");
+                const namedLocationNode = self.getRawNodeValue(namedLocationsNode, "named location");
+                const placename = self.getNodeValue(namedLocationNode);
                 const tileid = self.getTileId(namedLocationsNode);
                 if (placename && placename !== "--") {
-                    self.namedLocations([{ placename, tileid }]);
+                    const resourceUrl = self.getResourceLink(namedLocationNode);
+                    self.namedLocations([{ placename, resourceUrl, tileid }]);
                 }
 
                 const rawLotOnPlanNode = self.getRawNodeValue(locationNode, self.dataConfig.lotOnPlan);

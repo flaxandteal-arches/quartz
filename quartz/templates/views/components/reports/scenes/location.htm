@@ -427,7 +427,14 @@
                         </thead>
                         <tbody data-bind="dataTablesForEach: {data: namedLocations, dataTableOptions: namedLocationsTableConfig }">
                             <tr>
-                                <td data-bind="text: placename"></td>
+                                <td>
+                                    <!-- ko if: resourceUrl -->
+                                    <a data-bind="text: placename, attr: {href: resourceUrl}" class="aher-table-link"></a>
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: resourceUrl -->
+                                    <span data-bind="text: placename"></span>
+                                    <!-- /ko -->
+                                </td>
                                 <td class="aher-table-control">
                                     <div data-bind="if: $parent.cards.namedLocations">
                                         <a href="#" data-bind="onEnterkeyClick, onSpaceClick, click: function() {$parent.editTile(tileid, $parent.cards.namedLocations)}">
