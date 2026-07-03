@@ -125,5 +125,56 @@
         <!-- /ko -->
     </div>
 </div>
+
+<!-- Audit Metadata section -->
+<div class="aher-report-section" data-bind="visible: !!dataConfig.auditMetadata">
+    <h2 class="aher-report-section-title"><i tabindex="0" data-bind="onEnterkeyClick, onSpaceClick, click: function() {toggleVisibility(visible.auditMetadata)}, onReportSectionToggleAria: visible.auditMetadata, sectionName: '{% trans "Audit Metadata" %}'" class="fa toggle"></i> {% trans "Audit Metadata" %}</h2>
+    <!-- Collapsible content -->
+    <div data-bind="visible: visible.auditMetadata" class="aher-report-collapsible-container pad-lft">
+
+        <!-- ko ifnot: auditMetadata().length -->
+        <div class="aher-nodata-note">{% trans "No audit metadata for this resource" %}</div>
+        <!-- /ko -->
+
+        <!-- ko if: auditMetadata().length -->
+        <div class="aher-report-subsection">
+            <div class="firstchild-container">
+                <div class="aher-table" data-bind="">
+                    <table class="table table-striped" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Created By" %}</th>
+                                <th>{% trans "Creation Date" %}</th>
+                                <th>{% trans "Last Updated By" %}</th>
+                                <th>{% trans "Last Update Date" %}</th>
+                                <th>{% trans "Validation Status" %}</th>
+                                <th class="none">{% trans "Audit Note" %}</th>
+                                <th class="aher-table-control all"></th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="dataTablesForEach: { data: auditMetadata, dataTableOptions: auditMetadataTableConfig}">
+                            <tr>
+                                <td data-bind="text: createdBy"></td>
+                                <td data-bind="text: creationDate"></td>
+                                <td data-bind="text: updatedBy"></td>
+                                <td data-bind="text: updateDate"></td>
+                                <td data-bind="text: validationStatus"></td>
+                                <td data-bind="text: auditNote"></td>
+                                <td class="aher-table-control">
+                                    <div data-bind="if: $parent.cards.auditMetadata">
+                                        <a href="#" data-bind="onEnterkeyClick, onSpaceClick, click: function() {$parent.editTile(tileid, $parent.cards.auditMetadata)}">
+                                            <i class="fa fa-mail-reply"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
 {% endblock body %}
 {% endblock report %}

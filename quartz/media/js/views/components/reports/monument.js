@@ -112,6 +112,7 @@ export default ko.components.register("monument-report", {
 
             self.assessmentCards = {
                 scientificDate: self.cards?.["scientific date assignment"],
+                auditMetadata: self.cards?.["audit metadata"],
             };
 
             self.imagesCards = {
