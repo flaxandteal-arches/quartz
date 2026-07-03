@@ -23,9 +23,15 @@ export default ko.components.register(
                 columns: Array(5).fill(null),
             };
 
+            self.auditMetadataTableConfig = {
+                ...this.defaultTableConfig,
+                columns: Array(7).fill(null),
+            };
+
             self.dataConfig = {
                 scientificDate: "scientific date assignment",
                 artefactConditin: undefined,
+                auditMetadata: "audit metadata",
             };
 
             self.cards = Object.assign({}, params.cards);
@@ -35,9 +41,11 @@ export default ko.components.register(
             self.add = params.addTile || self.addNewTile;
             self.scientificDate = ko.observable();
             self.artefactCondition = ko.observableArray();
+            self.auditMetadata = ko.observableArray();
             self.visible = {
                 scientificDate: ko.observable(true),
                 artefactCondition: ko.observable(true),
+                auditMetadata: ko.observable(true),
             };
             Object.assign(self.dataConfig, params.dataConfig || {});
 
@@ -79,6 +87,25 @@ export default ko.components.register(
                             return { type, file, endDate, startDate, tileid };
                         })
                     );
+                }
+
+                if (self.dataConfig.auditMetadata) {
+                    const auditMetadataNode = self.getRawNodeValue(
+                        params.data(),
+                        self.dataConfig.auditMetadata
+                    );
+                    if (auditMetadataNode) {
+                        const createdBy = self.getNodeValue(auditMetadataNode, "audit creation", "creator", "creator names", "creator name");
+                        const creationDate = self.getNodeValue(auditMetadataNode, "audit creation", "creation timespan", "creation date");
+                        const updatedBy = self.getNodeValue(auditMetadataNode, "audit update", "updater", "updater names", "updater name");
+                        const updateDate = self.getNodeValue(auditMetadataNode, "audit update", "update timespan", "date of last update");
+                        const validationStatus = self.getNodeValue(auditMetadataNode, "validation");
+                        const auditNote = self.getNodeValue(auditMetadataNode, "audit notes", "audit note");
+                        const tileid = self.getTileId(auditMetadataNode);
+                        self.auditMetadata([
+                            { createdBy, creationDate, updatedBy, updateDate, validationStatus, auditNote, tileid },
+                        ]);
+                    }
                 }
             }
         },
