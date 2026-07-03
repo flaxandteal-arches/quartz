@@ -443,7 +443,7 @@ LOGGING = {
 RATE_LIMIT = "5/m"
 
 # Sets default max upload size to 15MB
-DATA_UPLOAD_MAX_MEMORY_SIZE = 15728640
+DATA_UPLOAD_MAX_MEMORY_SIZE = 524288000
 
 # Unique session cookie ensures that logins are treated separately for each app
 SESSION_COOKIE_NAME = "quartz"
