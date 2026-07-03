@@ -64,6 +64,7 @@ export default ko.components.register(
                 aircraftProduction: undefined,
                 maritimeProduction: undefined,
                 type: undefined,
+                recordType: undefined,
                 activityTimespan: undefined,
                 components: undefined,
                 usePhase: undefined,
@@ -85,6 +86,7 @@ export default ko.components.register(
             self.dimensions = ko.observableArray();
             self.usePhases = ko.observableArray();
             self.typeData = ko.observable();
+            self.recordTypeData = ko.observable();
             self.organizationFormation = ko.observableArray();
             self.dates = ko.observableArray();
             self.activityTimespan = ko.observable();
@@ -115,6 +117,30 @@ export default ko.components.register(
                                         value: Array.isArray(typeValue)
                                             ? typeValue
                                             : [typeValue],
+                                        type: "kv",
+                                    },
+                                ],
+                            },
+                        ],
+                    });
+                }
+
+                if (self.dataConfig.recordType) {
+                    const recordTypeValue = self.getRawNodeValue(
+                        params.data(),
+                        self.dataConfig.recordType
+                    );
+                    self.recordTypeData = ko.observable({
+                        sections: [
+                            {
+                                title: "Record Type",
+                                card: self.cards?.recordType,
+                                data: [
+                                    {
+                                        key: "Record Type",
+                                        value: Array.isArray(recordTypeValue)
+                                            ? recordTypeValue
+                                            : [recordTypeValue],
                                         type: "kv",
                                     },
                                 ],
