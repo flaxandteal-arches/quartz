@@ -60,14 +60,12 @@ export default ko.components.register(
             self.add = params.addTile || self.addNewTile;
             self.citations = ko.observableArray();
             self.descriptions = ko.observableArray();
-            self.designationDescriptions = ko.observableArray();
             self.audience = ko.observableArray();
             self.subjectData = ko.observable();
             self.visible = {
                 descriptions: ko.observable(true),
                 citation: ko.observable(true),
                 audience: ko.observable(true),
-                designationDescriptions: ko.observable(true),
             };
             Object.assign(self.dataConfig, params.dataConfig || {});
 
@@ -166,27 +164,6 @@ export default ko.components.register(
                 }
             }
 
-            const designationDescriptions = self.getRawNodeValue(params.data(), {
-                testPaths: [["designation descriptions"]],
-            });
-            if (designationDescriptions) {
-                designationDescriptions.forEach((description) => {
-                    const designationDescription = {};
-                    designationDescription.description = self.getNodeValue(
-                        description,
-                        "designation description"
-                    );
-                    designationDescription.type = self.getNodeValue(
-                        description,
-                        "designation description type"
-                    );
-                    designationDescription.recommendation = self.getNodeValue(
-                        description,
-                        "recommended designation type"
-                    );
-                    self.designationDescriptions.push(designationDescription);
-                });
-            }
         },
         template: DescriptionTemplate,
     }

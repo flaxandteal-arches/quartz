@@ -100,9 +100,9 @@ The Monument resource model (graph ID `076f9381-7b00-11e9-8d6b-80000b44d1d9`, lo
 - `quartz/media/js/views/components/reports/scenes/resources.js` - overrides the `arches_her` upstream; adds the Condition Reports table (fetched via the related-resources API) and handles data extraction for all associated-resource sections.
 - `quartz/media/js/views/components/reports/scenes/name.js` / `name.htm` - overrides the `arches_her` upstream
 - `quartz/media/js/views/components/reports/scenes/assessments.js` - overrides the `arches_her`
-- `quartz/media/js/views/components/reports/scenes/classifications.js` - overrides the `arches_her` upstream; adds Historical Period Type and makes cultural period / producer values into clickable links to their resource reports.
-- `quartz/media/js/views/components/reports/scenes/description.js` - overrides the `arches_her` upstream; adds the Designation Descriptions section (`designation_description` nodegroup).
-- `quartz/media/js/views/components/reports/scenes/location.js` - overrides the `arches_her` upstream;.
+- `quartz/media/js/views/components/reports/scenes/classifications.js` - overrides the `arches_her` upstream
+- `quartz/media/js/views/components/reports/scenes/description.js` - overrides the `arches_her` upstream
+- `quartz/media/js/views/components/reports/scenes/location.js` - overrides the `arches_her` upstream
 
 **If the Monument graph is updated** (new cards added, node names or IDs changed), the files above will likely need updating:
 
