@@ -39,6 +39,7 @@ export default ko.components.register("views/components/reports/scenes/name", {
             haRef: "heritage asset references",
             parent: undefined,
             recordStatus: undefined,
+            versioning: undefined,
         };
 
         self.hideNames = ko.observable(params.hideNames ?? false);
@@ -55,6 +56,7 @@ export default ko.components.register("views/components/reports/scenes/name", {
         self.systemReferenceNumbers = ko.observable();
         self.parentData = ko.observable();
         self.recordStatusData = ko.observable();
+        self.versioningData = ko.observable();
         self.summary = params.summary || false;
         self.visible = {
             names: ko.observable(true),
@@ -244,6 +246,50 @@ export default ko.components.register("views/components/reports/scenes/name", {
                                 ),
                                 type: "kv",
                                 card: self.cards?.recordStatus,
+                            },
+                        ],
+                    },
+                ],
+            });
+        }
+
+        if (self.dataConfig.versioning) {
+            const versioningNode = self.getRawNodeValue(
+                params.data(),
+                self.dataConfig.versioning
+            );
+            self.versioningData = ko.observable({
+                sections: [
+                    {
+                        title: "Versioning",
+                        tileid: self.getTileId(versioningNode),
+                        data: [
+                            {
+                                key: "Version",
+                                value: self.getNodeValue(
+                                    versioningNode,
+                                    "version"
+                                ),
+                                type: "kv",
+                                card: self.cards?.versioning,
+                            },
+                            {
+                                key: "Heritage Item Visibility",
+                                value: self.getNodeValue(
+                                    versioningNode,
+                                    "heritage item visibility"
+                                ),
+                                type: "kv",
+                                card: self.cards?.versioning,
+                            },
+                            {
+                                key: "Working Copy",
+                                value: self.getRawNodeValue(
+                                    versioningNode,
+                                    "working copy"
+                                ),
+                                type: "resource",
+                                card: self.cards?.versioning,
                             },
                         ],
                     },

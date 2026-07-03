@@ -173,6 +173,13 @@
     }
 }"></div>
 
+<div data-bind="visible: !!dataConfig.versioning, component: {
+    name: 'views/components/reports/scenes/default',
+    params: {
+        data: versioningData,
+    }
+}"></div>
+
 {% endblock body %}
 {% endblock report %}
 {% block summary %}
