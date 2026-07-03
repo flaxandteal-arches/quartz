@@ -73,7 +73,6 @@ export default ko.components.register(
                 hlcPhase: undefined,
                 organizationCurrency: undefined,
                 organizationFormation: undefined,
-                historicalPeriodType: undefined,
             };
 
             self.cards = Object.assign({}, params.cards);
@@ -89,7 +88,6 @@ export default ko.components.register(
             self.organizationFormation = ko.observableArray();
             self.dates = ko.observableArray();
             self.activityTimespan = ko.observable();
-            self.historicalPeriods = ko.observableArray();
             self.visible = {
                 production: ko.observable(true),
                 components: ko.observable(true),
@@ -97,12 +95,10 @@ export default ko.components.register(
                 dimensions: ko.observable(true),
                 dates: ko.observable(true),
                 organizationFormation: ko.observable(true),
-                historicalPeriod: ko.observable(true),
             };
             Object.assign(self.dataConfig, params.dataConfig || {});
 
-            if (params?.compiled) {
-            } else {
+            if (!params?.compiled){
                 if (self.dataConfig.type) {
                     const typeValue = self.getRawNodeValue(
                         params.data(),
@@ -368,16 +364,7 @@ export default ko.components.register(
                     self.dates([{ startDate, endDate, tileid }]);
                 }
             }
-
-            if (self.dataConfig.historicalPeriodType) {
-                const historicalPeriodNode = self.getRawNodeValue(
-                    params.data(),
-                    self.dataConfig.historicalPeriodType
-                );
-                if (historicalPeriodNode) {
-                    self.historicalPeriods([{ period: historicalPeriodNode["@display_value"] }]);
-                }
-            }
+           
         },
         template: ClassificationsTemplate,
     }

@@ -48,7 +48,6 @@ export default ko.components.register("monument-report", {
             production: "construction phases",
             components: "components",
             usePhase: "use phases",
-            historicalPeriodType: "historical period type",
         };
 
         self.descriptionDataConfig = {

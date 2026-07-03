@@ -629,24 +629,5 @@
     </div>
 </div>
 
-<!-- Historical Period -->
-<!-- ko if: historicalPeriods().length -->
-<div class="aher-report-section">
-    <h2 class="aher-report-section-title"><i tabindex="0" data-bind="onEnterkeyClick, onSpaceClick, click: function() {toggleVisibility(visible.historicalPeriod)}, onReportSectionToggleAria: visible.historicalPeriod, sectionName: '{% trans "Historical Period" %}'" class="fa toggle"></i> {% trans "Historical Period" %}</h2>
-
-    <div data-bind="visible: visible.historicalPeriod" class="aher-report-collapsible-container pad-lft">
-        <!-- ko if: historicalPeriods().length -->
-        <div class="aher-report-subsection">
-            <!-- ko foreach: { data: historicalPeriods, as: 'hp', noChildContext: true } -->
-            <div class="aher-block-attributes">
-                <span class="aher-block-key">Historical Period: </span>
-                <div class="aher-block-value" data-bind="text: hp.period"></div>
-            </div>
-            <!-- /ko -->
-        </div>
-        <!-- /ko -->
-    </div>
-</div>
-<!-- /ko -->
 {% endblock body %}
 {% endblock report %}
