@@ -11,7 +11,10 @@ Closes #<issue-number>
 ## Testing
 <!-- How you verified this works -->
 - [ ] Unit tests added / updated
-- [ ] Manual testing steps: ...
+- [ ] Manual testing steps:
+  - [ ] Step 1
+  - [ ] Step 2
+  - [ ] Step 3
 - [ ] Edge cases checked: ...
 
 ## Review Focus
