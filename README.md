@@ -95,13 +95,20 @@ make manage CMD="packages -o load_package -s /web_root/quartz/tmp/pkg-quartz-gra
 
 The Monument resource model (graph ID `076f9381-7b00-11e9-8d6b-80000b44d1d9`, locally renamed to **Heritage Item**) uses a custom report defined in:
 
-- `quartz/media/js/views/components/reports/monument.js` - overrides the `arches_her` upstream; configures which sections appear in the Resources tab, including a reverse-lookup for linked Condition Reports
-- `quartz/media/js/views/components/reports/scenes/resources.js` - overrides the `arches_her` upstream; adds the Condition Reports table (fetched via the related-resources API) and handles data extraction for all associated-resource sections
+- `quartz/media/js/views/components/reports/monument.js` - overrides the `arches_her` upstream; configures which sections appear in the report. Critically, `nameDataConfig` uses the node **display names** (e.g. `"heritage place names"`) not alias-derived strings -- `LabelBasedGraphV2` keys its output by display name, so alias-based lookups silently return nothing.
+- `quartz/media/js/utils/report.js` - overrides the `arches_her` upstream; fixes URL generation to use the `"arches:"` Django namespace prefix (`"arches:tile"`, `"arches:resource_editor"`, `"arches:resource_report"`) which the bare names in `arches_her` do not resolve to in this project.
+- `quartz/media/js/views/components/reports/scenes/resources.js` - overrides the `arches_her` upstream; adds the Condition Reports table (fetched via the related-resources API) and handles data extraction for all associated-resource sections.
+- `quartz/media/js/views/components/reports/scenes/name.js` / `name.htm` - overrides the `arches_her` upstream
+- `quartz/media/js/views/components/reports/scenes/assessments.js` - overrides the `arches_her`
+- `quartz/media/js/views/components/reports/scenes/classifications.js` - overrides the `arches_her` upstream
+- `quartz/media/js/views/components/reports/scenes/description.js` - overrides the `arches_her` upstream
+- `quartz/media/js/views/components/reports/scenes/location.js` - overrides the `arches_her` upstream
 
-**If the Monument graph is updated** (new cards added, node names or IDs changed), both files above will likely need updating:
+**If the Monument graph is updated** (new cards added, node names or IDs changed), the files above will likely need updating:
 
-- New cards must be added to `resourceDataConfig` and `resourcesCards` in `monument.js` before they appear in the report
-- Node IDs used for Condition Report field extraction are hardcoded at the top of `resources.js` - if the Condition Report graph changes, update the `CR_*_NODE` constants there
+- New cards must be added to `resourceDataConfig` and `resourcesCards` in `monument.js` before they appear in the report.
+- `nameDataConfig` in `monument.js` uses node **display names** as set in the graph editor -- if any node is renamed there, the corresponding string here must be updated to match.
+- Node IDs used for Condition Report field extraction are hardcoded at the top of `resources.js` -- if the Condition Report graph changes, update the `CR_*_NODE` constants there.
 
 ## Arches Search setup
 
