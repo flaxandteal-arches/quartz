@@ -604,8 +604,8 @@ RENDERERS = [
         "iconclass": "fa fa-film",
         "component": "views/components/cards/file-renderers/mediareader",
         "type": "video/*",
-        "ext": "",
-        "exclude": "",
+        "ext": "mp4, webm",
+        "exclude": "avi",
     },
     {
         "name": "audioreader",
