@@ -596,6 +596,28 @@ RENDERERS = [
         "ext": "zip",
         "exclude": "",
     },
+    {
+        "name": "videoreader",
+        "title": "Video Player",
+        "description": "Plays video files the browser supports (MP4/H.264, WebM, Ogg); otherwise download.",
+        "id": "a1e7c9d2-7b3f-4c5a-8d6e-1f2a3b4c5d6e",
+        "iconclass": "fa fa-film",
+        "component": "views/components/cards/file-renderers/mediareader",
+        "type": "video/*",
+        "ext": "mp4, webm",
+        "exclude": "avi",
+    },
+    {
+        "name": "audioreader",
+        "title": "Audio Player",
+        "description": "Plays audio files the browser supports (MP3, WAV, Ogg); otherwise download.",
+        "id": "f6e5d4c3-b2a1-4987-8654-321012345678",
+        "iconclass": "fa fa-volume-up",
+        "component": "views/components/cards/file-renderers/mediareader",
+        "type": "audio/*",
+        "ext": "",
+        "exclude": "",
+    },
 ]
 
 # By setting RESTRICT_MEDIA_ACCESS to True, media file requests outside of Arches will checked against nodegroup permissions.

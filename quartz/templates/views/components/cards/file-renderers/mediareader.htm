@@ -1,0 +1,13 @@
+{% load i18n %}
+
+<!--ko if: params.context === 'render' -->
+<div>
+    <!--ko if: params.selected() -->
+    <div class="media-viewer-mount" data-bind="mediaViewer: model"></div>
+    <!--/ko-->
+</div>
+<!--/ko-->
+<!--ko if: params.context === 'tab' -->
+<!--/ko-->
+<!--ko if: params.context === 'tab-contents' -->
+<!--/ko-->
