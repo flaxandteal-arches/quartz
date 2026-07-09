@@ -18,7 +18,7 @@ from .payload_utils import (
     get_or_create_digital_object_resource_from_name,
     i18n_string,
     make_tile,
-    make_or_update_tiles as payload_make_or_update_tiles,
+    make_or_update_tiles,
     parse_date,
     parse_reference_node,
     parse_resource_instance_id,
@@ -231,7 +231,7 @@ def _prefetch_managed_tiles_by_nodegroup(resource_instance_ref: str) -> dict[str
     return tiles_by_nodegroup
 
 
-def _make_or_update_tiles_cached(
+def _make_or_update_tiles_from_cache(
     nodegroup_id: str,
     new_data: list[dict] | dict,
     parent_tile_id: str = None,
@@ -240,7 +240,7 @@ def _make_or_update_tiles_cached(
 ) -> list:
     """Use pre-fetched tiles when available, falling back to payload helper behavior."""
     if existing_tiles_by_nodegroup is None:
-        return payload_make_or_update_tiles(
+        return make_or_update_tiles(
             nodegroup_id,
             new_data,
             parent_tile_id=parent_tile_id,
@@ -485,7 +485,7 @@ def _build_version_tile(
     resource_instance_ref: str,
     existing_tiles_by_nodegroup: dict[str, list] | None = None,
 ) -> list:
-    return _make_or_update_tiles_cached(
+    return _make_or_update_tiles_from_cache(
         VERSIONING_NODEGROUP,
         {VERSION_NUMBER: i18n_string(f"{major_version}.{minor_version}")},
         resource_instance_ref=resource_instance_ref,
@@ -503,7 +503,7 @@ def _build_system_ref_tile(
     if not has_value(permit_number) and not has_value(legacy_id):
         return []
 
-    return _make_or_update_tiles_cached(
+    return _make_or_update_tiles_from_cache(
         SYSTEM_REF_NODEGROUP,
         {
             NODE_PRIMARY_REF_NUM: int(permit_number),
@@ -522,7 +522,7 @@ def _build_deactivation_reason_tile(
     reason = payload.get("dpp_deactivationreason")
     if not has_value(reason):
         return []
-    return _make_or_update_tiles_cached(
+    return _make_or_update_tiles_from_cache(
         DEACTIVATION_REASON_NODEGROUP,
         {
             NODE_DEACTIVATION_REASON: parse_reference_node(
@@ -543,7 +543,7 @@ def _build_name_tiles(
     name = payload.get("dpp_discoveryname")
     if not has_value(name):
         return []
-    return _make_or_update_tiles_cached(
+    return _make_or_update_tiles_from_cache(
         ARTEFACT_NAMES_NODEGROUP,
         {NODE_ARTEFACT_NAME: i18n_string(name)},
         resource_instance_ref=resource_instance_ref,
@@ -559,7 +559,7 @@ def _build_external_ref_tiles(
     ref = payload.get("dpp_externalreferencenumber")
     if not has_value(ref):
         return []
-    return _make_or_update_tiles_cached(
+    return _make_or_update_tiles_from_cache(
         EXTERNAL_CROSS_REFS_NODEGROUP,
         {NODE_EXTERNAL_CROSS_REF: i18n_string(str(ref))},
         resource_instance_ref=resource_instance_ref,
@@ -589,7 +589,7 @@ def _build_description_tiles(
                 }
             )
     if data:
-        return _make_or_update_tiles_cached(
+        return _make_or_update_tiles_from_cache(
             DESCRIPTIONS_NODEGROUP,
             data,
             resource_instance_ref=resource_instance_ref,
@@ -607,7 +607,7 @@ def _build_important_source_tile(
     value = payload.get("dpp_importantsourceofinformation")
     if not has_value(value):
         return []
-    return _make_or_update_tiles_cached(
+    return _make_or_update_tiles_from_cache(
         IMPORTANT_SOURCE_NODEGROUP,
         {
             NODE_IMPORTANT_SOURCE: parse_reference_node(
@@ -627,7 +627,7 @@ def _build_permission_tile(
     value = payload.get("dpp_permissiontointerferegranted")
     if not has_value(value):
         return []
-    return _make_or_update_tiles_cached(
+    return _make_or_update_tiles_from_cache(
         PERMISSION_NODEGROUP,
         {NODE_PERMISSION: parse_reference_node(value, PERMISSION_LIST_NAME)},
         resource_instance_ref=resource_instance_ref,
@@ -671,7 +671,7 @@ def _build_artefact_type_tile(
         data[NODE_ASSOCIATED_PERSON].extend(
             parse_resource_instance_id(person_resource_id)
         )
-    return _make_or_update_tiles_cached(
+    return _make_or_update_tiles_from_cache(
         PRODUCTION_NODEGROUP,
         data,
         resource_instance_ref=resource_instance_ref,
@@ -686,7 +686,7 @@ def _get_or_build_discovery_tile(
 ) -> object:
     value = payload.get("dpp_context")
     discovery_type = payload.get("dpp_archaeologytype")
-    tiles = _make_or_update_tiles_cached(
+    tiles = _make_or_update_tiles_from_cache(
         DISCOVERY_NODEGROUP,
         {
             NODE_DISCOVERY_METHOD: parse_reference_node(
@@ -715,7 +715,7 @@ def _build_condition_assessment_tile(
     if not has_value(start_date) and not has_value(end_date):
         return []
 
-    return _make_or_update_tiles_cached(
+    return _make_or_update_tiles_from_cache(
         CONDITION_ASSESSMENT_NODEGROUP,
         {
             NODE_DATE_OF_ASSESSMENT_START: parse_date(start_date),
@@ -734,7 +734,7 @@ def _build_archaeology_status_tile(
     status = payload.get("dpp_archaeologystatus")
     if not has_value(status):
         return []
-    return _make_or_update_tiles_cached(
+    return _make_or_update_tiles_from_cache(
         ARCHAEOLOGY_STATUS_NODEGROUP,
         {
             NODE_ARCHAEOLOGY_STATUS: parse_reference_node(
@@ -771,7 +771,7 @@ def _build_associated_monuments_tile(
                 )
     if not resource_instances:
         return []
-    return _make_or_update_tiles_cached(
+    return _make_or_update_tiles_from_cache(
         ASSOCIATED_MONUMENTS_NODEGROUP,
         {NODE_MONUMENT_AREA_OR_ARTEFACT: resource_instances},
         resource_instance_ref=resource_instance_ref,
@@ -791,7 +791,7 @@ def _build_digital_file_tile(
     digital_object_resource_id = get_or_create_digital_object_resource_from_name(
         edocs_number
     )
-    return _make_or_update_tiles_cached(
+    return _make_or_update_tiles_from_cache(
         DIGITAL_OBJECT_NODEGROUP,
         {
             NODE_DIGITAL_OBJECT: parse_resource_instance_id(
@@ -811,7 +811,7 @@ def _build_location_tiles(
 ) -> list:
     tiles = []
 
-    location_data_tile = _make_or_update_tiles_cached(
+    location_data_tile = _make_or_update_tiles_from_cache(
         LOCATION_DATA_NODEGROUP,
         {},
         parent_tile_id=discovery_tile.tileid,
@@ -856,7 +856,7 @@ def _build_location_tiles(
 
             if data:
                 tiles.extend(
-                    _make_or_update_tiles_cached(
+                    _make_or_update_tiles_from_cache(
                         ADDRESSES_NODEGROUP,
                         data,
                         parent_tile_id=location_data_tile.tileid,
@@ -885,7 +885,7 @@ def _build_location_tiles(
                 [loc], lat_key="dpp_latitude", lon_key="dpp_longitude"
             )
             feature_shape = loc.get("dpp_coordinatetype")
-            geometry_tile = _make_or_update_tiles_cached(
+            geometry_tile = _make_or_update_tiles_from_cache(
                 GEOMETRY_NODEGROUP,
                 {
                     NODE_GEOSPATIAL_COORDS: {
@@ -904,7 +904,7 @@ def _build_location_tiles(
             source = loc.get("dpp_locationsource")
             if has_value(source):
                 tiles.extend(
-                    _make_or_update_tiles_cached(
+                    _make_or_update_tiles_from_cache(
                         CAPTURE_SCALE_NODEGROUP,
                         {
                             NODE_CAPTURE_SCALE: parse_reference_node(
@@ -921,7 +921,7 @@ def _build_location_tiles(
             accuracy = loc.get("dpp_locationaccuracy")
             if has_value(accuracy):
                 tiles.extend(
-                    _make_or_update_tiles_cached(
+                    _make_or_update_tiles_from_cache(
                         SPATIAL_ACCURACY_NODEGROUP,
                         {
                             NODE_SPATIAL_ACCURACY: parse_reference_node(
@@ -938,7 +938,7 @@ def _build_location_tiles(
             coord_system = loc.get("dpp_spatialcoordinatesystem")
             if has_value(coord_system):
                 tiles.extend(
-                    _make_or_update_tiles_cached(
+                    _make_or_update_tiles_from_cache(
                         COORDINATE_SYSTEM_NODEGROUP,
                         {
                             NODE_COORDINATE_SYSTEM: parse_reference_node(
@@ -987,7 +987,7 @@ def _build_location_tiles(
                 )
             if notes_parts:
                 tiles.extend(
-                    _make_or_update_tiles_cached(
+                    _make_or_update_tiles_from_cache(
                         SPATIAL_METADATA_DESCRIPTIONS_NODEGROUP,
                         {
                             NODE_SPATIAL_METADATA_NOTES: i18n_string(
