@@ -142,6 +142,91 @@ Typical run:
     python manage.py setup_search_filter_configs --overwrite --populated-only
 
 
+
+## Docker settings
+
+All runtime configuration is driven from a single file, `docker/.env`. It is
+loaded once and injected into every arches container (`arches`, `arches_api`,
+`arches_worker` and `cantaloupe`) via a shared `env_file` anchor in
+`docker/docker-compose.yml`, so any variable you add there applies across all
+containers without editing the compose file. Values may reference earlier ones
+with `${VAR}` — this is how Cantaloupe reuses the Azure account settings.
+
+`docker/.env` is gitignored (it holds credentials). The minimum setup for
+running locally is just a couple of values:
+
+```bash
+# Minimum local setup
+UPLOADED_FILES_DIR=uploadedfiles
+MAPBOX_API_KEY=add mapbox key
+```
+
+To develop against a local, editable copy of arches (mounted from `../arches`)
+rather than the packaged version, also set `EDITABLE_BASE=True` — the image
+build then installs that checkout as an editable dependency. (Likewise
+`USE_LOCAL_APPS=true` uses the local `../arches_apps` checkouts.)
+
+To back uploads with Azure blob storage instead of the local disk, see
+**Cantaloupe setup → Azure blob storage** below.
+
+## Cantaloupe setup
+
+Cantaloupe is the IIIF image server. It starts automatically as a Docker service
+(`cantaloupe`, port `8182`) — there are no manual steps to run it. It can serve
+images from two backends, chosen with `CANTALOUPE_SOURCE_STATIC`.
+
+### Azure blob storage (shared / deployed environments)
+
+We store uploaded images in an Azure storage account, and Cantaloupe reads from
+the same container. Set the following in `docker/.env`:
+
+- `AZURE_ACCOUNT_NAME`, `AZURE_ACCOUNT_KEY`, `AZURE_CONTAINER` — the storage
+  account and container Django writes uploads to.
+- `AZURE_URL_EXPIRATION_SECS` — signed-URL lifetime in seconds (default `3600`).
+- `USE_LOCAL_STORAGE=False` — the default; Django uploads to Azure whenever the
+  `AZURE_*` credentials are present. You only need to set this to `True` to
+  force local storage while credentials are configured.
+- `CANTALOUPE_SOURCE_STATIC=AzureStorageSource` and the four
+  `CANTALOUPE_AZURESTORAGESOURCE_*` keys, which reuse the `AZURE_*` values via
+  `${...}` (see the example below).
+
+Example `docker/.env` block:
+
+```bash
+# Azure account — the single source of truth
+AZURE_ACCOUNT_NAME=add account name
+AZURE_ACCOUNT_KEY=add account key
+AZURE_CONTAINER=add account container
+AZURE_URL_EXPIRATION_SECS=3600
+
+# Cantaloupe Azure source — reuses the values above
+USE_LOCAL_STORAGE=False
+CANTALOUPE_SOURCE_STATIC=AzureStorageSource
+CANTALOUPE_AZURESTORAGESOURCE_ACCOUNT_NAME=${AZURE_ACCOUNT_NAME}
+CANTALOUPE_AZURESTORAGESOURCE_ACCOUNT_KEY=${AZURE_ACCOUNT_KEY}
+CANTALOUPE_AZURESTORAGESOURCE_CONTAINER_NAME=${AZURE_CONTAINER}
+CANTALOUPE_AZURESTORAGESOURCE_LOOKUP_STRATEGY=BasicLookupStrategy
+```
+
+### Local filesystem (running entirely locally)
+
+Azure does **not** have to be configured to run locally — leave the `AZURE_*`
+keys unset and images are served straight from disk. In this mode:
+
+- With no `AZURE_*` credentials set, Django falls back to local disk storage
+  automatically. (If your `.env` *does* carry Azure credentials but you want
+  local storage, set `USE_LOCAL_STORAGE=True`.)
+- `CANTALOUPE_SOURCE_STATIC=FilesystemSource` — this is the default, so it can
+  also be omitted.
+- `UPLOADED_FILES_DIR=uploadedfiles` — uploads must land in the `uploadedfiles`
+  directory, which is the host folder Cantaloupe serves (bind-mounted into the
+  container at `/imageroot`). If this doesn't point at `uploadedfiles`, images
+  upload but won't display. 
+  **This needs to remain as an empty string `""` in quartz/settings.py, this is a limitation of file routing when using the Azure Storage**
+
+In short: **local development needs no Azure configuration** — but you need to set `USE_LOCAL_STORAGE=True`. This defaults to `False` so that no changes are needed in staging and production environments.
+
+
 ## Production Push
 To push to production the images need to be tagged with prod-{run-id}
 This can be done using github cli with
