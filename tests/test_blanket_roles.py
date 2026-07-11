@@ -21,6 +21,7 @@ from arches.app.models.models import (
     ResourceInstanceLifecycleState,
 )
 from arches.app.models.resource import Resource
+from arches.app.search.search_engine_factory import SearchEngineFactory
 from arches.app.utils.betterJSONSerializer import JSONDeserializer
 from arches.app.utils.data_management.resource_graphs.importer import (
     import_graph as ResourceGraphImporter,
@@ -43,9 +44,7 @@ class BlanketRoleFrameworkTests(ArchesTestCase):
         super().setUpTestData()
 
         # A resource to check against (Digital Object is the smallest fixture).
-        path = os.path.join(
-            "tests/fixtures/resource_graphs", "Digital_Object.json"
-        )
+        path = os.path.join("tests/fixtures/resource_graphs", "Digital_Object.json")
         with captured_stdout():
             with open(path) as f:
                 archesfile = JSONDeserializer().deserialize(f)
