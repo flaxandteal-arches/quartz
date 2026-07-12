@@ -1,339 +1,221 @@
-"""Tests that Archeology_Payload.json values are mapped to the correct
-Arches tile nodegroups and node IDs by _build_managed_tiles.
+"""End-to-end tests for Artefact payload upserts.
 
-Each tile-builder function is exercised in isolation: parse_reference_node,
-make_or_update_tiles, get_or_create_person_resource_from_name,
-get_or_create_digitial_object_resource_from_name, and
-VersionedResource.objects.get_current_draft are all mocked so the test
-requires no Arches graph fixture and no live database writes.
+The test loads the real Artefact graph and exercises ``process_artefact``
+against persisted Arches resources. It deliberately seeds a Draft with values
+that are not supplied by the payload, both inside and outside a managed
+nodegroup, to guard against an upsert deleting user-entered data.
 
 Run:
     python manage.py test tests.test_upsert_artefact --settings="tests.test_settings"
 """
 
-import json
-import os
-import uuid
-from unittest.mock import patch
+from pathlib import Path
 
-from django.test import TestCase
+from django.contrib.auth.models import User
+from django.test.utils import captured_stdout
 
-from quartz.utils.payload_utils import make_tile
+from arches.app.models import models
+from arches.app.models.graph import Graph
+from arches.app.models.resource import Resource
+from arches.app.models.tile import Tile
+from arches.app.utils.betterJSONSerializer import JSONDeserializer
+from arches.app.utils.data_management.resource_graphs.importer import (
+    import_graph as ResourceGraphImporter,
+)
+from arches_controlled_lists.models import List, ListItem, ListItemValue
+from arches_resource_version_manager.models import VersionedResource
+
+from tests.base_test import ArchesTestCase
+
+from quartz.utils.payload_utils import i18n_string, parse_reference_node
 from quartz.utils.upsert_artefact import (
-    _build_managed_tiles,
+    ARCHAEOLOGY_DISCOVERY_TYPE_LIST_NAME,
+    ARCHAEOLOGY_STATUS_LIST_NAME,
     ARCHAEOLOGY_STATUS_NODEGROUP,
+    ARTEFACT_GRAPH_ID,
     ARTEFACT_NAMES_NODEGROUP,
-    ASSOCIATED_MONUMENTS_NODEGROUP,
-    CAPTURE_SCALE_NODEGROUP,
-    CONDITION_ASSESSMENT_NODEGROUP,
-    COORDINATE_SYSTEM_NODEGROUP,
-    DEACTIVATION_REASON_NODEGROUP,
-    DESCRIPTIONS_NODEGROUP,
-    DIGITAL_OBJECT_NODEGROUP,
+    DISCOVERY_METHOD_LIST_NAME,
     DISCOVERY_NODEGROUP,
-    EXTERNAL_CROSS_REFS_NODEGROUP,
-    GEOMETRY_NODEGROUP,
-    IMPORTANT_SOURCE_NODEGROUP,
-    NODE_ARCHAEOLOGY_STATUS,
     NODE_ARCHAEOLOGY_DISCOVERY_TYPE,
+    NODE_ARCHAEOLOGY_STATUS,
     NODE_ARTEFACT_NAME,
-    NODE_ARTEFACT_TYPE,
-    NODE_ASSOCIATED_PERSON,
-    NODE_CAPTURE_SCALE,
-    NODE_COORDINATE_SYSTEM,
-    NODE_DATE_OF_ASSESSMENT_END,
-    NODE_DATE_OF_ASSESSMENT_START,
-    NODE_DEACTIVATION_REASON,
-    NODE_DESCRIPTION,
-    NODE_DESCRIPTION_TYPE,
-    NODE_DIGITAL_OBJECT,
     NODE_DISCOVERY_METHOD,
-    NODE_EXTERNAL_CROSS_REF,
-    NODE_GEOSPATIAL_COORDS,
-    NODE_IMPORTANT_SOURCE,
-    NODE_LEGACY_ID,
-    NODE_PERMISSION,
-    NODE_PRIMARY_REF_NUM,
-    NODE_SPATIAL_ACCURACY,
-    NODE_SPATIAL_METADATA_NOTES,
-    PERMISSION_NODEGROUP,
-    PRODUCTION_NODEGROUP,
-    SPATIAL_ACCURACY_NODEGROUP,
-    SPATIAL_METADATA_DESCRIPTIONS_NODEGROUP,
-    SYSTEM_REF_NODEGROUP,
-    VERSION_NUMBER,
-    VERSIONING_NODEGROUP,
+    process_artefact,
 )
 
-_PAYLOAD_PATH = os.path.join(os.path.dirname(__file__), "..", "Archeology_Payload.json")
 
-_FAKE_PERSON_ID = str(uuid.uuid4())
-_FAKE_DO_ID = str(uuid.uuid4())
+ARTEFACT_GRAPH_PATH = (
+    Path(__file__).resolve().parents[1]
+    / "quartz"
+    / "pkg"
+    / "graphs"
+    / "resource_models"
+    / "Artefact.json"
+)
+
+# Genuine Artefact graph nodes deliberately not populated by the payload.
+DISCOVERY_NOTE_NODE = "74a12bd8-8625-11ea-b4f8-f875a44e0e11"
+COPYRIGHT_NODEGROUP = "0324f681-eeca-11eb-9db9-a87eeabdefba"
+COPYRIGHT_NOTE_NODE = "0324f684-eeca-11eb-81b7-a87eeabdefba"
 
 
-def _fake_parse_reference_node(value, list_name):
-    return {"__value": value, "__list": list_name}
-
-
-def _fake_make_or_update_tiles(nodegroup_id, data, parent_tile_id=None, resource_instance_ref=None):
-    item = data[0] if isinstance(data, list) else data
-    return [make_tile(nodegroup_id, item, parent_tile_id)]
-
-
-class ArcheologyPayloadTileTest(TestCase):
-    """Verify every payload field lands in the expected nodegroup and node."""
+class ProcessArtefactIntegrationTests(ArchesTestCase):
+    """Verify that an existing Artefact Draft is updated without data loss."""
 
     @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        with open(_PAYLOAD_PATH) as f:
-            cls.payload = json.load(f)
+    def setUpTestData(cls):
+        super().setUpTestData()
+
+        with captured_stdout(), ARTEFACT_GRAPH_PATH.open() as graph_file:
+            archesfile = JSONDeserializer().deserialize(graph_file)
+            ResourceGraphImporter(archesfile["graph"], overwrite_graphs=True)
+
+        cls.user, _ = User.objects.get_or_create(username="dynamics_user")
+
+        Graph.objects.get(pk=ARTEFACT_GRAPH_ID).publish(user=cls.user)
+
+        cls._add_list_values(DISCOVERY_METHOD_LIST_NAME, ["Incidental Find"])
+        cls._add_list_values(
+            ARCHAEOLOGY_DISCOVERY_TYPE_LIST_NAME,
+            ["Archaeological Artefact / Site"],
+        )
+        cls._add_list_values(ARCHAEOLOGY_STATUS_LIST_NAME, ["Draft"])
 
     def setUp(self):
-        self.resource_id = str(uuid.uuid4())
-
-        self._patches = [
-            patch(
-                "quartz.utils.upsert_artefact.parse_reference_node",
-                side_effect=_fake_parse_reference_node,
-            ),
-            patch(
-                "quartz.utils.upsert_artefact.make_or_update_tiles",
-                side_effect=_fake_make_or_update_tiles,
-            ),
-            patch(
-                "quartz.utils.upsert_artefact.get_or_create_person_resource_from_name",
-                return_value=_FAKE_PERSON_ID,
-            ),
-            patch(
-                "quartz.utils.upsert_artefact.get_or_create_digitial_object_resource_from_name",
-                return_value=_FAKE_DO_ID,
-            ),
-            patch(
-                "quartz.utils.upsert_artefact.VersionedResource.objects.get_current_draft",
-                return_value=None,
-            ),
-        ]
-        for p in self._patches:
-            p.start()
-        self.addCleanup(self._stop_patches)
-
-        tiles = _build_managed_tiles(self.payload, 0, 0, self.resource_id)
-        self._by_ng = {}
-        for tile in tiles:
-            ng = str(tile.nodegroup_id)
-            self._by_ng.setdefault(ng, []).append(tile)
-
-    def _stop_patches(self):
-        for p in self._patches:
-            p.stop()
-
-    def _tile(self, nodegroup_id):
-        tiles = self._by_ng.get(nodegroup_id, [])
-        self.assertEqual(
-            len(tiles), 1,
-            f"Expected exactly 1 tile for nodegroup {nodegroup_id}, got {len(tiles)}",
-        )
-        return tiles[0]
-
-    def _tiles(self, nodegroup_id):
-        return self._by_ng.get(nodegroup_id, [])
-
-    # ── System Reference Numbers ──────────────────────────────────────────────
-
-    def test_system_ref_permit_number(self):
-        self.assertEqual(self._tile(SYSTEM_REF_NODEGROUP).data[NODE_PRIMARY_REF_NUM], 710202)
-
-    def test_system_ref_legacy_id(self):
-        self.assertEqual(
-            self._tile(SYSTEM_REF_NODEGROUP).data[NODE_LEGACY_ID],
-            {"en": {"value": "101577", "direction": "ltr"}},
-        )
-
-    # ── Version ───────────────────────────────────────────────────────────────
-
-    def test_version_is_0_0_for_new_resource(self):
-        self.assertEqual(
-            self._tile(VERSIONING_NODEGROUP).data[VERSION_NUMBER],
-            {"en": {"value": "0.0", "direction": "ltr"}},
-        )
-
-    # ── Deactivation Reason ───────────────────────────────────────────────────
-
-    def test_deactivation_reason(self):
-        self.assertEqual(
-            self._tile(DEACTIVATION_REASON_NODEGROUP).data[NODE_DEACTIVATION_REASON]["__value"],
-            "Archived",
-        )
-
-    # ── Artefact Name ─────────────────────────────────────────────────────────
-
-    def test_name(self):
-        expected = "Copper/bronze token, basement of Liberty Hall (QHR 600583), Ipswich"
-        self.assertEqual(
-            self._tile(ARTEFACT_NAMES_NODEGROUP).data[NODE_ARTEFACT_NAME],
-            {"en": {"value": expected, "direction": "ltr"}},
-        )
-
-    # ── External Cross Reference ──────────────────────────────────────────────
-
-    def test_external_ref(self):
-        self.assertEqual(
-            self._tile(EXTERNAL_CROSS_REFS_NODEGROUP).data[NODE_EXTERNAL_CROSS_REF],
-            {"en": {"value": "Some external reference number", "direction": "ltr"}},
-        )
-
-    # ── Descriptions ──────────────────────────────────────────────────────────
-
-    def test_two_description_tiles(self):
-        self.assertEqual(len(self._tiles(DESCRIPTIONS_NODEGROUP)), 2)
-
-    def test_description_texts(self):
-        texts = {
-            t.data[NODE_DESCRIPTION]["en"]["value"]
-            for t in self._tiles(DESCRIPTIONS_NODEGROUP)
+        super().setUp()
+        self.payload = {
+            "dpp_permitnumber": "710202",
+            "dpp_discoveryreferencenumber": "incoming-legacy-id",
+            "dpp_discoveryname": "Incoming payload name",
+            "dpp_context": "Incidental Find",
+            "dpp_archaeologytype": "Archaeological Artefact / Site",
+            "dpp_archaeologystatus": "Draft",
         }
-        self.assertIn("Some summary of the discovery", texts)
-        self.assertIn("A response to the discovery", texts)
 
-    def test_description_type_labels(self):
-        labels = {
-            t.data[NODE_DESCRIPTION_TYPE]["__value"]
-            for t in self._tiles(DESCRIPTIONS_NODEGROUP)
-        }
-        self.assertEqual(labels, {"Summary", "Response"})
-
-    # ── Important Source of Information ───────────────────────────────────────
-
-    def test_important_source(self):
-        self.assertEqual(
-            self._tile(IMPORTANT_SOURCE_NODEGROUP).data[NODE_IMPORTANT_SOURCE]["__value"],
-            "Yes",
+        self.original_discovery_note = "Keep this manually entered discovery note"
+        self.original_copyright_note = "Keep this unrelated copyright note"
+        self.resource = Resource(graph_id=ARTEFACT_GRAPH_ID)
+        self.resource.resource_instance_lifecycle_state = (
+            models.ResourceInstanceLifecycleState.objects.get(name="Draft")
+        )
+        self.resource.tiles.extend(
+            [
+                Tile(
+                    nodegroup_id=DISCOVERY_NODEGROUP,
+                    data={
+                        DISCOVERY_NOTE_NODE: i18n_string(self.original_discovery_note),
+                        NODE_DISCOVERY_METHOD: {"stale": "payload value"},
+                    },
+                ),
+                Tile(
+                    nodegroup_id=ARTEFACT_NAMES_NODEGROUP,
+                    data={NODE_ARTEFACT_NAME: i18n_string("Previous payload name")},
+                ),
+                Tile(
+                    nodegroup_id=COPYRIGHT_NODEGROUP,
+                    data={
+                        COPYRIGHT_NOTE_NODE: i18n_string(self.original_copyright_note)
+                    },
+                ),
+            ]
+        )
+        self.resource.save(user=self.user, index=False)
+        VersionedResource.objects.create(
+            resourceinstance=self.resource,
+            resource_group_id=self.payload["dpp_permitnumber"],
+            major_version=4,
+            minor_version=2,
+            metadata={"source": "existing sample record"},
         )
 
-    # ── Permission to Interfere ───────────────────────────────────────────────
+    @classmethod
+    def _add_list_values(cls, list_name, values):
+        controlled_list, _ = List.objects.get_or_create(name=list_name)
+        for sortorder, value in enumerate(values):
+            item, _ = ListItem.objects.get_or_create(
+                list=controlled_list,
+                uri=f"https://example.test/{list_name}/{value}",
+                defaults={"sortorder": sortorder},
+            )
+            ListItemValue.objects.get_or_create(
+                list_item=item,
+                value=value,
+                valuetype_id="prefLabel",
+                language_id="en",
+            )
 
-    def test_permission(self):
-        self.assertEqual(
-            self._tile(PERMISSION_NODEGROUP).data[NODE_PERMISSION]["__value"],
-            "No",
+    def _tile(self, resource_id, nodegroup_id):
+        return Tile.objects.get(
+            resourceinstance_id=resource_id,
+            nodegroup_id=nodegroup_id,
         )
 
-    # ── Production / Artefact Type ────────────────────────────────────────────
+    def test_existing_draft_preserves_non_payload_data_and_updates_payload_nodes(self):
+        resource, created, version = process_artefact(self.payload, self.user)
 
-    def test_artefact_subtype(self):
+        self.assertEqual(resource.pk, self.resource.pk)
+        self.assertFalse(created)
+        self.assertEqual(version, "4.3")
+
+        # Nodes populated by the payload are updated in the existing tiles.
+        name_tile = self._tile(self.resource.pk, ARTEFACT_NAMES_NODEGROUP)
         self.assertEqual(
-            self._tile(PRODUCTION_NODEGROUP).data[NODE_ARTEFACT_TYPE]["__value"],
-            "Archaeological Artefact or Feature",
+            name_tile.data[NODE_ARTEFACT_NAME],
+            i18n_string(self.payload["dpp_discoveryname"]),
+        )
+        discovery_tile = self._tile(self.resource.pk, DISCOVERY_NODEGROUP)
+        self.assertEqual(
+            discovery_tile.data[NODE_DISCOVERY_METHOD],
+            parse_reference_node(
+                self.payload["dpp_context"], DISCOVERY_METHOD_LIST_NAME
+            ),
+        )
+        self.assertEqual(
+            discovery_tile.data[NODE_ARCHAEOLOGY_DISCOVERY_TYPE],
+            parse_reference_node(
+                self.payload["dpp_archaeologytype"],
+                ARCHAEOLOGY_DISCOVERY_TYPE_LIST_NAME,
+            ),
+        )
+        status_tile = self._tile(self.resource.pk, ARCHAEOLOGY_STATUS_NODEGROUP)
+        self.assertEqual(
+            status_tile.data[NODE_ARCHAEOLOGY_STATUS],
+            parse_reference_node(
+                self.payload["dpp_archaeologystatus"], ARCHAEOLOGY_STATUS_LIST_NAME
+            ),
         )
 
-    def test_three_associated_persons(self):
-        # dpp_contact + dpp_applicant + ownerid → 3 person resource instances
-        persons = self._tile(PRODUCTION_NODEGROUP).data[NODE_ASSOCIATED_PERSON]
-        self.assertEqual(len(persons), 3)
-
-    def test_associated_persons_have_resource_ids(self):
-        persons = self._tile(PRODUCTION_NODEGROUP).data[NODE_ASSOCIATED_PERSON]
-        for person in persons:
-            self.assertEqual(person["resourceId"], _FAKE_PERSON_ID)
-
-    # ── Discovery ─────────────────────────────────────────────────────────────
-
-    def test_discovery_context(self):
+        # Data not provided by the payload survives, including a value sharing
+        # a tile with managed payload nodes and data in an unrelated nodegroup.
         self.assertEqual(
-            self._tile(DISCOVERY_NODEGROUP).data[NODE_DISCOVERY_METHOD]["__value"],
-            "Incidental Find",
+            discovery_tile.data[DISCOVERY_NOTE_NODE],
+            i18n_string(self.original_discovery_note),
+        )
+        self.assertEqual(
+            self._tile(self.resource.pk, COPYRIGHT_NODEGROUP).data[
+                COPYRIGHT_NOTE_NODE
+            ],
+            i18n_string(self.original_copyright_note),
         )
 
-    def test_discovery_archaeology_type(self):
+        current_version = VersionedResource.objects.get(pk=self.resource.pk)
         self.assertEqual(
-            self._tile(DISCOVERY_NODEGROUP).data[NODE_ARCHAEOLOGY_DISCOVERY_TYPE]["__value"],
-            "Archaeological Artefact / Site",
+            (current_version.major_version, current_version.minor_version), (4, 3)
         )
+        self.assertEqual(current_version.metadata, self.payload)
 
-    # ── Condition Assessment (dates) ──────────────────────────────────────────
-
-    def test_date_of_discovery(self):
+        # The archival copy captures the original record before the update.
+        archived_version = VersionedResource.objects.exclude(pk=self.resource.pk).get(
+            resource_group_id=self.payload["dpp_permitnumber"]
+        )
+        archived_discovery_tile = self._tile(archived_version.pk, DISCOVERY_NODEGROUP)
         self.assertEqual(
-            self._tile(CONDITION_ASSESSMENT_NODEGROUP).data[NODE_DATE_OF_ASSESSMENT_START],
-            "2026-03-24",
+            archived_discovery_tile.data[DISCOVERY_NOTE_NODE],
+            i18n_string(self.original_discovery_note),
         )
-
-    def test_notification_date(self):
         self.assertEqual(
-            self._tile(CONDITION_ASSESSMENT_NODEGROUP).data[NODE_DATE_OF_ASSESSMENT_END],
-            "2026-04-22",
+            self._tile(archived_version.pk, ARTEFACT_NAMES_NODEGROUP).data[
+                NODE_ARTEFACT_NAME
+            ],
+            i18n_string("Previous payload name"),
         )
-
-    # ── Archaeology Status ────────────────────────────────────────────────────
-
-    def test_archaeology_status(self):
-        self.assertEqual(
-            self._tile(ARCHAEOLOGY_STATUS_NODEGROUP).data[NODE_ARCHAEOLOGY_STATUS]["__value"],
-            "Recorded",
-        )
-
-    # ── Digital Object (eDocs) ────────────────────────────────────────────────
-
-    def test_digital_object_tile_has_one_reference(self):
-        refs = self._tile(DIGITAL_OBJECT_NODEGROUP).data[NODE_DIGITAL_OBJECT]
-        self.assertEqual(len(refs), 1)
-
-    def test_digital_object_resource_id(self):
-        ref = self._tile(DIGITAL_OBJECT_NODEGROUP).data[NODE_DIGITAL_OBJECT][0]
-        self.assertEqual(ref["resourceId"], _FAKE_DO_ID)
-
-    # ── Geometry (GPS) ────────────────────────────────────────────────────────
-
-    def test_geometry_is_feature_collection(self):
-        fc = self._tile(GEOMETRY_NODEGROUP).data[NODE_GEOSPATIAL_COORDS]
-        self.assertEqual(fc["type"], "FeatureCollection")
-
-    def test_geometry_has_one_point_feature(self):
-        features = self._tile(GEOMETRY_NODEGROUP).data[NODE_GEOSPATIAL_COORDS]["features"]
-        self.assertEqual(len(features), 1)
-        self.assertEqual(features[0]["geometry"]["type"], "Point")
-
-    def test_geometry_coordinates(self):
-        coords = self._tile(GEOMETRY_NODEGROUP).data[NODE_GEOSPATIAL_COORDS]["features"][0][
-            "geometry"
-        ]["coordinates"]
-        lon, lat = coords  # GeoJSON order: [lon, lat]
-        self.assertAlmostEqual(lon, 153.02512345, places=5)
-        self.assertAlmostEqual(lat, -27.46989921, places=5)
-
-    # ── GPS sub-tiles ─────────────────────────────────────────────────────────
-
-    def test_capture_scale(self):
-        self.assertEqual(
-            self._tile(CAPTURE_SCALE_NODEGROUP).data[NODE_CAPTURE_SCALE]["__value"],
-            "Aerial Photography",
-        )
-
-    def test_spatial_accuracy(self):
-        self.assertEqual(
-            self._tile(SPATIAL_ACCURACY_NODEGROUP).data[NODE_SPATIAL_ACCURACY]["__value"],
-            "Map",
-        )
-
-    def test_coordinate_system(self):
-        self.assertEqual(
-            self._tile(COORDINATE_SYSTEM_NODEGROUP).data[NODE_COORDINATE_SYSTEM]["__value"],
-            "GDA2020 LAT/LONG",
-        )
-
-    def test_spatial_metadata_notes_contain_all_coordinates(self):
-        notes = self._tile(SPATIAL_METADATA_DESCRIPTIONS_NODEGROUP).data[
-            NODE_SPATIAL_METADATA_NOTES
-        ]["en"]["value"]
-        self.assertIn("Latitude: 99.000", notes)
-        self.assertIn("Longitude: 22.000", notes)
-        self.assertIn("Easting: 444444", notes)
-        self.assertIn("Northing: 555555", notes)
-
-    # ── No associated monuments (heritage item not found) ────────────────────
-
-    def test_no_associated_monuments_when_heritage_item_not_in_versioned_resource(self):
-        # VersionedResource.objects.get_current_draft is mocked to return None,
-        # so the heritage item "600222" cannot be resolved and no tile is built.
-        self.assertEqual(self._tiles(ASSOCIATED_MONUMENTS_NODEGROUP), [])
