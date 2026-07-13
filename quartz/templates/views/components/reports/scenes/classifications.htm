@@ -170,6 +170,88 @@
     </div>
 </div>
 
+<!-- Heritage Place Metatype -->
+<div class="aher-report-section" data-bind="if: !!dataConfig.heritagePlaceMetatype">
+    <h2 class="aher-report-section-title"><i tabindex="0" data-bind="onEnterkeyClick, onSpaceClick, click: function() {toggleVisibility(visible.heritagePlaceMetatype)}, onReportSectionToggleAria: visible.heritagePlaceMetatype, sectionName: '{% trans "Heritage Place Metatype" %}'" class="fa toggle"></i> {% trans "Heritage Place Metatype" %}</h2>
+    <!-- ko if: checkCardsAvailable($data.cards) -->
+     <a href="#" class="aher-report-a" data-bind="if: cards.heritagePlaceMetatype, click: function(){addNewTile(cards.heritagePlaceMetatype)}"><i class="fa fa-mail-reply"></i> {% trans "Add Heritage Place Metatype" %}</a>
+    <!-- /ko -->
+
+    <!-- Collapsible content -->
+    <div data-bind="visible: visible.heritagePlaceMetatype" class="aher-report-collapsible-container pad-lft">
+
+        <!-- ko ifnot: heritagePlaceMetatypes().length -->
+        <div class="aher-nodata-note">No heritage place metatype for this resource</div>
+        <!-- /ko -->
+
+        <!-- ko if: heritagePlaceMetatypes().length -->
+        <div class="aher-report-subsection">
+
+            <div class="firstchild-container">
+                <div class="aher-table pad-btm">
+                    <table class="table table-striped" cellspacing="0" width="100%">
+                        <thead>
+                            <tr class="aher-table-header">
+                                <th>{% trans "Heritage Item Type" %}</th>
+                                <th>{% trans "Heritage Place Metatype" %}</th>
+                                <th>{% trans "Style" %}</th>
+                                <th>{% trans "Historical Period" %}</th>
+                                <th>{% trans "Cultural Period" %}</th>
+                                <th class="none">{% trans "Construction Phase Start Date" %}</th>
+                                <th class="none">{% trans "Construction Phase End Date" %}</th>
+                                <th class="none">{% trans "Construction Phase Date Qualifier" %}</th>
+                                <th class="none">{% trans "Construction Phase Display Date" %}</th>
+                                <th class="none">{% trans "Confidence of Dating" %}</th>
+                                <th class="none">{% trans "Phase Description" %}</th>
+                                <th class="none">{% trans "Construction Phase Evidence Type" %}</th>
+                                <th class="none">{% trans "Confidence of Interpretation" %}</th>
+                                <th class="none">{% trans "Main Construction Material" %}</th>
+                                <th class="none">{% trans "Covering Material" %}</th>
+                                <th class="none">{% trans "Construction Method" %}</th>
+                                <th class="none">{% trans "Construction Technique" %}</th>
+                                <th class="aher-table-control all"></th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="dataTablesForEach: {data: heritagePlaceMetatypes, dataTableOptions: heritagePlaceMetatypeTableConfig}">
+                            <tr>
+                                <td data-bind="text: heritageItemType"></td>
+                                <td data-bind="text: heritagePlaceMetatype"></td>
+                                <td data-bind="text: style"></td>
+                                <td data-bind="text: historicalPeriod"></td>
+                                <td data-bind="text: culturalPeriod"></td>
+                                <td data-bind="text: startDate"></td>
+                                <td data-bind="text: endDate"></td>
+                                <td data-bind="text: dateQualifier"></td>
+                                <td data-bind="text: displayDate"></td>
+                                <td data-bind="text: dateConfidence"></td>
+                                <td data-bind="text: phaseDescription"></td>
+                                <td data-bind="text: phaseEvidence"></td>
+                                <td data-bind="text: interpretationConfidence"></td>
+                                <td data-bind="text: constructionMaterial"></td>
+                                <td data-bind="text: coveringMaterial"></td>
+                                <td data-bind="text: method"></td>
+                                <td data-bind="text: constructionTechnique"></td>
+                                <td class="aher-table-control">
+                                    <div data-bind="if: $parent.cards.heritagePlaceMetatype">
+                                        <a href="#" data-bind="onEnterkeyClick, onSpaceClick, click: function() {$parent.editTile(tileid, $parent.cards.heritagePlaceMetatype)}">
+                                            <i class="fa fa-mail-reply"></i>
+                                        </a>
+                                        <a href="#" data-bind="if: $parent.cards.heritagePlaceMetatype.cardinality == 'n', onEnterkeyClick, onSpaceClick, click: $parent.deleteTile.bind($data, tileid, $parent.cards.heritagePlaceMetatype, $parent.resource)">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+
 <!-- Aircraft Construction Phases -->
 <div class="aher-report-section" data-bind="if: !!dataConfig.aircraftProduction">
     <h2 class="aher-report-section-title"><i tabindex="0" data-bind="onEnterkeyClick, onSpaceClick, click: function() {toggleVisibility(visible.production)}, onReportSectionToggleAria: visible.production, sectionName: '{% trans "Construction Phases" %}'" class="fa toggle"></i> {% trans "Construction Phases" %}</h2>
@@ -500,6 +582,66 @@
                                 <td data-bind="text: displayDate"></td>
                                 <td data-bind="text: useEvidence"></td>
                                 <td data-bind="text: descriptionType"></td>
+                                <td data-bind="html: description"></td>
+                                <td class="aher-table-control">
+                                    <div data-bind="if: $parent.cards.usePhase">
+                                        <a href="#" data-bind="onEnterkeyClick, onSpaceClick, click: function() {$parent.editTile(tileid, $parent.cards.usePhase)}">
+                                            <i class="fa fa-mail-reply"></i>
+                                        </a>
+                                        <a href="#" data-bind="if: $parent.cards.usePhase.cardinality == 'n', onEnterkeyClick, onSpaceClick, click: $parent.deleteTile.bind($data, tileid, $parent.cards.usePhase, $parent.resource)">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+
+<!-- State Theme -->
+<div class="aher-report-section" data-bind="visible: !!dataConfig.usePhase">
+    <h2 class="aher-report-section-title"><i tabindex="0" data-bind="onEnterkeyClick, onSpaceClick, click: function() {toggleVisibility(visible.stateTheme)}, onReportSectionToggleAria: visible.stateTheme, sectionName: '{% trans "State Theme" %}'" class="fa toggle"></i> {% trans "State Theme" %}</h2>
+
+    <!-- Collapsible content -->
+    <div data-bind="visible: visible.stateTheme" class="aher-report-collapsible-container pad-lft">
+
+        <!-- ko ifnot: stateThemes().length -->
+        <div class="aher-nodata-note">No state theme for this resource</div>
+        <!-- /ko -->
+
+        <!-- ko if: stateThemes().length -->
+        <div class="aher-report-subsection">
+
+            <div class="firstchild-container">
+                <div class="aher-table pad-btm">
+                    <table class="table table-striped" cellspacing="0" width="100%">
+                        <thead>
+                            <tr class="aher-table-header">
+                                <th>{% trans "Period" %}</th>
+                                <th>{% trans "Start Date" %}</th>
+                                <th>{% trans "End Date" %}</th>
+                                <th>{% trans "State Theme" %}</th>
+                                <th class="none">{% trans "Display Date" %}</th>
+                                <th class="none">{% trans "Date Qualifier" %}</th>
+                                <th class="none">{% trans "Evidence Type" %}</th>
+                                <th class="none">{% trans "Description" %}</th>
+                                <th class="aher-table-control all"></th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="dataTablesForEach: {data: stateThemes, dataTableOptions: stateThemeTableConfig}">
+                            <tr>
+                                <td data-bind="text: period"></td>
+                                <td data-bind="text: startDate"></td>
+                                <td data-bind="text: endDate"></td>
+                                <td data-bind="text: theme"></td>
+                                <td data-bind="text: displayDate"></td>
+                                <td data-bind="text: dateQualifier"></td>
+                                <td data-bind="text: useEvidence"></td>
                                 <td data-bind="html: description"></td>
                                 <td class="aher-table-control">
                                     <div data-bind="if: $parent.cards.usePhase">
