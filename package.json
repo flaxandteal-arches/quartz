@@ -35,7 +35,9 @@
     "devDependencies": {
         "arches-dev-dependencies": "archesproject/arches-dev-dependencies#dev/8.1.x"
     },
-    "nodeModulesPaths": {},
+    "nodeModulesPaths": {
+        "vue-demi": "node_modules/pinia/node_modules/vue-demi"
+    },
     "overrides": {
         "moment-timezone": "^0.5.45",
         "nomnom": "npm:@gerhobbelt/nomnom",
