@@ -128,6 +128,26 @@
                         </div>
                         <!-- /ko -->
                     </div>
+
+                    <!-- GPS Coordinates -->
+                    <div class="aher-report-subsection-firstchild">
+                        <h4 class="aher-geom-metadata-header">GPS Coordinates</h4>
+
+                        <!-- ko ifnot: gpsCoordinates().length -->
+                        <div class="aher-nodata-note">No GPS coordinates for this resource</div>
+                        <!-- /ko -->
+
+                        <!-- ko if: gpsCoordinates().length -->
+                        <div class="firstchild-container pad-btm" data-bind="foreach: gpsCoordinates">
+                            <div class="aher-report-subsection-item">
+                                <div class="aher-block-attributes" style="margin-top: 5px;">
+                                    <span class="aher-block-key compressed" data-bind="text: type"></span>
+                                    <div data-bind="text: coordinates" class="aher-block-value"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                    </div>
                 </div>
             </div>
         </div>

@@ -107,6 +107,21 @@ export default ko.components.register(
             };
 
             self.coordinateData = ko.observable();
+            self.gpsCoordinates = ko.computed(() => {
+                const data = self.coordinateData();
+                if (!data?.features?.length) {
+                    return [];
+                }
+                const flatten = (coordinates) =>
+                    Array.isArray(coordinates)
+                        ? coordinates.flatMap(flatten)
+                        : [coordinates];
+                return data.features.map((feature, index) => ({
+                    type: feature?.geometry?.type || "--",
+                    coordinates: flatten(feature?.geometry?.coordinates || []).join(", "),
+                    index,
+                }));
+            });
             self.geometryMetadata = {
                 compilerName: ko.observable(),
                 compileDate: ko.observable(),
