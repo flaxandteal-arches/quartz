@@ -50,6 +50,7 @@ export default ko.components.register("monument-report", {
             components: "components",
             usePhase: "use phases",
             recordType: "record type",
+            heritagePlaceMetatype: "heritage place metatype",
         };
 
         self.descriptionDataConfig = {
@@ -108,6 +109,7 @@ export default ko.components.register("monument-report", {
                 components: self.cards?.["components"],
                 usePhase: self.cards?.["use phase"],
                 recordType: self.cards?.["record type"],
+                heritagePlaceMetatype: self.cards?.["heritage place metatype"],
             };
 
             self.assessmentCards = {

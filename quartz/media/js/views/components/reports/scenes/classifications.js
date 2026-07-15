@@ -58,6 +58,16 @@ export default ko.components.register(
                 columns: Array(10).fill(null),
             };
 
+            self.stateThemeTableConfig = {
+                ...self.defaultTableConfig,
+                columns: Array(9).fill(null),
+            };
+
+            self.heritagePlaceMetatypeTableConfig = {
+                ...self.defaultTableConfig,
+                columns: Array(18).fill(null),
+            };
+
             self.dataConfig = {
                 production: undefined,
                 artefactProduction: undefined,
@@ -74,6 +84,7 @@ export default ko.components.register(
                 hlcPhase: undefined,
                 organizationCurrency: undefined,
                 organizationFormation: undefined,
+                heritagePlaceMetatype: undefined,
             };
 
             self.cards = Object.assign({}, params.cards);
@@ -90,6 +101,8 @@ export default ko.components.register(
             self.organizationFormation = ko.observableArray();
             self.dates = ko.observableArray();
             self.activityTimespan = ko.observable();
+            self.heritagePlaceMetatypes = ko.observableArray();
+            self.stateThemes = ko.observableArray();
             self.visible = {
                 production: ko.observable(true),
                 components: ko.observable(true),
@@ -97,6 +110,8 @@ export default ko.components.register(
                 dimensions: ko.observable(true),
                 dates: ko.observable(true),
                 organizationFormation: ko.observable(true),
+                stateTheme: ko.observable(true),
+                heritagePlaceMetatype: ko.observable(true),
             };
             Object.assign(self.dataConfig, params.dataConfig || {});
 
@@ -255,6 +270,38 @@ export default ko.components.register(
                     );
                 }
 
+                if (Array.isArray(constructionPhasesNode)) {
+                    self.heritagePlaceMetatypes(
+                        constructionPhasesNode
+                            .map((x) => {
+                                const heritageItemType = self.getNodeValue(x, "phase classification", "heritage item type");
+                                const heritagePlaceMetatype = self.getNodeValue(x, "phase classification", "heritage item type", "heritage place metatype");
+                                const style = self.getNodeValue(x, "style");
+                                const historicalPeriod = self.getNodeValue(x, "historical period");
+                                const culturalPeriod = self.getNodeValue(x, "cultural period");
+                                const startDate = self.getNodeValue(x, "construction phase timespan", "construction phase start date");
+                                const endDate = self.getNodeValue(x, "construction phase timespan", "construction phase end date");
+                                const dateQualifier = self.getNodeValue(x, "construction phase timespan", "construction phase date qualifier");
+                                const displayDate = self.getNodeValue(x, "construction phase timespan", "construction phase display date");
+                                const dateConfidence = self.getNodeValue(x, "construction phase timespan", "confidence of dating");
+                                const phaseDescription = self.getNodeValue(x, "phase classification", "phase classification description", "phase description");
+                                const phaseEvidence = self.getNodeValue(x, "phase classification", "construction phase evidence type");
+                                const interpretationConfidence = self.getNodeValue(x, "phase classification", "phase certainty");
+                                const constructionMaterial = self.getNodeValue(x, "main construction material");
+                                const coveringMaterial = self.getNodeValue(x, "covering material");
+                                const method = self.getNodeValue(x, "construction method");
+                                const constructionTechnique = self.getNodeValue(x, "construction technique");
+                                const tileid = self.getTileId(x);
+                                return { heritageItemType, heritagePlaceMetatype, style, historicalPeriod, culturalPeriod, startDate, endDate, dateQualifier, displayDate, dateConfidence, phaseDescription, phaseEvidence, interpretationConfidence, constructionMaterial, coveringMaterial, method, constructionTechnique, tileid };
+                            })
+                            .filter((entry) =>
+                                Object.entries(entry).some(
+                                    ([k, value]) => k !== "tileid" && value && value !== "--"
+                                )
+                            )
+                    );
+                }
+
                 const aircraftProductionNode = self.getRawNodeValue(
                     params.data(),
                     self.dataConfig.aircraftProduction
@@ -365,6 +412,27 @@ export default ko.components.register(
                             const tileid = self.getTileId(x);
                             return { type, period, startDate, endDate, dateQualifier, displayDate, useEvidence, descriptionType, description, tileid };
                         })
+                    );
+
+                    self.stateThemes(
+                        usePhaseNode
+                            .map((x) => {
+                                const period = self.getNodeValue(x, "use phase period");
+                                const startDate = self.getNodeValue(x, "use phase timespan", "use phase start date");
+                                const endDate = self.getNodeValue(x, "use phase timespan", "use phase end date");
+                                const displayDate = self.getNodeValue(x, "use phase display date");
+                                const dateQualifier = self.getNodeValue(x, "use phase timespan", "use phase date qualifier");
+                                const theme = self.getNodeValue(x, "use phase classification", "state theme");
+                                const useEvidence = self.getNodeValue(x, "use phase classification", "use phase evidence type");
+                                const description = self.getRawNodeValue(x, "use phase classification", "use phase classification description", "use phase description", "@display_value");
+                                const tileid = self.getTileId(x);
+                                return { period, startDate, endDate, displayDate, dateQualifier, theme, useEvidence, description, tileid };
+                            })
+                            .filter(({ period, startDate, endDate, displayDate, dateQualifier, theme, useEvidence, description }) =>
+                                [period, startDate, endDate, displayDate, dateQualifier, theme, useEvidence, description].some(
+                                    (value) => value && value !== "--"
+                                )
+                            )
                     );
                 }
 

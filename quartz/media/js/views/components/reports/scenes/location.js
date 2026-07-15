@@ -55,11 +55,13 @@ export default ko.components.register(
             self.addressTableConfig = {
                 ...self.defaultTableConfig,
                 columns: [
+                    { width: "12%" },
                     { width: "15%" },
-                    { width: "20%" },
-                    { width: "20%" },
-                    { width: "20%" },
+                    { width: "12%" },
+                    { width: "12%" },
+                    { width: "12%" },
                     { width: "15%" },
+                    { width: "12%" },
                     null, null, null, null, null, null, null, null, null,
                 ],
             };
@@ -105,6 +107,21 @@ export default ko.components.register(
             };
 
             self.coordinateData = ko.observable();
+            self.gpsCoordinates = ko.computed(() => {
+                const data = self.coordinateData();
+                if (!data?.features?.length) {
+                    return [];
+                }
+                const flatten = (coordinates) =>
+                    Array.isArray(coordinates)
+                        ? coordinates.flatMap(flatten)
+                        : [coordinates];
+                return data.features.map((feature, index) => ({
+                    type: feature?.geometry?.type || "--",
+                    coordinates: flatten(feature?.geometry?.coordinates || []).join(", "),
+                    index,
+                }));
+            });
             self.geometryMetadata = {
                 compilerName: ko.observable(),
                 compileDate: ko.observable(),
@@ -279,14 +296,16 @@ export default ko.components.register(
                                 const county = self.getNodeValue(x, "county", "county value");
                                 const currency = self.getNodeValue(x, "address currency");
                                 const fullAddress = self.getNodeValue(x, "full address");
+                                const lga = self.getNodeValue(x, "lga");
                                 const locality = self.getNodeValue(x, "locality", "locality value");
                                 const postcode = self.getNodeValue(x, "postcode", "postcode value");
                                 const status = self.getNodeValue(x, "address status");
                                 const street = self.getNodeValue(x, "street", "street value");
                                 const subStreet = self.getNodeValue(x, "sub-street", "sub-street value");
+                                const suburb = self.getNodeValue(x, "suburb");
                                 const tileid = self.getTileId(x);
                                 const town = self.getNodeValue(x, "town or city", "town or city value");
-                                return { buildingName, buildingNumber, buildingNumberSubStreet, county, currency, fullAddress, locality, postcode, status, street, subStreet, tileid, town };
+                                return { buildingName, buildingNumber, buildingNumberSubStreet, county, currency, fullAddress, lga, locality, postcode, status, street, subStreet, suburb, tileid, town };
                             })
                         );
                     }
