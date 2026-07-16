@@ -319,27 +319,22 @@ def get_outbound_relations(
 
     candidate_relations = ResourceXResource.objects.filter(
         **filters
-    ).select_related("tile", "node")
+    ).only(
+        "resourcexid",
+        "from_resource_id", "from_resource_graph_id",
+        "to_resource_id", "to_resource_graph_id",
+        "relationshiptype", "inverserelationshiptype",
+        "node_id", "tile_id", "notes",
+    )
 
-    # Find which target resources pass the visibility filter
-    target_ids = set(rel.to_resource_id for rel in candidate_relations)
-    visible_target_ids = get_visible_resource_ids(visibility_nodes, visibility_uris)
-    allowed_target_ids = target_ids & visible_target_ids
-
-    # Build diagnostics
-    skipped_not_visible = target_ids - allowed_target_ids
-    diagnostics = {
-        "candidate_relations": candidate_relations.count(),
-        "target_resources_total": len(target_ids),
-        "target_resources_visible": len(allowed_target_ids),
-        "target_resources_filtered_out": len(skipped_not_visible),
-        "graphs_with_visibility_node": {
-            n["graph_name"]: n["node_id"] for n in visibility_nodes
-        },
-    }
-
-    relations = [
-        {
+    # Find which target resources pass the visibility filter.
+    # Single pass: collect target IDs and build relation dicts together to
+    # avoid caching the full queryset twice.
+    target_ids = set()
+    raw_relations = []
+    for rel in candidate_relations.iterator():
+        target_ids.add(rel.to_resource_id)
+        raw_relations.append({
             "resourcexid": str(rel.resourcexid),
             "from_resource": str(rel.from_resource_id),
             "from_resource_graph": str(rel.from_resource_graph_id),
@@ -350,10 +345,28 @@ def get_outbound_relations(
             "nodeid": str(rel.node_id) if rel.node_id else None,
             "tileid": str(rel.tile_id) if rel.tile_id else None,
             "notes": rel.notes or "",
-        }
-        for rel in candidate_relations
-        if rel.to_resource_id in allowed_target_ids
+        })
+
+    visible_target_ids = get_visible_resource_ids(visibility_nodes, visibility_uris)
+    allowed_target_ids = target_ids & visible_target_ids
+
+    # Build diagnostics
+    diagnostics = {
+        "candidate_relations": len(raw_relations),
+        "target_resources_total": len(target_ids),
+        "target_resources_visible": len(allowed_target_ids),
+        "target_resources_filtered_out": len(target_ids - allowed_target_ids),
+        "graphs_with_visibility_node": {
+            n["graph_name"]: n["node_id"] for n in visibility_nodes
+        },
+    }
+
+    # Filter to only relations targeting visible resources
+    relations = [
+        rel for rel in raw_relations
+        if UUID(rel["to_resource"]) in allowed_target_ids
     ]
+    del raw_relations
 
     return relations, diagnostics, allowed_target_ids
 
@@ -511,6 +524,70 @@ def export_controlled_lists_to_dir(list_ids, dest_dir):
     return exported
 
 
+EXPORT_BATCH_SIZE = 200
+
+
+def _write_resources_batched(resource_ids, user=None, indent=None, label="Resources"):
+    """Export resources in batches, yielding parsed resource dicts progressively.
+
+    Avoids holding the entire serialized JSON for all resources in memory at
+    once. Each batch is serialized, parsed, and its resource dicts yielded
+    before the next batch starts. Prints a progress indicator to stderr.
+    """
+    import sys
+    import time
+
+    total = len(resource_ids)
+    yielded = 0
+    t0 = time.monotonic()
+
+    for i in range(0, total, EXPORT_BATCH_SIZE):
+        batch = resource_ids[i : i + EXPORT_BATCH_SIZE]
+        end = min(i + EXPORT_BATCH_SIZE, total)
+
+        elapsed = time.monotonic() - t0
+        if yielded > 0:
+            eta = elapsed / yielded * (total - yielded)
+            eta_str = f" ETA {int(eta)}s"
+        else:
+            eta_str = ""
+
+        sys.stderr.write(
+            f"\r  {label}: {end}/{total} "
+            f"({end * 100 // total}%){eta_str}   "
+        )
+        sys.stderr.flush()
+
+        # Fresh writer per batch: ArchesFileWriter accumulates tiles in
+        # self.resourceinstances across calls to write_resources(), so
+        # reusing one writer leaks every previous batch's tile data.
+        writer = ArchesFileWriter()
+        results = writer.write_resources(
+            resourceinstanceids=[str(rid) for rid in batch],
+            user=user,
+            indent=indent,
+        )
+        del writer
+        if not results:
+            yielded += len(batch)
+            continue
+        raw_json = results[0]["outputfile"].getvalue()
+        del results
+        batch_export = json.loads(raw_json)
+        del raw_json
+        for resource_data in (
+            batch_export.get("business_data", {}).get("resources", [])
+        ):
+            yield resource_data
+            yielded += 1
+
+    elapsed = time.monotonic() - t0
+    sys.stderr.write(
+        f"\r  {label}: {total}/{total} (100%) done in {int(elapsed)}s\n"
+    )
+    sys.stderr.flush()
+
+
 def export_resources(
     resource_ids,
     output_dir,
@@ -544,21 +621,6 @@ def export_resources(
     Returns:
         tuple: (output_dir, diagnostics dict) or (None, None)
     """
-    writer = ArchesFileWriter()
-    results = writer.write_resources(
-        resourceinstanceids=[str(rid) for rid in resource_ids],
-        user=user,
-        indent=indent,
-    )
-
-    if not results:
-        logger.warning("Export produced no output")
-        return None, None
-
-    # Parse the JSON so we can add relations
-    raw_json = results[0]["outputfile"].getvalue()
-    export = json.loads(raw_json)
-
     # Assign scopes based on each resource's visibility label and collect
     # in-scope nodegroups from the tiles that were actually exported.
     exported_nodegroups = set()
@@ -576,53 +638,130 @@ def export_resources(
             if ng := tile.get("nodegroup_id"):
                 exported_nodegroups.add(ng)
 
-    resources = export.get("business_data", {}).get("resources", [])
-    for resource_data in resources:
-        _scope_resource(resource_data, resource_labels)
+    # Export resources in batches, streaming to disk to avoid holding all
+    # resource dicts in memory at once.
+    bd_dir = os.path.join(output_dir, "business_data")
+    os.makedirs(bd_dir, exist_ok=True)
+    bd_path = os.path.join(bd_dir, "Heritage_Item.json")
 
-    # Get outbound relations filtered by target visibility, plus the set of
-    # visible related resources (e.g. Public Digital Objects) those relations
-    # point at.
-    relations, diagnostics, target_ids = get_outbound_relations(
-        resource_ids,
-        visibility_nodes=visibility_nodes,
-        visibility_uris=visibility_uris,
-        permitted_nodegroups=exported_nodegroups or None,
-    )
-    export["business_data"]["relations"] = relations
+    resource_count = 0
+    graph_ids = set()
+    file_refs = []
+    file_node_ids = get_file_node_ids()
+    sep = "\n" if indent else ""
+    item_indent = (" " * indent) if indent else ""
+    # Double indent for resource objects inside the array
+    res_indent = (" " * indent * 3) if indent else ""
 
-    # Second pass: export the visible related resources as full resources so the
-    # package carries the Digital Objects (etc.) the relations reference, not
-    # just dangling links. Still permission-filtered via the same user; scoped
-    # by each target's own visibility label so a Staging-only target is not
-    # leaked into the public scope. One level deep — targets-of-targets are not
-    # followed.
-    target_ids = {str(t) for t in target_ids} - {str(r) for r in resource_ids}
-    diagnostics["included_target_resources"] = 0
-    if target_ids:
-        target_results = ArchesFileWriter().write_resources(
-            resourceinstanceids=sorted(target_ids),
-            user=user,
-            indent=indent,
-        )
-        target_resources = (
-            json.loads(target_results[0]["outputfile"].getvalue())
-            .get("business_data", {})
-            .get("resources", [])
-            if target_results
-            else []
-        )
-        target_labels = get_visibility_labels_for_resources(
-            visibility_nodes, target_ids
-        )
-        for resource_data in target_resources:
-            _scope_resource(resource_data, target_labels)
-        resources.extend(target_resources)
-        diagnostics["included_target_resources"] = len(target_resources)
+    with open(bd_path, "w") as f:
+        # Write opening structure
+        if indent:
+            f.write(
+                '{\n'
+                f'{item_indent}"business_data": {{\n'
+                f'{item_indent}{item_indent}"resources": [\n'
+            )
+        else:
+            f.write('{"business_data": {"resources": [')
 
-    # Include all resource model graphs with visibility nodes (these are
-    # the ones the public export ecosystem needs to understand), plus any
-    # from the exported data itself. Exclude branches.
+        first_resource = True
+
+        def _write_resource(resource_data, label_map):
+            nonlocal first_resource, resource_count
+            _scope_resource(resource_data, label_map)
+
+            # Collect graph IDs
+            ri = resource_data.get("resourceinstance", {})
+            if gid := ri.get("graph_id"):
+                graph_ids.add(gid)
+
+            # Collect file references inline
+            for tile in resource_data.get("tiles", []):
+                data = tile.get("data") or {}
+                for node_id, value in data.items():
+                    if node_id not in file_node_ids or not isinstance(value, list):
+                        continue
+                    for entry in value:
+                        if not isinstance(entry, dict) or "file_id" not in entry:
+                            continue
+                        file_refs.append({
+                            "file_id": entry.get("file_id"),
+                            "name": entry.get("name"),
+                            "url": entry.get("url"),
+                            "resourceinstanceid": ri.get("resourceinstanceid", ""),
+                            "nodeid": node_id,
+                        })
+
+            # Write to file
+            if not first_resource:
+                f.write(",")
+                f.write(sep)
+            else:
+                first_resource = False
+
+            json.dump(resource_data, f, indent=indent)
+            resource_count += 1
+
+        # Primary resources
+        for resource_data in _write_resources_batched(
+            [str(rid) for rid in resource_ids], user=user, indent=indent,
+            label="Heritage Items",
+        ):
+            _write_resource(resource_data, resource_labels)
+
+        if resource_count == 0:
+            logger.warning("Export produced no output")
+            # Close the file cleanly
+            f.write(']}}\n' if not indent else f'\n{item_indent}{item_indent}]\n{item_indent}}}\n}}\n')
+            return None, None
+
+        # Get outbound relations filtered by target visibility
+        relations, diagnostics, target_ids = get_outbound_relations(
+            resource_ids,
+            visibility_nodes=visibility_nodes,
+            visibility_uris=visibility_uris,
+            permitted_nodegroups=exported_nodegroups or None,
+        )
+
+        # Second pass: related resources (Digital Objects etc.)
+        target_ids = {str(t) for t in target_ids} - {str(r) for r in resource_ids}
+        diagnostics["included_target_resources"] = 0
+        if target_ids:
+            target_labels = get_visibility_labels_for_resources(
+                visibility_nodes, target_ids
+            )
+            target_count = 0
+            for resource_data in _write_resources_batched(
+                sorted(target_ids), user=user, indent=indent,
+                label="Related resources",
+            ):
+                _write_resource(resource_data, target_labels)
+                target_count += 1
+            diagnostics["included_target_resources"] = target_count
+
+        # Close resources array, write relations, close structure
+        if indent:
+            f.write(f'\n{item_indent}{item_indent}],\n')
+            f.write(f'{item_indent}{item_indent}"relations": ')
+            json.dump(relations, f, indent=indent)
+            f.write(f'\n{item_indent}}}\n}}\n')
+        else:
+            f.write('], "relations": ')
+            json.dump(relations, f)
+            f.write('}}')
+
+    # De-duplicate file refs
+    seen = set()
+    unique_file_refs = []
+    for ref in file_refs:
+        key = ref.get("file_id") or ref.get("name")
+        if key and key not in seen:
+            seen.add(key)
+            unique_file_refs.append(ref)
+    file_refs = sorted(unique_file_refs, key=lambda r: (r["name"] or "", r["file_id"] or ""))
+    diagnostics["referenced_files"] = file_refs
+
+    # Include all resource model graphs with visibility nodes
     from arches.app.models.models import GraphModel
     resource_model_ids = set(
         GraphModel.objects.filter(
@@ -630,11 +769,7 @@ def export_resources(
             isresource=True,
         ).values_list("graphid", flat=True)
     )
-    graph_ids = {str(gid) for gid in resource_model_ids}
-    for resource_data in export.get("business_data", {}).get("resources", []):
-        ri = resource_data.get("resourceinstance", {})
-        if gid := ri.get("graph_id"):
-            graph_ids.add(gid)
+    graph_ids.update(str(gid) for gid in resource_model_ids)
     for rel in relations:
         if gid := rel.get("to_resource_graph"):
             graph_ids.add(gid)
@@ -645,20 +780,6 @@ def export_resources(
     ).first()
     if registry:
         graph_ids.add(str(registry.graphid))
-
-    # Collect the files (images + Digital Object file_content, etc.) referenced
-    # by the exported tiles, so a downstream job can publish exactly the media
-    # that ships with this package. Reads the exported tiles, so it inherits the
-    # same permission/visibility filtering already applied.
-    file_refs = extract_file_references(resources)
-    diagnostics["referenced_files"] = file_refs
-
-    # 1. Write business_data
-    bd_dir = os.path.join(output_dir, "business_data")
-    os.makedirs(bd_dir, exist_ok=True)
-    bd_path = os.path.join(bd_dir, "Heritage_Item.json")
-    with open(bd_path, "w") as f:
-        json.dump(export, f, indent=indent)
 
     # 1b. Write the referenced-file manifest at the package root.
     files_path = os.path.join(output_dir, "files.json")
