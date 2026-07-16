@@ -1,0 +1,68 @@
+{% extends "views/report-templates/default.htm" %}
+{% load i18n %}
+{% block report %}
+
+{% block body %}
+
+<!-- Associated People and Organizations section -->
+<div class="aher-report-section" data-bind="visible: !!dataConfig.people">
+    <h2 class="aher-report-section-title">
+        <i tabindex="0" data-bind="onEnterkeyClick, onSpaceClick, click: function() {toggleVisibility(visible.people)}, onReportSectionToggleAria: visible.people, sectionName: '{% trans "Associated People and Organizations" %}'" class="fa toggle"></i>
+        {% trans "Associated People and Organizations" %}
+    </h2>
+    <!-- ko if: cards.people -->
+    <a href="#" data-bind="click: function(){addNewTile(cards.people)}" class="aher-report-a"><i class="fa fa-mail-reply"></i> {% trans "Add Person or Organisation" %}</a>
+    <!-- /ko -->
+
+    <!-- Collapsible content -->
+    <div data-bind="visible: visible.people" class="aher-report-collapsible-container pad-lft">
+
+        <!-- ko ifnot: people().length -->
+        <div class="aher-nodata-note">No associated people or organisations for this resource</div>
+        <!-- /ko -->
+
+        <!-- ko if: people().length -->
+        <div class="aher-report-subsection">
+            <div class="firstchild-container">
+                <div class="aher-table" data-bind="">
+                    <p class="aher-table-aria-describedby" id="associated-people-and-organisation-table_info">Associated people and organisation table.</p>
+                    <table id="associated-people-and-organisation-table" class="table table-striped" cellspacing="0" width="100%">
+                        <thead>
+                            <tr class="aher-table-header">
+                                <th>{% trans "Associated Person or Organisation" %}</th>
+                                <th>{% trans "Association Type" %}</th>
+                                <th>{% trans "Role Type" %}</th>
+                                <th>{% trans "Association Start Date" %}</th>
+                                <th>{% trans "Association End Date" %}</th>
+                                <th class="none">{% trans "Display Date" %}</th>
+                                <th class="none">{% trans "Date Qualifier" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="dataTablesForEach: { data: people, dataTableOptions: peopleTableConfig}">
+                            <tr>
+                                <td>
+                                    <!-- ko if: actorLink -->
+                                    <a class="aher-table-link" data-bind="text: actor, attr: {href: actorLink}"></a>
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: actorLink -->
+                                    <span data-bind="text: actor"></span>
+                                    <!-- /ko -->
+                                </td>
+                                <td data-bind="text: associationType"></td>
+                                <td data-bind="text: role"></td>
+                                <td data-bind="text: startOfRole"></td>
+                                <td data-bind="text: endOfRole"></td>
+                                <td data-bind="text: displayDate"></td>
+                                <td data-bind="text: dateQualifier"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+
+{% endblock body %}
+{% endblock report %}

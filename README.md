@@ -103,6 +103,7 @@ The Monument resource model (graph ID `076f9381-7b00-11e9-8d6b-80000b44d1d9`, lo
 - `quartz/media/js/views/components/reports/scenes/classifications.js` - overrides the `arches_her` upstream
 - `quartz/media/js/views/components/reports/scenes/description.js` - overrides the `arches_her` upstream
 - `quartz/media/js/views/components/reports/scenes/location.js` - overrides the `arches_her` upstream
+- `quartz/media/js/views/components/reports/scenes/people.js` / `people.htm` - new, not an `arches_her` override; implements the "Associated People and Organizations" tab (referenced in `monument.htm` but never implemented upstream), reading the "Associated Actors" node group and its Association Type field
 
 **If the Monument graph is updated** (new cards added, node names or IDs changed), the files above will likely need updating:
 
