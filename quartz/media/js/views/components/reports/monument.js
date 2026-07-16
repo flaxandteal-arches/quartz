@@ -8,6 +8,7 @@ import MonumentTemplate from "templates/views/components/reports/monument.htm";
 import "views/components/reports/scenes/name";
 import "views/components/reports/scenes/json";
 import "views/components/reports/scenes/people";
+import "views/components/reports/scenes/protection";
 import "views/components/reports/scenes/resources";
 import "bindings/reports";
 

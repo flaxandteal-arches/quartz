@@ -103,7 +103,12 @@ The Monument resource model (graph ID `076f9381-7b00-11e9-8d6b-80000b44d1d9`, lo
 - `quartz/media/js/views/components/reports/scenes/classifications.js` - overrides the `arches_her` upstream
 - `quartz/media/js/views/components/reports/scenes/description.js` - overrides the `arches_her` upstream
 - `quartz/media/js/views/components/reports/scenes/location.js` - overrides the `arches_her` upstream
-- `quartz/media/js/views/components/reports/scenes/people.js` / `people.htm` - new, not an `arches_her` override; implements the "Associated People and Organizations" tab (referenced in `monument.htm` but never implemented upstream), reading the "Associated Actors" node group and its Association Type field
+- `quartz/media/js/views/components/reports/scenes/people.js` / `people.htm` - overrides the `arches_her` upstream; adds the Association Type, Role Type, and association start/end/display date/qualifier columns to the "Associated People and Organizations" tab
+- `quartz/media/js/views/components/reports/scenes/protection.js` / `protection.htm` - overrides the `arches_her` upstream; adds Designation Name Use Type, Local Heritage List Criteria Type, and Digital File(s) columns to the "Designation/Protection Details" table
+
+**Overriding an `arches_her` scene requires two things, not just dropping the file in place:**
+1. An explicit `import "views/components/reports/scenes/<name>";` in `monument.js` (see the list at the top of that file). Scene components with no `arches_her` equivalent (e.g. `location`, `classifications`, `description`, `assessments`) are picked up automatically; scenes that also exist upstream (e.g. `people`, `protection`, `resources`, `name`, `json`) need the static import to reliably win the module-registration race against the upstream copy. Without it, the *template* still resolves to quartz's override (template lookup always prefers the project app), but the *viewModel* can end up being whichever copy's `ko.components.register` call happened to run, silently mismatching data shapes.
+2. After adding a **new** static import to `monument.js`, clear the stale webpack filesystem cache before rebuilding (`rm -rf node_modules/.cache/webpack node_modules/.cache/babel-loader`), since the build can otherwise silently fail to re-link the dependency graph and the whole report breaks with `Unknown component 'monument-report'`. `CleanWebpackPlugin` only cleans the output directory, not this cache.
 
 **If the Monument graph is updated** (new cards added, node names or IDs changed), the files above will likely need updating:
 
