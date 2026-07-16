@@ -33,7 +33,7 @@ export default ko.components.register(
             self.delete = params.deleteTile || self.deleteTile;
             self.add = params.addTile || self.addNewTile;
             self.visible = {
-                geometryMetadata: ko.observable(false),
+                geometryMetadata: ko.observable(true),
                 geometry: ko.observable(true),
                 coordinates: ko.observable(true),
                 addresses: ko.observable(true),
@@ -122,25 +122,8 @@ export default ko.components.register(
                     index,
                 }));
             });
-            self.geometryMetadata = {
-                compilerName: ko.observable(),
-                compileDate: ko.observable(),
-                updateDate: ko.observable(),
-                updaterName: ko.observable(),
-                authorizerName: ko.observable(),
-                authorizationDate: ko.observable(),
-                typeOfAuthorization: ko.observable(),
-            };
-            self.geometryScale = {
-                captureScale: ko.observable(),
-                coordinateSystem: ko.observable(),
-                basemap: ko.observable(),
-                accuracy: ko.observable(),
-            };
             self.geometryShape = ko.observable();
-            self.geometryNotes = ko.observable();
-            self.recordEditExists = ko.observable(false);
-            self.geometryScaleExists = ko.observable(false);
+            self.geometryEntries = ko.observableArray();
             self.addresses = ko.observableArray();
             self.descriptions = ko.observableArray();
             self.administrativeAreas = ko.observableArray();
@@ -244,6 +227,23 @@ export default ko.components.register(
                         return "--";
                     };
 
+                    // "point name" is a repeating single-node nodegroup, so it is
+                    // serialized as an array of raw display values rather than a
+                    // single value.
+                    const collectPointNames = (node) => {
+                        const rawPointNameNode = self.getRawNodeValue(node, "point name");
+                        if (!rawPointNameNode) {
+                            return "--";
+                        }
+                        const pointNameValues = Array.isArray(rawPointNameNode) ? rawPointNameNode : [rawPointNameNode];
+                        const names = pointNameValues
+                            .map((value) => self.processRawValue(value))
+                            .filter((name) => name && name !== "--");
+                        return names.length ? names.join(", ") : "--";
+                    };
+
+                    const valueSet = (...values) => values.some((value) => value && value !== "--");
+
                     const collectedFeatures = [];
                     geometryNodes.forEach((node) => {
                         const nodeCoordinates = self.getNodeValue(node, "geospatial coordinates");
@@ -265,21 +265,39 @@ export default ko.components.register(
                     }
 
                     self.geometryShape(firstGeometryNodeValue("feature shape"));
-                    self.geometryNotes(firstGeometryNodeValue("spatial metadata descriptions", "spatial metadata notes"));
-                    self.geometryMetadata.compilerName(firstGeometryNodeValue("spatial record compilation", "spatial record compiler", "compiler names", "compiler name"));
-                    self.geometryMetadata.compileDate(firstGeometryNodeValue("spatial record compilation", "spatial record compilation timespan", "compilation start date"));
-                    self.geometryMetadata.updateDate(firstGeometryNodeValue("spatial record update", "spatial record update timespan", "update start date"));
-                    self.geometryMetadata.updaterName(firstGeometryNodeValue("spatial record update", "spatial record updater", "updater names", "updater name"));
-                    self.geometryMetadata.authorizationDate(firstGeometryNodeValue("spatial record authorization", "authorization timespan", "date of authorization"));
-                    self.geometryMetadata.authorizerName(firstGeometryNodeValue("spatial record authorization", "authorizer", "authorizer names", "authorizer name"));
-                    self.geometryMetadata.typeOfAuthorization(firstGeometryNodeValue("spatial record authorization", "authorization type"));
-                    self.recordEditExists(self.observableValueSet(self.geometryMetadata));
 
-                    self.geometryScale.accuracy(firstGeometryNodeValue("spatial accuracy qualifier"));
-                    self.geometryScale.basemap(firstGeometryNodeValue("current base map", "current base map names", "current base map name"));
-                    self.geometryScale.captureScale(firstGeometryNodeValue("capture scale"));
-                    self.geometryScale.coordinateSystem(firstGeometryNodeValue("coordinate system", "coordinate system value"));
-                    self.geometryScaleExists(self.observableValueSet(self.geometryScale));
+                    self.geometryEntries(
+                        geometryNodes.map((node) => {
+                            const metadata = {
+                                compilerName: self.getNodeValue(node, "spatial record compilation", "spatial record compiler", "compiler names", "compiler name"),
+                                compileDate: self.getNodeValue(node, "spatial record compilation", "spatial record compilation timespan", "compilation start date"),
+                                updateDate: self.getNodeValue(node, "spatial record update", "spatial record update timespan", "update start date"),
+                                updaterName: self.getNodeValue(node, "spatial record update", "spatial record updater", "updater names", "updater name"),
+                                authorizerName: self.getNodeValue(node, "spatial record authorization", "authorizer", "authorizer names", "authorizer name"),
+                                authorizationDate: self.getNodeValue(node, "spatial record authorization", "authorization timespan", "date of authorization"),
+                                typeOfAuthorization: self.getNodeValue(node, "spatial record authorization", "authorization type"),
+                            };
+                            const scale = {
+                                accuracy: self.getNodeValue(node, "spatial accuracy qualifier"),
+                                basemap: self.getNodeValue(node, "current base map", "current base map names", "current base map name"),
+                                captureScale: self.getNodeValue(node, "capture scale"),
+                                coordinateSystem: self.getNodeValue(node, "coordinate system", "coordinate system value"),
+                            };
+                            const notes = self.getNodeValue(node, "spatial metadata descriptions", "spatial metadata notes");
+                            const pointName = collectPointNames(node);
+
+                            return {
+                                tileid: self.getTileId(node),
+                                metadata,
+                                scale,
+                                notes,
+                                pointName,
+                                recordEditExists: valueSet(...Object.values(metadata)),
+                                scaleExists: valueSet(...Object.values(scale)),
+                                descriptionExists: valueSet(notes, pointName),
+                            };
+                        })
+                    );
                 }
 
                 const rawAddressesNode = self.getRawNodeValue(locationNode, self.dataConfig.addresses);
