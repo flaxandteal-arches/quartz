@@ -33,12 +33,13 @@
                     <div class="aher-report-subsection-firstchild no-top-pad">
                         <h4 class="aher-geom-metadata-header">Record Edit History</h4>
 
-                        <!-- ko ifnot: recordEditExists -->
+                        <!-- ko if: !geometryEntries().some(function(entry) { return entry.recordEditExists; }) -->
                         <div class="aher-nodata-note">No authorization record for this resource</div>
                         <!-- /ko -->
 
+                        <!-- ko foreach: geometryEntries -->
                         <!-- ko if: recordEditExists -->
-                        <div class="firstchild-container" data-bind="{with: geometryMetadata}">
+                        <div class="firstchild-container" data-bind="{with: metadata, style: {marginTop: $index() > 0 ? '15px' : '0px'}}">
                             <div class="aher-report-subsection-item flex">
                                 <div class="aher-block-attributes actor-name">
                                     <span class="aher-block-key compressed">Authorizer: </span>
@@ -75,19 +76,21 @@
                             </div>
                         </div>
                         <!-- /ko -->
+                        <!-- /ko -->
                     </div>
 
                     <!-- Geometry Sources/Scale -->
                     <div class="aher-report-subsection-firstchild">
                         <h4 class="aher-geom-metadata-header">Record Sources/Scale</h4>
 
-                        <!-- ko ifnot: geometryScaleExists -->
+                        <!-- ko if: !geometryEntries().some(function(entry) { return entry.scaleExists; }) -->
                         <div class="aher-nodata-note">No record sources/scale for this resource</div>
                         <!-- /ko -->
 
-                        <!-- ko if: geometryScaleExists -->
-                        <div class="firstchild-container">
-                            <div class="aher-report-subsection-item flex column-order pad-btm" data-bind="{with: geometryScale}">
+                        <!-- ko foreach: geometryEntries -->
+                        <!-- ko if: scaleExists -->
+                        <div class="firstchild-container" data-bind="style: {marginTop: $index() > 0 ? '15px' : '0px'}">
+                            <div class="aher-report-subsection-item flex column-order pad-btm" data-bind="{with: scale}">
                                 <div class="aher-block-attributes">
                                     <span class="aher-block-key compressed">Coordinate System: </span>
                                     <div data-bind="text: coordinateSystem" class="aher-block-value"></div>
@@ -107,25 +110,39 @@
                             </div>
                         </div>
                         <!-- /ko -->
+                        <!-- /ko -->
                     </div>
 
                     <!-- Record Description -->
                     <div class="aher-report-subsection-firstchild">
                         <h4 class="aher-geom-metadata-header">Description</h4>
 
-                        <!-- ko if: !observableValueSet([geometryNotes]) || geometryNotes() == "" -->
+                        <!-- ko if: !geometryEntries().some(function(entry) { return entry.descriptionExists; }) -->
                         <div class="aher-nodata-note">No description record for this resource</div>
                         <!-- /ko -->
 
-                        <!-- ko if: observableValueSet([geometryNotes]) -->
+                        <!-- ko foreach: geometryEntries -->
+                        <!-- ko if: descriptionExists -->
                         <div class="firstchild-container pad-btm">
+                            <!-- ko if: pointName && pointName !== '--' -->
+                            <div class="aher-report-subsection-item">
+                                <div class="aher-block-attributes" style="margin-top: 5px;">
+                                    <span class="aher-block-key compressed">Point Name: </span>
+                                    <div data-bind="text: pointName" class="aher-block-value"></div>
+                                </div>
+                            </div>
+                            <!-- /ko -->
+
+                            <!-- ko if: notes && notes !== '--' -->
                             <div class="aher-report-subsection-item">
                                 <div class="aher-block-attributes" style="margin-top: 5px;">
                                     <span class="aher-block-key compressed">Metadata Description: </span>
-                                    <div data-bind="text: geometryNotes" class="aher-block-value"></div>
+                                    <div data-bind="text: notes" class="aher-block-value"></div>
                                 </div>
                             </div>
+                            <!-- /ko -->
                         </div>
+                        <!-- /ko -->
                         <!-- /ko -->
                     </div>
 
