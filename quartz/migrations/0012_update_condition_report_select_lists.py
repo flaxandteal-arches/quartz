@@ -23,6 +23,15 @@ def update_node_controlled_lists(apps, schema_editor, updates):
     from arches.app.models.graph import Graph
     from arches.app.models.models import Node
 
+    try:
+        graph = Graph.objects.get(
+            pk=CONDITION_REPORT_GRAPHID, source_identifier__isnull=True
+        )
+    except Graph.DoesNotExist:
+        # Graph has not been loaded yet (e.g. fresh database); it will be
+        # created later with the up-to-date controlled lists already set.
+        return
+
     for nodeid, controlled_list_id in updates.items():
         for node in Node.objects.filter(pk=nodeid) | Node.objects.filter(
             source_identifier_id=nodeid
@@ -30,9 +39,7 @@ def update_node_controlled_lists(apps, schema_editor, updates):
             node.config["controlledList"] = controlled_list_id
             node.save()
 
-    Graph.objects.get(
-        pk=CONDITION_REPORT_GRAPHID, source_identifier__isnull=True
-    ).publish()
+    graph.publish()
 
 
 def update_select_lists_for_cr(apps, schema_editor):
