@@ -151,6 +151,10 @@ class Command(BaseCommand):
             f"  Related visible resources included (e.g. Public Digital "
             f"Objects): {included}"
         )
+        if person_count := diagnostics.get("person_resources", 0):
+            self.stdout.write(f"  Person resources (referenced by Heritage Items): {person_count}")
+        if period_count := diagnostics.get("period_resources", 0):
+            self.stdout.write(f"  Period resources (all): {period_count}")
         files = diagnostics.get("referenced_files", [])
         self.stdout.write(
             f"  Referenced files (images + Digital Object content), "
