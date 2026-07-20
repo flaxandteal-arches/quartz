@@ -33,5 +33,7 @@ class ArchesTestCase(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        LanguageSynchronizer.synchronize_settings_with_db(update_published_graphs=False)
+        LanguageSynchronizer.synchronize_settings_with_db(
+            update_published_graphs=False
+        )
         cls.loadOntology()

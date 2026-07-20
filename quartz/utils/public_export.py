@@ -20,6 +20,8 @@ from arches_resource_version_manager.models import VersionedResource
 logger = logging.getLogger(__name__)
 
 HERITAGE_ITEM_GRAPH_ID = "076f9381-7b00-11e9-8d6b-80000b44d1d9"
+PERSON_GRAPH_ID = "22477f01-1a44-11e9-b0a9-000d3ab1e588"
+PERIOD_GRAPH_ID = "f9045867-8861-11ea-b06f-f875a44e0e11"
 REGISTRY_GRAPH_NAME = "Registry"
 VERSIONING_NODEGROUP_ID = "03d5eb66-d748-57cc-8390-5788078696d7"
 VISIBILITY_LIST_ID = "63244526-1690-5cfb-af89-49bfe6667b23"
@@ -278,6 +280,42 @@ def get_visibility_labels_for_resources(visibility_nodes, resource_ids):
                         result[str(tile.resourceinstance_id)] = uri_to_label[uri]
                         break
     return result
+
+
+def get_referenced_person_ids(heritage_item_ids=None):
+    """Find Person resource IDs referenced by Heritage Items via associated_actors.
+
+    Queries ResourceXResource for tile-backed relations from Heritage Items
+    to the Person graph. If heritage_item_ids is provided, restricts to those
+    source resources; otherwise queries all Heritage Item → Person relations
+    (needed when exporting Drafts, since relations are stored against Active
+    versions).
+
+    Returns a set of Person resource instance IDs.
+    """
+    filters = {
+        "from_resource_graph_id": HERITAGE_ITEM_GRAPH_ID,
+        "to_resource_graph_id": PERSON_GRAPH_ID,
+        "tile__isnull": False,
+    }
+    if heritage_item_ids:
+        filters["from_resource_id__in"] = heritage_item_ids
+    person_ids = set(
+        ResourceXResource.objects.filter(**filters)
+        .values_list("to_resource_id", flat=True)
+    )
+    return person_ids
+
+
+def get_all_period_ids():
+    """Return all Period resource instance IDs."""
+    from arches.app.models.models import ResourceInstance
+
+    return set(
+        ResourceInstance.objects.filter(
+            graph_id=PERIOD_GRAPH_ID,
+        ).values_list("resourceinstanceid", flat=True)
+    )
 
 
 def get_outbound_relations(
@@ -588,6 +626,24 @@ def _write_resources_batched(resource_ids, user=None, indent=None, label="Resour
     sys.stderr.flush()
 
 
+def _write_reference_resources(resource_ids, output_path, user=None, indent=2, label="Resources"):
+    """Export resources to a standalone business_data JSON file.
+
+    Used for reference resource types (Person, Period) that are exported as
+    separate files for use as referenceSources in starches-builder.
+    """
+    resources = []
+    for resource_data in _write_resources_batched(
+        resource_ids, user=user, indent=indent, label=label,
+    ):
+        resources.append(resource_data)
+
+    output = {"business_data": {"resources": resources}}
+    with open(output_path, "w") as f:
+        json.dump(output, f, indent=indent)
+    logger.info("Wrote %d %s resources to %s", len(resources), label, output_path)
+
+
 def export_resources(
     resource_ids,
     output_dir,
@@ -603,6 +659,8 @@ def export_resources(
         output_dir/
             business_data/
                 Heritage_Item.json  (resources + relations)
+                Person.json         (Persons referenced by Heritage Items)
+                Period.json         (all Period resources)
             graphs/
                 resource_models/
                     <GraphName>.json  (for each graph referenced by exported resources)
@@ -760,6 +818,29 @@ def export_resources(
             unique_file_refs.append(ref)
     file_refs = sorted(unique_file_refs, key=lambda r: (r["name"] or "", r["file_id"] or ""))
     diagnostics["referenced_files"] = file_refs
+
+    # Export referenced Person resources (don't filter by resource_ids since
+    # relations may be stored against Active versions while we export Drafts)
+    person_ids = get_referenced_person_ids()
+    diagnostics["person_resources"] = len(person_ids)
+    if person_ids:
+        _write_reference_resources(
+            sorted(str(pid) for pid in person_ids),
+            os.path.join(bd_dir, "Person.json"),
+            user=user, indent=indent, label="Person",
+        )
+        graph_ids.add(PERSON_GRAPH_ID)
+
+    # Export all Period resources
+    period_ids = get_all_period_ids()
+    diagnostics["period_resources"] = len(period_ids)
+    if period_ids:
+        _write_reference_resources(
+            sorted(str(pid) for pid in period_ids),
+            os.path.join(bd_dir, "Period.json"),
+            user=user, indent=indent, label="Period",
+        )
+        graph_ids.add(PERIOD_GRAPH_ID)
 
     # Include all resource model graphs with visibility nodes
     from arches.app.models.models import GraphModel
