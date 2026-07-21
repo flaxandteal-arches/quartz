@@ -27,7 +27,10 @@ This framework only takes effect when settings.PERMISSION_FRAMEWORK points at it
 (env-gated, off by default), so importing it has no effect on production.
 """
 
-from arches.app.models.models import ResourceInstance
+from arches.app.models.models import (
+    ResourceInstance,
+    ResourceInstanceLifecycleState,
+)
 from arches.app.models.system_settings import settings
 from arches.app.permissions.arches_default_deny import (
     ArchesDefaultDenyPermissionFramework,
@@ -114,6 +117,55 @@ class BlanketRoleDenyFramework(ArchesDefaultDenyPermissionFramework):
         # grant) and downgrades (overrides owner short-circuit / explicit rows).
         result["permitted"] = self._grant(user, permission, resource)
         return result
+
+    # ---- search results UI (read / edit buttons on result cards) ----------
+    def get_permission_inclusions(self):
+        """Also return the lifecycle state, which get_search_ui_permissions needs.
+
+        Search restricts ``_source`` to these fields, so without this the
+        lifecycle state id is absent from every result and the Draft check
+        below can never match.
+        """
+        return super().get_permission_inclusions() + [
+            "resource_instance_lifecycle_state_id"
+        ]
+
+    def get_search_ui_permissions(self, user, search_result, groups):
+        """Drive the result-card buttons from the blanket gate, not guardian rows.
+
+        The base implementation reads ``permissions.groups_edit`` from the search
+        document, which is populated from per-instance guardian rows — and this
+        framework deliberately creates none, so it would always say "no edit".
+        """
+        if not self._blanket_viewer(user):
+            return super().get_search_ui_permissions(user, search_result, groups)
+        source = search_result.get("_source", {})
+        return {
+            "can_read": True,
+            "can_edit": self.user_in_group_by_name(user, FULL_ACCESS_GROUPS)
+            or source.get("resource_instance_lifecycle_state_id")
+            in self._draft_state_ids(),
+            "is_principal": user.id
+            in source.get("permissions", {}).get("principal_user", []),
+        }
+
+    _draft_state_id_cache = None
+
+    def _draft_state_ids(self):
+        """Ids of every ``Draft`` lifecycle state (one per lifecycle/graph).
+
+        Called once per search result, so it is memoised on the framework — which
+        is a process-wide singleton (``permission_backend._PERMISSION_FRAMEWORK``).
+        """
+        # ponytail: cached for the process lifetime; lifecycle states only change
+        # on graph import, so restart the app if you add or rename one.
+        if self._draft_state_id_cache is None:
+            type(self)._draft_state_id_cache = {
+                str(state.pk)
+                for state in ResourceInstanceLifecycleState.objects.all()
+                if state.name == DRAFT_STATE_NAME
+            }
+        return self._draft_state_id_cache
 
     # ---- search / bulk: mirror the superuser "sees everything" path -------
     def get_allowed_instances(

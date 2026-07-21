@@ -13,6 +13,23 @@ const ACT_NAME_NODE      = "4a7be135-9938-11ea-b0e2-f875a44e0e11";
 const ACT_TYPE_NODE      = "394d15b8-8f7a-11ea-b4f5-f875a44e0e11";
 const ACT_DISP_DATE_NODE = "4f5eeb27-993e-11ea-b9f7-f875a44e0e11";
 
+// Consultation graph ID and node IDs
+const CONSULTATION_GRAPH_ID = "8d41e49e-a250-11e9-9eab-00224800b26d";
+const CONS_NAME_NODE        = "4ad69684-951f-11ea-b5c3-f875a44e0e11";
+const CONS_TYPE_NODE        = "771bb1e2-8895-11ea-8446-f875a44e0e11";
+
+// Digital Object graph ID
+const DIGITAL_OBJECT_GRAPH_ID = "a535a235-8481-11ea-a6b9-f875a44e0e11";
+
+// Associated Monuments/Areas/Artefacts: graph IDs mapped to display labels
+const ASSET_GRAPH_LABELS = {
+    "076f9381-7b00-11e9-8d6b-80000b44d1d9": "Heritage Item",
+    "343cc20c-2c5a-11e8-90fa-0242ac120005": "Artefact",
+    "49bac32e-5464-11e9-a6e2-000d3ab1e588": "Maritime Vessel",
+    "b8032b00-594d-11e9-9cf0-18cf5eb368c4": "Historic Aircraft",
+    "979aaf0b-7042-11ea-9674-287fcf6a5e72": "Area",
+};
+
 // Condition Report graph and node IDs
 const CONDITION_REPORT_GRAPH_ID = "9fccd932-8e8f-4595-89bd-3cb04ddfecae";
 const CR_DATE_NODE         = "a15e9d62-742b-49d1-a6ae-8548828d852f";
@@ -54,22 +71,46 @@ export default ko.components.register(
             const self = this;
             Object.assign(self, reportUtils);
 
+            self.getResourceLink = (node) => {
+                if (node) {
+                    const resourceId = node?.resourceId || node?.instance_details?.[0]?.resourceId;
+                    if (resourceId) {
+                        try {
+                            const urlPathname = window.location.pathname;
+                            const urlName = urlPathname.includes("resource")
+                                ? "arches:resource"
+                                : "arches:resource_report";
+                            return generateArchesURL(urlName, { resourceid: resourceId });
+                        } catch (_e) {
+                            return `/report/${resourceId}`;
+                        }
+                    }
+                }
+            };
+
             //Related Resource 2 column table configuration
             self.relatedResourceTwoColumnTableConfig = {
                 ...self.defaultTableConfig,
                 paging: true,
                 searching: true,
-                columns: Array(2).fill(null),
+                columns: Array(1).fill(null),
             };
 
             self.archiveHolderTableConfig = {
                 ...self.defaultTableConfig,
                 paging: true,
                 searching: true,
-                columns: Array(4).fill(null),
+                columns: Array(3).fill(null),
             };
 
             self.relatedResourceThreeColumnTableConfig = {
+                ...self.defaultTableConfig,
+                paging: true,
+                searching: true,
+                columns: Array(3).fill(null),
+            };
+
+            self.relatedResourceFourColumnTableConfig = {
                 ...self.defaultTableConfig,
                 paging: true,
                 searching: true,
@@ -80,15 +121,23 @@ export default ko.components.register(
                 ...self.defaultTableConfig,
                 paging: true,
                 searching: true,
-                columns: Array(2).fill(null),
+                columns: Array(1).fill(null),
             };
 
-            // 4 columns: Activity, Activity Type, Date, Actions
+            // 3 columns: Activity, Activity Type, Date
             self.activityTableConfig = {
                 ...self.defaultTableConfig,
                 paging: true,
                 searching: true,
-                columns: Array(4).fill(null),
+                columns: Array(3).fill(null),
+            };
+
+            // 2 columns: Consultation, Consultation Type
+            self.consultationTableConfig = {
+                ...self.defaultTableConfig,
+                paging: true,
+                searching: true,
+                columns: Array(2).fill(null),
             };
 
             // 7 columns: Date, Summary Type, Summary, Officer, Condition, Occupancy, Maintenance
@@ -209,54 +258,46 @@ export default ko.components.register(
                     }
                 }
 
-                const associatedConsultationsNode = self.getRawNodeValue(
-                    params.data(),
-                    self.dataConfig.consultations,
-                    "instance_details"
-                );
-                if (Array.isArray(associatedConsultationsNode)) {
-                    const tileid = self.getTileId(
-                        self.getRawNodeValue(
-                            params.data(),
-                            self.dataConfig.consultations
-                        )
-                    );
-                    self.consultations(
-                        associatedConsultationsNode.map((x) => {
-                            const consultation = self.getNodeValue(x);
-                            const resourceUrl = self.getResourceLink(x);
-                            return { consultation, resourceUrl, tileid };
-                        })
-                    );
-                }
-
-                const userAvailableConsultationCards = () => {
-                    return $.ajax({
-                        url: generateArchesURL("arches:api_card", { resourceid: self.dataConfig.resourceinstanceid }),
-                        context: this,
-                    })
-                        .done(function (response) { return response; })
-                        .fail(function () { return false; });
-                };
-
-                if (self.dataConfig.resourceinstanceid) {
-                    userAvailableConsultationCards().then(function (cards_response) {
-                        if (cards_response !== false) {
-                            var card_names = [];
-                            for (const card in cards_response.cards) {
-                                card_names.push(cards_response.cards[card].name);
-                            }
-                            if (card_names.includes("Associated Consultations")) {
+                if (self.dataConfig.consultations && self.dataConfig.resourceinstanceid) {
+                    const consRelatedUrl = generateArchesURL(
+                        "arches:related_resources",
+                        { resourceid: self.dataConfig.resourceinstanceid }
+                    ) + "?paginate=false";
+                    $.ajax({ url: consRelatedUrl })
+                        .done(function (response) {
+                            const related = Array.isArray(response.related_resources)
+                                ? response.related_resources
+                                : [];
+                            const consultations = related
+                                .filter(r => r.graph_id === CONSULTATION_GRAPH_ID)
+                                .map(r => {
+                                    const tiles = r.tiles || [];
+                                    const consultation = i18nString(
+                                        getNodeFromTiles(tiles, CONS_NAME_NODE)
+                                    ) || r.displayname || "--";
+                                    const consultationType = conceptLabel(
+                                        getNodeFromTiles(tiles, CONS_TYPE_NODE)
+                                    );
+                                    let resourceUrl;
+                                    try {
+                                        resourceUrl = generateArchesURL(
+                                            "arches:resource_report",
+                                            { resourceid: r.resourceinstanceid }
+                                        );
+                                    } catch (_e) {
+                                        resourceUrl = `/report/${r.resourceinstanceid}`;
+                                    }
+                                    return { consultation, consultationType, resourceUrl, tileid: null };
+                                });
+                            self.consultations(consultations);
+                            if (!consultations.length) {
                                 self.consultations_message("No consultations for this resource");
-                            } else {
-                                self.consultations_message("You do not have permission to see this information");
                             }
-                        } else {
+                        })
+                        .fail(function (xhr, status, error) {
+                            console.error("[Consultations] fetch FAILED:", xhr.status, status, error, consRelatedUrl);
                             self.consultations_message("There was an issue checking for associated consultations.");
-                        }
-                    });
-                } else {
-                    self.consultations_message("There was an issue checking for associated consultations.");
+                        });
                 }
 
                 const associatedArchiveNode = self.getRawNodeValue(params.data(), self.dataConfig.archive);
@@ -266,75 +307,153 @@ export default ko.components.register(
                     self.archive(
                         associatedArchiveNode.map((x) => {
                             const archiveHolders = [];
-                            var reference, title, tileid, holders;
+                            var reference, title, tileid, holderNode;
                             if (key) {
                                 reference = self.getNodeValue(x, key, "archive object references", "archive object reference");
                                 title = self.getNodeValue(x, key, "archive object titles", "archive object title");
                                 tileid = self.getTileId(x);
-                                holders = self.getRawNodeValue(x, key, "archive holder", "instance_details");
+                                holderNode = self.getRawNodeValue(x, key, "archive holder");
                             } else {
                                 reference = self.getNodeValue(x, "archive object references", "archive object reference");
                                 title = self.getNodeValue(x, "archive object titles", "archive object title");
                                 tileid = self.getTileId(x);
-                                holders = self.getRawNodeValue(x, "archive holder", "instance_details");
+                                holderNode = self.getRawNodeValue(x, "archive holder");
                             }
-                            holders?.forEach((element) => {
-                                archiveHolders.push({
-                                    holder: self.getNodeValue(element),
-                                    holderLink: self.getResourceLink(element),
+                            const holders = holderNode?.instance_details;
+                            if (Array.isArray(holders) && holders.length) {
+                                holders.forEach((element) => {
+                                    archiveHolders.push({
+                                        holder: self.getNodeValue(element),
+                                        holderLink: self.getResourceLink(element),
+                                    });
                                 });
-                            });
+                            } else if (holderNode) {
+                                const holder = self.processRawValue(holderNode);
+                                if (holder && holder !== "--") {
+                                    archiveHolders.push({
+                                        holder,
+                                        holderLink: self.getResourceLink(holderNode),
+                                    });
+                                }
+                            }
                             return { archiveHolders, reference, title, tileid };
                         })
                     );
                 }
 
-                const associatedFilesNode = self.getRawNodeValue(params.data(), self.dataConfig.files, "instance_details");
-                if (Array.isArray(associatedFilesNode)) {
-                    const tileid = self.getTileId(self.getRawNodeValue(params.data(), self.dataConfig.files));
-                    self.files(
-                        associatedFilesNode.map((x) => {
-                            const file = self.getNodeValue(x);
-                            const resourceUrl = self.getResourceLink(x);
-                            return { file, resourceUrl, tileid };
+                if (self.dataConfig.files && self.dataConfig.resourceinstanceid) {
+                    const filesRelatedUrl = generateArchesURL(
+                        "arches:related_resources",
+                        { resourceid: self.dataConfig.resourceinstanceid }
+                    ) + "?paginate=false";
+                    $.ajax({ url: filesRelatedUrl })
+                        .done(function (response) {
+                            const related = Array.isArray(response.related_resources)
+                                ? response.related_resources
+                                : [];
+                            self.files(
+                                related
+                                    .filter(r => r.graph_id === DIGITAL_OBJECT_GRAPH_ID)
+                                    .map(r => {
+                                        let resourceUrl;
+                                        try {
+                                            resourceUrl = generateArchesURL(
+                                                "arches:resource_report",
+                                                { resourceid: r.resourceinstanceid }
+                                            );
+                                        } catch (_e) {
+                                            resourceUrl = `/report/${r.resourceinstanceid}`;
+                                        }
+                                        return { file: r.displayname || "--", resourceUrl, tileid: null };
+                                    })
+                            );
                         })
-                    );
-                }
-
-                const associatedArtifactsNode = self.getRawNodeValue(params.data(), self.dataConfig.assets);
-                if (associatedArtifactsNode) {
-                    if (Array.isArray(associatedArtifactsNode)) {
-                        let key = "Monument, Area or Artefact";
-                        if (!(key in associatedArtifactsNode[0])) key = "Associated Monument, Area or Artefact";
-                        self.assets(
-                            associatedArtifactsNode.map((x) => {
-                                var resource = [];
-                                for (const element of (x[key]?.["instance_details"] || [])) {                                                                                                                                     
-                                    if (element) {
-                                        resource.push({
-                                            resourceName: self.getNodeValue(element),
-                                            resourceUrl: self.getResourceLink(element),
-                                        });
-                                    }
-                                }
-                                const association = self.getNodeValue(x, "association type");
-                                const tileid = self.getTileId(x);
-                                return { resource, association, tileid };
+                        .fail(function (xhr, status, error) {
+                            console.error("[Files] fetch FAILED:", xhr.status, status, error, filesRelatedUrl);
+                        });
+                } else if (self.dataConfig.files) {
+                    const associatedFilesNode = self.getRawNodeValue(params.data(), self.dataConfig.files, "instance_details");
+                    if (Array.isArray(associatedFilesNode)) {
+                        const tileid = self.getTileId(self.getRawNodeValue(params.data(), self.dataConfig.files));
+                        self.files(
+                            associatedFilesNode.map((x) => {
+                                const file = self.getNodeValue(x);
+                                const resourceUrl = self.getResourceLink(x);
+                                return { file, resourceUrl, tileid };
                             })
                         );
-                    } else {
-                        const instanceDetails = self.getRawNodeValue(associatedArtifactsNode, "instance_details");
-                        if (Array.isArray(instanceDetails)) {
-                            const tileid = self.getTileId(associatedArtifactsNode);
-                            self.assets(
-                                instanceDetails.map((x) => {
-                                    const resourceName = self.getNodeValue(x);
-                                    const resourceUrl = self.getResourceLink(x);
-                                    return { resource: [{ resourceName, resourceUrl }], association: "--", tileid };
-                                })
-                            );
+                    }
+                }
+
+                if (self.dataConfig.assets && self.dataConfig.resourceinstanceid) {
+                    // Build resourceId -> association type from tile data (association type
+                    // is always reliably populated; only display_value in instance_details may be missing)
+                    const assocTypeByResourceId = {};
+                    const assetsData = self.getRawNodeValue(params.data(), self.dataConfig.assets);
+                    if (Array.isArray(assetsData)) {
+                        for (const tile of assetsData) {
+                            const rawAssocType = self.getRawNodeValue(tile, "association type");
+                            const assocType = Array.isArray(rawAssocType)
+                                ? (rawAssocType[0]?.["@display_value"] || conceptLabel(rawAssocType) || "--")
+                                : self.getNodeValue(tile, "association type");
+                            const instances = self.getRawNodeValue(tile, {
+                                testPaths: [
+                                    ["monument, area or artefact", "instance_details"],
+                                    ["associated monument, area or artefact", "instance_details"],
+                                ]
+                            });
+                            const monumentNode = self.getRawNodeValue(tile, {
+                                testPaths: [
+                                    ["monument, area or artefact"],
+                                    ["associated monument, area or artefact"],
+                                ]
+                            });
+                            if (Array.isArray(instances) && instances.length) {
+                                for (const inst of instances) {
+                                    if (inst?.resourceId) {
+                                        assocTypeByResourceId[inst.resourceId] = assocType;
+                                    }
+                                }
+                            } else if (monumentNode?.resourceId) {
+                                assocTypeByResourceId[monumentNode.resourceId] = assocType;
+                            }
                         }
                     }
+
+                    const assetsRelatedUrl = generateArchesURL(
+                        "arches:related_resources",
+                        { resourceid: self.dataConfig.resourceinstanceid }
+                    ) + "?paginate=false";
+                    $.ajax({ url: assetsRelatedUrl })
+                        .done(function (response) {
+                            const related = Array.isArray(response.related_resources)
+                                ? response.related_resources
+                                : [];
+                            self.assets(
+                                related
+                                    .filter(r => r.graph_id in ASSET_GRAPH_LABELS)
+                                    .map(r => {
+                                        let resourceUrl;
+                                        try {
+                                            resourceUrl = generateArchesURL(
+                                                "arches:resource_report",
+                                                { resourceid: r.resourceinstanceid }
+                                            );
+                                        } catch (_e) {
+                                            resourceUrl = `/report/${r.resourceinstanceid}`;
+                                        }
+                                        return {
+                                            resource: [{ resourceName: r.displayname || "--", resourceUrl }],
+                                            resourceType: ASSET_GRAPH_LABELS[r.graph_id],
+                                            association: assocTypeByResourceId[r.resourceinstanceid] || "--",
+                                            tileid: null,
+                                        };
+                                    })
+                            );
+                        })
+                        .fail(function (xhr, status, error) {
+                            console.error("[Assets] fetch FAILED:", xhr.status, status, error, assetsRelatedUrl);
+                        });
                 }
 
                 const associatedActorsNode = self.getRawNodeValue(params.data(), self.dataConfig.actors);

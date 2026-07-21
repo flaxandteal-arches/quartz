@@ -5,6 +5,10 @@ switch needed). It is a HARD ALLOWLIST GATE: superuser and Delegate get full
 access, Heritage Officer gets view-everywhere plus change on Draft resources,
 and everyone else is denied — including resource owners (principaluser) and
 holders of explicit per-instance rows, which the gate overrides.
+switch needed). It is a HARD ALLOWLIST GATE: superuser and Delegate get full
+access, Heritage Officer gets view-everywhere plus change on Draft resources,
+and everyone else is denied — including resource owners (principaluser) and
+holders of explicit per-instance rows, which the gate overrides.
 
 Run:
     python manage.py test tests.test_blanket_roles --settings="tests.test_settings"
@@ -15,8 +19,8 @@ import os
 from django.contrib.auth.models import Group, User
 from django.test.utils import captured_stdout
 
-from arches.app.models.graph import Graph
 from arches.app.models.models import (
+    Node,
     ResourceInstanceLifecycle,
     ResourceInstanceLifecycleState,
 )
@@ -50,8 +54,15 @@ class BlanketRoleFrameworkTests(ArchesTestCase):
             with open(path) as f:
                 archesfile = JSONDeserializer().deserialize(f)
             ResourceGraphImporter(archesfile["graph"], overwrite_graphs=True)
+        # The Digital_Object fixture pins nodes to a branch publication that is
+        # never created, which trips a deferred FK check at test teardown. Clear
+        # it — the graph remains a usable draft for attaching resources.
+        Node.objects.filter(graph_id=DO_GRAPH_ID).update(sourcebranchpublication=None)
         cls.admin = User.objects.create(username="br_admin", is_superuser=True)
-        Graph.objects.get(pk=DO_GRAPH_ID).publish(user=cls.admin)
+        # NB: the graph is intentionally left unpublished. Publishing it inside
+        # the test transaction leaves nodes referencing an as-yet-uncommitted
+        # branch publication, which trips the deferred FK check at teardown; the
+        # permission framework does not need a published graph here.
 
         # Two lifecycle states: Draft (Heritage-Officer-editable) and a
         # non-Draft state, so we can prove the state-gated edit.

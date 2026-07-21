@@ -7,6 +7,8 @@ import reportUtils from "utils/report";
 import MonumentTemplate from "templates/views/components/reports/monument.htm";
 import "views/components/reports/scenes/name";
 import "views/components/reports/scenes/json";
+import "views/components/reports/scenes/people";
+import "views/components/reports/scenes/protection";
 import "views/components/reports/scenes/resources";
 import "bindings/reports";
 
@@ -39,15 +41,18 @@ export default ko.components.register("monument-report", {
         self.activeSection = ko.observable("name");
 
         self.nameDataConfig = {
-            name: "monument",
-            nameChildren: "child monument",
-            parent: "parent monument or area",
+            name: "heritage place names",
+            nameChildren: "heritage item",
+            parent: "parent heritage place or area",
+            versioning: "versioning",
         };
 
         self.classificationDataConfig = {
             production: "construction phases",
             components: "components",
             usePhase: "use phases",
+            recordType: "record type",
+            heritagePlaceMetatype: "heritage place metatype",
         };
 
         self.descriptionDataConfig = {
@@ -87,12 +92,13 @@ export default ko.components.register("monument-report", {
             self.cards = self.createCardDictionary(cards);
 
             self.nameCards = {
-                name: self.cards?.["monument names"],
+                name: self.cards?.["heritage place names"],
                 externalCrossReferences:
                     self.cards?.["external cross references"],
                 systemReferenceNumbers:
                     self.cards?.["system reference numbers"],
-                parent: self.cards?.["parent monuments"],
+                parent: self.cards?.["parent heritage place or area"],
+                versioning: self.cards?.["versioning"],
             };
 
             self.descriptionCards = {
@@ -104,10 +110,13 @@ export default ko.components.register("monument-report", {
                 production: self.cards?.["construction phases"],
                 components: self.cards?.["components"],
                 usePhase: self.cards?.["use phase"],
+                recordType: self.cards?.["record type"],
+                heritagePlaceMetatype: self.cards?.["heritage place metatype"],
             };
 
             self.assessmentCards = {
                 scientificDate: self.cards?.["scientific date assignment"],
+                auditMetadata: self.cards?.["audit metadata"],
             };
 
             self.imagesCards = {

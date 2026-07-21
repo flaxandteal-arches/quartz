@@ -28,13 +28,16 @@
         "arches_modular_reports": "archesproject/arches-modular-reports#main",
         "arches_search": "archesproject/arches-search#main",
         "online-3d-viewer": "^0.18.0",
+        "pinia": "^2.2.6",
         "potree-core": "^2.0.15",
         "three": "^0.184.0"
     },
     "devDependencies": {
         "arches-dev-dependencies": "archesproject/arches-dev-dependencies#dev/8.1.x"
     },
-    "nodeModulesPaths": {},
+    "nodeModulesPaths": {
+        "vue-demi": "node_modules/pinia/node_modules/vue-demi"
+    },
     "overrides": {
         "moment-timezone": "^0.5.45",
         "nomnom": "npm:@gerhobbelt/nomnom",

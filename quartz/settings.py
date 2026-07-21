@@ -379,7 +379,9 @@ STARCHES_VALIDATION_CONTAINER = os.environ.get(
 GITHUB_DISPATCH_REPO = os.environ.get("GITHUB_DISPATCH_REPO", None)
 GITHUB_DISPATCH_TOKEN = os.environ.get("GITHUB_DISPATCH_TOKEN", None)
 
-if AZURE_ACCOUNT_NAME and AZURE_ACCOUNT_KEY and AZURE_CONTAINER:
+USE_LOCAL_STORAGE = os.environ.get("USE_LOCAL_STORAGE", "False").lower() == "true"
+
+if not USE_LOCAL_STORAGE and AZURE_ACCOUNT_NAME and AZURE_ACCOUNT_KEY and AZURE_CONTAINER:
     INSTALLED_APPS = (
         *INSTALLED_APPS,
         "storages",
@@ -446,7 +448,7 @@ LOGGING = {
 RATE_LIMIT = "5/m"
 
 # Sets default max upload size to 15MB
-DATA_UPLOAD_MAX_MEMORY_SIZE = 15728640
+DATA_UPLOAD_MAX_MEMORY_SIZE = 524288000
 
 # Unique session cookie ensures that logins are treated separately for each app
 SESSION_COOKIE_NAME = "quartz"
@@ -597,6 +599,28 @@ RENDERERS = [
         "component": "views/components/cards/file-renderers/pointcloudviewer",
         "type": "application/zip",
         "ext": "zip",
+        "exclude": "",
+    },
+    {
+        "name": "videoreader",
+        "title": "Video Player",
+        "description": "Plays video files the browser supports (MP4/H.264, WebM, Ogg); otherwise download.",
+        "id": "a1e7c9d2-7b3f-4c5a-8d6e-1f2a3b4c5d6e",
+        "iconclass": "fa fa-film",
+        "component": "views/components/cards/file-renderers/mediareader",
+        "type": "video/*",
+        "ext": "mp4, webm",
+        "exclude": "avi",
+    },
+    {
+        "name": "audioreader",
+        "title": "Audio Player",
+        "description": "Plays audio files the browser supports (MP3, WAV, Ogg); otherwise download.",
+        "id": "f6e5d4c3-b2a1-4987-8654-321012345678",
+        "iconclass": "fa fa-volume-up",
+        "component": "views/components/cards/file-renderers/mediareader",
+        "type": "audio/*",
+        "ext": "",
         "exclude": "",
     },
 ]
