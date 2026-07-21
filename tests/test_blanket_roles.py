@@ -5,6 +5,10 @@ switch needed). It is a HARD ALLOWLIST GATE: superuser and Delegate get full
 access, Heritage Officer gets view-everywhere plus change on Draft resources,
 and everyone else is denied — including resource owners (principaluser) and
 holders of explicit per-instance rows, which the gate overrides.
+switch needed). It is a HARD ALLOWLIST GATE: superuser and Delegate get full
+access, Heritage Officer gets view-everywhere plus change on Draft resources,
+and everyone else is denied — including resource owners (principaluser) and
+holders of explicit per-instance rows, which the gate overrides.
 
 Run:
     python manage.py test tests.test_blanket_roles --settings="tests.test_settings"
