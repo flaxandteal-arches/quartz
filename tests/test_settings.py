@@ -25,6 +25,30 @@ PACKAGE_NAME = "quartz"
 PROJECT_TEST_ROOT = os.path.join(os.path.dirname(__file__), "..", "tests")
 MEDIA_ROOT = os.path.join(PROJECT_TEST_ROOT, "fixtures", "data")
 
+# Arches' repo-level ``base_test.loadOntology()`` reads ``ONTOLOGY_PATH`` (a
+# source ontology dir), but arches' own settings expose ``ONTOLOGY_DIR`` — so a
+# project consuming that base_test must supply ``ONTOLOGY_PATH`` itself. Mirror
+# arches' own ``tests/test_settings`` and point at the CIDOC CRM fixtures shipped
+# alongside the arches source in use (sibling of the installed package, with an
+# ``$ARCHES_ROOT`` fallback for wheel-installed arches).
+import arches as _arches  # noqa: E402
+
+_arches_test_roots = [
+    os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(_arches.__file__))), "tests"
+    )
+]
+if os.environ.get("ARCHES_ROOT"):
+    _arches_test_roots.append(os.path.join(os.environ["ARCHES_ROOT"], "tests"))
+ONTOLOGY_PATH = next(
+    (
+        p
+        for r in _arches_test_roots
+        if os.path.isdir(p := os.path.join(r, "fixtures", "ontologies", "cidoc_crm"))
+    ),
+    os.path.join(_arches_test_roots[0], "fixtures", "ontologies", "cidoc_crm"),
+)
+
 BUSINESS_DATA_FILES = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.

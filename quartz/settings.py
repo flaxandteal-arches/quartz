@@ -34,14 +34,17 @@ ETL_MODULE_LOCATIONS.append("quartz.etl_modules")
 SEARCH_COMPONENT_LOCATIONS.append("quartz.search_components")
 PERMISSION_LOCATIONS.append("quartz.permissions")
 
-# Resource-instance permissions default to DENY via the stopgap Delegate /
-# Heritage Officer blanket-role framework (see quartz.permissions.blanket_roles).
-# This is now the default; set QUARTZ_BLANKET_ROLES=False to fall back to the
-# Arches default-ALLOW framework.
+# Resource-instance permissions are confined to an allowlist via the stopgap
+# Delegate / Heritage Officer blanket-role framework (see
+# quartz.permissions.blanket_roles): superuser and Delegate get full access,
+# Heritage Officer gets view-everywhere plus change on Draft resources, and
+# everyone else is denied. This is now the default; set QUARTZ_BLANKET_ROLES=False
+# to fall back to the Arches default-ALLOW framework.
 #
-# SECURITY: under default-deny every active non-superuser NOT in a blanket group
-# loses default resource-instance access. Before rolling this out to an
-# environment that previously ran allow-by-default, run
+# SECURITY: this is a HARD GATE — it overrides the base owner (principaluser)
+# short-circuit and explicit per-instance grants, so any active non-superuser NOT
+# in a blanket group loses ALL resource-instance access. Before rolling this out
+# to an environment that previously ran allow-by-default, run
 # `manage.py blanket_roles_preflight` to list who would be affected (it also
 # re-seeds the blanket groups).
 if os.environ.get("QUARTZ_BLANKET_ROLES", "True").lower() in ("true", "1", "yes"):
