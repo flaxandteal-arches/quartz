@@ -1,11 +1,14 @@
-"""Pre-flight for enabling the default-DENY blanket-role framework.
+"""Pre-flight for enabling the hard-gate blanket-role framework.
 
-Switching to default-deny (QUARTZ_BLANKET_ROLES=True) removes the implicit
-resource-instance access every authenticated user has under the default
-allow framework. This command reports who would lose that access — i.e. active,
-non-superuser users who are NOT in a blanket-access group — so the switch can be
-made safely. It also re-ensures the groups exist (the same set the migration
-seeds), so it is a no-op-safe convenience.
+Switching to the blanket-role gate (QUARTZ_BLANKET_ROLES=True) confines
+resource-instance access to an allowlist: superuser, Delegate (full) and
+Heritage Officer (view + change on Draft). It is a HARD GATE — it also overrides
+the base owner (principaluser) short-circuit and explicit per-instance rows, so
+being in a blanket group is the ONLY way an ordinary user keeps access. This
+command reports who would lose access — i.e. active, non-superuser users who are
+NOT in a blanket-access group — so the switch can be made safely. It also
+re-ensures the groups exist (the same set the migration seeds), so it is a
+no-op-safe convenience.
 """
 
 from django.contrib.auth import get_user_model
@@ -63,10 +66,10 @@ class Command(BaseCommand):
         self.stdout.write(
             self.style.WARNING(
                 f"{count} active non-superuser user(s) are NOT in {BLANKET_GROUPS} "
-                f"and will LOSE default resource-instance access when "
-                f"QUARTZ_BLANKET_ROLES is enabled (unless granted access another "
-                f"way). Add them to a blanket group, or grant explicit perms, "
-                f"before enabling deny in production:"
+                f"and will LOSE ALL resource-instance access when "
+                f"QUARTZ_BLANKET_ROLES is enabled. The hard gate overrides owner "
+                f"and explicit per-instance grants, so add them to a blanket group "
+                f"before enabling it in production:"
             )
         )
         for username in at_risk.values_list("username", flat=True)[: options["limit"]]:
