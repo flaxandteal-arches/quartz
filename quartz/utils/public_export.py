@@ -26,6 +26,13 @@ REGISTRY_GRAPH_NAME = "Registry"
 VERSIONING_NODEGROUP_ID = "03d5eb66-d748-57cc-8390-5788078696d7"
 VISIBILITY_LIST_ID = "63244526-1690-5cfb-af89-49bfe6667b23"
 
+# Graphs that are always included as related resources without requiring a
+# visibility node.  Resources in these graphs are exported whenever a primary
+# resource has an outbound relation to them.
+ALWAYS_VISIBLE_GRAPH_IDS = {
+    PERIOD_GRAPH_ID,
+}
+
 
 def get_visibility_nodes():
     """Discover all nodes that use the visibility controlled list.
@@ -330,7 +337,9 @@ def get_outbound_relations(
     graph that has a visibility node AND that target's visibility matches the
     same filter used for Heritage Items.
 
-    Relations to graphs without a visibility node are excluded entirely.
+    Relations to graphs in ALWAYS_VISIBLE_GRAPH_IDS are included without
+    requiring a visibility check.  Relations to other graphs without a
+    visibility node are excluded entirely.
 
     Args:
         resource_ids: list of source resource instance IDs
@@ -346,11 +355,13 @@ def get_outbound_relations(
     """
     # Graphs that have a visibility node
     graphs_with_visibility = {n["graph_id"] for n in visibility_nodes}
+    # Graphs eligible as relation targets (visibility-checked + always-visible)
+    eligible_graphs = graphs_with_visibility | ALWAYS_VISIBLE_GRAPH_IDS
 
     filters = {
         "from_resource_id__in": resource_ids,
         "tile__isnull": False,
-        "to_resource_graph_id__in": graphs_with_visibility,
+        "to_resource_graph_id__in": eligible_graphs,
     }
     if permitted_nodegroups is not None:
         filters["tile__nodegroup_id__in"] = permitted_nodegroups
@@ -386,17 +397,25 @@ def get_outbound_relations(
         })
 
     visible_target_ids = get_visible_resource_ids(visibility_nodes, visibility_uris)
-    allowed_target_ids = target_ids & visible_target_ids
+    # Always-visible graph targets bypass the visibility check
+    always_visible_target_ids = {
+        UUID(rel["to_resource"])
+        for rel in raw_relations
+        if rel["to_resource_graph"] in ALWAYS_VISIBLE_GRAPH_IDS
+    }
+    allowed_target_ids = (target_ids & visible_target_ids) | always_visible_target_ids
 
     # Build diagnostics
     diagnostics = {
         "candidate_relations": len(raw_relations),
         "target_resources_total": len(target_ids),
         "target_resources_visible": len(allowed_target_ids),
+        "target_resources_always_visible": len(always_visible_target_ids),
         "target_resources_filtered_out": len(target_ids - allowed_target_ids),
         "graphs_with_visibility_node": {
             n["graph_name"]: n["node_id"] for n in visibility_nodes
         },
+        "always_visible_graph_ids": list(ALWAYS_VISIBLE_GRAPH_IDS),
     }
 
     # Filter to only relations targeting visible resources
