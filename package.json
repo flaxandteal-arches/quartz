@@ -28,7 +28,7 @@
         "arches_modular_reports": "archesproject/arches-modular-reports#main",
         "arches_search": "archesproject/arches-search#main",
         "online-3d-viewer": "^0.18.0",
-        "pinia": "^2.2.6",
+        "pinia": "^4.0.2",
         "potree-core": "^2.0.15",
         "three": "^0.184.0"
     },
