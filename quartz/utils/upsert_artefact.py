@@ -26,7 +26,7 @@ from .payload_utils import (
     has_any_value,
 )
 
-from .versioned_resource_utils import calculate_next_version
+from .versioned_resource_utils import calculate_next_version, format_version
 
 logger = logging.getLogger(__name__)
 
@@ -219,7 +219,7 @@ def process_artefact(payload: dict, user) -> tuple:
         discovery_permit_number
     )
 
-    next_major, next_minor = calculate_next_version(
+    next_major, next_minor, next_patch = calculate_next_version(
         current_draft_version,
         is_final,
         version_from_payload,
@@ -229,11 +229,11 @@ def process_artefact(payload: dict, user) -> tuple:
     if not current_draft_version:
         resource = Resource()
         resource.graph_id = ARTEFACT_GRAPH_ID
-        resource.tiles = _build_managed_tiles(payload, 0, 0, resource.pk)
+        resource.tiles = _build_managed_tiles(payload, 0, 0, 0, resource.pk)
         resource.save(user=user)
 
         current_draft_version = register_new_draft(
-            resource, discovery_permit_number, 0, 0, payload
+            resource, discovery_permit_number, 0, 0, payload, patch_version=0
         )
 
         created = True
@@ -246,6 +246,7 @@ def process_artefact(payload: dict, user) -> tuple:
     current_draft_version.metadata = payload
     current_draft_version.major_version = next_major
     current_draft_version.minor_version = next_minor
+    current_draft_version.patch_version = next_patch
     current_draft_version.save()
 
     current_draft_resource = models.Resource.objects.get(pk=current_draft_version.pk)
@@ -266,18 +267,18 @@ def process_artefact(payload: dict, user) -> tuple:
     ).delete()
 
     current_draft_resource.tiles = _build_managed_tiles(
-        payload, next_major, next_minor, current_draft_resource.pk
+        payload, next_major, next_minor, next_patch, current_draft_resource.pk
     )
     current_draft_resource.save()
 
     if is_final:
         finalize_draft(discovery_permit_number, user, next_major, next_minor, payload)
 
-    return current_draft_resource, created, f"{next_major}.{next_minor}"
+    return current_draft_resource, created, format_version(next_major, next_minor, next_patch)
 
 
 def increment_current_working_draft_version(
-    resourceid: str, major_version: int, minor_version: int
+    resourceid: str, major_version: int, minor_version: int, patch_version: int = 0
 ):
     """Update or create the version information tile for the given resource instance."""
     current_draft_resource = Resource.objects.get(pk=resourceid)
@@ -286,7 +287,7 @@ def increment_current_working_draft_version(
         nodegroup_id=VERSIONING_NODEGROUP,
     ).delete()
     current_draft_resource.tiles = _build_version_tile(
-        major_version, minor_version, resourceid
+        major_version, minor_version, patch_version, resourceid
     )
     return current_draft_resource
 
@@ -299,12 +300,13 @@ def _build_managed_tiles(
     payload: dict,
     major_version: str | int,
     minor_version: str | int,
+    patch_version: str | int,
     resource_instance_ref: str,
 ) -> list:
     discovery_tile = _get_or_build_discovery_tile(payload, resource_instance_ref)
     return (
         _build_system_ref_tile(payload)
-        + _build_version_tile(major_version, minor_version, resource_instance_ref)
+        + _build_version_tile(major_version, minor_version, patch_version, resource_instance_ref)
         + _build_deactivation_reason_tile(payload)
         + _build_name_tiles(payload)
         + _build_external_ref_tiles(payload)
@@ -322,12 +324,17 @@ def _build_managed_tiles(
 
 
 def _build_version_tile(
-    major_version: str | int, minor_version: str | int, resource_instance_ref: str
+    major_version: str | int,
+    minor_version: str | int,
+    patch_version: str | int,
+    resource_instance_ref: str,
 ) -> list:
     return [
         make_tile(
             VERSIONING_NODEGROUP,
-            {VERSION_NUMBER: i18n_string(f"{major_version}.{minor_version}")},
+            {VERSION_NUMBER: i18n_string(
+                format_version(int(major_version), int(minor_version), int(patch_version))
+            )},
         )
     ]
 
