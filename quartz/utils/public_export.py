@@ -25,6 +25,9 @@ PERIOD_GRAPH_ID = "f9045867-8861-11ea-b06f-f875a44e0e11"
 REGISTRY_GRAPH_NAME = "Registry"
 VERSIONING_NODEGROUP_ID = "03d5eb66-d748-57cc-8390-5788078696d7"
 VISIBILITY_LIST_ID = "63244526-1690-5cfb-af89-49bfe6667b23"
+IMAGE_VISIBILITY_LIST_ID = "a0cf8836-fad3-52a5-ac18-1ef6d8982fb1"
+ASSOCIATED_ACTORS_NODEGROUP_ID = "9682621d-0262-11eb-ab33-f875a44e0e11"
+ACTOR_NODE_ID = "96826221-0262-11eb-8bc5-f875a44e0e11"
 
 # Graphs that are always included as related resources without requiring a
 # visibility node.  Resources in these graphs are exported whenever a primary
@@ -80,6 +83,46 @@ def get_visibility_uris(target_labels):
             VISIBILITY_LIST_ID,
         )
     return uris
+
+
+def get_image_visibility_uris(target_labels):
+    """Look up Image Visibility controlled list item URIs for the given labels."""
+    items = ListItem.objects.filter(
+        list_id=IMAGE_VISIBILITY_LIST_ID,
+        list_item_values__value__in=target_labels,
+    ).distinct()
+
+    uris = [item.uri for item in items]
+    if not uris:
+        logger.warning(
+            "No ListItems found for labels %s in Image Visibility list %s",
+            target_labels,
+            IMAGE_VISIBILITY_LIST_ID,
+        )
+    return uris
+
+
+def get_image_visibility_nodes():
+    """Discover nodes that use the Image Visibility controlled list.
+
+    Returns a list of dicts with node_id, nodegroup_id, graph_id, graph_name,
+    alias — same shape as get_visibility_nodes() but for the image-level
+    visibility (e.g. Available, Public, Main Image for Public Website).
+    """
+    nodes = Node.objects.filter(
+        config__controlledList=IMAGE_VISIBILITY_LIST_ID,
+    ).select_related("graph", "nodegroup")
+
+    results = []
+    for node in nodes:
+        results.append({
+            "node_id": str(node.nodeid),
+            "nodegroup_id": str(node.nodegroup_id),
+            "graph_id": str(node.graph_id),
+            "graph_name": str(node.graph.name),
+            "alias": node.alias,
+        })
+    return results
 
 
 def get_visibility_uri_to_label_map():
@@ -196,6 +239,10 @@ def get_visible_resource_ids(visibility_nodes, visibility_uris):
 
     Queries every graph that has a visibility node (using the shared controlled
     list) and returns the set of resource IDs whose visibility matches.
+
+    Only Active-lifecycle resources are considered visible — Draft resources
+    have their own visibility tiles but should not be pulled in as related
+    resources (the export already resolves Draft → Active for primary exports).
     """
     visible_ids = set()
     for vnode in visibility_nodes:
@@ -204,6 +251,7 @@ def get_visible_resource_ids(visibility_nodes, visibility_uris):
             uri_q,
             nodegroup_id=vnode["nodegroup_id"],
             resourceinstance__graph_id=vnode["graph_id"],
+            resourceinstance__resource_instance_lifecycle_state__name="Active",
         ).values_list("resourceinstance_id", flat=True)
         visible_ids.update(ids)
     return visible_ids
@@ -290,26 +338,28 @@ def get_visibility_labels_for_resources(visibility_nodes, resource_ids):
 
 
 def get_referenced_person_ids(heritage_item_ids=None):
-    """Find Person resource IDs referenced by Heritage Items via associated_actors.
+    """Find Person resource IDs to include in the public export.
 
-    Queries ResourceXResource for tile-backed relations from Heritage Items
-    to the Person graph. If heritage_item_ids is provided, restricts to those
-    source resources; otherwise queries all Heritage Item → Person relations
-    (needed when exporting Drafts, since relations are stored against Active
-    versions).
+    As a temporary measure, pending reconciliation of relationships,
+    this exports any Person whose resource name ends with (Architect)
+    or (Builder) rather than relying on ResourceXResource lookups
+    which may be incomplete.
 
     Returns a set of Person resource instance IDs.
     """
-    filters = {
-        "from_resource_graph_id": HERITAGE_ITEM_GRAPH_ID,
-        "to_resource_graph_id": PERSON_GRAPH_ID,
-        "tile__isnull": False,
-    }
-    if heritage_item_ids:
-        filters["from_resource_id__in"] = heritage_item_ids
+    from arches.app.models.models import ResourceInstance
+
+    # The name field is an I18n_String stored as JSON (e.g. {"en": "..."}),
+    # so we filter on the English value within the JSON object.
     person_ids = set(
-        ResourceXResource.objects.filter(**filters)
-        .values_list("to_resource_id", flat=True)
+        ResourceInstance.objects.filter(
+            graph_id=PERSON_GRAPH_ID,
+        )
+        .filter(
+            Q(name__en__endswith="(Architect)")
+            | Q(name__en__endswith="(Builder)")
+        )
+        .values_list("resourceinstanceid", flat=True)
     )
     return person_ids
 
@@ -441,6 +491,110 @@ def get_controlled_list_ids_for_graphs(graph_ids):
         if cl_id:
             list_ids.add(cl_id)
     return list_ids
+
+
+def filter_tiles_by_visibility(resource_data, visibility_nodes, required_uris):
+    """Remove tiles from image/file nodegroups that don't match the visibility filter.
+
+    The resource-level visibility check determines which Heritage Items to
+    export, but each item may have many image tiles with different visibility
+    tags (e.g. "Available", "Public", "Main Image for Public Website").  This
+    function strips individual tiles whose visibility references don't include
+    ALL of the required URIs.  For example, an image must be tagged both
+    "Available" AND "Public" to be kept.
+
+    Mutates resource_data["tiles"] in place.  Returns the count of tiles removed.
+    """
+    graph_id = resource_data.get("resourceinstance", {}).get("graph_id")
+    if not graph_id:
+        return 0
+
+    # Find visibility node for this resource's graph
+    vnode = None
+    for n in visibility_nodes:
+        if n["graph_id"] == str(graph_id):
+            vnode = n
+            break
+    if not vnode:
+        return 0
+
+    node_id = vnode["node_id"]
+    nodegroup_id = vnode["nodegroup_id"]
+    # Normalize URIs: strip urn:uuid: prefix for comparison since tile data
+    # may use either bare UUIDs or urn:uuid:-prefixed URIs inconsistently.
+    def _bare(uri):
+        return uri.replace("urn:uuid:", "") if uri else uri
+
+    required_set = {_bare(u) for u in required_uris}
+
+    tiles = resource_data.get("tiles", [])
+    kept = []
+    removed = 0
+    for tile in tiles:
+        if tile.get("nodegroup_id") != nodegroup_id:
+            kept.append(tile)
+            continue
+
+        # Check the visibility references on this tile
+        vis_data = (tile.get("data") or {}).get(node_id, [])
+        if not isinstance(vis_data, list):
+            vis_data = [vis_data] if vis_data else []
+
+        tile_uris = {
+            _bare(entry.get("uri"))
+            for entry in vis_data
+            if isinstance(entry, dict) and entry.get("uri")
+        }
+
+        # Tile must have ALL required URIs (e.g. both Available AND Public)
+        if required_set <= tile_uris:
+            kept.append(tile)
+        else:
+            removed += 1
+
+    resource_data["tiles"] = kept
+    return removed
+
+
+def strip_unresolvable_actor_tiles(resource_data, exported_person_ids):
+    """Remove associated_actor tiles that reference Persons not in the export.
+
+    As a temporary measure, pending reconciliation of relationships,
+    this ensures Heritage Items don't reference Person resources that
+    weren't included in the Person export (which is filtered by name
+    suffix). Tiles in the Associated Actors nodegroup whose Actor
+    resource-instance-list entries all point to non-exported Persons
+    are removed entirely.
+
+    Mutates resource_data["tiles"] in place. Returns the count of tiles removed.
+    """
+    exported_set = {str(pid) for pid in exported_person_ids}
+    tiles = resource_data.get("tiles", [])
+    kept = []
+    removed = 0
+    for tile in tiles:
+        if str(tile.get("nodegroup_id")) != ASSOCIATED_ACTORS_NODEGROUP_ID:
+            kept.append(tile)
+            continue
+
+        print("Found tile", len(exported_person_ids))
+        actor_data = (tile.get("data") or {}).get(ACTOR_NODE_ID, [])
+        if not isinstance(actor_data, list):
+            actor_data = [actor_data] if actor_data else []
+
+        # Keep tile only if at least one referenced Person is in the export
+        has_exported_person = any(
+            isinstance(entry, dict) and str(entry.get("resourceId", "")) in exported_set
+            for entry in actor_data
+        )
+        if has_exported_person:
+            kept.append(tile)
+            print("Found person")
+        else:
+            removed += 1
+
+    resource_data["tiles"] = kept
+    return removed
 
 
 def get_file_node_ids(graph_ids=None):
@@ -671,6 +825,7 @@ def export_resources(
     resource_labels=None,
     user=None,
     indent=2,
+    image_required_labels=None,
 ):
     """Export resources as a pkg-style directory with business_data, graphs, and reference_data.
 
@@ -694,6 +849,10 @@ def export_resources(
         visibility_uris: list of URIs representing the chosen visibility filter
         user: optional User for permission-based nodegroup filtering
         indent: JSON indentation level (None for compact)
+        image_required_labels: list of visibility labels that an image tile must
+            ALL have to be included (e.g. ["Available", "Public"]).  When set,
+            tiles in nodegroups with a visibility node are stripped unless they
+            carry every required label.  None disables tile-level filtering.
 
     Returns:
         tuple: (output_dir, diagnostics dict) or (None, None)
@@ -743,8 +902,28 @@ def export_resources(
 
         first_resource = True
 
+        tiles_filtered_count = 0
+        actor_tiles_filtered_count = 0
+        image_required_uris = (
+            get_image_visibility_uris(image_required_labels) if image_required_labels else None
+        )
+        image_vis_nodes = get_image_visibility_nodes() if image_required_uris else []
+
+        # Pre-compute exported Person IDs so we can strip associated_actor
+        # tiles that reference Persons not in the export.
+        person_ids = get_referenced_person_ids()
+
         def _write_resource(resource_data, label_map):
-            nonlocal first_resource, resource_count
+            nonlocal first_resource, resource_count, tiles_filtered_count, actor_tiles_filtered_count
+            # Filter out image tiles that don't have ALL required visibility tags
+            if image_required_uris:
+                tiles_filtered_count += filter_tiles_by_visibility(
+                    resource_data, image_vis_nodes, image_required_uris,
+                )
+            # Strip associated_actor tiles referencing non-exported Persons
+            actor_tiles_filtered_count += strip_unresolvable_actor_tiles(
+                resource_data, person_ids,
+            )
             _scope_resource(resource_data, label_map)
 
             # Collect graph IDs
@@ -837,10 +1016,10 @@ def export_resources(
             unique_file_refs.append(ref)
     file_refs = sorted(unique_file_refs, key=lambda r: (r["name"] or "", r["file_id"] or ""))
     diagnostics["referenced_files"] = file_refs
+    diagnostics["image_tiles_filtered_by_visibility"] = tiles_filtered_count
+    diagnostics["actor_tiles_filtered"] = actor_tiles_filtered_count
 
-    # Export referenced Person resources (don't filter by resource_ids since
-    # relations may be stored against Active versions while we export Drafts)
-    person_ids = get_referenced_person_ids()
+    # Export Person resources (already computed above for tile filtering)
     diagnostics["person_resources"] = len(person_ids)
     if person_ids:
         _write_reference_resources(
@@ -1070,6 +1249,7 @@ def run_export_pipeline(
     use_drafts=False,
     indent=2,
     user=None,
+    image_required_labels=None,
 ):
     """Run the full public-export selection+write pipeline (no console IO).
 
@@ -1149,6 +1329,7 @@ def run_export_pipeline(
         resource_labels=export_labels,
         user=user,
         indent=indent,
+        image_required_labels=image_required_labels,
     )
     if not result:
         msg.append(("error", "Export produced no output."))

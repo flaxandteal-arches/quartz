@@ -56,6 +56,14 @@ class Command(BaseCommand):
             help="JSON indentation (default: 2, use 0 for compact)",
         )
         parser.add_argument(
+            "--image-visibility",
+            nargs="+",
+            default=["Available", "Public"],
+            help="Visibility labels that an image tile must ALL have to be "
+            "included (default: Available Public). Set to empty to disable "
+            "tile-level filtering.",
+        )
+        parser.add_argument(
             "--blob-name",
             dest="blob_name",
             default=os.environ.get("STARCHES_PREBUILD_BLOB_NAME", DEFAULT_BLOB_NAME),
@@ -155,6 +163,11 @@ class Command(BaseCommand):
             self.stdout.write(f"  Person resources (referenced by Heritage Items): {person_count}")
         if period_count := diagnostics.get("period_resources", 0):
             self.stdout.write(f"  Period resources (all): {period_count}")
+        tiles_filtered = diagnostics.get("image_tiles_filtered_by_visibility", 0)
+        if tiles_filtered:
+            self.stdout.write(
+                f"  Image tiles filtered by visibility: {tiles_filtered}"
+            )
         files = diagnostics.get("referenced_files", [])
         self.stdout.write(
             f"  Referenced files (images + Digital Object content), "
@@ -258,6 +271,7 @@ class Command(BaseCommand):
         trigger = options["trigger"]
         run_async = options["run_async"]
         blob_name = options["blob_name"]
+        image_vis = options["image_visibility"]
 
         # Async: hand the WHOLE pipeline to a worker, which generates output_dir
         # itself (nothing pre-staged). Dry-run still previews locally below.
@@ -276,6 +290,7 @@ class Command(BaseCommand):
                     push=push,
                     trigger=trigger,
                     blob_name=blob_name,
+                    image_visibility=image_vis,
                 )
                 self.stdout.write(
                     self.style.SUCCESS(
@@ -423,6 +438,7 @@ class Command(BaseCommand):
             resource_labels=export_labels,
             user=export_user,
             indent=indent,
+            image_required_labels=image_vis or None,
         )
 
         if not result:

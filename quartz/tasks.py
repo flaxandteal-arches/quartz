@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 def run_public_export(visibility=None, output_dir="public_export",
                       use_drafts=False, indent=2, as_user=None,
                       push=False, trigger=False, event_type="prebuild",
-                      blob_name=None):
+                      blob_name=None, image_visibility=None):
     """Full public-export pipeline as a single worker task.
 
     ``blob_name`` names BOTH the local archive and the uploaded blob. When not
@@ -54,6 +54,7 @@ def run_public_export(visibility=None, output_dir="public_export",
         use_drafts=use_drafts,
         indent=indent or None,
         user=user,
+        image_required_labels=image_visibility or ["Available", "Public"],
     )
     pipeline["messages"] = user_messages + pipeline["messages"]
 
