@@ -29,6 +29,14 @@ class Command(BaseCommand):
             "instead of resolving to their Final (Active) versions",
         )
         parser.add_argument(
+            "--use-latest-minor",
+            action="store_true",
+            help="Export the latest editor-versioned Draft (minor/patch) "
+            "instead of the last Dynamics-finalized (major) version. "
+            "Use this to preview editor-promoted changes on the public "
+            "site without waiting for a Dynamics major version bump.",
+        )
+        parser.add_argument(
             "--as-user",
             dest="as_user",
             default=None,
@@ -265,6 +273,7 @@ class Command(BaseCommand):
         target_labels = options["visibility"]
         output_dir = options["output"]
         use_drafts = options["use_drafts"]
+        use_latest_minor = options["use_latest_minor"]
         dry_run = options["dry_run"]
         indent = options["indent"] or None
         push = options["push"]
@@ -285,6 +294,7 @@ class Command(BaseCommand):
                     visibility=target_labels,
                     output_dir=output_dir,
                     use_drafts=use_drafts,
+                    use_latest_minor=use_latest_minor,
                     indent=indent,
                     as_user=options["as_user"],
                     push=push,
@@ -378,6 +388,22 @@ class Command(BaseCommand):
                     f"directly (--use-drafts)"
                 )
             )
+        elif use_latest_minor:
+            from quartz.utils.public_export import get_latest_minor_resource_ids
+
+            self.stdout.write("Resolving latest frozen (minor) versions...")
+            export_ids, missing_groups, export_labels = get_latest_minor_resource_ids(
+                draft_ids, draft_labels=draft_labels,
+            )
+            self.stdout.write(
+                f"  Found {len(export_ids)} latest frozen versions"
+            )
+            for group_id in missing_groups:
+                self.stderr.write(
+                    self.style.WARNING(
+                        f"  WARNING: resource group {group_id} has no frozen version"
+                    )
+                )
         else:
             self.stdout.write("Resolving Final (Active) versions...")
             export_ids, missing_groups, export_labels = get_final_resource_ids(

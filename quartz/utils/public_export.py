@@ -234,6 +234,54 @@ def get_final_resource_ids(draft_resource_ids, draft_labels=None):
     return found_ids, missing_groups, final_labels
 
 
+def get_latest_minor_resource_ids(draft_resource_ids, draft_labels=None):
+    """Map Draft resource IDs to the highest-versioned frozen version per group.
+
+    For each resource group, finds the VersionedResource with the highest
+    (major, minor, patch) among non-Draft versions — Active or Retired
+    archives created by "Make a New Version". The Draft itself is excluded
+    because it may contain unfrozen in-progress edits.
+
+    Returns the same shape as get_final_resource_ids.
+    """
+    draft_vrs = VersionedResource.objects.filter(
+        resourceinstance_id__in=draft_resource_ids,
+    )
+    draft_to_group = {vr.resourceinstance_id: vr.resource_group_id for vr in draft_vrs}
+    group_ids = list(set(draft_to_group.values()))
+
+    candidates = VersionedResource.objects.filter(
+        resource_group_id__in=group_ids,
+    ).exclude(
+        resourceinstance__resource_instance_lifecycle_state__name="Draft",
+    )
+
+    best_by_group = {}
+    for vr in candidates:
+        key = vr.resource_group_id
+        vr_version = (vr.major_version, vr.minor_version, getattr(vr, "patch_version", 0))
+        if key not in best_by_group:
+            best_by_group[key] = (vr, vr_version)
+        elif vr_version > best_by_group[key][1]:
+            best_by_group[key] = (vr, vr_version)
+
+    found_ids = [vr.pk for vr, _ in best_by_group.values()]
+    found_groups = set(best_by_group.keys())
+    missing_groups = [g for g in group_ids if g not in found_groups]
+
+    result_labels = {}
+    if draft_labels:
+        group_to_label = {}
+        for draft_id, label in draft_labels.items():
+            if draft_id in draft_to_group:
+                group_to_label[draft_to_group[draft_id]] = label
+        for group_id, (vr, _) in best_by_group.items():
+            if group_id in group_to_label:
+                result_labels[str(vr.pk)] = group_to_label[group_id]
+
+    return found_ids, missing_groups, result_labels
+
+
 def get_visible_resource_ids(visibility_nodes, visibility_uris):
     """Find resource IDs across all graphs that have matching visibility.
 
@@ -1247,6 +1295,7 @@ def run_export_pipeline(
     target_labels,
     output_dir="public_export",
     use_drafts=False,
+    use_latest_minor=False,
     indent=2,
     user=None,
     image_required_labels=None,
@@ -1308,6 +1357,17 @@ def run_export_pipeline(
             "warning",
             f"Exporting {len(export_ids)} Draft versions directly (use_drafts).",
         ))
+    elif use_latest_minor:
+        export_ids, missing_groups, export_labels = get_latest_minor_resource_ids(
+            draft_ids, draft_labels=draft_labels,
+        )
+        out["missing_final_groups"] = [str(g) for g in missing_groups]
+        msg.append((
+            "info",
+            f"Resolved {len(export_ids)} latest frozen versions (use_latest_minor).",
+        ))
+        for g in missing_groups:
+            msg.append(("warning", f"resource group {g} has no frozen version"))
     else:
         export_ids, missing_groups, export_labels = get_final_resource_ids(
             draft_ids, draft_labels=draft_labels,
