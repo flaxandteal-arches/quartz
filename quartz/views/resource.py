@@ -82,14 +82,15 @@ class VersionedResourceEditorView(ResourceEditorView):
             current_draft_version = VersionedResource.objects.get(pk=resourceid)
             with transaction.atomic():
                 transaction_id = uuid.uuid4()
+                increment_draft_version(current_draft_version, is_final=False)
+                current_draft_version.save()
+
                 archived_version = archive_copy_of_current_draft(
                     current_draft_version.resource_group_id,
                     request.user,
                     transaction_id,
                 )
                 archived_resource = Resource.objects.get(pk=archived_version.pk)
-                increment_draft_version(current_draft_version, is_final=False)
-                current_draft_version.save()
 
                 current_draft_resource = self._increment_current_working_draft_version(
                     current_draft_version
