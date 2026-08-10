@@ -783,7 +783,7 @@ def export_controlled_lists_to_dir(list_ids, dest_dir):
     return exported
 
 
-EXPORT_BATCH_SIZE = 200
+EXPORT_BATCH_SIZE = int(os.environ.get("QUARTZ_EXPORT_BATCH_SIZE", 200))
 
 
 def _write_resources_batched(resource_ids, user=None, indent=None, label="Resources"):
