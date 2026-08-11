@@ -990,7 +990,7 @@ def export_resources(
                             continue
                         file_refs.append({
                             "file_id": entry.get("file_id"),
-                            "name": entry.get("name"),
+                            "name": entry.get("path") or entry.get("name"),
                             "url": entry.get("url"),
                             "resourceinstanceid": ri.get("resourceinstanceid", ""),
                             "nodeid": node_id,
