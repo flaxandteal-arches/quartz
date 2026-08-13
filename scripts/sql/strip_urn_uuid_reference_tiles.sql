@@ -37,8 +37,14 @@ DECLARE
     ref record;
 BEGIN
     FOR ref IN
-        SELECT nodeid, nodegroupid FROM nodes
-        WHERE datatype = 'reference' AND nodegroupid IS NOT NULL
+        SELECT DISTINCT n.nodeid, n.nodegroupid
+        FROM nodes n
+        JOIN tiles t ON t.nodegroupid = n.nodegroupid
+        CROSS JOIN LATERAL jsonb_array_elements(t.tiledata -> n.nodeid::text) AS e(value)
+        WHERE n.datatype = 'reference'
+          AND n.nodegroupid IS NOT NULL
+          AND jsonb_typeof(t.tiledata -> n.nodeid::text) = 'array'
+          AND e.value->>'uri' LIKE 'urn:uuid:%'
     LOOP
         UPDATE tiles t
         SET tiledata = jsonb_set(
