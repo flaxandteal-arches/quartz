@@ -2,7 +2,7 @@ name: Build Arches project
 run-name: Build Arches project
 on: [push]
 env:
-  ARCHES_BASE: ghcr.io/flaxandteal/arches-base:v8.2.0a4-a5
+  ARCHES_BASE: ghcr.io/flaxandteal/arches-base:v8.2.0a8-v1
   ARCHES_PROJECT: quartz
 jobs:
   Build-Arches:
