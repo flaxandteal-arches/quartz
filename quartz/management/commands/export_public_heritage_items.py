@@ -29,6 +29,14 @@ class Command(BaseCommand):
             "instead of resolving to their Final (Active) versions",
         )
         parser.add_argument(
+            "--use-latest-minor",
+            action="store_true",
+            help="Export the latest editor-versioned Draft (minor/patch) "
+            "instead of the last Dynamics-finalized (major) version. "
+            "Use this to preview editor-promoted changes on the public "
+            "site without waiting for a Dynamics major version bump.",
+        )
+        parser.add_argument(
             "--as-user",
             dest="as_user",
             default=None,
@@ -54,6 +62,14 @@ class Command(BaseCommand):
             type=int,
             default=2,
             help="JSON indentation (default: 2, use 0 for compact)",
+        )
+        parser.add_argument(
+            "--image-visibility",
+            nargs="+",
+            default=["Available", "Public"],
+            help="Visibility labels that an image tile must ALL have to be "
+            "included (default: Available Public). Set to empty to disable "
+            "tile-level filtering.",
         )
         parser.add_argument(
             "--blob-name",
@@ -151,6 +167,15 @@ class Command(BaseCommand):
             f"  Related visible resources included (e.g. Public Digital "
             f"Objects): {included}"
         )
+        if person_count := diagnostics.get("person_resources", 0):
+            self.stdout.write(f"  Person resources (referenced by Heritage Items): {person_count}")
+        if period_count := diagnostics.get("period_resources", 0):
+            self.stdout.write(f"  Period resources (all): {period_count}")
+        tiles_filtered = diagnostics.get("image_tiles_filtered_by_visibility", 0)
+        if tiles_filtered:
+            self.stdout.write(
+                f"  Image tiles filtered by visibility: {tiles_filtered}"
+            )
         files = diagnostics.get("referenced_files", [])
         self.stdout.write(
             f"  Referenced files (images + Digital Object content), "
@@ -248,12 +273,14 @@ class Command(BaseCommand):
         target_labels = options["visibility"]
         output_dir = options["output"]
         use_drafts = options["use_drafts"]
+        use_latest_minor = options["use_latest_minor"]
         dry_run = options["dry_run"]
         indent = options["indent"] or None
         push = options["push"]
         trigger = options["trigger"]
         run_async = options["run_async"]
         blob_name = options["blob_name"]
+        image_vis = options["image_visibility"]
 
         # Async: hand the WHOLE pipeline to a worker, which generates output_dir
         # itself (nothing pre-staged). Dry-run still previews locally below.
@@ -267,11 +294,13 @@ class Command(BaseCommand):
                     visibility=target_labels,
                     output_dir=output_dir,
                     use_drafts=use_drafts,
+                    use_latest_minor=use_latest_minor,
                     indent=indent,
                     as_user=options["as_user"],
                     push=push,
                     trigger=trigger,
                     blob_name=blob_name,
+                    image_visibility=image_vis,
                 )
                 self.stdout.write(
                     self.style.SUCCESS(
@@ -359,6 +388,22 @@ class Command(BaseCommand):
                     f"directly (--use-drafts)"
                 )
             )
+        elif use_latest_minor:
+            from quartz.utils.public_export import get_latest_minor_resource_ids
+
+            self.stdout.write("Resolving latest frozen (minor) versions...")
+            export_ids, missing_groups, export_labels = get_latest_minor_resource_ids(
+                draft_ids, draft_labels=draft_labels,
+            )
+            self.stdout.write(
+                f"  Found {len(export_ids)} latest frozen versions"
+            )
+            for group_id in missing_groups:
+                self.stderr.write(
+                    self.style.WARNING(
+                        f"  WARNING: resource group {group_id} has no frozen version"
+                    )
+                )
         else:
             self.stdout.write("Resolving Final (Active) versions...")
             export_ids, missing_groups, export_labels = get_final_resource_ids(
@@ -419,6 +464,7 @@ class Command(BaseCommand):
             resource_labels=export_labels,
             user=export_user,
             indent=indent,
+            image_required_labels=image_vis or None,
         )
 
         if not result:
