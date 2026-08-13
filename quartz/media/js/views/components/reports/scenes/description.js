@@ -23,7 +23,7 @@ export default ko.components.register(
 
             self.descriptionTableConfig = {
                 ...self.defaultTableConfig,
-                columns: [{ width: "70%" }, { width: "20%" }, null],
+                columns: [{ width: "55%" }, { width: "20%" }, { width: "20%" }, null],
             };
 
             self.designationDescriptionTableConfig = {
@@ -94,8 +94,13 @@ export default ko.components.register(
                                     [self.dataConfig.descriptions.slice(0, -1), "@display_value"],
                                 ],
                             });
+                            const language = self.getNodeValue(x, {
+                                testPaths: [
+                                    [`${self.dataConfig.descriptions.slice(0, -1)} language`],
+                                ],
+                            });
                             const tileid = self.getTileId(x);
-                            return { type, content, tileid };
+                            return { type, content, language, tileid };
                         })
                     );
                 }

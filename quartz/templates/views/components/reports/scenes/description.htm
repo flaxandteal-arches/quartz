@@ -25,6 +25,7 @@
                             <tr class="aher-table-header">
                                 <th>{% trans "Content" %}</th>
                                 <th>{% trans "Type" %}</th>
+                                <th>{% trans "Language" %}</th>
                                 <th class="aher-table-control all"></th>
                             </tr>
                         </thead>
@@ -32,6 +33,7 @@
                             <tr>
                                 <td data-bind="html: content"></td>
                                 <td data-bind="text: type"></td>
+                                <td data-bind="text: language"></td>
                                 <td class="aher-table-control">
                                     <div data-bind="if: $parent.cards && $parent.cards.descriptions">
                                         <a href="#" data-bind="onEnterkeyClick, onSpaceClick, click: function() {$parent.edit(tileid, $parent.cards.descriptions)}">
