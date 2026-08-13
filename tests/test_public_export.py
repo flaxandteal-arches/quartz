@@ -21,6 +21,7 @@ import os
 import tempfile
 
 from django.contrib.auth.models import User
+from django.core import management
 
 from arches.app.models import models
 from arches.app.models.graph import Graph
@@ -55,6 +56,16 @@ class PublicExportIntegrationTests(ArchesTestCase):
     def setUpTestData(cls):
         super().setUpTestData()
 
+        # 0. Heritage Item references quartz's Multi-card Resource Descriptor
+        # function, normally registered by package load; a fresh test DB only
+        # has the migration-registered functions, so register it here.
+        with captured_stdout():
+            management.call_command(
+                "fn",
+                "register",
+                source="quartz/functions/multicard_resource_descriptor.py",
+            )
+
         # 1. Load the real Heritage Item + Digital Object graphs (they carry the
         #    'versioning' / heritage_item_visibility nodes the export relies on).
         for stem in ("Heritage_Item", "Digital_Object"):
@@ -62,7 +73,11 @@ class PublicExportIntegrationTests(ArchesTestCase):
             with captured_stdout():
                 with open(path) as f:
                     archesfile = JSONDeserializer().deserialize(f)
-                ResourceGraphImporter(archesfile["graph"], overwrite_graphs=True)
+                errors, _ = ResourceGraphImporter(
+                    archesfile["graph"], overwrite_graphs=True
+                )
+            if errors:
+                raise RuntimeError(f"Graph import failed for {stem}: {errors}")
 
         cls.user = User.objects.create(username="pe_test_user")
         for graph_id in (HI_GRAPH_ID, DO_GRAPH_ID):
@@ -73,11 +88,12 @@ class PublicExportIntegrationTests(ArchesTestCase):
         vis_list, _ = List.objects.get_or_create(
             pk=VISIBILITY_LIST_ID, defaults={"name": "Heritage Item Visibility"}
         )
+        cls.vis_labels = {}
         for i, (uri, label) in enumerate(
             [(PUBLIC_URI, "Public"), (STAGING_URI, "Staging")]
         ):
             item = ListItem.objects.create(uri=uri, list=vis_list, sortorder=i)
-            ListItemValue.objects.create(
+            cls.vis_labels[uri] = ListItemValue.objects.create(
                 list_item=item,
                 value=label,
                 valuetype_id="prefLabel",
@@ -112,7 +128,22 @@ class PublicExportIntegrationTests(ArchesTestCase):
         cls.do_public.tiles.append(Tile(data={}, nodegroup_id=str(cls.do_names_ng)))
         cls.do_public.tiles.append(
             Tile(
-                data={cls.do_vis_node_id: [{"uri": PUBLIC_URI}]},
+                data={
+                    cls.do_vis_node_id: [
+                        {
+                            "uri": PUBLIC_URI,
+                            "list_id": str(VISIBILITY_LIST_ID),
+                            "labels": [
+                                {
+                                    "id": str(cls.vis_labels[PUBLIC_URI].pk),
+                                    "value": "Public",
+                                    "language": "en",
+                                    "valuetype": "prefLabel",
+                                }
+                            ],
+                        }
+                    ]
+                },
                 nodegroup_id=str(cls.do_versioning_ng),
             )
         )
@@ -184,9 +215,7 @@ class PublicExportIntegrationTests(ArchesTestCase):
         self.assertIsNotNone(hi, "Heritage Item should be exported")
         ng_ids = {t["nodegroup_id"] for t in hi["tiles"]}
         self.assertIn(str(self.hi_desc_ng), ng_ids, "granted nodegroup kept")
-        self.assertNotIn(
-            str(self.hi_denied_ng), ng_ids, "no_access nodegroup dropped"
-        )
+        self.assertNotIn(str(self.hi_denied_ng), ng_ids, "no_access nodegroup dropped")
         self.assertNotIn(
             str(self.hi_versioning_ng), ng_ids, "versioning (denied) dropped"
         )
