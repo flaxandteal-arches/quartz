@@ -223,7 +223,8 @@ INSTALLED_APPS = (
     "rest_framework",
     "arches_modular_reports",
     "arches_search",
-    "arches_component_lab",
+    "arches_vue_components",
+    "arches_her",
     "arches_controlled_lists",
     "arches_notifications",
     "arches_querysets",
@@ -252,7 +253,6 @@ INSTALLED_APPS += (
     "arches.app",
     "django.contrib.admin",
     "django.contrib.postgres",
-    "arches_her",
     "arches_id_generator",
 )
 
