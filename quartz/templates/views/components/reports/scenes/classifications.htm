@@ -15,6 +15,30 @@
         data: recordTypeData,
     }
 }"></div>
+<div data-bind="visible: !!dataConfig.archaeologyStatus, component: {
+    name: 'views/components/reports/scenes/default',
+    params: {
+        data: archaeologyStatusData,
+    }
+}"></div>
+<div data-bind="visible: !!dataConfig.importantSourceOfInformation, component: {
+    name: 'views/components/reports/scenes/default',
+    params: {
+        data: importantSourceOfInformationData,
+    }
+}"></div>
+<div data-bind="visible: !!dataConfig.permissionToInterferePreviouslyGranted, component: {
+    name: 'views/components/reports/scenes/default',
+    params: {
+        data: permissionToInterferePreviouslyGrantedData,
+    }
+}"></div>
+<div data-bind="visible: !!dataConfig.deactivationReason, component: {
+    name: 'views/components/reports/scenes/default',
+    params: {
+        data: deactivationReasonData,
+    }
+}"></div>
 <div data-bind="visible: !!dataConfig.activityTimespan, component: {
     name: 'views/components/reports/scenes/default',
     params: {
@@ -45,7 +69,7 @@
                             <tr class="aher-table-header">
                                 <th>{% trans "Artefact Type" %}</th>
                                 <th>{% trans "Period" %}</th>
-                                <th>{% trans "Producer" %}</th>
+                                <th>{% trans "Associated Person" %}</th>
                                 <th>{% trans "Start Date" %}</th>
                                 <th>{% trans "End Date" %}</th>
                                 <th>{% trans "Method" %}</th>
@@ -55,6 +79,7 @@
                                 <th class="none">{% trans "Material" %}</th>
                                 <th class="none">{% trans "Production Technique" %}</th>
                                 <th class="none">{% trans "Phase Description" %}</th>
+                                <th class="none">{% trans "Phase Description Type" %}</th>
                                 <th class="aher-table-control all"></th>
                             </tr>
                         </thead>
@@ -72,6 +97,7 @@
                                 <td data-bind="text: material"></td>
                                 <td data-bind="text: productionTechnique"></td>
                                 <td data-bind="text: phaseDescription"></td>
+                                <td data-bind="text: phaseDescriptionType"></td>
                                 <td class="aher-table-control">
                                     <div data-bind="if: $parent.cards.production">
                                         <a href="#" data-bind="onEnterkeyClick, onSpaceClick, click: function() {$parent.editTile(tileid, $parent.cards.production)}">
@@ -462,6 +488,69 @@
                                             <i class="fa fa-mail-reply"></i>
                                         </a>
                                         <a href="#" data-bind="if: $parent.cards.dimensions.cardinality == 'n', onEnterkeyClick, onSpaceClick, click: $parent.deleteTile.bind($data, tileid, $parent.cards.dimensions, $parent.resource)">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+
+<!-- Inscriptions -->
+<div class="aher-report-section" data-bind="visible: !!dataConfig.inscriptions">
+    <h2 class="aher-report-section-title"><i tabindex="0" data-bind="onEnterkeyClick, onSpaceClick, click: function() {toggleVisibility(visible.inscriptions)}, onReportSectionToggleAria: visible.inscriptions, sectionName: '{% trans "Inscriptions" %}'" class="fa toggle"></i> {% trans "Inscriptions" %}</h2>
+    <!-- ko if: checkCardsAvailable($data.cards) -->
+    <a href="#" class="aher-report-a" data-bind="if: cards.inscriptions, click: function(){addNewTile(cards.inscriptions)}"><i class="fa fa-mail-reply"></i> {% trans "Add Inscription" %}</a>
+    <!-- /ko -->
+
+    <!-- Collapsible content -->
+    <div data-bind="visible: visible.inscriptions" class="aher-report-collapsible-container pad-lft">
+
+        <!-- ko ifnot: inscriptions().length -->
+        <div class="aher-nodata-note">No inscriptions for this resource</div>
+        <!-- /ko -->
+
+        <!-- ko if: inscriptions().length -->
+        <div class="aher-report-subsection">
+            <div class="firstchild-container">
+                <div class="aher-table pad-btm">
+                    <table class="table table-striped" cellspacing="0" width="100%">
+                        <thead>
+                            <tr class="aher-table-header">
+                                <th>{% trans "Content" %}</th>
+                                <th>{% trans "Language" %}</th>
+                                <th class="none">{% trans "Note Text" %}</th>
+                                <th class="none">{% trans "Note Type" %}</th>
+                                <th class="none">{% trans "Note Language" %}</th>
+                                <th class="none">{% trans "Translation Text" %}</th>
+                                <th class="none">{% trans "Translation Text Type" %}</th>
+                                <th class="none">{% trans "Translation Language" %}</th>
+                                <th class="aher-table-control all"></th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="dataTablesForEach: {data: inscriptions, dataTableOptions: inscriptionsTableConfig}">
+                            <tr>
+                                <td data-bind="text: content"></td>
+                                <td data-bind="text: language"></td>
+                                <td data-bind="text: noteText"></td>
+                                <td data-bind="text: noteType"></td>
+                                <td data-bind="text: noteLanguage"></td>
+                                <td data-bind="text: translationText"></td>
+                                <td data-bind="text: translationTextType"></td>
+                                <td data-bind="text: translationLanguage"></td>
+                                <td class="aher-table-control">
+                                    <div data-bind="if: $parent.cards.inscriptions">
+                                        <a href="#" data-bind="onEnterkeyClick, onSpaceClick, click: function() {$parent.editTile(tileid, $parent.cards.inscriptions)}">
+                                            <i class="fa fa-mail-reply"></i>
+                                        </a>
+                                        <a href="#" data-bind="if: $parent.cards.inscriptions.cardinality == 'n', onEnterkeyClick, onSpaceClick, click: $parent.deleteTile.bind($data, tileid, $parent.cards.inscriptions, $parent.resource)">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>

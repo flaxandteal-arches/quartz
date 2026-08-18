@@ -15,7 +15,7 @@ ifneq ($(ARCHES_ROOT),)
 else
   DOCKER_COMPOSE_FILES = -f docker/docker-compose.yml
 endif
-ARCHES_BASE = ghcr.io/flaxandteal/arches-base:v8.2.0a4-v3
+ARCHES_BASE = ghcr.io/flaxandteal/arches-base:v8.2.0a8-v1
 ARCHES_PROJECT_ROOT = $(shell pwd)/
 DOCKER_COMPOSE_COMMAND = ARCHES_PROJECT_ROOT=$(ARCHES_PROJECT_ROOT) ARCHES_BASE=$(ARCHES_BASE) ARCHES_PROJECT=$(ARCHES_PROJECT) ARCHES_ROOT=$(ARCHES_ROOT) docker compose -p $(ARCHES_PROJECT) $(DOCKER_COMPOSE_FILES)
 USE_LOCAL_APPS ?= false
@@ -25,7 +25,7 @@ CMD ?=
 
 create: docker
 	echo $(shell id -u)
-	FORUSER=$(shell id -u) $(DOCKER_COMPOSE_COMMAND) run -e FORUSER=$(shell id -u) --entrypoint /bin/sh arches_base -c ". ../ENV/bin/activate; apt install -y git; pip install 'pyjwt<2.1,>=2.0.0' 'cryptography<3.4.0' --only-binary cryptography --only-binary cffi; cd /local_root; ls -ltr; id -u; arches-admin startproject $(ARCHES_PROJECT) && mv docker Makefile $(ARCHES_PROJECT); ls -ltr; echo \$${FORUSER}; groupadd -g \$${FORUSER} externaluser; useradd -u \$${FORUSER} -g \$${FORUSER} externaluser; chown -R \$${FORUSER}:\$${FORUSER} $(ARCHES_PROJECT); echo \$$?; ls -ltr $(ARCHES_PROJECT)"
+	FORUSER=$(shell id -u) $(DOCKER_COMPOSE_COMMAND) run --rm -e FORUSER=$(shell id -u) --entrypoint /bin/sh arches_base -c ". ../ENV/bin/activate; apt install -y git; pip install 'pyjwt<2.1,>=2.0.0' 'cryptography<3.4.0' --only-binary cryptography --only-binary cffi; cd /local_root; ls -ltr; id -u; arches-admin startproject $(ARCHES_PROJECT) && mv docker Makefile $(ARCHES_PROJECT); ls -ltr; echo \$${FORUSER}; groupadd -g \$${FORUSER} externaluser; useradd -u \$${FORUSER} -g \$${FORUSER} externaluser; chown -R \$${FORUSER}:\$${FORUSER} $(ARCHES_PROJECT); echo \$$?; ls -ltr $(ARCHES_PROJECT)"
 
 post-create-setup:
 	@echo "Updating project configuration files..."
@@ -38,7 +38,7 @@ post-create-setup:
 	fi
 	@# Update GitHub Actions workflow - Arches base image
 	@if [ -f "$(ARCHES_PROJECT_ROOT).github/workflows/main.yml" ]; then \
-		sed -i.bak 's|ghcr.io/flaxandteal/arches-base:v8.2.0a4-v3|$(ARCHES_BASE)|g' $(ARCHES_PROJECT_ROOT).github/workflows/main.yml && \
+		sed -i.bak 's|ghcr.io/flaxandteal/arches-base:v8.2.0a8-v1|$(ARCHES_BASE)|g' $(ARCHES_PROJECT_ROOT).github/workflows/main.yml && \
 		rm -f $(ARCHES_PROJECT_ROOT).github/workflows/main.yml.bak && \
 		echo "✓ Updated .github/workflows/main.yml Arches base image: $(ARCHES_BASE)"; \
 	else \
@@ -127,20 +127,20 @@ rebuild-images: docker
 	$(DOCKER_COMPOSE_COMMAND) build --build-arg USE_LOCAL_APPS=$(USE_LOCAL_APPS)
 
 npm-install: docker
-	$(DOCKER_COMPOSE_COMMAND) run --entrypoint /web_root/entrypoint.sh arches_worker install_npm_components
+	$(DOCKER_COMPOSE_COMMAND) run --rm --entrypoint /web_root/entrypoint.sh arches_worker install_npm_components
 
 npm-update: docker
-	$(DOCKER_COMPOSE_COMMAND) run --entrypoint /web_root/entrypoint.sh arches_worker update_npm_components
+	$(DOCKER_COMPOSE_COMMAND) run --rm --entrypoint /web_root/entrypoint.sh arches_worker update_npm_components
 
 build: docker
 	# We need to have certain node modules, so if the additional ones are missing, clean the folder to ensure boostrap does so.
 	if [ -z node_modules/jquery-validation ]; then rm -rf node_modules; fi
 	$(DOCKER_COMPOSE_COMMAND) stop
-	$(DOCKER_COMPOSE_COMMAND) run --entrypoint /web_root/entrypoint.sh arches_worker install_npm_components
-	$(DOCKER_COMPOSE_COMMAND) run --entrypoint /web_root/entrypoint.sh arches_worker bootstrap
+	$(DOCKER_COMPOSE_COMMAND) run --rm --entrypoint /web_root/entrypoint.sh arches_worker install_npm_components
+	$(DOCKER_COMPOSE_COMMAND) run --rm --entrypoint /web_root/entrypoint.sh arches_worker bootstrap
 
 	if [ -d $(ARCHES_PROJECT)/pkg ]; then $(TOOLKIT_FOLDER)/act.py . load_package --yes; fi
-	$(DOCKER_COMPOSE_COMMAND) run --entrypoint /web_root/entrypoint.sh arches_worker run_npm_build_development
+	$(DOCKER_COMPOSE_COMMAND) run --rm --entrypoint /web_root/entrypoint.sh arches_worker run_npm_build_development
 	$(DOCKER_COMPOSE_COMMAND) stop
 	$(MAKE) create-apps-dir
 	$(MAKE) update-urls-debug
@@ -160,19 +160,19 @@ run: docker
 
 web: docker
 	$(DOCKER_COMPOSE_COMMAND) stop arches
-	$(DOCKER_COMPOSE_COMMAND) run --service-ports arches
+	$(DOCKER_COMPOSE_COMMAND) run --rm --service-ports arches
 
 npm-development: docker
-	$(DOCKER_COMPOSE_COMMAND) run --entrypoint /web_root/entrypoint.sh arches_worker run_npm_build_development
+	$(DOCKER_COMPOSE_COMMAND) run --rm --entrypoint /web_root/entrypoint.sh arches_worker run_npm_build_development
 
 docker-compose: docker
 	$(DOCKER_COMPOSE_COMMAND) $(shell echo $(CMD))
 
 manage: docker
-	$(DOCKER_COMPOSE_COMMAND) run --entrypoint /bin/bash arches_worker -c '. ../ENV/bin/activate; python manage.py $(CMD)'
+	$(DOCKER_COMPOSE_COMMAND) run --rm --entrypoint /bin/bash arches_worker -c '. ../ENV/bin/activate; python manage.py $(CMD)'
 
 webpack: docker
-	$(DOCKER_COMPOSE_COMMAND) run --entrypoint /web_root/entrypoint.sh arches_worker run_npm_build_development
+	$(DOCKER_COMPOSE_COMMAND) run --rm --entrypoint /web_root/entrypoint.sh arches_worker run_npm_build_development
 
 clean: docker
 	@echo -n "This will remove all database and elasticsearch data, are you sure? [y/N] " && read confirmation && [ $${confirmation:-N} = y ]

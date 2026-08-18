@@ -45,7 +45,7 @@ export default ko.components.register(
 
             self.designationTableConfig = {
                 ...self.defaultTableConfig,
-                columns: Array(13).fill(null),
+                columns: Array(14).fill(null),
             };
 
             self.currentDesignation = ko.observable();
@@ -82,8 +82,7 @@ export default ko.components.register(
             };
 
             // if params.compiled is set and true, the user has compiled their own data.  Use as is.
-            if (params?.compiled) {
-            } else {
+            if (!params?.compiled) {
                 const protectionNode = self.getRawNodeValue(
                     params.data(),
                     self.dataConfig.protection
@@ -136,6 +135,11 @@ export default ko.components.register(
                                 x,
                                 "local heritage list criteria type"
                             );
+                            const description = self.getNodeValue(
+                                x,
+                                "description",
+                                0
+                            );
                             const digitalFileNode = self.getRawNodeValue(
                                 x,
                                 "digital file(s)"
@@ -150,6 +154,7 @@ export default ko.components.register(
                             );
                             return {
                                 amendmentDate,
+                                description,
                                 digitalFile,
                                 digitalFileLink,
                                 displayDate,

@@ -30,7 +30,7 @@ export default ko.components.register(
 
             self.artefactProdTableConfiguration = {
                 ...self.defaultTableConfig,
-                columns: Array(13).fill(null),
+                columns: Array(14).fill(null),
             };
 
             self.componentsTableConfig = {
@@ -68,6 +68,11 @@ export default ko.components.register(
                 columns: Array(18).fill(null),
             };
 
+            self.inscriptionsTableConfig = {
+                ...self.defaultTableConfig,
+                columns: Array(9).fill(null),
+            };
+
             self.dataConfig = {
                 production: undefined,
                 artefactProduction: undefined,
@@ -75,6 +80,10 @@ export default ko.components.register(
                 maritimeProduction: undefined,
                 type: undefined,
                 recordType: undefined,
+                archaeologyStatus: undefined,
+                importantSourceOfInformation: undefined,
+                permissionToInterferePreviouslyGranted: undefined,
+                deactivationReason: undefined,
                 activityTimespan: undefined,
                 components: undefined,
                 usePhase: undefined,
@@ -95,9 +104,14 @@ export default ko.components.register(
             self.components = ko.observableArray();
             self.production = ko.observableArray();
             self.dimensions = ko.observableArray();
+            self.inscriptions = ko.observableArray();
             self.usePhases = ko.observableArray();
             self.typeData = ko.observable();
             self.recordTypeData = ko.observable();
+            self.archaeologyStatusData = ko.observable();
+            self.importantSourceOfInformationData = ko.observable();
+            self.permissionToInterferePreviouslyGrantedData = ko.observable();
+            self.deactivationReasonData = ko.observable();
             self.organizationFormation = ko.observableArray();
             self.dates = ko.observableArray();
             self.activityTimespan = ko.observable();
@@ -108,6 +122,7 @@ export default ko.components.register(
                 components: ko.observable(true),
                 usePhase: ko.observable(true),
                 dimensions: ko.observable(true),
+                inscriptions: ko.observable(true),
                 dates: ko.observable(true),
                 organizationFormation: ko.observable(true),
                 stateTheme: ko.observable(true),
@@ -156,6 +171,102 @@ export default ko.components.register(
                                         value: Array.isArray(recordTypeValue)
                                             ? recordTypeValue
                                             : [recordTypeValue],
+                                        type: "kv",
+                                    },
+                                ],
+                            },
+                        ],
+                    });
+                }
+
+                if (self.dataConfig.archaeologyStatus) {
+                    const archaeologyStatusValue = self.getRawNodeValue(
+                        params.data(),
+                        self.dataConfig.archaeologyStatus
+                    );
+                    self.archaeologyStatusData = ko.observable({
+                        sections: [
+                            {
+                                title: "Archaeology Status",
+                                card: self.cards?.archaeologyStatus,
+                                data: [
+                                    {
+                                        key: "Archaeology Status",
+                                        value: Array.isArray(archaeologyStatusValue)
+                                            ? archaeologyStatusValue
+                                            : [archaeologyStatusValue],
+                                        type: "kv",
+                                    },
+                                ],
+                            },
+                        ],
+                    });
+                }
+
+                if (self.dataConfig.importantSourceOfInformation) {
+                    const importantSourceOfInformationValue = self.getRawNodeValue(
+                        params.data(),
+                        self.dataConfig.importantSourceOfInformation
+                    );
+                    self.importantSourceOfInformationData = ko.observable({
+                        sections: [
+                            {
+                                title: "Important Source of Information",
+                                card: self.cards?.importantSourceOfInformation,
+                                data: [
+                                    {
+                                        key: "Important Source of Information",
+                                        value: Array.isArray(importantSourceOfInformationValue)
+                                            ? importantSourceOfInformationValue
+                                            : [importantSourceOfInformationValue],
+                                        type: "kv",
+                                    },
+                                ],
+                            },
+                        ],
+                    });
+                }
+
+                if (self.dataConfig.permissionToInterferePreviouslyGranted) {
+                    const permissionToInterferePreviouslyGrantedValue = self.getRawNodeValue(
+                        params.data(),
+                        self.dataConfig.permissionToInterferePreviouslyGranted
+                    );
+                    self.permissionToInterferePreviouslyGrantedData = ko.observable({
+                        sections: [
+                            {
+                                title: "Permission to Interfere Previously Granted",
+                                card: self.cards?.permissionToInterferePreviouslyGranted,
+                                data: [
+                                    {
+                                        key: "Permission to Interfere Previously Granted",
+                                        value: Array.isArray(permissionToInterferePreviouslyGrantedValue)
+                                            ? permissionToInterferePreviouslyGrantedValue
+                                            : [permissionToInterferePreviouslyGrantedValue],
+                                        type: "kv",
+                                    },
+                                ],
+                            },
+                        ],
+                    });
+                }
+
+                if (self.dataConfig.deactivationReason) {
+                    const deactivationReasonValue = self.getRawNodeValue(
+                        params.data(),
+                        self.dataConfig.deactivationReason
+                    );
+                    self.deactivationReasonData = ko.observable({
+                        sections: [
+                            {
+                                title: "Deactivation Reason",
+                                card: self.cards?.deactivationReason,
+                                data: [
+                                    {
+                                        key: "Deactivation Reason",
+                                        value: Array.isArray(deactivationReasonValue)
+                                            ? deactivationReasonValue
+                                            : [deactivationReasonValue],
                                         type: "kv",
                                     },
                                 ],
@@ -228,15 +339,16 @@ export default ko.components.register(
                             const method = self.getNodeValue(node, "production method");
                             const period = self.getNodeValue(node, "cultural period");
                             const periodLink = self.getResourceLink(self.getRawNodeValue(node, "cultural period"));
-                            const producer = self.getNodeValue(node, "producer");
-                            const producerLink = self.getResourceLink(self.getRawNodeValue(node, "producer"));
+                            const producer = self.getNodeValue(node, { testPaths: [["associated person"], ["producer"]] });
+                            const producerLink = self.getResourceLink(self.getRawNodeValue(node, { testPaths: [["associated person"], ["producer"]] }));
                             const artefactType = self.getNodeValue(node, "phase classification", "artefact type");
                             const phaseCertainty = self.getNodeValue(node, "phase classification", "phase certainty");
                             const phaseDescription = self.getNodeValue(node, "phase classification", "phase classification description", "phase description");
+                            const phaseDescriptionType = self.getNodeValue(node, "phase classification", "phase classification description", "phase description type");
                             const phaseEvidence = self.getNodeValue(node, "phase classification", "phase evidence type");
                             const startDate = self.getNodeValue(node, "production time span", "from date");
                             const tileid = self.getTileId(node);
-                            return { artefactType, dateQualifier, endDate, interpretationConfidence, material, method, producer, producerLink, period, periodLink, phaseCertainty, phaseDescription, phaseEvidence, productionTechnique, startDate, tileid };
+                            return { artefactType, dateQualifier, endDate, interpretationConfidence, material, method, producer, producerLink, period, periodLink, phaseCertainty, phaseDescription, phaseDescriptionType, phaseEvidence, productionTechnique, startDate, tileid };
                         })
                     );
                 }
@@ -377,6 +489,24 @@ export default ko.components.register(
                             const value = self.getNodeValue(x, "dimension", "dimension value");
                             const tileid = self.getTileId(x);
                             return { measurementUnit, type, qualifier, value, tileid };
+                        })
+                    );
+                }
+
+                const inscriptionsNode = self.getRawNodeValue(params.data(), self.dataConfig.inscriptions);
+                if (Array.isArray(inscriptionsNode)) {
+                    self.inscriptions(
+                        inscriptionsNode.map((x) => {
+                            const content = self.getNodeValue(x, "inscription content");
+                            const language = self.getNodeValue(x, "inscription language");
+                            const noteText = self.getNodeValue(x, "inscription note", "inscription note text");
+                            const noteType = self.getNodeValue(x, "inscription note", "inscription note type");
+                            const noteLanguage = self.getNodeValue(x, "inscription note", "inscription note language");
+                            const translationText = self.getNodeValue(x, "translation", "translation text");
+                            const translationTextType = self.getNodeValue(x, "translation", "translation text type");
+                            const translationLanguage = self.getNodeValue(x, "translation", "translation language");
+                            const tileid = self.getTileId(x);
+                            return { content, language, noteText, noteType, noteLanguage, translationText, translationTextType, translationLanguage, tileid };
                         })
                     );
                 }
