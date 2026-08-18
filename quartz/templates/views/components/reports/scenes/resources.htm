@@ -459,9 +459,21 @@
         </div>
         <!-- /ko -->
     </div>
+</div>
 
-    <!-- Collapsible content Associated Activities -->
+<!-- Associated Activities section -->
+<div class="aher-report-section" data-bind="visible: !!dataConfig.activities">
+    <h2 class="aher-report-section-title">
+        <i tabindex="0" data-bind="onEnterkeyClick, onSpaceClick, click: function() {toggleVisibility(visible.activities)}, onReportSectionToggleAria: visible.activities, sectionName: '{% trans "Associated Activities" %}'" class="fa toggle"></i>
+        {% trans "Associated Activities" %}
+    </h2>
+
+    <!-- Collapsible content -->
     <div data-bind="visible: visible.activities" class="aher-report-collapsible-container pad-lft">
+
+        <!-- ko ifnot: activities().length -->
+        <div class="aher-nodata-note">No activities for this resource</div>
+        <!-- /ko -->
 
         <!-- ko if: activities().length -->
         <div class="aher-report-subsection">
