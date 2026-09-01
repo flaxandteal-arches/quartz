@@ -99,6 +99,26 @@ class BlanketRoleDenyFramework(ArchesDefaultDenyPermissionFramework):
                 return True
         return False
 
+    # ---- view-level gates (decorators / template context) -----------------
+    def group_required(self, user, *group_names):
+        if "Resource Editor" in group_names and self._blanket_viewer(user):
+            return True
+        return super().group_required(user, *group_names)
+
+    def user_is_resource_editor(self, user):
+        if self._blanket_viewer(user):
+            return True
+        return super().user_is_resource_editor(user)
+
+    def user_can_edit_resource(self, user, resourceid=None, *, resource=None):
+        if resourceid or resource:
+            return super().user_can_edit_resource(
+                user, resourceid=resourceid, resource=resource
+            )
+        if self._blanket_viewer(user):
+            return True
+        return super().user_can_edit_resource(user)
+
     # ---- direct access (report / API by id) ------------------------------
     def check_resource_instance_permissions(
         self, user, resourceid, permission, *, resource=None
