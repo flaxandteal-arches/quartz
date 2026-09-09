@@ -129,6 +129,101 @@ ALTER TABLE urn_fix_refnodes ADD PRIMARY KEY (nodeid);
 
 SELECT count(*) AS tiles_to_fix FROM urn_fix_queue;
 
+-- What is about to change, per node. Same shape as the section 3 verification,
+-- so you can eyeball the same numbers going down to zero afterwards.
+SELECT n.nodeid, n.name,
+       count(*) FILTER (WHERE e.value->>'uri' LIKE 'urn:uuid:%') AS urn_values,
+       count(*)                                                 AS total_values
+FROM nodes n
+JOIN tiles t ON t.nodegroupid = n.nodegroupid
+CROSS JOIN LATERAL jsonb_array_elements(t.tiledata -> n.nodeid::text) AS e(value)
+WHERE n.datatype = 'reference'
+  AND jsonb_typeof(t.tiledata -> n.nodeid::text) = 'array'
+GROUP BY n.nodeid, n.name
+HAVING count(*) FILTER (WHERE e.value->>'uri' LIKE 'urn:uuid:%') > 0
+ORDER BY urn_values DESC;
+
+----------------------------------------------------------------------
+-- 1b. PROVE THE REWRITE IS LOSSLESS -- writes nothing.
+----------------------------------------------------------------------
+-- Batched commits mean a bad transform cannot be rolled back, so verify it
+-- before section 2 writes anything. This runs the EXACT expression the UPDATE
+-- uses and compares it against an independent, structure-blind method: a plain
+-- text replace of 'urn:uuid:' across the whole tiledata. If a targeted jsonb
+-- rebuild and a blanket text strip agree on every tile, the rebuild dropped no
+-- keys, reordered no arrays and altered nothing but the uri prefixes.
+--
+-- Expect: mismatches = 0 AND urn_under_non_reference_key = 0.
+--
+-- If mismatches > 0, inspect the listed tileids BEFORE running section 2. The
+-- two known-legitimate causes are (a) a non-reference node also containing
+-- 'urn:uuid:' -- which the second count below reports, and which the targeted
+-- rewrite deliberately leaves alone -- and (b) the literal text 'urn:uuid:'
+-- inside a label value. Anything else is a real bug in the transform.
+WITH sample AS (
+    SELECT t.tileid, t.tiledata
+    FROM tiles t JOIN urn_fix_queue q ON q.tileid = t.tileid
+), rebuilt AS (
+    SELECT s.tileid,
+           s.tiledata AS old_data,
+           coalesce(
+               (
+                   SELECT jsonb_object_agg(
+                       kv.key,
+                       CASE
+                           WHEN rn.nodeid IS NOT NULL
+                                AND jsonb_typeof(kv.value) = 'array'
+                           THEN (
+                               SELECT coalesce(
+                                   jsonb_agg(
+                                       CASE
+                                           WHEN e->>'uri' LIKE 'urn:uuid:%'
+                                           THEN jsonb_set(e, '{uri}',
+                                                          to_jsonb(substr(e->>'uri', 10)))
+                                           ELSE e
+                                       END
+                                       ORDER BY ord
+                                   ),
+                                   '[]'::jsonb
+                               )
+                               FROM jsonb_array_elements(kv.value)
+                                    WITH ORDINALITY AS a(e, ord)
+                           )
+                           ELSE kv.value
+                       END
+                   )
+                   FROM jsonb_each(s.tiledata) kv
+                   LEFT JOIN urn_fix_refnodes rn ON rn.nodeid = kv.key
+               ),
+               s.tiledata
+           ) AS new_data
+    FROM sample s
+)
+SELECT count(*) FILTER (
+           WHERE new_data <> replace(old_data::text, 'urn:uuid:', '')::jsonb
+       ) AS mismatches,
+       count(*) FILTER (
+           WHERE new_data = replace(old_data::text, 'urn:uuid:', '')::jsonb
+       ) AS verified_lossless,
+       (array_agg(tileid) FILTER (
+           WHERE new_data <> replace(old_data::text, 'urn:uuid:', '')::jsonb
+       ))[1:10] AS first_10_mismatching_tileids
+FROM rebuilt;
+
+-- Tiles carrying 'urn:uuid:' under a key that is NOT a reference node. These are
+-- intentionally left alone by the rewrite, and are the expected explanation for
+-- any mismatch above. Investigate before proceeding if this is non-zero.
+SELECT count(*) AS urn_under_non_reference_key
+FROM tiles t
+JOIN urn_fix_queue q ON q.tileid = t.tileid
+WHERE EXISTS (
+    SELECT 1
+    FROM jsonb_each(t.tiledata) kv
+    LEFT JOIN urn_fix_refnodes rn ON rn.nodeid = kv.key
+    WHERE rn.nodeid IS NULL
+      AND kv.value::text LIKE '%urn:uuid:%'
+);
+
 ----------------------------------------------------------------------
 -- 2. Rewrite in committed batches.
 ----------------------------------------------------------------------
