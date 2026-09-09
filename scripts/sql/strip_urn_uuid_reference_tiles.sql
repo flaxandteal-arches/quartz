@@ -22,9 +22,8 @@
 -- over everything and then filtering to a single resource with HAVING.
 -- Measured: ~1GB temp spill per invocation, 44GB cumulative.
 --
--- That per-row query is the same one __arches_refresh_spatial_views() runs ONCE
--- per view (CREATE TABLE ... AS SELECT ... GROUP BY resourceinstanceid WITH DATA).
--- So: suppress the trigger, do the bulk rewrite, rebuild the views once at the end.
+-- So: suppress the trigger and do the bulk rewrite. No rebuild is needed
+-- afterwards -- see "WHY THERE IS NO SPATIAL VIEW REBUILD" below.
 --
 -- Why this completed on fat-qtz-dev but not stg: dev has 0 active spatial_views
 -- (10 defined, none active), stg has 4. With none active the trigger's loop body
@@ -49,6 +48,37 @@
 --   kubectl -n <ns> exec <ns>-postgresql-0 -c postgresql -- tail -f /tmp/urnfix.log
 --
 -- Safe to re-run: stripping an already-stripped URI is a no-op.
+--
+----------------------------------------------------------------------
+-- WHY THERE IS NO SPATIAL VIEW REBUILD
+----------------------------------------------------------------------
+-- Suppressing the trigger normally leaves sp_attr_<slug> stale, and the only
+-- repair Arches offers is __arches_refresh_spatial_views(), which DROPs four
+-- views (<slug>_point/_linestring/_polygon/_mixed_geom) plus the sp_attr_ table
+-- per active view and rebuilds them. That is the disruptive part: DROP VIEW
+-- takes ACCESS EXCLUSIVE, so it queues behind any in-flight GeoServer query and
+-- every later query queues behind it -- a stall for the length of the rebuild.
+-- (It does NOT leave a window where the views are missing: the refresh is one
+-- statement, and Postgres DDL is transactional. Readers block, they do not error.)
+--
+-- None of that is necessary here, because this script cannot change what the
+-- spatial views show. sp_attr_ columns are filled by
+-- __arches_get_node_display_value, which for datatype 'reference' calls
+-- __arches_controlled_lists_get_reference_label_list. That resolves labels via
+--     reference_data -> 'labels' -> 0 ->> 'list_item_id'
+-- and never reads 'uri' -- the only field this script rewrites.
+--
+-- Verified 2026-09-09, locally, on real imported data: 131 dirty tiles across 2
+-- resources, four affected nodes being heritage_item view columns (Feature Shape,
+-- Capture Scale, Spatial Accuracy Qualifier, Designation or Protection Type).
+-- md5 of sp_attr_heritage_item was identical before and after the strip, and a
+-- Feature Shape tile still carrying 'urn:uuid:' resolved to "Centroid".
+--
+-- If you change this script to rewrite anything OTHER than 'uri', that reasoning
+-- lapses -- re-add `SELECT __arches_refresh_spatial_views();` before the RESET.
+-- Before relying on this in a new environment, confirm the label function still
+-- keys off list_item_id:
+--     \sf __arches_controlled_lists_get_reference_label_list
 
 \set ON_ERROR_STOP on
 \timing on
@@ -174,16 +204,6 @@ WHERE n.datatype = 'reference'
 GROUP BY n.nodeid, n.name
 HAVING count(*) FILTER (WHERE e.value->>'uri' LIKE 'urn:uuid:%') > 0
 ORDER BY urn_values DESC;
-
-----------------------------------------------------------------------
--- 4. Rebuild the derived spatial attribute tables in one pass.
-----------------------------------------------------------------------
--- This is the work the suppressed trigger would have done row-by-row.
--- Each active view's sp_attr_<slug> is dropped and recreated
--- (CREATE TABLE ... AS SELECT ... GROUP BY resourceinstanceid WITH DATA), so it
--- is briefly absent mid-refresh -- GeoServer queries hitting that window will
--- error. Worth scheduling if this is ever run against prod.
-SELECT __arches_refresh_spatial_views();
 
 RESET session_replication_role;
 
