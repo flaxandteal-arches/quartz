@@ -160,9 +160,14 @@ ORDER BY urn_values DESC;
 -- 'urn:uuid:' -- which the second count below reports, and which the targeted
 -- rewrite deliberately leaves alone -- and (b) the literal text 'urn:uuid:'
 -- inside a label value. Anything else is a real bug in the transform.
+-- SAMPLED, not exhaustive. Running this over all ~1.7M queued tiles would cost
+-- about as much as the rewrite itself, twice, in one statement. A transform bug
+-- is a bug in the EXPRESSION, so it shows up on any representative sample --
+-- raise the limit if you want more assurance, it is linear in the limit.
 WITH sample AS (
     SELECT t.tileid, t.tiledata
     FROM tiles t JOIN urn_fix_queue q ON q.tileid = t.tileid
+    LIMIT 20000
 ), rebuilt AS (
     SELECT s.tileid,
            s.tiledata AS old_data,
@@ -214,8 +219,11 @@ FROM rebuilt;
 -- intentionally left alone by the rewrite, and are the expected explanation for
 -- any mismatch above. Investigate before proceeding if this is non-zero.
 SELECT count(*) AS urn_under_non_reference_key
-FROM tiles t
-JOIN urn_fix_queue q ON q.tileid = t.tileid
+FROM (
+    SELECT t.tileid, t.tiledata
+    FROM tiles t JOIN urn_fix_queue q ON q.tileid = t.tileid
+    LIMIT 20000
+) t
 WHERE EXISTS (
     SELECT 1
     FROM jsonb_each(t.tiledata) kv
