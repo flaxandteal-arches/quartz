@@ -8,6 +8,8 @@ guardian rows (which does not scale to a large, churning resource set):
   * FULL_ACCESS_GROUPS  -> view/change/delete on every resource instance
   * READ_ACCESS_GROUPS  -> view on every resource instance, AND change on
                            resources whose lifecycle state is ``Draft``
+                           (except READONLY_NODEGROUP_NAMES, which are
+                           read-only for this role at the nodegroup level)
   * everyone else       -> DENIED
 
 Unlike a plain upgrade-only blanket, this is a HARD GATE: the allowlisted roles
@@ -49,6 +51,11 @@ CHANGE_PERM = "change_resourceinstance"
 # quartz/functionsmulticard_resource_descriptor.py.
 DRAFT_STATE_NAME = "Draft"
 
+# Nodegroups that Heritage Officers may read but never write. Looked up by the
+# top-level semantic node name (the node whose nodeid == nodegroup_id).
+READONLY_NODEGROUP_NAMES = {"Versioning"}
+WRITE_PERMS = {"write_nodegroup", "delete_nodegroup"}
+
 
 class BlanketRoleDenyFramework(ArchesDefaultDenyPermissionFramework):
     # ---- helpers ---------------------------------------------------------
@@ -80,6 +87,20 @@ class BlanketRoleDenyFramework(ArchesDefaultDenyPermissionFramework):
             user, FULL_ACCESS_GROUPS + READ_ACCESS_GROUPS
         )
 
+    _readonly_ng_id_cache = None
+
+    def _readonly_nodegroup_ids(self):
+        if self._readonly_ng_id_cache is None:
+            from django.db.models import F
+            from arches.app.models.models import Node
+            type(self)._readonly_ng_id_cache = set(
+                Node.objects.filter(
+                    name__in=READONLY_NODEGROUP_NAMES,
+                    nodeid=F("nodegroup_id"),
+                ).values_list("nodegroup_id", flat=True)
+            )
+        return self._readonly_ng_id_cache
+
     def _grant(self, user, permission, resource):
         """Hard-gate decision for a single (resource, permission).
 
@@ -98,6 +119,42 @@ class BlanketRoleDenyFramework(ArchesDefaultDenyPermissionFramework):
             if permission == CHANGE_PERM and self._is_draft(resource):
                 return True
         return False
+
+    # ---- view-level gates (decorators / template context) -----------------
+    def group_required(self, user, *group_names):
+        if "Resource Editor" in group_names and self._blanket_viewer(user):
+            return True
+        return super().group_required(user, *group_names)
+
+    def user_is_resource_editor(self, user):
+        if self._blanket_viewer(user):
+            return True
+        return super().user_is_resource_editor(user)
+
+    def user_can_edit_resource(self, user, resourceid=None, *, resource=None):
+        if resourceid or resource:
+            return super().user_can_edit_resource(
+                user, resourceid=resourceid, resource=resource
+            )
+        if self._blanket_viewer(user):
+            return True
+        return super().user_can_edit_resource(user)
+
+    # ---- nodegroup-level restrictions ------------------------------------
+    def get_nodegroups_by_perm(self, user, perms, any_perm=True):
+        result = super().get_nodegroups_by_perm(user, perms, any_perm)
+        if not self.user_in_group_by_name(user, READ_ACCESS_GROUPS):
+            return result
+        if self.user_in_group_by_name(user, FULL_ACCESS_GROUPS):
+            return result
+        if isinstance(perms, str):
+            perms = {perms}
+        else:
+            perms = set(perms)
+        if perms & WRITE_PERMS:
+            restricted = self._readonly_nodegroup_ids()
+            result = [ng for ng in result if ng not in restricted]
+        return result
 
     # ---- direct access (report / API by id) ------------------------------
     def check_resource_instance_permissions(
