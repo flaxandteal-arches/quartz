@@ -140,7 +140,6 @@ class VersionedResourceEditorView(ResourceEditorView):
                     request.user,
                     current_draft_version.major_version,
                     current_draft_version.minor_version,
-                    None,
                 )
                 return JSONResponse({"resourceid": str(final.pk)})
         except VersionedResource.DoesNotExist:

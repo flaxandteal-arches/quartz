@@ -271,7 +271,9 @@ def process_artefact(payload: dict, user) -> tuple:
     current_draft_resource.save()
 
     if is_final:
-        finalize_draft(discovery_permit_number, user, next_major, next_minor, payload)
+        finalize_draft(
+            discovery_permit_number, user, next_major, next_minor, metadata=payload
+        )
 
     return current_draft_resource, created, f"{next_major}.{next_minor}"
 
