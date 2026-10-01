@@ -281,6 +281,7 @@
                 <label style="margin: 0;">{% trans 'Position' %}</label>
                 <input type="text" inputmode="numeric" class="form-control" style="flex: 1 1 40px; min-width: 0;" data-bind="
                     value: $parent.card.tiles.indexOf(tile) + 1,
+                    style: $parent.positionChanged(tile) ? {borderColor: '#f0ad4e', borderWidth: '2px'} : {borderColor: '', borderWidth: ''},
                     event: {change: $parent.positionChange, keydown: $parent.positionKeydown},
                     disable: !$parent.card.isWritable">
                 <span style="white-space: nowrap;" data-bind="text: '{% trans 'of' %} ' + $parent.card.tiles().length"></span>
