@@ -147,6 +147,16 @@ const viewModel = function(params) {
         setTimeout(self.defaultSelector, 150);
     };
 
+    // Core only updates tile.sortorder once the request completes, and every tile save posts its
+    // sortorder, so a save sent in between would write the old position back.
+    var reorderTiles = self.card.reorderTiles;
+    self.card.reorderTiles = function() {
+        self.card.tiles().forEach(function(tile, index) {
+            tile.sortorder = index;
+        });
+        return reorderTiles.apply(this, arguments);
+    };
+
     if (this.form && ko.unwrap(this.form.resourceId)) {
         this.card.resourceinstanceid = ko.unwrap(this.form.resourceId);
     } else if (this.card.resourceinstanceid === undefined && this.card.tiles().length === 0) {
