@@ -1,5 +1,5 @@
 -- Remap reference values whose item isn't in the node's list, by prefLabel.
--- Run after 0002.
+-- Run after 0002 and 0003.
 -- reindex-graphs: all
 
 \set ON_ERROR_STOP on
@@ -30,6 +30,10 @@ WHERE n.datatype = 'reference'
         AND v.uri = regexp_replace(e.value->>'uri', '^urn:uuid:', '')
   );
 
+-- Labels renamed between lists; a stale value matches its own label or the alias.
+CREATE TEMP TABLE ref_remap_aliases (old_label text PRIMARY KEY, new_label text NOT NULL);
+INSERT INTO ref_remap_aliases VALUES ('Aerial Photography', 'Aerial and Satellite Photography');
+
 CREATE TEMP TABLE ref_remap_candidates AS
 WITH keys AS (
     SELECT DISTINCT nodeid, list_id, old_value FROM ref_remap_stale
@@ -39,9 +43,10 @@ SELECT k.nodeid, k.old_value, k.old_value->>'uri' AS old_uri,
 FROM keys k
 LEFT JOIN LATERAL jsonb_array_elements(k.old_value->'labels') l(label)
        ON l.label->>'valuetype_id' = 'prefLabel'
+LEFT JOIN ref_remap_aliases a ON a.old_label = l.label->>'value'
 LEFT JOIN arches_controlled_lists_listitemvalue lv
        ON lv.valuetype_id = 'prefLabel'
-      AND lv.value = l.label->>'value'
+      AND lv.value IN (l.label->>'value', a.new_label)
       AND lv.languageid = l.label->>'language_id'
 LEFT JOIN arches_controlled_lists_listitem i
        ON i.id = lv.list_item_id AND i.list_id = k.list_id
