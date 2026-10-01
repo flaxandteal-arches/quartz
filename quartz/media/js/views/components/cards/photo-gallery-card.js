@@ -147,6 +147,66 @@ const viewModel = function(params) {
         setTimeout(self.defaultSelector, 150);
     };
 
+    this.moveTile = function(tile, position) {
+        var tiles = self.card.tiles().slice();
+        var from = tiles.indexOf(tile);
+        var to = Math.min(Math.max(parseInt(position, 10) - 1, 0), tiles.length - 1);
+        if (from === -1 || isNaN(to) || from === to) {
+            return;
+        }
+        if (!self.savedOrder()) {
+            self.savedOrder(tiles.slice());
+        }
+        tiles.splice(from, 1);
+        tiles.splice(to, 0, tile);
+        self.card.tiles(tiles);
+    };
+
+    this.moveUp = function(tile) {
+        self.moveTile(tile, self.card.tiles.indexOf(tile));
+    };
+
+    this.moveDown = function(tile) {
+        self.moveTile(tile, self.card.tiles.indexOf(tile) + 2);
+    };
+
+    this.moveFirst = function(tile) {
+        self.moveTile(tile, 1);
+    };
+
+    this.moveLast = function(tile) {
+        self.moveTile(tile, self.card.tiles().length);
+    };
+
+    this.positionChange = function(tile, e) {
+        self.moveTile(tile, e.target.value);
+    };
+
+    this.positionKeydown = function(tile, e) {
+        if (e.key === 'Enter') {
+            e.target.blur();
+        } else if (e.key === 'ArrowUp') {
+            self.moveUp(tile);
+            return false;
+        } else if (e.key === 'ArrowDown') {
+            self.moveDown(tile);
+            return false;
+        }
+        return true;
+    };
+
+    this.savedOrder = ko.observable(null);
+
+    this.positionChanged = function(tile) {
+        var saved = self.savedOrder();
+        return !!saved && saved.indexOf(tile) !== self.card.tiles.indexOf(tile);
+    };
+
+    this.orderChanged = ko.pureComputed(function() {
+        return self.card.tiles().some(self.positionChanged);
+    });
+
+    // Tree drag-and-drop also lands here and saves the whole current order, pending moves included.
     // Core only updates tile.sortorder once the request completes, and every tile save posts its
     // sortorder, so a save sent in between would write the old position back.
     var reorderTiles = self.card.reorderTiles;
@@ -154,7 +214,42 @@ const viewModel = function(params) {
         self.card.tiles().forEach(function(tile, index) {
             tile.sortorder = index;
         });
+        self.savedOrder(null);
         return reorderTiles.apply(this, arguments);
+    };
+
+    this.saveOrder = function() {
+        if (self.orderChanged()) {
+            self.card.reorderTiles();
+        }
+        self.savedOrder(null);
+    };
+
+    this.resetOrder = function() {
+        var saved = self.savedOrder();
+        if (!saved) {
+            return;
+        }
+        // tiles uploaded or deleted since the first move keep the current list's membership
+        var rank = function(tile) {
+            var i = saved.indexOf(tile);
+            return i === -1 ? saved.length : i;
+        };
+        self.card.tiles(self.card.tiles().slice().sort(function(a, b) { return rank(a) - rank(b); }));
+        self.savedOrder(null);
+    };
+
+    // order first, so the tile save below already carries the new sortorder
+    this.saveTileAndOrder = function(tile) {
+        self.saveOrder();
+        if (tile.dirty()) {
+            tile.save();
+        }
+    };
+
+    this.resetTileAndOrder = function(tile) {
+        tile.reset();
+        self.resetOrder();
     };
 
     if (this.form && ko.unwrap(this.form.resourceId)) {

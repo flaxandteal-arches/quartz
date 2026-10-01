@@ -277,6 +277,20 @@
             {% block form_widgets %}
             <!-- ko foreach: { data: card.tiles(), as: 'tile'} -->
                 <!--ko if: $parent.getUrl(tile) && tile.selected()-->
+            <div class="photo-position" style="display: flex; align-items: center; gap: 6px; margin: 0 10px 15px 0; padding: 0 5px;">
+                <label style="margin: 0;">{% trans 'Position' %}</label>
+                <input type="text" inputmode="numeric" class="form-control" style="flex: 1 1 40px; min-width: 0;" data-bind="
+                    value: $parent.card.tiles.indexOf(tile) + 1,
+                    event: {change: $parent.positionChange, keydown: $parent.positionKeydown},
+                    disable: !$parent.card.isWritable">
+                <span style="white-space: nowrap;" data-bind="text: '{% trans 'of' %} ' + $parent.card.tiles().length"></span>
+                <div class="btn-group-vertical">
+                    <button type="button" class="btn btn-default btn-xs" title="{% trans 'Move up' %}" style="padding: 0 6px; line-height: 1.2;" data-bind="click: $parent.moveUp, disable: !$parent.card.isWritable"><i class="fa fa-caret-up"></i></button>
+                    <button type="button" class="btn btn-default btn-xs" title="{% trans 'Move down' %}" style="padding: 0 6px; line-height: 1.2;" data-bind="click: $parent.moveDown, disable: !$parent.card.isWritable"><i class="fa fa-caret-down"></i></button>
+                </div>
+                <button type="button" class="btn btn-default btn-sm" data-bind="click: $parent.moveFirst, disable: !$parent.card.isWritable">{% trans 'Move first' %}</button>
+                <button type="button" class="btn btn-default btn-sm" data-bind="click: $parent.moveLast, disable: !$parent.card.isWritable">{% trans 'Move last' %}</button>
+            </div>
             <form class="widgets" style="margin-bottom: 20px;">
                 <div data-bind="foreach: {
                         data: $parent.card.widgets, as: 'widget'
@@ -357,14 +371,14 @@
                     <span data-bind="text: $root.translations.delete"></span>
                 </button>
                 <!-- /ko -->
-                <!-- ko if: tile.dirty() -->
+                <!-- ko if: tile.dirty() || $parent.orderChanged() -->
                     <!-- ko if: $parent.provisionalTileViewModel && !$parent.provisionalTileViewModel.tileIsFullyProvisional() && $parent.card.isWritable -->
-                    <button class="btn btn-shim btn-danger btn-labeled btn-lg fa fa-times" data-bind="click: tile.reset">
+                    <button class="btn btn-shim btn-danger btn-labeled btn-lg fa fa-times" data-bind="click: $parent.resetTileAndOrder">
                         <span data-bind="text: $root.translations.cancel"></span>
                     </button>
                     <!-- /ko -->
                     <!-- ko if: tile.tileid -->
-                    <button class="btn btn-shim btn-labeled btn-lg fa fa-plus" data-bind="click: tile.save, css: {
+                    <button class="btn btn-shim btn-labeled btn-lg fa fa-plus" data-bind="click: $parent.saveTileAndOrder, css: {
                         disabled: (!$parent.card.isWritable && !self.preview),
                         'btn-mint': $parent.card.isWritable
                     }">
