@@ -10,6 +10,7 @@ from quartz.views.resource import (
     VersionedResourceEditorView,
     VersionedResourceEditLogView,
 )
+from quartz.views.tile import ReorderTilesView
 from quartz.views.website_export import WebsiteExportView
 
 handler400 = "arches.app.views.main.custom_400"
@@ -32,6 +33,11 @@ _app_urlpatterns = [
         "website-export/",
         WebsiteExportView.as_view(),
         name="website_export",
+    ),
+    re_path(
+        r"^tiles/reorder_tiles$",
+        ReorderTilesView.as_view(),
+        name="reorder_tiles",
     ),
     re_path(r"^sso/", include("django_saml2_auth.urls")),
     re_path(r"^sso/signin/$", django_saml2_auth.views.signin, name="saml2_signin"),
