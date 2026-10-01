@@ -182,6 +182,12 @@ const viewModel = function(params) {
         if (loadFile === true) {
             var newtile;
             newtile = self.card.getNewTile();
+            var emptyStr = function() {
+                return {[arches.activeLanguage]: {
+                    direction: arches.languages.find(lang => lang.code == arches.activeLanguage).default_direction,
+                    value: '',
+                }};
+            };
             var tilevalue = {
                 name: file.name,
                 accepted: true,
@@ -195,7 +201,11 @@ const viewModel = function(params) {
                 file_id: null,
                 index: 0,
                 content: window.URL.createObjectURL(file),
-                error: file.error
+                error: file.error,
+                altText: emptyStr(),
+                title: emptyStr(),
+                attribution: emptyStr(),
+                description: emptyStr()
             };
             newtile.data[self.fileListNodeId]([tilevalue]);
             newtile.formData.append('file-list_' + self.fileListNodeId, file, file.name);
