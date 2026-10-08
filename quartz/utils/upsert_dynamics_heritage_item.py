@@ -217,7 +217,9 @@ def process_heritage_item(payload: dict, user) -> tuple:
     current_draft_resource.save()
 
     if is_final:
-        finalize_draft(heritage_id_number, user, next_major, next_minor, payload)
+        finalize_draft(
+            heritage_id_number, user, next_major, next_minor, metadata=payload
+        )
 
     return current_draft_resource, created, f"{next_major}.{next_minor}"
 
