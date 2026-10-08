@@ -1,0 +1,12 @@
+{% extends "views/components/cards/default.htm" %}
+{% load i18n %}
+
+{% block editor_tree_node_content %}
+{# Core renders the file-list widget here, which writes metadata into the tile on init and leaves every photo dirty on load #}
+<span data-bind="text: self.card.model.name"></span>:
+<span data-bind="text: self.getUrl($data).name"></span>
+{% endblock editor_tree_node_content %}
+
+{% block form %}
+{% include 'views/components/photo-workbench.htm' %}
+{% endblock form %}
