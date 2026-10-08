@@ -5,7 +5,7 @@
 \set ON_ERROR_STOP on
 \timing on
 
--- 0. Skip the deferred spatial trigger (per-tile at COMMIT); section 4 does its work.
+-- 0. Skip the deferred spatial trigger (per-tile at COMMIT); section 3 does its work.
 SET session_replication_role = replica;
 
 -- 1. Find stale values ONCE.
@@ -30,26 +30,39 @@ WHERE n.datatype = 'reference'
         AND v.uri = regexp_replace(e.value->>'uri', '^urn:uuid:', '')
   );
 
--- Labels renamed between lists; a stale value matches its own label or the alias.
-CREATE TEMP TABLE ref_remap_aliases (old_label text PRIMARY KEY, new_label text NOT NULL);
-INSERT INTO ref_remap_aliases VALUES ('Aerial Photography', 'Aerial and Satellite Photography');
+-- Labels a stale value may carry for an item: its prefLabel, the "Parent,Child"
+-- form old builds flattened comma categories into, and renamed labels.
+CREATE TEMP TABLE ref_remap_labels AS
+WITH pref AS (
+    SELECT i.list_id, i.id AS item_id, i.parent_id, v.value AS label, v.languageid AS lang
+    FROM arches_controlled_lists_listitem i
+    JOIN arches_controlled_lists_listitemvalue v
+      ON v.list_item_id = i.id AND v.valuetype_id = 'prefLabel'
+)
+SELECT list_id, item_id, label, lang FROM pref
+UNION
+SELECT c.list_id, c.item_id, p.label || ',' || c.label, c.lang
+FROM pref c JOIN pref p ON p.item_id = c.parent_id AND p.lang = c.lang
+UNION
+SELECT list_id, item_id, alias.old_label, lang
+FROM pref
+JOIN (VALUES ('Aerial Photography', 'Aerial and Satellite Photography')) AS alias(old_label, new_label)
+  ON alias.new_label = pref.label;
+CREATE INDEX ON ref_remap_labels (list_id, label, lang);
 
 CREATE TEMP TABLE ref_remap_candidates AS
 WITH keys AS (
     SELECT DISTINCT nodeid, list_id, old_value FROM ref_remap_stale
 )
 SELECT k.nodeid, k.old_value, k.old_value->>'uri' AS old_uri,
-       array_agg(DISTINCT i.id) FILTER (WHERE i.id IS NOT NULL) AS item_ids
+       array_agg(DISTINCT rl.item_id) FILTER (WHERE rl.item_id IS NOT NULL) AS item_ids
 FROM keys k
 LEFT JOIN LATERAL jsonb_array_elements(k.old_value->'labels') l(label)
        ON l.label->>'valuetype_id' = 'prefLabel'
-LEFT JOIN ref_remap_aliases a ON a.old_label = l.label->>'value'
-LEFT JOIN arches_controlled_lists_listitemvalue lv
-       ON lv.valuetype_id = 'prefLabel'
-      AND lv.value IN (l.label->>'value', a.new_label)
-      AND lv.languageid = l.label->>'language_id'
-LEFT JOIN arches_controlled_lists_listitem i
-       ON i.id = lv.list_item_id AND i.list_id = k.list_id
+LEFT JOIN ref_remap_labels rl
+       ON rl.list_id = k.list_id
+      AND rl.label = l.label->>'value'
+      AND rl.lang = l.label->>'language_id'
 GROUP BY k.nodeid, k.old_value;
 
 -- One stale uri whose labels disagree on the target is ambiguous: excluded.
@@ -75,7 +88,7 @@ FROM (
     SELECT nodeid, old_uri, min(item_ids[1]::text)::uuid AS item_id
     FROM ref_remap_candidates
     GROUP BY nodeid, old_uri
-    HAVING bool_and(cardinality(item_ids) = 1)
+    HAVING bool_and(coalesce(cardinality(item_ids), 0) = 1)
        AND count(DISTINCT item_ids[1]) = 1
 ) c
 JOIN arches_controlled_lists_listitem i ON i.id = c.item_id;
@@ -173,16 +186,30 @@ FROM sample;
     \quit
 \endif
 
--- 2. Section 3 drains the queue; section 4 needs the resources.
-CREATE TEMP TABLE ref_remap_resources AS
-SELECT DISTINCT resourceinstanceid FROM ref_remap_queue;
-ALTER TABLE ref_remap_resources ADD PRIMARY KEY (resourceinstanceid);
+-- 2. One sp_attr_<slug> update per active view column fed by a remapped node.
+CREATE TEMP TABLE ref_remap_sp_attr AS
+SELECT format(
+    'UPDATE %I.%I s SET %I = ('
+    '    SELECT __arches_agg_get_node_display_value(DISTINCT t.tiledata, %L::uuid, %L)'
+    '    FROM tiles t'
+    '    WHERE t.resourceinstanceid = s.resourceinstanceid::uuid AND t.nodegroupid = %L::uuid'
+    ') WHERE s.resourceinstanceid = ANY($1)',
+    spv.schema, 'sp_attr_' || spv.slug, __arches_slugify(nd.alias),
+    nd.nodeid, spv.languageid, nd.nodegroupid) AS stmt
+FROM spatial_views spv
+CROSS JOIN LATERAL jsonb_to_recordset(spv.attributenodes) AS a(nodeid uuid)
+JOIN nodes nd ON nd.nodeid = a.nodeid
+JOIN ref_remap_nodes rn ON rn.nodeid = nd.nodeid::text
+WHERE spv.isactive;
 
--- 3. Rewrite in committed batches.
+-- 3. Rewrite in committed batches. sp_attr is refreshed in the same transaction:
+--    a re-run no longer sees rewritten tiles as stale, so it couldn't catch up later.
 DO $$
 DECLARE
-    batch uuid[];
-    done  bigint := 0;
+    batch     uuid[];
+    resources text[];
+    stmt      text;
+    done      bigint := 0;
 BEGIN
     LOOP
         SELECT array_agg(tileid) INTO batch
@@ -194,6 +221,12 @@ BEGIN
         SET tiledata = pg_temp.ref_remap(t.tiledata)
         WHERE t.tileid = ANY(batch);
 
+        SELECT array_agg(DISTINCT resourceinstanceid::text) INTO resources
+        FROM tiles WHERE tileid = ANY(batch);
+        FOR stmt IN SELECT r.stmt FROM ref_remap_sp_attr r LOOP
+            EXECUTE stmt USING resources;
+        END LOOP;
+
         DELETE FROM ref_remap_queue WHERE tileid = ANY(batch);
 
         done := done + array_length(batch, 1);
@@ -203,39 +236,7 @@ BEGIN
     END LOOP;
 END $$;
 
--- 4. Recompute the affected sp_attr_<slug> columns for affected resources.
-DO $$
-DECLARE
-    spv record;
-    n   record;
-    updated bigint;
-BEGIN
-    FOR spv IN SELECT * FROM spatial_views WHERE isactive LOOP
-        FOR n IN
-            SELECT nd.nodeid, nd.nodegroupid, nd.alias
-            FROM jsonb_to_recordset(spv.attributenodes) AS a(nodeid uuid)
-            JOIN nodes nd ON nd.nodeid = a.nodeid
-            JOIN ref_remap_nodes rn ON rn.nodeid = nd.nodeid::text
-        LOOP
-            EXECUTE format(
-                'UPDATE %I.%I s
-                 SET %I = (
-                     SELECT __arches_agg_get_node_display_value(DISTINCT t.tiledata, %L::uuid, %L)
-                     FROM tiles t
-                     WHERE t.resourceinstanceid = s.resourceinstanceid::uuid
-                       AND t.nodegroupid = %L::uuid
-                 )
-                 WHERE s.resourceinstanceid IN (SELECT resourceinstanceid::text FROM ref_remap_resources)',
-                spv.schema, 'sp_attr_' || spv.slug, __arches_slugify(n.alias),
-                n.nodeid, spv.languageid, n.nodegroupid
-            );
-            GET DIAGNOSTICS updated = ROW_COUNT;
-            RAISE NOTICE 'sp_attr_%.%: % rows', spv.slug, __arches_slugify(n.alias), updated;
-        END LOOP;
-    END LOOP;
-END $$;
-
--- 5. VERIFY -- only 'ambiguous'/'unmatched' values from section 1 should remain.
+-- 4. VERIFY -- only 'ambiguous'/'unmatched' values from section 1 should remain.
 SELECT g.name->>'en' AS graph, n.name AS node, count(*) AS still_stale
 FROM nodes n
 JOIN graphs g ON g.graphid = n.graphid
