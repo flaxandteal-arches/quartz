@@ -35,7 +35,7 @@ dependencies = [
     "django-axes",
     "arches_id_generator @ git+https://github.com/flaxandteal-arches/arches-id-generator.git@v0.1.2",
     "redis",
-    "certificate_generator @ git+https://github.com/flaxandteal-arches/certificate-generator.git@v0.2.10",
+    "certificate_generator @ git+https://github.com/flaxandteal-arches/certificate-generator.git@v0.2.11",
     "arches_resource_version_manager @ git+https://github.com/fargeo/arches-resource-version-manager.git@main",
     "arches-search>=0.1.0a12",
     "arches_vue_components>=2.0.0,<3.0.0",

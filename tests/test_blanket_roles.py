@@ -25,6 +25,7 @@ from arches.app.models.models import (
     ResourceInstanceLifecycleState,
 )
 from arches.app.models.resource import Resource
+from arches.app.search.search_engine_factory import SearchEngineFactory
 from arches.app.utils.betterJSONSerializer import JSONDeserializer
 from arches.app.utils.data_management.resource_graphs.importer import (
     import_graph as ResourceGraphImporter,
@@ -47,9 +48,7 @@ class BlanketRoleFrameworkTests(ArchesTestCase):
         super().setUpTestData()
 
         # A resource to check against (Digital Object is the smallest fixture).
-        path = os.path.join(
-            "tests/fixtures/resource_graphs", "Digital_Object.json"
-        )
+        path = os.path.join("tests/fixtures/resource_graphs", "Digital_Object.json")
         with captured_stdout():
             with open(path) as f:
                 archesfile = JSONDeserializer().deserialize(f)
@@ -165,8 +164,12 @@ class BlanketRoleFrameworkTests(ArchesTestCase):
         rid = str(self.resource.pk)
         self.assertIn(rid, self.fw.get_allowed_instances(self.delegate))
         self.assertIn(rid, self.fw.get_allowed_instances(self.officer))
-        # Ungrouped user is hard-gated to nothing (no fall-through to base).
-        self.assertEqual([], self.fw.get_allowed_instances(self.other))
+        # Ungrouped user falls through to the deny framework (no access here),
+        # which queries Elasticsearch, so it needs a real search engine.
+        se = SearchEngineFactory().create()
+        self.assertNotIn(
+            rid, self.fw.get_allowed_instances(self.other, search_engine=se)
+        )
 
     def test_search_filter_unrestricted_for_blanket_only(self):
         # Blanket users get an empty Bool (no permission restriction); others

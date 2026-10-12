@@ -17073,7 +17073,7 @@
           "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of",
           "sortorder": 0,
           "source_identifier_id": null,
-          "sourcebranchpublication_id": "e2101594-2206-55aa-8eee-652ac683a06a"
+          "sourcebranchpublication_id": null
         },
         {
           "alias": "associated_monuments_areas_and_artefacts",
@@ -17284,7 +17284,7 @@
           "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P130_shows_features_of",
           "sortorder": 0,
           "source_identifier_id": null,
-          "sourcebranchpublication_id": "e2101594-2206-55aa-8eee-652ac683a06a"
+          "sourcebranchpublication_id": null
         },
         {
           "alias": "system_reference_numbers",
@@ -18150,7 +18150,7 @@
           "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
           "sortorder": 0,
           "source_identifier_id": null,
-          "sourcebranchpublication_id": "e2101594-2206-55aa-8eee-652ac683a06a"
+          "sourcebranchpublication_id": null
         },
         {
           "alias": "components",
@@ -20140,7 +20140,7 @@
           "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
           "sortorder": 0,
           "source_identifier_id": null,
-          "sourcebranchpublication_id": "bf05dedf-85d1-4e1b-8929-7cb42b534b87"
+          "sourcebranchpublication_id": null
         },
         {
           "alias": "monument_name_use_type",
@@ -20166,7 +20166,7 @@
           "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
           "sortorder": 0,
           "source_identifier_id": null,
-          "sourcebranchpublication_id": "bf05dedf-85d1-4e1b-8929-7cb42b534b87"
+          "sourcebranchpublication_id": null
         },
         {
           "alias": "monument_name_currency",
@@ -20192,7 +20192,7 @@
           "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
           "sortorder": 0,
           "source_identifier_id": null,
-          "sourcebranchpublication_id": "bf05dedf-85d1-4e1b-8929-7cb42b534b87"
+          "sourcebranchpublication_id": null
         },
         {
           "alias": "monument_name_type",
@@ -20218,7 +20218,7 @@
           "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
           "sortorder": 0,
           "source_identifier_id": null,
-          "sourcebranchpublication_id": "bf05dedf-85d1-4e1b-8929-7cb42b534b87"
+          "sourcebranchpublication_id": null
         },
         {
           "alias": "monument_name",
@@ -20241,7 +20241,7 @@
           "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
           "sortorder": 0,
           "source_identifier_id": null,
-          "sourcebranchpublication_id": "bf05dedf-85d1-4e1b-8929-7cb42b534b87"
+          "sourcebranchpublication_id": null
         },
         {
           "alias": "monument_name_metatype",
@@ -20267,7 +20267,7 @@
           "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
           "sortorder": 0,
           "source_identifier_id": null,
-          "sourcebranchpublication_id": "bf05dedf-85d1-4e1b-8929-7cb42b534b87"
+          "sourcebranchpublication_id": null
         },
         {
           "alias": "monument_name_use_metatype",
@@ -20293,7 +20293,7 @@
           "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
           "sortorder": 0,
           "source_identifier_id": null,
-          "sourcebranchpublication_id": "bf05dedf-85d1-4e1b-8929-7cb42b534b87"
+          "sourcebranchpublication_id": null
         },
         {
           "alias": "monument_name_currency_metatype",
@@ -20319,7 +20319,7 @@
           "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
           "sortorder": 0,
           "source_identifier_id": null,
-          "sourcebranchpublication_id": "bf05dedf-85d1-4e1b-8929-7cb42b534b87"
+          "sourcebranchpublication_id": null
         },
         {
           "alias": "lot_on_plan",
@@ -26324,7 +26324,7 @@
           "parentproperty": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
           "sortorder": 0,
           "source_identifier_id": null,
-          "sourcebranchpublication_id": "e2101594-2206-55aa-8eee-652ac683a06a"
+          "sourcebranchpublication_id": null
         },
         {
           "alias": "associated_archives",
