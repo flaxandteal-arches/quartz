@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:arches="http://localhost:8000/"
+>
+  <skos:ConceptScheme rdf:about="https://qhr.detsi.qld.gov.au/dd13d08d-c321-55a5-92d3-3bc6bcc8bf67">
+    <dcterms:title xml:lang="en">Artefact Feature Types</dcterms:title>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/0ad4a307-110d-58d9-b0de-4d7310880f39"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/a8251967-8daf-5b7d-af86-527cc76200bb"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/d5694f57-866e-59cd-a67e-4a5641a13d1f"/>
+    <skos:hasTopConcept rdf:resource="https://qhr.detsi.qld.gov.au/ebdc51fc-52cf-5ded-9df7-2786c972d2b2"/>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/0ad4a307-110d-58d9-b0de-4d7310880f39">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/dd13d08d-c321-55a5-92d3-3bc6bcc8bf67"/>
+    <skos:prefLabel xml:lang="en">Feature</skos:prefLabel>
+    <dcterms:identifier>0ad4a307-110d-58d9-b0de-4d7310880f39</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/a8251967-8daf-5b7d-af86-527cc76200bb">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/dd13d08d-c321-55a5-92d3-3bc6bcc8bf67"/>
+    <skos:prefLabel xml:lang="en">Centroid</skos:prefLabel>
+    <dcterms:identifier>a8251967-8daf-5b7d-af86-527cc76200bb</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/d5694f57-866e-59cd-a67e-4a5641a13d1f">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/dd13d08d-c321-55a5-92d3-3bc6bcc8bf67"/>
+    <skos:prefLabel xml:lang="en">Transect</skos:prefLabel>
+    <dcterms:identifier>d5694f57-866e-59cd-a67e-4a5641a13d1f</dcterms:identifier>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://qhr.detsi.qld.gov.au/ebdc51fc-52cf-5ded-9df7-2786c972d2b2">
+    <skos:inScheme rdf:resource="https://qhr.detsi.qld.gov.au/dd13d08d-c321-55a5-92d3-3bc6bcc8bf67"/>
+    <skos:prefLabel xml:lang="en">Boundary</skos:prefLabel>
+    <dcterms:identifier>ebdc51fc-52cf-5ded-9df7-2786c972d2b2</dcterms:identifier>
+  </skos:Concept>
+</rdf:RDF>
