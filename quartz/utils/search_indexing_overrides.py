@@ -3,6 +3,7 @@
 These are applied at import time (from QuartzConfig.ready) so we don't have to
 fork the arches-search app or arches core.
 """
+import copy
 import logging
 
 from arches.app.datatypes.datatypes import FileListDataType
@@ -43,4 +44,26 @@ def _patch_file_list_append_to_document():
     FileListDataType.append_to_document = append_to_document
 
 
+def _patch_search_indexing_post_save():
+    """Index from a throwaway copy of the tile.
+
+    EDTF indexing rewrites tile.data into its ES shape, which carries a UUID
+    nodegroup_id on DB-loaded tiles, so the edit log write that follows fails.
+    """
+    from arches_search.functions.search_indexing import SearchIndexingFunction
+
+    original = SearchIndexingFunction.post_save
+    if getattr(original, "_quartz_guarded", False):
+        return
+
+    def post_save(self, tile, *args, **kwargs):
+        index_tile = copy.copy(tile)
+        index_tile.data = dict(tile.data)
+        return original(self, index_tile, *args, **kwargs)
+
+    post_save._quartz_guarded = True
+    SearchIndexingFunction.post_save = post_save
+
+
 _patch_file_list_append_to_document()
+_patch_search_indexing_post_save()
