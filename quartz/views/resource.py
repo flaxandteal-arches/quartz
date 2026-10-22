@@ -40,6 +40,7 @@ class VersionedResourceEditorView(ResourceEditorView):
             resourceid=current_draft_version.pk,
             major_version=current_draft_version.major_version,
             minor_version=current_draft_version.minor_version,
+            patch_version=current_draft_version.patch_version,
         )
 
     def get(self, request, **kwargs):
@@ -182,7 +183,8 @@ class VersionedResourceEditLogView(ResourceEditLogView):
                             "resourceinstanceid": str(version.pk),
                             "major_version": version.major_version,
                             "minor_version": version.minor_version,
-                            "version_label": f"{version.major_version}.{version.minor_version}",
+                            "patch_version": version.patch_version,
+                            "version_label": f"{version.major_version}.{version.minor_version}.{version.patch_version}",
                             "lifecycle_state": str(
                                 version.resourceinstance.resource_instance_lifecycle_state.name
                             ),
