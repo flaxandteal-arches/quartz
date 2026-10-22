@@ -83,8 +83,11 @@ const viewModel = function(params) {
             {
                 url = self.cleanUrl(ko.unwrap(val[0].url)) || ko.unwrap(val[0].content);
                 name = ko.unwrap(val[0].name);
-                if (url && name){
-                    url = self.iiifUrl(name, size || 'max');
+                // Cantaloupe serves the sanitised stored filename, not the uploaded display name.
+                var path = ko.unwrap(val[0].path);
+                var storedName = path ? path.split('/').pop() : name;
+                if (url && storedName){
+                    url = self.iiifUrl(storedName, size || 'max');
                 }
             }
         }
