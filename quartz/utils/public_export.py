@@ -776,8 +776,8 @@ def export_controlled_lists_to_dir(list_ids, dest_dir):
 
         slug = controlled_list.name.lower().replace(" ", "_").replace("/", "_")
         filepath = os.path.join(cl_dir, f"{slug}.xml")
-        with open(filepath, "wb") as f:
-            f.write(skos_data)
+        with open(filepath, "w") as f:
+            f.write(skos_data if isinstance(skos_data, str) else skos_data.decode("utf-8"))
         exported.append(controlled_list.name)
 
     return exported
