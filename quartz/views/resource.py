@@ -40,6 +40,7 @@ class VersionedResourceEditorView(ResourceEditorView):
             resourceid=current_draft_version.pk,
             major_version=current_draft_version.major_version,
             minor_version=current_draft_version.minor_version,
+            patch_version=getattr(current_draft_version, "patch_version", 0),
         )
 
     def get(self, request, **kwargs):
@@ -111,6 +112,13 @@ class VersionedResourceEditorView(ResourceEditorView):
             return super().copy(request, resourceid)
 
     def finalize_working_draft(self, request, resourceid=None):
+        if not request.user.has_perm(
+            "arches_resource_version_manager.can_create_final_version"
+        ):
+            return JSONErrorResponse(
+                "You do not have permission to finalize versions.", status=403
+            )
+
         try:
             current_draft_version = VersionedResource.objects.get(pk=resourceid)
             if (
@@ -140,7 +148,7 @@ class VersionedResourceEditorView(ResourceEditorView):
                     request.user,
                     current_draft_version.major_version,
                     current_draft_version.minor_version,
-                    None,
+                    current_draft_version.patch_version,
                 )
                 return JSONResponse({"resourceid": str(final.pk)})
         except VersionedResource.DoesNotExist:
@@ -183,7 +191,7 @@ class VersionedResourceEditLogView(ResourceEditLogView):
                             "resourceinstanceid": str(version.pk),
                             "major_version": version.major_version,
                             "minor_version": version.minor_version,
-                            "version_label": f"{version.major_version}.{version.minor_version}",
+                            "version_label": f"{version.major_version}.{version.minor_version}.{getattr(version, 'patch_version', 0)}",
                             "lifecycle_state": str(
                                 version.resourceinstance.resource_instance_lifecycle_state.name
                             ),
