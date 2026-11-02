@@ -31,6 +31,7 @@ AUTHENTICATION_BACKENDS = ("axes.backends.AxesStandaloneBackend", *AUTHENTICATIO
 AXES_FAILURE_LIMIT = 3
 AXES_COOLOFF_TIME = 0.5
 AXES_LOCKOUT_PARAMETERS = ["username"]
+AXES_LOCKOUT_TEMPLATE = "lockout.htm"
 
 DATATYPE_LOCATIONS.append("quartz.datatypes")
 FUNCTION_LOCATIONS.append("quartz.functions")
