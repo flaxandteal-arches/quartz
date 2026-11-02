@@ -44,7 +44,7 @@
                         <div data-bind="click: $parent.removeTile, visible: ko.unwrap(selected)">
                             <button class="btn btn-xs dz-cancel"><i class="ion ion-close"></i></button>
                         </div>
-                        <img class="dz-img" loading="lazy" data-bind="attr: {src: $parent.getUrl(tile).url !== undefined ? $parent.getUrl(tile, 300).url : '' }, click: $parent.photoGallery.selectItem">
+                        <img class="dz-img" loading="lazy" data-bind="attr: {src: $parent.getUrl(tile).url !== undefined ? $parent.getUrl(tile, 300).url : '' }, click: $parent.selectFromBar, css: {'selected-photo': ko.unwrap(tile.selected)}, scrollIntoViewWhen: tile.selected">
                         <!--/ko-->
                         <!--ko if: $parent.getUrl(tile) === undefined -->
                         <div data-bind="click: $parent.removeTile, visible: ko.unwrap(selected)">
