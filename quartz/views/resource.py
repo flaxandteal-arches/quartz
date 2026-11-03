@@ -3,6 +3,8 @@ import logging
 import uuid
 
 from django.db import transaction
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
 
 from arches.app.models import models
 from arches.app.models.resource import Resource
@@ -27,6 +29,9 @@ from quartz.utils.versioned_resource_utils import increment_draft_version
 logger = logging.getLogger(__name__)
 
 
+# The page embeds the tiles, and browser Back reuses a cached copy unless it is no-store,
+# so Back after saving showed (and re-saving would write) the values from first load.
+@method_decorator(never_cache, name="dispatch")
 class VersionedResourceEditorView(ResourceEditorView):
 
     def _increment_current_working_draft_version(self, current_draft_version):
