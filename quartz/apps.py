@@ -1,5 +1,5 @@
 from django.apps import AppConfig
-from django.contrib.auth.signals import user_logged_in
+from django.contrib.auth.signals import user_logged_in, user_login_failed
 from django.dispatch import receiver
 
 
@@ -20,5 +20,11 @@ class QuartzConfig(AppConfig):
     is_arches_application = True
 
     def ready(self):
+        from quartz.utils.axes_compat import record_failed_login_without_request
+
+        user_login_failed.connect(
+            record_failed_login_without_request,
+            dispatch_uid="quartz.axes_record_failed_login",
+        )
         import quartz.utils.resource_thumbnail_fetcher  # noqa: F401
         import quartz.utils.search_indexing_overrides  # noqa: F401
