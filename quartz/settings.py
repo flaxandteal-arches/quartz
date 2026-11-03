@@ -457,6 +457,16 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = 524288000
 
 # Unique session cookie ensures that logins are treated separately for each app
 SESSION_COOKIE_NAME = "quartz"
+SESSION_COOKIE_AGE = 60 * 60 * 8
+SESSION_COOKIE_SAMESITE = "Lax"
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = True
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+CSRF_COOKIE_SECURE = True
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # For more info on configuring your cache: https://docs.djangoproject.com/en/2.2/topics/cache/
 CACHES = {
@@ -717,11 +727,6 @@ LOGIN_URL = "/auth/"
 LOGIN_REDIRECT_URL = os.environ.get("LOGIN_REDIRECT_URL", "/")
 LOGOUT_REDIRECT_URL = os.environ.get("LOGOUT_REDIRECT_URL", "/")
 ENABLE_USER_SIGNUP = bool(os.environ.get("ENABLE_USER_SIGNUP", False))
-
-# Session cookie settings for SSO
-SESSION_COOKIE_SAMESITE = "Lax"
-SESSION_COOKIE_HTTPONLY = True
-SESSION_COOKIE_SECURE = False
 
 # Arches Search
 INDEX_BATCH_SIZE = int(os.environ.get("INDEX_BATCH_SIZE", 500))
