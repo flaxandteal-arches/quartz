@@ -25,12 +25,8 @@ WEBPACK_LOADER = {
     },
 }
 
-# Arches calls authenticate(...) without a request, so use a backend that
-# falls back to the request recorded by CurrentRequestMiddleware.
-AUTHENTICATION_BACKENDS = (
-    "quartz.utils.axes_compat.RequestFallbackAxesBackend",
-    *AUTHENTICATION_BACKENDS,
-)
+# NOTE: this requires request as a param in authenticate(...) calls
+AUTHENTICATION_BACKENDS = ("axes.backends.AxesStandaloneBackend", *AUTHENTICATION_BACKENDS)
 
 AXES_FAILURE_LIMIT = 3
 AXES_COOLOFF_TIME = 0.5
@@ -268,7 +264,6 @@ INSTALLED_APPS += (
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
-    "quartz.utils.axes_compat.CurrentRequestMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     #'arches.app.utils.middleware.TokenMiddleware',
     "django.middleware.locale.LocaleMiddleware",
