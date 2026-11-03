@@ -26,7 +26,12 @@ WEBPACK_LOADER = {
 }
 
 # NOTE: this requires request as a param in authenticate(...) calls
-# AUTHENTICATION_BACKENDS += ("axes.backends.AxesStandaloneBackend",)
+AUTHENTICATION_BACKENDS = ("axes.backends.AxesStandaloneBackend", *AUTHENTICATION_BACKENDS)
+
+AXES_FAILURE_LIMIT = 3
+AXES_COOLOFF_TIME = 0.5
+AXES_LOCKOUT_PARAMETERS = ["username"]
+AXES_LOCKOUT_TEMPLATE = "lockout.htm"
 
 DATATYPE_LOCATIONS.append("quartz.datatypes")
 FUNCTION_LOCATIONS.append("quartz.functions")
@@ -271,7 +276,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "arches.app.utils.middleware.SetAnonymousUser",
     # "silk.middleware.SilkyMiddleware",
-    # "axes.middleware.AxesMiddleware",
+    "axes.middleware.AxesMiddleware",
 ]
 
 MIDDLEWARE.insert(  # this must resolve to first MIDDLEWARE entry
