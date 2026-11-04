@@ -26,7 +26,7 @@ WEBPACK_LOADER = {
 }
 
 # NOTE: this requires request as a param in authenticate(...) calls
-AUTHENTICATION_BACKENDS = ("axes.backends.AxesStandaloneBackend", *AUTHENTICATION_BACKENDS)
+AUTHENTICATION_BACKENDS = ("axes.backends.AxesBackend", *AUTHENTICATION_BACKENDS)
 
 AXES_FAILURE_LIMIT = 3
 AXES_COOLOFF_TIME = 0.5
