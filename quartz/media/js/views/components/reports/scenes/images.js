@@ -1,6 +1,7 @@
 import _ from "underscore";
 import ko from "knockout";
 import arches from "arches";
+import { generateArchesURL } from "@/arches/utils/generate-arches-url.ts";
 import reportUtils from "utils/report";
 import imageMetadata from "utils/image-metadata";
 import ImagesTemplate from "templates/views/components/reports/scenes/images.htm";
@@ -29,6 +30,33 @@ export default ko.components.register(
                 imageMetadata.fetchImageMetadata(image.fileId).then((data) => {
                     image.metadata(data.fields);
                 });
+            };
+
+            // The report JSON omits stored file names; core's tiles endpoint has them.
+            self.fillFileNames = function () {
+                const missing = self.images().filter((i) => !i.fileName());
+                const resourceid = window.location.pathname.match(
+                    /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i
+                )?.[0];
+                if (!missing.length || !resourceid) return;
+                const url = generateArchesURL("arches:resource_tiles", {
+                    resourceid,
+                });
+                const nodeid = self.cards.images?.nodegroupid;
+                fetch(nodeid ? `${url}?nodeid=${nodeid}` : url)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        const names = {};
+                        for (const tile of data.tiles || []) {
+                            const files = Object.values(tile.data || {}).find(
+                                (v) => Array.isArray(v) && v[0]?.name
+                            );
+                            if (files) names[files[0].url] = files[0].name;
+                        }
+                        // The compact report JSON has no tile ids; its @value is the file's url.
+                        missing.forEach((i) => i.fileName(names[i.path]));
+                    })
+                    .catch(() => {});
             };
 
             self.cards = Object.assign({}, params.cards);
@@ -74,8 +102,9 @@ export default ko.components.register(
                             const path = self.getNodeValue(x);
                             const fileDetails =
                                 self.getRawNodeValue(x)?.file_details?.[0];
-                            const fileName =
-                                fileDetails?.name || self.getFileName(x);
+                            const fileName = ko.observable(
+                                fileDetails?.name || null
+                            );
                             const fileId =
                                 fileDetails?.file_id ||
                                 (path ? path.split("/").pop() : null);
@@ -93,6 +122,7 @@ export default ko.components.register(
                             };
                         })
                     );
+                    self.fillFileNames();
                 }
 
                 const copyrightNode = self.getRawNodeValue(
