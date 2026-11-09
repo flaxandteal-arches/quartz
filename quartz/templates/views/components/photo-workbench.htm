@@ -296,7 +296,7 @@
                 <div data-bind="foreach: {
                         data: $parent.card.widgets, as: 'widget'
                     }">
-                    <!-- ko if: ko.unwrap(self.form.nodeLookup[widget.node_id()].datatype) !== 'file-list' -->
+                    <!-- ko if: ko.unwrap(self.form.nodeLookup[widget.node_id()].datatype) !== 'file-list' && !self.isHiddenWidget(widget) -->
                     <div data-bind='component: {
                         name: self.form.widgetLookup[widget.widget_id()].name,
                         params: {
@@ -332,6 +332,35 @@
                 <!--/ko-->
                 </div>
             </form>
+            <!-- ko if: $parent.getUrl(tile).fileId -->
+            <style>
+                .photo-metadata summary::-webkit-details-marker { display: none; }
+                .photo-metadata[open] .metadata-closed,
+                .photo-metadata:not([open]) .metadata-open { display: none; }
+                .photo-metadata .image-metadata-list { display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem; }
+                .photo-metadata .image-metadata-value { margin-left: 1rem; }
+                .photo-metadata { margin-bottom: 20px; }
+                .photo-metadata summary { list-style: none; cursor: pointer; }
+            </style>
+            <details class="photo-metadata" data-bind="event: {toggle: $parent.loadImageMetadata}">
+                <summary>
+                    <span class="control-label widget-input-label">
+                        <i class="fa fa-caret-right metadata-closed"></i><i class="fa fa-caret-down metadata-open"></i>
+                        {% trans 'Image metadata' %}
+                    </span>
+                </summary>
+                <!-- ko with: $parent.imageMetadataFields(tile) -->
+                <div class="image-metadata-list">
+                    <!-- ko foreach: $data -->
+                    <div><span class="control-label widget-input-label" data-bind="text: label + ': '"></span><span class="image-metadata-value" data-bind="text: value"></span></div>
+                    <!-- /ko -->
+                    <!-- ko ifnot: $data.length -->
+                    <div>{% trans 'No embedded metadata' %}</div>
+                    <!-- /ko -->
+                </div>
+                <!-- /ko -->
+            </details>
+            <!-- /ko -->
             <!--/ko-->
         <!-- /ko -->
 

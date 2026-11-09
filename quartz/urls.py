@@ -10,6 +10,7 @@ from quartz.views.resource import (
     VersionedResourceEditorView,
     VersionedResourceEditLogView,
 )
+from quartz.views.image_metadata import ImageMetadataView
 from quartz.views.tile import ReorderTilesView
 from quartz.views.website_export import WebsiteExportView
 
@@ -33,6 +34,11 @@ _app_urlpatterns = [
         "website-export/",
         WebsiteExportView.as_view(),
         name="website_export",
+    ),
+    path(
+        "image-metadata/<uuid:fileid>",
+        ImageMetadataView.as_view(),
+        name="image_metadata",
     ),
     re_path(
         r"^tiles/reorder_tiles$",
