@@ -191,7 +191,7 @@
 <div class='photo-workbench-photos'>
 <!-- ko foreach: { data: card.tiles(), as: 'tile'} -->
     <!--ko if: $parent.getUrl(tile) -->
-    <div class='photo-workbench-photo' data-bind="text: $index() + 1 + ' | ' + ($parent.getUrl(tile).name), click: $parent.photoGallery.selectItem, css: {'selected-photo': ko.unwrap(selected)}"></div>
+    <div class='photo-workbench-photo' data-bind="text: $index() + 1 + ' | ' + ($parent.getUrl(tile).name), click: $parent.selectFromList, css: {'selected-photo': ko.unwrap(selected)}, scrollIntoViewWhen: selected"></div>
     <!--/ko-->
 <!-- /ko -->
 </div>

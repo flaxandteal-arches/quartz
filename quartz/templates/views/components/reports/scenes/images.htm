@@ -84,6 +84,12 @@
                         </div>
                         <div class="aher-report-photo-caption">
                             <div class="aher-report-subsection-item flex column-order pad-top pad-btm">
+                                <!-- ko if: fileName -->
+                                <div class="aher-block-attributes">
+                                    <span class="aher-block-key">{% trans "File name" %}: </span>
+                                    <div class="aher-block-value" data-bind="text: fileName"></div>
+                                </div>
+                                <!-- /ko -->
                                 <div class="aher-block-attributes">
                                     <span class="aher-block-key">Caption: </span>
                                     <div class="aher-block-value" data-bind="text: caption"></div>
@@ -91,10 +97,6 @@
                                 <div class="aher-block-attributes">
                                     <span class="aher-block-key">Copyright note: </span>
                                     <div class="aher-block-value" data-bind="text: copyrightNote"></div>
-                                </div>
-                                <div class="aher-block-attributes">
-                                    <span class="aher-block-key">{% trans "File name" %}: </span>
-                                    <div class="aher-block-value" data-bind="text: fileName"></div>
                                 </div>
                                 <!-- ko if: fileId -->
                                 <details data-bind="event: {toggle: $parent.loadMetadata}">

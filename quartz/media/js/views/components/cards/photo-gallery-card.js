@@ -21,29 +21,41 @@ ko.bindingHandlers.scrollIntoViewWhen = {
         if (!ko.unwrap(valueAccessor())) {
             return;
         }
-        var nudgeOnly = bindingContext.$parent.selectingFromBar;
+        var container = element.closest('.gallery-thumbnails, .photo-workbench-photos');
+        var vertical = container.classList.contains('photo-workbench-photos');
+        var nudgeOnly = vertical ?
+            bindingContext.$parent.selectingFromList :
+            bindingContext.$parent.selectingFromBar;
         // Selection passes through "nothing selected", which hides the bar via displayContent,
         // so measure once the update has finished.
         setTimeout(function() {
-            var bar = element.closest('.gallery-thumbnails');
-            var barRect = bar.getBoundingClientRect();
-            var left = barRect.left;
-            var right = barRect.right;
+            var containerRect = container.getBoundingClientRect();
+            var rect = element.getBoundingClientRect();
+            var start = vertical ? containerRect.top : containerRect.left;
+            var end = vertical ? containerRect.bottom : containerRect.right;
             // core sizes the bar as 100% - 400px, so its end can sit under a wider side panel
             var panel = document.querySelector('.workbench-card-sidepanel');
-            if (panel && panel.offsetWidth) {
+            if (!vertical && panel && panel.offsetWidth) {
                 var panelLeft = panel.getBoundingClientRect().left;
-                if (panelLeft > left && panelLeft < right) {
-                    right = panelLeft;
+                if (panelLeft > start && panelLeft < end) {
+                    end = panelLeft;
                 }
             }
-            var rect = element.getBoundingClientRect();
+            var elStart = vertical ? rect.top : rect.left;
+            var elEnd = vertical ? rect.bottom : rect.right;
+            var size = vertical ? rect.height : rect.width;
+            var delta = 0;
             if (!nudgeOnly) {
-                bar.scrollLeft += rect.left - left - (right - left - rect.width) / 2;
-            } else if (rect.left < left) {
-                bar.scrollLeft -= left - rect.left;
-            } else if (rect.right > right) {
-                bar.scrollLeft += rect.right - right;
+                delta = elStart - start - (end - start - size) / 2;
+            } else if (elStart < start) {
+                delta = elStart - start;
+            } else if (elEnd > end) {
+                delta = elEnd - end;
+            }
+            if (vertical) {
+                container.scrollTop += delta;
+            } else {
+                container.scrollLeft += delta;
             }
         }, 0);
     }
@@ -217,6 +229,13 @@ const viewModel = function(params) {
         self.selectingFromBar = true;
         self.photoGallery.selectItem(tile);
         self.selectingFromBar = false;
+    };
+
+    this.selectingFromList = false;
+    this.selectFromList = function(tile) {
+        self.selectingFromList = true;
+        self.photoGallery.selectItem(tile);
+        self.selectingFromList = false;
     };
 
     this.moveTile = function(tile, position) {
