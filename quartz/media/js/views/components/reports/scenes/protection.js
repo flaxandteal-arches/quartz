@@ -44,46 +44,17 @@ export default ko.components.register(
                 columns: Array(7).fill(null),
             };
 
-            const isEmpty = (value) => value === "--" || value === "";
-            // In table column order, so a field's index is its column index.
-            const designationFields = [
-                "name",
-                "nameUseType",
-                "protectionType",
-                "startDate",
-                "endDate",
-                "grade",
-                "risk",
-                "amendmentDate",
-                "displayDate",
-                "reference",
-                "localHeritageListCriteriaType",
-                "digitalFile",
-                "description",
-            ];
-
-            self.designationTableConfig = {
+            self.designationTableConfig = self.hideEmptyCells({
                 ...self.defaultTableConfig,
                 responsive: {
                     ...self.defaultTableConfig.responsive,
                     details: {
                         display:
                             $.fn.dataTable.Responsive.display.childRowImmediate,
-                        renderer: (api, rowIdx, columns) => {
-                            const filled = columns.filter(
-                                (col) =>
-                                    !isEmpty($(`<span>${col.data}</span>`).text().trim())
-                            );
-                            return $.fn.dataTable.Responsive.renderer.listHidden()(
-                                api,
-                                rowIdx,
-                                filled
-                            );
-                        },
                     },
                 },
                 columns: Array(14).fill(null),
-            };
+            });
 
             self.currentDesignation = ko.observable();
             self.selectedGeometry = ko.observable();
@@ -208,21 +179,7 @@ export default ko.components.register(
                                 tileid,
                             };
                         })
-                            .filter((d) =>
-                                designationFields.some((field) => !isEmpty(d[field]))
-                            )
                     );
-
-                    const emptyColumns = [];
-                    designationFields.forEach((field, column) => {
-                        if (self.designations().every((d) => isEmpty(d[field]))) {
-                            emptyColumns.push(column);
-                        }
-                    });
-                    self.designationTableConfig.columnDefs = [
-                        ...self.defaultTableConfig.columnDefs,
-                        { targets: emptyColumns, visible: false },
-                    ];
 
                     self.geojson(
                         self.designations().reduce(

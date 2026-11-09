@@ -100,6 +100,9 @@ const processRawNodeValue = (rawValue) => {
     }
 };
 
+const isEmptyCell = (html) =>
+    ["", "--"].includes($(`<span>${html}</span>`).text().trim());
+
 const removeTileFromResourceTree = (resourceObj, tileid) => {
     const resourceKeys = Object.keys(resourceObj);
     for (const key of resourceKeys) {
@@ -148,6 +151,32 @@ export default {
             },
         ],
     },
+
+    // Hides columns empty in every row, and empty fields in a row's expanded details.
+    hideEmptyCells: (config) => ({
+        ...config,
+        responsive: {
+            ...config.responsive,
+            details: {
+                ...config.responsive?.details,
+                renderer: (api, rowIdx, columns) =>
+                    $.fn.dataTable.Responsive.renderer.listHidden()(
+                        api,
+                        rowIdx,
+                        columns.filter((col) => !isEmptyCell(col.data))
+                    ),
+            },
+        },
+        initComplete: function () {
+            this.api()
+                .columns(":not(.aher-table-control)")
+                .every(function () {
+                    if (this.data().toArray().every((cell) => isEmptyCell(cell))) {
+                        this.visible(false);
+                    }
+                });
+        },
+    }),
 
     removedTiles: removedTiles,
 
