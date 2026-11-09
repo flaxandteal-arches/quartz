@@ -1,3 +1,4 @@
+import $ from "jquery";
 import ko from "knockout";
 import reportUtils from "utils/report";
 import ProtectionTemplate from "templates/views/components/reports/scenes/protection.htm";
@@ -45,6 +46,13 @@ export default ko.components.register(
 
             self.designationTableConfig = {
                 ...self.defaultTableConfig,
+                responsive: {
+                    ...self.defaultTableConfig.responsive,
+                    details: {
+                        display:
+                            $.fn.dataTable.Responsive.display.childRowImmediate,
+                    },
+                },
                 columns: Array(14).fill(null),
             };
 
