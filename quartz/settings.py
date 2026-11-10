@@ -55,6 +55,11 @@ PERMISSION_LOCATIONS.append("quartz.permissions")
 if os.environ.get("QUARTZ_BLANKET_ROLES", "True").lower() in ("true", "1", "yes"):
     PERMISSION_FRAMEWORK = "blanket_roles.BlanketRoleDenyFramework"
 
+# Related-resources views list each versioned resource once: its Draft, else its Active version.
+MERGE_VERSIONED_RESOURCES = os.environ.get(
+    "MERGE_VERSIONED_RESOURCES", "True"
+).lower() in ("true", "1", "yes")
+
 LOCALE_PATHS.insert(0, os.path.join(APP_ROOT, "locale"))
 
 FILE_TYPE_CHECKING = "lenient"
