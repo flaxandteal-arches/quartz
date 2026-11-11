@@ -15,6 +15,39 @@ import "bindings/dropzone";
 import "bindings/gallery";
 
 
+ko.bindingHandlers.scrollIntoViewWhen = {
+    update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+        if (!ko.unwrap(valueAccessor())) {
+            return;
+        }
+        var nudgeOnly = bindingContext.$parent.selectingFromBar;
+        // Selection passes through "nothing selected", which hides the bar via displayContent,
+        // so measure once the update has finished.
+        setTimeout(function() {
+            var bar = element.closest('.gallery-thumbnails');
+            var barRect = bar.getBoundingClientRect();
+            var left = barRect.left;
+            var right = barRect.right;
+            // core sizes the bar as 100% - 400px, so its end can sit under a wider side panel
+            var panel = document.querySelector('.workbench-card-sidepanel');
+            if (panel && panel.offsetWidth) {
+                var panelLeft = panel.getBoundingClientRect().left;
+                if (panelLeft > left && panelLeft < right) {
+                    right = panelLeft;
+                }
+            }
+            var rect = element.getBoundingClientRect();
+            if (!nudgeOnly) {
+                bar.scrollLeft += rect.left - left - (right - left - rect.width) / 2;
+            } else if (rect.left < left) {
+                bar.scrollLeft -= left - rect.left;
+            } else if (rect.right > right) {
+                bar.scrollLeft += rect.right - right;
+            }
+        }, 0);
+    }
+};
+
 const viewModel = function(params) {
 
     params.configKeys = ['acceptedFiles', 'maxFilesize'];
@@ -83,8 +116,11 @@ const viewModel = function(params) {
             {
                 url = self.cleanUrl(ko.unwrap(val[0].url)) || ko.unwrap(val[0].content);
                 name = ko.unwrap(val[0].name);
-                if (url && name){
-                    url = self.iiifUrl(name, size || 'max');
+                // Cantaloupe serves the sanitised stored filename, not the uploaded display name.
+                var path = ko.unwrap(val[0].path);
+                var storedName = path ? path.split('/').pop() : name;
+                if (url && storedName){
+                    url = self.iiifUrl(storedName, size || 'max');
                 }
             }
         }
@@ -119,6 +155,7 @@ const viewModel = function(params) {
             });
         if (selected) {
             this.selected(selected);
+            this.tile = selected;
             photo = this.getUrl(selected).url;
         }
         else {
@@ -145,6 +182,13 @@ const viewModel = function(params) {
         // var index = this.parent.tiles.indexOf(val);
         val.deleteTile();
         setTimeout(self.defaultSelector, 150);
+    };
+
+    this.selectingFromBar = false;
+    this.selectFromBar = function(tile) {
+        self.selectingFromBar = true;
+        self.photoGallery.selectItem(tile);
+        self.selectingFromBar = false;
     };
 
     this.moveTile = function(tile, position) {
