@@ -80,6 +80,7 @@ NODE_PRIMARY_REF_NUM = "325a2f33-efe4-11eb-b0bb-a87eeabdefba"  # number
 VERSIONING_NODEGROUP = "03d5eb66-d748-57cc-8390-5788078696d7"
 VERSION_NUMBER = "4b1880ea-33a8-50ea-aa1d-455c2ed95787"  # string
 WORKING_COPY = "0f5a7e18-c9a0-52ea-81f1-9a493b4f1f23"  # reference to working draft
+HERITAGE_ITEM_VISIBILITY = "917af291-cdf9-580e-8d44-291512060ed0"  # reference
 
 # Location Data nodegroup  (container — not cleared on upsert; contains child nodegroups for different location types)
 LOCATION_DATA_NODEGROUP = "87d39b2e-f44f-11eb-9a4a-a87eeabdefba"
@@ -156,7 +157,7 @@ def process_heritage_item(payload: dict, user) -> tuple:
         heritage_id_number
     )
 
-    next_major, next_minor = calculate_next_version(
+    next_major, next_minor, next_patch = calculate_next_version(
         current_draft_version,
         is_final,
         version_from_payload,
@@ -188,6 +189,7 @@ def process_heritage_item(payload: dict, user) -> tuple:
     current_draft_version.metadata = payload
     current_draft_version.major_version = next_major
     current_draft_version.minor_version = next_minor
+    current_draft_version.patch_version = next_patch
     current_draft_version.save()
 
     current_draft_resource = models.Resource.objects.get(pk=current_draft_version.pk)
@@ -217,24 +219,28 @@ def process_heritage_item(payload: dict, user) -> tuple:
     current_draft_resource.save()
 
     if is_final:
-        finalize_draft(
-            heritage_id_number, user, next_major, next_minor, metadata=payload
-        )
+        finalize_draft(heritage_id_number, user, next_major, next_minor, next_patch, payload)
 
-    return current_draft_resource, created, f"{next_major}.{next_minor}"
+    return current_draft_resource, created, f"{next_major}.{next_minor}.{next_patch}"
 
 
 def increment_current_working_draft_version(
-    resourceid: str, major_version: int, minor_version: int
+    resourceid: str, major_version: int, minor_version: int, patch_version: int = 0
 ):
     """Update or create the version information tile for the given resource instance."""
     current_draft_resource = Resource.objects.get(pk=resourceid)
-    models.TileModel.objects.filter(
+    existing_tile = models.TileModel.objects.filter(
         resourceinstance_id=current_draft_resource.pk,
         nodegroup_id=VERSIONING_NODEGROUP,
-    ).delete()
+    ).first()
+    visibility = None
+    if existing_tile and existing_tile.data:
+        visibility = existing_tile.data.get(HERITAGE_ITEM_VISIBILITY)
+    if existing_tile:
+        existing_tile.delete()
     current_draft_resource.tiles = _build_version_tile(
-        major_version, minor_version, resourceid
+        major_version, minor_version, resourceid,
+        visibility=visibility, patch_version=patch_version,
     )
     return current_draft_resource
 
@@ -259,17 +265,19 @@ def _build_managed_tiles(
 
 
 def _build_version_tile(
-    major_version: str | int, minor_version: str | int, resource_instance_ref: str
+    major_version: str | int,
+    minor_version: str | int,
+    resource_instance_ref: str,
+    visibility=None,
+    patch_version: str | int = 0,
 ) -> list:
-    return [
-        make_tile(
-            VERSIONING_NODEGROUP,
-            {
-                VERSION_NUMBER: i18n_string(f"{major_version}.{minor_version}"),
-                WORKING_COPY: parse_resource_instance_id(resource_instance_ref),
-            },
-        )
-    ]
+    data = {
+        VERSION_NUMBER: i18n_string(f"{major_version}.{minor_version}.{patch_version}"),
+        WORKING_COPY: parse_resource_instance_id(resource_instance_ref),
+    }
+    if visibility is not None:
+        data[HERITAGE_ITEM_VISIBILITY] = visibility
+    return [make_tile(VERSIONING_NODEGROUP, data)]
 
 
 def _build_system_ref_tiles(payload: dict) -> list:

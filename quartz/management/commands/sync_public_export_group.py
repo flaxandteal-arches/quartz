@@ -257,18 +257,16 @@ class Command(BaseCommand):
 
     def _resolve_graph(self, Node, graph_key):
         """Return the published graph_id for a starches graph key, or None."""
+        from arches.app.models.models import GraphModel
+
         for name in graph_name_candidates(graph_key):
-            node = (
-                Node.objects.filter(
-                    graph__name__iexact=name,
-                    graph__source_identifier__isnull=True,
-                    source_identifier__isnull=True,
-                )
-                .values_list("graph_id", flat=True)
-                .first()
-            )
-            if node:
-                return node
+            graph = GraphModel.objects.filter(
+                name__icontains=name,
+                source_identifier__isnull=True,
+                isresource=True,
+            ).first()
+            if graph and str(graph.name).lower() == name.lower():
+                return graph.graphid
         return None
 
     def _resolve_nodegroup(self, Node, graph_id, alias):
