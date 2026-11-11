@@ -90,8 +90,8 @@ def parse_reference_node(value: str, list_name: str) -> dict:
 def make_or_update_tiles(
     nodegroup_id: str,
     new_data: list[dict] | dict,
-    resource_instance_ref: str,
     parent_tile_id: str = None,
+    resource_instance_ref: str = None,
 ) -> list:
     """
     If existing_tiles is empty, create a new tile with the new_data.
@@ -107,7 +107,7 @@ def make_or_update_tiles(
     existing_tiles = Tile.objects.filter(
         resourceinstance_id=resource_instance_ref,
         nodegroup_id=nodegroup_id,
-    )
+    ).order_by("sortorder")
 
     if not existing_tiles.exists():
         for item in new_data:
@@ -120,10 +120,12 @@ def make_or_update_tiles(
             for key in keys_to_replace:
                 tile.data.pop(key, None)
 
+        tiles = list(existing_tiles)
+
         for idx, item in enumerate(new_data):
-            if idx < len(existing_tiles):
-                existing_tiles[idx].data = {**existing_tiles[idx].data, **item}
-                tiles.append(existing_tiles[idx])
+            if idx < len(tiles):
+                tiles[idx].data = {**tiles[idx].data, **item}
+                # tiles.append(existing_tiles[idx])
             else:
                 tiles.append(make_tile(nodegroup_id, item, parent_tile_id))
 
