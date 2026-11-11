@@ -123,8 +123,11 @@ class PublicExportIntegrationTests(ArchesTestCase):
         cls.hi.save(index=False)
 
         #    - DO public target: a visibility tile = Public (so it is selected)
-        #      plus a content tile.
+        #      plus a content tile. Must be Active lifecycle (the export ignores
+        #      Draft resources when resolving related-resource visibility).
+        active_state = models.ResourceInstanceLifecycleState.objects.get(name="Active")
         cls.do_public = Resource(graph_id=DO_GRAPH_ID)
+        cls.do_public.resource_instance_lifecycle_state = active_state
         cls.do_public.tiles.append(Tile(data={}, nodegroup_id=str(cls.do_names_ng)))
         cls.do_public.tiles.append(
             Tile(
