@@ -57,7 +57,7 @@ def superseded_version_ids(keep_id):
 
 
 def merged_related_resources(
-    resource,
+    self,
     lang="en-US",
     limit=settings.RELATED_RESOURCES_EXPORT_LIMIT,
     start=0,
@@ -67,10 +67,10 @@ def merged_related_resources(
     graphs=None,
     include_rr_count=True,
 ):
-    """Resource.get_related_resources (arches 8.1), minus superseded versions' rows.
+    """Core Resource.get_related_resources (arches 8.2.0a8) minus superseded versions.
 
-    Copied because core builds its relation query in a nested function. Only the
-    `relations` queryset differs from core; keep the rest in step on upgrade.
+    Copied verbatim (self is the resource) because core builds its relation
+    query in a nested function; only relations differs. Re-copy on upgrade.
     """
 
     # Only the from end: a row belongs to the resource whose tile holds it, so the
@@ -78,9 +78,10 @@ def merged_related_resources(
     # version is that resource's own row and must stay. A Draft's working_copy
     # points at itself, so self-links are left out too.
     relations = models.ResourceXResource.objects.exclude(
-        from_resource__in=superseded_version_ids(resource.pk)
+        from_resource__in=superseded_version_ids(self.pk)
     ).exclude(from_resource=F("to_resource"))
 
+    # TODO This function is very similar to code in search results and the resource view. Needs to be centralized.
     def get_localized_descriptor(document, descriptor_type):
         language_codes = (get_language(), settings.LANGUAGE_CODE)
         descriptor = document["_source"][descriptor_type]
@@ -110,7 +111,7 @@ def merged_related_resources(
     }
 
     ret = {
-        "resource_instance": resource,
+        "resource_instance": self,
         "resource_relationships": [],
         "related_resources": [],
         "node_config_lookup": graph_lookup,
@@ -121,27 +122,45 @@ def merged_related_resources(
         start = number_per_page * int(page - 1)
         limit = number_per_page * page
 
-    final_query = Q(from_resource_id=resource.resourceinstanceid) | Q(
-        to_resource_id=resource.resourceinstanceid
-    )
-    if resourceinstance_graphid:
-        to_graph_id_filter = Q(from_resource_graph_id=str(resource.graph_id)) & Q(
-            to_resource_graph_id=resourceinstance_graphid
+    def get_relations(
+        resourceinstanceid,
+        start,
+        limit,
+        resourceinstance_graphid=None,
+    ):
+        final_query = Q(from_resource_id=resourceinstanceid) | Q(
+            to_resource_id=resourceinstanceid
         )
-        from_graph_id_filter = Q(from_resource_graph_id=resourceinstance_graphid) & Q(
-            to_resource_graph_id=str(resource.graph_id)
-        )
-        final_query = final_query & (to_graph_id_filter | from_graph_id_filter)
 
-    ret["total"] = {"value": relations.filter(final_query).count()}
+        if resourceinstance_graphid:
+            to_graph_id_filter = Q(from_resource_graph_id=str(self.graph_id)) & Q(
+                to_resource_graph_id=resourceinstance_graphid
+            )
+            from_graph_id_filter = Q(
+                from_resource_graph_id=resourceinstance_graphid
+            ) & Q(to_resource_graph_id=str(self.graph_id))
+            final_query = final_query & (to_graph_id_filter | from_graph_id_filter)
+
+        return {  # resourceinstance_graphid = "00000000-886a-374a-94a5-984f10715e3a"
+            "total": relations.filter(final_query).count(),
+            "relations": relations.filter(final_query)[start:limit],
+        }
+
+    resource_relations = get_relations(
+        resourceinstanceid=self.resourceinstanceid,
+        start=start,
+        limit=limit,
+        resourceinstance_graphid=resourceinstance_graphid,
+    )
+
+    ret["total"] = {"value": resource_relations["total"]}
     instanceids = set()
 
     readable_graphids = set(
         permission_backend.get_resource_types_by_perm(user, ["models.read_nodegroup"])
     )
-    page_relations = relations.filter(final_query)[start:limit]
     all_resource_ids = set()
-    for relation in page_relations:
+    for relation in resource_relations["relations"]:
         all_resource_ids.add(str(relation.to_resource_id))
         all_resource_ids.add(str(relation.from_resource_id))
     exclusive_set, filtered_instances = get_filtered_instances(
@@ -150,7 +169,7 @@ def merged_related_resources(
     filtered_instances = filtered_instances if user is not None else []
     permitted_relation_dicts = []
 
-    for relation in page_relations:
+    for relation in resource_relations["relations"]:
         relation = model_to_dict(relation)
         to_resource = relation["to_resource"]
         from_resource = relation["from_resource"]
@@ -174,6 +193,7 @@ def merged_related_resources(
         else:
             ret["total"]["value"] -= 1
 
+    # Fetch pref labels for relationship types in bulk.
     relationship_types = {
         relation["relationshiptype"]
         for relation in permitted_relation_dicts
@@ -191,20 +211,24 @@ def merged_related_resources(
         instanceids.add(str(relation["to_resource"]))
         instanceids.add(str(relation["from_resource"]))
 
-    if str(resource.resourceinstanceid) in instanceids:
-        instanceids.remove(str(resource.resourceinstanceid))
+    if str(self.resourceinstanceid) in instanceids:
+        instanceids.remove(str(self.resourceinstanceid))
 
     if len(instanceids) > 0:
         related_resources = se.search(index=RESOURCES_INDEX, id=list(instanceids))
         if related_resources:
             related_resource_ids = [
-                doc["_id"] for doc in related_resources["docs"] if doc["found"]
+                resource["_id"]
+                for resource in related_resources["docs"]
+                if resource["found"]
             ]
             if include_rr_count:
                 to_counts = (
                     relations.filter(to_resource__in=related_resource_ids)
                     .values("to_resource")
                     .annotate(to_count=Count("to_resource"))
+                    # ORDER BY NULLS LAST is necessary for "pipelined" GROUP BY, see
+                    # https://use-the-index-luke.com/sql/sorting-grouping/indexed-group-by
                     .order_by(F("to_resource").asc(nulls_last=True))
                 )
                 from_counts = (
@@ -214,7 +238,7 @@ def merged_related_resources(
                     .order_by(F("from_resource").asc(nulls_last=True))
                 )
 
-                total_relations_by_resource_id = defaultdict(int)
+                total_relations_by_resource_id: dict[UUID:int] = defaultdict(int)
                 for related_resource_count in to_counts:
                     total_relations_by_resource_id[
                         related_resource_count["to_resource"]
@@ -224,17 +248,22 @@ def merged_related_resources(
                         related_resource_count["from_resource"]
                     ] += related_resource_count["from_count"]
 
-            for doc in related_resources["docs"]:
-                if doc["found"]:
+            for resource in related_resources["docs"]:
+                if resource["found"]:
                     if include_rr_count:
-                        doc["_source"]["total_relations"] = {
-                            "value": total_relations_by_resource_id[UUID(doc["_id"])]
+                        resource["_source"]["total_relations"] = {
+                            "value": total_relations_by_resource_id[
+                                UUID(resource["_id"])
+                            ]
                         }
                     for descriptor_type in ("displaydescription", "displayname"):
-                        descriptor = get_localized_descriptor(doc, descriptor_type)
-                        doc["_source"][descriptor_type] = descriptor or _("Undefined")
+                        descriptor = get_localized_descriptor(resource, descriptor_type)
+                        if descriptor:
+                            resource["_source"][descriptor_type] = descriptor
+                        else:
+                            resource["_source"][descriptor_type] = _("Undefined")
 
-                    ret["related_resources"].append(doc["_source"])
+                    ret["related_resources"].append(resource["_source"])
 
     return ret
 
