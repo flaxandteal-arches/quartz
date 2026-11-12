@@ -44,17 +44,18 @@ export default ko.components.register(
                 columns: Array(7).fill(null),
             };
 
-            self.designationTableConfig = self.hideEmptyCells({
+            self.designationTableConfig = {
                 ...self.defaultTableConfig,
                 responsive: {
                     ...self.defaultTableConfig.responsive,
                     details: {
+                        ...self.defaultTableConfig.responsive.details,
                         display:
                             $.fn.dataTable.Responsive.display.childRowImmediate,
                     },
                 },
                 columns: Array(14).fill(null),
-            });
+            };
 
             self.currentDesignation = ko.observable();
             self.selectedGeometry = ko.observable();

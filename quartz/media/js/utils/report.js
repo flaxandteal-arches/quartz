@@ -139,6 +139,14 @@ export default {
                 { name: "mobilel", width: 480 },
                 { name: "mobilep", width: 320 },
             ],
+            details: {
+                renderer: (api, rowIdx, columns) =>
+                    $.fn.dataTable.Responsive.renderer.listHidden()(
+                        api,
+                        rowIdx,
+                        columns.filter((col) => !isEmptyCell(col.data))
+                    ),
+            },
         },
         paging: false,
         searching: false,
@@ -150,23 +158,6 @@ export default {
                 targets: -1,
             },
         ],
-    },
-
-    // Hides columns empty in every row, and empty fields in a row's expanded details.
-    hideEmptyCells: (config) => ({
-        ...config,
-        responsive: {
-            ...config.responsive,
-            details: {
-                ...config.responsive?.details,
-                renderer: (api, rowIdx, columns) =>
-                    $.fn.dataTable.Responsive.renderer.listHidden()(
-                        api,
-                        rowIdx,
-                        columns.filter((col) => !isEmptyCell(col.data))
-                    ),
-            },
-        },
         initComplete: function () {
             this.api()
                 .columns(":not(.aher-table-control)")
@@ -176,7 +167,7 @@ export default {
                     }
                 });
         },
-    }),
+    },
 
     removedTiles: removedTiles,
 
