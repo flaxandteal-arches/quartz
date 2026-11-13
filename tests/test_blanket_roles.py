@@ -115,7 +115,10 @@ class BlanketRoleFrameworkTests(ArchesTestCase):
 
     def _permitted(self, user, perm, resource=None):
         return self.fw.check_resource_instance_permissions(
-            user, None, perm, resource=resource if resource is not None else self.resource
+            user,
+            None,
+            perm,
+            resource=resource if resource is not None else self.resource,
         )["permitted"]
 
     # ---- direct access ---------------------------------------------------

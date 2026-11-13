@@ -50,13 +50,15 @@ def get_visibility_nodes():
 
     results = []
     for node in nodes:
-        results.append({
-            "node_id": str(node.nodeid),
-            "nodegroup_id": str(node.nodegroup_id),
-            "graph_id": str(node.graph_id),
-            "graph_name": str(node.graph.name),
-            "alias": node.alias,
-        })
+        results.append(
+            {
+                "node_id": str(node.nodeid),
+                "nodegroup_id": str(node.nodegroup_id),
+                "graph_id": str(node.graph_id),
+                "graph_name": str(node.graph.name),
+                "alias": node.alias,
+            }
+        )
     return results
 
 
@@ -115,13 +117,15 @@ def get_image_visibility_nodes():
 
     results = []
     for node in nodes:
-        results.append({
-            "node_id": str(node.nodeid),
-            "nodegroup_id": str(node.nodegroup_id),
-            "graph_id": str(node.graph_id),
-            "graph_name": str(node.graph.name),
-            "alias": node.alias,
-        })
+        results.append(
+            {
+                "node_id": str(node.nodeid),
+                "nodegroup_id": str(node.nodegroup_id),
+                "graph_id": str(node.graph_id),
+                "graph_name": str(node.graph.name),
+                "alias": node.alias,
+            }
+        )
     return results
 
 
@@ -259,7 +263,11 @@ def get_latest_minor_resource_ids(draft_resource_ids, draft_labels=None):
     best_by_group = {}
     for vr in candidates:
         key = vr.resource_group_id
-        vr_version = (vr.major_version, vr.minor_version, getattr(vr, "patch_version", 0))
+        vr_version = (
+            vr.major_version,
+            vr.minor_version,
+            getattr(vr, "patch_version", 0),
+        )
         if key not in best_by_group:
             best_by_group[key] = (vr, vr_version)
         elif vr_version > best_by_group[key][1]:
@@ -403,10 +411,7 @@ def get_referenced_person_ids(heritage_item_ids=None):
         ResourceInstance.objects.filter(
             graph_id=PERSON_GRAPH_ID,
         )
-        .filter(
-            Q(name__en__endswith="(Architect)")
-            | Q(name__en__endswith="(Builder)")
-        )
+        .filter(Q(name__en__endswith="(Architect)") | Q(name__en__endswith="(Builder)"))
         .values_list("resourceinstanceid", flat=True)
     )
     return person_ids
@@ -464,14 +469,17 @@ def get_outbound_relations(
     if permitted_nodegroups is not None:
         filters["tile__nodegroup_id__in"] = permitted_nodegroups
 
-    candidate_relations = ResourceXResource.objects.filter(
-        **filters
-    ).only(
+    candidate_relations = ResourceXResource.objects.filter(**filters).only(
         "resourcexid",
-        "from_resource_id", "from_resource_graph_id",
-        "to_resource_id", "to_resource_graph_id",
-        "relationshiptype", "inverserelationshiptype",
-        "node_id", "tile_id", "notes",
+        "from_resource_id",
+        "from_resource_graph_id",
+        "to_resource_id",
+        "to_resource_graph_id",
+        "relationshiptype",
+        "inverserelationshiptype",
+        "node_id",
+        "tile_id",
+        "notes",
     )
 
     # Find which target resources pass the visibility filter.
@@ -481,18 +489,20 @@ def get_outbound_relations(
     raw_relations = []
     for rel in candidate_relations.iterator():
         target_ids.add(rel.to_resource_id)
-        raw_relations.append({
-            "resourcexid": str(rel.resourcexid),
-            "from_resource": str(rel.from_resource_id),
-            "from_resource_graph": str(rel.from_resource_graph_id),
-            "to_resource": str(rel.to_resource_id),
-            "to_resource_graph": str(rel.to_resource_graph_id),
-            "relationshiptype": rel.relationshiptype,
-            "inverserelationshiptype": rel.inverserelationshiptype,
-            "nodeid": str(rel.node_id) if rel.node_id else None,
-            "tileid": str(rel.tile_id) if rel.tile_id else None,
-            "notes": rel.notes or "",
-        })
+        raw_relations.append(
+            {
+                "resourcexid": str(rel.resourcexid),
+                "from_resource": str(rel.from_resource_id),
+                "from_resource_graph": str(rel.from_resource_graph_id),
+                "to_resource": str(rel.to_resource_id),
+                "to_resource_graph": str(rel.to_resource_graph_id),
+                "relationshiptype": rel.relationshiptype,
+                "inverserelationshiptype": rel.inverserelationshiptype,
+                "nodeid": str(rel.node_id) if rel.node_id else None,
+                "tileid": str(rel.tile_id) if rel.tile_id else None,
+                "notes": rel.notes or "",
+            }
+        )
 
     visible_target_ids = get_visible_resource_ids(visibility_nodes, visibility_uris)
     # Always-visible graph targets bypass the visibility check
@@ -518,8 +528,7 @@ def get_outbound_relations(
 
     # Filter to only relations targeting visible resources
     relations = [
-        rel for rel in raw_relations
-        if UUID(rel["to_resource"]) in allowed_target_ids
+        rel for rel in raw_relations if UUID(rel["to_resource"]) in allowed_target_ids
     ]
     del raw_relations
 
@@ -568,6 +577,7 @@ def filter_tiles_by_visibility(resource_data, visibility_nodes, required_uris):
 
     node_id = vnode["node_id"]
     nodegroup_id = vnode["nodegroup_id"]
+
     # Normalize URIs: strip urn:uuid: prefix for comparison since tile data
     # may use either bare UUIDs or urn:uuid:-prefixed URIs inconsistently.
     def _bare(uri):
@@ -682,9 +692,7 @@ def extract_file_references(resources, file_node_ids=None):
     seen = set()
     files = []
     for resource_data in resources:
-        rid = resource_data.get("resourceinstance", {}).get(
-            "resourceinstanceid", ""
-        )
+        rid = resource_data.get("resourceinstance", {}).get("resourceinstanceid", "")
         for tile in resource_data.get("tiles", []):
             data = tile.get("data") or {}
             for node_id, value in data.items():
@@ -699,13 +707,15 @@ def extract_file_references(resources, file_node_ids=None):
                     if not key or key in seen:
                         continue
                     seen.add(key)
-                    files.append({
-                        "file_id": file_id,
-                        "name": name,
-                        "url": entry.get("url"),
-                        "resourceinstanceid": rid,
-                        "nodeid": node_id,
-                    })
+                    files.append(
+                        {
+                            "file_id": file_id,
+                            "name": name,
+                            "url": entry.get("url"),
+                            "resourceinstanceid": rid,
+                            "nodeid": node_id,
+                        }
+                    )
     return sorted(files, key=lambda f: (f["name"] or "", f["file_id"] or ""))
 
 
@@ -777,7 +787,9 @@ def export_controlled_lists_to_dir(list_ids, dest_dir):
         slug = controlled_list.name.lower().replace(" ", "_").replace("/", "_")
         filepath = os.path.join(cl_dir, f"{slug}.xml")
         with open(filepath, "w") as f:
-            f.write(skos_data if isinstance(skos_data, str) else skos_data.decode("utf-8"))
+            f.write(
+                skos_data if isinstance(skos_data, str) else skos_data.decode("utf-8")
+            )
         exported.append(controlled_list.name)
 
     return exported
@@ -812,8 +824,7 @@ def _write_resources_batched(resource_ids, user=None, indent=None, label="Resour
             eta_str = ""
 
         sys.stderr.write(
-            f"\r  {label}: {end}/{total} "
-            f"({end * 100 // total}%){eta_str}   "
+            f"\r  {label}: {end}/{total} " f"({end * 100 // total}%){eta_str}   "
         )
         sys.stderr.flush()
 
@@ -834,20 +845,18 @@ def _write_resources_batched(resource_ids, user=None, indent=None, label="Resour
         del results
         batch_export = json.loads(raw_json)
         del raw_json
-        for resource_data in (
-            batch_export.get("business_data", {}).get("resources", [])
-        ):
+        for resource_data in batch_export.get("business_data", {}).get("resources", []):
             yield resource_data
             yielded += 1
 
     elapsed = time.monotonic() - t0
-    sys.stderr.write(
-        f"\r  {label}: {total}/{total} (100%) done in {int(elapsed)}s\n"
-    )
+    sys.stderr.write(f"\r  {label}: {total}/{total} (100%) done in {int(elapsed)}s\n")
     sys.stderr.flush()
 
 
-def _write_reference_resources(resource_ids, output_path, user=None, indent=2, label="Resources"):
+def _write_reference_resources(
+    resource_ids, output_path, user=None, indent=2, label="Resources"
+):
     """Export resources to a standalone business_data JSON file.
 
     Used for reference resource types (Person, Period) that are exported as
@@ -855,7 +864,10 @@ def _write_reference_resources(resource_ids, output_path, user=None, indent=2, l
     """
     resources = []
     for resource_data in _write_resources_batched(
-        resource_ids, user=user, indent=indent, label=label,
+        resource_ids,
+        user=user,
+        indent=indent,
+        label=label,
     ):
         resources.append(resource_data)
 
@@ -910,9 +922,7 @@ def export_resources(
     exported_nodegroups = set()
 
     def _scope_resource(resource_data, label_map):
-        rid = resource_data.get("resourceinstance", {}).get(
-            "resourceinstanceid", ""
-        )
+        rid = resource_data.get("resourceinstance", {}).get("resourceinstanceid", "")
         label = (label_map or {}).get(rid, "public")
         scopes = ["public"]
         if label == "staging":
@@ -941,7 +951,7 @@ def export_resources(
         # Write opening structure
         if indent:
             f.write(
-                '{\n'
+                "{\n"
                 f'{item_indent}"business_data": {{\n'
                 f'{item_indent}{item_indent}"resources": [\n'
             )
@@ -953,7 +963,9 @@ def export_resources(
         tiles_filtered_count = 0
         actor_tiles_filtered_count = 0
         image_required_uris = (
-            get_image_visibility_uris(image_required_labels) if image_required_labels else None
+            get_image_visibility_uris(image_required_labels)
+            if image_required_labels
+            else None
         )
         image_vis_nodes = get_image_visibility_nodes() if image_required_uris else []
 
@@ -966,11 +978,14 @@ def export_resources(
             # Filter out image tiles that don't have ALL required visibility tags
             if image_required_uris:
                 tiles_filtered_count += filter_tiles_by_visibility(
-                    resource_data, image_vis_nodes, image_required_uris,
+                    resource_data,
+                    image_vis_nodes,
+                    image_required_uris,
                 )
             # Strip associated_actor tiles referencing non-exported Persons
             actor_tiles_filtered_count += strip_unresolvable_actor_tiles(
-                resource_data, person_ids,
+                resource_data,
+                person_ids,
             )
             _scope_resource(resource_data, label_map)
 
@@ -988,13 +1003,15 @@ def export_resources(
                     for entry in value:
                         if not isinstance(entry, dict) or "file_id" not in entry:
                             continue
-                        file_refs.append({
-                            "file_id": entry.get("file_id"),
-                            "name": entry.get("path") or entry.get("name"),
-                            "url": entry.get("url"),
-                            "resourceinstanceid": ri.get("resourceinstanceid", ""),
-                            "nodeid": node_id,
-                        })
+                        file_refs.append(
+                            {
+                                "file_id": entry.get("file_id"),
+                                "name": entry.get("path") or entry.get("name"),
+                                "url": entry.get("url"),
+                                "resourceinstanceid": ri.get("resourceinstanceid", ""),
+                                "nodeid": node_id,
+                            }
+                        )
 
             # Write to file
             if not first_resource:
@@ -1008,7 +1025,9 @@ def export_resources(
 
         # Primary resources
         for resource_data in _write_resources_batched(
-            [str(rid) for rid in resource_ids], user=user, indent=indent,
+            [str(rid) for rid in resource_ids],
+            user=user,
+            indent=indent,
             label="Heritage Items",
         ):
             _write_resource(resource_data, resource_labels)
@@ -1016,7 +1035,11 @@ def export_resources(
         if resource_count == 0:
             logger.warning("Export produced no output")
             # Close the file cleanly
-            f.write(']}}\n' if not indent else f'\n{item_indent}{item_indent}]\n{item_indent}}}\n}}\n')
+            f.write(
+                "]}}\n"
+                if not indent
+                else f"\n{item_indent}{item_indent}]\n{item_indent}}}\n}}\n"
+            )
             return None, None
 
         # Get outbound relations filtered by target visibility
@@ -1036,7 +1059,9 @@ def export_resources(
             )
             target_count = 0
             for resource_data in _write_resources_batched(
-                sorted(target_ids), user=user, indent=indent,
+                sorted(target_ids),
+                user=user,
+                indent=indent,
                 label="Related resources",
             ):
                 _write_resource(resource_data, target_labels)
@@ -1045,14 +1070,14 @@ def export_resources(
 
         # Close resources array, write relations, close structure
         if indent:
-            f.write(f'\n{item_indent}{item_indent}],\n')
+            f.write(f"\n{item_indent}{item_indent}],\n")
             f.write(f'{item_indent}{item_indent}"relations": ')
             json.dump(relations, f, indent=indent)
-            f.write(f'\n{item_indent}}}\n}}\n')
+            f.write(f"\n{item_indent}}}\n}}\n")
         else:
             f.write('], "relations": ')
             json.dump(relations, f)
-            f.write('}}')
+            f.write("}}")
 
     # De-duplicate file refs
     seen = set()
@@ -1062,7 +1087,9 @@ def export_resources(
         if key and key not in seen:
             seen.add(key)
             unique_file_refs.append(ref)
-    file_refs = sorted(unique_file_refs, key=lambda r: (r["name"] or "", r["file_id"] or ""))
+    file_refs = sorted(
+        unique_file_refs, key=lambda r: (r["name"] or "", r["file_id"] or "")
+    )
     diagnostics["referenced_files"] = file_refs
     diagnostics["image_tiles_filtered_by_visibility"] = tiles_filtered_count
     diagnostics["actor_tiles_filtered"] = actor_tiles_filtered_count
@@ -1073,7 +1100,9 @@ def export_resources(
         _write_reference_resources(
             sorted(str(pid) for pid in person_ids),
             os.path.join(bd_dir, "Person.json"),
-            user=user, indent=indent, label="Person",
+            user=user,
+            indent=indent,
+            label="Person",
         )
         graph_ids.add(PERSON_GRAPH_ID)
 
@@ -1084,12 +1113,15 @@ def export_resources(
         _write_reference_resources(
             sorted(str(pid) for pid in period_ids),
             os.path.join(bd_dir, "Period.json"),
-            user=user, indent=indent, label="Period",
+            user=user,
+            indent=indent,
+            label="Period",
         )
         graph_ids.add(PERIOD_GRAPH_ID)
 
     # Include all resource model graphs with visibility nodes
     from arches.app.models.models import GraphModel
+
     resource_model_ids = set(
         GraphModel.objects.filter(
             graphid__in=[n["graph_id"] for n in visibility_nodes],
@@ -1103,7 +1135,8 @@ def export_resources(
 
     # Always include Registry graph if it exists
     registry = GraphModel.objects.filter(
-        name__contains=REGISTRY_GRAPH_NAME, isresource=True,
+        name__contains=REGISTRY_GRAPH_NAME,
+        isresource=True,
     ).first()
     if registry:
         graph_ids.add(str(registry.graphid))
@@ -1138,9 +1171,7 @@ def package_export(output_dir, archive_name="prebuild.tgz"):
 
     # basename only: archive_name may be a slash-prefixed blob name and the
     # local temp file must not point at a non-existent subdirectory.
-    archive_path = os.path.join(
-        tempfile.gettempdir(), os.path.basename(archive_name)
-    )
+    archive_path = os.path.join(tempfile.gettempdir(), os.path.basename(archive_name))
     with tarfile.open(archive_path, "w:gz") as tar:
         tar.add(output_dir, arcname=".")
     logger.info("Packaged export %s -> %s", output_dir, archive_path)
@@ -1185,8 +1216,9 @@ def upload_artifact(archive_path, container=None, blob_name="prebuild.tgz"):
     blob = service.get_blob_client(container=container, blob=blob_name)
     with open(archive_path, "rb") as fh:
         blob.upload_blob(fh, overwrite=True)
-    logger.info("Uploaded %s to container '%s' as '%s'",
-                archive_path, container, blob_name)
+    logger.info(
+        "Uploaded %s to container '%s' as '%s'", archive_path, container, blob_name
+    )
     return blob.url
 
 
@@ -1224,8 +1256,12 @@ def trigger_validation_build(event_type="prebuild", payload=None):
         timeout=30,
     )
     response.raise_for_status()
-    logger.info("Triggered repository_dispatch '%s' on %s (HTTP %s)",
-                event_type, repo, response.status_code)
+    logger.info(
+        "Triggered repository_dispatch '%s' on %s (HTTP %s)",
+        event_type,
+        repo,
+        response.status_code,
+    )
     return response.status_code
 
 
@@ -1251,17 +1287,21 @@ def resolve_export_user(username=None, expected_group="Public Export"):
         try:
             user = User.objects.get(username="anonymous")
         except User.DoesNotExist:
-            messages.append((
-                "warning",
-                "No export user and no 'anonymous' user found: NO nodegroup "
-                "filtering applied (every nodegroup will be exported).",
-            ))
+            messages.append(
+                (
+                    "warning",
+                    "No export user and no 'anonymous' user found: NO nodegroup "
+                    "filtering applied (every nodegroup will be exported).",
+                )
+            )
             return None, messages
-        messages.append((
-            "info",
-            "Applying the 'anonymous' user's nodegroup permissions "
-            "(public-visitor view).",
-        ))
+        messages.append(
+            (
+                "info",
+                "Applying the 'anonymous' user's nodegroup permissions "
+                "(public-visitor view).",
+            )
+        )
         return user, messages
 
     try:
@@ -1276,18 +1316,22 @@ def resolve_export_user(username=None, expected_group="Public Export"):
 
     group_names = set(user.groups.values_list("name", flat=True))
     if expected_group not in group_names:
-        messages.append((
-            "warning",
-            f"'{username}' is not in the '{expected_group}' group, so the "
-            f"public-export whitelist will not be applied.",
-        ))
+        messages.append(
+            (
+                "warning",
+                f"'{username}' is not in the '{expected_group}' group, so the "
+                f"public-export whitelist will not be applied.",
+            )
+        )
     extra = group_names - {expected_group}
     if extra:
-        messages.append((
-            "warning",
-            f"'{username}' also belongs to {sorted(extra)}; read_nodegroup "
-            f"grants from those groups can re-expose denied nodegroups.",
-        ))
+        messages.append(
+            (
+                "warning",
+                f"'{username}' also belongs to {sorted(extra)}; read_nodegroup "
+                f"grants from those groups can re-expose denied nodegroups.",
+            )
+        )
     return user, messages
 
 
@@ -1339,9 +1383,9 @@ def run_export_pipeline(
 
     uris = get_visibility_uris(target_labels)
     if not uris:
-        msg.append((
-            "error", f"No controlled list items found for labels: {target_labels}"
-        ))
+        msg.append(
+            ("error", f"No controlled list items found for labels: {target_labels}")
+        )
         return out
 
     draft_ids = get_visible_draft_resource_ids(hi_visibility, uris)
@@ -1353,24 +1397,30 @@ def run_export_pipeline(
     if use_drafts:
         export_ids = list(draft_ids)
         export_labels = {str(k): v for k, v in draft_labels.items()}
-        msg.append((
-            "warning",
-            f"Exporting {len(export_ids)} Draft versions directly (use_drafts).",
-        ))
+        msg.append(
+            (
+                "warning",
+                f"Exporting {len(export_ids)} Draft versions directly (use_drafts).",
+            )
+        )
     elif use_latest_minor:
         export_ids, missing_groups, export_labels = get_latest_minor_resource_ids(
-            draft_ids, draft_labels=draft_labels,
+            draft_ids,
+            draft_labels=draft_labels,
         )
         out["missing_final_groups"] = [str(g) for g in missing_groups]
-        msg.append((
-            "info",
-            f"Resolved {len(export_ids)} latest frozen versions (use_latest_minor).",
-        ))
+        msg.append(
+            (
+                "info",
+                f"Resolved {len(export_ids)} latest frozen versions (use_latest_minor).",
+            )
+        )
         for g in missing_groups:
             msg.append(("warning", f"resource group {g} has no frozen version"))
     else:
         export_ids, missing_groups, export_labels = get_final_resource_ids(
-            draft_ids, draft_labels=draft_labels,
+            draft_ids,
+            draft_labels=draft_labels,
         )
         out["missing_final_groups"] = [str(g) for g in missing_groups]
         for g in missing_groups:

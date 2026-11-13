@@ -24,7 +24,11 @@ class Command(BaseCommand):
     help = "List data fixes and whether this environment has applied them; --apply runs the pending ones."
 
     def add_arguments(self, parser):
-        parser.add_argument("--apply", action="store_true", help="Run pending fixes in order, then reindex")
+        parser.add_argument(
+            "--apply",
+            action="store_true",
+            help="Run pending fixes in order, then reindex",
+        )
         parser.add_argument(
             "--mark-applied",
             nargs="+",
@@ -44,7 +48,9 @@ class Command(BaseCommand):
                 )
                 cursor.execute("SELECT pg_try_advisory_lock(%s)", [LOCK_ID])
                 if not cursor.fetchone()[0]:
-                    raise CommandError("Another data_fixes run holds the lock on this database.")
+                    raise CommandError(
+                        "Another data_fixes run holds the lock on this database."
+                    )
             try:
                 if options["mark_applied"]:
                     self.mark_applied(options["mark_applied"])
@@ -65,7 +71,9 @@ class Command(BaseCommand):
             cursor.execute("SELECT to_regclass('quartz_data_fixes') IS NOT NULL")
             if not cursor.fetchone()[0]:
                 return {}
-            cursor.execute("SELECT name, checksum, applied_at, reindexed_at FROM quartz_data_fixes")
+            cursor.execute(
+                "SELECT name, checksum, applied_at, reindexed_at FROM quartz_data_fixes"
+            )
             return {row[0]: row[1:] for row in cursor.fetchall()}
 
     def mark_applied(self, requested):
@@ -75,7 +83,11 @@ class Command(BaseCommand):
         else:
             chosen = []
             for name in requested:
-                matches = [path for path in fixes if path.name == name or path.name.startswith(f"{name}_")]
+                matches = [
+                    path
+                    for path in fixes
+                    if path.name == name or path.name.startswith(f"{name}_")
+                ]
                 if len(matches) != 1:
                     raise CommandError(f"No single data fix matches {name!r}.")
                 chosen.append(matches[0])
@@ -93,9 +105,13 @@ class Command(BaseCommand):
         for path in self.fixes():
             if path.name in applied:
                 continue
-            self.stdout.write(self.style.MIGRATE_HEADING(f"--- Applying {path.name} ---"))
+            self.stdout.write(
+                self.style.MIGRATE_HEADING(f"--- Applying {path.name} ---")
+            )
             started = time.monotonic()
-            result = subprocess.run(command_for(path), cwd=PROJECT_ROOT, env=script_env())
+            result = subprocess.run(
+                command_for(path), cwd=PROJECT_ROOT, env=script_env()
+            )
             if result.returncode != 0:
                 raise CommandError(
                     f"{path.name} failed (exit {result.returncode}); later fixes were not run. "
@@ -110,7 +126,9 @@ class Command(BaseCommand):
 
     def reindex(self):
         with connection.cursor() as cursor:
-            cursor.execute("SELECT name FROM quartz_data_fixes WHERE reindexed_at IS NULL")
+            cursor.execute(
+                "SELECT name FROM quartz_data_fixes WHERE reindexed_at IS NULL"
+            )
             unindexed = [row[0] for row in cursor.fetchall()]
         if not unindexed:
             return
@@ -121,17 +139,36 @@ class Command(BaseCommand):
                 graphs.update(reindex_graphs(path))
         # clear_index=False: the default empties the graphs' documents first.
         if "all" in graphs:
-            self.stdout.write(self.style.MIGRATE_HEADING("--- Reindexing all resources in Elasticsearch ---"))
+            self.stdout.write(
+                self.style.MIGRATE_HEADING(
+                    "--- Reindexing all resources in Elasticsearch ---"
+                )
+            )
             call_command("es", "index_resources", clear_index=False, quiet=True)
         elif graphs:
-            self.stdout.write(self.style.MIGRATE_HEADING(f"--- Reindexing graphs {', '.join(sorted(graphs))} ---"))
-            call_command("es", "index_resources_by_type", resource_types=",".join(sorted(graphs)), clear_index=False, quiet=True)
+            self.stdout.write(
+                self.style.MIGRATE_HEADING(
+                    f"--- Reindexing graphs {', '.join(sorted(graphs))} ---"
+                )
+            )
+            call_command(
+                "es",
+                "index_resources_by_type",
+                resource_types=",".join(sorted(graphs)),
+                clear_index=False,
+                quiet=True,
+            )
 
-        self.stdout.write(self.style.MIGRATE_HEADING("--- Rebuilding arches-search ---"))
+        self.stdout.write(
+            self.style.MIGRATE_HEADING("--- Rebuilding arches-search ---")
+        )
         call_command("arches_search", "reindex_database")
 
         with connection.cursor() as cursor:
-            cursor.execute("UPDATE quartz_data_fixes SET reindexed_at = now() WHERE name = ANY(%s)", [unindexed])
+            cursor.execute(
+                "UPDATE quartz_data_fixes SET reindexed_at = now() WHERE name = ANY(%s)",
+                [unindexed],
+            )
 
     def print_status(self):
         applied = self.applied()
@@ -164,8 +201,21 @@ def command_for(path):
         return ["bash", str(path)]
     db = settings.DATABASES["default"]
     return [
-        "psql", "-h", db["HOST"], "-p", str(db["PORT"]), "-U", db["USER"], "-d", db["NAME"],
-        "-v", "ON_ERROR_STOP=1", "-v", "apply=1", "-f", str(path),
+        "psql",
+        "-h",
+        db["HOST"],
+        "-p",
+        str(db["PORT"]),
+        "-U",
+        db["USER"],
+        "-d",
+        db["NAME"],
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "apply=1",
+        "-f",
+        str(path),
     ]
 
 
@@ -173,5 +223,7 @@ def script_env():
     db = settings.DATABASES["default"]
     env = dict(os.environ, PGPASSWORD=str(db["PASSWORD"]))
     # So .sh fixes' `python` is this interpreter.
-    env["PATH"] = os.pathsep.join([str(Path(sys.executable).parent), env.get("PATH", "")])
+    env["PATH"] = os.pathsep.join(
+        [str(Path(sys.executable).parent), env.get("PATH", "")]
+    )
     return env

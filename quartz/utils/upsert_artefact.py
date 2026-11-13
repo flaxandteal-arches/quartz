@@ -272,7 +272,9 @@ def process_artefact(payload: dict, user) -> tuple:
     current_draft_resource.save()
 
     if is_final:
-        finalize_draft(discovery_permit_number, user, next_major, next_minor, next_patch, payload)
+        finalize_draft(
+            discovery_permit_number, user, next_major, next_minor, next_patch, payload
+        )
 
     return current_draft_resource, created, f"{next_major}.{next_minor}.{next_patch}"
 
@@ -331,7 +333,11 @@ def _build_version_tile(
     return [
         make_tile(
             VERSIONING_NODEGROUP,
-            {VERSION_NUMBER: i18n_string(f"{major_version}.{minor_version}.{patch_version}")},
+            {
+                VERSION_NUMBER: i18n_string(
+                    f"{major_version}.{minor_version}.{patch_version}"
+                )
+            },
         )
     ]
 
@@ -559,7 +565,7 @@ def _build_digital_file_tile(payload: dict) -> list:
     edocs_number = payload.get("dpp_edocsnumber")
     if not has_value(edocs_number):
         return []
-    
+
     digital_object_resource_id = get_or_create_digital_object_resource_from_name(
         edocs_number
     )
@@ -662,7 +668,9 @@ def _build_location_tiles(
                         "type": "FeatureCollection",
                         "features": gps_features,
                     },
-                    NODE_FEATURE_SHAPE: parse_reference_node(feature_shape, FEATURE_SHAPE_LIST_NAME),
+                    NODE_FEATURE_SHAPE: parse_reference_node(
+                        feature_shape, FEATURE_SHAPE_LIST_NAME
+                    ),
                 },
                 parent_tile_id=location_data_tile.tileid,
             )
@@ -719,9 +727,7 @@ def _build_location_tiles(
                 tiles.append(
                     make_tile(
                         SPATIAL_RECORD_UPDATE_NODEGROUP,
-                        {
-                            NODE_UPDATE_START_DATE: parse_date(coord_date)
-                        },
+                        {NODE_UPDATE_START_DATE: parse_date(coord_date)},
                         parent_tile_id=geometry_tile.tileid,
                     )
                 )

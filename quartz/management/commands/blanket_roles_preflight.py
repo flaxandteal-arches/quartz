@@ -41,9 +41,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         for name in BLANKET_GROUPS:
             _, created = Group.objects.get_or_create(name=name)
-            self.stdout.write(
-                f"  group '{name}': {'created' if created else 'exists'}"
-            )
+            self.stdout.write(f"  group '{name}': {'created' if created else 'exists'}")
 
         User = get_user_model()
         at_risk = (
