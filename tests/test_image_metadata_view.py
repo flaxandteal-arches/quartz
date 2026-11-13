@@ -39,7 +39,9 @@ def make_image(fmt="JPEG", size=(8, 8), noise=False):
     exif[0x013B] = "Some Artist"
     exif.get_ifd(0x8769)[0x9003] = "2020:05:17 10:30:00"
     exif.get_ifd(0x8825)[1] = "N"
-    pixels = os.urandom(size[0] * size[1] * 3) if noise else b"\0" * (size[0] * size[1] * 3)
+    pixels = (
+        os.urandom(size[0] * size[1] * 3) if noise else b"\0" * (size[0] * size[1] * 3)
+    )
     out = io.BytesIO()
     Image.frombytes("RGB", size, pixels).save(out, fmt, exif=exif)
     return out.getvalue()
@@ -55,7 +57,12 @@ def png_with_late_title(title, side):
 
 
 def png_chunk(ctype, body):
-    return struct.pack(">I", len(body)) + ctype + body + struct.pack(">I", zlib.crc32(ctype + body))
+    return (
+        struct.pack(">I", len(body))
+        + ctype
+        + body
+        + struct.pack(">I", zlib.crc32(ctype + body))
+    )
 
 
 class FakeBlob:
@@ -73,13 +80,27 @@ def tiff_with_ifd_at_end(title=b"Hall\0", side=1200):
     pixels = side * side
     ifd_offset = 8 + pixels
     entries = [
-        (256, 4, 1, side), (257, 4, 1, side), (258, 3, 1, 8), (259, 3, 1, 1),
-        (262, 3, 1, 1), (270, 2, len(title), ifd_offset + 2 + 10 * 12 + 4),
-        (273, 4, 1, 8), (277, 3, 1, 1), (278, 4, 1, side), (279, 4, 1, pixels),
+        (256, 4, 1, side),
+        (257, 4, 1, side),
+        (258, 3, 1, 8),
+        (259, 3, 1, 1),
+        (262, 3, 1, 1),
+        (270, 2, len(title), ifd_offset + 2 + 10 * 12 + 4),
+        (273, 4, 1, 8),
+        (277, 3, 1, 1),
+        (278, 4, 1, side),
+        (279, 4, 1, pixels),
     ]
     ifd = struct.pack("<H", len(entries))
     ifd += b"".join(struct.pack("<HHII", *entry) for entry in entries)
-    return b"II*\0" + struct.pack("<I", ifd_offset) + bytes(pixels) + ifd + b"\0\0\0\0" + title
+    return (
+        b"II*\0"
+        + struct.pack("<I", ifd_offset)
+        + bytes(pixels)
+        + ifd
+        + b"\0\0\0\0"
+        + title
+    )
 
 
 def read_ranged(data):
@@ -93,7 +114,9 @@ class ImageMetadataTests(ArchesTestCase):
     def setUpTestData(cls):
         super().setUpTestData()
         cls.user = User.objects.create_user("im_plain", password="x")
-        cls.superuser = User.objects.create_superuser("im_super", email="", password="x")
+        cls.superuser = User.objects.create_superuser(
+            "im_super", email="", password="x"
+        )
 
     def setUp(self):
         read_metadata.cache_clear()
@@ -119,7 +142,9 @@ class ImageMetadataTests(ArchesTestCase):
         )
 
     def test_non_image_returns_empty_fields(self):
-        response = self.get(self.make_file(b"%PDF-1.4 not an image", "doc.pdf"), self.superuser)
+        response = self.get(
+            self.make_file(b"%PDF-1.4 not an image", "doc.pdf"), self.superuser
+        )
         self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(response.json()["fields"], [])
 
@@ -140,8 +165,10 @@ class ImageMetadataTests(ArchesTestCase):
     @override_settings(RESTRICT_MEDIA_ACCESS=True)
     def test_denied_without_read_nodegroup(self):
         file = self.make_file(make_image())
-        with mock.patch.object(models.File, "tile", mock.Mock(), create=True), \
-                mock.patch.object(User, "has_perm", return_value=False):
+        with (
+            mock.patch.object(models.File, "tile", mock.Mock(), create=True),
+            mock.patch.object(User, "has_perm", return_value=False),
+        ):
             request = RequestFactory().get("/")
             request.user = self.user
             with self.assertRaises(PermissionDenied):
@@ -163,9 +190,13 @@ class ImageMetadataTests(ArchesTestCase):
 
     def test_png_text_after_pixel_data_is_read_without_decoding(self):
         data = png_with_late_title(b"Boiler room", 700)
-        with mock.patch.object(Image.Image, "load", side_effect=AssertionError("decoded")):
+        with mock.patch.object(
+            Image.Image, "load", side_effect=AssertionError("decoded")
+        ):
             fields, blob = read_ranged(data)
-        self.assertEqual(fields[0], {"key": "title", "label": "Title", "value": "Boiler room"})
+        self.assertEqual(
+            fields[0], {"key": "title", "label": "Title", "value": "Boiler room"}
+        )
         self.assertLess(blob.fetched, len(data) / 2)
 
     def test_fetch_limit_stops_reading(self):
@@ -175,7 +206,9 @@ class ImageMetadataTests(ArchesTestCase):
 
     def test_decompression_bomb_returns_empty_fields(self):
         data = make_image()
-        with mock.patch.object(Image, "open", side_effect=Image.DecompressionBombError("big")):
+        with mock.patch.object(
+            Image, "open", side_effect=Image.DecompressionBombError("big")
+        ):
             self.assertEqual(read_ranged(data)[0], [])
 
     def test_reader_matches_plain_file_reads(self):

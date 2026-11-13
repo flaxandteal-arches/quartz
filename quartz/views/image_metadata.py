@@ -35,10 +35,38 @@ PNG_TEXT_CHUNKS = {b"tEXt", b"zTXt", b"iTXt", b"eXIf"}
 # (key, label, [(source, name), ...]); the first non-empty source wins. Sources:
 # "exif" base-IFD tag, "exif_ifd" Exif-IFD tag, "xmp" XMP property, "text" PNG text chunk.
 METADATA_FIELDS = [
-    ("title", _("Title"), [("exif", XP_TITLE), ("xmp", "title"), ("exif", IMAGE_DESCRIPTION), ("text", "Title")]),
+    (
+        "title",
+        _("Title"),
+        [
+            ("exif", XP_TITLE),
+            ("xmp", "title"),
+            ("exif", IMAGE_DESCRIPTION),
+            ("text", "Title"),
+        ],
+    ),
     ("subject", _("Subject"), [("exif", XP_SUBJECT), ("text", "Subject")]),
-    ("date_taken", _("Date taken"), [("exif_ifd", DATE_TAKEN), ("xmp", "DateTimeOriginal"), ("xmp", "DateCreated"), ("text", "Creation Time")]),
-    ("comment", _("Comment"), [("exif", XP_COMMENT), ("exif_ifd", USER_COMMENT), ("xmp", "description"), ("text", "Comment"), ("text", "Description")]),
+    (
+        "date_taken",
+        _("Date taken"),
+        [
+            ("exif_ifd", DATE_TAKEN),
+            ("xmp", "DateTimeOriginal"),
+            ("xmp", "DateCreated"),
+            ("text", "Creation Time"),
+        ],
+    ),
+    (
+        "comment",
+        _("Comment"),
+        [
+            ("exif", XP_COMMENT),
+            ("exif_ifd", USER_COMMENT),
+            ("xmp", "description"),
+            ("text", "Comment"),
+            ("text", "Description"),
+        ],
+    ),
 ]
 
 
@@ -168,7 +196,9 @@ def _fields(sources):
         if key == "date_taken":
             value = re.sub(r"^(\d{4}):(\d\d):(\d\d)", r"\1-\2-\3", value)
         if value:
-            fields.append({"key": key, "label": str(label), "value": value[:MAX_VALUE_LENGTH]})
+            fields.append(
+                {"key": key, "label": str(label), "value": value[:MAX_VALUE_LENGTH]}
+            )
     return fields
 
 
@@ -189,7 +219,9 @@ def _png_text(ctype, body, text, exif):
         compressed = rest[0]
         _lang, _sep, rest = rest[2:].partition(b"\0")
         _translated, _sep, value = rest.partition(b"\0")
-        text[key.decode("utf-8", "replace")] = (_inflate(value) if compressed else value).decode("utf-8", "replace")
+        text[key.decode("utf-8", "replace")] = (
+            _inflate(value) if compressed else value
+        ).decode("utf-8", "replace")
 
 
 def _png_sources(fp):
@@ -235,7 +267,11 @@ def read_metadata(file_id):
     file = models.File.objects.get(pk=file_id)
     with open_file(file) as fp:
         fields = read_fields(fp)
-    return {"file_id": file_id, "name": os.path.basename(file.path.name), "fields": fields}
+    return {
+        "file_id": file_id,
+        "name": os.path.basename(file.path.name),
+        "fields": fields,
+    }
 
 
 class ImageMetadataView(View):
