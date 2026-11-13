@@ -29,7 +29,9 @@ PERMISSIONS_PLAN = {
 
 
 class Command(BaseCommand):
-    help = "Set versioning nodegroup permissions (Heritage Officer=read, Delegate=write)"
+    help = (
+        "Set versioning nodegroup permissions (Heritage Officer=read, Delegate=write)"
+    )
 
     def add_arguments(self, parser):
         parser.add_argument(
