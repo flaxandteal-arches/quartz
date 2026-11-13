@@ -376,6 +376,9 @@ var vm = {
         }
     }
 };
+vm.selectedCard.equalityComparer = function (a, b) {
+    return a === b;
+};
 
 vm.selectedTile.subscribe(function () {
     $('.main-panel')[0].scrollTop = 0;

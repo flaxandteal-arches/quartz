@@ -1,0 +1,43 @@
+{% extends "base.htm" %}
+{% load i18n %}
+
+{% block loading_mask %}
+{% endblock loading_mask %}
+
+{% block body %}
+
+<div id="container" class="cls-container arches-login">
+
+	<div class="cls-content arches-signin">
+		<div class="cls-content-sm panel login-panel" style="width: 350px;">
+			<div class="panel-body">
+				<h3 class="login-panel-header arches-signin">{% trans "Account Locked" %}</h3>
+
+				<div class="alert alert-danger" role="alert">
+					<h4>{% trans "Too many failed sign-in attempts" %}</h4>
+					<span>
+						{% blocktrans count limit=failure_limit %}This account has been locked after {{ limit }} failed attempt.{% plural %}This account has been locked after {{ limit }} failed attempts.{% endblocktrans %}
+						{% if cooloff_timedelta %}
+							{% widthratio cooloff_timedelta.total_seconds 60 1 as minutes %}
+							{% blocktrans %}Please try again in {{ minutes }} minutes.{% endblocktrans %}
+						{% else %}
+							{% trans "Please contact an administrator to unlock it." %}
+						{% endif %}
+					</span>
+				</div>
+
+				<a href="{% url 'auth' %}" class="btn btn-primary btn-lg btn-block">{% trans "Back to Sign In" %}</a>
+
+				<div class="row account-management">
+					<a href="{% url 'password_reset' %}" class="btn btn-link account-link">{% trans "Forgot password?" %}</a>
+				</div>
+			</div>
+
+			<div class="panel-footer">
+				{% trans "Learn more about <a href='http://www.archesproject.org'>Arches</a>" %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock body %}

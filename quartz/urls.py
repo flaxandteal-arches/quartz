@@ -6,10 +6,13 @@ from django.urls import include, path, re_path
 import django_saml2_auth.views
 
 from quartz.views.dynamics_api import DynamicsHeritageSyncView
+from quartz.views.related_resources import MergedVersionRelatedResourcesView
 from quartz.views.resource import (
     VersionedResourceEditorView,
     VersionedResourceEditLogView,
 )
+from quartz.views.image_metadata import ImageMetadataView
+from quartz.views.tile import ReorderTilesView
 from quartz.views.website_export import WebsiteExportView
 
 handler400 = "arches.app.views.main.custom_400"
@@ -32,6 +35,16 @@ _app_urlpatterns = [
         "website-export/",
         WebsiteExportView.as_view(),
         name="website_export",
+    ),
+    path(
+        "image-metadata/<uuid:fileid>",
+        ImageMetadataView.as_view(),
+        name="image_metadata",
+    ),
+    re_path(
+        r"^tiles/reorder_tiles$",
+        ReorderTilesView.as_view(),
+        name="reorder_tiles",
     ),
     re_path(r"^sso/", include("django_saml2_auth.urls")),
     re_path(r"^sso/signin/$", django_saml2_auth.views.signin, name="saml2_signin"),
@@ -66,6 +79,16 @@ _app_urlpatterns = [
     path("", include("arches_modular_reports.urls")),
     path("", include("arches_resource_version_manager.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.MERGE_VERSIONED_RESOURCES:
+    _app_urlpatterns.insert(
+        0,
+        re_path(
+            r"^resource/related/(?P<resourceid>%s|())$" % settings.UUID_REGEX,
+            MergedVersionRelatedResourcesView.as_view(),
+            name="related_resources",
+        ),
+    )
 
 urlpatterns = (
     _app_urlpatterns

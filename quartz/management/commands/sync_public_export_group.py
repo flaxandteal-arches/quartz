@@ -107,8 +107,8 @@ class Command(BaseCommand):
         ensure_user = options["ensure_user"]
 
         # Build the desired plan: {nodegroup_id: READ | NO_ACCESS}
-        plan = {}            # nodegroup_id(str) -> codename
-        labels = {}          # nodegroup_id(str) -> "GraphName / alias" for output
+        plan = {}  # nodegroup_id(str) -> codename
+        labels = {}  # nodegroup_id(str) -> "GraphName / alias" for output
         skipped_graphs = []
         skipped_aliases = []
 
@@ -178,9 +178,7 @@ class Command(BaseCommand):
                 self.style.WARNING(f"  graph not found in this DB, skipped: {g}")
             )
         for a in skipped_aliases:
-            self.stderr.write(
-                self.style.WARNING(f"  alias not found, skipped: {a}")
-            )
+            self.stderr.write(self.style.WARNING(f"  alias not found, skipped: {a}"))
 
         if dry_run:
             self.stdout.write(self.style.SUCCESS("DRY RUN: no changes written"))
@@ -257,25 +255,21 @@ class Command(BaseCommand):
 
     def _resolve_graph(self, Node, graph_key):
         """Return the published graph_id for a starches graph key, or None."""
+        from arches.app.models.models import GraphModel
+
         for name in graph_name_candidates(graph_key):
-            node = (
-                Node.objects.filter(
-                    graph__name__iexact=name,
-                    graph__source_identifier__isnull=True,
-                    source_identifier__isnull=True,
-                )
-                .values_list("graph_id", flat=True)
-                .first()
-            )
-            if node:
-                return node
+            graph = GraphModel.objects.filter(
+                name__icontains=name,
+                source_identifier__isnull=True,
+                isresource=True,
+            ).first()
+            if graph and str(graph.name).lower() == name.lower():
+                return graph.graphid
         return None
 
     def _resolve_nodegroup(self, Node, graph_id, alias):
         """Resolve a nodegroup alias ('' = root top node) to its nodegroup_id."""
-        qs = Node.objects.filter(
-            graph_id=graph_id, source_identifier__isnull=True
-        )
+        qs = Node.objects.filter(graph_id=graph_id, source_identifier__isnull=True)
         node = (
             qs.filter(istopnode=True).first()
             if alias == ""

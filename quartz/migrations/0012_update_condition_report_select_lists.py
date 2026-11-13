@@ -39,7 +39,12 @@ def update_node_controlled_lists(apps, schema_editor, updates):
             node.config["controlledList"] = controlled_list_id
             node.save()
 
-    graph.publish()
+    try:
+        Graph.objects.get(
+            pk=CONDITION_REPORT_GRAPHID, source_identifier__isnull=True
+        ).publish()
+    except Graph.DoesNotExist:
+        pass
 
 
 def update_select_lists_for_cr(apps, schema_editor):

@@ -219,7 +219,7 @@ def process_artefact(payload: dict, user) -> tuple:
         discovery_permit_number
     )
 
-    next_major, next_minor = calculate_next_version(
+    next_major, next_minor, next_patch = calculate_next_version(
         current_draft_version,
         is_final,
         version_from_payload,
@@ -246,6 +246,7 @@ def process_artefact(payload: dict, user) -> tuple:
     current_draft_version.metadata = payload
     current_draft_version.major_version = next_major
     current_draft_version.minor_version = next_minor
+    current_draft_version.patch_version = next_patch
     current_draft_version.save()
 
     current_draft_resource = models.Resource.objects.get(pk=current_draft_version.pk)
@@ -271,13 +272,15 @@ def process_artefact(payload: dict, user) -> tuple:
     current_draft_resource.save()
 
     if is_final:
-        finalize_draft(discovery_permit_number, user, next_major, next_minor, payload)
+        finalize_draft(
+            discovery_permit_number, user, next_major, next_minor, next_patch, payload
+        )
 
-    return current_draft_resource, created, f"{next_major}.{next_minor}"
+    return current_draft_resource, created, f"{next_major}.{next_minor}.{next_patch}"
 
 
 def increment_current_working_draft_version(
-    resourceid: str, major_version: int, minor_version: int
+    resourceid: str, major_version: int, minor_version: int, patch_version: int = 0
 ):
     """Update or create the version information tile for the given resource instance."""
     current_draft_resource = Resource.objects.get(pk=resourceid)
@@ -286,7 +289,7 @@ def increment_current_working_draft_version(
         nodegroup_id=VERSIONING_NODEGROUP,
     ).delete()
     current_draft_resource.tiles = _build_version_tile(
-        major_version, minor_version, resourceid
+        major_version, minor_version, resourceid, patch_version
     )
     return current_draft_resource
 
@@ -322,12 +325,19 @@ def _build_managed_tiles(
 
 
 def _build_version_tile(
-    major_version: str | int, minor_version: str | int, resource_instance_ref: str
+    major_version: str | int,
+    minor_version: str | int,
+    resource_instance_ref: str,
+    patch_version: str | int = 0,
 ) -> list:
     return [
         make_tile(
             VERSIONING_NODEGROUP,
-            {VERSION_NUMBER: i18n_string(f"{major_version}.{minor_version}")},
+            {
+                VERSION_NUMBER: i18n_string(
+                    f"{major_version}.{minor_version}.{patch_version}"
+                )
+            },
         )
     ]
 
@@ -555,7 +565,7 @@ def _build_digital_file_tile(payload: dict) -> list:
     edocs_number = payload.get("dpp_edocsnumber")
     if not has_value(edocs_number):
         return []
-    
+
     digital_object_resource_id = get_or_create_digital_object_resource_from_name(
         edocs_number
     )
@@ -658,7 +668,9 @@ def _build_location_tiles(
                         "type": "FeatureCollection",
                         "features": gps_features,
                     },
-                    NODE_FEATURE_SHAPE: parse_reference_node(feature_shape, FEATURE_SHAPE_LIST_NAME),
+                    NODE_FEATURE_SHAPE: parse_reference_node(
+                        feature_shape, FEATURE_SHAPE_LIST_NAME
+                    ),
                 },
                 parent_tile_id=location_data_tile.tileid,
             )
@@ -715,9 +727,7 @@ def _build_location_tiles(
                 tiles.append(
                     make_tile(
                         SPATIAL_RECORD_UPDATE_NODEGROUP,
-                        {
-                            NODE_UPDATE_START_DATE: parse_date(coord_date)
-                        },
+                        {NODE_UPDATE_START_DATE: parse_date(coord_date)},
                         parent_tile_id=geometry_tile.tileid,
                     )
                 )

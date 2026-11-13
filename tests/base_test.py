@@ -1,14 +1,37 @@
-"""Re-export the Arches base test case into quartz's ``tests`` package.
+"""Minimal stand-in for the Arches base test case.
 
-quartz's tests run with ``--settings="tests.test_settings"``, so the top-level
-``tests`` package resolves to THIS directory (which carries ``test_settings``),
-not arches'. The test modules import ``tests.base_test.ArchesTestCase``, so the
-class has to be reachable here. Re-export it from arches rather than copying the
-file, to avoid drift when upstream changes.
+Arches' own ``tests/base_test.py`` lives at the arches *repo* root, alongside
+(not inside) the ``arches`` package, so it is absent from PyPI wheels and
+cannot be imported when arches is pip-installed (as in the main.yml CI job).
+Rather than depend on an arches source checkout, this vendors the small
+subset of ``ArchesTestCase`` that quartz's tests actually use:
 
-Arches' own ``base_test`` does ``from tests import test_settings`` at import
-time; because ``tests`` resolves to this package, that correctly picks up
-quartz's ``tests/test_settings.py``.
+  * ``LanguageSynchronizer`` sync so language-aware models behave,
+  * loading the ontology from ``ONTOLOGY_PATH`` into the fresh test DB.
+
+quartz's tests load their graph fixtures explicitly, so the upstream
+``graph_fixtures`` machinery, OAuth application setup, and legacy package
+loading are intentionally omitted.
 """
 
-from arches.tests.base_test import ArchesTestCase  # noqa: F401
+from django.core import management
+from django.test import TestCase
+
+from arches.app.models.models import Ontology
+from arches.app.utils.i18n import LanguageSynchronizer
+
+from tests import test_settings
+
+
+class ArchesTestCase(TestCase):
+    @classmethod
+    def loadOntology(cls):
+        if not Ontology.objects.exclude(ontologyid__isnull=True).exists():
+            management.call_command(
+                "load_ontology", source=test_settings.ONTOLOGY_PATH, verbosity=0
+            )
+
+    @classmethod
+    def setUpTestData(cls):
+        LanguageSynchronizer.synchronize_settings_with_db(update_published_graphs=False)
+        cls.loadOntology()

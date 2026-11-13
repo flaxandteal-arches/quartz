@@ -39,3 +39,12 @@ article.main-search-container .search-footer {
 .search-results-body{
     overflow-y: scroll;
 }
+
+.jstree-default .jstree-anchor.unsaved-edit {
+    color: #212121;
+}
+.gallery-thumbnails img {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+}

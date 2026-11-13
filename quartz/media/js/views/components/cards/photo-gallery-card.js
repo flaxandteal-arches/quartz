@@ -7,6 +7,7 @@ import uuid from "uuid";
 import CardComponentViewModel from "viewmodels/card-component";
 import WorkbenchComponentViewModel from "views/components/workbench";
 import PhotoGallery from "viewmodels/photo-gallery";
+import imageMetadata from "utils/image-metadata";
 import photoGalleryCardTemplate from "templates/views/components/cards/photo-gallery-card.htm";
 import AlertViewModel from "viewmodels/alert";
 import "bindings/slide";
@@ -14,6 +15,51 @@ import "bindings/fadeVisible";
 import "bindings/dropzone";
 import "bindings/gallery";
 
+
+ko.bindingHandlers.scrollIntoViewWhen = {
+    update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+        if (!ko.unwrap(valueAccessor())) {
+            return;
+        }
+        var container = element.closest('.gallery-thumbnails, .photo-workbench-photos');
+        var vertical = container.classList.contains('photo-workbench-photos');
+        var nudgeOnly = vertical ?
+            bindingContext.$parent.selectingFromList :
+            bindingContext.$parent.selectingFromBar;
+        // Selection passes through "nothing selected", which hides the bar via displayContent,
+        // so measure once the update has finished.
+        setTimeout(function() {
+            var containerRect = container.getBoundingClientRect();
+            var rect = element.getBoundingClientRect();
+            var start = vertical ? containerRect.top : containerRect.left;
+            var end = vertical ? containerRect.bottom : containerRect.right;
+            // core sizes the bar as 100% - 400px, so its end can sit under a wider side panel
+            var panel = document.querySelector('.workbench-card-sidepanel');
+            if (!vertical && panel && panel.offsetWidth) {
+                var panelLeft = panel.getBoundingClientRect().left;
+                if (panelLeft > start && panelLeft < end) {
+                    end = panelLeft;
+                }
+            }
+            var elStart = vertical ? rect.top : rect.left;
+            var elEnd = vertical ? rect.bottom : rect.right;
+            var size = vertical ? rect.height : rect.width;
+            var delta = 0;
+            if (!nudgeOnly) {
+                delta = elStart - start - (end - start - size) / 2;
+            } else if (elStart < start) {
+                delta = elStart - start;
+            } else if (elEnd > end) {
+                delta = elEnd - end;
+            }
+            if (vertical) {
+                container.scrollTop += delta;
+            } else {
+                container.scrollLeft += delta;
+            }
+        }, 0);
+    }
+};
 
 const viewModel = function(params) {
 
@@ -78,17 +124,47 @@ const viewModel = function(params) {
     this.getUrl = function(tile, size){
         var url = '';
         var name = '';
+        var fileId = null;
         var val = ko.unwrap(tile.data[this.fileListNodeId]);
         if (val && val.length == 1) {
             {
                 url = self.cleanUrl(ko.unwrap(val[0].url)) || ko.unwrap(val[0].content);
                 name = ko.unwrap(val[0].name);
-                if (url && name){
-                    url = self.iiifUrl(name, size || 'max');
+                fileId = ko.unwrap(val[0].file_id) || null;
+                // Cantaloupe serves the sanitised stored filename, not the uploaded display name.
+                var path = ko.unwrap(val[0].path);
+                var storedName = path ? path.split('/').pop() : name;
+                if (url && storedName){
+                    url = self.iiifUrl(storedName, size || 'max');
                 }
             }
         }
-        return {url: url, name: name};
+        return {url: url, name: name, fileId: fileId};
+    };
+
+    const HIDDEN_WIDGET_ALIASES = ['copyright_holder', 'copyright_type'];
+
+    this.isHiddenWidget = function(widget) {
+        var node = self.form.nodeLookup[widget.node_id()];
+        return HIDDEN_WIDGET_ALIASES.includes(ko.unwrap(node.alias));
+    };
+
+    // Metadata is held per file id, never on tile observables, so reading it cannot dirty a tile.
+    const metadataByFile = ko.observable({});
+    const metadataRequested = new Set();
+
+    this.imageMetadataFields = function(tile) {
+        var fileId = self.getUrl(tile).fileId;
+        return metadataByFile()[fileId] || null;
+    };
+
+    this.loadImageMetadata = function(tile, event) {
+        var fileId = self.getUrl(tile).fileId;
+        if (!event.target.open || !fileId || metadataRequested.has(fileId)) return;
+        metadataRequested.add(fileId);
+        imageMetadata.fetchImageMetadata(fileId).then(function(data) {
+            metadataByFile(Object.assign({}, metadataByFile(), {[fileId]: data.fields}));
+        });
     };
 
     this.uniqueId = uuid.generate();
@@ -119,6 +195,7 @@ const viewModel = function(params) {
             });
         if (selected) {
             this.selected(selected);
+            this.tile = selected;
             photo = this.getUrl(selected).url;
         }
         else {
@@ -145,6 +222,125 @@ const viewModel = function(params) {
         // var index = this.parent.tiles.indexOf(val);
         val.deleteTile();
         setTimeout(self.defaultSelector, 150);
+    };
+
+    this.selectingFromBar = false;
+    this.selectFromBar = function(tile) {
+        self.selectingFromBar = true;
+        self.photoGallery.selectItem(tile);
+        self.selectingFromBar = false;
+    };
+
+    this.selectingFromList = false;
+    this.selectFromList = function(tile) {
+        self.selectingFromList = true;
+        self.photoGallery.selectItem(tile);
+        self.selectingFromList = false;
+    };
+
+    this.moveTile = function(tile, position) {
+        var tiles = self.card.tiles().slice();
+        var from = tiles.indexOf(tile);
+        var to = Math.min(Math.max(parseInt(position, 10) - 1, 0), tiles.length - 1);
+        if (from === -1 || isNaN(to) || from === to) {
+            return;
+        }
+        if (!self.savedOrder()) {
+            self.savedOrder(tiles.slice());
+        }
+        tiles.splice(from, 1);
+        tiles.splice(to, 0, tile);
+        self.card.tiles(tiles);
+    };
+
+    this.moveUp = function(tile) {
+        self.moveTile(tile, self.card.tiles.indexOf(tile));
+    };
+
+    this.moveDown = function(tile) {
+        self.moveTile(tile, self.card.tiles.indexOf(tile) + 2);
+    };
+
+    this.moveFirst = function(tile) {
+        self.moveTile(tile, 1);
+    };
+
+    this.moveLast = function(tile) {
+        self.moveTile(tile, self.card.tiles().length);
+    };
+
+    this.positionChange = function(tile, e) {
+        self.moveTile(tile, e.target.value);
+    };
+
+    this.positionKeydown = function(tile, e) {
+        if (e.key === 'Enter') {
+            e.target.blur();
+        } else if (e.key === 'ArrowUp') {
+            self.moveUp(tile);
+            return false;
+        } else if (e.key === 'ArrowDown') {
+            self.moveDown(tile);
+            return false;
+        }
+        return true;
+    };
+
+    this.savedOrder = ko.observable(null);
+
+    this.positionChanged = function(tile) {
+        var saved = self.savedOrder();
+        return !!saved && saved.indexOf(tile) !== self.card.tiles.indexOf(tile);
+    };
+
+    this.orderChanged = ko.pureComputed(function() {
+        return self.card.tiles().some(self.positionChanged);
+    });
+
+    // Tree drag-and-drop also lands here and saves the whole current order, pending moves included.
+    // Core only updates tile.sortorder once the request completes, and every tile save posts its
+    // sortorder, so a save sent in between would write the old position back.
+    var reorderTiles = self.card.reorderTiles;
+    self.card.reorderTiles = function() {
+        self.card.tiles().forEach(function(tile, index) {
+            tile.sortorder = index;
+        });
+        self.savedOrder(null);
+        return reorderTiles.apply(this, arguments);
+    };
+
+    this.saveOrder = function() {
+        if (self.orderChanged()) {
+            self.card.reorderTiles();
+        }
+        self.savedOrder(null);
+    };
+
+    this.resetOrder = function() {
+        var saved = self.savedOrder();
+        if (!saved) {
+            return;
+        }
+        // tiles uploaded or deleted since the first move keep the current list's membership
+        var rank = function(tile) {
+            var i = saved.indexOf(tile);
+            return i === -1 ? saved.length : i;
+        };
+        self.card.tiles(self.card.tiles().slice().sort(function(a, b) { return rank(a) - rank(b); }));
+        self.savedOrder(null);
+    };
+
+    // order first, so the tile save below already carries the new sortorder
+    this.saveTileAndOrder = function(tile) {
+        self.saveOrder();
+        if (tile.dirty()) {
+            tile.save();
+        }
+    };
+
+    this.resetTileAndOrder = function(tile) {
+        tile.reset();
+        self.resetOrder();
     };
 
     if (this.form && ko.unwrap(this.form.resourceId)) {
@@ -182,6 +378,12 @@ const viewModel = function(params) {
         if (loadFile === true) {
             var newtile;
             newtile = self.card.getNewTile();
+            var emptyStr = function() {
+                return {[arches.activeLanguage]: {
+                    direction: arches.languages.find(lang => lang.code == arches.activeLanguage).default_direction,
+                    value: '',
+                }};
+            };
             var tilevalue = {
                 name: file.name,
                 accepted: true,
@@ -195,7 +397,11 @@ const viewModel = function(params) {
                 file_id: null,
                 index: 0,
                 content: window.URL.createObjectURL(file),
-                error: file.error
+                error: file.error,
+                altText: emptyStr(),
+                title: emptyStr(),
+                attribution: emptyStr(),
+                description: emptyStr()
             };
             newtile.data[self.fileListNodeId]([tilevalue]);
             newtile.formData.append('file-list_' + self.fileListNodeId, file, file.name);

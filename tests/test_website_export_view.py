@@ -39,14 +39,10 @@ class WebsiteExportPermissionTests(ArchesTestCase):
 
     def test_forbidden_without_permission(self):
         self.client.force_login(self.plain_user)
-        self.assertEqual(
-            self.client.post(self.url).status_code, HTTPStatus.FORBIDDEN
-        )
+        self.assertEqual(self.client.post(self.url).status_code, HTTPStatus.FORBIDDEN)
 
     def test_anonymous_is_forbidden(self):
-        self.assertEqual(
-            self.client.post(self.url).status_code, HTTPStatus.FORBIDDEN
-        )
+        self.assertEqual(self.client.post(self.url).status_code, HTTPStatus.FORBIDDEN)
 
     def test_get_not_allowed(self):
         # POST-only; a GET must never run the action.

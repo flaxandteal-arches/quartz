@@ -26,7 +26,12 @@ WEBPACK_LOADER = {
 }
 
 # NOTE: this requires request as a param in authenticate(...) calls
-# AUTHENTICATION_BACKENDS += ("axes.backends.AxesStandaloneBackend",)
+AUTHENTICATION_BACKENDS = ("axes.backends.AxesBackend", *AUTHENTICATION_BACKENDS)
+
+AXES_FAILURE_LIMIT = 3
+AXES_COOLOFF_TIME = 0.5
+AXES_LOCKOUT_PARAMETERS = ["username"]
+AXES_LOCKOUT_TEMPLATE = "lockout.htm"
 
 DATATYPE_LOCATIONS.append("quartz.datatypes")
 FUNCTION_LOCATIONS.append("quartz.functions")
@@ -49,6 +54,11 @@ PERMISSION_LOCATIONS.append("quartz.permissions")
 # re-seeds the blanket groups).
 if os.environ.get("QUARTZ_BLANKET_ROLES", "True").lower() in ("true", "1", "yes"):
     PERMISSION_FRAMEWORK = "blanket_roles.BlanketRoleDenyFramework"
+
+# Related-resources views list each versioned resource once: its Draft, else its Active version.
+MERGE_VERSIONED_RESOURCES = os.environ.get(
+    "MERGE_VERSIONED_RESOURCES", "True"
+).lower() in ("true", "1", "yes")
 
 LOCALE_PATHS.insert(0, os.path.join(APP_ROOT, "locale"))
 
@@ -271,7 +281,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "arches.app.utils.middleware.SetAnonymousUser",
     # "silk.middleware.SilkyMiddleware",
-    # "axes.middleware.AxesMiddleware",
+    "axes.middleware.AxesMiddleware",
 ]
 
 MIDDLEWARE.insert(  # this must resolve to first MIDDLEWARE entry
@@ -381,7 +391,12 @@ GITHUB_DISPATCH_TOKEN = os.environ.get("GITHUB_DISPATCH_TOKEN", None)
 
 USE_LOCAL_STORAGE = os.environ.get("USE_LOCAL_STORAGE", "False").lower() == "true"
 
-if not USE_LOCAL_STORAGE and AZURE_ACCOUNT_NAME and AZURE_ACCOUNT_KEY and AZURE_CONTAINER:
+if (
+    not USE_LOCAL_STORAGE
+    and AZURE_ACCOUNT_NAME
+    and AZURE_ACCOUNT_KEY
+    and AZURE_CONTAINER
+):
     INSTALLED_APPS = (
         *INSTALLED_APPS,
         "storages",
@@ -452,6 +467,16 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = 524288000
 
 # Unique session cookie ensures that logins are treated separately for each app
 SESSION_COOKIE_NAME = "quartz"
+SESSION_COOKIE_AGE = 60 * 60 * 8
+SESSION_COOKIE_SAMESITE = "Lax"
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = True
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+CSRF_COOKIE_SECURE = True
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # For more info on configuring your cache: https://docs.djangoproject.com/en/2.2/topics/cache/
 CACHES = {
@@ -508,13 +533,10 @@ NOCAPTCHA = True
 # EMAIL_PORT = 587
 EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp.azurecomm.net")
 EMAIL_PORT = int(os.getenv("EMAIL_PORT", "587"))
-EMAIL_USE_TLS = True
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "true").lower() == "true"
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", EMAIL_HOST_USER)
-
-
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 CELERY_BROKER_URL = ""  # RabbitMQ --> "amqp://guest:guest@localhost",  Redis --> "redis://localhost:6379/0"
 CELERY_ACCEPT_CONTENT = ["json"]
@@ -716,11 +738,6 @@ LOGIN_REDIRECT_URL = os.environ.get("LOGIN_REDIRECT_URL", "/")
 LOGOUT_REDIRECT_URL = os.environ.get("LOGOUT_REDIRECT_URL", "/")
 ENABLE_USER_SIGNUP = bool(os.environ.get("ENABLE_USER_SIGNUP", False))
 
-# Session cookie settings for SSO
-SESSION_COOKIE_SAMESITE = "Lax"
-SESSION_COOKIE_HTTPONLY = True
-SESSION_COOKIE_SECURE = False
-
 # Arches Search
 INDEX_BATCH_SIZE = int(os.environ.get("INDEX_BATCH_SIZE", 500))
 
@@ -742,7 +759,9 @@ except ImportError as e:
         pass
 
 # Append after all other settings (including arches_her) have been loaded
-_condition_report_modifier = "quartz.search_indexes.displayname_search_modifier.DisplaynameSearchModifier"
+_condition_report_modifier = (
+    "quartz.search_indexes.displayname_search_modifier.DisplaynameSearchModifier"
+)
 ES_MAPPING_MODIFIER_CLASSES = list(locals().get("ES_MAPPING_MODIFIER_CLASSES") or [])
 if _condition_report_modifier not in ES_MAPPING_MODIFIER_CLASSES:
     ES_MAPPING_MODIFIER_CLASSES.append(_condition_report_modifier)

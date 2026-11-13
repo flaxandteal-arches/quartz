@@ -100,6 +100,9 @@ const processRawNodeValue = (rawValue) => {
     }
 };
 
+const isEmptyCell = (html) =>
+    ["", "--"].includes($(`<span>${html}</span>`).text().trim());
+
 const removeTileFromResourceTree = (resourceObj, tileid) => {
     const resourceKeys = Object.keys(resourceObj);
     for (const key of resourceKeys) {
@@ -136,6 +139,14 @@ export default {
                 { name: "mobilel", width: 480 },
                 { name: "mobilep", width: 320 },
             ],
+            details: {
+                renderer: (api, rowIdx, columns) =>
+                    $.fn.dataTable.Responsive.renderer.listHidden()(
+                        api,
+                        rowIdx,
+                        columns.filter((col) => !isEmptyCell(col.data))
+                    ),
+            },
         },
         paging: false,
         searching: false,
@@ -147,6 +158,15 @@ export default {
                 targets: -1,
             },
         ],
+        initComplete: function () {
+            this.api()
+                .columns(":not(.aher-table-control)")
+                .every(function () {
+                    if (this.data().toArray().every((cell) => isEmptyCell(cell))) {
+                        this.visible(false);
+                    }
+                });
+        },
     },
 
     removedTiles: removedTiles,

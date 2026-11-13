@@ -18,9 +18,22 @@ const isVideo = (props.type || "").indexOf("video/") === 0;
             controls
             :src="url"
         ></video>
-        <audio v-else class="media-viewer-el media-viewer-el--audio" controls :src="url"></audio>
-        <a class="btn btn-primary" :href="url" :download="name">
-            <i class="fa fa-download" aria-hidden="true"></i> Download
+        <audio
+            v-else
+            class="media-viewer-el media-viewer-el--audio"
+            controls
+            :src="url"
+        ></audio>
+        <a
+            class="btn btn-primary"
+            :href="url"
+            :download="name"
+        >
+            <i
+                class="fa fa-download"
+                aria-hidden="true"
+            ></i>
+            Download
         </a>
     </div>
 </template>

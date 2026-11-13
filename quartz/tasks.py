@@ -6,10 +6,19 @@ logger = logging.getLogger(__name__)
 
 
 @shared_task
-def run_public_export(visibility=None, output_dir="public_export",
-                      use_drafts=False, indent=2, as_user=None,
-                      push=False, trigger=False, event_type="prebuild",
-                      blob_name=None):
+def run_public_export(
+    visibility=None,
+    output_dir="public_export",
+    use_drafts=False,
+    use_latest_minor=False,
+    indent=2,
+    as_user=None,
+    push=False,
+    trigger=False,
+    event_type="prebuild",
+    blob_name=None,
+    image_visibility=None,
+):
     """Full public-export pipeline as a single worker task.
 
     ``blob_name`` names BOTH the local archive and the uploaded blob. When not
@@ -37,9 +46,7 @@ def run_public_export(visibility=None, output_dir="public_export",
     )
 
     blob_name = (
-        blob_name
-        or os.environ.get("STARCHES_PREBUILD_BLOB_NAME")
-        or "prebuild.tgz"
+        blob_name or os.environ.get("STARCHES_PREBUILD_BLOB_NAME") or "prebuild.tgz"
     )
     labels = visibility or ["Public", "Staging"]
     try:
@@ -52,8 +59,10 @@ def run_public_export(visibility=None, output_dir="public_export",
         labels,
         output_dir=output_dir,
         use_drafts=use_drafts,
+        use_latest_minor=use_latest_minor,
         indent=indent or None,
         user=user,
+        image_required_labels=image_visibility or ["Available", "Public"],
     )
     pipeline["messages"] = user_messages + pipeline["messages"]
 
@@ -69,16 +78,23 @@ def run_public_export(visibility=None, output_dir="public_export",
 
     # Reuse the packaging/push task body (runs inline here, not via .delay()).
     packaging = export_and_push_public_heritage(
-        pipeline["result"], push=push, trigger=trigger,
-        event_type=event_type, blob_name=blob_name,
+        pipeline["result"],
+        push=push,
+        trigger=trigger,
+        event_type=event_type,
+        blob_name=blob_name,
     )
     return {"export": export_section, "packaging": packaging}
 
 
 @shared_task
-def export_and_push_public_heritage(output_dir, push=False, trigger=False,
-                                    event_type="prebuild",
-                                    blob_name="prebuild.tgz"):
+def export_and_push_public_heritage(
+    output_dir,
+    push=False,
+    trigger=False,
+    event_type="prebuild",
+    blob_name="prebuild.tgz",
+):
     """Package an exported public-heritage directory and optionally push it.
 
     Steps:
@@ -122,9 +138,7 @@ def export_and_push_public_heritage(output_dir, push=False, trigger=False,
 
     if trigger:
         try:
-            result["triggered_status"] = trigger_validation_build(
-                event_type=event_type
-            )
+            result["triggered_status"] = trigger_validation_build(event_type=event_type)
         except RuntimeError as e:
             logger.warning("Skipping trigger: %s", e)
             result["skipped"].append(f"trigger: {e}")

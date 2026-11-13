@@ -38,8 +38,8 @@ from arches.app.permissions.arches_default_deny import (
 from arches.app.search.elasticsearch_dsl_builder import Bool, Ids
 
 # Groups conveying blanket access. Membership only — no per-resource rows.
-FULL_ACCESS_GROUPS = ["Delegate"]            # view + change + delete on all
-READ_ACCESS_GROUPS = ["Heritage Officer"]    # view on all + change on Draft only
+FULL_ACCESS_GROUPS = ["Delegate"]  # view + change + delete on all
+READ_ACCESS_GROUPS = ["Heritage Officer"]  # view on all + change on Draft only
 
 VIEW_PERM = "view_resourceinstance"
 CHANGE_PERM = "change_resourceinstance"
@@ -76,9 +76,7 @@ class BlanketRoleDenyFramework(ArchesDefaultDenyPermissionFramework):
         """
         if not self._eligible(user):
             return False
-        return self.user_in_group_by_name(
-            user, FULL_ACCESS_GROUPS + READ_ACCESS_GROUPS
-        )
+        return self.user_in_group_by_name(user, FULL_ACCESS_GROUPS + READ_ACCESS_GROUPS)
 
     def _grant(self, user, permission, resource):
         """Hard-gate decision for a single (resource, permission).

@@ -348,7 +348,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                     name: cardComponentLookup[selectedCard().model.component_id()].componentname,
                     params: {
                         card: selectedCard(),
-                        tile: selectedTile(),
+                        tile: cardComponentLookup[selectedCard().model.component_id()].componentname === 'photo-gallery-card' ? selectedTile.peek() : selectedTile(),
                         provisionalTileViewModel: provisionalTileViewModel,
                         reviewer: reviewer,
                         loading: loading,

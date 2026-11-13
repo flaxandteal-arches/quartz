@@ -62,7 +62,10 @@ def extract_gps_features(locations: list, lat_key: str, lon_key: str) -> list:
                         "type": "Feature",
                         "geometry": {
                             "type": "Point",
-                            "coordinates": [float(lon), float(lat)],  # GeoJSON: [lon, lat]
+                            "coordinates": [
+                                float(lon),
+                                float(lat),
+                            ],  # GeoJSON: [lon, lat]
                         },
                         "properties": {},
                     }
@@ -149,6 +152,7 @@ def update_tiles(tiles: list, data: dict) -> list:
     for tile in tiles:
         tile.data = {**tile.data, **data}
     return tiles
+
 
 def has_any_value(values: list) -> bool:
     """Return True if any of the values are not None and not an empty string."""

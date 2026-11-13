@@ -5,7 +5,9 @@ FUNCTION_ID = "e7d7fd2a-973a-4b2c-8c6e-bd2238d7be70"
 CONDITION_REPORT_GRAPH_ID = "9fccd932-8e8f-4595-89bd-3cb04ddfecae"
 CONDITION_REPORT_FXG_ID = "3447c3ef-8a5e-4a2b-a3a4-bb31a2613817"
 ASSOCIATED_HI_NODEGROUP_ID = "77cef118-454b-46e8-98a1-ab72095b3e3c"
-DESCRIPTOR_TEMPLATE = "<associated_monument_heritage_item|resourceid>, <condition>, <report_date>"
+DESCRIPTOR_TEMPLATE = (
+    "<associated_monument_heritage_item|resourceid>, <condition>, <report_date>"
+)
 
 FUNCTION_DETAILS = {
     "name": "Resource ID Descriptor",
@@ -40,13 +42,24 @@ def register_function(apps, schema_editor):
 
     descriptor_config = {
         "descriptor_types": {
-            "name": {"nodegroup_id": ASSOCIATED_HI_NODEGROUP_ID, "string_template": DESCRIPTOR_TEMPLATE},
-            "map_popup": {"nodegroup_id": ASSOCIATED_HI_NODEGROUP_ID, "string_template": DESCRIPTOR_TEMPLATE},
-            "description": {"nodegroup_id": ASSOCIATED_HI_NODEGROUP_ID, "string_template": DESCRIPTOR_TEMPLATE},
+            "name": {
+                "nodegroup_id": ASSOCIATED_HI_NODEGROUP_ID,
+                "string_template": DESCRIPTOR_TEMPLATE,
+            },
+            "map_popup": {
+                "nodegroup_id": ASSOCIATED_HI_NODEGROUP_ID,
+                "string_template": DESCRIPTOR_TEMPLATE,
+            },
+            "description": {
+                "nodegroup_id": ASSOCIATED_HI_NODEGROUP_ID,
+                "string_template": DESCRIPTOR_TEMPLATE,
+            },
         }
     }
 
-    graph = GraphModel.objects.filter(graphid=uuid.UUID(CONDITION_REPORT_GRAPH_ID)).first()
+    graph = GraphModel.objects.filter(
+        graphid=uuid.UUID(CONDITION_REPORT_GRAPH_ID)
+    ).first()
     if graph:
         FunctionXGraph.objects.update_or_create(
             id=uuid.UUID(CONDITION_REPORT_FXG_ID),
