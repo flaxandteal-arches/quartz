@@ -6,6 +6,7 @@ from django.urls import include, path, re_path
 import django_saml2_auth.views
 
 from quartz.views.dynamics_api import DynamicsHeritageSyncView
+from quartz.views.search_export import export_results as search_export_results
 from quartz.views.resource import (
     VersionedResourceEditorView,
     VersionedResourceEditLogView,
@@ -33,6 +34,12 @@ _app_urlpatterns = [
         "website-export/",
         WebsiteExportView.as_view(),
         name="website_export",
+    ),
+    # Adds an XML format to the search export; other formats pass through.
+    re_path(
+        r"^search/export_results$",
+        search_export_results,
+        name="quartz_export_results",
     ),
     re_path(
         r"^tiles/reorder_tiles$",
