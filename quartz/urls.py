@@ -7,6 +7,7 @@ import django_saml2_auth.views
 
 from quartz.views.dynamics_api import DynamicsHeritageSyncView
 from quartz.views.search_export import export_results as search_export_results
+from quartz.views.related_resources import MergedVersionRelatedResourcesView
 from quartz.views.resource import (
     VersionedResourceEditorView,
     VersionedResourceEditLogView,
