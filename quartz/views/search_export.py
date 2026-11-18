@@ -1,5 +1,8 @@
 """Search export with an added XML format.
 
+Large exports (above SEARCH_EXPORT_IMMEDIATE_DOWNLOAD_THRESHOLD) run as a
+Celery task, like the other formats.
+
 Replaces the Arches ``search/export_results`` route. Every format except
 ``xml`` is handed straight to the Arches view, unchanged. ``xml`` exports the
 Heritage Items in the current search that have Public visibility and whose
@@ -68,6 +71,56 @@ def _nothing_to_export():
     )
 
 
+def _submit_background_export(request, total, limit):
+    """Queue a large XML export on Celery, as Arches does for other formats."""
+    from arches.app.utils import task_management
+    from arches.app import tasks as arches_tasks
+
+    from quartz.tasks import export_register_xml_task
+
+    if (
+        settings.RESTRICT_CELERY_EXPORT_FOR_ANONYMOUS_USER is True
+        and request.user.username == "anonymous"
+    ):
+        return JSONResponse(
+            {
+                "success": False,
+                "message": _(
+                    "Your search exceeds the {limit} instance download limit. "
+                    "Anonymous users cannot run an export exceeding this limit. "
+                    "Please sign in or refine your search"
+                ).format(limit=limit),
+            }
+        )
+    if task_management.check_if_celery_available() is not True:
+        return JSONResponse(
+            {
+                "success": False,
+                "message": _(
+                    "Your search exceeds the {limit} instance download limit. "
+                    "Please refine your search"
+                ).format(limit=limit),
+            }
+        )
+
+    request_values = dict(request.GET)
+    request_values["path"] = request.get_full_path()
+    export_register_xml_task.apply_async(
+        (request.user.id, request_values),
+        link=arches_tasks.update_user_task_record.s(),
+        link_error=arches_tasks.log_error.s(),
+    )
+    return JSONResponse(
+        {
+            "success": True,
+            "message": _(
+                "{total} instances have been submitted for export. Click the "
+                "Bell icon to check for a link to download your data"
+            ).format(total=total),
+        }
+    )
+
+
 @group_required("Resource Exporter")
 def export_results(request):
     if request.GET.get("format") != XML_FORMAT:
@@ -78,16 +131,7 @@ def export_results(request):
     total = int(request.GET.get("total", 0))
     limit = settings.SEARCH_EXPORT_IMMEDIATE_DOWNLOAD_THRESHOLD
     if total > limit:
-        # No background (Celery) path for XML yet.
-        return JSONResponse(
-            {
-                "success": False,
-                "message": _(
-                    "Your search exceeds the {limit} instance limit for XML "
-                    "export. Please refine your search."
-                ).format(limit=limit),
-            }
-        )
+        return _submit_background_export(request, total, limit)
 
     try:
         ids = get_search_resource_ids(request)
