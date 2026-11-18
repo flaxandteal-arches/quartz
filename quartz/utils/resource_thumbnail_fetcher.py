@@ -3,7 +3,9 @@ import logging
 import requests
 
 from arches.app.utils.search_thumbnail_fetcher import SearchThumbnailFetcher
-from arches.app.utils.search_thumbnail_fetcher_factory import SearchThumbnailFetcherFactory
+from arches.app.utils.search_thumbnail_fetcher_factory import (
+    SearchThumbnailFetcherFactory,
+)
 from arches.app.views.manifest_manager import ManifestManagerView
 
 logger = logging.getLogger(__name__)
@@ -29,6 +31,8 @@ class HeritageItemFetcher(SearchThumbnailFetcher):
             resp = requests.get(thumbnail_url, timeout=10)
             resp.raise_for_status()
         except Exception:
-            logger.exception("Failed to fetch thumbnail from Cantaloupe: %s", thumbnail_url)
+            logger.exception(
+                "Failed to fetch thumbnail from Cantaloupe: %s", thumbnail_url
+            )
             return None
         return (resp.content, "image/jpeg")

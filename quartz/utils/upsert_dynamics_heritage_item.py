@@ -219,7 +219,9 @@ def process_heritage_item(payload: dict, user) -> tuple:
     current_draft_resource.save()
 
     if is_final:
-        finalize_draft(heritage_id_number, user, next_major, next_minor, next_patch, payload)
+        finalize_draft(
+            heritage_id_number, user, next_major, next_minor, next_patch, payload
+        )
 
     return current_draft_resource, created, f"{next_major}.{next_minor}.{next_patch}"
 
@@ -239,8 +241,11 @@ def increment_current_working_draft_version(
     if existing_tile:
         existing_tile.delete()
     current_draft_resource.tiles = _build_version_tile(
-        major_version, minor_version, resourceid,
-        visibility=visibility, patch_version=patch_version,
+        major_version,
+        minor_version,
+        resourceid,
+        visibility=visibility,
+        patch_version=patch_version,
     )
     return current_draft_resource
 

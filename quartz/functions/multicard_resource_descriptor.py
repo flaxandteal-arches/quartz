@@ -52,10 +52,13 @@ class MulticardResourceDescriptor(AbstractPrimaryDescriptorsFunction):
         datatype_factory = None
         result = config["string_template"]
 
-        if (
-            str(resource.graph_id) in ["076f9381-7b00-11e9-8d6b-80000b44d1d9", "343cc20c-2c5a-11e8-90fa-0242ac120005"]
-        ):  # heritage item graph, or artefact graph
-            node_aliases, result = remove_version_from_draft_resource_names(result, resource)
+        if str(resource.graph_id) in [
+            "076f9381-7b00-11e9-8d6b-80000b44d1d9",
+            "343cc20c-2c5a-11e8-90fa-0242ac120005",
+        ]:  # heritage item graph, or artefact graph
+            node_aliases, result = remove_version_from_draft_resource_names(
+                result, resource
+            )
         else:
             node_aliases = extract_substrings(result)
         nodes = models.Node.objects.filter(

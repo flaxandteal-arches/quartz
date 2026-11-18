@@ -19,13 +19,10 @@ EXCLUDED_DATATYPES = {"semantic", "annotation", "geojson-feature-collection"}
 
 
 def build_expanded_config(graph):
-    top_cards = (
-        CardModel.objects.filter(
-            graph=graph,
-            nodegroup__parentnodegroup__isnull=True,
-        )
-        .order_by("sortorder")
-    )
+    top_cards = CardModel.objects.filter(
+        graph=graph,
+        nodegroup__parentnodegroup__isnull=True,
+    ).order_by("sortorder")
 
     sections = []
     for card in top_cards:
@@ -41,30 +38,36 @@ def build_expanded_config(graph):
             .exclude(cardxnodexwidget__visible=False)
             .values_list("alias", flat=True)
         )
-        sections.append({
-            "name": str(card.name),
-            "components": [
-                {
-                    "component": "arches_modular_reports/ModularReport/components/DataSection",
-                    "config": {
-                        "nodegroup_alias": grouping_node.alias,
-                        "node_aliases": node_aliases,
-                        "custom_labels": {},
-                        "custom_card_name": None,
-                    },
-                }
-            ],
-        })
+        sections.append(
+            {
+                "name": str(card.name),
+                "components": [
+                    {
+                        "component": "arches_modular_reports/ModularReport/components/DataSection",
+                        "config": {
+                            "nodegroup_alias": grouping_node.alias,
+                            "node_aliases": node_aliases,
+                            "custom_labels": {},
+                            "custom_card_name": None,
+                        },
+                    }
+                ],
+            }
+        )
 
     return {
         "name": "Search Result Expanded",
         "theme": "",
-        "components": [
-            {
-                "component": "arches_modular_reports/ModularReport/components/LinkedSections",
-                "config": {"sections": sections},
-            }
-        ] if sections else [],
+        "components": (
+            [
+                {
+                    "component": "arches_modular_reports/ModularReport/components/LinkedSections",
+                    "config": {"sections": sections},
+                }
+            ]
+            if sections
+            else []
+        ),
     }
 
 
@@ -92,7 +95,9 @@ class Command(BaseCommand):
 
         for graph in graphs:
             self._upsert(graph, "search", SEARCH_CONFIG, overwrite)
-            self._upsert(graph, "search_result_expanded", build_expanded_config(graph), overwrite)
+            self._upsert(
+                graph, "search_result_expanded", build_expanded_config(graph), overwrite
+            )
 
     def _upsert(self, graph, slug, config, overwrite):
         if overwrite:

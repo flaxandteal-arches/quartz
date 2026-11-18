@@ -84,7 +84,10 @@ class ResourceIdDescriptor(AbstractPrimaryDescriptorsFunction):
                 )
             elif tile:
                 datatype = datatype_factory.get_instance(node.datatype)
-                value = datatype.get_display_value(tile, node, language=lookup_language) or ""
+                value = (
+                    datatype.get_display_value(tile, node, language=lookup_language)
+                    or ""
+                )
             else:
                 value = ""
 

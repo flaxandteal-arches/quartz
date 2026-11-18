@@ -46,6 +46,18 @@ runs:
           npm install
       shell: bash
 
+    # The generated frontend_configuration/tsconfig-paths.json assumes the docker layout:
+    # an ENV folder two levels above the project, and a tsconfig.json above the installed
+    # Arches packages. @vue/compiler-sfc finds a tsconfig by walking up from each .vue file,
+    # so without these it cannot resolve the "@/..." type imports in arches_vue_components.
+    - name: Recreate docker tsconfig layout for Vue type imports
+      run: |
+        PY_PREFIX="$(python -c 'import sys; print(sys.prefix)')"
+        SITE_PACKAGES="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
+        ln -sfn "${PY_PREFIX}" "${GITHUB_WORKSPACE}/../../ENV"
+        printf '{"extends": "%s/tsconfig.json"}' "${GITHUB_WORKSPACE}" > "${SITE_PACKAGES}/tsconfig.json"
+      shell: bash
+
     - name: Webpack frontend files
       run: |
           npm run build_test
@@ -58,7 +70,7 @@ runs:
 
     - name: Check backend formatting with black
       run: |
-        black . --check --exclude=node_modules
+        black . --check --extend-exclude='/(node_modules|build)/'
       shell: bash
 
     - name: Check line endings on all but ontology (.xml) files

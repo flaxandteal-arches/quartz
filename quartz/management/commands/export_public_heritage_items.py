@@ -20,7 +20,7 @@ class Command(BaseCommand):
             "--visibility",
             nargs="+",
             default=["Public", "Staging"],
-            help='Visibility labels to include (default: Public Staging)',
+            help="Visibility labels to include (default: Public Staging)",
         )
         parser.add_argument(
             "--use-drafts",
@@ -89,8 +89,7 @@ class Command(BaseCommand):
         parser.add_argument(
             "--trigger",
             action="store_true",
-            help="Fire a GitHub repository_dispatch to launch the "
-            "validation build",
+            help="Fire a GitHub repository_dispatch to launch the " "validation build",
         )
         parser.add_argument(
             "--async",
@@ -117,8 +116,7 @@ class Command(BaseCommand):
             f"to graphs with visibility): {diagnostics['candidate_relations']}"
         )
         self.stdout.write(
-            f"    Target resources total: "
-            f"{diagnostics['target_resources_total']}"
+            f"    Target resources total: " f"{diagnostics['target_resources_total']}"
         )
         self.stdout.write(
             f"    Target resources passing visibility filter: "
@@ -168,14 +166,14 @@ class Command(BaseCommand):
             f"Objects): {included}"
         )
         if person_count := diagnostics.get("person_resources", 0):
-            self.stdout.write(f"  Person resources (referenced by Heritage Items): {person_count}")
+            self.stdout.write(
+                f"  Person resources (referenced by Heritage Items): {person_count}"
+            )
         if period_count := diagnostics.get("period_resources", 0):
             self.stdout.write(f"  Period resources (all): {period_count}")
         tiles_filtered = diagnostics.get("image_tiles_filtered_by_visibility", 0)
         if tiles_filtered:
-            self.stdout.write(
-                f"  Image tiles filtered by visibility: {tiles_filtered}"
-            )
+            self.stdout.write(f"  Image tiles filtered by visibility: {tiles_filtered}")
         files = diagnostics.get("referenced_files", [])
         self.stdout.write(
             f"  Referenced files (images + Digital Object content), "
@@ -319,9 +317,7 @@ class Command(BaseCommand):
             run_async = False
 
         # 0. Resolve the optional export user (applies nodegroup read perms).
-        export_user = self._resolve_export_user(
-            options["as_user"], options["group"]
-        )
+        export_user = self._resolve_export_user(options["as_user"], options["group"])
 
         # 1. Discover all visibility nodes across graphs
         self.stdout.write("Discovering visibility nodes (controlled list lookup)...")
@@ -341,16 +337,12 @@ class Command(BaseCommand):
         )
         if not hi_visibility:
             self.stderr.write(
-                self.style.ERROR(
-                    "Heritage Item graph has no visibility node."
-                )
+                self.style.ERROR("Heritage Item graph has no visibility node.")
             )
             return
 
         # 2. Look up URIs for target visibility labels
-        self.stdout.write(
-            f"Looking up visibility URIs for: {', '.join(target_labels)}"
-        )
+        self.stdout.write(f"Looking up visibility URIs for: {', '.join(target_labels)}")
         uris = get_visibility_uris(target_labels)
         if not uris:
             self.stderr.write(
@@ -369,9 +361,7 @@ class Command(BaseCommand):
         self.stdout.write(f"  Found {len(draft_ids)} matching Draft resources")
 
         if not draft_ids:
-            self.stdout.write(
-                self.style.WARNING("No matching Heritage Items found.")
-            )
+            self.stdout.write(self.style.WARNING("No matching Heritage Items found."))
             return
 
         # 3b. Build Draft → visibility label mapping
@@ -393,11 +383,10 @@ class Command(BaseCommand):
 
             self.stdout.write("Resolving latest frozen (minor) versions...")
             export_ids, missing_groups, export_labels = get_latest_minor_resource_ids(
-                draft_ids, draft_labels=draft_labels,
+                draft_ids,
+                draft_labels=draft_labels,
             )
-            self.stdout.write(
-                f"  Found {len(export_ids)} latest frozen versions"
-            )
+            self.stdout.write(f"  Found {len(export_ids)} latest frozen versions")
             for group_id in missing_groups:
                 self.stderr.write(
                     self.style.WARNING(
@@ -407,7 +396,8 @@ class Command(BaseCommand):
         else:
             self.stdout.write("Resolving Final (Active) versions...")
             export_ids, missing_groups, export_labels = get_final_resource_ids(
-                draft_ids, draft_labels=draft_labels,
+                draft_ids,
+                draft_labels=draft_labels,
             )
             self.stdout.write(f"  Found {len(export_ids)} Final versions")
 
@@ -419,9 +409,7 @@ class Command(BaseCommand):
                 )
 
         if not export_ids:
-            self.stdout.write(
-                self.style.WARNING("No versions to export.")
-            )
+            self.stdout.write(self.style.WARNING("No versions to export."))
             return
 
         # 4b. Report nodegroups the export user is not permitted to read (and
@@ -498,26 +486,28 @@ class Command(BaseCommand):
         self.stdout.write(f"Packaging export as {blob_name}...")
         if run_async:
             async_result = export_and_push_public_heritage.delay(
-                output_dir, push=push, trigger=trigger, blob_name=blob_name,
+                output_dir,
+                push=push,
+                trigger=trigger,
+                blob_name=blob_name,
             )
             self.stdout.write(
-                self.style.SUCCESS(
-                    f"Dispatched packaging task: {async_result.id}"
-                )
+                self.style.SUCCESS(f"Dispatched packaging task: {async_result.id}")
             )
             return
 
         result = export_and_push_public_heritage(
-            output_dir, push=push, trigger=trigger, blob_name=blob_name,
+            output_dir,
+            push=push,
+            trigger=trigger,
+            blob_name=blob_name,
         )
 
         self.stdout.write(f"  Archive: {result['archive_path']}")
         if push:
             if result["uploaded_url"]:
                 self.stdout.write(
-                    self.style.SUCCESS(
-                        f"  Uploaded: {result['uploaded_url']}"
-                    )
+                    self.style.SUCCESS(f"  Uploaded: {result['uploaded_url']}")
                 )
         if trigger:
             if result["triggered_status"]:

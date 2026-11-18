@@ -7,6 +7,7 @@ import uuid from "uuid";
 import CardComponentViewModel from "viewmodels/card-component";
 import WorkbenchComponentViewModel from "views/components/workbench";
 import PhotoGallery from "viewmodels/photo-gallery";
+import imageMetadata from "utils/image-metadata";
 import photoGalleryCardTemplate from "templates/views/components/cards/photo-gallery-card.htm";
 import AlertViewModel from "viewmodels/alert";
 import "bindings/slide";
@@ -20,29 +21,41 @@ ko.bindingHandlers.scrollIntoViewWhen = {
         if (!ko.unwrap(valueAccessor())) {
             return;
         }
-        var nudgeOnly = bindingContext.$parent.selectingFromBar;
+        var container = element.closest('.gallery-thumbnails, .photo-workbench-photos');
+        var vertical = container.classList.contains('photo-workbench-photos');
+        var nudgeOnly = vertical ?
+            bindingContext.$parent.selectingFromList :
+            bindingContext.$parent.selectingFromBar;
         // Selection passes through "nothing selected", which hides the bar via displayContent,
         // so measure once the update has finished.
         setTimeout(function() {
-            var bar = element.closest('.gallery-thumbnails');
-            var barRect = bar.getBoundingClientRect();
-            var left = barRect.left;
-            var right = barRect.right;
+            var containerRect = container.getBoundingClientRect();
+            var rect = element.getBoundingClientRect();
+            var start = vertical ? containerRect.top : containerRect.left;
+            var end = vertical ? containerRect.bottom : containerRect.right;
             // core sizes the bar as 100% - 400px, so its end can sit under a wider side panel
             var panel = document.querySelector('.workbench-card-sidepanel');
-            if (panel && panel.offsetWidth) {
+            if (!vertical && panel && panel.offsetWidth) {
                 var panelLeft = panel.getBoundingClientRect().left;
-                if (panelLeft > left && panelLeft < right) {
-                    right = panelLeft;
+                if (panelLeft > start && panelLeft < end) {
+                    end = panelLeft;
                 }
             }
-            var rect = element.getBoundingClientRect();
+            var elStart = vertical ? rect.top : rect.left;
+            var elEnd = vertical ? rect.bottom : rect.right;
+            var size = vertical ? rect.height : rect.width;
+            var delta = 0;
             if (!nudgeOnly) {
-                bar.scrollLeft += rect.left - left - (right - left - rect.width) / 2;
-            } else if (rect.left < left) {
-                bar.scrollLeft -= left - rect.left;
-            } else if (rect.right > right) {
-                bar.scrollLeft += rect.right - right;
+                delta = elStart - start - (end - start - size) / 2;
+            } else if (elStart < start) {
+                delta = elStart - start;
+            } else if (elEnd > end) {
+                delta = elEnd - end;
+            }
+            if (vertical) {
+                container.scrollTop += delta;
+            } else {
+                container.scrollLeft += delta;
             }
         }, 0);
     }
@@ -111,11 +124,13 @@ const viewModel = function(params) {
     this.getUrl = function(tile, size){
         var url = '';
         var name = '';
+        var fileId = null;
         var val = ko.unwrap(tile.data[this.fileListNodeId]);
         if (val && val.length == 1) {
             {
                 url = self.cleanUrl(ko.unwrap(val[0].url)) || ko.unwrap(val[0].content);
                 name = ko.unwrap(val[0].name);
+                fileId = ko.unwrap(val[0].file_id) || null;
                 // Cantaloupe serves the sanitised stored filename, not the uploaded display name.
                 var path = ko.unwrap(val[0].path);
                 var storedName = path ? path.split('/').pop() : name;
@@ -124,7 +139,32 @@ const viewModel = function(params) {
                 }
             }
         }
-        return {url: url, name: name};
+        return {url: url, name: name, fileId: fileId};
+    };
+
+    const HIDDEN_WIDGET_ALIASES = ['copyright_holder', 'copyright_type'];
+
+    this.isHiddenWidget = function(widget) {
+        var node = self.form.nodeLookup[widget.node_id()];
+        return HIDDEN_WIDGET_ALIASES.includes(ko.unwrap(node.alias));
+    };
+
+    // Metadata is held per file id, never on tile observables, so reading it cannot dirty a tile.
+    const metadataByFile = ko.observable({});
+    const metadataRequested = new Set();
+
+    this.imageMetadataFields = function(tile) {
+        var fileId = self.getUrl(tile).fileId;
+        return metadataByFile()[fileId] || null;
+    };
+
+    this.loadImageMetadata = function(tile, event) {
+        var fileId = self.getUrl(tile).fileId;
+        if (!event.target.open || !fileId || metadataRequested.has(fileId)) return;
+        metadataRequested.add(fileId);
+        imageMetadata.fetchImageMetadata(fileId).then(function(data) {
+            metadataByFile(Object.assign({}, metadataByFile(), {[fileId]: data.fields}));
+        });
     };
 
     this.uniqueId = uuid.generate();
@@ -189,6 +229,13 @@ const viewModel = function(params) {
         self.selectingFromBar = true;
         self.photoGallery.selectItem(tile);
         self.selectingFromBar = false;
+    };
+
+    this.selectingFromList = false;
+    this.selectFromList = function(tile) {
+        self.selectingFromList = true;
+        self.photoGallery.selectItem(tile);
+        self.selectingFromList = false;
     };
 
     this.moveTile = function(tile, position) {

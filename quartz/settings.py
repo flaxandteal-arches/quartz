@@ -55,6 +55,11 @@ PERMISSION_LOCATIONS.append("quartz.permissions")
 if os.environ.get("QUARTZ_BLANKET_ROLES", "True").lower() in ("true", "1", "yes"):
     PERMISSION_FRAMEWORK = "blanket_roles.BlanketRoleDenyFramework"
 
+# Related-resources views list each versioned resource once: its Draft, else its Active version.
+MERGE_VERSIONED_RESOURCES = os.environ.get(
+    "MERGE_VERSIONED_RESOURCES", "True"
+).lower() in ("true", "1", "yes")
+
 LOCALE_PATHS.insert(0, os.path.join(APP_ROOT, "locale"))
 
 FILE_TYPE_CHECKING = "lenient"
@@ -386,7 +391,12 @@ GITHUB_DISPATCH_TOKEN = os.environ.get("GITHUB_DISPATCH_TOKEN", None)
 
 USE_LOCAL_STORAGE = os.environ.get("USE_LOCAL_STORAGE", "False").lower() == "true"
 
-if not USE_LOCAL_STORAGE and AZURE_ACCOUNT_NAME and AZURE_ACCOUNT_KEY and AZURE_CONTAINER:
+if (
+    not USE_LOCAL_STORAGE
+    and AZURE_ACCOUNT_NAME
+    and AZURE_ACCOUNT_KEY
+    and AZURE_CONTAINER
+):
     INSTALLED_APPS = (
         *INSTALLED_APPS,
         "storages",
@@ -749,7 +759,9 @@ except ImportError as e:
         pass
 
 # Append after all other settings (including arches_her) have been loaded
-_condition_report_modifier = "quartz.search_indexes.displayname_search_modifier.DisplaynameSearchModifier"
+_condition_report_modifier = (
+    "quartz.search_indexes.displayname_search_modifier.DisplaynameSearchModifier"
+)
 ES_MAPPING_MODIFIER_CLASSES = list(locals().get("ES_MAPPING_MODIFIER_CLASSES") or [])
 if _condition_report_modifier not in ES_MAPPING_MODIFIER_CLASSES:
     ES_MAPPING_MODIFIER_CLASSES.append(_condition_report_modifier)

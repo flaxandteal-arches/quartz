@@ -19,8 +19,12 @@ class ReorderTilesView(View):
     @method_decorator(group_required("Resource Editor", raise_exception=True))
     def post(self, request):
         data = JSONDeserializer().deserialize(request.body)
-        tileids = [tile["tileid"] for tile in data.get("tiles", []) if tile.get("tileid")]
-        tiles = models.TileModel.objects.filter(pk__in=tileids).select_related("nodegroup")
+        tileids = [
+            tile["tileid"] for tile in data.get("tiles", []) if tile.get("tileid")
+        ]
+        tiles = models.TileModel.objects.filter(pk__in=tileids).select_related(
+            "nodegroup"
+        )
         tile_lookup = {str(tile.pk): tile for tile in tiles}
 
         can_write = {}

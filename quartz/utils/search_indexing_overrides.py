@@ -3,6 +3,7 @@
 These are applied at import time (from QuartzConfig.ready) so we don't have to
 fork the arches-search app or arches core.
 """
+
 import copy
 import logging
 

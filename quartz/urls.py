@@ -11,6 +11,7 @@ from quartz.views.resource import (
     VersionedResourceEditorView,
     VersionedResourceEditLogView,
 )
+from quartz.views.image_metadata import ImageMetadataView
 from quartz.views.tile import ReorderTilesView
 from quartz.views.website_export import WebsiteExportView
 
@@ -79,6 +80,16 @@ _app_urlpatterns = [
     path("", include("arches_modular_reports.urls")),
     path("", include("arches_resource_version_manager.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.MERGE_VERSIONED_RESOURCES:
+    _app_urlpatterns.insert(
+        0,
+        re_path(
+            r"^resource/related/(?P<resourceid>%s|())$" % settings.UUID_REGEX,
+            MergedVersionRelatedResourcesView.as_view(),
+            name="related_resources",
+        ),
+    )
 
 urlpatterns = (
     _app_urlpatterns
