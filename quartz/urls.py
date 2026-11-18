@@ -43,6 +43,11 @@ _app_urlpatterns = [
         search_export_results,
         name="quartz_export_results",
     ),
+    path(
+        "image-metadata/<uuid:fileid>",
+        ImageMetadataView.as_view(),
+        name="image_metadata",
+    ),
     re_path(
         r"^tiles/reorder_tiles$",
         ReorderTilesView.as_view(),
